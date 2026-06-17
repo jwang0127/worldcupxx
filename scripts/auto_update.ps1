@@ -78,12 +78,23 @@ function Get-ResultLeanFromOdds {
   return ($items | Sort-Object { [decimal]$_.value } | Select-Object -First 1).code
 }
 
+function Get-LeanText {
+  param([string]$Value)
+
+  switch ($Value) {
+    "home" { return "&#20027;&#32988;" }
+    "draw" { return "&#24179;&#23616;" }
+    "away" { return "&#23458;&#32988;" }
+    default { return $Value }
+  }
+}
+
 function Get-ReviewSummary {
   param($Match)
 
   $lean = Get-ResultLeanFromOdds $Match.odds.had
   if (-not $Match.result -or $null -eq $Match.result.homeGoals -or $null -eq $Match.result.awayGoals) {
-    return "Waiting for final score. Pre-match lean was $lean with total-goals call $($Match.prediction.totalGoals)."
+    return "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; $(Get-LeanText $lean)&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; $($Match.prediction.totalGoals)&#12290;"
   }
 
   $homeGoals = [int]$Match.result.homeGoals
@@ -97,10 +108,10 @@ function Get-ReviewSummary {
     $actualLean = "away"
   }
 
-  $goalVerdict = if ([string]$actualTotal -eq [string]$Match.prediction.totalGoals) { "matched" } else { "missed" }
-  $resultVerdict = if ($actualLean -eq $lean) { "aligned with the 1X2 lean" } else { "went against the 1X2 lean" }
+  $goalVerdict = if ([string]$actualTotal -eq [string]$Match.prediction.totalGoals) { "&#21629;&#20013;" } else { "&#26410;&#21629;&#20013;" }
+  $resultVerdict = if ($actualLean -eq $lean) { "&#19982;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#19968;&#33268;" } else { "&#19982;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#30456;&#21453;" }
 
-  return "Final score $homeGoals`:$awayGoals. Total-goals call $goalVerdict at $actualTotal, and the match $resultVerdict."
+  return "&#26368;&#32456;&#27604;&#20998; $homeGoals`:$awayGoals&#12290;&#23454;&#38469;&#24635;&#36827;&#29699; $actualTotal&#65292;&#39044;&#27979;$goalVerdict&#65307;&#36187;&#26524;$resultVerdict&#12290;"
 }
 
 & (Join-Path $PSScriptRoot "generate_daily_board.ps1") -Date $Date
@@ -115,8 +126,8 @@ $settledCount = 0
 
 foreach ($m in @($payload.matches)) {
   $actualTotal = $null
-  $hitText = "pending"
-  $scoreText = "pending"
+  $hitText = "&#24453;&#23450;"
+  $scoreText = "&#24453;&#22238;&#22635;"
   $reviewText = Get-ReviewSummary $m
 
   if ($m.result -and $null -ne $m.result.homeGoals -and $null -ne $m.result.awayGoals) {
@@ -124,11 +135,11 @@ foreach ($m in @($payload.matches)) {
     $scoreText = "$($m.result.homeGoals):$($m.result.awayGoals)"
     $settledCount += 1
     if ([string]$actualTotal -eq [string]$m.prediction.totalGoals) {
-      $hitText = "hit"
+      $hitText = "&#21629;&#20013;"
       $hitCount += 1
     }
     else {
-      $hitText = "miss"
+      $hitText = "&#26410;&#20013;"
     }
   }
 
@@ -136,7 +147,7 @@ foreach ($m in @($payload.matches)) {
   $rows.Add("<tr><td>$($m.id)</td><td>$($m.home) vs $($m.away)</td><td>$($m.prediction.totalGoals)</td><td>$scoreText</td><td>$hitText</td><td>$reviewText</td></tr>")
 }
 
-$rate = "pending"
+$rate = "&#24453;&#23450;"
 if ($settledCount -gt 0) {
   $rate = [math]::Round(($hitCount / $settledCount) * 100, 1).ToString() + "%"
 }
@@ -163,7 +174,7 @@ $html = @"
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>$Date Post Match Review</title>
+<title>$Date &#19990;&#30028;&#26479;&#22797;&#30424;</title>
 <style>
 body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#06120f;color:#e9fff8}
 main{max-width:1100px;margin:auto;padding:28px 16px}
@@ -172,19 +183,18 @@ a{color:#8fffd0}
 table{width:100%;border-collapse:collapse;background:#071817}
 th,td{padding:10px;border-bottom:1px solid #1f4a43;text-align:left;vertical-align:top}
 th{color:#8fffd0}
-.ok{color:#33e28a}.warn{color:#ffad4d}
 </style>
 </head>
 <body>
 <main>
-<p><a href="../index.html">Back to index</a></p>
-<h1>$Date Review And Model Update</h1>
+<p><a href="../index.html">&#36820;&#22238;&#39318;&#39029;</a></p>
+<h1>$Date &#19990;&#30028;&#26479;&#22797;&#30424;&#19982;&#27169;&#22411;&#26356;&#26032;</h1>
 <div class="card">
-<p>Settled matches: $settledCount | Total-goals hits: $hitCount | Hit rate: $rate</p>
-<p>Model note: settled matches update the running history automatically. When result data is still missing, the review stays in pending mode until a score source is available.</p>
+<p>&#24050;&#32467;&#31639;&#22330;&#27425;&#65306;$settledCount &#65372; &#24635;&#36827;&#29699;&#21629;&#20013;&#65306;$hitCount &#65372; &#21629;&#20013;&#29575;&#65306;$rate</p>
+<p>&#27169;&#22411;&#35828;&#26126;&#65306;&#24050;&#32467;&#31639;&#27604;&#36187;&#20250;&#33258;&#21160;&#20889;&#20837;&#21382;&#21490;&#34920;&#29616;&#65307;&#33509;&#36187;&#26524;&#26242;&#26410;&#22238;&#22635;&#65292;&#22797;&#30424;&#20250;&#20445;&#25345;&#24453;&#23450;&#29366;&#24577;&#65292;&#30452;&#21040;&#34917;&#21040;&#21487;&#38752;&#27604;&#20998;&#28304;&#12290;</p>
 </div>
 <table>
-<thead><tr><th>ID</th><th>Match</th><th>Predicted Total Goals</th><th>Final Score</th><th>Result</th><th>Post-Match Review</th></tr></thead>
+<thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#39044;&#27979;&#24635;&#36827;&#29699;</th><th>&#26368;&#32456;&#27604;&#20998;</th><th>&#32467;&#26524;</th><th>&#22797;&#30424;&#32467;&#35770;</th></tr></thead>
 <tbody>
 $($rows -join "`n")
 </tbody>
@@ -203,7 +213,7 @@ Get-ChildItem -Path $root -Directory |
   Sort-Object Name |
   ForEach-Object {
     $d = $_.Name
-    $cards.Add("<a class=""card"" href=""./$d/""><div><div class=""date"">$d</div><div class=""meta"">Prediction board and post-match review</div></div><div class=""go"">Open &rarr;</div></a>")
+    $cards.Add("<a class=""card"" href=""./$d/""><div><div class=""date"">$d</div><div class=""meta"">&#39044;&#27979;&#30475;&#26495;&#19982;&#36187;&#21518;&#22797;&#30424;</div></div><div class=""go"">&#36827;&#20837; &rarr;</div></a>")
   }
 
 $index = @"
@@ -212,7 +222,7 @@ $index = @"
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 World Cup Predictions</title>
+<title>2026 &#19990;&#30028;&#26479;&#39044;&#27979;&#20013;&#24515;</title>
 <style>
 :root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(51,226,138,.18),transparent 26%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
@@ -221,12 +231,12 @@ main{max-width:980px;margin:0 auto;padding:44px 18px}h1{font-size:clamp(28px,5vw
 </head>
 <body>
 <main>
-<h1>2026 World Cup Predictions</h1>
-<p>Daily prediction boards, result reviews, and model calibration notes. For entertainment analysis only.</p>
+<h1>2026 &#19990;&#30028;&#26479;&#39044;&#27979;&#20013;&#24515;</h1>
+<p>&#36825;&#37324;&#27719;&#24635;&#27599;&#26085;&#39044;&#27979;&#30475;&#26495;&#12289;&#36187;&#26524;&#22797;&#30424;&#21644;&#27169;&#22411;&#26657;&#20934;&#35760;&#24405;&#65292;&#39029;&#38754;&#22522;&#20110;&#20844;&#24320;&#36180;&#29575;&#19982;&#20844;&#24320;&#36187;&#26524;&#25345;&#32493;&#26356;&#26032;&#12290;</p>
 <section class="list">
 $($cards -join "`n")
 </section>
-<footer>Please play responsibly. This site is not betting advice.</footer>
+<footer>&#20165;&#20379;&#20844;&#24320;&#20449;&#24687;&#20998;&#26512;&#21442;&#32771;&#65292;&#19981;&#26500;&#25104;&#25237;&#27880;&#24314;&#35758;&#12290;</footer>
 </main>
 </body>
 </html>

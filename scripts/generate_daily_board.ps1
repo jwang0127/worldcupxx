@@ -24,19 +24,59 @@ $summaryCards = New-Object System.Collections.Generic.List[string]
 $detailCards = New-Object System.Collections.Generic.List[string]
 $navLinks = New-Object System.Collections.Generic.List[string]
 
+function Get-ConfidenceText {
+  param([string]$Value)
+
+  switch ($Value) {
+    "high" { return "&#39640;" }
+    "medium" { return "&#20013;" }
+    "low" { return "&#20302;" }
+    default { return $Value }
+  }
+}
+
+function Get-ReviewText {
+  param($Match)
+
+  if ($Match.review -and ($Match.review -notmatch '^Auto-generated from Sporttery live odds\.')) {
+    return $Match.review
+  }
+
+  $lean = "home"
+  if ($Match.odds -and $Match.odds.had) {
+    $pairs = @(
+      @{ code = "home"; value = $Match.odds.had.home },
+      @{ code = "draw"; value = $Match.odds.had.draw },
+      @{ code = "away"; value = $Match.odds.had.away }
+    ) | Where-Object { $_.value }
+    if ($pairs) {
+      $lean = ($pairs | Sort-Object { [decimal]$_.value } | Select-Object -First 1).code
+    }
+  }
+
+  $leanText = switch ($lean) {
+    "home" { "&#20027;&#32988;" }
+    "draw" { "&#24179;&#23616;" }
+    "away" { "&#23458;&#32988;" }
+    default { $lean }
+  }
+
+  return "&#22522;&#20110;&#20307;&#24425;&#23454;&#26102;&#36180;&#29575;&#33258;&#21160;&#29983;&#25104;&#65306;&#24635;&#36827;&#29699;&#20302;&#20301;&#20542;&#21521; $($Match.prediction.totalGoals) &#29699;&#65292;&#32988;&#24179;&#36127;&#20542;&#21521; $leanText&#12290;"
+}
+
 $i = 0
 foreach ($m in $payload.matches) {
   $i += 1
   $sectionId = "m$i"
-  $navLinks.Add("<a href=""#$sectionId"">Match $i</a>")
+  $navLinks.Add("<a href=""#$sectionId"">&#27604;&#36187; $i</a>")
 
-  $hadText = "H $($m.odds.had.home) / D $($m.odds.had.draw) / A $($m.odds.had.away)"
+  $hadText = "&#32988; $($m.odds.had.home) / &#24179; $($m.odds.had.draw) / &#36127; $($m.odds.had.away)"
   $ttgText = "0:$($m.odds.ttg.s0) 1:$($m.odds.ttg.s1) 2:$($m.odds.ttg.s2) 3:$($m.odds.ttg.s3) 4:$($m.odds.ttg.s4) 5:$($m.odds.ttg.s5) 6:$($m.odds.ttg.s6) 7+:$($m.odds.ttg.s7)"
   $summaryCards.Add(@"
 <div class="mini">
   <span class="tag">$($m.matchNumStr)</span>
   <div class="teams">$($m.home) vs $($m.away)</div>
-  <small>Total goals lean: $($m.prediction.totalGoals); scores: $($m.prediction.scores -join ", ")</small>
+  <small>&#24635;&#36827;&#29699;&#20542;&#21521;&#65306;$($m.prediction.totalGoals)&#65307;&#27604;&#20998;&#21442;&#32771;&#65306;$($m.prediction.scores -join "&#12289;")</small>
 </div>
 "@)
 
@@ -47,32 +87,32 @@ foreach ($m in $payload.matches) {
   <div class="panel">
     <div class="pred">
       <div class="box">
-        <h4>Total Goals</h4>
+        <h4>&#24635;&#36827;&#29699;&#39044;&#27979;</h4>
         <div class="big">$($m.prediction.totalGoals)</div>
-        <small>Confidence: $($m.prediction.confidence)</small>
+        <small>&#32622;&#20449;&#24230;&#65306;$(Get-ConfidenceText $m.prediction.confidence)</small>
       </div>
       <div class="box">
-        <h4>Main Scores</h4>
+        <h4>&#20027;&#25512;&#27604;&#20998;</h4>
         <span class="score">$($m.prediction.scores[0])</span>
         <span class="score">$($m.prediction.scores[1])</span>
       </div>
       <div class="box">
-        <h4>Upset Cover</h4>
+        <h4>&#20919;&#38376;&#38450;&#23432;</h4>
         <span class="score upset">$($m.prediction.upset)</span>
       </div>
     </div>
     <div class="pred">
       <div class="box">
-        <h4>HAD Odds</h4>
+        <h4>&#32988;&#24179;&#36127;&#36180;&#29575;</h4>
         <p>$hadText</p>
       </div>
       <div class="box">
-        <h4>TTG Odds</h4>
+        <h4>&#24635;&#36827;&#29699;&#36180;&#29575;</h4>
         <p>$ttgText</p>
       </div>
       <div class="box">
-        <h4>Review Note</h4>
-        <p>$($m.review)</p>
+        <h4>&#20998;&#26512;&#22791;&#27880;</h4>
+        <p>$(Get-ReviewText $m)</p>
       </div>
     </div>
   </div>
@@ -82,7 +122,7 @@ foreach ($m in $payload.matches) {
 
 $reviewLink = ""
 if (Test-Path (Join-Path $dayDir "review.html")) {
-  $reviewLink = '<a href="./review.html">Review</a>'
+  $reviewLink = '<a href="./review.html">&#22797;&#30424;</a>'
 }
 
 $html = @"
@@ -91,7 +131,7 @@ $html = @"
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>World Cup Prediction Board $Date</title>
+<title>$Date &#19990;&#30028;&#26479;&#39044;&#27979;&#30475;&#26495;</title>
 <style>
 :root{--bg:#06120f;--panel:#0b1d20;--card:#102528;--line:#1f4a43;--green:#33e28a;--mint:#8fffd0;--red:#ff6b6b;--blue:#7dd3fc;--text:#e9fff8;--muted:#9bb8b0}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 18% 8%,rgba(51,226,138,.16),transparent 24%),linear-gradient(135deg,#020807,#06120f 42%,#071b2a);color:var(--text)}a{color:inherit;text-decoration:none}
@@ -108,9 +148,9 @@ footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding:
 <body>
 <header>
   <div class="hero">
-    <h1>World Cup Prediction Board $Date</h1>
+    <h1>$Date &#19990;&#30028;&#26479;&#39044;&#27979;&#30475;&#26495;</h1>
     <nav>
-      <a href="../index.html">Home</a>
+      <a href="../index.html">&#39318;&#39029;</a>
       $reviewLink
       $($navLinks -join "`n")
     </nav>
@@ -118,14 +158,14 @@ footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding:
 </header>
 <main>
 <section class="section">
-  <h2>Daily Overview</h2>
+  <h2>&#24403;&#26085;&#27010;&#35272;</h2>
   <div class="grid">
     $($summaryCards -join "`n")
   </div>
 </section>
 $($detailCards -join "`n")
 </main>
-<footer>Auto-generated from Sporttery live data. For entertainment analysis only.</footer>
+<footer>&#39029;&#38754;&#22522;&#20110;&#20307;&#24425;&#23454;&#26102;&#25968;&#25454;&#33258;&#21160;&#29983;&#25104;&#65292;&#20165;&#20379;&#20844;&#24320;&#20449;&#24687;&#20998;&#26512;&#21442;&#32771;&#12290;</footer>
 </body>
 </html>
 "@

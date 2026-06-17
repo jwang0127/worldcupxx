@@ -252,8 +252,14 @@ foreach ($group in $payload.value.matchInfoList) {
       $existingMatch = $existingMatchMap[[string]$match.matchId]
     }
 
-    $review = "Auto-generated from Sporttery live odds. TTG low point leans $($goalPick.totalGoals) goals; HAD leans $lean."
-    if ($existingMatch -and $existingMatch.review) {
+    $leanText = switch ($lean) {
+      "home" { "主胜" }
+      "draw" { "平局" }
+      "away" { "客胜" }
+      default { $lean }
+    }
+    $review = "基于体彩实时赔率自动生成：总进球低位倾向 $($goalPick.totalGoals) 球，胜平负倾向 $leanText。"
+    if ($existingMatch -and $existingMatch.review -and ($existingMatch.review -notmatch '^Auto-generated from Sporttery live odds\.')) {
       $review = $existingMatch.review
     }
 
