@@ -1,0 +1,276 @@
+﻿{
+    "date":  "20260617",
+    "dateText":  "2026-06-17",
+    "source":  "manual-world-cup-review",
+    "fetchedAt":  "2026-06-17T16:00:00",
+    "matches":  [
+                    {
+                        "id":  "017",
+                        "matchNumStr":  "Tue017",
+                        "matchId":  "wc-20260617-017",
+                        "businessDate":  "2026-06-16",
+                        "league":  "World Cup",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "Group I",
+                        "kickoff":  "2026-06-17 03:00:00",
+                        "matchDate":  "2026-06-17",
+                        "matchTime":  "03:00:00",
+                        "matchStatus":  "Finished",
+                        "sellStatus":  0,
+                        "taxDateNo":  "2606161",
+                        "isHot":  true,
+                        "home":  "France",
+                        "homeCode":  "FRA",
+                        "homeAbbr":  "France",
+                        "homeRank":  "[Group I 1]",
+                        "away":  "Senegal",
+                        "awayCode":  "SEN",
+                        "awayAbbr":  "Senegal",
+                        "awayRank":  "[Group I 2]",
+                        "venue":  "New York New Jersey Stadium",
+                        "prediction":  {
+                                           "totalGoals":  "2",
+                                           "scores":  [
+                                                          "2:0",
+                                                          "2:1"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "2",
+                                                              "3",
+                                                              "1"
+                                                          ]
+                                       },
+                        "result":  {
+                                       "homeGoals":  3,
+                                       "awayGoals":  1,
+                                       "status":  "Finished",
+                                       "source":  "guardian-live"
+                                   },
+                        "review":  "Manual World Cup prediction restored from the original board.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "1.42",
+                                                 "draw":  "4.20",
+                                                 "away":  "7.60",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "10.50",
+                                                 "s1":  "4.40",
+                                                 "s2":  "3.25",
+                                                 "s3":  "3.60",
+                                                 "s4":  "5.80",
+                                                 "s5":  "11.00",
+                                                 "s6":  "20.00",
+                                                 "s7":  "30.00",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             }
+                                 },
+                        "postReview":  "Final score 3:1. Total-goals call missed at 4, and the match aligned with the 1X2 lean."
+                    },
+                    {
+                        "id":  "018",
+                        "matchNumStr":  "Tue018",
+                        "matchId":  "wc-20260617-018",
+                        "businessDate":  "2026-06-16",
+                        "league":  "World Cup",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "Group I",
+                        "kickoff":  "2026-06-17 06:00:00",
+                        "matchDate":  "2026-06-17",
+                        "matchTime":  "06:00:00",
+                        "matchStatus":  "Finished",
+                        "sellStatus":  0,
+                        "taxDateNo":  "2606161",
+                        "isHot":  true,
+                        "home":  "Iraq",
+                        "homeCode":  "IRQ",
+                        "homeAbbr":  "Iraq",
+                        "homeRank":  "[Group I 4]",
+                        "away":  "Norway",
+                        "awayCode":  "NOR",
+                        "awayAbbr":  "Norway",
+                        "awayRank":  "[Group I 3]",
+                        "venue":  "Boston Stadium",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "0:2",
+                                                          "1:2"
+                                                      ],
+                                           "upset":  "2:2",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "3",
+                                                              "4",
+                                                              "2"
+                                                          ]
+                                       },
+                        "result":  {
+                                       "homeGoals":  1,
+                                       "awayGoals":  4,
+                                       "status":  "Finished",
+                                       "source":  "guardian-live"
+                                   },
+                        "review":  "Manual World Cup prediction restored from the original board.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "8.50",
+                                                 "draw":  "4.90",
+                                                 "away":  "1.32",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "19.00",
+                                                 "s1":  "6.25",
+                                                 "s2":  "4.00",
+                                                 "s3":  "3.45",
+                                                 "s4":  "4.70",
+                                                 "s5":  "7.00",
+                                                 "s6":  "12.00",
+                                                 "s7":  "16.00",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             }
+                                 },
+                        "postReview":  "Final score 1:4. Total-goals call missed at 5, and the match aligned with the 1X2 lean."
+                    },
+                    {
+                        "id":  "019",
+                        "matchNumStr":  "Tue019",
+                        "matchId":  "wc-20260617-019",
+                        "businessDate":  "2026-06-16",
+                        "league":  "World Cup",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "Group J",
+                        "kickoff":  "2026-06-17 09:00:00",
+                        "matchDate":  "2026-06-17",
+                        "matchTime":  "09:00:00",
+                        "matchStatus":  "Finished",
+                        "sellStatus":  0,
+                        "taxDateNo":  "2606161",
+                        "isHot":  true,
+                        "home":  "Argentina",
+                        "homeCode":  "ARG",
+                        "homeAbbr":  "Argentina",
+                        "homeRank":  "[Group J 1]",
+                        "away":  "Algeria",
+                        "awayCode":  "ALG",
+                        "awayAbbr":  "Algeria",
+                        "awayRank":  "[Group J 2]",
+                        "venue":  "Kansas City Stadium",
+                        "prediction":  {
+                                           "totalGoals":  "2",
+                                           "scores":  [
+                                                          "2:0",
+                                                          "2:1"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "2",
+                                                              "3",
+                                                              "1"
+                                                          ]
+                                       },
+                        "result":  {
+                                       "homeGoals":  3,
+                                       "awayGoals":  0,
+                                       "status":  "Finished",
+                                       "source":  "guardian-live"
+                                   },
+                        "review":  "Manual World Cup prediction restored from the original board.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "1.24",
+                                                 "draw":  "4.65",
+                                                 "away":  "9.25",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "11.00",
+                                                 "s1":  "4.50",
+                                                 "s2":  "3.40",
+                                                 "s3":  "3.60",
+                                                 "s4":  "5.50",
+                                                 "s5":  "10.00",
+                                                 "s6":  "19.00",
+                                                 "s7":  "29.00",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             }
+                                 },
+                        "postReview":  "Final score 3:0. Total-goals call missed at 3, and the match aligned with the 1X2 lean."
+                    },
+                    {
+                        "id":  "020",
+                        "matchNumStr":  "Tue020",
+                        "matchId":  "wc-20260617-020",
+                        "businessDate":  "2026-06-16",
+                        "league":  "World Cup",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "Group J",
+                        "kickoff":  "2026-06-17 12:00:00",
+                        "matchDate":  "2026-06-17",
+                        "matchTime":  "12:00:00",
+                        "matchStatus":  "Finished",
+                        "sellStatus":  0,
+                        "taxDateNo":  "2606161",
+                        "isHot":  false,
+                        "home":  "Austria",
+                        "homeCode":  "AUT",
+                        "homeAbbr":  "Austria",
+                        "homeRank":  "[Group J 3]",
+                        "away":  "Jordan",
+                        "awayCode":  "JOR",
+                        "awayAbbr":  "Jordan",
+                        "awayRank":  "[Group J 4]",
+                        "venue":  "San Francisco Bay Area Stadium",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "2:0",
+                                                          "3:0"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "3",
+                                                              "4",
+                                                              "2"
+                                                          ]
+                                       },
+                        "result":  {
+                                       "homeGoals":  3,
+                                       "awayGoals":  1,
+                                       "status":  "Finished",
+                                       "source":  "guardian-live"
+                                   },
+                        "review":  "Manual World Cup prediction restored from the original board.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "1.26",
+                                                 "draw":  "4.65",
+                                                 "away":  "8.25",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "14.00",
+                                                 "s1":  "5.50",
+                                                 "s2":  "3.70",
+                                                 "s3":  "3.50",
+                                                 "s4":  "4.85",
+                                                 "s5":  "8.00",
+                                                 "s6":  "15.00",
+                                                 "s7":  "21.00",
+                                                 "updatedAt":  "2026-06-16 20:00:00"
+                                             }
+                                 },
+                        "postReview":  "Final score 3:1. Total-goals call missed at 4, and the match aligned with the 1X2 lean."
+                    }
+                ]
+}

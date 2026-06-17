@@ -1,70 +1,207 @@
-<!-- 建议保存至 D:\WorldCupPredict\20260617\predict_20260617.html -->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>2026世界杯 预测看板 2026年06月17日</title>
+<title>World Cup Prediction Board 20260617</title>
 <style>
-:root{--bg:#06120f;--panel:#0b1d20;--card:#102528;--line:#1f4a43;--green:#33e28a;--mint:#8fffd0;--orange:#ffad4d;--red:#ff5a63;--purple:#35204f;--blue:#7dd3fc;--text:#e9fff8;--muted:#9bb8b0}
+:root{--bg:#06120f;--panel:#0b1d20;--card:#102528;--line:#1f4a43;--green:#33e28a;--mint:#8fffd0;--red:#ff6b6b;--blue:#7dd3fc;--text:#e9fff8;--muted:#9bb8b0}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 18% 8%,rgba(51,226,138,.16),transparent 24%),linear-gradient(135deg,#020807,#06120f 42%,#071b2a);color:var(--text)}a{color:inherit;text-decoration:none}
 header{position:sticky;top:0;z-index:5;background:rgba(3,12,11,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.hero{max-width:1240px;margin:auto;padding:24px 18px 16px}h1{margin:0 0 14px;font-size:clamp(24px,4vw,42px);letter-spacing:0}nav{display:flex;gap:10px;flex-wrap:wrap}nav a{padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:var(--mint);font-size:14px}
+.hero{max-width:1240px;margin:auto;padding:24px 18px 16px}h1{margin:0 0 14px;font-size:clamp(24px,4vw,42px)}nav{display:flex;gap:10px;flex-wrap:wrap}nav a{padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:var(--mint);font-size:14px}
 main{max-width:1240px;margin:auto;padding:20px 18px 50px}.section{margin:22px 0 34px}.section h2{font-size:26px;margin:0 0 16px;color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}nav a{flex:1;text-align:center}}
-.mini,.card,.combo{background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));border:1px solid var(--line);border-radius:8px;box-shadow:0 16px 36px rgba(0,0,0,.28)}.mini{padding:16px;transition:.22s}.mini:hover,.card:hover,.combo:hover{transform:translateY(-3px);border-color:#39d98a}
-.tag{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:#12362f;color:var(--green);font-size:12px;border:1px solid #246b59}.hot{background:#422018;color:#ffd0a0;border-color:#ff8a38}.teams{font-size:21px;font-weight:800;margin:11px 0 6px}.kv{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}@media(max-width:760px){.kv{grid-template-columns:repeat(2,1fr)}}.kv div{background:#071817;border:1px solid #173b35;border-radius:7px;padding:10px;text-align:center}.kv strong{display:block;color:var(--mint);font-size:18px}
-.card{padding:18px;margin-bottom:22px;scroll-margin-top:110px}.card h3{font-size:28px;margin:0 0 6px}.meta{color:var(--muted);margin-bottom:14px}.panel{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}@media(max-width:860px){.panel{grid-template-columns:1fr}}
-details{border:1px solid #1b463f;border-radius:8px;margin:9px 0;background:#071817;overflow:hidden}summary{cursor:pointer;padding:12px 14px;color:var(--mint);font-weight:700}details p,details ul{margin:0;padding:0 14px 14px;color:#d8eee8;line-height:1.7}li{margin:6px 0}.pred{display:grid;gap:10px}.box{border:1px solid #1c5048;background:#071817;border-radius:8px;padding:13px}.box h4{margin:0 0 8px;color:var(--blue)}.big{font-size:32px;color:var(--green);font-weight:900}.score{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.upset{border-color:var(--red);background:#331415;color:#ffd2b0}.mystic{background:linear-gradient(135deg,var(--purple),#1c1538);border-color:#8d5cff}
-.odds{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}.odds span{padding:8px 4px;background:#0b201d;border:1px solid #17433b;border-radius:6px;text-align:center;font-size:13px}.combo{padding:18px;margin-bottom:18px}.combo table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:8px}th,td{padding:12px;border-bottom:1px solid #1b463f;text-align:left}th{color:var(--mint);background:#09211e}footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding:24px 12px;font-size:13px}small{color:#86a39b}
+.mini,.card{background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));border:1px solid var(--line);border-radius:8px;box-shadow:0 16px 36px rgba(0,0,0,.28)}.mini{padding:16px;transition:.22s}.mini:hover,.card:hover{transform:translateY(-3px);border-color:#39d98a}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:#12362f;color:var(--green);font-size:12px;border:1px solid #246b59}.teams{font-size:21px;font-weight:800;margin:11px 0 6px}
+.card{padding:18px;margin-bottom:22px;scroll-margin-top:110px}.card h3{font-size:28px;margin:0 0 6px}.meta{color:var(--muted);margin-bottom:14px}.panel{display:grid;grid-template-columns:1fr 1fr;gap:16px}@media(max-width:860px){.panel{grid-template-columns:1fr}}
+.pred{display:grid;gap:10px}.box{border:1px solid #1c5048;background:#071817;border-radius:8px;padding:13px}.box h4{margin:0 0 8px;color:var(--blue)}.big{font-size:32px;color:var(--green);font-weight:900}.score{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.upset{border-color:var(--red);background:#331415;color:#ffd2b0}
+footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding:24px 12px;font-size:13px}
 </style>
 </head>
 <body>
-<header><div class="hero"><h1>🌍 2026世界杯 预测看板 2026年06月17日</h1><nav><a href="#overview">概览</a><a href="#m1">比赛1</a><a href="#m2">比赛2</a><a href="#m3">比赛3</a><a href="#m4">比赛4</a><a href="#combo">组合推荐</a></nav></div></header>
+<header>
+  <div class="hero">
+    <h1>World Cup Prediction Board 20260617</h1>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="./review.html">Review</a>
+      <a href="#m1">Match 1</a>
+<a href="#m2">Match 2</a>
+<a href="#m3">Match 3</a>
+<a href="#m4">Match 4</a>
+    </nav>
+  </div>
+</header>
 <main>
-<section id="overview" class="section">
-<h2>每日总结页</h2>
-<div class="grid">
-<div class="mini"><span class="tag">周二017 ★稳胆</span><div class="teams">法国 vs 塞内加尔</div><small>赔率峰值指向2球，强队控局，小胜路径最清晰。</small></div>
-<div class="mini"><span class="tag hot">周二018 🔮冷门</span><div class="teams">伊拉克 vs 挪威</div><small>盘口倾向挪威，但总进球3/4球热度偏高，存在节奏失控。</small></div>
-<div class="mini"><span class="tag">周二019</span><div class="teams">阿根廷 vs 阿尔及利亚</div><small>2球与3球并列核心区，阿根廷胜面大但未必屠杀。</small></div>
-<div class="mini"><span class="tag">周二020</span><div class="teams">奥地利 vs 约旦</div><small>奥地利压制力强，3球主线，4球为次热延展。</small></div>
+<section class="section">
+  <h2>Daily Overview</h2>
+  <div class="grid">
+    <div class="mini">
+  <span class="tag">Tue017</span>
+  <div class="teams">France vs Senegal</div>
+  <small>Total goals lean: 2; scores: 2:0, 2:1</small>
 </div>
-<div class="kv"><div><strong>最佳稳胆</strong>法国 2球</div><div><strong>最大冷门</strong>伊拉克 1:2 / 2:2</div><div><strong>今日球路</strong>2-3球为主</div><div><strong>玄学日运</strong>火土旺，强队先手佳</div></div>
+<div class="mini">
+  <span class="tag">Tue018</span>
+  <div class="teams">Iraq vs Norway</div>
+  <small>Total goals lean: 3; scores: 0:2, 1:2</small>
+</div>
+<div class="mini">
+  <span class="tag">Tue019</span>
+  <div class="teams">Argentina vs Algeria</div>
+  <small>Total goals lean: 2; scores: 2:0, 2:1</small>
+</div>
+<div class="mini">
+  <span class="tag">Tue020</span>
+  <div class="teams">Austria vs Jordan</div>
+  <small>Total goals lean: 3; scores: 2:0, 3:0</small>
+</div>
+  </div>
 </section>
-<section id="m1" class="card"><h3>比赛1｜周二017 法国 vs 塞内加尔</h3><div class="meta">06-17 03:00｜I组｜纽约/新泽西球场｜总投入：100元分析参考，仅供娱乐</div><div class="panel"><div>
-<details open><summary>1. 基本面模型</summary><ul><li>法国按强队ELO、FIFA排名、阵容身价、板凳厚度均明显占优，锋线个人能力和转换速度是主优势。</li><li>塞内加尔身体对抗、边路冲击和定位球威胁强，具备拉低节奏、制造混战的能力。</li><li>近况模型：法国稳定性优于塞内加尔，但大赛首轮通常更重视风险控制，净胜球诉求有但不会盲攻。</li></ul></details>
-<details><summary>2. 战术与教练模型</summary><p>法国常见4-2-3-1/4-3-3，利用边锋单点爆破和肋部二次进攻；塞内加尔更可能压缩中路后快速找边路。法国若早进球会把比赛压成2-0/2-1区间，若久攻不下则1-0和1-1权重上升。</p></details>
-<details><summary>3. 外部因素模型</summary><p>纽约/新泽西6月夜间湿度与草皮适应对双方都有影响，法国旅欧球员适应更快。法国星味重但也带来舆论压力，塞内加尔更容易以挑战者姿态进入比赛。</p></details>
-<details><summary>4. 小组形势模型</summary><p>I组还有挪威、伊拉克。法国首战目标是三分和净胜球，塞内加尔若能拿1分将极大提升出线主动权，因此客队下半场落后1球时会更冒险。</p></details>
-<details><summary>5. 赔率解读模型</summary><p>总进球赔率：0=10.50，1=4.40，2=3.25，3=3.60，4=5.80，5=11.00，6=20.00，7+=30.00。反推归一后，2球约24.5%，3球约22.1%，1球约18.1%。庄家主线是法国小胜，防2-1。</p></details>
-</div><div class="pred"><div class="box"><h4>模型池</h4><p>ELO强弱、Poisson进球、赔率隐含概率、盘口热度、阵容身价、战术克制、首轮动机、天气旅途、心理压力、玄学流时。</p></div><div class="box"><h4>总进球预测</h4><div class="big">2球</div><small>置信：中高。赔率、首轮策略与法国控局模型同向。</small></div><div class="box"><h4>比分预测——稳胆×2</h4><span class="score">2:0</span><span class="score">2:1</span></div><div class="box"><h4>比分预测——冷门×1</h4><span class="score upset">1:1</span></div><div class="box mystic"><h4>玄学占卜</h4><p>以“法国塞内加尔”字数笔画起梅花，主卦偏乾金得势，客卦木火相杂，主队名望气更足；开球在夜半后，紫微流时利名将与中轴核心，奇门取西北乾位旺。玄学结论：法国旺，宜小中球，爆冷征兆在“久攻不下”。</p></div><div class="box"><h4>单场简评</h4><p>法国硬实力和赔率结构都支持常规胜，但塞内加尔对抗强，首轮不宜把大胜当主线。核心看2球，防3球。</p></div></div></div></section>
-<section id="m2" class="card"><h3>比赛2｜周二018 伊拉克 vs 挪威</h3><div class="meta">06-17 06:00｜I组｜波士顿球场｜总投入：100元分析参考，仅供娱乐</div><div class="panel"><div>
-<details open><summary>1. 基本面模型</summary><ul><li>挪威拥有顶级锋线支点和冲击力，身价、五大联赛经验、个人终结能力明显领先。</li><li>伊拉克整体性、斗志和防守密度不差，杯赛属性下能把比赛拖入身体对抗和定位球回合。</li><li>近10场模型倾向挪威制造更多高质量机会，但其防线专注度和大赛经验仍是风险项。</li></ul></details>
-<details><summary>2. 战术与教练模型</summary><p>挪威多以4-3-3/4-2-3-1寻找锋线纵深，伊拉克大概率低位5后卫或紧凑4-4-2。若伊拉克先丢球，比赛会被拉开；若挪威久攻不下，平局赔率会逐步显得有价值。</p></details>
-<details><summary>3. 外部因素模型</summary><p>波士顿6月气候对欧洲队较友好，挪威适应略占优。伊拉克球迷与情绪动员可能增强抗压，但面对高空球和禁区冲击会很吃力。</p></details>
-<details><summary>4. 小组形势模型</summary><p>同组有法国、塞内加尔，挪威必须在伊拉克身上抢三分；伊拉克若拿1分就是战略胜利。因此挪威进攻动机强，总进球上限高于传统弱强对话。</p></details>
-<details><summary>5. 赔率解读模型</summary><p>总进球赔率：0=19.00，1=6.25，2=4.00，3=3.45，4=4.70，5=7.00，6=12.00，7+=16.00。归一后3球约23.1%，2球约19.9%，4球约17.0%，市场明显不惧大球。</p></details>
-</div><div class="pred"><div class="box"><h4>模型池</h4><p>强弱差、锋线效率、低位防守抗压、让球结构、比分赔率、首轮必胜动机、气候适应、临场心理波动。</p></div><div class="box"><h4>总进球预测</h4><div class="big">3球</div><small>置信：中。赔率支持3球，4球热度也不低。</small></div><div class="box"><h4>比分预测——稳胆×2</h4><span class="score">0:2</span><span class="score">1:2</span></div><div class="box"><h4>比分预测——冷门×1</h4><span class="score upset">2:2</span></div><div class="box mystic"><h4>玄学占卜</h4><p>以“伊拉克挪威”笔画起卦，客方水木之象动而有锋，主方土气守成。紫微流时近清晨，利远客、利速度星；奇门看东北艮土受冲，主队防线有被穿透之象。玄学结论：挪威旺，宜大于2球，冷门在平局高比分。</p></div><div class="box"><h4>单场简评</h4><p>挪威赢面清楚，但赔率没有压低总进球，说明市场认可伊拉克至少制造一点反击或定位球扰动。主看0:2/1:2，防2:2。</p></div></div></div></section>
-<section id="m3" class="card"><h3>比赛3｜周二019 阿根廷 vs 阿尔及利亚</h3><div class="meta">06-17 09:00｜J组｜堪萨斯城球场｜总投入：100元分析参考，仅供娱乐</div><div class="panel"><div>
-<details open><summary>1. 基本面模型</summary><ul><li>阿根廷作为卫冕冠军，团队默契、控场能力、关键球处理和大赛心理显著占优。</li><li>阿尔及利亚具备技术型中前场与边路速度，若能顶住前30分钟，有能力制造反击威胁。</li><li>身价与阵容深度阿根廷领先，但首轮可能控制消耗，避免过度开放。</li></ul></details>
-<details><summary>2. 战术与教练模型</summary><p>阿根廷通常以控球、压迫和肋部小配合推进；阿尔及利亚倾向中低位后快速找边。若阿根廷先手，比赛容易进入2-0；若阿尔及利亚偷到定位球，2-1概率提升。</p></details>
-<details><summary>3. 外部因素模型</summary><p>堪萨斯城6月可能偏热，控球方消耗管理重要。阿根廷更衣室成熟度高，舆论关注集中在核心老将状态；阿尔及利亚挑战者心态有利于释放压力。</p></details>
-<details><summary>4. 小组形势模型</summary><p>J组还有奥地利、约旦。阿根廷首战三分优先，净胜球其次；阿尔及利亚若输小球仍可接受，后两场才是出线关键。</p></details>
-<details><summary>5. 赔率解读模型</summary><p>总进球赔率：0=11.00，1=4.50，2=3.40，3=3.60，4=5.50，5=10.00，6=19.00，7+=29.00。归一后2球约23.5%，3球约22.2%，分布非常接近，说明2-0与2-1都要防。</p></details>
-</div><div class="pred"><div class="box"><h4>模型池</h4><p>卫冕冠军心理、控球压制、Poisson均值、比分热区、阵容轮换、炎热消耗、非洲队转换威胁、玄学旺衰。</p></div><div class="box"><h4>总进球预测</h4><div class="big">2球</div><small>置信：中高。2球略压3球，胜平负与比分盘均支持阿根廷小胜到中胜。</small></div><div class="box"><h4>比分预测——稳胆×2</h4><span class="score">2:0</span><span class="score">2:1</span></div><div class="box"><h4>比分预测——冷门×1</h4><span class="score upset">1:1</span></div><div class="box mystic"><h4>玄学占卜</h4><p>“阿根廷”三字土金成局，名望星重；“阿尔及利亚”字势绵长，主拖延缠斗。开球上午，太阳火旺，利冠军气与中前场创造。奇门取南方离火，主队得明堂。玄学结论：阿根廷旺，宜2-3球，冷门征兆是上半场0-0。</p></div><div class="box"><h4>单场简评</h4><p>阿根廷综合面最稳，但赔率没有给出疯狂大胜信号。看2球主线，3球作为自然延展。</p></div></div></div></section>
-<section id="m4" class="card"><h3>比赛4｜周二020 奥地利 vs 约旦</h3><div class="meta">06-17 12:00｜J组｜旧金山湾区球场｜总投入：100元分析参考，仅供娱乐</div><div class="panel"><div>
-<details open><summary>1. 基本面模型</summary><ul><li>奥地利整体压迫、跑动强度和欧洲联赛经验明显占优，阵容均衡性强。</li><li>约旦核心反击点具备个人爆点，但整体防线面对高压和二点球会持续承压。</li><li>身价与排名差距较大，奥地利若早进球，比赛容易向3球或4球延展。</li></ul></details>
-<details><summary>2. 战术与教练模型</summary><p>朗尼克体系强调前场压迫和快速夺回球权，约旦更可能低位密集防守后打反击。阵型克制上，奥地利的二次进攻与定位球对约旦防线压力很大。</p></details>
-<details><summary>3. 外部因素模型</summary><p>湾区夜间气温相对温和，利于高强度跑动。奥地利适合这种节奏，约旦则需要把比赛切碎，避免被连续压迫打穿。</p></details>
-<details><summary>4. 小组形势模型</summary><p>同组有阿根廷、阿尔及利亚，奥地利必须把约旦视作抢分核心战；约旦拿分即重大利好，落后后会被迫增加反击人数。</p></details>
-<details><summary>5. 赔率解读模型</summary><p>总进球赔率：0=14.00，1=5.50，2=3.70，3=3.50，4=4.85，5=8.00，6=15.00，7+=21.00。归一后3球约22.8%，2球约21.5%，4球约16.4%，盘口对奥地利2-0/3-0/3-1友好。</p></details>
-</div><div class="pred"><div class="box"><h4>模型池</h4><p>高压体系、体能折损、实力差、进球赔率、比分盘、定位球、组内净胜球、旅行适应、奇门方位。</p></div><div class="box"><h4>总进球预测</h4><div class="big">3球</div><small>置信：中高。3球最低赔，2球紧随，4球为扩大比分支线。</small></div><div class="box"><h4>比分预测——稳胆×2</h4><span class="score">2:0</span><span class="score">3:0</span></div><div class="box"><h4>比分预测——冷门×1</h4><span class="score upset">1:1</span></div><div class="box mystic"><h4>玄学占卜</h4><p>以“奥地利约旦”取数，主方金土有根，客方火土守而不攻。紫微流时入午前后，利压迫、利强势开局；奇门西方兑金生主队攻势。玄学结论：奥地利旺，宜3球，爆冷征兆在约旦先入一球。</p></div><div class="box"><h4>单场简评</h4><p>奥地利战术强度和小组动机都很清晰，约旦若无法扛住前场压迫，比分会从2-0推向3-0。主看3球。</p></div></div></div></section>
-<section id="combo" class="section"><h2>组合推荐</h2>
-<div class="combo"><h3>三串一 总进球数</h3><table><thead><tr><th>场次</th><th>推荐总进球</th><th>单项赔率</th><th>模型理由</th></tr></thead><tbody><tr><td>法国 vs 塞内加尔</td><td>2球</td><td>3.25</td><td>赔率峰值、强队控局、玄学小中球同向</td></tr><tr><td>阿根廷 vs 阿尔及利亚</td><td>2球</td><td>3.40</td><td>2球略优于3球，卫冕冠军首轮控风险</td></tr><tr><td>奥地利 vs 约旦</td><td>3球</td><td>3.50</td><td>高压体系与让胜比分盘吻合</td></tr></tbody></table><p><strong>组合赔率估算：</strong>3.25 × 3.40 × 3.50 ≈ <span class="big">38.68</span></p></div>
-<div class="combo"><h3>三串一 比分</h3><table><thead><tr><th>场次</th><th>推荐稳胆比分</th><th>单项赔率</th><th>模型理由</th></tr></thead><tbody><tr><td>法国 vs 塞内加尔</td><td>2:0</td><td>5.90</td><td>法国胜面强，塞内加尔破门难度偏高</td></tr><tr><td>阿根廷 vs 阿尔及利亚</td><td>2:0</td><td>4.75</td><td>阿根廷控场胜，2球总进球最稳</td></tr><tr><td>奥地利 vs 约旦</td><td>2:0</td><td>5.70</td><td>奥地利压迫优势，约旦低位承压</td></tr></tbody></table><p><strong>组合赔率估算：</strong>5.90 × 4.75 × 5.70 ≈ <span class="big">159.79</span></p></div>
-<div class="combo"><h3>风险提示与备选</h3><p>若临场首发显示法国或阿根廷大幅轮换，则对应总进球从2球下调防1球；若挪威锋线核心首发且伊拉克排出开放阵型，伊拉克 vs 挪威可替代进入总进球三串一，方向为3球，备选4球。组合仅为娱乐参考，不保证命中。</p></div>
+<section id="m1" class="card">
+  <h3>Tue017 France vs Senegal</h3>
+  <div class="meta">2026-06-17 03:00:00 | World Cup | New York New Jersey Stadium</div>
+  <div class="panel">
+    <div class="pred">
+      <div class="box">
+        <h4>Total Goals</h4>
+        <div class="big">2</div>
+        <small>Confidence: medium</small>
+      </div>
+      <div class="box">
+        <h4>Main Scores</h4>
+        <span class="score">2:0</span>
+        <span class="score">2:1</span>
+      </div>
+      <div class="box">
+        <h4>Upset Cover</h4>
+        <span class="score upset">1:1</span>
+      </div>
+    </div>
+    <div class="pred">
+      <div class="box">
+        <h4>HAD Odds</h4>
+        <p>H 1.42 / D 4.20 / A 7.60</p>
+      </div>
+      <div class="box">
+        <h4>TTG Odds</h4>
+        <p>0:10.50 1:4.40 2:3.25 3:3.60 4:5.80 5:11.00 6:20.00 7+:30.00</p>
+      </div>
+      <div class="box">
+        <h4>Review Note</h4>
+        <p>Manual World Cup prediction restored from the original board.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="m2" class="card">
+  <h3>Tue018 Iraq vs Norway</h3>
+  <div class="meta">2026-06-17 06:00:00 | World Cup | Boston Stadium</div>
+  <div class="panel">
+    <div class="pred">
+      <div class="box">
+        <h4>Total Goals</h4>
+        <div class="big">3</div>
+        <small>Confidence: medium</small>
+      </div>
+      <div class="box">
+        <h4>Main Scores</h4>
+        <span class="score">0:2</span>
+        <span class="score">1:2</span>
+      </div>
+      <div class="box">
+        <h4>Upset Cover</h4>
+        <span class="score upset">2:2</span>
+      </div>
+    </div>
+    <div class="pred">
+      <div class="box">
+        <h4>HAD Odds</h4>
+        <p>H 8.50 / D 4.90 / A 1.32</p>
+      </div>
+      <div class="box">
+        <h4>TTG Odds</h4>
+        <p>0:19.00 1:6.25 2:4.00 3:3.45 4:4.70 5:7.00 6:12.00 7+:16.00</p>
+      </div>
+      <div class="box">
+        <h4>Review Note</h4>
+        <p>Manual World Cup prediction restored from the original board.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="m3" class="card">
+  <h3>Tue019 Argentina vs Algeria</h3>
+  <div class="meta">2026-06-17 09:00:00 | World Cup | Kansas City Stadium</div>
+  <div class="panel">
+    <div class="pred">
+      <div class="box">
+        <h4>Total Goals</h4>
+        <div class="big">2</div>
+        <small>Confidence: medium</small>
+      </div>
+      <div class="box">
+        <h4>Main Scores</h4>
+        <span class="score">2:0</span>
+        <span class="score">2:1</span>
+      </div>
+      <div class="box">
+        <h4>Upset Cover</h4>
+        <span class="score upset">1:1</span>
+      </div>
+    </div>
+    <div class="pred">
+      <div class="box">
+        <h4>HAD Odds</h4>
+        <p>H 1.24 / D 4.65 / A 9.25</p>
+      </div>
+      <div class="box">
+        <h4>TTG Odds</h4>
+        <p>0:11.00 1:4.50 2:3.40 3:3.60 4:5.50 5:10.00 6:19.00 7+:29.00</p>
+      </div>
+      <div class="box">
+        <h4>Review Note</h4>
+        <p>Manual World Cup prediction restored from the original board.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="m4" class="card">
+  <h3>Tue020 Austria vs Jordan</h3>
+  <div class="meta">2026-06-17 12:00:00 | World Cup | San Francisco Bay Area Stadium</div>
+  <div class="panel">
+    <div class="pred">
+      <div class="box">
+        <h4>Total Goals</h4>
+        <div class="big">3</div>
+        <small>Confidence: medium</small>
+      </div>
+      <div class="box">
+        <h4>Main Scores</h4>
+        <span class="score">2:0</span>
+        <span class="score">3:0</span>
+      </div>
+      <div class="box">
+        <h4>Upset Cover</h4>
+        <span class="score upset">1:1</span>
+      </div>
+    </div>
+    <div class="pred">
+      <div class="box">
+        <h4>HAD Odds</h4>
+        <p>H 1.26 / D 4.65 / A 8.25</p>
+      </div>
+      <div class="box">
+        <h4>TTG Odds</h4>
+        <p>0:14.00 1:5.50 2:3.70 3:3.50 4:4.85 5:8.00 6:15.00 7+:21.00</p>
+      </div>
+      <div class="box">
+        <h4>Review Note</h4>
+        <p>Manual World Cup prediction restored from the original board.</p>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-<footer>⚠️ 仅供娱乐分析参考，不构成任何购彩建议，请理性购彩！<br><small>赛程/分组公开资料参考：FIFA赛程与赛事分组公开页面、2026世界杯I/J组资料；赔率以用户提供截图为准，天气与伤停需以临场官方更新校准。</small></footer>
+<footer>Auto-generated from Sporttery live data. For entertainment analysis only.</footer>
 </body>
 </html>
