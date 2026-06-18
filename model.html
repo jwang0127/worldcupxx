@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界杯预测五层模型看板</title>
+<style>
+:root{--bg:#07110f;--ink:#102522;--line:#2d6d5e;--text:#eafff8;--muted:#9dbab1;--mint:#92ffd2;--green:#35de8a;--blue:#8bd5ff;--violet:#c2b5ff;--sand:#ffd99b;--rose:#ffb7a8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;background:radial-gradient(circle at 14% 8%,rgba(53,222,138,.18),transparent 24%),radial-gradient(circle at 86% 16%,rgba(139,213,255,.14),transparent 24%),linear-gradient(145deg,#020706,#07110f 45%,#0a2030);color:var(--text)}
+a{color:inherit;text-decoration:none}.wrap{max-width:1180px;margin:auto;padding:34px 18px 54px}.top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:24px}.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--mint);background:rgba(9,32,29,.8);font-size:13px}h1{font-size:clamp(30px,5vw,54px);line-height:1.05;margin:12px 0 10px}.lead{max-width:820px;color:var(--muted);line-height:1.8}.nav{display:flex;gap:10px;flex-wrap:wrap}.nav a{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#0b201d;color:var(--mint)}
+.flow{display:grid;gap:24px;margin-top:28px}.layer{position:relative;border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(8,24,27,.98));box-shadow:0 22px 50px rgba(0,0,0,.28);overflow:hidden}.layer:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.035),transparent);transform:translateX(-100%);animation:sheen 7s infinite}.layer h2{position:relative;margin:0 0 14px;font-size:22px;color:var(--blue)}.layer p{position:relative;color:var(--muted);line-height:1.7;margin:0 0 14px}.items{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.item{min-height:98px;border:1px solid rgba(141,255,210,.38);border-radius:14px;background:rgba(3,16,15,.62);padding:14px;transition:.22s}.item:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 12px 24px rgba(0,0,0,.26)}.item strong{display:block;color:var(--mint);font-size:17px;margin-bottom:7px}.item span{color:#d6eee8;font-size:13px;line-height:1.55}.l1{background:linear-gradient(180deg,rgba(18,59,50,.95),rgba(9,32,29,.96))}.l2{background:linear-gradient(180deg,rgba(43,40,75,.94),rgba(20,24,48,.96))}.l3{background:linear-gradient(180deg,rgba(67,39,31,.94),rgba(33,22,20,.96))}.l4{background:linear-gradient(180deg,rgba(70,54,25,.94),rgba(33,27,15,.96))}.l5{background:linear-gradient(180deg,rgba(25,54,74,.94),rgba(10,27,42,.96))}
+.arrow{text-align:center;color:var(--muted);font-size:28px;line-height:1}.panel{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}.card{border:1px solid var(--line);border-radius:16px;background:rgba(9,28,30,.9);padding:18px}.card h3{margin:0 0 10px;color:var(--sand)}.card ul{margin:0;padding-left:20px;color:#d8eee8;line-height:1.8}.badge{display:inline-block;margin:4px 6px 4px 0;padding:6px 9px;border:1px solid #315f57;border-radius:999px;color:var(--mint);font-size:12px;background:#09211e}footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding-top:22px;margin-top:34px;font-size:13px}@keyframes sheen{0%,70%{transform:translateX(-100%)}100%{transform:translateX(100%)}}@media(max-width:980px){.items{grid-template-columns:repeat(2,1fr)}.panel{grid-template-columns:1fr}.top{display:block}.nav{margin-top:16px}}@media(max-width:560px){.items{grid-template-columns:1fr}.wrap{padding:24px 14px 42px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="top">
+    <div>
+      <span class="pill">2026 World Cup Forecast Stack</span>
+      <h1>世界杯预测五层模型看板</h1>
+      <p class="lead">按你给的图片结构重建：从实时数据输入，到特征工程、集成模型、蒙特卡洛路径模拟，最后输出冠军概率、单场胜平负、总进球、比分和模型评估指标。玄学预测已经拆到独立页面，避免和数据模型互相污染。</p>
+    </div>
+    <nav class="nav">
+      <a href="./index.html">首页</a>
+      <a href="./data-sources.html">数据源评估</a>
+      <a href="./mystic.html">玄学预测页</a>
+      <a href="./20260619/">今日看板</a>
+    </nav>
+  </div>
+
+  <section class="flow">
+    <div class="layer l1">
+      <h2>第一层：数据输入</h2>
+      <p>所有实时接口先落入统一 Match Snapshot，保留来源、更新时间、可信度和冲突标记。</p>
+      <div class="items">
+        <div class="item"><strong>FIFA 排名</strong><span>动态权重、洲际强度、近年大赛修正。</span></div>
+        <div class="item"><strong>比赛统计</strong><span>xG、xGA、射门质量、控球推进、定位球。</span></div>
+        <div class="item"><strong>球员状态</strong><span>伤停、疲劳、首发概率、旅途与轮换。</span></div>
+        <div class="item"><strong>赛事情境</strong><span>东道主、天气、海拔、湿度、小组动机。</span></div>
+        <div class="item"><strong>赔率市场</strong><span>胜平负、总进球、比分、盘口异动。</span></div>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="layer l2">
+      <h2>第二层：特征工程</h2>
+      <p>把离散赛程、实时比分、赔率和球队资料转换成模型可比较的强弱信号。</p>
+      <div class="items">
+        <div class="item"><strong>Elo 评分系统</strong><span>胜负实时更新 K 因子，大赛权重更高。</span></div>
+        <div class="item"><strong>泊松进球模型</strong><span>进攻强度 × 防守强度，输出 0-7+ 分布。</span></div>
+        <div class="item"><strong>对阵历史编码</strong><span>H2H 胜率、近 5 场趋势、风格克制。</span></div>
+        <div class="item"><strong>赔率隐含概率</strong><span>去水后概率、冷热偏差、诱盘风险。</span></div>
+        <div class="item"><strong>临场状态向量</strong><span>红黄牌、伤退、比分压力、剩余时间。</span></div>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="layer l3">
+      <h2>第三层：集成模型</h2>
+      <p>用多模型互相校验，强项不同：贝叶斯负责不确定性，树模型负责非线性，序列模型负责走势。</p>
+      <div class="items">
+        <div class="item"><strong>贝叶斯层级模型</strong><span>先验 + 实时数据，不确定性可量化。</span></div>
+        <div class="item"><strong>XGBoost / RF</strong><span>识别赔率、体能、战术之间的非线性关系。</span></div>
+        <div class="item"><strong>神经网络</strong><span>LSTM/Transformer 捕捉长期状态曲线。</span></div>
+        <div class="item"><strong>市场校准器</strong><span>把模型概率和赔率概率做融合校准。</span></div>
+        <div class="item"><strong>异常检测器</strong><span>识别赔率跳动、阵容突变、爆冷前兆。</span></div>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="layer l4">
+      <h2>第四层：蒙特卡洛赛程模拟</h2>
+      <p>对单场、当天四场、小组出线和淘汰赛路径做大量采样，输出置信区间而不是单点结论。</p>
+      <div class="items">
+        <div class="item"><strong>10 万次模拟</strong><span>完整赛程展开，记录比分和积分路径。</span></div>
+        <div class="item"><strong>点球专项模块</strong><span>淘汰赛加入门将扑救率与主罚顺序。</span></div>
+        <div class="item"><strong>动态位置更新</strong><span>实时比分改变小组排名和后续动机。</span></div>
+        <div class="item"><strong>置信区间</strong><span>80% / 95% 区间，避免过度确定。</span></div>
+        <div class="item"><strong>组合风险</strong><span>三串一相关性、同向风险和回撤提示。</span></div>
+      </div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="layer l5">
+      <h2>第五层：预测输出</h2>
+      <p>输出给每日 HTML 看板：先给可买汇总，再给每场解释、稳胆、冷门、组合和复盘指标。</p>
+      <div class="items">
+        <div class="item"><strong>冠军概率分布</strong><span>32/48 队路径排名与阶段晋级率。</span></div>
+        <div class="item"><strong>单场胜平负概率</strong><span>胜平负、让球、总进球和比分概率。</span></div>
+        <div class="item"><strong>模型评估指标</strong><span>Brier 分数、LogLoss、命中率、回撤。</span></div>
+        <div class="item"><strong>复盘反馈</strong><span>赛后自动结算，更新 Elo 与误差归因。</span></div>
+        <div class="item"><strong>网页发布</strong><span>每日 13:00 生成、提交、推送 GitHub Pages。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="card">
+      <h3>落地到当前项目</h3>
+      <ul>
+        <li>每日赔率截图或 API 数据进入 `data/YYYYMMDD.json`。</li>
+        <li>生成器读取胜平负、总进球、比分与结果字段。</li>
+        <li>页面展示“今天该买什么”、四场卡片、组合推荐和复盘。</li>
+        <li>赛果接口确认后，`result` 字段自动回填，复盘页自动结算。</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>推荐实时数据闭环</h3>
+      <span class="badge">主源：API-Football</span>
+      <span class="badge">备源：football-data.org</span>
+      <span class="badge">兜底：SerpApi</span>
+      <span class="badge">赛程镜像：worldcup26.ir</span>
+      <span class="badge">资料补充：TheSportsDB</span>
+      <ul>
+        <li>同场比赛至少两源一致才自动结算。</li>
+        <li>只要比分源冲突，就进入“人工确认”队列。</li>
+        <li>赔率和赛果分开存，避免赛果抓取失败影响预测生成。</li>
+      </ul>
+    </div>
+  </section>
+  <footer>仅供娱乐分析参考，不构成任何购彩建议，请理性购彩。</footer>
+</main>
+</body>
+</html>

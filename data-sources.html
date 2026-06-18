@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界杯实时数据 API 评估</title>
+<style>
+:root{--bg:#06110f;--card:#102528;--line:#245b50;--text:#eafff8;--muted:#9ab8af;--green:#36e28b;--blue:#7dd3fc;--orange:#ffb35c;--red:#ff6b6b}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;background:radial-gradient(circle at 18% 10%,rgba(54,226,139,.16),transparent 25%),linear-gradient(135deg,#020807,#06110f 48%,#071b2a);color:var(--text)}
+a{color:var(--blue)}main{max-width:1120px;margin:auto;padding:38px 18px 52px}.nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}.nav a{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#0b201d;color:#9fffd6;text-decoration:none}h1{font-size:clamp(30px,5vw,50px);margin:0 0 12px}.lead{color:var(--muted);line-height:1.8;max-width:850px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:24px}.card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(8,24,27,.96));padding:18px;box-shadow:0 18px 42px rgba(0,0,0,.25)}.card h2{margin:0 0 10px;color:var(--blue)}.tag{display:inline-block;margin:4px 6px 8px 0;padding:6px 9px;border-radius:999px;border:1px solid #2e6b5e;color:#9fffd6;background:#09211e;font-size:12px}.ok{color:var(--green)}.warn{color:var(--orange)}.bad{color:var(--red)}p,li{color:#d9eee8;line-height:1.75}.table{overflow:auto;margin-top:24px;border:1px solid var(--line);border-radius:16px}table{width:100%;border-collapse:collapse;min-width:880px;background:rgba(8,24,27,.92)}th,td{padding:13px;border-bottom:1px solid #1b463f;text-align:left;vertical-align:top}th{color:#9fffd6;background:#09211e}.flow{margin-top:24px;border:1px solid var(--line);border-radius:16px;padding:18px;background:rgba(9,28,30,.92)}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.step{border:1px solid #2e6b5e;border-radius:12px;padding:12px;background:#071817}.step strong{display:block;color:var(--green);margin-bottom:6px}footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding-top:22px;margin-top:34px;font-size:13px}@media(max-width:860px){.grid,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <nav class="nav">
+    <a href="./index.html">首页</a>
+    <a href="./model.html">五层模型</a>
+    <a href="./mystic.html">玄学预测</a>
+    <a href="./20260619/">今日看板</a>
+  </nav>
+  <h1>世界杯实时数据 API 评估</h1>
+  <p class="lead">目标是解决两个问题：能不能实时更新赛果，以及能不能持续拿到下一场世界杯比赛进程。结论是可以，但建议“主源 + 备源 + 兜底源”三层校验，不要只依赖单一接口。</p>
+
+  <section class="grid">
+    <article class="card">
+      <h2>推荐方案</h2>
+      <span class="tag ok">主源：API-Football</span>
+      <span class="tag ok">备源：football-data.org</span>
+      <span class="tag warn">兜底：SerpApi</span>
+      <p>实时赛程、开赛状态、比分、完场结果优先由 API-Football 处理；football-data.org 做赛程和结果核验；SerpApi 抓 Google 体育卡片做异常兜底。</p>
+    </article>
+    <article class="card">
+      <h2>自动结算规则</h2>
+      <span class="tag">两源一致自动结算</span>
+      <span class="tag">冲突进入人工确认</span>
+      <span class="tag">赔率与赛果分仓</span>
+      <p>当主源和备源的全场比分、比赛状态都一致时写入 `result`；如果比分或状态冲突，页面保留“待回填”，避免误结算污染模型复盘。</p>
+    </article>
+  </section>
+
+  <section class="table">
+    <table>
+      <thead>
+        <tr>
+          <th>数据源</th>
+          <th>能否更新赛果</th>
+          <th>能否跟踪下一场进程</th>
+          <th>适合用途</th>
+          <th>风险与备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://www.api-football.com/" target="_blank" rel="noreferrer">API-Football</a></td>
+          <td class="ok">可以</td>
+          <td class="ok">可以</td>
+          <td>Fixtures、Live status、elapsed、events、lineups、statistics，最适合作为实时主源。</td>
+          <td>需要 API Key；世界杯覆盖要按 plan 和 competition/league id 实测确认。</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.football-data.org/" target="_blank" rel="noreferrer">football-data.org</a></td>
+          <td class="ok">可以</td>
+          <td class="warn">偏结果与赛程</td>
+          <td>赛程、比分、积分榜、结果复核，适合作为结算备源。</td>
+          <td>实时粒度通常不如 API-Football，免费层有限额。</td>
+        </tr>
+        <tr>
+          <td><a href="https://serpapi.com/search?engine=google" target="_blank" rel="noreferrer">SerpApi Google</a></td>
+          <td class="warn">可以兜底</td>
+          <td class="warn">取决于 Google 卡片</td>
+          <td>当官方 API 失败时，抓 Google 搜索体育卡片里的比分/状态。</td>
+          <td>结构不是专用体育 API，字段稳定性弱，不建议做唯一结算源。</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.thesportsdb.com/" target="_blank" rel="noreferrer">TheSportsDB</a></td>
+          <td class="warn">可做补充</td>
+          <td class="warn">LiveScore 通常需高级权限</td>
+          <td>球队、球场、赛事资料、赛程镜像、历史信息。</td>
+          <td>免费版更像资料库；实时性和覆盖需按接口权限验证。</td>
+        </tr>
+        <tr>
+          <td><a href="https://worldcup26.ir/get/games" target="_blank" rel="noreferrer">worldcup26.ir/get/games</a></td>
+          <td class="warn">可能可以</td>
+          <td class="warn">可能可以</td>
+          <td>2026 世界杯赛程镜像、比赛列表、比分字段补充。</td>
+          <td>非官方数据源，必须二次校验；不建议作为自动结算唯一来源。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="flow">
+    <h2>建议接入闭环</h2>
+    <div class="steps">
+      <div class="step"><strong>1. 拉赛程</strong><span>每日 13:00 读取下一比赛日列表。</span></div>
+      <div class="step"><strong>2. 拉赔率</strong><span>Sporttery 或截图 OCR 写入总进球赔率。</span></div>
+      <div class="step"><strong>3. 生成预测</strong><span>输出每日四场 HTML 看板。</span></div>
+      <div class="step"><strong>4. 拉赛果</strong><span>完场后主源/备源交叉校验。</span></div>
+      <div class="step"><strong>5. 复盘更新</strong><span>结算命中率、更新模型权重并推送网页。</span></div>
+    </div>
+  </section>
+  <footer>仅供技术选型与娱乐分析参考，不构成购彩建议。</footer>
+</main>
+</body>
+</html>
