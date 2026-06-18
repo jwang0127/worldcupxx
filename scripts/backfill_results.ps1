@@ -17,6 +17,55 @@ function Get-ApiHeaders {
   }
 }
 
+function Get-ConfiguredResultSources {
+  $sources = New-Object System.Collections.Generic.List[object]
+  $sources.Add([pscustomobject]@{
+    name = "api-football"
+    url = "https://www.api-football.com/"
+    role = "primary-live-score"
+    enabled = [bool]$env:API_FOOTBALL_KEY
+    note = "Fixtures/status/events/statistics; requires API_FOOTBALL_KEY."
+  })
+  $sources.Add([pscustomobject]@{
+    name = "football-data"
+    url = "https://www.football-data.org/"
+    role = "settlement-backup"
+    enabled = [bool]$env:FOOTBALL_DATA_TOKEN
+    note = "Matches/scores/standings; requires FOOTBALL_DATA_TOKEN."
+  })
+  $sources.Add([pscustomobject]@{
+    name = "serpapi-google"
+    url = "https://serpapi.com/search?engine=google"
+    role = "google-sports-card-fallback"
+    enabled = [bool]$env:SERPAPI_KEY
+    note = "Google sports result card fallback; requires SERPAPI_KEY."
+  })
+  $sources.Add([pscustomobject]@{
+    name = "thesportsdb"
+    url = "https://www.thesportsdb.com/"
+    role = "metadata-and-livescore-fallback"
+    enabled = [bool]$env:THESPORTSDB_KEY
+    note = "Team/event metadata and premium livescore; requires THESPORTSDB_KEY for keyed access."
+  })
+  $sources.Add([pscustomobject]@{
+    name = "worldcup26-ir"
+    url = "https://worldcup26.ir/get/games"
+    role = "world-cup-schedule-score-mirror"
+    enabled = $true
+    note = "World Cup 2026 schedule/score mirror; use only with a second source for settlement."
+  })
+  return $sources
+}
+
+function Write-ResultSourcePlan {
+  $sources = Get-ConfiguredResultSources
+  Write-Host "Configured result source plan:"
+  foreach ($source in $sources) {
+    $state = if ($source.enabled) { "enabled" } else { "waiting-for-key" }
+    Write-Host " - $($source.name) [$state]: $($source.role) - $($source.url)"
+  }
+}
+
 function Get-ScoreboardMapFromEspn {
   param([string]$CompactDate)
 
@@ -73,9 +122,11 @@ if (-not (Test-Path $DataFile)) {
   throw "Missing data file: $DataFile"
 }
 
-$payload = Get-Content -Raw $DataFile | ConvertFrom-Json
+$payload = Get-Content -Raw -Encoding UTF8 $DataFile | ConvertFrom-Json
 $updated = $false
 $backfillSummary = New-Object System.Collections.Generic.List[string]
+
+Write-ResultSourcePlan
 
 # First trust any official result fields already present in the stored match objects.
 foreach ($match in @($payload.matches)) {

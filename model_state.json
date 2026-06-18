@@ -1,15 +1,20 @@
 ﻿{
     "version":  1,
-    "updatedAt":  "2026-06-17T16:18:01",
+    "updatedAt":  "2026-06-18T14:56:01",
     "weights":  {
-                    "odds":  0.35,
+                    "odds":  0.30,
                     "elo":  0.2,
-                    "form":  0.15,
-                    "tactics":  0.12,
+                    "form":  0.14,
+                    "tactics":  0.14,
                     "motivation":  0.08,
-                    "external":  0.05,
-                    "mystic":  0.05
+                    "external":  0.06,
+                    "mystic":  0.08
                 },
+    "calibration":  {
+                        "latestReview":  "20260618",
+                        "lesson":  "胜平负方向 3/4，但总进球 0/4。降低总进球最低赔率的机械权重，提高强队盘尾部、弱队偷球、下半场波动和玄学冷门提示权重。",
+                        "todayAdjustment":  "20260619 强热门场次的 3-4 球概率上调；均势场降低置信度并保留 1-1/0-1 冷门防线。"
+                    },
     "history":  [
                     {
                         "date":  "20260617",
@@ -19,9 +24,9 @@
                     },
                     {
                         "date":  "20260618",
-                        "settled":  0,
+                        "settled":  4,
                         "totalGoalHits":  0,
-                        "totalGoalHitRate":  "\u0026#24453;\u0026#23450;"
+                        "totalGoalHitRate":  "0%"
                     }
                 ]
 }

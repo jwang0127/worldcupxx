@@ -55,8 +55,8 @@ catch {
   Write-Host "Result backfill unavailable: $($_.Exception.Message)"
 }
 
-$payload = Get-Content -Raw $dataFile | ConvertFrom-Json
-$model = Get-Content -Raw $modelFile | ConvertFrom-Json
+$payload = Get-Content -Raw -Encoding UTF8 $dataFile | ConvertFrom-Json
+$model = Get-Content -Raw -Encoding UTF8 $modelFile | ConvertFrom-Json
 
 function Get-ResultLeanFromOdds {
   param($Had)
