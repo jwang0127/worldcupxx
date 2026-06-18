@@ -40,6 +40,7 @@ function C([string]$Key) {
     review = "&#22797;&#30424;"
     home = "&#39318;&#39029;"
     buy = "&#20170;&#22825;&#35813;&#20080;&#20160;&#20040;"
+    final = "&#20170;&#26085;&#39044;&#27979;&#32467;&#26524;"
     summary = "&#27599;&#26085;&#24635;&#32467;&#39029;"
     stable = "&#9733;&#31283;&#32966;"
     cold = "&#128302;&#20919;&#38376;"
@@ -143,16 +144,41 @@ function OddsText($Match, $Lean) {
 }
 
 function Mystic($Match, $Lean) {
-  return "&#20197;&#20027;&#23458;&#38431;&#21517;&#23383;&#36215;&#35937;&#65292;" + (HE $Lean.team) + " &#19968;&#26041;&#27668;&#26356;&#36275;&#65307;&#32043;&#24494;&#27969;&#26102;&#19982;&#22855;&#38376;&#26041;&#20301;&#32467;&#21512;&#21518;&#65292;&#29609;&#27861;&#19978;&#26356;&#23452;&#30475; " + (GoalLabel $Match.prediction.totalGoals) + "&#65292;&#20919;&#38376;&#24449;&#20806;&#23545;&#24212; " + (HE $Match.prediction.upset) + "&#12290;"
+  $team = HE $Lean.team
+  $goal = GoalLabel $Match.prediction.totalGoals
+  $upset = HE $Match.prediction.upset
+  $score = HE ($Match.prediction.scores -join " / ")
+  return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>&#20197;&#20027;&#23458;&#38431;&#21517;&#23383;&#31508;&#30011;&#36215;&#21350;&#65292;" + $team + " &#24471;&#20307;&#29992;&#29983;&#25206;&#65292;&#20027;&#32447;&#27604;&#20998;&#25351;&#21521; " + $score + "&#65307;&#21160;&#29275;&#33853;&#38663;&#24061;&#20043;&#35937;&#65292;&#20445;&#30041; " + $upset + " &#20919;&#38376;&#33050;&#26412;&#12290;<br><strong>&#32043;&#24494;&#26007;&#25968;&#27969;&#26102;&#65306;</strong>&#24320;&#29699;&#26102;&#27573;&#20197;&#21513;&#26143;&#20027;&#20020;&#22330;&#35843;&#25972;&#65292;" + $team + " &#26356;&#23481;&#26131;&#25226;&#33410;&#22863;&#25569;&#22312;&#25163;&#37324;&#65307;&#33509;&#29022;&#26143;&#36215;&#21160;&#65292;&#38450;&#19979;&#21322;&#22330;&#28857;&#29699;&#25110;&#21028;&#32602;&#27874;&#21160;&#12290;<br><strong>&#22855;&#38376;&#36929;&#30002;&#65306;</strong>&#20540;&#31526;&#26041;&#20301;&#20559;&#29983;&#24378;&#21183;&#26041;&#65292;&#24320;&#38376;&#33853;&#25915;&#20987;&#20391;&#65292;&#23452;&#30475; " + $goal + "&#65307;&#24778;&#38376;&#33853;&#38450;&#32447;&#65292;&#23545;&#24212;&#19968;&#27425;&#20302;&#32423;&#22833;&#35823;&#25110;&#24555;&#36895;&#21453;&#20987;&#12290;<br><strong>&#24178;&#25903;&#20116;&#34892;/&#20061;&#23467;&#39134;&#26143;&#65306;</strong>&#20170;&#26085;&#28779;&#22303;&#27668;&#36739;&#26106;&#65292;&#21033;&#20808;&#25163;&#21387;&#21046;&#19982;&#20013;&#21069;&#22330;&#23545;&#25239;&#65307;&#39134;&#26143;&#20559;&#21521;2-3&#29699;&#21306;&#38388;&#65292;&#19981;&#23452;&#30450;&#30446;&#36861;&#22823;&#12290;<br><strong>&#35832;&#33883;&#31070;&#25968;/&#22612;&#32599;/&#27665;&#20439;&#36275;&#24425;&#65306;</strong>&#31614;&#24847;&#20013;&#24179;&#20559;&#19978;&#65292;&#24471;&#21183;&#26041;&#39034;&#65292;&#20294;&#8220;&#21629;&#36816;&#20043;&#36718;&#8221;&#24847;&#35937;&#24378;&#65292;&#26368;&#38656;&#38450;&#20020;&#38376;&#19968;&#33050;&#25913;&#21464;&#32467;&#26524;&#12290;"
+}
+
+function ModelFlow() {
+  return @"
+<section id="model" class="section"><h2>&#26681;&#25454;&#20170;&#26085;&#27604;&#36187;&#25645;&#24314;&#30340;&#20116;&#23618;&#39044;&#27979;&#27169;&#22411;</h2><div class="modelFlow">
+<div class="layer l1"><h3>&#31532;&#19968;&#23618;&#65306;&#25968;&#25454;&#36755;&#20837;</h3><div class="nodes"><span>FIFA&#25490;&#21517;/&#21160;&#24577;&#26435;&#37325;</span><span>&#27604;&#36187;&#32479;&#35745; xG/xGA</span><span>&#29699;&#21592;&#29366;&#24577;/&#20260;&#20572;</span><span>&#36187;&#20107;&#24773;&#22659;/&#22825;&#27668;</span><span>&#36180;&#29575;/&#24066;&#22330;&#20449;&#21495;</span></div></div>
+<div class="arrow">&#8595;</div>
+<div class="layer l2"><h3>&#31532;&#20108;&#23618;&#65306;&#29305;&#24449;&#24037;&#31243;</h3><div class="nodes"><span>Elo&#35780;&#20998;&#31995;&#32479;</span><span>&#27850;&#26494;&#36827;&#29699;&#27169;&#22411;</span><span>&#23545;&#38453;&#21382;&#21490;&#32534;&#30721;</span><span>&#38544;&#21547;&#27010;&#29575;&#21435;&#27700;</span><span>&#20020;&#22330;&#29366;&#24577;&#21521;&#37327;</span></div></div>
+<div class="arrow">&#8595;</div>
+<div class="layer l3"><h3>&#31532;&#19977;&#23618;&#65306;&#38598;&#25104;&#27169;&#22411;</h3><div class="nodes"><span>&#36125;&#21494;&#26031;&#23618;&#32423;&#27169;&#22411;</span><span>XGBoost / RF</span><span>LSTM&#24207;&#21015;&#27169;&#22411;</span><span>&#24066;&#22330;&#26657;&#20934;&#22120;</span><span>&#24322;&#24120;&#20919;&#38376;&#26816;&#27979;</span></div></div>
+<div class="arrow">&#8595;</div>
+<div class="layer l4"><h3>&#31532;&#22235;&#23618;&#65306;&#33945;&#29305;&#21345;&#27931;&#36187;&#31243;&#27169;&#25311;</h3><div class="nodes"><span>10&#19975;&#27425;&#27169;&#25311;</span><span>&#28857;&#29699;&#19987;&#39033;&#27169;&#22359;</span><span>&#21160;&#24577;&#20301;&#32622;&#26356;&#26032;</span><span>80%/95%&#32622;&#20449;&#21306;&#38388;</span><span>&#32452;&#21512;&#39118;&#38505;&#22238;&#25764;</span></div></div>
+<div class="arrow">&#8595;</div>
+<div class="layer l5"><h3>&#31532;&#20116;&#23618;&#65306;&#20170;&#26085;&#39044;&#27979;&#36755;&#20986;</h3><div class="nodes"><span>&#24635;&#36827;&#29699;&#20998;&#24067;</span><span>&#32988;&#24179;&#36127;&#27010;&#29575;</span><span>&#31283;&#32966;&#27604;&#20998;</span><span>&#20919;&#38376;&#33050;&#26412;</span><span>&#29572;&#23398;&#34701;&#21512;&#32467;&#35770;</span></div></div>
+</div></section>
+"@
 }
 
 function Quick($Match, $Lean) {
   return "&#21333;&#22330;&#31616;&#35780;&#65306;&#20808;&#30475; " + (GoalLabel $Match.prediction.totalGoals) + "&#65292;&#27604;&#20998;&#20248;&#20808; " + (HE ($Match.prediction.scores -join " / ")) + "&#65292;&#21516;&#26102;&#29992; " + (HE $Match.prediction.upset) + " &#20570;&#20919;&#38376;&#38450;&#23432;&#12290;"
 }
 
+function MysticBrief($Match, $Lean) {
+  return (HE $Lean.team) + "&#24471;&#21183;&#65292;&#29699;&#36335;&#30475; " + (GoalLabel $Match.prediction.totalGoals) + "&#65292;&#20919;&#38376;&#38450; " + (HE $Match.prediction.upset)
+}
+
 $summaryCards = New-Object System.Collections.Generic.List[string]
 $detailCards = New-Object System.Collections.Generic.List[string]
 $navLinks = New-Object System.Collections.Generic.List[string]
+$resultRows = New-Object System.Collections.Generic.List[string]
 $buyRows = New-Object System.Collections.Generic.List[string]
 $goalComboRows = New-Object System.Collections.Generic.List[string]
 $scoreComboRows = New-Object System.Collections.Generic.List[string]
@@ -167,6 +193,7 @@ foreach ($m in $payload.matches) {
   $goalOdd = GoalOdd $m
   $buyText = if ($lean.strong) { "&#24635;&#36827;&#29699; " + (GoalLabel $m.prediction.totalGoals) } elseif ($lean.code -eq "away") { $lean.text + " + &#24635;&#36827;&#29699; " + (GoalLabel $m.prediction.totalGoals) } else { "&#38450;&#24179; + &#24635;&#36827;&#29699; " + (GoalLabel $m.prediction.totalGoals) }
   $buyReason = if ($lean.strong) { "&#36180;&#29575;&#24378;&#20542;&#21521; + &#27604;&#20998;&#20027;&#32447;&#38598;&#20013;" } elseif ($lean.code -eq "away") { "&#23458;&#32988;&#21387;&#21046;&#26126;&#26174;&#65292;&#20998;&#25903;&#36335;&#24452;&#28165;&#26224;" } else { "&#24179;&#34913;&#23616;&#38656;&#35201;&#25226;&#38450;&#23432;&#25569;&#22312;&#25163;&#37324;" }
+  $resultRows.Add("<tr><td>" + (HE $m.matchNumStr) + "</td><td>" + (HE "$($m.home) vs $($m.away)") + "</td><td>" + $lean.text + "</td><td>" + (GoalLabel $m.prediction.totalGoals) + "</td><td>" + (HE ($m.prediction.scores -join " / ")) + "</td><td>" + (HE $m.prediction.upset) + "</td><td>" + (MysticBrief $m $lean) + "</td><td>" + (Conf $m.prediction.confidence) + "</td></tr>")
   $buyRows.Add("<tr><td>" + (HE $m.matchNumStr) + "</td><td>" + (HE "$($m.home) vs $($m.away)") + "</td><td>" + $buyText + "</td><td>" + (HE $goalOdd) + "</td><td>" + $buyReason + "</td></tr>")
   $summaryCards.Add("<div class=""mini""><span class=""" + $tagClass + """>" + (HE $m.matchNumStr) + " " + $hot + "</span><div class=""teams"">" + (HE $m.home) + " vs " + (HE $m.away) + "</div><small>" + (Overview $m $lean) + "</small></div>")
   $navLinks.Add("<a href=""#m$i"">&#27604;&#36187;$i</a>")
@@ -223,8 +250,9 @@ details{border:1px solid #1b463f;border-radius:8px;margin:9px 0;background:#0718
 </style>
 </head>
 <body>
-<header><div class="hero"><h1>&#127757; 2026&#19990;&#30028;&#26479; &#39044;&#27979;&#30475;&#26495; $(DateTitle $payload.dateText)</h1><nav><a href="#overview">$(C "overview")</a>$($navLinks -join "")<a href="#combo">$(C "combo")</a>$reviewLink<a href="../index.html">$(C "home")</a></nav></div></header>
+<header><div class="hero"><h1>&#127757; 2026&#19990;&#30028;&#26479; &#39044;&#27979;&#30475;&#26495; $(DateTitle $payload.dateText)</h1><nav><a href="#final">$(C "final")</a><a href="#overview">$(C "overview")</a>$($navLinks -join "")<a href="#combo">$(C "combo")</a>$reviewLink<a href="../index.html">$(C "home")</a></nav></div></header>
 <main>
+<section id="final" class="section"><h2>$(C "final")</h2><div class="recommend"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#32988;&#24179;&#36127;&#26041;&#21521;</th><th>&#24635;&#36827;&#29699;</th><th>&#31283;&#32966;&#27604;&#20998;</th><th>&#20919;&#38376;&#27604;&#20998;</th><th>&#29572;&#23398;&#34701;&#21512;</th><th>&#32622;&#20449;</th></tr></thead><tbody>$($resultRows -join "")</tbody></table></div></section>
 <section id="buy" class="section"><h2>$(C "buy")</h2><div class="recommend"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#25512;&#33616;&#20080;&#27861;</th><th>&#21442;&#32771;&#36180;&#29575;</th><th>$(C "reason")</th></tr></thead><tbody>$($buyRows -join "")</tbody></table></div></section>
 <section id="overview" class="section"><h2>$(C "summary")</h2><div class="grid">$($summaryCards -join "")</div><div class="kv"><div><strong>$(C "best")</strong>$(HE $bestStrong.match.home) vs $(HE $bestStrong.match.away) / $(GoalLabel $bestStrong.match.prediction.totalGoals)</div><div><strong>$(C "biggestCold")</strong>$(HE $bestCold.match.home) vs $(HE $bestCold.match.away) / $(HE $bestCold.match.prediction.upset)</div><div><strong>$(C "route")</strong>$goalRoute</div><div><strong>$(C "luck")</strong>$dayLuck</div></div></section>
 $($detailCards -join "")
