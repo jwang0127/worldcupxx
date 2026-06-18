@@ -205,6 +205,7 @@ $($rows -join "`n")
 "@
 
 $reviewFile = Join-Path $dayDir "review.html"
+$html = [System.Net.WebUtility]::HtmlDecode($html)
 $html | Set-Content -Encoding UTF8 $reviewFile
 
 $cards = New-Object System.Collections.Generic.List[string]
@@ -241,6 +242,7 @@ $($cards -join "`n")
 </body>
 </html>
 "@
+$index = [System.Net.WebUtility]::HtmlDecode($index)
 $index | Set-Content -Encoding UTF8 (Join-Path $root "index.html")
 
 if (-not $NoPush) {

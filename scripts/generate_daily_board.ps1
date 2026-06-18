@@ -417,6 +417,7 @@ $($detailCards -join "")
 </html>
 "@
 
+$html = [System.Net.WebUtility]::HtmlDecode($html)
 $html | Set-Content -Encoding UTF8 $dayIndex
 $html | Set-Content -Encoding UTF8 $predictFile
 Write-Host "Generated daily board: $dayIndex"
