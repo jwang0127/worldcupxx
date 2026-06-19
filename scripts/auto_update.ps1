@@ -217,7 +217,7 @@ Get-ChildItem -Path $root -Directory |
     $cards.Add("<a class=""card"" href=""./$d/""><div><div class=""date"">$d</div><div class=""meta"">&#39044;&#27979;&#30475;&#26495;&#19982;&#36187;&#21518;&#22797;&#30424;</div></div><div class=""go"">&#36827;&#20837; &rarr;</div></a>")
   }
 
-$index = @"
+$rootIndexHtml = @"
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -242,8 +242,8 @@ $($cards -join "`n")
 </body>
 </html>
 "@
-$index = [System.Net.WebUtility]::HtmlDecode($index)
-$index | Set-Content -Encoding UTF8 (Join-Path $root "index.html")
+$rootIndexHtml = [System.Net.WebUtility]::HtmlDecode($rootIndexHtml)
+$rootIndexHtml | Set-Content -Encoding UTF8 (Join-Path $root "index.html")
 
 if (-not $NoPush) {
   & (Join-Path $root "push_to_github.ps1")
