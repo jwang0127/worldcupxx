@@ -165,8 +165,10 @@ if ($model.history) {
 }
 $model.history = @($existingHistory + $historyItem)
 
-$payload | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 $dataFile
-$model | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 $modelFile
+$payloadJson = $payload | ConvertTo-Json -Depth 10
+$modelJson = $model | ConvertTo-Json -Depth 10
+$payloadJson | Set-Content -Encoding UTF8 $dataFile
+$modelJson | Set-Content -Encoding UTF8 $modelFile
 
 $html = @"
 <!DOCTYPE html>
