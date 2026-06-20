@@ -48,6 +48,8 @@ if (-not (Test-Path $dataFile)) {
   throw "Missing data file: $dataFile"
 }
 
+& (Join-Path $PSScriptRoot "sync_schedule_metadata.ps1") -DataFile $dataFile -Quiet
+
 try {
   & (Join-Path $PSScriptRoot "backfill_results.ps1") -Date $Date -DataFile $dataFile
 }
