@@ -1277,9 +1277,9 @@ function RootStandingsCompactHtml($Bundle) {
   foreach ($groupItem in $Bundle.groups) {
     $rows = foreach ($row in $groupItem.rows) {
       $cls = if ($row.rank -eq 1) { " class=""top1""" } elseif ($row.rank -eq 2) { " class=""top2""" } else { "" }
-      "<tr$cls><td>$($row.rank)</td><td>$($row.team)</td><td>$($row.played)</td><td>$($row.wins)-$($row.draws)-$($row.losses)</td><td>$($row.points)</td></tr>"
+      "<tr$cls><td>$($row.rank)</td><td>$($row.team)</td><td>$($row.points)</td></tr>"
     }
-    $sections.Add("<div class=""miniGroupCard""><h3>$($groupItem.group)</h3><table><thead><tr><th>排</th><th>球队</th><th>赛</th><th>胜平负</th><th>分</th></tr></thead><tbody>$rows</tbody></table></div>")
+    $sections.Add("<div class=""miniGroupCard""><h3>$($groupItem.group)</h3><table><thead><tr><th>排</th><th>球队</th><th>分</th></tr></thead><tbody>$rows</tbody></table></div>")
   }
   return ($sections -join "")
 }
@@ -1320,15 +1320,20 @@ function BuildStandingsPageHtml($Bundle, [string]$LatestDate, [string]$DateText,
 <style>
 :root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 18% 8%,rgba(51,226,138,.16),transparent 24%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
-main{max-width:1240px;margin:0 auto;padding:40px 18px 52px}.hero,.groupCard,.shortcut{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.hero{padding:22px;margin-bottom:22px}.hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,46px)}.hero p{margin:0;color:var(--muted);line-height:1.8}.heroMeta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.shortcut{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;margin-bottom:22px}.shortcut strong{display:block;font-size:20px;color:var(--blue)}.shortcut p{margin:6px 0 0;color:var(--muted)}.shortcut a{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:8px;background:#12362f;border:1px solid #2f8766;color:#a8ffd6;text-decoration:none;font-weight:800}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}footer{margin-top:36px;color:#8ea8a1;font-size:13px}@media(max-width:720px){.shortcut{align-items:flex-start;flex-direction:column}}
+main{max-width:1240px;margin:0 auto;padding:40px 18px 52px}.hero,.groupCard,.shortcut{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.hero{padding:22px;margin-bottom:22px}.heroTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}.hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,46px)}.hero p{margin:0;color:var(--muted);line-height:1.8}.heroMeta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.heroLink,.shortcut a{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:8px;background:#12362f;border:1px solid #2f8766;color:#a8ffd6;text-decoration:none;font-weight:800;white-space:nowrap}.shortcut{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;margin-bottom:22px}.shortcut strong{display:block;font-size:20px;color:var(--blue)}.shortcut p{margin:6px 0 0;color:var(--muted)}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}footer{margin-top:36px;color:#8ea8a1;font-size:13px}@media(max-width:720px){.heroTop,.shortcut{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
 <main>
 <section class="hero">
+<div class="heroTop">
+<div>
 <h1>2026 世界杯小组赛积分榜</h1>
 <p>按组别汇总当前积分、进球、净胜球与出线状态，头名和次名已高亮，便于快速查看每组晋级区。</p>
 <div class="heroMeta"><span>最新更新时间：$(HE $UpdateTime)</span><span>对应预测日：$(DateTitle $DateText)</span></div>
+</div>
+<a class="heroLink" href="./index.html">返回主页</a>
+</div>
 </section>
 <section class="shortcut">
 <div><strong>快捷入口</strong><p>直接跳转到最新的每日预测页，继续查看当日四场推荐与复盘修正。</p></div>
@@ -1370,20 +1375,24 @@ function BuildRootIndexHtml($RootPath, $Bundle, [string]$LatestDate, [string]$Da
 <style>
 :root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(51,226,138,.18),transparent 26%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
-main{max-width:1180px;margin:0 auto;padding:44px 18px}.hero{display:grid;gap:12px;margin-bottom:26px}h1{font-size:clamp(28px,5vw,48px);margin:0}p{color:var(--muted);line-height:1.8;margin:0}.heroMeta{display:flex;gap:12px;flex-wrap:wrap}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.list{display:grid;gap:14px;margin-top:20px;margin-bottom:34px}.card,.groupCard,.spotlight,.fixtureCard,.miniGroupCard{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;text-decoration:none;color:var(--text);transition:.22s}.card:hover,.spotlight:hover{transform:translateY(-3px);border-color:var(--green)}.date{font-size:24px;font-weight:800;color:var(--blue)}.meta{color:var(--muted);margin-top:6px}.go{color:var(--green);font-weight:800;white-space:nowrap}.spotlight{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px;text-decoration:none;color:var(--text);margin:16px 0 22px}.spotlight strong{display:block;font-size:22px;color:var(--blue)}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}.homeGrid{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin-bottom:28px}.fixtureCard,.miniGroupCard{padding:18px}.fixtureCard h3,.miniGroupCard h3{margin:0 0 12px}.miniStandings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-height:560px;overflow:auto;padding-right:4px}.miniStandings table{min-width:0}.miniStandings th,.miniStandings td{padding:7px 8px;font-size:12px}.miniStandings th{white-space:nowrap}.miniGroupCard{padding:12px}.miniGroupCard h3{font-size:15px;position:sticky;top:0;background:linear-gradient(180deg,rgba(16,37,40,.98),rgba(9,26,29,.98));padding-bottom:8px}.fixtureCard table{min-width:520px}.fixtureCard td:first-child,.fixtureCard th:first-child{white-space:nowrap}footer{margin-top:40px;color:#8ea8a1;font-size:13px}@media(max-width:920px){.homeGrid{grid-template-columns:1fr}.miniStandings{grid-template-columns:repeat(2,minmax(0,1fr));max-height:520px}}@media(max-width:620px){.card,.spotlight{align-items:flex-start;flex-direction:column}.go{white-space:normal}.miniStandings{grid-template-columns:1fr;max-height:460px}}
+main{max-width:1180px;margin:0 auto;padding:44px 18px}.hero{display:grid;gap:12px;margin-bottom:26px}.heroTop{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}h1{font-size:clamp(28px,5vw,48px);margin:0}p{color:var(--muted);line-height:1.8;margin:0}.heroMeta{display:flex;gap:12px;flex-wrap:wrap}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.list{display:grid;gap:14px;margin-top:20px;margin-bottom:34px}.card,.groupCard,.fixtureCard,.miniGroupCard{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;text-decoration:none;color:var(--text);transition:.22s}.card:hover,.heroLink:hover{transform:translateY(-3px);border-color:var(--green)}.date{font-size:24px;font-weight:800;color:var(--blue)}.meta{color:var(--muted);margin-top:6px}.go{color:var(--green);font-weight:800;white-space:nowrap}.heroLink{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:8px;background:#12362f;border:1px solid #2f8766;color:#a8ffd6;text-decoration:none;font-weight:800;white-space:nowrap}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}.homeGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:stretch;margin-bottom:28px}.fixtureCard{padding:18px;min-height:560px;display:flex;flex-direction:column}.fixtureCard h3,.miniGroupCard h3{margin:0 0 12px}.miniStandings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-height:440px;overflow:auto;padding-right:4px}.miniStandings table{min-width:0}.miniStandings th,.miniStandings td{padding:6px 8px;font-size:12px}.miniStandings th{white-space:nowrap}.miniGroupCard{padding:10px}.miniGroupCard h3{font-size:14px;position:sticky;top:0;background:linear-gradient(180deg,rgba(16,37,40,.98),rgba(9,26,29,.98));padding-bottom:6px}.fixtureCard table{min-width:0}.fixtureCard td:first-child,.fixtureCard th:first-child{white-space:nowrap}footer{margin-top:40px;color:#8ea8a1;font-size:13px}@media(max-width:920px){.homeGrid{grid-template-columns:1fr}.fixtureCard{min-height:auto}.miniStandings{grid-template-columns:repeat(2,minmax(0,1fr));max-height:420px}}@media(max-width:620px){.heroTop,.card{align-items:flex-start;flex-direction:column}.go{white-space:normal}.miniStandings{grid-template-columns:1fr;max-height:420px}}
 </style>
 </head>
 <body>
 <main>
 <section class="hero">
+<div class="heroTop">
+<div>
 <h1>2026 世界杯预测中心</h1>
 <p>这里汇总每日预测看板、赛果复盘和模型校准记录，页面基于公开赔率与公开赛果持续更新。</p>
 <div class="heroMeta"><span>最新更新时间：$(HE $UpdateTime)</span><span>当前主推页面：$(DateTitle $DateText)</span></div>
+</div>
+<a class="heroLink" href="./standings.html">全部小组积分榜</a>
+</div>
 </section>
-<a class="spotlight" href="./standings.html"><div><strong>全部小组积分榜</strong><p>按组别查看积分、进球、净胜球和出线状态，头名与次名已高亮，并带有最新更新时间。</p></div><div class="go">查看总榜 →</div></a>
 <section class="homeGrid">
 $tomorrowFixtures
-<div class="fixtureCard"><h3>首页小组排行榜</h3><p>缩小置顶展示全部小组排名，重点保留排名、积分和胜平负，头名/次名继续高亮。</p><div class="miniStandings">$compactStandings</div></div>
+<div class="fixtureCard"><h3>首页小组排行榜</h3><p>首页只保留各组排名和积分，作为快速扫榜入口，完整数据请从右上角入口进入。</p><div class="miniStandings">$compactStandings</div></div>
 </section>
 <section class="list">
 $($cards -join "`n")
