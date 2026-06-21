@@ -9,6 +9,8 @@ $dataFile = Join-Path $root ("data\" + $Date + ".json")
 $dayDir = Join-Path $root $Date
 $dayIndex = Join-Path $dayDir "index.html"
 $predictFile = Join-Path $dayDir ("predict_" + $Date + ".html")
+$rootIndex = Join-Path $root "index.html"
+$rootStandingsPage = Join-Path $root "standings.html"
 
 if (-not (Test-Path $dataFile)) {
   throw "Missing data file: $dataFile"
@@ -122,6 +124,16 @@ function Conf($Value) {
     "low" { return "&#20013;&#20302;" }
     default { return HE $Value }
   }
+}
+
+function MatchGroupStandingBrief($Match, $StandingsBundle) {
+  $group = NormalizeGroupName ([string]$Match.group)
+  $homeRow = $StandingsBundle.teamLookup[[string]$Match.home]
+  $awayRow = $StandingsBundle.teamLookup[[string]$Match.away]
+  if (-not $homeRow -or -not $awayRow) {
+    return ""
+  }
+  return "$group&#65306;" + (HE $Match.home) + "&#31532;$($homeRow.rank)&#65288;$($homeRow.points)&#20998;/&#36827;$($homeRow.gf)&#29699;&#65289;&#65292;" + (HE $Match.away) + "&#31532;$($awayRow.rank)&#65288;$($awayRow.points)&#20998;/&#36827;$($awayRow.gf)&#29699;&#65289;"
 }
 
 function HotLabel($Match, $Lean) {
@@ -244,25 +256,24 @@ function External($Match) {
   $homeTeamName = HE $Match.home
   $away = HE $Match.away
   $venue = HE $Match.venue
-  $kickoff = HE $Match.kickoff
   $localKickoff = HE (MatchKickoffLocal $Match)
 
   switch ([string]$Match.id) {
-    "025" { return "开球时间 $kickoff，属于北京时间午夜场，节奏通常比清晨场更容易先谨慎后提速。赛地信息为&#8220;$venue&#8221;，目前按中立场处理，不给主队额外主场加成。外部变量里最重要的是强队心态：$homeTeamName 若把比赛当成必须稳拿三分，会先控风险；$away 只要前 20 分钟不丢球，心理优势会上升。因此外部因素支持小胜或平局防线，不支持极端大胜。" }
-    "026" { return "开球时间 $kickoff，凌晨场对比赛节奏影响较大，进入下半场后体能和专注度会成为分水岭。$homeTeamName 的比赛经验更适合处理这种时段，$away 如果前段消耗过大，后段防守质量会下降。赛地仍按中立场处理，因此不额外加入主场噪音，只看旅途适应、湿度、草皮和临场轮换。外部因素与复盘修正同向：强队后段继续进球概率上升。" }
-    "027" { return "开球时间 $kickoff，对美洲球队节奏适应更友好，$homeTeamName 在身体对抗和推进速度上更容易进入状态。$away 若需要长距离适应气候和时差，开局抗压能力会是风险点。中立场条件下，外部因素不削弱 $homeTeamName 的强势，反而加强其前压倾向；但如果天气湿热，强队领先后的防线专注度也会下降，所以 3:1 比单纯 3:0 更有复盘价值。" }
-    "028" { return "开球时间 $kickoff，节奏更可能接近日间高强度对抗。$homeTeamName 与 $away 都具备较强球迷属性和情绪波动，舆论压力会放大先丢球后的战术选择。中立场下 $homeTeamName 的名义优势有限，$away 的跑动和反击不应被低估。外部因素综合后更像谨慎开局、后段拉扯，支持 2 球附近和冷门防线。" }
-    "029" { return "开球时间 $kickoff，属于凌晨场但仍在主流强队的身体节奏适应区间内。$homeTeamName 的阵容深度和比赛强度更适合这种时段，而 $away 若开局顶不住压迫，很容易被迫长期回收。中立场条件下不额外给主场红利，因此外部因素更偏向强队赢球、弱队守住净负的结构，支持小胜和 2 球附近。" }
-    "030" { return "开球时间 $kickoff，已经接近清晨场，体能和专注度波动会比午夜场更明显。$away 若能在上半场先取得领先，后续就有机会把比赛拖入自己更熟悉的控节奏模式；$homeTeamName 则更需要靠开局阶段的执行力抢情绪。赛地仍按中立场处理，所以外部因素不改写客强逻辑，但会抑制大比分打穿。" }
-    "031" { return "开球时间 $kickoff，对强队而言更像可以完整发力的比赛窗口。$homeTeamName 的板凳深度和轮换空间会在这个时段显得更有价值，$away 若前 30 分钟连续失位，体能和心理都可能提前崩盘。中立场与天气因素不会削弱强弱差，只会决定是 3 球还是 4 球以上的尾部展开，因此外部条件与强势大胜脚本同向。" }
-    "032" { return "开球时间 $kickoff，进入日场对抗后，比赛更容易被身体碰撞和节奏切碎。$homeTeamName 与 $away 都是情绪驱动明显的球队，谁先失误谁就容易被舆论和场面压力放大。中立场下没有绝对气势加成，外部因素综合后更支持谨慎开局、后段分胜负，所以 2 球主线和冷门防线都要保留。" }
-    "033" { return "北京时间 $kickoff，对应赛地当地时间 $localKickoff，属于凌晨偏早场，整体节奏通常更容易先谨慎后拉开。$homeTeamName 的比赛控制力更适合这种时段，但 $away 若能把前 30 分钟拖成僵局，心理层面就会快速升温。中立场不额外给任何一方主场加成，因此外部因素更支持主队赢球、小比分分叉和防平。" }
-    "034" { return "北京时间 $kickoff，对应赛地当地时间 $localKickoff，凌晨场对强队的连续施压能力更友好，但也更考验后程注意力。$homeTeamName 的板凳与比赛节奏处理更占优，$away 若前段跑动消耗过大，下半场守转攻质量会明显下降。中立场条件下，外部因素与德国主胜脚本同向，但不一定把比赛推成特别夸张的大比分。" }
-    "035" { return "北京时间 $kickoff，对应赛地当地时间 $localKickoff，属于早场强队可完整发力的窗口。$homeTeamName 若在体能和推进速度上占优，会更容易把比赛压成单边半场攻防；$away 一旦适应慢，前 30 分钟就是最大风险区。中立场下外部条件不削弱强弱差，因此支持压制型主胜和 3 球附近。"}
-    "036" { return "北京时间 $kickoff，对应赛地当地时间 $localKickoff，接近日场高温高对抗时段，比赛很容易被节奏管理和体能分配主导。$away 的整体节奏感更好，适合把比赛拉入自己更舒服的控局模式；$homeTeamName 则更需要等反击或定位球。外部因素综合后更支持客胜小比分，不支持无脑追特别大球。" }
+    "025" { return "比赛当地时间 $localKickoff，属于偏晚场窗口，节奏通常比清晨场更容易先谨慎后提速。赛地信息为&#8220;$venue&#8221;，目前按中立场处理，不给主队额外主场加成。外部变量里最重要的是强队心态：$homeTeamName 若把比赛当成必须稳拿三分，会先控风险；$away 只要前 20 分钟不丢球，心理优势会上升。因此外部因素支持小胜或平局防线，不支持极端大胜。" }
+    "026" { return "比赛当地时间 $localKickoff，属于夜场对抗，进入下半场后体能和专注度会成为分水岭。$homeTeamName 的比赛经验更适合处理这种时段，$away 如果前段消耗过大，后段防守质量会下降。赛地仍按中立场处理，因此不额外加入主场噪音，只看旅途适应、湿度、草皮和临场轮换。外部因素与复盘修正同向：强队后段继续进球概率上升。" }
+    "027" { return "比赛当地时间 $localKickoff，对美洲球队节奏适应更友好，$homeTeamName 在身体对抗和推进速度上更容易进入状态。$away 若需要长距离适应气候和时差，开局抗压能力会是风险点。中立场条件下，外部因素不削弱 $homeTeamName 的强势，反而加强其前压倾向；但如果天气湿热，强队领先后的防线专注度也会下降，所以 3:1 比单纯 3:0 更有复盘价值。" }
+    "028" { return "比赛当地时间 $localKickoff，节奏更可能接近日间高强度对抗。$homeTeamName 与 $away 都具备较强球迷属性和情绪波动，舆论压力会放大先丢球后的战术选择。中立场下 $homeTeamName 的名义优势有限，$away 的跑动和反击不应被低估。外部因素综合后更像谨慎开局、后段拉扯，支持 2 球附近和冷门防线。" }
+    "029" { return "比赛当地时间 $localKickoff，仍在主流强队的身体节奏适应区间内。$homeTeamName 的阵容深度和比赛强度更适合这种时段，而 $away 若开局顶不住压迫，很容易被迫长期回收。中立场条件下不额外给主场红利，因此外部因素更偏向强队赢球、弱队守住净负的结构，支持小胜和 2 球附近。" }
+    "030" { return "比赛当地时间 $localKickoff，已经接近清晨场，体能和专注度波动会比午夜场更明显。$away 若能在上半场先取得领先，后续就有机会把比赛拖入自己更熟悉的控节奏模式；$homeTeamName 则更需要靠开局阶段的执行力抢情绪。赛地仍按中立场处理，所以外部因素不改写客强逻辑，但会抑制大比分打穿。" }
+    "031" { return "比赛当地时间 $localKickoff，对强队而言更像可以完整发力的比赛窗口。$homeTeamName 的板凳深度和轮换空间会在这个时段显得更有价值，$away 若前 30 分钟连续失位，体能和心理都可能提前崩盘。中立场与天气因素不会削弱强弱差，只会决定是 3 球还是 4 球以上的尾部展开，因此外部条件与强势大胜脚本同向。" }
+    "032" { return "比赛当地时间 $localKickoff，进入日场对抗后，比赛更容易被身体碰撞和节奏切碎。$homeTeamName 与 $away 都是情绪驱动明显的球队，谁先失误谁就容易被舆论和场面压力放大。中立场下没有绝对气势加成，外部因素综合后更支持谨慎开局、后段分胜负，所以 2 球主线和冷门防线都要保留。" }
+    "033" { return "比赛当地时间 $localKickoff，属于偏早场窗口，整体节奏通常更容易先谨慎后拉开。$homeTeamName 的比赛控制力更适合这种时段，但 $away 若能把前 30 分钟拖成僵局，心理层面就会快速升温。中立场不额外给任何一方主场加成，因此外部因素更支持主队赢球、小比分分叉和防平。" }
+    "034" { return "比赛当地时间 $localKickoff，夜场对强队的连续施压能力更友好，但也更考验后程注意力。$homeTeamName 的板凳与比赛节奏处理更占优，$away 若前段跑动消耗过大，下半场守转攻质量会明显下降。中立场条件下，外部因素与德国主胜脚本同向，但不一定把比赛推成特别夸张的大比分。" }
+    "035" { return "比赛当地时间 $localKickoff，属于强队可完整发力的窗口。$homeTeamName 若在体能和推进速度上占优，会更容易把比赛压成单边半场攻防；$away 一旦适应慢，前 30 分钟就是最大风险区。中立场下外部条件不削弱强弱差，因此支持压制型主胜和 3 球附近。"}
+    "036" { return "比赛当地时间 $localKickoff，接近日场高温高对抗时段，比赛很容易被节奏管理和体能分配主导。$away 的整体节奏感更好，适合把比赛拉入自己更舒服的控局模式；$homeTeamName 则更需要等反击或定位球。外部因素综合后更支持客胜小比分，不支持无脑追特别大球。" }
   }
-  
-  return "比赛地点为&#8220;$venue&#8221;，北京时间 $kickoff，当地时间 $localKickoff。天气、湿度、草皮、旅途和赛前舆论都会影响节奏；本场外部因素按中立场模型处理。"
+
+  return "比赛地点为&#8220;$venue&#8221;，比赛当地时间 $localKickoff。天气、湿度、草皮、旅途和赛前舆论都会影响节奏；本场外部因素按中立场模型处理。"
 }
 
 function GroupInfo($Match, $Lean) {
@@ -313,6 +324,69 @@ function OddsText($Match, $Lean) {
   }
 
   return "胜平负目前为 $had，$hhad 总进球低位为 $ttg。模型围绕&#8220;" + $Lean.text + " + $goal&#8221;展开，同时参考昨日复盘修正低赔机械权重。"
+}
+
+function ExternalLiveData($Match) {
+  if (-not ($Match.PSObject.Properties.Name -contains "external") -or -not $Match.external) {
+    return "外部实时数据暂未接入。"
+  }
+
+  $ext = $Match.external
+  $parts = New-Object System.Collections.Generic.List[string]
+
+  if ($ext.fifaRanking -and $ext.fifaRanking.home -and $ext.fifaRanking.away) {
+    $homeRank = $ext.fifaRanking.home.rank
+    $awayRank = $ext.fifaRanking.away.rank
+    if ($homeRank -or $awayRank) {
+      $parts.Add("FIFA参考排名：" + (HE $Match.home) + " " + (HE ([string]$homeRank)) + "；" + (HE $Match.away) + " " + (HE ([string]$awayRank)) + "。")
+    }
+  }
+
+  if ($ext.teamMeta -and $ext.teamMeta.home -and $ext.teamMeta.away) {
+    $homeMeta = $ext.teamMeta.home
+    $awayMeta = $ext.teamMeta.away
+    if ($homeMeta.status -eq "ok" -or $awayMeta.status -eq "ok") {
+      $homeInfo = if ($homeMeta.status -eq "ok") { ([string]$homeMeta.country) + " / " + ([string]$homeMeta.stadium) } else { "待补" }
+      $awayInfo = if ($awayMeta.status -eq "ok") { ([string]$awayMeta.country) + " / " + ([string]$awayMeta.stadium) } else { "待补" }
+      $parts.Add("球队资料：" + (HE $Match.home) + " " + (HE $homeInfo) + "；" + (HE $Match.away) + " " + (HE $awayInfo) + "。")
+    }
+  }
+
+  if ($ext.injuries -and $ext.injuries.source -eq "api-sports") {
+    $homeInj = @($ext.injuries.home)
+    $awayInj = @($ext.injuries.away)
+    $parts.Add("伤停监测：主队 " + $homeInj.Count + " 条，客队 " + $awayInj.Count + " 条。")
+  }
+
+  if ($ext.h2h -and $ext.h2h.status -eq "ok" -and @($ext.h2h.matches).Count -gt 0) {
+    $latest = $ext.h2h.matches[0]
+    $parts.Add("近5场交锋已接入，最近一场：" + (HE ([string]$latest.home)) + " " + (HE ([string]$latest.score)) + " " + (HE ([string]$latest.away)) + "。")
+  }
+
+  if ($ext.oddsMovement -and $ext.oddsMovement.status) {
+    $status = [string]$ext.oddsMovement.status
+    if ($status -eq "pending-live-odds-source") {
+      $oddsTime = $null
+      if ($Match.odds -and $Match.odds.had -and $Match.odds.had.updatedAt) {
+        $oddsTime = [string]$Match.odds.had.updatedAt
+      }
+      if (-not $oddsTime -and $Match.odds -and $Match.odds.ttg -and $Match.odds.ttg.updatedAt) {
+        $oddsTime = [string]$Match.odds.ttg.updatedAt
+      }
+      if ($oddsTime) {
+        $parts.Add("赔率走势：独立实时走势源尚未接通，当前仅展示静态赔率快照，更新时间 " + (HE $oddsTime) + "。")
+      } else {
+        $parts.Add("赔率走势：独立实时走势源尚未接通，当前仅展示静态赔率快照。")
+      }
+    } else {
+      $parts.Add("赔率走势：" + (HE $status) + "。")
+    }
+  }
+
+  if ($parts.Count -eq 0) {
+    return "外部实时数据已挂载，但本场有效摘要仍在补齐。"
+  }
+  return ($parts -join "")
 }
 
 function Mystic($Match, $Lean) {
@@ -388,6 +462,757 @@ function Quick($Match, $Lean) {
 
 function MysticBrief($Match, $Lean) {
   return (HE $Lean.team) + "&#24471;&#21183;&#65292;&#29699;&#36335;&#30475; " + (GoalLabel $Match.prediction.totalGoals) + "&#65292;&#20919;&#38376;&#38450; " + (HE $Match.prediction.upset)
+}
+
+function Clamp([double]$Value, [double]$Min, [double]$Max) {
+  return [math]::Min($Max, [math]::Max($Min, $Value))
+}
+
+function ToDouble($Value, [double]$Default = 0) {
+  try { return [double]$Value } catch { return $Default }
+}
+
+function NormalizeGroupName([string]$Value) {
+  if ([string]::IsNullOrWhiteSpace($Value)) { return "" }
+  if ($Value -match "^Group\s+([A-Z])$") { return "$($Matches[1])组" }
+  return $Value.Trim()
+}
+
+function GetHadProbabilities($Match) {
+  if ($Match.odds -and $Match.odds.had) {
+    $homeOdd = ToDouble $Match.odds.had.home
+    $drawOdd = ToDouble $Match.odds.had.draw
+    $awayOdd = ToDouble $Match.odds.had.away
+    if ($homeOdd -gt 0 -and $drawOdd -gt 0 -and $awayOdd -gt 0) {
+      $rawHome = 1 / $homeOdd
+      $rawDraw = 1 / $drawOdd
+      $rawAway = 1 / $awayOdd
+      $sum = $rawHome + $rawDraw + $rawAway
+      return [pscustomobject]@{
+        home = $rawHome / $sum
+        draw = $rawDraw / $sum
+        away = $rawAway / $sum
+      }
+    }
+  }
+
+  if ($Match.odds -and $Match.odds.hhad) {
+    $homeHhadOdd = ToDouble $Match.odds.hhad.home
+    $awayHhadOdd = ToDouble $Match.odds.hhad.away
+    if ($homeHhadOdd -gt 0 -and $awayHhadOdd -gt 0) {
+      if ($homeHhadOdd -le $awayHhadOdd) {
+        return [pscustomobject]@{ home = 0.60; draw = 0.23; away = 0.17 }
+      }
+      return [pscustomobject]@{ home = 0.21; draw = 0.24; away = 0.55 }
+    }
+  }
+
+  return [pscustomobject]@{ home = 0.45; draw = 0.27; away = 0.28 }
+}
+
+function GetScoreKeyFromText([string]$Score) {
+  if ([string]::IsNullOrWhiteSpace($Score)) { return "" }
+  $parts = $Score.Split(":")
+  if ($parts.Count -ne 2) { return "" }
+  return ("{0:00}{1:00}" -f ([int]$parts[0]), ([int]$parts[1]))
+}
+
+function GetScoreOdd($Match, [string]$Score) {
+  if (-not $Match.odds -or -not $Match.odds.crs) { return 0 }
+  $key = GetScoreKeyFromText $Score
+  if (-not $key) { return 0 }
+  if ($Match.odds.crs.PSObject.Properties.Name -contains $key) {
+    return ToDouble $Match.odds.crs.$key
+  }
+  return 0
+}
+
+function Factorial([int]$N) {
+  if ($N -le 1) { return 1.0 }
+  $value = 1.0
+  for ($i = 2; $i -le $N; $i++) {
+    $value *= $i
+  }
+  return $value
+}
+
+function PoissonProb([double]$Lambda, [int]$Goals) {
+  if ($Lambda -le 0) { return 0 }
+  return ([math]::Exp(-$Lambda) * [math]::Pow($Lambda, $Goals)) / (Factorial $Goals)
+}
+
+function GetExpectedGoals($Match, $Lean, $HadProbs) {
+  $total = ToDouble $Match.prediction.totalGoals 2.4
+  if ($total -lt 1.2) { $total = 2.4 }
+
+  $share = 0.5
+  $sided = $HadProbs.home + $HadProbs.away
+  if ($sided -gt 0) {
+    $share = $HadProbs.home / $sided
+  }
+
+  if ($Lean.code -eq "home" -and $Lean.strong) {
+    $share = [math]::Max($share, 0.66)
+  }
+  elseif ($Lean.code -eq "away" -and $Lean.strong) {
+    $share = [math]::Min($share, 0.34)
+  }
+  elseif ($Lean.code -eq "home") {
+    $share = [math]::Max($share, 0.58)
+  }
+  elseif ($Lean.code -eq "away") {
+    $share = [math]::Min($share, 0.42)
+  }
+
+  $share = Clamp $share 0.28 0.72
+  $homeLambda = [math]::Max(0.15, $total * $share)
+  $awayLambda = [math]::Max(0.15, $total - $homeLambda)
+  return [pscustomobject]@{ home = $homeLambda; away = $awayLambda; total = $total }
+}
+
+function GetHistoricalMatches() {
+  $items = New-Object System.Collections.Generic.List[object]
+  Get-ChildItem -Path (Join-Path $root "data") -Filter "*.json" | Sort-Object Name | ForEach-Object {
+    $content = Get-Content -Raw -Encoding UTF8 $_.FullName | ConvertFrom-Json
+    foreach ($match in @($content.matches)) {
+      $group = ""
+      if ($match.PSObject.Properties.Name -contains "group" -and $match.group) {
+        $group = NormalizeGroupName ([string]$match.group)
+      }
+      elseif ($match.PSObject.Properties.Name -contains "groupName" -and $match.groupName) {
+        $group = NormalizeGroupName ([string]$match.groupName)
+      }
+
+      $items.Add([pscustomobject]@{
+        id = [string]$match.id
+        date = [string]$content.date
+        kickoff = [string]$match.kickoff
+        group = $group
+        home = [string]$match.home
+        away = [string]$match.away
+        result = $match.result
+      })
+    }
+  }
+  return $items
+}
+
+function GetRecentTeamSummary([string]$Team) {
+  $matches = @($script:historicalMatches | Where-Object { $_.result -and ($_.home -eq $Team -or $_.away -eq $Team) } | Sort-Object kickoff -Descending | Select-Object -First 10)
+  $played = $matches.Count
+  if ($played -eq 0) {
+    return [pscustomobject]@{ played = 0; wins = 0; draws = 0; losses = 0; gf = 0; ga = 0; ppg = 1.0; score = 5.0 }
+  }
+
+  $wins = 0; $draws = 0; $losses = 0; $gf = 0; $ga = 0
+  foreach ($m in $matches) {
+    $homeGoals = [int]$m.result.homeGoals
+    $awayGoals = [int]$m.result.awayGoals
+    if ($m.home -eq $Team) {
+      $gf += $homeGoals
+      $ga += $awayGoals
+      if ($homeGoals -gt $awayGoals) { $wins += 1 } elseif ($homeGoals -eq $awayGoals) { $draws += 1 } else { $losses += 1 }
+    }
+    else {
+      $gf += $awayGoals
+      $ga += $homeGoals
+      if ($awayGoals -gt $homeGoals) { $wins += 1 } elseif ($awayGoals -eq $homeGoals) { $draws += 1 } else { $losses += 1 }
+    }
+  }
+
+  $ppg = (($wins * 3) + $draws) / $played
+  $score = Clamp (5 + (($ppg - 1.2) * 2.1) + ((($gf - $ga) / $played) * 0.9)) 2 9.5
+  return [pscustomobject]@{ played = $played; wins = $wins; draws = $draws; losses = $losses; gf = $gf; ga = $ga; ppg = $ppg; score = $score }
+}
+
+function BuildStandingsBundle($Matches, $Snapshot = $null) {
+  if ($Snapshot -and @($Snapshot).Count -gt 0) {
+    $groupRows = New-Object System.Collections.Generic.List[object]
+    $teamLookup = @{}
+    $impactLookup = @{}
+    $groups = @{}
+
+    foreach ($groupItem in @($Snapshot)) {
+      $groupName = NormalizeGroupName ([string]$groupItem.group)
+      $groups[$groupName] = [ordered]@{}
+      foreach ($sourceRow in @($groupItem.rows)) {
+        $row = [pscustomobject]@{
+          team = [string]$sourceRow.team
+          played = [int](ToDouble $sourceRow.played 0)
+          wins = [int](ToDouble $sourceRow.wins 0)
+          draws = [int](ToDouble $sourceRow.draws 0)
+          losses = [int](ToDouble $sourceRow.losses 0)
+          gf = [int](ToDouble $sourceRow.gf 0)
+          ga = [int](ToDouble $sourceRow.ga 0)
+          gd = [int](ToDouble $sourceRow.gd 0)
+          points = [int](ToDouble $sourceRow.points 0)
+        }
+        $groups[$groupName][$row.team] = $row
+      }
+    }
+
+    foreach ($groupName in ($groups.Keys | Sort-Object)) {
+      $rows = @($groups[$groupName].Values | Sort-Object @{Expression='points';Descending=$true}, @{Expression='gd';Descending=$true}, @{Expression='gf';Descending=$true}, team)
+      for ($idx = 0; $idx -lt $rows.Count; $idx++) {
+        $row = $rows[$idx]
+        $played = [int](ToDouble $row.played 0)
+        $points = [int](ToDouble $row.points 0)
+        $remaining = [math]::Max(0, 3 - $played)
+        $status = "🔵 理论可能"
+        if ($played -eq 0 -and $points -eq 0) {
+          $status = "⚪ 数据待补"
+        }
+        elseif ($idx -lt 2 -and $played -ge 2 -and $points -ge 4) {
+          $status = "🟡 出线主动权"
+        }
+        elseif ($remaining -le 1 -and $points -le 1) {
+          $status = "🟠 生死战"
+        }
+        elseif ($remaining -eq 0 -and $idx -ge 2) {
+          $status = "⚪ 已淘汰"
+        }
+        elseif ($remaining -eq 0 -and $idx -lt 2) {
+          $status = "🟢 已锁定出线"
+        }
+
+        $pointsBonus = [double]($points * 20)
+        $rankBonus = [double]((2 - [math]::Min([int]$idx, 2)) * 12)
+        $remainingBonus = [double]((3 - [int]$remaining) * 6)
+        $qualScore = Clamp ($pointsBonus + $rankBonus + $remainingBonus) 5 98
+        $row | Add-Member -NotePropertyName remaining -NotePropertyValue $remaining -Force
+        $row | Add-Member -NotePropertyName status -NotePropertyValue $status -Force
+        $row | Add-Member -NotePropertyName qualScore -NotePropertyValue ([math]::Round($qualScore)) -Force
+        $row | Add-Member -NotePropertyName rank -NotePropertyValue ($idx + 1) -Force
+        $row | Add-Member -NotePropertyName group -NotePropertyValue $groupName -Force
+        $teamLookup[$row.team] = $row
+      }
+      $groupRows.Add([pscustomobject]@{ group = $groupName; rows = $rows })
+    }
+
+    foreach ($match in @($Matches)) {
+      $group = NormalizeGroupName ([string]$match.group)
+      if (-not $group -or -not ($groups.ContainsKey($group))) { continue }
+      $homeRow = $teamLookup[[string]$match.home]
+      $awayRow = $teamLookup[[string]$match.away]
+      if (-not $homeRow -or -not $awayRow) { continue }
+      $homePoints = [int](ToDouble $homeRow.points 0)
+      $awayPoints = [int](ToDouble $awayRow.points 0)
+      $remainingHome = [math]::Max(0, 3 - [int](ToDouble $homeRow.played 0))
+      $remainingAway = [math]::Max(0, 3 - [int](ToDouble $awayRow.played 0))
+      $homeWin = [math]::Round((Clamp ((($homePoints + 3) * 18) + (($remainingHome - 1) * 4)) 8 96))
+      $draw = [math]::Round((Clamp ((($homePoints + $awayPoints + 2) * 8)) 6 78))
+      $awayWin = [math]::Round((Clamp ((($awayPoints + 3) * 18) + (($remainingAway - 1) * 4)) 8 96))
+      $impactLookup[[string]$match.id] = "$($match.home)胜→出线主动权估值 $homeWin%；平→局势估值 $draw%；$($match.away)胜→出线主动权估值 $awayWin%。"
+    }
+
+    return [pscustomobject]@{
+      groups = $groupRows
+      teamLookup = $teamLookup
+      impactLookup = $impactLookup
+    }
+  }
+
+  $groups = @{}
+
+  foreach ($match in @($Matches)) {
+    $group = NormalizeGroupName ([string]$match.group)
+    if (-not $group) { continue }
+    if (-not $groups.ContainsKey($group)) {
+      $groups[$group] = [ordered]@{}
+    }
+    foreach ($team in @([string]$match.home, [string]$match.away)) {
+      if (-not $groups[$group].Contains($team)) {
+        $groups[$group][$team] = [ordered]@{
+          team = $team
+          played = 0
+          wins = 0
+          draws = 0
+          losses = 0
+          gf = 0
+          ga = 0
+          gd = 0
+          points = 0
+        }
+      }
+    }
+  }
+
+  foreach ($item in @($script:historicalMatches)) {
+    if (-not $item.result -or -not $groups.ContainsKey($item.group)) { continue }
+    if (-not $groups[$item.group].Contains($item.home) -or -not $groups[$item.group].Contains($item.away)) { continue }
+
+    $home = $groups[$item.group][$item.home]
+    $away = $groups[$item.group][$item.away]
+    $hg = [int]$item.result.homeGoals
+    $ag = [int]$item.result.awayGoals
+
+    $home.played += 1; $away.played += 1
+    $home.gf += $hg; $home.ga += $ag
+    $away.gf += $ag; $away.ga += $hg
+
+    if ($hg -gt $ag) {
+      $home.wins += 1; $away.losses += 1; $home.points += 3
+    }
+    elseif ($hg -lt $ag) {
+      $away.wins += 1; $home.losses += 1; $away.points += 3
+    }
+    else {
+      $home.draws += 1; $away.draws += 1; $home.points += 1; $away.points += 1
+    }
+  }
+
+  $groupRows = New-Object System.Collections.Generic.List[object]
+  $teamLookup = @{}
+  $impactLookup = @{}
+
+  foreach ($groupName in ($groups.Keys | Sort-Object)) {
+    $rows = @($groups[$groupName].Values | ForEach-Object {
+      $_.gd = $_.gf - $_.ga
+      [pscustomobject]$_
+    } | Sort-Object @{Expression='points';Descending=$true}, @{Expression='gd';Descending=$true}, @{Expression='gf';Descending=$true}, team)
+
+    for ($idx = 0; $idx -lt $rows.Count; $idx++) {
+      $row = $rows[$idx]
+      $played = [int](ToDouble (($row.played | Select-Object -First 1)) 0)
+      $points = [int](ToDouble (($row.points | Select-Object -First 1)) 0)
+      $remaining = [math]::Max(0, 3 - $played)
+      $status = "🔵 理论可能"
+      if ($played -eq 0 -and $points -eq 0) {
+        $status = "⚪ 数据待补"
+      }
+      elseif ($idx -lt 2 -and $played -ge 2 -and $points -ge 4) {
+        $status = "🟡 出线主动权"
+      }
+      elseif ($remaining -le 1 -and $points -le 1) {
+        $status = "🟠 生死战"
+      }
+      elseif ($remaining -eq 0 -and $idx -ge 2) {
+        $status = "⚪ 已淘汰"
+      }
+      elseif ($remaining -eq 0 -and $idx -lt 2) {
+        $status = "🟢 已锁定出线"
+      }
+
+      $pointsBonus = [double]($points * 20)
+      $rankBonus = [double]((2 - [math]::Min([int]$idx, 2)) * 12)
+      $remainingBonus = [double]((3 - [int]$remaining) * 6)
+      $qualScore = Clamp ($pointsBonus + $rankBonus + $remainingBonus) 5 98
+      $row | Add-Member -NotePropertyName remaining -NotePropertyValue $remaining -Force
+      $row | Add-Member -NotePropertyName status -NotePropertyValue $status -Force
+      $row | Add-Member -NotePropertyName qualScore -NotePropertyValue ([math]::Round($qualScore)) -Force
+      $row | Add-Member -NotePropertyName rank -NotePropertyValue ($idx + 1) -Force
+      $row | Add-Member -NotePropertyName group -NotePropertyValue $groupName -Force
+      $teamLookup[$row.team] = $row
+    }
+
+    $groupRows.Add([pscustomobject]@{
+      group = $groupName
+      rows = $rows
+    })
+  }
+
+  foreach ($match in @($Matches)) {
+    $group = NormalizeGroupName ([string]$match.group)
+    if (-not $group -or -not ($groups.ContainsKey($group))) { continue }
+    $homeRow = $teamLookup[[string]$match.home]
+    $awayRow = $teamLookup[[string]$match.away]
+    if (-not $homeRow -or -not $awayRow) { continue }
+
+    $homePoints = [int](ToDouble (($homeRow.points | Select-Object -First 1)) 0)
+    $awayPoints = [int](ToDouble (($awayRow.points | Select-Object -First 1)) 0)
+    $remainingHome = [math]::Max(0, 3 - [int](ToDouble (($homeRow.played | Select-Object -First 1)) 0))
+    $remainingAway = [math]::Max(0, 3 - [int](ToDouble (($awayRow.played | Select-Object -First 1)) 0))
+    $homeWinBase = [double](($homePoints + 3) * 18)
+    $homeWinAdj = [double](($remainingHome - 1) * 4)
+    $homeWin = [math]::Round((Clamp ($homeWinBase + $homeWinAdj) 8 96))
+    $drawBase = [double](($homePoints + $awayPoints + 2) * 8)
+    $draw = [math]::Round((Clamp $drawBase 6 78))
+    $awayWinBase = [double](($awayPoints + 3) * 18)
+    $awayWinAdj = [double](($remainingAway - 1) * 4)
+    $awayWin = [math]::Round((Clamp ($awayWinBase + $awayWinAdj) 8 96))
+    $impactLookup[[string]$match.id] = "$($match.home)胜→出线主动权估值 $homeWin%；平→局势估值 $draw%；$($match.away)胜→出线主动权估值 $awayWin%。"
+  }
+
+  return [pscustomobject]@{
+    groups = $groupRows
+    teamLookup = $teamLookup
+    impactLookup = $impactLookup
+  }
+}
+
+function BuildScoreCard($Match, $Lean, $StandingsBundle) {
+  $probs = GetHadProbabilities $Match
+  $homeForm = GetRecentTeamSummary ([string]$Match.home)
+  $awayForm = GetRecentTeamSummary ([string]$Match.away)
+  $teamRow = if ($Lean.code -eq "away") { $StandingsBundle.teamLookup[[string]$Match.away] } elseif ($Lean.code -eq "home") { $StandingsBundle.teamLookup[[string]$Match.home] } else { $StandingsBundle.teamLookup[[string]$Match.home] }
+  $external = if ($Match.PSObject.Properties.Name -contains "external") { $Match.external } else { $null }
+
+  $leanProb = if ($Lean.code -eq "away") { $probs.away } elseif ($Lean.code -eq "draw") { $probs.draw } else { $probs.home }
+  $formDelta = $homeForm.score - $awayForm.score
+  if ($Lean.code -eq "away") { $formDelta *= -1 }
+
+  $basic = Clamp (5 + ($formDelta * 0.6) + (($leanProb - 0.45) * 8)) 2 9.6
+  $lineup = Clamp (5 + (($leanProb - 0.40) * 10)) 3 9.0
+  $elo = Clamp (($leanProb / 0.70) * 10) 2 9.8
+  $odds = Clamp (($leanProb / 0.70) * 10) 2 9.8
+  $trend = 5.2
+  if ($Match.odds -and $Match.odds.hhad) {
+    $hHome = ToDouble $Match.odds.hhad.home
+    $hAway = ToDouble $Match.odds.hhad.away
+    if ($hHome -gt 0 -and $hAway -gt 0) {
+      $trend = if (($Lean.code -eq "home" -and $hHome -lt $hAway) -or ($Lean.code -eq "away" -and $hAway -lt $hHome)) { 7.1 } else { 4.8 }
+    }
+  }
+  $h2h = 5.0
+  $motivation = 5.5
+  $pressure = 5.5
+
+  if ($external -and $external.injuries -and $external.injuries.source -eq "api-sports") {
+    $injuryCount = if ($Lean.code -eq "away") { @($external.injuries.away).Count } else { @($external.injuries.home).Count }
+    $lineup = Clamp ($lineup - ($injuryCount * 0.45)) 2.6 9.0
+  }
+
+  if ($external -and $external.h2h -and $external.h2h.status -eq "ok") {
+    $h2hLeanWins = 0
+    $homeAlias = if ($Match.PSObject.Properties.Name -contains "homeEn" -and $Match.homeEn) { [string]$Match.homeEn } else { [string]$Match.home }
+    $awayAlias = if ($Match.PSObject.Properties.Name -contains "awayEn" -and $Match.awayEn) { [string]$Match.awayEn } else { [string]$Match.away }
+    foreach ($item in @($external.h2h.matches)) {
+      if (-not $item.score) { continue }
+      $parts = [string]$item.score -split ":"
+      if ($parts.Count -ne 2) { continue }
+      $hg = [int](ToDouble $parts[0] 0)
+      $ag = [int](ToDouble $parts[1] 0)
+      $homeName = [string]$item.home
+      $awayName = [string]$item.away
+      if ($Lean.code -eq "home") {
+        if ($homeName -eq $homeAlias -and $hg -gt $ag) { $h2hLeanWins += 1 }
+        elseif ($awayName -eq $homeAlias -and $ag -gt $hg) { $h2hLeanWins += 1 }
+      }
+      elseif ($Lean.code -eq "away") {
+        if ($homeName -eq $awayAlias -and $hg -gt $ag) { $h2hLeanWins += 1 }
+        elseif ($awayName -eq $awayAlias -and $ag -gt $hg) { $h2hLeanWins += 1 }
+      }
+    }
+    if (@($external.h2h.matches).Count -gt 0) {
+      $h2h = Clamp (4.6 + ($h2hLeanWins * 0.9)) 3.5 8.8
+    }
+  }
+
+  if ($teamRow) {
+    $motivation = Clamp (4.5 + ($teamRow.remaining * 0.8) + ((2 - [math]::Min($teamRow.points, 2)) * 0.9)) 4 9.5
+    $pressure = Clamp (4.0 + ((3 - [math]::Min($teamRow.remaining, 3)) * 0.7) + ((2 - [math]::Min($teamRow.points, 2)) * 1.2)) 4 9.8
+  }
+
+  $weights = [ordered]@{
+    basic = 0.20
+    lineup = 0.15
+    elo = 0.20
+    odds = 0.15
+    trend = 0.10
+    h2h = 0.05
+    motivation = 0.05
+    pressure = 0.10
+  }
+
+  $dims = [ordered]@{
+    basic = [math]::Round($basic, 2)
+    lineup = [math]::Round($lineup, 2)
+    elo = [math]::Round($elo, 2)
+    odds = [math]::Round($odds, 2)
+    trend = [math]::Round($trend, 2)
+    h2h = [math]::Round($h2h, 2)
+    motivation = [math]::Round($motivation, 2)
+    pressure = [math]::Round($pressure, 2)
+  }
+
+  $composite = 0.0
+  foreach ($key in $dims.Keys) {
+    $composite += $dims[$key] * $weights[$key]
+  }
+  $composite = [math]::Round($composite, 2)
+  $stars = if ($composite -ge 8.5) { "★★★★★" } elseif ($composite -ge 7.0) { "★★★★☆" } elseif ($composite -ge 5.0) { "★★★☆☆" } else { "★★☆☆☆" }
+
+  return [pscustomobject]@{
+    lean = $Lean.code
+    probabilities = $probs
+    dimensions = $dims
+    weights = $weights
+    composite = $composite
+    stars = $stars
+    recent = [pscustomobject]@{
+      home = $homeForm
+      away = $awayForm
+    }
+  }
+}
+
+function BuildEvArtifact($Match, $Lean, $ScoreCard) {
+  $probs = GetHadProbabilities $Match
+  $lambdas = GetExpectedGoals $Match $Lean $probs
+  $candidates = @()
+  foreach ($s in @($Match.prediction.scores[0], $Match.prediction.scores[1], $Match.prediction.upset)) {
+    if ($s -and ($candidates -notcontains $s)) { $candidates += $s }
+  }
+
+  if ($Match.odds -and $Match.odds.crs) {
+    foreach ($prop in $Match.odds.crs.PSObject.Properties | Sort-Object Name | Select-Object -First 2) {
+      if ($prop.Name.Length -eq 4) {
+        $extra = ("{0}:{1}" -f [int]$prop.Name.Substring(0, 2), [int]$prop.Name.Substring(2, 2))
+        if ($candidates -notcontains $extra) { $candidates += $extra }
+      }
+    }
+  }
+
+  $rows = New-Object System.Collections.Generic.List[object]
+  foreach ($score in $candidates) {
+    $parts = $score.Split(":")
+    if ($parts.Count -ne 2) { continue }
+    $hg = [int]$parts[0]
+    $ag = [int]$parts[1]
+    $prob = PoissonProb $lambdas.home $hg
+    $prob *= PoissonProb $lambdas.away $ag
+    $odd = GetScoreOdd $Match $score
+    if ($odd -le 0) {
+      $odd = 6 + (($hg + $ag) * 0.8)
+    }
+    $ev = ($odd * $prob) - 1
+    $mark = if ($ev -gt 0) { "✅ 正EV推荐" } elseif ($score -eq $Match.prediction.upset) { "🔮 冷门低EV" } else { "⚪ 负EV观望" }
+    $rows.Add([pscustomobject]@{
+      score = $score
+      odds = [math]::Round($odd, 2)
+      probability = [math]::Round($prob, 4)
+      ev = [math]::Round($ev, 2)
+      mark = $mark
+    })
+  }
+
+  $best = $rows | Sort-Object ev -Descending | Select-Object -First 1
+  return [pscustomobject]@{
+    lambdaHome = [math]::Round($lambdas.home, 2)
+    lambdaAway = [math]::Round($lambdas.away, 2)
+    totalLambda = [math]::Round($lambdas.total, 2)
+    rows = $rows
+    best = $best
+  }
+}
+
+function BuildHalfFullArtifact($Match, $Lean, $EvArtifact) {
+  $total = ToDouble $Match.prediction.totalGoals 2.5
+  $homeLambda = ToDouble $EvArtifact.lambdaHome 1.2
+  $awayLambda = ToDouble $EvArtifact.lambdaAway 1.0
+  $firstHalfShare = 0.46
+  $fhHome = $homeLambda * $firstHalfShare
+  $fhAway = $awayLambda * $firstHalfShare
+
+  $ht = "平"
+  if ($fhHome - $fhAway -ge 0.22) {
+    $ht = "胜"
+  }
+  elseif ($fhAway - $fhHome -ge 0.22) {
+    $ht = "负"
+  }
+
+  $ft = switch ($Lean.code) {
+    "home" { "胜" }
+    "away" { "负" }
+    default { "平" }
+  }
+
+  if ($ft -eq "平" -and $ht -ne "平") {
+    $secondary = "平/平"
+  }
+  elseif ($ft -eq "胜" -and $ht -eq "负") {
+    $secondary = "平/胜"
+  }
+  elseif ($ft -eq "负" -and $ht -eq "胜") {
+    $secondary = "平/负"
+  }
+  else {
+    $secondary = "$ht/$ft"
+  }
+
+  $primary = "$ht/$ft"
+  $goalBand = if ($total -le 2.2) {
+    "1-2球"
+  }
+  elseif ($total -le 3.2) {
+    "2-3球"
+  }
+  elseif ($total -le 4.2) {
+    "3-4球"
+  }
+  else {
+    "4-5球"
+  }
+
+  $pace = if ($fhHome + $fhAway -ge 1.3) {
+    "上半场节奏偏快，早球概率较高。"
+  }
+  elseif ($fhHome + $fhAway -le 0.95) {
+    "上半场更像试探局，后程决胜概率更高。"
+  }
+  else {
+    "比赛大概率分段展开，上半场试探、下半场提速。"
+  }
+
+  return [pscustomobject]@{
+    primary = $primary
+    secondary = $secondary
+    totalBand = $goalBand
+    firstHalfLean = $ht
+    fullTimeLean = $ft
+    note = $pace
+  }
+}
+
+function ScoreCardHtml($ScoreCard) {
+  $labels = [ordered]@{
+    basic = "基本面"
+    lineup = "阵容伤停"
+    elo = "Elo"
+    odds = "赔率隐含"
+    trend = "赔率趋势"
+    h2h = "历史交锋"
+    motivation = "小组动机"
+    pressure = "出线压力"
+  }
+  $items = foreach ($key in $labels.Keys) {
+    $val = [double]$ScoreCard.dimensions[$key]
+    $pct = [math]::Round(($val / 10) * 100)
+    "<div class=""metric""><span>$($labels[$key])</span><div class=""bar""><i style=""width:${pct}%""></i></div><strong>$('{0:N1}' -f $val)</strong></div>"
+  }
+  return "<div class=""scorecard""><div class=""scorehead""><span>综合信心分</span><strong>$('{0:N2}' -f $ScoreCard.composite)</strong><em>$($ScoreCard.stars)</em></div>" + ($items -join "") + "</div>"
+}
+
+function EvTableHtml($Artifact) {
+  $rows = foreach ($r in $Artifact.rows) {
+    $probPct = [math]::Round($r.probability * 100, 1)
+    $evClass = if ($r.ev -gt 0) { "pos" } else { "neg" }
+    "<tr><td>$($r.score)</td><td>$('{0:N2}' -f $r.odds)x</td><td>$probPct%</td><td class=""$evClass"">$('{0:N2}' -f $r.ev)</td><td>$($r.mark)</td></tr>"
+  }
+  return "<table class=""evTable""><thead><tr><th>比分</th><th>竞彩赔率</th><th>预测概率</th><th>EV</th><th>建议</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table>"
+}
+
+function HalfFullHtml($Artifact) {
+  return "<div class=""hf""><div><span>半全场主推</span><strong>" + (HE $Artifact.primary) + "</strong></div><div><span>备选</span><strong>" + (HE $Artifact.secondary) + "</strong></div><div><span>总进球区间</span><strong>" + (HE $Artifact.totalBand) + "</strong></div><p>" + (HE $Artifact.note) + "</p></div>"
+}
+
+function StandingsSectionHtml($Bundle, $Matches) {
+  $sections = New-Object System.Collections.Generic.List[string]
+  foreach ($groupItem in $Bundle.groups) {
+    $highlightTeams = @($Matches | Where-Object { $_.group -eq $groupItem.group } | ForEach-Object { $_.home; $_.away })
+    $rows = foreach ($row in $groupItem.rows) {
+      $cls = if ($highlightTeams -contains $row.team) { " class=""hl""" } else { "" }
+      "<tr$cls><td>$($row.team)</td><td>$($row.played)</td><td>$($row.wins)</td><td>$($row.draws)</td><td>$($row.losses)</td><td>$($row.gf)</td><td>$($row.ga)</td><td>$($row.gd)</td><td>$($row.points)</td><td>$($row.status)</td></tr>"
+    }
+
+    $impact = @($Matches | Where-Object { $_.group -eq $groupItem.group } | ForEach-Object {
+      "<p><strong>$($_.home) vs $($_.away)</strong>：$(HE $Bundle.impactLookup[[string]$_.id])</p>"
+    }) -join ""
+
+    $sections.Add("<div class=""combo standingsCard""><h3>$($groupItem.group) 小组积分榜</h3><table><thead><tr><th>球队</th><th>已赛</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>出线状态</th></tr></thead><tbody>$rows</tbody></table><div class=""impact"">$impact</div></div>")
+  }
+  return ($sections -join "")
+}
+
+function RootStandingsSectionHtml($Bundle) {
+  $sections = New-Object System.Collections.Generic.List[string]
+  foreach ($groupItem in $Bundle.groups) {
+    $rows = foreach ($row in $groupItem.rows) {
+      $cls = if ($row.rank -eq 1) { " class=""top1""" } elseif ($row.rank -eq 2) { " class=""top2""" } else { "" }
+      "<tr$cls><td>$($row.rank)</td><td>$($row.team)</td><td>$($row.played)</td><td>$($row.gf)</td><td>$($row.ga)</td><td>$($row.gd)</td><td>$($row.points)</td><td>$($row.status)</td></tr>"
+    }
+    $sections.Add("<div class=""groupCard""><h3>$($groupItem.group) 组</h3><div class=""tableWrap""><table><thead><tr><th>排名</th><th>球队</th><th>已赛</th><th>进球</th><th>失球</th><th>净胜</th><th>积分</th><th>状态</th></tr></thead><tbody>$rows</tbody></table></div></div>")
+  }
+  return ($sections -join "")
+}
+
+function BuildStandingsPageHtml($Bundle, [string]$LatestDate, [string]$DateText, [string]$UpdateTime) {
+  $groupTables = RootStandingsSectionHtml $Bundle
+  return @"
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 世界杯小组赛积分榜</title>
+<style>
+:root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 18% 8%,rgba(51,226,138,.16),transparent 24%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
+main{max-width:1240px;margin:0 auto;padding:40px 18px 52px}.hero,.groupCard,.shortcut{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.hero{padding:22px;margin-bottom:22px}.hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,46px)}.hero p{margin:0;color:var(--muted);line-height:1.8}.heroMeta{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.shortcut{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;margin-bottom:22px}.shortcut strong{display:block;font-size:20px;color:var(--blue)}.shortcut p{margin:6px 0 0;color:var(--muted)}.shortcut a{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:8px;background:#12362f;border:1px solid #2f8766;color:#a8ffd6;text-decoration:none;font-weight:800}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}footer{margin-top:36px;color:#8ea8a1;font-size:13px}@media(max-width:720px){.shortcut{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<h1>2026 世界杯小组赛积分榜</h1>
+<p>按组别汇总当前积分、进球、净胜球与出线状态，头名和次名已高亮，便于快速查看每组晋级区。</p>
+<div class="heroMeta"><span>最新更新时间：$(HE $UpdateTime)</span><span>对应预测日：$(DateTitle $DateText)</span></div>
+</section>
+<section class="shortcut">
+<div><strong>快捷入口</strong><p>直接跳转到最新的每日预测页，继续查看当日四场推荐与复盘修正。</p></div>
+<a href="./$LatestDate/">进入 $LatestDate 页面</a>
+</section>
+<section>
+<h2 class="sectionTitle">全部小组排名</h2>
+<div class="groups">
+$groupTables
+</div>
+</section>
+<footer>仅供公开信息分析参考，不构成投注建议。</footer>
+</main>
+</body>
+</html>
+"@
+}
+
+function BuildRootIndexHtml($RootPath, $Bundle, [string]$LatestDate, [string]$DateText, [string]$UpdateTime) {
+  $cards = New-Object System.Collections.Generic.List[string]
+  $dirs = @(Get-ChildItem -LiteralPath $RootPath -Directory | Where-Object {
+    $_.Name -match '^\d{8}$' -and (Test-Path (Join-Path $_.FullName 'index.html'))
+  } | Sort-Object Name -Descending)
+
+  foreach ($dir in $dirs) {
+    $cards.Add("<a class=""card"" href=""./$($dir.Name)/""><div><div class=""date"">$($dir.Name)</div><div class=""meta"">&#39044;&#27979;&#30475;&#26495;&#19982;&#36187;&#21518;&#22797;&#30424;</div></div><div class=""go"">&#36827;&#20837; &#8594;</div></a>")
+  }
+
+  $groupTables = RootStandingsSectionHtml $Bundle
+
+  return @"
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 世界杯预测中心</title>
+<style>
+:root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(51,226,138,.18),transparent 26%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
+main{max-width:1180px;margin:0 auto;padding:44px 18px}.hero{display:grid;gap:12px;margin-bottom:26px}h1{font-size:clamp(28px,5vw,48px);margin:0}p{color:var(--muted);line-height:1.8;margin:0}.heroMeta{display:flex;gap:12px;flex-wrap:wrap}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.list{display:grid;gap:14px;margin-top:20px;margin-bottom:34px}.card,.groupCard,.spotlight{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;text-decoration:none;color:var(--text);transition:.22s}.card:hover,.spotlight:hover{transform:translateY(-3px);border-color:var(--green)}.date{font-size:24px;font-weight:800;color:var(--blue)}.meta{color:var(--muted);margin-top:6px}.go{color:var(--green);font-weight:800;white-space:nowrap}.spotlight{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px;text-decoration:none;color:var(--text);margin:16px 0 22px}.spotlight strong{display:block;font-size:22px;color:var(--blue)}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}footer{margin-top:40px;color:#8ea8a1;font-size:13px}@media(max-width:620px){.card,.spotlight{align-items:flex-start;flex-direction:column}.go{white-space:normal}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<h1>2026 世界杯预测中心</h1>
+<p>这里汇总每日预测看板、赛果复盘和模型校准记录，页面基于公开赔率与公开赛果持续更新。</p>
+<div class="heroMeta"><span>最新更新时间：$(HE $UpdateTime)</span><span>当前主推页面：$(DateTitle $DateText)</span></div>
+</section>
+<a class="spotlight" href="./standings.html"><div><strong>全部小组积分榜</strong><p>按组别查看积分、进球、净胜球和出线状态，头名与次名已高亮，并带有最新更新时间。</p></div><div class="go">查看总榜 →</div></a>
+<section class="list">
+$($cards -join "`n")
+</section>
+<section>
+<h2 class="sectionTitle">最新小组赛积分榜</h2>
+<div class="groups">
+$groupTables
+</div>
+</section>
+<footer>仅供公开信息分析参考，不构成投注建议。</footer>
+</main>
+</body>
+</html>
+"@
 }
 
 function ResultLean($Result) {
@@ -475,6 +1300,10 @@ function BuildPreviousReview() {
   return "<section id=""reviewModel"" class=""section""><h2>&#26152;&#26085;&#22797;&#30424;&#19982;&#20170;&#26085;&#27169;&#22411;&#20462;&#27491;</h2><div class=""recommend""><div class=""kv""><div><strong>&#24050;&#32467;&#31639;</strong>$settled &#22330;</div><div><strong>&#24635;&#36827;&#29699;&#21629;&#20013;</strong>$goalHits / $settled ($goalRate)</div><div><strong>&#32988;&#24179;&#36127;&#26041;&#21521;</strong>$sideHits / $settled ($sideRate)</div><div><strong>&#20170;&#26085;&#20462;&#27491;</strong>&#38477;&#20302;&#26426;&#26800;&#36319;&#20302;&#36180;&#26435;&#37325;&#65292;&#25260;&#39640;&#23614;&#37096;&#36827;&#29699;&#19982;&#20919;&#38376;&#38450;&#32447;</div></div><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#39044;&#27979;&#24635;&#36827;&#29699;</th><th>&#26368;&#32456;&#27604;&#20998;</th><th>&#21629;&#20013;</th><th>&#22797;&#30424;&#32467;&#35770;</th></tr></thead><tbody>" + ($reviewRows -join "") + "</tbody></table><p class=""modelNote"">&#27169;&#22411;&#21453;&#39304;&#65306;" + (HE $modelNote) + "</p></div></section>"
 }
 
+$script:historicalMatches = GetHistoricalMatches
+$standingsSnapshot = if ($payload.PSObject.Properties.Name -contains "standingsSnapshot") { $payload.standingsSnapshot } else { $null }
+$standingsBundle = BuildStandingsBundle $payload.matches $standingsSnapshot
+
 $summaryCards = New-Object System.Collections.Generic.List[string]
 $detailCards = New-Object System.Collections.Generic.List[string]
 $navLinks = New-Object System.Collections.Generic.List[string]
@@ -482,23 +1311,51 @@ $resultRows = New-Object System.Collections.Generic.List[string]
 $buyRows = New-Object System.Collections.Generic.List[string]
 $goalComboRows = New-Object System.Collections.Generic.List[string]
 $scoreComboRows = New-Object System.Collections.Generic.List[string]
+$scoreArtifacts = New-Object System.Collections.Generic.List[object]
+$evArtifacts = New-Object System.Collections.Generic.List[object]
 $rows = @()
 
 $i = 0
 foreach ($m in $payload.matches) {
   $i += 1
   $lean = GetLean $m
+  $scoreCard = BuildScoreCard $m $lean $standingsBundle
+  $evArtifact = BuildEvArtifact $m $lean $scoreCard
+  $halfFull = BuildHalfFullArtifact $m $lean $evArtifact
   $hot = HotLabel $m $lean
   $tagClass = if ($hot -eq (C "cold")) { "tag hot" } else { "tag" }
   $goalOdd = GoalOdd $m
+  $impactText = $standingsBundle.impactLookup[[string]$m.id]
+  $groupStandingBrief = MatchGroupStandingBrief $m $standingsBundle
   $buyText = if ($lean.strong) { "&#24635;&#36827;&#29699; " + (GoalLabel $m.prediction.totalGoals) } elseif ($lean.code -eq "away") { $lean.text + " + &#24635;&#36827;&#29699; " + (GoalLabel $m.prediction.totalGoals) } else { "&#38450;&#24179; + &#24635;&#36827;&#29699; " + (GoalLabel $m.prediction.totalGoals) }
   $buyReason = if ($lean.strong) { "&#36180;&#29575;&#24378;&#20542;&#21521; + &#27604;&#20998;&#20027;&#32447;&#38598;&#20013;" } elseif ($lean.code -eq "away") { "&#23458;&#32988;&#21387;&#21046;&#26126;&#26174;&#65292;&#20998;&#25903;&#36335;&#24452;&#28165;&#26224;" } else { "&#24179;&#34913;&#23616;&#38656;&#35201;&#25226;&#38450;&#23432;&#25569;&#22312;&#25163;&#37324;" }
-  $resultRows.Add("<tr><td>" + (HE $m.matchNumStr) + "</td><td>" + (HE "$($m.home) vs $($m.away)") + "</td><td>" + $lean.text + "</td><td>" + (GoalLabel $m.prediction.totalGoals) + "</td><td>" + (HE ($m.prediction.scores -join " / ")) + "</td><td>" + (HE $m.prediction.upset) + "</td><td>" + (MysticBrief $m $lean) + "</td><td>" + (Conf $m.prediction.confidence) + "</td></tr>")
+  $resultRows.Add("<tr><td>" + (HE $m.matchNumStr) + "</td><td>" + (HE "$($m.home) vs $($m.away)") + "</td><td>" + (HE $groupStandingBrief) + "</td><td>" + $lean.text + "</td><td>" + (HE $halfFull.primary) + "</td><td>" + (GoalLabel $m.prediction.totalGoals) + " / " + (HE $halfFull.totalBand) + "</td><td>" + (HE ($m.prediction.scores -join " / ")) + "</td><td>" + (HE $m.prediction.upset) + "</td><td>" + (MysticBrief $m $lean) + "</td><td>" + (Conf $m.prediction.confidence) + " / " + $scoreCard.stars + "</td></tr>")
   $buyRows.Add("<tr><td>" + (HE $m.matchNumStr) + "</td><td>" + (HE "$($m.home) vs $($m.away)") + "</td><td>" + $buyText + "</td><td>" + (HE $goalOdd) + "</td><td>" + $buyReason + "</td></tr>")
   $summaryCards.Add("<div class=""mini""><span class=""" + $tagClass + """>" + (HE $m.matchNumStr) + " " + $hot + "</span><div class=""teams"">" + (HE $m.home) + " vs " + (HE $m.away) + "</div><small>" + (Overview $m $lean) + "</small></div>")
   $navLinks.Add("<a href=""#m$i"">&#27604;&#36187;$i</a>")
-    $detailCards.Add("<section id=""m$i"" class=""card""><h3>&#27604;&#36187;$i - " + (HE $m.matchNumStr) + " " + (HE $m.home) + " vs " + (HE $m.away) + "</h3><div class=""meta"">&#21271;&#20140;&#26102;&#38388;&#65306;" + (HE $m.kickoff) + " | &#24403;&#22320;&#26102;&#38388;&#65306;" + (HE (MatchKickoffLocal $m)) + " | " + (HE $m.league) + " | " + (HE $m.venue) + " | &#24635;&#25237;&#20837;&#65306;100&#20803;&#20998;&#26512;&#21442;&#32771;&#65292;&#20165;&#20379;&#23089;&#20048;</div><div class=""panel""><div><details open><summary>" + (C "basic") + "</summary><p>" + (Basic $m $lean) + "</p></details><details><summary>" + (C "tactics") + "</summary><p>" + (Tactics $m $lean) + "</p></details><details><summary>" + (C "external") + "</summary><p>" + (External $m) + "</p></details><details><summary>" + (C "group") + "</summary><p>" + (GroupInfo $m $lean) + "</p></details><details><summary>" + (C "odds") + "</summary><p>" + (OddsText $m $lean) + "</p></details></div><div class=""pred""><div class=""box""><h4>" + (C "modelPool") + "</h4><p>ELO&#24378;&#24369;&#12289;Poisson&#36827;&#29699;&#12289;&#36180;&#29575;&#38544;&#21547;&#27010;&#29575;&#12289;&#30424;&#21475;&#28909;&#24230;&#12289;&#38453;&#23481;&#36523;&#20215;&#12289;&#25112;&#26415;&#20811;&#21046;&#12289;&#36187;&#20107;&#21160;&#26426;&#12289;&#26053;&#36884;&#22825;&#27668;&#12289;&#24515;&#29702;&#21387;&#21147;&#12289;&#29572;&#23398;&#27969;&#26102;&#12290;</p></div><div class=""box""><h4>" + (C "total") + "</h4><div class=""big"">" + (GoalLabel $m.prediction.totalGoals) + "</div><small>&#32622;&#20449;&#35828;&#26126;&#65306;" + (Conf $m.prediction.confidence) + "</small></div><div class=""box""><h4>" + (C "steady") + "</h4><span class=""score"">" + (HE $m.prediction.scores[0]) + "</span><span class=""score"">" + (HE $m.prediction.scores[1]) + "</span></div><div class=""box""><h4>" + (C "upset") + "</h4><span class=""score upset"">" + (HE $m.prediction.upset) + "</span></div><div class=""box mystic""><h4>" + (C "mystic") + "</h4><p>" + (Mystic $m $lean) + "</p></div><div class=""box""><h4>" + (C "brief") + "</h4><p>" + (Quick $m $lean) + "</p></div></div></div></section>")
-  $rows += [pscustomobject]@{ match = $m; lean = $lean; goalOdd = [decimal](GoalOdd $m) }
+  $matchOpen = if ($i -eq 1) { " open" } else { "" }
+  $detailCards.Add("<section id=""m$i"" class=""card matchCard""><details class=""matchShell""" + $matchOpen + "><summary><div class=""matchHead""><div><span class=""tagLine"">" + (HE $m.matchNumStr) + " | &#27604;&#36187;$i</span><h3>" + (HE $m.home) + " vs " + (HE $m.away) + "</h3><p class=""matchSub"">&#27604;&#36187;&#24403;&#22320;&#26102;&#38388;&#65306;" + (HE (MatchKickoffLocal $m)) + "</p><p class=""matchSub"">&#25152;&#23646;&#23567;&#32452;&#25490;&#21517;&#65306;" + $groupStandingBrief + "</p></div><div class=""matchQuick""><span><b>&#26041;&#21521;</b>" + $lean.text + "</span><span><b>&#24635;&#36827;&#29699;</b>" + (GoalLabel $m.prediction.totalGoals) + "</span><span><b>&#31283;&#32966;</b>" + (HE ($m.prediction.scores -join " / ")) + "</span><span><b>&#32622;&#20449;</b>" + $scoreCard.stars + "</span></div></div></summary><div class=""matchBody""><div class=""meta"">" + (HE $m.league) + " | " + (HE $m.venue) + " | &#20986;&#32447;&#24433;&#21709;&#65306;" + (HE $impactText) + "</div><div class=""panel""><div><details open><summary>" + (C "basic") + "</summary><p>" + (Basic $m $lean) + "</p></details><details><summary>" + (C "tactics") + "</summary><p>" + (Tactics $m $lean) + "</p></details><details><summary>" + (C "external") + "</summary><p>" + (External $m) + "</p></details><details><summary>" + (C "group") + "</summary><p>" + (GroupInfo $m $lean) + "</p></details><details><summary>" + (C "odds") + "</summary><p>" + (OddsText $m $lean) + "</p></details><details><summary>6. 外部实时数据</summary><p>" + (ExternalLiveData $m) + "</p></details></div><div class=""pred""><div class=""box boxWide""><h4>量化评分卡</h4><p>评分方向：" + $lean.text + "，综合星级 " + $scoreCard.stars + "。玄学已独立，不参与综合打分。</p>" + (ScoreCardHtml $scoreCard) + "</div><div class=""box""><h4>" + (C "total") + "</h4><div class=""big"">" + (GoalLabel $m.prediction.totalGoals) + "</div><small>&#31616;&#21270;Poisson λ: " + ("{0:N2}" -f $evArtifact.lambdaHome) + " / " + ("{0:N2}" -f $evArtifact.lambdaAway) + " | &#32622;&#20449;&#35828;&#26126;&#65306;" + (Conf $m.prediction.confidence) + "</small></div><div class=""box""><h4>半全场与进球区间</h4>" + (HalfFullHtml $halfFull) + "</div><div class=""box""><h4>" + (C "steady") + "</h4><span class=""score"">" + (HE $m.prediction.scores[0]) + "</span><span class=""score"">" + (HE $m.prediction.scores[1]) + "</span></div><div class=""box""><h4>" + (C "upset") + "</h4><span class=""score upset"">" + (HE $m.prediction.upset) + "</span></div><div class=""box boxWide""><h4>比分EV明细</h4><div class=""innerTable"">" + (EvTableHtml $evArtifact) + "</div></div><div class=""box boxWide mystic mysticFull""><h4>玄学独立分析</h4><p>" + (Mystic $m $lean) + "</p></div><div class=""box boxWide""><h4>" + (C "brief") + "</h4><p>" + (Quick $m $lean) + "</p></div></div></div></div></details></section>")
+  $scoreArtifacts.Add([pscustomobject]@{
+    id = $m.id
+    match = "$($m.home) vs $($m.away)"
+    lean = $lean.code
+    stars = $scoreCard.stars
+    composite = $scoreCard.composite
+    dimensions = $scoreCard.dimensions
+    probabilities = $scoreCard.probabilities
+    recent = $scoreCard.recent
+  })
+  $evArtifacts.Add([pscustomobject]@{
+    id = $m.id
+    match = "$($m.home) vs $($m.away)"
+    lambdaHome = $evArtifact.lambdaHome
+    lambdaAway = $evArtifact.lambdaAway
+    totalLambda = $evArtifact.totalLambda
+    halfFull = $halfFull
+    rows = $evArtifact.rows
+    best = $evArtifact.best
+  })
+  $rows += [pscustomobject]@{ match = $m; lean = $lean; goalOdd = [decimal](GoalOdd $m); score = $scoreCard; ev = $evArtifact }
 }
 
 $bestStrong = $rows | Where-Object { $_.lean.strong } | Select-Object -First 1
@@ -510,18 +1367,29 @@ $dayLuck = if ($bestStrong.lean.code -eq "away") { "&#23458;&#26041;&#26106;&#21
 $goalPicks = $rows | Sort-Object goalOdd | Select-Object -First ([Math]::Min(3, $rows.Count))
 $goalCombo = 1.0
 foreach ($p in $goalPicks) {
-  $goalComboRows.Add("<tr><td>" + (HE "$($p.match.home) vs $($p.match.away)") + "</td><td>" + (GoalLabel $p.match.prediction.totalGoals) + "</td><td>" + ("{0:N2}" -f $p.goalOdd) + "</td><td>&#36180;&#29575;&#20027;&#32447;&#19982;&#27169;&#22411;&#21516;&#21521;</td></tr>")
-  $goalCombo *= $p.goalOdd
+  $goalComboRows.Add("<tr><td>" + (HE "$($p.match.home) vs $($p.match.away)") + "</td><td>" + (GoalLabel $p.match.prediction.totalGoals) + "</td><td>" + ("{0:N2}" -f $p.goalOdd) + "</td><td>&#36180;&#29575;&#20027;&#32447;&#19982;&#27169;&#22411;&#21516;&#21521;&#65292;&#35780;&#20998; " + ("{0:N2}" -f $p.score.composite) + "</td></tr>")
+  $goalCombo *= [math]::Max([double]$p.goalOdd, 1.01)
 }
 
-$scorePicks = $rows | Select-Object -First ([Math]::Min(3, $rows.Count))
+$scorePicks = @($rows | ForEach-Object {
+  $matchRow = $_
+  $preferredScores = @($matchRow.match.prediction.scores)
+  $preferred = @($matchRow.ev.rows | Where-Object { $preferredScores -contains $_.score } | Sort-Object ev -Descending)
+  $pick = if ($preferred.Count -gt 0) { $preferred[0] } else { $_.ev.best }
+  [pscustomobject]@{
+    id = $matchRow.match.id
+    match = "$($matchRow.match.home) vs $($matchRow.match.away)"
+    pick = $pick
+  }
+} | Sort-Object { $_.pick.ev } -Descending | Select-Object -First ([Math]::Min(3, $rows.Count)))
 $scoreCombo = 1.0
+$scoreComboEv = 1.0
 foreach ($p in $scorePicks) {
-  $odd = 5.50
-  if ($p.lean.code -eq "away") { $odd = 6.20 }
-  if ($p.match.prediction.totalGoals -eq "3") { $odd += 0.40 }
-  $scoreCombo *= $odd
-  $scoreComboRows.Add("<tr><td>" + (HE "$($p.match.home) vs $($p.match.away)") + "</td><td>" + (HE $p.match.prediction.scores[0]) + "</td><td>" + ("{0:N2}" -f $odd) + "</td><td>&#20027;&#32447;&#27604;&#20998;&#19982;&#32988;&#24179;&#36127;&#26041;&#21521;&#19968;&#33268;</td></tr>")
+  $odd = [double]$p.pick.odds
+  $scoreCombo *= [math]::Max($odd, 1.01)
+  $scoreComboEv *= (1 + [double]$p.pick.ev)
+  $evLabel = if ($p.pick.ev -gt 0) { "&#27491;EV" } else { "&#35266;&#26395;" }
+  $scoreComboRows.Add("<tr><td>" + (HE $p.match) + "</td><td>" + (HE $p.pick.score) + "</td><td>" + ("{0:N2}" -f $odd) + "</td><td>$evLabel / EV " + ("{0:N2}" -f $p.pick.ev) + "</td></tr>")
 }
 
 $reviewLink = ""
@@ -529,6 +1397,7 @@ if (Test-Path (Join-Path $dayDir "review.html")) {
   $reviewLink = "<a href=""./review.html"">" + (C "review") + "</a>"
 }
 $previousReviewSection = BuildPreviousReview
+$standingsSection = "<section id=""standings"" class=""section""><h2>&#23567;&#32452;&#31215;&#20998;&#27036;&#19982;&#20986;&#32447;&#20998;&#26512;</h2>" + (StandingsSectionHtml $standingsBundle $payload.matches) + "</section>"
 
 $html = @"
 <!DOCTYPE html>
@@ -542,23 +1411,25 @@ $html = @"
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 18% 8%,rgba(51,226,138,.16),transparent 24%),linear-gradient(135deg,#020807,#06120f 42%,#071b2a);color:var(--text)}a{color:inherit;text-decoration:none}
 header{position:sticky;top:0;z-index:5;background:rgba(3,12,11,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .hero{max-width:1240px;margin:auto;padding:24px 18px 16px}h1{margin:0 0 14px;font-size:clamp(24px,4vw,42px)}nav{display:flex;gap:10px;flex-wrap:wrap}nav a{padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:var(--mint);font-size:14px}
-main{max-width:1240px;margin:auto;padding:20px 18px 50px}.section{margin:22px 0 34px}.section h2{font-size:26px;margin:0 0 16px;color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}nav a{flex:1;text-align:center}}
+main{max-width:1240px;margin:auto;padding:20px 18px 50px}.section{margin:22px 0 34px}.section h2{font-size:26px;margin:0 0 16px;color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.tableWrap,.innerTable{overflow-x:auto}.stack{display:grid;gap:18px}@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.grid{grid-template-columns:1fr}nav a{flex:1;text-align:center}}
 .mini,.card,.combo,.recommend{background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));border:1px solid var(--line);border-radius:8px;box-shadow:0 16px 36px rgba(0,0,0,.28)}.mini{padding:16px;transition:.22s}.mini:hover,.card:hover,.combo:hover,.recommend:hover{transform:translateY(-3px);border-color:#39d98a}
 .tag{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;background:#12362f;color:var(--green);font-size:12px;border:1px solid #246b59}.hot{background:#422018;color:#ffd0a0;border-color:#ff8a38}.teams{font-size:21px;font-weight:800;margin:11px 0 6px}.kv{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}@media(max-width:760px){.kv{grid-template-columns:repeat(2,1fr)}}.kv div{background:#071817;border:1px solid #173b35;border-radius:7px;padding:10px;text-align:center}.kv strong{display:block;color:var(--mint);font-size:18px}
-.card{padding:18px;margin-bottom:22px;scroll-margin-top:110px}.card h3{font-size:28px;margin:0 0 6px}.meta{color:var(--muted);margin-bottom:14px}.panel{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}@media(max-width:860px){.panel{grid-template-columns:1fr}}
-details{border:1px solid #1b463f;border-radius:8px;margin:9px 0;background:#071817;overflow:hidden}summary{cursor:pointer;padding:12px 14px;color:var(--mint);font-weight:700}details p{margin:0;padding:0 14px 14px;color:#d8eee8;line-height:1.7}.pred{display:grid;gap:10px}.box{border:1px solid #1c5048;background:#071817;border-radius:8px;padding:13px}.box h4{margin:0 0 8px;color:var(--blue)}.big{font-size:32px;color:var(--green);font-weight:900}.score{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.upset{border-color:var(--red);background:#331415;color:#ffd2b0}.mystic{background:linear-gradient(135deg,var(--purple),#1c1538);border-color:#8d5cff}
-.recommend,.combo{padding:18px;margin-bottom:18px}.recommend table,.combo table{width:100%;border-collapse:collapse;overflow:hidden;border-radius:8px}th,td{padding:12px;border-bottom:1px solid #1b463f;text-align:left}th{color:var(--mint);background:#09211e}footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding:24px 12px;font-size:13px}
+.card{padding:18px;margin-bottom:22px;scroll-margin-top:110px}.card h3{font-size:28px;margin:0 0 6px}.meta{color:var(--muted);margin-bottom:14px}.panel{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}@media(max-width:860px){.panel{grid-template-columns:1fr}}
+details{border:1px solid #1b463f;border-radius:8px;margin:9px 0;background:#071817;overflow:hidden}summary{cursor:pointer;padding:12px 14px;color:var(--mint);font-weight:700}details p{margin:0;padding:0 14px 14px;color:#d8eee8;line-height:1.7}.pred{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}.box{border:1px solid #1c5048;background:#071817;border-radius:8px;padding:13px}.boxWide{grid-column:1/-1}.box h4{margin:0 0 8px;color:var(--blue)}.big{font-size:32px;color:var(--green);font-weight:900}.score{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.upset{border-color:var(--red);background:#331415;color:#ffd2b0}.mystic{background:linear-gradient(135deg,var(--purple),#1c1538);border-color:#8d5cff}.mysticFull{padding:16px 16px 18px}.mysticFull h4{margin-bottom:10px}.mysticFull p{margin:0;color:#f2eaff;line-height:1.92;font-size:15px}.hf{display:grid;gap:10px}.hf div{display:flex;justify-content:space-between;gap:12px;padding:8px 10px;border:1px solid #1f4a43;border-radius:8px;background:#0a1f23}.hf span{color:var(--muted)}.hf strong{color:var(--mint)}.hf p{margin:0;color:#d6ece7;line-height:1.6}
+.matchCard{padding:0;overflow:hidden}.matchShell{margin:0;border:none;background:transparent}.matchShell>summary{list-style:none;padding:18px;background:linear-gradient(180deg,rgba(16,37,40,.98),rgba(9,26,29,.98))}.matchShell>summary::-webkit-details-marker{display:none}.matchHead{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}.tagLine{display:inline-block;margin-bottom:8px;color:var(--mint);font-size:12px;letter-spacing:.08em;text-transform:uppercase}.matchSub{margin:0;color:var(--muted);padding:0}.matchQuick{display:grid;grid-template-columns:repeat(2,minmax(140px,1fr));gap:8px;min-width:min(100%,380px)}.matchQuick span{display:block;padding:10px 12px;border:1px solid #1f4a43;border-radius:8px;background:#0b201d;color:#dff9f1}.matchQuick b{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}.matchBody{padding:0 18px 18px}@media(max-width:860px){.pred{grid-template-columns:1fr}.matchHead{flex-direction:column}.matchQuick{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}}@media(max-width:520px){.matchQuick{grid-template-columns:1fr}}
+.recommend,.combo{padding:18px;margin-bottom:18px}.recommend table,.combo table,.evTable{width:100%;border-collapse:collapse;overflow:hidden;border-radius:8px;min-width:820px}th,td{padding:12px;border-bottom:1px solid #1b463f;text-align:left}th{color:var(--mint);background:#09211e}.scorecard{display:grid;gap:8px}.scorehead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.scorehead strong{font-size:24px;color:var(--green)}.scorehead em{color:#ffe39c;font-style:normal}.metric{display:grid;grid-template-columns:92px 1fr 42px;align-items:center;gap:8px}.metric span,.metric strong{font-size:13px}.bar{height:9px;border-radius:999px;background:#102528;border:1px solid #1f4a43;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,#2ecf7a,#7dd3fc)}.pos{color:#8fffd0}.neg{color:#ffb2b8}.standingsCard .impact p{margin:10px 0 0;color:#d6ece7}.hl td{background:rgba(51,226,138,.08)}footer{color:#8ea8a1;text-align:center;border-top:1px solid var(--line);padding:24px 12px;font-size:13px}
 </style>
 </head>
 <body>
-<header><div class="hero"><h1>&#127757; 2026&#19990;&#30028;&#26479; &#39044;&#27979;&#30475;&#26495; $(DateTitle $payload.dateText)</h1><nav><a href="#reviewModel">&#22797;&#30424;&#20462;&#27491;</a><a href="#final">$(C "final")</a><a href="#overview">$(C "overview")</a>$($navLinks -join "")<a href="#combo">$(C "combo")</a>$reviewLink<a href="../index.html">$(C "home")</a></nav></div></header>
+<header><div class="hero"><h1>&#127757; 2026&#19990;&#30028;&#26479; &#39044;&#27979;&#30475;&#26495; $(DateTitle $payload.dateText)</h1><nav><a href="#reviewModel">&#22797;&#30424;&#20462;&#27491;</a><a href="#final">$(C "final")</a><a href="#overview">$(C "overview")</a>$($navLinks -join "")<a href="#standings">&#23567;&#32452;&#31215;&#20998;&#27036;</a><a href="#combo">$(C "combo")</a>$reviewLink<a href="../index.html">$(C "home")</a></nav></div></header>
 <main>
 $previousReviewSection
-<section id="final" class="section"><h2>$(C "final")</h2><div class="recommend"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#32988;&#24179;&#36127;&#26041;&#21521;</th><th>&#24635;&#36827;&#29699;</th><th>&#31283;&#32966;&#27604;&#20998;</th><th>&#20919;&#38376;&#27604;&#20998;</th><th>&#29572;&#23398;&#34701;&#21512;</th><th>&#32622;&#20449;</th></tr></thead><tbody>$($resultRows -join "")</tbody></table></div></section>
-<section id="buy" class="section"><h2>$(C "buy")</h2><div class="recommend"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#25512;&#33616;&#20080;&#27861;</th><th>&#21442;&#32771;&#36180;&#29575;</th><th>$(C "reason")</th></tr></thead><tbody>$($buyRows -join "")</tbody></table></div></section>
+<section id="final" class="section"><h2>$(C "final")</h2><div class="recommend"><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#25152;&#23646;&#23567;&#32452;&#25490;&#21517;</th><th>&#32988;&#24179;&#36127;&#26041;&#21521;</th><th>&#21322;&#20840;&#22330;</th><th>&#24635;&#36827;&#29699;</th><th>&#31283;&#32966;&#27604;&#20998;</th><th>&#20919;&#38376;&#27604;&#20998;</th><th>&#29572;&#23398;&#29420;&#31435;&#32467;&#35770;</th><th>&#32622;&#20449;</th></tr></thead><tbody>$($resultRows -join "")</tbody></table></div></div></section>
+<section id="buy" class="section"><h2>$(C "buy")</h2><div class="recommend"><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#25512;&#33616;&#20080;&#27861;</th><th>&#21442;&#32771;&#36180;&#29575;</th><th>$(C "reason")</th></tr></thead><tbody>$($buyRows -join "")</tbody></table></div></div></section>
 <section id="overview" class="section"><h2>$(C "summary")</h2><div class="grid">$($summaryCards -join "")</div><div class="kv"><div><strong>$(C "best")</strong>$(HE $bestStrong.match.home) vs $(HE $bestStrong.match.away) / $(GoalLabel $bestStrong.match.prediction.totalGoals)</div><div><strong>$(C "biggestCold")</strong>$(HE $bestCold.match.home) vs $(HE $bestCold.match.away) / $(HE $bestCold.match.prediction.upset)</div><div><strong>$(C "route")</strong>$goalRoute</div><div><strong>$(C "luck")</strong>$dayLuck</div></div></section>
 $($detailCards -join "")
-<section id="combo" class="section"><h2>$(C "combo")</h2><div class="combo"><h3>&#19977;&#20018;&#19968; &#24635;&#36827;&#29699;&#25968;</h3><table><thead><tr><th>&#22330;&#27425;</th><th>&#25512;&#33616;&#24635;&#36827;&#29699;</th><th>&#21333;&#39033;&#36180;&#29575;</th><th>&#27169;&#22411;&#29702;&#30001;</th></tr></thead><tbody>$($goalComboRows -join "")</tbody></table><p><strong>&#32452;&#21512;&#36180;&#29575;&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f $goalCombo))</span></p></div><div class="combo"><h3>&#19977;&#20018;&#19968; &#27604;&#20998;</h3><table><thead><tr><th>&#22330;&#27425;</th><th>&#25512;&#33616;&#31283;&#32966;&#27604;&#20998;</th><th>&#20272;&#31639;&#36180;&#29575;</th><th>&#27169;&#22411;&#29702;&#30001;</th></tr></thead><tbody>$($scoreComboRows -join "")</tbody></table><p><strong>&#32452;&#21512;&#36180;&#29575;&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f $scoreCombo))</span></p></div><div class="combo"><h3>$(C "risk")</h3><p>&#32452;&#21512;&#20165;&#20026;&#23089;&#20048;&#21442;&#32771;&#65292;&#19981;&#20445;&#35777;&#21629;&#20013;&#12290;&#33509;&#20020;&#22330;&#39318;&#21457;&#20986;&#29616;&#36718;&#25442;&#25110;&#36180;&#29575;&#24613;&#36895;&#24322;&#21160;&#65292;&#20248;&#20808;&#20445;&#30041;&#24635;&#36827;&#29699;&#20027;&#32447;&#65292;&#27604;&#20998;&#24314;&#35758;&#38477;&#19968;&#26723;&#22788;&#29702;&#12290;</p></div></section>
+$standingsSection
+<section id="combo" class="section"><h2>$(C "combo")</h2><div class="combo"><h3>&#19977;&#20018;&#19968; &#24635;&#36827;&#29699;&#25968;</h3><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#25512;&#33616;&#24635;&#36827;&#29699;</th><th>&#21333;&#39033;&#36180;&#29575;</th><th>&#27169;&#22411;&#29702;&#30001;</th></tr></thead><tbody>$($goalComboRows -join "")</tbody></table></div><p><strong>&#32452;&#21512;&#36180;&#29575;&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f $goalCombo))</span></p></div><div class="combo"><h3>&#19977;&#20018;&#19968; &#27604;&#20998;</h3><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#25512;&#33616;&#31283;&#32966;&#27604;&#20998;</th><th>&#20272;&#31639;&#36180;&#29575;</th><th>&#27169;&#22411;&#29702;&#30001;</th></tr></thead><tbody>$($scoreComboRows -join "")</tbody></table></div><p><strong>&#32452;&#21512;&#36180;&#29575;&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f $scoreCombo))</span></p><p><strong>&#32452;&#21512;EV&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f ($scoreComboEv - 1)))</span></p></div><div class="combo"><h3>$(C "risk")</h3><p>&#32452;&#21512;&#20165;&#20026;&#23089;&#20048;&#21442;&#32771;&#65292;&#19981;&#20445;&#35777;&#21629;&#20013;&#12290;&#33509;&#25152;&#26377;&#27604;&#20998;EV&#37117;&#20026;&#36127;&#65292;&#20248;&#20808;&#20445;&#30041;&#24635;&#36827;&#29699;&#20027;&#32447;&#25110;&#32988;&#24179;&#36127;&#26041;&#21521;&#65292;&#27604;&#20998;&#24314;&#35758;&#38477;&#19968;&#26723;&#22788;&#29702;&#12290;</p></div></section>
 </main>
 <footer>&#9888;&#65039; &#20165;&#20379;&#23089;&#20048;&#20998;&#26512;&#21442;&#32771;&#65292;&#19981;&#26500;&#25104;&#20219;&#20309;&#36141;&#24425;&#24314;&#35758;&#65292;&#35831;&#29702;&#24615;&#36141;&#24425;&#65281;</footer>
 </body>
@@ -568,6 +1439,30 @@ $($detailCards -join "")
 $html = [System.Net.WebUtility]::HtmlDecode($html)
 $html | Set-Content -Encoding UTF8 $dayIndex
 $html | Set-Content -Encoding UTF8 $predictFile
+
+$rootHtml = BuildRootIndexHtml $root $standingsBundle $Date $payload.dateText $payload.lastUpdateTime
+$rootHtml = [System.Net.WebUtility]::HtmlDecode($rootHtml)
+$rootHtml | Set-Content -Encoding UTF8 $rootIndex
+
+$standingsHtml = BuildStandingsPageHtml $standingsBundle $Date $payload.dateText $payload.lastUpdateTime
+$standingsHtml = [System.Net.WebUtility]::HtmlDecode($standingsHtml)
+$standingsHtml | Set-Content -Encoding UTF8 $rootStandingsPage
+
+$scoreJsonFile = Join-Path $dayDir ("scores_" + $Date + ".json")
+$evJsonFile = Join-Path $dayDir ("ev_" + $Date + ".json")
+$standingsJsonFile = Join-Path $dayDir ("standings_" + $Date + ".json")
+
+($scoreArtifacts | ConvertTo-Json -Depth 10) | Set-Content -Encoding UTF8 $scoreJsonFile
+($evArtifacts | ConvertTo-Json -Depth 10) | Set-Content -Encoding UTF8 $evJsonFile
+(
+  @($standingsBundle.groups | ForEach-Object {
+    [pscustomobject]@{
+      group = $_.group
+      rows = $_.rows
+    }
+  }) | ConvertTo-Json -Depth 10
+) | Set-Content -Encoding UTF8 $standingsJsonFile
+
 Write-Host "Generated daily board: $dayIndex"
 
 

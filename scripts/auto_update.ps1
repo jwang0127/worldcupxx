@@ -48,7 +48,19 @@ if (-not (Test-Path $dataFile)) {
   throw "Missing data file: $dataFile"
 }
 
-& (Join-Path $PSScriptRoot "sync_schedule_metadata.ps1") -DataFile $dataFile -Quiet
+Get-ChildItem -Path $dataDir -Filter "*.json" | ForEach-Object {
+  & (Join-Path $PSScriptRoot "sync_schedule_metadata.ps1") -DataFile $_.FullName -Quiet
+}
+
+$pythonExe = "C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+if (Test-Path $pythonExe) {
+  try {
+    & $pythonExe (Join-Path $PSScriptRoot "enrich_match_data.py") --date $Date --data-file $dataFile
+  }
+  catch {
+    Write-Host "External enrichment unavailable: $($_.Exception.Message)"
+  }
+}
 
 try {
   & (Join-Path $PSScriptRoot "backfill_results.ps1") -Date $Date -DataFile $dataFile

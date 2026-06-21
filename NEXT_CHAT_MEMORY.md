@@ -1,174 +1,99 @@
-# 新对话记忆文档：世界杯预测看板
+# 新对话续接记忆
 
 新开对话后，先读这个文件，再继续执行。
 
-当前项目根目录:
+## 当前项目位置
+
+根目录：
 
 `C:\Users\Administrator\Documents\世界杯预测`
 
-## 项目目标
+分享执行手册：
 
-用户要的是“每日世界杯预测看板”，不是流程图，也不是单独模型页。
+[`SHAREABLE_PREDICTION_REVIEW_LOGIC.md`](C:/Users/Administrator/Documents/世界杯预测/SHAREABLE_PREDICTION_REVIEW_LOGIC.md)
 
-每天根据赛程、赔率和昨日赛果，生成:
+## 当前模型状态
 
-1. 当日中文预测看板
-2. 昨日复盘页
-3. 可直接发布到 GitHub Pages 的 HTML 页面
+目前模型已经完成这些升级：
 
-发布仓库:
+1. 主模型与玄学模型分离
+2. 新增半全场预测
+3. 新增总进球区间预测
+4. 新增比分 EV 明细
+5. 新增小组积分榜与出线分析
+6. 新增外部实时数据区块
 
-`https://github.com/jwang0127/worldcupxx.git`
+## 当前已接通的数据源
 
-页面地址:
+1. `worldcup26.ir/get/games`
+   - 当前用于小组积分和赛果结构
+2. `football-data.org`
+   - 备源
+3. `v3.football.api-sports.io`
+   - 伤停、H2H、国家队查询
+4. `TheSportsDB`
+   - 球队资料
+5. `SerpApi`
+   - FIFA 排名补充
 
-`https://jwang0127.github.io/worldcupxx/`
+## 当前必须记住的硬规则
 
-## 用户明确偏好
+1. 所有预测前，必须先以 `2026年世界杯赛程表.xlsx` 为准
+2. 玄学起卦必须使用比赛当地时间
+3. 输出前必须再检查一次主客队、时间、小组、赔率归属
+4. 体彩场次编号不能直接当作赛程顺序编号
 
-1. 页面必须是中文
-2. 顶部必须有“今天该买什么”和“今日预测结果”
-3. 每场都要有详细分析，不能只给结论
-4. 分析维度必须包括:
-   - 基本面
-   - 战术与教练
-   - 外部因素
-   - 小组形势
-   - 赔率解读
-5. 玄学分析必须嵌入单场卡片里，不能单独拆页
-6. 页面底部必须保留“仅供娱乐分析参考，不构成购彩建议”
+## 已确认的重要错误
 
-## 现在新增的硬规则
+`035` 曾被错误写成 `厄瓜多尔 vs 克罗地亚`，正确应为 `厄瓜多尔 vs 库拉索`。
 
-### 1. 赛程表是最高优先级基准
+根因不是笔误，而是：
 
-以后所有预测前，先以:
+1. 没先过赛程表
+2. 误把场次号当成赛程序号
+3. 输出前没做最终复核
 
-`C:\Users\Administrator\Documents\世界杯预测\2026年世界杯赛程表.xlsx`
+## 当前关键脚本
 
-为准，确认:
-
-1. 主队
-2. 客队
-3. 北京时间
-4. 当地时间
-5. 小组
-
-赔率材料只能补赔率，不能代替赛程核对。
-
-### 2. 玄学统一按当地时间起卦
-
-以后玄学判断不用北京时间直接起卦，统一用比赛当地时间。
-
-页面中允许同时展示北京时间和当地时间，但玄学判断必须以当地时间为准。
-
-### 3. 出稿前必须再检查一遍
-
-每次输出前都要做最终复查，至少检查:
-
-1. JSON 主客队是否与赛程表一致
-2. 北京时间是否正确
-3. 当地时间是否已写入
-4. 页面是否与 JSON 一致
-5. 易错场次是否再次核对
-
-## 已定位的一次关键错误
-
-### 错误内容
-
-2026-06-21 预测中，原来把 `035` 写成了:
-
-`厄瓜多尔 vs 克罗地亚`
-
-实际应改为:
-
-`厄瓜多尔 vs 库拉索`
-
-### 错误原因
-
-不是简单手误，而是流程错误:
-
-1. 先看了赔率材料，没有先过赛程表
-2. 默认把体彩场次号当成赛程顺序号
-3. 人工补写球队时没有做最终校对
-
-### 以后如何避免
-
-1. 先跑赛程校验
-2. 再录赔率
-3. 再生成页面
-4. 出稿前做最终复查
-
-## 关键脚本
-
-### `scripts/sync_schedule_metadata.ps1`
-
-作用:
-
-1. 读取 `2026年世界杯赛程表.xlsx`
-2. 用赛程表校验并同步 `data/YYYYMMDD.json`
-3. 写入组别、北京时间、当地时间
-4. 修正明显的主客队串位问题
-
-### `scripts/auto_update.ps1`
-
-作用:
-
-1. 自动执行赛程校验
-2. 回填赛果
-3. 生成页面
-4. 更新复盘页和首页
-
-### `scripts/generate_daily_board.ps1`
-
-作用:
-
-1. 生成 `YYYYMMDD/index.html`
-2. 生成 `YYYYMMDD/predict_YYYYMMDD.html`
-3. 页面中显示北京时间和当地时间
-4. 玄学部分使用当地时间时辰
-
-### `push_to_github.ps1`
-
-作用:
-
-1. 提交当前修改
-2. 推送到 GitHub
+1. `scripts/auto_update.ps1`
+2. `scripts/generate_daily_board.ps1`
+3. `scripts/sync_schedule_metadata.ps1`
+4. `scripts/enrich_match_data.py`
+5. `scripts/backfill_results.ps1`
+6. `push_to_github.ps1`
 
 ## 常用命令
 
-先同步赛程并生成:
+全流程更新但不推送：
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 & .\scripts\auto_update.ps1 -Date 20260621 -NoPush
 ```
 
-单独跑赛程同步:
+单独富化：
+
+```powershell
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe .\scripts\enrich_match_data.py --date 20260621 --data-file .\data\20260621.json
+```
+
+单独重建页面：
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
-& .\scripts\sync_schedule_metadata.ps1 -DataFile .\data\20260621.json
+& .\scripts\generate_daily_board.ps1 -Date 20260621
 ```
 
-推送 GitHub:
+推送 GitHub：
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\push_to_github.ps1
 ```
 
-## 当前需要牢记的操作顺序
+## 新对话建议的第一句话
 
-如果用户说“继续今天的预测”或“更新明日预测”，固定顺序是:
+如果用户说“继续执行”，先做这三件事：
 
-1. 先确认日期和要处理的场次
-2. 先核对 `2026年世界杯赛程表.xlsx`
-3. 再录入或检查赔率
-4. 回填昨日赛果
-5. 运行生成脚本
-6. 复查主客队、时间、当地时间、页面文案
-7. 再推送 GitHub
-
-## 一句话提醒
-
-以后任何人工补录的比赛，只要没有先过赛程表，就不能直接出稿。
+1. 读取 `SHAREABLE_PREDICTION_REVIEW_LOGIC.md`
+2. 确认今天要处理的日期和 4 场编号
+3. 先检查赛程表，再动预测数据

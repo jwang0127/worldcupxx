@@ -1,272 +1,740 @@
-﻿{
-    "date":  "20260621",
-    "dateText":  "2026-06-21",
-    "source":  "manual-screenshot-odds",
-    "fetchedAt":  "2026-06-20T11:19:00+08:00",
-    "lastUpdateTime":  "2026-06-20 11:19:00",
-    "apiPoolCode":  "ttg,had,crs,hafu",
-    "matches":  [
-                    {
-                        "id":  "033",
-                        "matchNumStr":  "周六033",
-                        "matchId":  "manual-20260621-033",
-                        "league":  "世界杯",
-                        "kickoff":  "2026-06-22 01:00:00",
-                        "home":  "荷兰",
-                        "away":  "瑞典",
-                        "venue":  "F组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
-                        "prediction":  {
-                                           "totalGoals":  "3",
-                                           "scores":  [
-                                                          "2:1",
-                                                          "3:0"
-                                                      ],
-                                           "upset":  "1:1",
-                                           "confidence":  "high"
-                                       },
-                        "result":  null,
-                        "review":  "主胜 1.59 明确占优，但让一球客向 2.04 更低，说明荷兰更像赢球稳、深穿未必稳；总进球 2 球与 3 球赔率紧贴，复盘后优先抬到 3 球。",
-                        "odds":  {
-                                     "had":  {
-                                                 "home":  "1.59",
-                                                 "draw":  "3.58",
-                                                 "away":  "4.52",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "hhad":  {
-                                                  "home":  "2.86",
-                                                  "draw":  "3.45",
-                                                  "away":  "2.04",
-                                                  "handicap":  "-1",
-                                                  "updatedAt":  "2026-06-20 11:19:00"
-                                              },
-                                     "ttg":  {
-                                                 "s0":  "13.00",
-                                                 "s1":  "5.10",
-                                                 "s2":  "3.45",
-                                                 "s3":  "3.40",
-                                                 "s4":  "5.25",
-                                                 "s5":  "9.00",
-                                                 "s6":  "18.00",
-                                                 "s7":  "25.00",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "crs":  {
-                                                 "0100":  "7.30",
-                                                 "0200":  "7.50",
-                                                 "0201":  "6.30",
-                                                 "0300":  "12.00",
-                                                 "0301":  "11.50",
-                                                 "0000":  "13.00",
-                                                 "0101":  "6.30",
-                                                 "0001":  "13.00"
-                                             }
-                                 },
-                        "group":  "F组",
-                        "localKickoff":  "2026-06-21 13:00:00",
-                        "scheduleSource":  "2026年世界杯赛程表.xlsx",
-                        "scheduleCheck":  {
-                                              "status":  "matched",
-                                              "basis":  "home+kickoff",
-                                              "checkedAt":  "2026-06-20 14:37:02",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
-                                          },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
-                    },
-                    {
-                        "id":  "034",
-                        "matchNumStr":  "周六034",
-                        "matchId":  "manual-20260621-034",
-                        "league":  "世界杯",
-                        "kickoff":  "2026-06-22 04:00:00",
-                        "home":  "德国",
-                        "away":  "科特迪瓦",
-                        "venue":  "E组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
-                        "prediction":  {
-                                           "totalGoals":  "3",
-                                           "scores":  [
-                                                          "2:0",
-                                                          "3:1"
-                                                      ],
-                                           "upset":  "1:1",
-                                           "confidence":  "high"
-                                       },
-                        "result":  null,
-                        "review":  "主胜 1.40 属于较强热门盘，但让一球三项没有完全失衡，说明德国更像稳定赢球结构；3 球低位最低，结合强队盘尾部修正，保留 2:0 和 3:1 两条主线。",
-                        "odds":  {
-                                     "had":  {
-                                                 "home":  "1.40",
-                                                 "draw":  "4.15",
-                                                 "away":  "5.75",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "hhad":  {
-                                                  "home":  "2.23",
-                                                  "draw":  "3.65",
-                                                  "away":  "2.46",
-                                                  "handicap":  "-1",
-                                                  "updatedAt":  "2026-06-20 11:19:00"
-                                              },
-                                     "ttg":  {
-                                                 "s0":  "15.00",
-                                                 "s1":  "6.00",
-                                                 "s2":  "3.70",
-                                                 "s3":  "3.40",
-                                                 "s4":  "4.80",
-                                                 "s5":  "8.10",
-                                                 "s6":  "13.50",
-                                                 "s7":  "20.00",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "crs":  {
-                                                 "0100":  "7.70",
-                                                 "0200":  "7.00",
-                                                 "0201":  "6.40",
-                                                 "0300":  "10.00",
-                                                 "0301":  "10.00",
-                                                 "0000":  "15.00",
-                                                 "0101":  "6.70",
-                                                 "0001":  "17.50"
-                                             }
-                                 },
-                        "group":  "E组",
-                        "localKickoff":  "2026-06-21 18:00:00",
-                        "scheduleSource":  "2026年世界杯赛程表.xlsx",
-                        "scheduleCheck":  {
-                                              "status":  "matched",
-                                              "basis":  "home+kickoff",
-                                              "checkedAt":  "2026-06-20 14:37:02",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
-                                          },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
-                    },
-                    {
-                        "id":  "035",
-                        "matchNumStr":  "周六035",
-                        "matchId":  "manual-20260621-035",
-                        "league":  "世界杯",
-                        "kickoff":  "2026-06-22 08:00:00",
-                        "home":  "厄瓜多尔",
-                        "away":  "库拉索",
-                        "venue":  "E组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
-                        "prediction":  {
-                                           "totalGoals":  "3",
-                                           "scores":  [
-                                                          "2:0",
-                                                          "3:0"
-                                                      ],
-                                           "upset":  "2:1",
-                                           "confidence":  "high"
-                                       },
-                        "result":  null,
-                        "review":  "胜平负未开，但让两球主胜 1.90 已能给出明显强弱结构；比分盘 2:0 与 3:0 双低位，总进球 3 球最低，模型先走强队压制盘。",
-                        "odds":  {
-                                     "hhad":  {
-                                                  "home":  "1.90",
-                                                  "draw":  "3.95",
-                                                  "away":  "2.86",
-                                                  "handicap":  "-2",
-                                                  "updatedAt":  "2026-06-20 11:19:00"
-                                              },
-                                     "ttg":  {
-                                                 "s0":  "24.00",
-                                                 "s1":  "7.40",
-                                                 "s2":  "4.30",
-                                                 "s3":  "3.50",
-                                                 "s4":  "4.30",
-                                                 "s5":  "6.50",
-                                                 "s6":  "10.50",
-                                                 "s7":  "13.00",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "crs":  {
-                                                 "0100":  "8.00",
-                                                 "0200":  "5.40",
-                                                 "0201":  "9.00",
-                                                 "0300":  "5.50",
-                                                 "0301":  "10.50",
-                                                 "0400":  "7.20",
-                                                 "0401":  "14.00",
-                                                 "0500":  "11.50"
-                                             }
-                                 },
-                        "scheduleCheck":  {
-                                              "status":  "matched",
-                                              "basis":  "home+kickoff",
-                                              "checkedAt":  "2026-06-20 14:37:02",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
-                                          },
-                        "group":  "E组",
-                        "localKickoff":  "2026-06-21 22:00:00",
-                        "scheduleSource":  "2026年世界杯赛程表.xlsx",
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
-                    },
-                    {
-                        "id":  "036",
-                        "matchNumStr":  "周六036",
-                        "matchId":  "manual-20260621-036",
-                        "league":  "世界杯",
-                        "kickoff":  "2026-06-22 12:00:00",
-                        "home":  "突尼斯",
-                        "away":  "日本",
-                        "venue":  "F组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
-                        "prediction":  {
-                                           "totalGoals":  "2",
-                                           "scores":  [
-                                                          "0:1",
-                                                          "0:2"
-                                                      ],
-                                           "upset":  "1:1",
-                                           "confidence":  "high"
-                                       },
-                        "result":  null,
-                        "review":  "客胜 1.38 是明天最强单边赔率之一，但受让一球后三项仍有拉扯，说明日本更像稳定客胜而非疯狂穿盘；2 球仍是最顺主线。",
-                        "odds":  {
-                                     "had":  {
-                                                 "home":  "6.55",
-                                                 "draw":  "3.96",
-                                                 "away":  "1.38",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "hhad":  {
-                                                  "home":  "2.50",
-                                                  "draw":  "3.40",
-                                                  "away":  "2.30",
-                                                  "handicap":  "+1",
-                                                  "updatedAt":  "2026-06-20 11:19:00"
-                                              },
-                                     "ttg":  {
-                                                 "s0":  "11.00",
-                                                 "s1":  "4.40",
-                                                 "s2":  "3.30",
-                                                 "s3":  "3.60",
-                                                 "s4":  "5.80",
-                                                 "s5":  "10.50",
-                                                 "s6":  "19.00",
-                                                 "s7":  "29.00",
-                                                 "updatedAt":  "2026-06-20 11:19:00"
-                                             },
-                                     "crs":  {
-                                                 "0100":  "14.00",
-                                                 "0200":  "34.00",
-                                                 "0201":  "16.00",
-                                                 "0000":  "11.00",
-                                                 "0101":  "6.20",
-                                                 "0001":  "6.40",
-                                                 "0002":  "6.50",
-                                                 "0102":  "6.50"
-                                             }
-                                 },
-                        "group":  "F组",
-                        "localKickoff":  "2026-06-21 19:00:00",
-                        "scheduleSource":  "2026年世界杯赛程表.xlsx",
-                        "scheduleCheck":  {
-                                              "status":  "matched",
-                                              "basis":  "home+kickoff",
-                                              "checkedAt":  "2026-06-20 14:37:02",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
-                                          },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#23458;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
-                    }
-                ]
+{
+  "date": "20260621",
+  "dateText": "2026-06-21",
+  "source": "manual-screenshot-odds",
+  "fetchedAt": "2026-06-20T11:19:00+08:00",
+  "lastUpdateTime": "2026-06-20 11:19:00",
+  "apiPoolCode": "ttg,had,crs,hafu",
+  "matches": [
+    {
+      "id": "033",
+      "matchNumStr": "周六033",
+      "matchId": "manual-20260621-033",
+      "league": "世界杯",
+      "kickoff": "2026-06-22 01:00:00",
+      "home": "荷兰",
+      "away": "瑞典",
+      "venue": "F组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "2:1",
+          "3:0"
+        ],
+        "upset": "1:1",
+        "confidence": "high"
+      },
+      "result": {
+        "homeGoals": 5,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "manual-image-result"
+      },
+      "review": "主胜 1.59 明确占优，但让一球客向 2.04 更低，说明荷兰更像赢球稳、深穿未必稳；总进球 2 球与 3 球赔率紧贴，复盘后优先抬到 3 球。",
+      "odds": {
+        "had": {
+          "home": "1.59",
+          "draw": "3.58",
+          "away": "4.52",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "hhad": {
+          "home": "2.86",
+          "draw": "3.45",
+          "away": "2.04",
+          "handicap": "-1",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "ttg": {
+          "s0": "13.00",
+          "s1": "5.10",
+          "s2": "3.45",
+          "s3": "3.40",
+          "s4": "5.25",
+          "s5": "9.00",
+          "s6": "18.00",
+          "s7": "25.00",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "crs": {
+          "0100": "7.30",
+          "0200": "7.50",
+          "0201": "6.30",
+          "0300": "12.00",
+          "0301": "11.50",
+          "0000": "13.00",
+          "0101": "6.30",
+          "0001": "13.00"
+        }
+      },
+      "group": "F组",
+      "localKickoff": "2026-06-21 13:00:00",
+      "scheduleSource": "2026年世界杯赛程表.xlsx",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-06-21 13:22:57",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      },
+      "homeEn": "Netherlands",
+      "homeAlias": {
+        "code": "NED",
+        "zh": "荷兰",
+        "en": "Netherlands",
+        "aliases": [
+          "Netherlands",
+          "Holland",
+          "荷兰"
+        ]
+      },
+      "awayEn": "Sweden",
+      "awayAlias": {
+        "code": "SWE",
+        "zh": "瑞典",
+        "en": "Sweden",
+        "aliases": [
+          "Sweden",
+          "瑞典"
+        ]
+      },
+      "external": {
+        "updatedAt": "2026-06-21 12:20:47",
+        "sources": [],
+        "teamMeta": {
+          "home": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Netherlands",
+            "country": "The Netherlands",
+            "formedYear": "1905",
+            "league": "FIFA World Cup",
+            "stadium": "Johan Cruijff ArenA",
+            "description": "The Netherlands national football team (Dutch: Het Nederlands Elftal) has represented the Netherlands in international football matches since 1905. The national team is controlled by the Royal Dutch Football Association (KNVB), which is a p"
+          },
+          "away": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Sweden",
+            "country": "Sweden",
+            "formedYear": "1904",
+            "league": "FIFA World Cup",
+            "stadium": "Strawberry Arena",
+            "description": "The Sweden national football team (Swedish: svenska fotbollslandslaget) represents Sweden in men's international football and it is controlled by the Swedish Football Association, the governing body of football in Sweden. Sweden's home grou"
+          }
+        },
+        "fifaRanking": {
+          "status": "ok",
+          "source": "serpapi",
+          "home": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 7,
+            "points": 1753.57,
+            "query": "Netherlands"
+          },
+          "away": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 25,
+            "points": 1509.79,
+            "query": "Sweden"
+          }
+        },
+        "oddsMovement": {
+          "status": "pending-live-odds-source"
+        },
+        "injuries": {
+          "status": "ok",
+          "source": "api-sports",
+          "home": [],
+          "away": []
+        },
+        "h2h": {
+          "status": "ok",
+          "source": "api-sports",
+          "matches": []
+        }
+      },
+      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;"
+    },
+    {
+      "id": "034",
+      "matchNumStr": "周六034",
+      "matchId": "manual-20260621-034",
+      "league": "世界杯",
+      "kickoff": "2026-06-22 04:00:00",
+      "home": "德国",
+      "away": "科特迪瓦",
+      "venue": "E组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "2:0",
+          "3:1"
+        ],
+        "upset": "1:1",
+        "confidence": "high"
+      },
+      "result": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "manual-image-result"
+      },
+      "review": "主胜 1.40 属于较强热门盘，但让一球三项没有完全失衡，说明德国更像稳定赢球结构；3 球低位最低，结合强队盘尾部修正，保留 2:0 和 3:1 两条主线。",
+      "odds": {
+        "had": {
+          "home": "1.40",
+          "draw": "4.15",
+          "away": "5.75",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "hhad": {
+          "home": "2.23",
+          "draw": "3.65",
+          "away": "2.46",
+          "handicap": "-1",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "ttg": {
+          "s0": "15.00",
+          "s1": "6.00",
+          "s2": "3.70",
+          "s3": "3.40",
+          "s4": "4.80",
+          "s5": "8.10",
+          "s6": "13.50",
+          "s7": "20.00",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "crs": {
+          "0100": "7.70",
+          "0200": "7.00",
+          "0201": "6.40",
+          "0300": "10.00",
+          "0301": "10.00",
+          "0000": "15.00",
+          "0101": "6.70",
+          "0001": "17.50"
+        }
+      },
+      "group": "E组",
+      "localKickoff": "2026-06-21 18:00:00",
+      "scheduleSource": "2026年世界杯赛程表.xlsx",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-06-21 13:22:57",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      },
+      "homeEn": "Germany",
+      "homeAlias": {
+        "code": "GER",
+        "zh": "德国",
+        "en": "Germany",
+        "aliases": [
+          "Germany",
+          "德国"
+        ]
+      },
+      "awayEn": "Ivory Coast",
+      "awayAlias": {
+        "code": "CIV",
+        "zh": "科特迪瓦",
+        "en": "Ivory Coast",
+        "aliases": [
+          "Ivory Coast",
+          "Cote d'Ivoire",
+          "科特迪瓦"
+        ]
+      },
+      "external": {
+        "updatedAt": "2026-06-21 12:20:47",
+        "sources": [],
+        "teamMeta": {
+          "home": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Germany",
+            "country": "Germany",
+            "formedYear": "1899",
+            "league": "FIFA World Cup",
+            "stadium": "Olympiastadion Berlin",
+            "description": "The Germany national football team (German: Deutsche Fußballnationalmannschaft or Die Mannschaft) represents Germany in men's international football and played its first match in 1908. The team is governed by the German Football Association"
+          },
+          "away": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Ivory Coast",
+            "country": "Ivory Coast",
+            "formedYear": "1960",
+            "league": "FIFA World Cup",
+            "stadium": "Stade Olympique Alassane Ouattara",
+            "description": "The Ivory Coast national football team (French: Équipe de Côte d'Ivoire de football), nicknamed Les Éléphants (The Elephants), represents Ivory Coast in international football and is controlled by the Ivorian Football Federation (FIF). Unti"
+          }
+        },
+        "fifaRanking": {
+          "status": "ok",
+          "source": "serpapi",
+          "home": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 10,
+            "points": 2083.09,
+            "query": "Germany"
+          },
+          "away": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 12,
+            "points": null,
+            "query": "Ivory Coast"
+          }
+        },
+        "oddsMovement": {
+          "status": "pending-live-odds-source"
+        },
+        "injuries": {
+          "status": "ok",
+          "source": "api-sports",
+          "home": [],
+          "away": []
+        },
+        "h2h": {
+          "status": "ok",
+          "source": "api-sports",
+          "matches": []
+        }
+      },
+      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;"
+    },
+    {
+      "id": "035",
+      "matchNumStr": "周六035",
+      "matchId": "manual-20260621-035",
+      "league": "世界杯",
+      "kickoff": "2026-06-22 08:00:00",
+      "home": "厄瓜多尔",
+      "away": "库拉索",
+      "venue": "E组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "2:0",
+          "3:0"
+        ],
+        "upset": "2:1",
+        "confidence": "high"
+      },
+      "result": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "status": "Finished",
+        "source": "manual-image-result"
+      },
+      "review": "胜平负未开，但让两球主胜 1.90 已能给出明显强弱结构；比分盘 2:0 与 3:0 双低位，总进球 3 球最低，模型先走强队压制盘。",
+      "odds": {
+        "hhad": {
+          "home": "1.90",
+          "draw": "3.95",
+          "away": "2.86",
+          "handicap": "-2",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "ttg": {
+          "s0": "24.00",
+          "s1": "7.40",
+          "s2": "4.30",
+          "s3": "3.50",
+          "s4": "4.30",
+          "s5": "6.50",
+          "s6": "10.50",
+          "s7": "13.00",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "crs": {
+          "0100": "8.00",
+          "0200": "5.40",
+          "0201": "9.00",
+          "0300": "5.50",
+          "0301": "10.50",
+          "0400": "7.20",
+          "0401": "14.00",
+          "0500": "11.50"
+        }
+      },
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-06-21 13:22:57",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      },
+      "group": "E组",
+      "localKickoff": "2026-06-21 22:00:00",
+      "scheduleSource": "2026年世界杯赛程表.xlsx",
+      "homeEn": "Ecuador",
+      "homeAlias": {
+        "code": "ECU",
+        "zh": "厄瓜多尔",
+        "en": "Ecuador",
+        "aliases": [
+          "Ecuador",
+          "厄瓜多尔"
+        ]
+      },
+      "awayEn": "Curacao",
+      "awayAlias": {
+        "code": "CUW",
+        "zh": "库拉索",
+        "en": "Curacao",
+        "aliases": [
+          "Curacao",
+          "Curaçao",
+          "库拉索"
+        ]
+      },
+      "external": {
+        "updatedAt": "2026-06-21 12:20:47",
+        "sources": [],
+        "teamMeta": {
+          "home": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Ecuador",
+            "country": "Ecuador",
+            "formedYear": "1962",
+            "league": "FIFA World Cup",
+            "stadium": "Estadio Rodrigo Paz Delgado",
+            "description": "The Ecuador national football team (Spanish: Selección de fútbol de Ecuador) has represented Ecuador in men's international football since 1938, and is controlled by the Ecuadorian Football Federation (Federación Ecuatoriana de Fútbol). The"
+          },
+          "away": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Curaçao",
+            "country": "Curacao",
+            "formedYear": "2011",
+            "league": "FIFA World Cup",
+            "stadium": "Stadion Ergilio Hato",
+            "description": "The Curaçao national football team (Dutch: Curaçaos voetbalelftal; Papiamentu, Selekshon di Futbòl Kòrsou) represents Curaçao in International association football and is controlled by the Curaçao Football Federation (Federashon Futbòl Kòrs"
+          }
+        },
+        "fifaRanking": {
+          "status": "ok",
+          "source": "serpapi",
+          "home": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 2,
+            "points": null,
+            "query": "Ecuador"
+          },
+          "away": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 82,
+            "points": 1294.77,
+            "query": "Curacao"
+          }
+        },
+        "oddsMovement": {
+          "status": "pending-live-odds-source"
+        },
+        "injuries": {
+          "status": "ok",
+          "source": "api-sports",
+          "home": [],
+          "away": []
+        },
+        "h2h": {
+          "status": "ok",
+          "source": "api-sports",
+          "matches": []
+        }
+      },
+      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;"
+    },
+    {
+      "id": "036",
+      "matchNumStr": "周六036",
+      "matchId": "manual-20260621-036",
+      "league": "世界杯",
+      "kickoff": "2026-06-22 12:00:00",
+      "home": "突尼斯",
+      "away": "日本",
+      "venue": "F组赛程基准，已按赛程表校验；页面仍按中立场世界杯小组赛模型处理",
+      "prediction": {
+        "totalGoals": "2",
+        "scores": [
+          "0:1",
+          "0:2"
+        ],
+        "upset": "1:1",
+        "confidence": "high"
+      },
+      "result": {
+        "homeGoals": 0,
+        "awayGoals": 4,
+        "status": "Finished",
+        "source": "manual-image-result"
+      },
+      "review": "客胜 1.38 是明天最强单边赔率之一，但受让一球后三项仍有拉扯，说明日本更像稳定客胜而非疯狂穿盘；2 球仍是最顺主线。",
+      "odds": {
+        "had": {
+          "home": "6.55",
+          "draw": "3.96",
+          "away": "1.38",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "hhad": {
+          "home": "2.50",
+          "draw": "3.40",
+          "away": "2.30",
+          "handicap": "+1",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "ttg": {
+          "s0": "11.00",
+          "s1": "4.40",
+          "s2": "3.30",
+          "s3": "3.60",
+          "s4": "5.80",
+          "s5": "10.50",
+          "s6": "19.00",
+          "s7": "29.00",
+          "updatedAt": "2026-06-20 11:19:00"
+        },
+        "crs": {
+          "0100": "14.00",
+          "0200": "34.00",
+          "0201": "16.00",
+          "0000": "11.00",
+          "0101": "6.20",
+          "0001": "6.40",
+          "0002": "6.50",
+          "0102": "6.50"
+        }
+      },
+      "group": "F组",
+      "localKickoff": "2026-06-21 19:00:00",
+      "scheduleSource": "2026年世界杯赛程表.xlsx",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-06-21 13:22:57",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      },
+      "homeEn": "Tunisia",
+      "homeAlias": {
+        "code": "TUN",
+        "zh": "突尼斯",
+        "en": "Tunisia",
+        "aliases": [
+          "Tunisia",
+          "突尼斯"
+        ]
+      },
+      "awayEn": "Japan",
+      "awayAlias": {
+        "code": "JPN",
+        "zh": "日本",
+        "en": "Japan",
+        "aliases": [
+          "Japan",
+          "日本"
+        ]
+      },
+      "external": {
+        "updatedAt": "2026-06-21 12:20:47",
+        "sources": [],
+        "teamMeta": {
+          "home": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Tunisia",
+            "country": "Tunisia",
+            "formedYear": "1957",
+            "league": "FIFA World Cup",
+            "stadium": "Stade Olympique de Radès",
+            "description": "The Tunisia national football team (Arabic: منتخب تونس لكرة القدم‎), nicknamed Les Aigles de Carthage (The Eagles of Carthage or The Carthage Eagles), is the national team of Tunisia and is controlled by the Tunisian Football Federation. Th"
+          },
+          "away": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Japan",
+            "country": "Japan",
+            "formedYear": "1917",
+            "league": "FIFA World Cup",
+            "stadium": "Saitama Stadium 2002",
+            "description": "The Japan national football team (Japanese: サッカー日本代表, Hepburn: Sakkā Nippon Daihyō), nicknamed the Samurai Blue (サムライ・ブルー), represents Japan in men's international football and it is controlled by the Japan Football Association (JFA), the g"
+          }
+        },
+        "fifaRanking": {
+          "status": "ok",
+          "source": "serpapi",
+          "home": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 14,
+            "points": 1476.41,
+            "query": "Tunisia"
+          },
+          "away": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 18,
+            "points": 1661.58,
+            "query": "Japan"
+          }
+        },
+        "oddsMovement": {
+          "status": "pending-live-odds-source"
+        },
+        "injuries": {
+          "status": "ok",
+          "source": "api-sports",
+          "home": [],
+          "away": []
+        },
+        "h2h": {
+          "status": "ok",
+          "source": "api-sports",
+          "matches": []
+        }
+      },
+      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#23458;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 2&#12290;"
+    }
+  ],
+  "externalEnrichment": {
+    "updatedAt": "2026-06-21 13:31:05",
+    "date": "20260621",
+    "sources": [
+      {
+        "name": "worldcup26-ir",
+        "enabled": true,
+        "baseUrl": "https://worldcup26.ir/get/games",
+        "role": "world-cup-schedule-score-mirror"
+      },
+      {
+        "name": "football-data",
+        "enabled": true,
+        "baseUrl": "https://api.football-data.org/v4/matches",
+        "role": "official-match-and-standings-backup"
+      },
+      {
+        "name": "api-sports-football",
+        "enabled": true,
+        "baseUrl": "https://v3.football.api-sports.io/",
+        "role": "injuries-h2h-odds-trend-primary"
+      },
+      {
+        "name": "thesportsdb",
+        "enabled": true,
+        "baseUrl": "https://www.thesportsdb.com/api/v1/json/123/",
+        "role": "team-metadata-fallback"
+      },
+      {
+        "name": "serpapi-google",
+        "enabled": true,
+        "baseUrl": "https://serpapi.com/search?engine=google",
+        "role": "fifa-ranking-news-fallback"
+      }
+    ],
+    "standingsSource": "worldcup26-ir"
+  },
+  "standingsSnapshot": [
+    {
+      "group": "E组",
+      "rows": [
+        {
+          "team": "德国",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 9,
+          "ga": 2,
+          "gd": 7,
+          "points": 7
+        },
+        {
+          "team": "科特迪瓦",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 4
+        },
+        {
+          "team": "厄瓜多尔",
+          "played": 3,
+          "wins": 0,
+          "draws": 2,
+          "losses": 1,
+          "gf": 0,
+          "ga": 1,
+          "gd": -1,
+          "points": 2
+        },
+        {
+          "team": "库拉索",
+          "played": 3,
+          "wins": 0,
+          "draws": 2,
+          "losses": 1,
+          "gf": 1,
+          "ga": 7,
+          "gd": -6,
+          "points": 2
+        }
+      ]
+    },
+    {
+      "group": "F组",
+      "rows": [
+        {
+          "team": "荷兰",
+          "played": 3,
+          "wins": 1,
+          "draws": 2,
+          "losses": 0,
+          "gf": 7,
+          "ga": 3,
+          "gd": 4,
+          "points": 5
+        },
+        {
+          "team": "日本",
+          "played": 3,
+          "wins": 1,
+          "draws": 2,
+          "losses": 0,
+          "gf": 5,
+          "ga": 2,
+          "gd": 3,
+          "points": 5
+        },
+        {
+          "team": "瑞典",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 6,
+          "ga": 6,
+          "gd": 0,
+          "points": 4
+        },
+        {
+          "team": "突尼斯",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 1,
+          "ga": 8,
+          "gd": -7,
+          "points": 1
+        }
+      ]
+    }
+  ]
 }
