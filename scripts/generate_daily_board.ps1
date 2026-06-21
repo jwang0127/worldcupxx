@@ -21,6 +21,28 @@ if (-not (Test-Path $dayDir)) {
 }
 
 $payload = Get-Content -Raw -Encoding UTF8 $dataFile | ConvertFrom-Json
+$teamAliasFile = Join-Path $root "team_aliases.json"
+$script:teamAliasMap = @{}
+if (Test-Path $teamAliasFile) {
+  try {
+    $aliasEntries = Get-Content -Raw -Encoding UTF8 $teamAliasFile | ConvertFrom-Json
+    foreach ($entry in @($aliasEntries)) {
+      $code = ([string]$entry.code).Trim().ToUpperInvariant()
+      if (-not $code) { continue }
+      foreach ($candidate in @([string]$entry.zh, [string]$entry.en, [string]$entry.code) + @($entry.aliases)) {
+        if ([string]::IsNullOrWhiteSpace([string]$candidate)) { continue }
+        $script:teamAliasMap[([string]$candidate).Trim()] = $code
+      }
+    }
+  }
+  catch {
+  }
+}
+$script:teamAliasMap["刚果民主共和国"] = "COD"
+$script:teamAliasMap["刚果（金）"] = "COD"
+$script:teamAliasMap["刚果(金)"] = "COD"
+$script:teamAliasMap["DR Congo"] = "COD"
+$script:teamAliasMap["Congo DR"] = "COD"
 
 function HE([string]$Text) {
   if ($null -eq $Text) { return "" }
@@ -117,6 +139,28 @@ function MatchKickoffClock($Match) {
   }
 }
 
+function MatchKickoffBeijing($Match) {
+  $raw = if ($Match.PSObject.Properties.Name -contains "kickoff" -and $Match.kickoff) {
+    [string]$Match.kickoff
+  } else {
+    MatchKickoffLocal $Match
+  }
+
+  if (-not $raw) {
+    return ""
+  }
+
+  try {
+    return ([datetime]$raw).ToString("MM-dd HH:mm")
+  }
+  catch {
+    if ($raw.Length -ge 16) {
+      return $raw.Substring(5, 11)
+    }
+    return $raw
+  }
+}
+
 function Conf($Value) {
   switch ($Value) {
     "high" { return "&#39640;" }
@@ -128,8 +172,8 @@ function Conf($Value) {
 
 function MatchGroupStandingBrief($Match, $StandingsBundle) {
   $group = NormalizeGroupName ([string]$Match.group)
-  $homeRow = $StandingsBundle.teamLookup[[string]$Match.home]
-  $awayRow = $StandingsBundle.teamLookup[[string]$Match.away]
+  $homeRow = $StandingsBundle.teamLookup[(TeamKey ([string]$Match.home))]
+  $awayRow = $StandingsBundle.teamLookup[(TeamKey ([string]$Match.away))]
   if (-not $homeRow -or -not $awayRow) {
     return ""
   }
@@ -197,6 +241,18 @@ function Basic($Match, $Lean) {
     "036" {
       return "$away 胜赔 1.38 是明天最强的单边赔率之一，说明市场对日本的整体执行力和比赛控制能力相当认可。受让一球后三项依然拉扯，意味着日本更像稳稳拿三分，而不是轻松横扫。比分盘 0:1、0:2、1:2 都在可打区，叠加总进球 2 球低位，基本面最合理的主脚本仍是客胜+小比分，稳胆 $scores，冷门保留 $risk。"
     }
+    "037" {
+      return "$homeTeamName 胜赔没有开出，但让两球主胜 1.66 已经直接把强弱差写在台面上，说明市场预期是西班牙掌控球权、持续压制、并且至少具备两球赢面的比赛。总进球最低点压在 3 球，3:0、2:0 与 3:1 这类比分都处在可兑现区间。基本面上 $homeTeamName 的传控、阵地渗透和边中轮转明显高于 $away，本场不是要不要赢的问题，而是能否把优势兑现成净胜球，因此主线给到 $goal，稳胆比分 $scores，冷门只留 $risk。"
+    }
+    "038" {
+      return "$homeTeamName 胜赔 1.28 是当天最清晰的强势信号之一，但让一球后主胜只有 1.92，并没有把深穿完全写死。这说明市场更认同比利时赢球本身，而不是无条件暴打。总进球 2 球与 3 球都压在低位，结构很像强队压住比赛、但客队仍有一次反击或定位球回敬空间的盘。基本面结论仍然是 $homeTeamName 优势明确，主线 $goal，稳胆比分 $scores，冷门保留 $risk。"
+    }
+    "039" {
+      return "$homeTeamName 胜赔 1.30 足够说明乌拉圭是盘面主导方，但让一球后三项没有失真，意味着市场承认乌拉圭赢面很大，却不愿直接把净胜两球以上送出来。总进球最低点落在 2 球，1:0、2:0、2:1 都是典型对应脚本。基本面上 $homeTeamName 的对抗、控场和老练程度仍高于 $away，但更像稳控型主胜而非极端开放局，因此主线先看 $goal，稳胆比分 $scores，冷门用 $risk 兜底。"
+    }
+    "040" {
+      return "$away 胜赔 1.44 已经把埃及放在了更稳的一侧，但受让一球后主胜与客胜接近，说明盘口表达的是埃及赢球更顺、穿盘未必轻松。总进球 2 球最低，比分盘集中在 0:1、0:2、1:1 附近，结构上就是典型的客强窄胜盘。基本面上 $away 的成熟度、比赛节奏控制和锋线效率都优于 $homeTeamName，本场不宜追大开大合，主线落在 $goal，稳胆比分 $scores，冷门只保留 $risk。"
+    }
   }
 
   return "$homeTeamName vs $away 基本面先按胜平负赔率 $had 定方向，再结合昨日复盘修正总进球尾部。当前方向为 " + $Lean.text + "，总进球主线 $goal，稳胆比分 $scores，冷门防 $risk。"
@@ -245,6 +301,18 @@ function Tactics($Match, $Lean) {
     "036" {
       return "$away 的优势在于攻守转换整齐和前场效率更高，能把 $homeTeamName 压到被动防守脚本。$homeTeamName 若只能靠长传和定位球抢点，比赛更容易被 $away 拖成窄比分客胜。战术落点上 0:1 / 0:2 最符合盘口语言，只有当日本浪费机会过多时，平局冷门 $risk 才会真正变重。"
     }
+    "037" {
+      return "$homeTeamName 的战术主线会是长时间控球、边锋内收和禁区前沿连续渗透，目标不是一脚解决，而是把 $away 压到退无可退。$away 若全线回收，前 30 分钟可能还能靠密集站位拖住，但一旦先失球，比赛会迅速切换成西班牙继续围攻的剧本。战术层面最像上半场先平后胜、下半场再拉开差距，所以半全场更适合看平/胜或胜/胜，比分落点以 2:0、3:0 为主，只有强队效率偏低时才会滑向 $risk。"
+    }
+    "038" {
+      return "$homeTeamName 更可能通过中前场逼抢和边中结合先把比赛压在伊朗半场，但 $away 的防守韧性与回收速度不会让这场轻松变成对攻。若比利时早早进球，比赛会向 2:0 或 2:1 分叉；若上半场迟迟不破，伊朗的定位球和反击会把平局保护抬高。战术路径支持主队赢球，但不支持无脑追穿盘，半全场以平/胜、胜/胜更顺，冷门则是 $risk。"
+    }
+    "039" {
+      return "$homeTeamName 更像先稳住中后场对抗、再靠前场强点与二点球压出差距的一方。$away 如果前段能把比赛拖成碎片化肉搏，乌拉圭的节奏会被拉慢，比赛就更贴近 1:0 或 1:1；但若乌拉圭率先进球，后续控节奏能力足以把比赛收在 2:0。战术上支持主队小胜，半全场更像平/胜或胜/胜，不适合把脚本直接放大成高比分碾压。"
+    }
+    "040" {
+      return "$away 的战术优势在于阵型更整齐、攻守转换更快，能够把 $homeTeamName 压成守转攻和长传找点的被动结构。新西兰若想拿分，首先要把前 45 分钟守住，把比赛拖成低速绞杀；一旦埃及先破门，后续就更容易走成 0:1 / 0:2 的客队控局模式。战术路径最支持平/负或负/负，若埃及边路推进效率一般，平局冷门 $risk 才会放大。"
+    }
   }
 
   if ($Lean.code -eq "home") { return "$homeTeamName 更像主动控节奏的一方，战术主线靠近 $scores；但仍要用 $risk 防守反击或定位球冷门。" }
@@ -271,6 +339,10 @@ function External($Match) {
     "034" { return "比赛当地时间 $localKickoff，夜场对强队的连续施压能力更友好，但也更考验后程注意力。$homeTeamName 的板凳与比赛节奏处理更占优，$away 若前段跑动消耗过大，下半场守转攻质量会明显下降。中立场条件下，外部因素与德国主胜脚本同向，但不一定把比赛推成特别夸张的大比分。" }
     "035" { return "比赛当地时间 $localKickoff，属于强队可完整发力的窗口。$homeTeamName 若在体能和推进速度上占优，会更容易把比赛压成单边半场攻防；$away 一旦适应慢，前 30 分钟就是最大风险区。中立场下外部条件不削弱强弱差，因此支持压制型主胜和 3 球附近。"}
     "036" { return "比赛当地时间 $localKickoff，接近日场高温高对抗时段，比赛很容易被节奏管理和体能分配主导。$away 的整体节奏感更好，适合把比赛拉入自己更舒服的控局模式；$homeTeamName 则更需要等反击或定位球。外部因素综合后更支持客胜小比分，不支持无脑追特别大球。" }
+    "037" { return "比赛当地时间 $localKickoff，属于晚场但并非深夜，节奏通常会从谨慎试探逐步过渡到强队提速压制。$homeTeamName 对这种窗口的控场适应性更强，$away 则更依赖前 30 分钟防线完整度和门将状态。中立场不额外给任何一方主场红利，因此外部变量主要体现在西班牙能否尽早破局；若迟迟不进，盘面就会从 3:0 压回 2:0 或 1:1 保护。" }
+    "038" { return "比赛当地时间 $localKickoff，属于球员体能和专注度都较平稳的时段，更适合强队按部就班地把比赛压住。$homeTeamName 的板凳深度和临场换人质量更适合这种窗口，$away 若上半场被长期压制，下半场体能掉速会更明显。中立场条件下，外部因素支持比利时控局取胜，但不额外鼓励大穿。" }
+    "039" { return "比赛当地时间 $localKickoff，已经进入偏晚场窗口，节奏更容易先硬碰硬再慢慢分层。$homeTeamName 的老练与身体对抗更能适应这种比赛气质，$away 若能把开局拖成胶着，心理面就会迅速站住。中立场下没有额外主场噪音，因此外部因素更支持乌拉圭赢球、小比分收束和防平路径并存。" }
+    "040" { return "比赛当地时间 $localKickoff，夜场更考验阵型稳定度与专注力延续。$away 的比赛管理能力更好，适合在这种节奏下把比赛做成一球优势后慢慢收口；$homeTeamName 若长时间追不上节奏，只能依赖定位球或二次进攻抢机会。外部因素因此与埃及客胜小比分同向，不支持极端大球。" }
   }
 
   return "比赛地点为&#8220;$venue&#8221;，比赛当地时间 $localKickoff。天气、湿度、草皮、旅途和赛前舆论都会影响节奏；本场外部因素按中立场模型处理。"
@@ -294,6 +366,10 @@ function GroupInfo($Match, $Lean) {
     "034" { return "$homeTeamName 这场除了要拿分，还带有净胜球争夺意义，因此不会满足于低节奏拖完 90 分钟。$away 若先失球，就很难一直把比赛守在最小差距内。小组形势因此强化了德国主胜与 3 球主线的同向关系，平局冷门只在前程僵持时保留。"}
     "035" { return "$homeTeamName 面对这类让两球盘比赛，最大的任务往往不只是拿三分，而是尽量拉开净胜球。$away 若早丢球，会从保平转为保少输，比赛结构反而更利于强队继续扩张。小组形势与盘口语言一致，支持压制型主胜和 3 球主线。"}
     "036" { return "$away 若想在组内提前建立优势，这类客强盘比赛必须尽快兑现成三分。$homeTeamName 对 1 分的容忍度会更高，所以前段更可能优先守住阵型。小组形势因此进一步支持日本方向，但也解释了为什么盘口更像窄胜，而不是全面碾压。"}
+    "037" { return "$homeTeamName 这场带着明显的净胜球任务和出线主动权任务，面对小组弱侧若只拿一球小胜，后续容错并不会太舒服。$away 的战略目标则更现实，首先是把比赛拖慢、争取半场不丢，其次才是偷一个平局。小组形势因此强化了西班牙赢球与 3 球主线，但也解释了为什么 1:1 必须留下作为强队迟迟打不开局面的防线。"}
+    "038" { return "$homeTeamName 若想把小组主动权真正握在手里，这类一档强队对中下游的比赛必须先兑现成三分。$away 对 1 分的接受度显然更高，因此前段更可能优先压缩空间、把比赛踢碎。小组语境支持比利时赢球，但不支持盲追净胜两球以上，2:0 / 2:1 才更像形势语言。"}
+    "039" { return "$homeTeamName 在这个阶段首先要确保三分，其次才是净胜球，因此比赛策略更可能是先拿下、再看有没有继续扩大比分的空间。$away 若能守住前半段，1 分的战略价值会迅速抬高，所以平局脚本不能删。小组形势因此支持乌拉圭主胜，但更像窄口兑现，不像无脑大开。"}
+    "040" { return "$away 若想保住小组竞争力，这类客强盘比赛必须先兑现成三分，否则后续赛程压力会明显变大。$homeTeamName 对 1 分甚至小负的容忍度都高于对攻失控，因此前段更可能把阵型放低。小组形势进一步支持埃及方向，同时解释了为什么盘口主结构是客胜窄比分。"}
   }
 
   return "小组赛情境下，本场更像&#8220;先拿分再看净胜球&#8221;的模式。若 $team 方向顺利兑现，常规赢球与控制风险会同时成立。"
@@ -321,6 +397,10 @@ function OddsText($Match, $Lean) {
     "034" { return "胜平负为 $had，德国方向非常清楚；$hhad 总进球低位：$ttg。3 球赔率最低，而让一球主胜与客胜没有拉开到失真区间，说明这是典型的&#8220;主胜稳、比分中段、深穿待观察&#8221;盘。赔率语言支持 2:0 / 3:1，而不是盲追 4 球以上极端打穿。"}
     "035" { return "胜平负暂未开售，但让球(-2)为胜 " + (HE $Match.odds.hhad.home) + " / 平 " + (HE $Match.odds.hhad.draw) + " / 负 " + (HE $Match.odds.hhad.away) + "，已经足够构成强弱判断；总进球低位：$ttg。3 球最低，4 球与 2 球同价，说明盘口并不排斥更大的尾部，但主结构仍是 3 球压制盘。模型因此先看 3 球和 2:0 / 3:0，而不是一步冲到极端大比分。"}
     "036" { return "胜平负为 $had，客胜 1.38 是最强信号之一；$hhad 总进球低位：$ttg。受让一球后三项依然胶着，说明盘口表达的是日本赢球较稳，但净胜两球以上并不轻松。总进球 2 球最低，比分盘 0:1 / 0:2 / 1:2 集中，这就是标准的客强窄胜盘。"}
+    "037" { return "让球(-2)为胜 " + (HE $Match.odds.hhad.home) + " / 平 " + (HE $Match.odds.hhad.draw) + " / 负 " + (HE $Match.odds.hhad.away) + "；总进球低位：$ttg。关键不在于西班牙能不能赢，而在于庄家已经把两球门槛摆了出来，同时又没有把三球以上极端打穿写死。赔率语言是强主线 + 3 球共振，因此模型围绕 2:0 / 3:0 展开，平局冷门用 " + (HE $Match.prediction.upset) + " 防守。"}
+    "038" { return "胜平负为 $had，主胜 1.28 非常低；$hhad 总进球低位：$ttg。真正的关键信息是让一球后主胜 1.92 仍算可打，说明盘口认同比利时赢球，但并不无脑押注大穿。总进球 2 球与 3 球都压在主流区间，因此赔率结构最支持 2:0 / 2:1 和 3 球主线。"}
+    "039" { return "胜平负为 $had，主胜 1.30 已经足够清晰；$hhad 总进球低位：$ttg。让一球后三项没有完全倒向主队，说明庄家更认同乌拉圭稳定拿下，而不是轻松净胜两球。赔率语言因此是主胜清楚、比分偏窄、2 球优先，模型顺着 1:0 / 2:0 与 " + (HE $Match.prediction.upset) + " 布局。"}
+    "040" { return "胜平负为 $had，客胜 1.44 明显占优；$hhad 总进球低位：$ttg。受让一球后主胜与客胜几乎对冲，说明盘口核心是埃及赢球更稳，但净胜空间未必舒适。赔率结构最支持 0:1 / 0:2 和 2 球主线，" + (HE $Match.prediction.upset) + " 是唯一需要重点留的逆向路径。"}
   }
 
   return "胜平负目前为 $had，$hhad 总进球低位为 $ttg。模型围绕&#8220;" + $Lean.text + " + $goal&#8221;展开，同时参考昨日复盘修正低赔机械权重。"
@@ -435,6 +515,18 @@ function Mystic($Match, $Lean) {
     "036" {
       return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>" + $awayTeam + "&#29992;&#21350;&#24471;&#26106;&#65292;" + $homeTeam + "&#20307;&#21350;&#21463;&#25233;&#65292;&#23458;&#24378;&#26684;&#23616;&#36739;&#26126;&#26174;&#65307;&#27604;&#20998;&#20027;&#32447;&#25351;&#21521; " + $score + "&#65292;&#20919;&#38376;&#39035;&#38450; " + $upset + "&#12290;<br><strong>&#32043;&#24494;&#27969;&#26102;&#65306;</strong>" + $mysticTime + " &#20316;&#20026;&#24403;&#22320;&#36215;&#21350;&#26102;&#28857;&#65292;&#26356;&#26377;&#21033;&#20110;&#33410;&#22863;&#25511;&#21046;&#33021;&#21147;&#26356;&#22909;&#30340;&#19968;&#26041;&#65292;&#23545;" + $awayTeam + "&#26356;&#26377;&#21033;&#12290;<br><strong>&#22855;&#38376;&#36929;&#30002;&#65306;</strong>&#24320;&#38376;&#22312;&#23458;&#26041;&#65292;&#26223;&#38376;&#19981;&#31639;&#24378;&#65292;&#24847;&#21619;&#30528;&#36194;&#29699;&#26041;&#21521;&#28165;&#26970;&#65292;&#20294;&#27604;&#20998;&#20173;&#20559;&#31364;&#12290;<br><strong>&#24178;&#25903;&#20116;&#34892;/&#39134;&#26143;&#65306;</strong>&#26085;&#26412;&#34013;&#30333;&#24471;&#37329;&#27700;&#28165;&#27668;&#65292;&#31361;&#23612;&#26031;&#32418;&#30333;&#28779;&#37329;&#26377;&#21453;&#25169;&#65292;&#26131;&#24418;&#25104;0:1 / 0:2&#36825;&#31181;&#23567;&#27604;&#20998;&#23458;&#32988;&#26684;&#23616;&#12290;<br><strong>&#35832;&#33883;&#31070;&#25968;/&#22612;&#32599;&#65306;</strong>&#31614;&#24847;&#35265;&#8220;&#20808;&#25511;&#21518;&#21457;&#8221;&#65292;&#22612;&#32599;&#27491;&#20041;+&#26143;&#26143;&#65292;&#23458;&#32988;&#20027;&#32447;&#28165;&#26224;&#65292;&#24179;&#23616;&#26159;&#21807;&#19968;&#35201;&#38450;&#30340;&#24847;&#22806;&#12290;"
     }
+    "037" {
+      return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>" + $homeTeam + "&#20307;&#21350;&#22823;&#26106;&#65292;" + $awayTeam + "&#29992;&#21350;&#21463;&#21046;&#65292;&#23646;&#20110;&#24378;&#26041;&#21487;&#25511;&#20840;&#23616;&#30340;&#30424;&#12290;&#27604;&#20998;&#20027;&#30475; " + $score + "&#65292;&#20919;&#38376;&#21482;&#38450; " + $upset + "&#12290;<br><strong>&#32043;&#24494;&#27969;&#26102;&#65306;</strong>" + $mysticTime + " &#20316;&#20026;&#24403;&#22320;&#36215;&#21350;&#26102;&#28857;&#65292;&#21463;&#30424;&#27668;&#24433;&#21709;&#65292;&#26356;&#20687;&#19978;&#21322;&#22330;&#20808;&#35835;&#23616;&#12289;&#19979;&#21322;&#22330;&#20877;&#25226;&#33410;&#22863;&#25351;&#21040;&#24378;&#26041;&#36523;&#19978;&#65292;&#21322;&#20840;&#22330;&#23452;&#30475;&#24179;/&#32988;&#25110;&#32988;/&#32988;&#12290;<br><strong>&#22855;&#38376;&#36929;&#30002;&#65306;</strong>&#24320;&#38376;&#29983;&#20027;&#65292;&#26223;&#38376;&#21448;&#33021;&#25509;&#19978;&#21518;&#31243;&#25915;&#21183;&#65292;&#34892;&#30424;&#35821;&#35328;&#23601;&#26159;&#8220;&#24378;&#38431;&#26202;&#21457;&#21147;&#8221;&#65292;&#25903;&#25345;2:0 / 3:0&#36825;&#31181;&#21518;&#31243;&#25289;&#24320;&#20928;&#32988;&#30340;&#33050;&#26412;&#12290;<br><strong>&#24178;&#25903;&#20116;&#34892;/&#39134;&#26143;&#65306;</strong>&#35199;&#29677;&#29273;&#32418;&#40644;&#28779;&#22303;&#24471;&#21183;&#65292;&#27801;&#29305;&#32511;&#30333;&#26408;&#27668;&#26377;&#25269;&#20294;&#38590;&#20197;&#38271;&#26102;&#38388;&#25215;&#21463;&#22260;&#25915;&#65292;&#26131;&#24418;&#25104;&#8220;&#19978;&#21322;&#22330;&#38264;&#30528;&#65292;&#19979;&#21322;&#22330;&#24320;&#38376;&#8221;&#12290;<br><strong>&#35832;&#33883;&#31070;&#25968;/&#22612;&#32599;&#65306;</strong>&#31614;&#24847;&#35265;&#8220;&#31283;&#20013;&#21518;&#24320;&#8221;&#65292;&#22612;&#32599;&#22826;&#38451;+&#25112;&#36710;&#21516;&#21521;&#65292;&#24378;&#32988;&#20027;&#32447;&#28165;&#26224;&#65292;&#24179;&#23616;&#21482;&#26159;&#24378;&#38431;&#19978;&#21322;&#22330;&#25928;&#29575;&#19981;&#22815;&#26102;&#30340;&#22791;&#38450;&#12290;"
+    }
+    "038" {
+      return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>" + $homeTeam + "&#20307;&#21350;&#24471;&#26106;&#65292;" + $awayTeam + "&#29992;&#21350;&#26377;&#25269;&#65292;&#26159;&#8220;&#20027;&#38431;&#36194;&#38754;&#22823;&#65292;&#20294;&#31359;&#30424;&#38656;&#30475;&#33410;&#22863;&#8221;&#30340;&#30424;&#12290;&#27604;&#20998;&#20027;&#30475; " + $score + "&#65292;&#20919;&#38376;&#38450; " + $upset + "&#12290;<br><strong>&#32043;&#24494;&#27969;&#26102;&#65306;</strong>" + $mysticTime + " &#30340;&#27668;&#21475;&#26356;&#21033;&#20110;&#24378;&#38431;&#20808;&#25511;&#23616;&#38754;&#12289;&#20877;&#31561;&#23545;&#25163;&#20986;&#38169;&#65292;&#21322;&#20840;&#22330;&#26356;&#39034;&#30340;&#33050;&#26412;&#26159;&#24179;/&#32988;&#25110;&#32988;/&#32988;&#65292;&#32780;&#19981;&#26159;&#19968;&#24320;&#22330;&#23601;&#23558;&#27604;&#36187;&#25171;&#31359;&#12290;<br><strong>&#22855;&#38376;&#36929;&#30002;&#65306;</strong>&#24320;&#38376;&#33853;&#20027;&#26041;&#65292;&#20294;&#24778;&#38376;&#23432;&#22312;&#23458;&#38431;&#21453;&#20987;&#32447;&#19978;&#65292;&#24847;&#21619;&#30528;&#27604;&#21033;&#26102;&#20027;&#32988;&#26159;&#22823;&#27010;&#29575;&#65292;&#21487;&#26159;&#20234;&#26391;&#20173;&#26377;&#19968;&#27425;&#25226;&#27604;&#20998;&#25289;&#22238;&#21040;2:1&#30340;&#31354;&#38388;&#12290;<br><strong>&#24178;&#25903;&#20116;&#34892;/&#39134;&#26143;&#65306;</strong>&#27604;&#21033;&#26102;&#40657;&#40644;&#28779;&#37329;&#30456;&#29983;&#65292;&#20234;&#26391;&#32418;&#30333;&#28779;&#26408;&#20559;&#20110;&#21453;&#20987;&#65292;&#26131;&#24418;&#25104;&#8220;&#20027;&#38431;&#25511;&#22330;+&#23458;&#38431;&#20599;&#19968;&#29699;&#8221;&#30340;&#32047;&#35745;&#24335;&#33050;&#26412;&#12290;<br><strong>&#35832;&#33883;&#31070;&#25968;/&#22612;&#32599;&#65306;</strong>&#31614;&#24847;&#20026;&#8220;&#20808;&#31283;&#21518;&#23450;&#8221;&#65292;&#22612;&#32599;&#30343;&#24093;+&#33410;&#21046;&#65292;&#20027;&#32988;&#20027;&#32447;&#28165;&#26970;&#65292;&#20851;&#38190;&#26159;&#21322;&#22330;&#33021;&#19981;&#33021;&#25552;&#21069;&#30772;&#23616;&#12290;"
+    }
+    "039" {
+      return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>" + $homeTeam + "&#20307;&#21350;&#24471;&#26106;&#65292;" + $awayTeam + "&#29992;&#21350;&#21487;&#25269;&#65292;&#26159;&#8220;&#21487;&#32988;&#20294;&#23452;&#31364;&#19981;&#23452;&#20998;&#22823;&#8221;&#30340;&#30424;&#12290;&#27604;&#20998;&#20027;&#30475; " + $score + "&#65292;&#20919;&#38376;&#38450; " + $upset + "&#12290;<br><strong>&#32043;&#24494;&#27969;&#26102;&#65306;</strong>" + $mysticTime + " &#23545;&#25239;&#24847;&#21619;&#37325;&#65292;&#26356;&#20687;&#20808;&#32905;&#25615;&#21518;&#20915;&#32988;&#30340;&#26102;&#28857;&#65292;&#21322;&#20840;&#22330;&#26356;&#39034;&#30340;&#26159;&#24179;/&#32988;&#65292;&#22914;&#26524;&#20027;&#38431;&#26089;&#30772;&#23616;&#65292;&#25165;&#20250;&#39034;&#25512;&#21040;&#32988;/&#32988;&#12290;<br><strong>&#22855;&#38376;&#36929;&#30002;&#65306;</strong>&#24320;&#38376;&#20559;&#20027;&#65292;&#20294;&#29983;&#38376;&#26410;&#33073;&#31163;&#20013;&#36335;&#32422;&#26463;&#65292;&#24847;&#21619;&#30528;&#20116;&#25289;&#22205;&#30340;&#32905;&#25615;&#21619;&#24456;&#37325;&#65292;&#20027;&#32988;&#33021;&#30475;&#65292;&#21487;&#27604;&#20998;&#22810;&#21322;&#20250;&#34987;&#38145;&#22312;1:0 / 2:0&#36825;&#31181;&#31364;&#21475;&#12290;<br><strong>&#24178;&#25903;&#20116;&#34892;/&#39134;&#26143;&#65306;</strong>&#20044;&#25289;&#22317;&#22825;&#34013;&#28779;&#22303;&#31245;&#26106;&#65292;&#20315;&#24471;&#35282;&#32511;&#28784;&#27700;&#22303;&#20559;&#20110;&#25302;&#33410;&#22863;&#65292;&#26131;&#24418;&#25104;&#8220;&#19978;&#21322;&#22330;&#25345;&#34913;&#65292;&#19979;&#21322;&#22330;&#20915;&#33021;&#8221;&#30340;&#32047;&#35745;&#30424;&#12290;<br><strong>&#35832;&#33883;&#31070;&#25968;/&#22612;&#32599;&#65306;</strong>&#31614;&#24847;&#35265;&#8220;&#31283;&#25171;&#31283;&#25910;&#8221;&#65292;&#22612;&#32599;&#27491;&#20041;+&#21147;&#37327;&#65292;&#20027;&#32988;&#26377;&#24213;&#65292;&#20294;1:1&#20173;&#26159;&#21807;&#19968;&#38656;&#30041;&#30340;&#20919;&#38376;&#21453;&#25169;&#12290;"
+    }
+    "040" {
+      return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>" + $awayTeam + "&#29992;&#21350;&#24471;&#26106;&#65292;" + $homeTeam + "&#20307;&#21350;&#21463;&#21046;&#65292;&#23646;&#20110;&#23458;&#24378;&#19988;&#23567;&#27604;&#20998;&#26356;&#39034;&#30340;&#30424;&#12290;&#27604;&#20998;&#20027;&#32447;&#25351;&#21521; " + $score + "&#65292;&#20919;&#38376;&#39035;&#38450; " + $upset + "&#12290;<br><strong>&#32043;&#24494;&#27969;&#26102;&#65306;</strong>" + $mysticTime + " &#30340;&#22812;&#22330;&#27668;&#21475;&#26356;&#21033;&#20110;&#38453;&#22411;&#23436;&#25972;&#30340;&#19968;&#26041;&#65292;&#21322;&#20840;&#22330;&#26368;&#39034;&#30340;&#36335;&#24452;&#26159;&#24179;/&#36127;&#25110;&#36127;/&#36127;&#65292;&#22914;&#26524;&#22522;&#22467;&#22312;&#21069;30&#20998;&#38047;&#23601;&#39046;&#20808;&#65292;&#27604;&#36187;&#23601;&#20250;&#24456;&#24555;&#36827;&#20837;&#25511;&#33410;&#22863;&#27169;&#24335;&#12290;<br><strong>&#22855;&#38376;&#36929;&#30002;&#65306;</strong>&#24320;&#38376;&#22312;&#23458;&#26041;&#65292;&#20294;&#26223;&#38376;&#19981;&#24378;&#65292;&#36825;&#26159;&#26631;&#20934;&#30340;&#8220;&#33021;&#36194;&#19981;&#19968;&#23450;&#22823;&#32988;&#8221;&#30424;&#65292;0:1 / 0:2 &#27604;&#31435;&#21051;&#25918;&#22823;&#21040;&#22823;&#29699;&#26356;&#31526;&#21512;&#30424;&#24847;&#12290;<br><strong>&#24178;&#25903;&#20116;&#34892;/&#39134;&#26143;&#65306;</strong>&#22467;&#21450;&#32418;&#30333;&#40657;&#24471;&#28779;&#22303;&#31283;&#21183;&#65292;&#26032;&#35199;&#20848;&#30333;&#40657;&#20043;&#27668;&#20559;&#20110;&#38450;&#23432;&#21453;&#25169;&#65292;&#26131;&#24418;&#25104;&#8220;&#23458;&#38431;&#20808;&#25511;&#65292;&#20027;&#38431;&#31561;&#20320;&#20986;&#38169;&#8221;&#30340;&#33050;&#26412;&#12290;<br><strong>&#35832;&#33883;&#31070;&#25968;/&#22612;&#32599;&#65306;</strong>&#31614;&#24847;&#20026;&#8220;&#20808;&#31364;&#21518;&#31361;&#30772;&#8221;&#65292;&#22612;&#32599;&#38544;&#22763;+&#25112;&#36710;&#36870;&#20301;&#65292;&#23458;&#32988;&#20027;&#32447;&#28165;&#26224;&#65292;&#24179;&#23616;&#26159;&#21807;&#19968;&#38656;&#30041;&#24847;&#30340;&#21345;&#28857;&#12290;"
+    }
   }
 
   return "<strong>&#21608;&#26131;&#26757;&#33457;/&#20845;&#29275;&#65306;</strong>" + $team + " &#24471;&#20307;&#29992;&#29983;&#25206;&#65292;&#20027;&#32447;&#27604;&#20998;&#25351;&#21521; " + $score + "&#65292;&#20919;&#38376;&#38450; " + $upset + "&#12290;<br><strong>&#29572;&#23398;&#32508;&#21512;&#65306;</strong>&#29699;&#36335;&#30475; " + $goal + "&#65292;&#24471;&#21183;&#26041;&#39034;&#65292;&#20294;&#20445;&#30041;&#19968;&#26465;&#20919;&#38376;&#38450;&#32447;&#12290;"
@@ -476,6 +568,15 @@ function NormalizeGroupName([string]$Value) {
   if ([string]::IsNullOrWhiteSpace($Value)) { return "" }
   if ($Value -match "^Group\s+([A-Z])$") { return "$($Matches[1])组" }
   return $Value.Trim()
+}
+
+function TeamKey([string]$Value) {
+  if ([string]::IsNullOrWhiteSpace($Value)) { return "" }
+  $trimmed = $Value.Trim()
+  if ($script:teamAliasMap.ContainsKey($trimmed)) {
+    return [string]$script:teamAliasMap[$trimmed]
+  }
+  return $trimmed
 }
 
 function GetHadProbabilities($Match) {
@@ -589,7 +690,9 @@ function GetHistoricalMatches() {
         kickoff = [string]$match.kickoff
         group = $group
         home = [string]$match.home
+        homeKey = TeamKey ([string]$match.home)
         away = [string]$match.away
+        awayKey = TeamKey ([string]$match.away)
         result = $match.result
       })
     }
@@ -598,7 +701,8 @@ function GetHistoricalMatches() {
 }
 
 function GetRecentTeamSummary([string]$Team) {
-  $matches = @($script:historicalMatches | Where-Object { $_.result -and ($_.home -eq $Team -or $_.away -eq $Team) } | Sort-Object kickoff -Descending | Select-Object -First 10)
+  $teamKey = TeamKey $Team
+  $matches = @($script:historicalMatches | Where-Object { $_.result -and ($_.homeKey -eq $teamKey -or $_.awayKey -eq $teamKey) } | Sort-Object kickoff -Descending | Select-Object -First 10)
   $played = $matches.Count
   if ($played -eq 0) {
     return [pscustomobject]@{ played = 0; wins = 0; draws = 0; losses = 0; gf = 0; ga = 0; ppg = 1.0; score = 5.0 }
@@ -608,7 +712,7 @@ function GetRecentTeamSummary([string]$Team) {
   foreach ($m in $matches) {
     $homeGoals = [int]$m.result.homeGoals
     $awayGoals = [int]$m.result.awayGoals
-    if ($m.home -eq $Team) {
+    if ($m.homeKey -eq $teamKey) {
       $gf += $homeGoals
       $ga += $awayGoals
       if ($homeGoals -gt $awayGoals) { $wins += 1 } elseif ($homeGoals -eq $awayGoals) { $draws += 1 } else { $losses += 1 }
@@ -631,13 +735,16 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
     $teamLookup = @{}
     $impactLookup = @{}
     $groups = @{}
+    $snapshotTeamGroupMap = @{}
 
     foreach ($groupItem in @($Snapshot)) {
       $groupName = NormalizeGroupName ([string]$groupItem.group)
       $groups[$groupName] = [ordered]@{}
       foreach ($sourceRow in @($groupItem.rows)) {
+        $teamKey = TeamKey ([string]$sourceRow.team)
         $row = [pscustomobject]@{
           team = [string]$sourceRow.team
+          teamKey = $teamKey
           played = [int](ToDouble $sourceRow.played 0)
           wins = [int](ToDouble $sourceRow.wins 0)
           draws = [int](ToDouble $sourceRow.draws 0)
@@ -647,7 +754,54 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
           gd = [int](ToDouble $sourceRow.gd 0)
           points = [int](ToDouble $sourceRow.points 0)
         }
-        $groups[$groupName][$row.team] = $row
+        $groups[$groupName][$row.teamKey] = $row
+        $snapshotTeamGroupMap[$row.teamKey] = $groupName
+      }
+    }
+
+    foreach ($item in @($script:historicalMatches | Where-Object { $_.result })) {
+      $homeTeam = [string]$item.home
+      $awayTeam = [string]$item.away
+      $homeKey = TeamKey $homeTeam
+      $awayKey = TeamKey $awayTeam
+      $groupName = NormalizeGroupName ([string]$item.group)
+      if (-not $groupName -and $snapshotTeamGroupMap.ContainsKey($homeKey) -and $snapshotTeamGroupMap.ContainsKey($awayKey) -and $snapshotTeamGroupMap[$homeKey] -eq $snapshotTeamGroupMap[$awayKey]) {
+        $groupName = $snapshotTeamGroupMap[$homeKey]
+      }
+      if (-not $groupName -or -not $groups.ContainsKey($groupName)) { continue }
+      if (-not $groups[$groupName].Contains($homeKey) -or -not $groups[$groupName].Contains($awayKey)) { continue }
+
+      $homeRow = $groups[$groupName][$homeKey]
+      $awayRow = $groups[$groupName][$awayKey]
+      if (($homeRow.played -gt 0) -or ($awayRow.played -gt 0)) { continue }
+
+      $homeGoals = [int](ToDouble $item.result.homeGoals 0)
+      $awayGoals = [int](ToDouble $item.result.awayGoals 0)
+
+      $homeRow.played += 1
+      $awayRow.played += 1
+      $homeRow.gf += $homeGoals
+      $homeRow.ga += $awayGoals
+      $awayRow.gf += $awayGoals
+      $awayRow.ga += $homeGoals
+      $homeRow.gd = $homeRow.gf - $homeRow.ga
+      $awayRow.gd = $awayRow.gf - $awayRow.ga
+
+      if ($homeGoals -gt $awayGoals) {
+        $homeRow.wins += 1
+        $awayRow.losses += 1
+        $homeRow.points += 3
+      }
+      elseif ($awayGoals -gt $homeGoals) {
+        $awayRow.wins += 1
+        $homeRow.losses += 1
+        $awayRow.points += 3
+      }
+      else {
+        $homeRow.draws += 1
+        $awayRow.draws += 1
+        $homeRow.points += 1
+        $awayRow.points += 1
       }
     }
 
@@ -684,7 +838,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
         $row | Add-Member -NotePropertyName qualScore -NotePropertyValue ([math]::Round($qualScore)) -Force
         $row | Add-Member -NotePropertyName rank -NotePropertyValue ($idx + 1) -Force
         $row | Add-Member -NotePropertyName group -NotePropertyValue $groupName -Force
-        $teamLookup[$row.team] = $row
+        $teamLookup[$row.teamKey] = $row
       }
       $groupRows.Add([pscustomobject]@{ group = $groupName; rows = $rows })
     }
@@ -692,8 +846,8 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
     foreach ($match in @($Matches)) {
       $group = NormalizeGroupName ([string]$match.group)
       if (-not $group -or -not ($groups.ContainsKey($group))) { continue }
-      $homeRow = $teamLookup[[string]$match.home]
-      $awayRow = $teamLookup[[string]$match.away]
+      $homeRow = $teamLookup[(TeamKey ([string]$match.home))]
+      $awayRow = $teamLookup[(TeamKey ([string]$match.away))]
       if (-not $homeRow -or -not $awayRow) { continue }
       $homePoints = [int](ToDouble $homeRow.points 0)
       $awayPoints = [int](ToDouble $awayRow.points 0)
@@ -721,9 +875,11 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
       $groups[$group] = [ordered]@{}
     }
     foreach ($team in @([string]$match.home, [string]$match.away)) {
-      if (-not $groups[$group].Contains($team)) {
-        $groups[$group][$team] = [ordered]@{
+      $teamKey = TeamKey $team
+      if (-not $groups[$group].Contains($teamKey)) {
+        $groups[$group][$teamKey] = [ordered]@{
           team = $team
+          teamKey = $teamKey
           played = 0
           wins = 0
           draws = 0
@@ -739,10 +895,10 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
 
   foreach ($item in @($script:historicalMatches)) {
     if (-not $item.result -or -not $groups.ContainsKey($item.group)) { continue }
-    if (-not $groups[$item.group].Contains($item.home) -or -not $groups[$item.group].Contains($item.away)) { continue }
+    if (-not $groups[$item.group].Contains($item.homeKey) -or -not $groups[$item.group].Contains($item.awayKey)) { continue }
 
-    $home = $groups[$item.group][$item.home]
-    $away = $groups[$item.group][$item.away]
+    $home = $groups[$item.group][$item.homeKey]
+    $away = $groups[$item.group][$item.awayKey]
     $hg = [int]$item.result.homeGoals
     $ag = [int]$item.result.awayGoals
 
@@ -802,7 +958,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
       $row | Add-Member -NotePropertyName qualScore -NotePropertyValue ([math]::Round($qualScore)) -Force
       $row | Add-Member -NotePropertyName rank -NotePropertyValue ($idx + 1) -Force
       $row | Add-Member -NotePropertyName group -NotePropertyValue $groupName -Force
-      $teamLookup[$row.team] = $row
+      $teamLookup[$row.teamKey] = $row
     }
 
     $groupRows.Add([pscustomobject]@{
@@ -814,8 +970,8 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
   foreach ($match in @($Matches)) {
     $group = NormalizeGroupName ([string]$match.group)
     if (-not $group -or -not ($groups.ContainsKey($group))) { continue }
-    $homeRow = $teamLookup[[string]$match.home]
-    $awayRow = $teamLookup[[string]$match.away]
+    $homeRow = $teamLookup[(TeamKey ([string]$match.home))]
+    $awayRow = $teamLookup[(TeamKey ([string]$match.away))]
     if (-not $homeRow -or -not $awayRow) { continue }
 
     $homePoints = [int](ToDouble (($homeRow.points | Select-Object -First 1)) 0)
@@ -1099,7 +1255,8 @@ function HalfFullHtml($Artifact) {
 
 function StandingsSectionHtml($Bundle, $Matches) {
   $sections = New-Object System.Collections.Generic.List[string]
-  foreach ($groupItem in $Bundle.groups) {
+  $groupsToShow = @($Matches | ForEach-Object { NormalizeGroupName ([string]$_.group) } | Where-Object { $_ } | Select-Object -Unique)
+  foreach ($groupItem in @($Bundle.groups | Where-Object { $groupsToShow -contains $_.group })) {
     $highlightTeams = @($Matches | Where-Object { $_.group -eq $groupItem.group } | ForEach-Object { $_.home; $_.away })
     $rows = foreach ($row in $groupItem.rows) {
       $cls = if ($highlightTeams -contains $row.team) { " class=""hl""" } else { "" }
@@ -1115,6 +1272,18 @@ function StandingsSectionHtml($Bundle, $Matches) {
   return ($sections -join "")
 }
 
+function RootStandingsCompactHtml($Bundle) {
+  $sections = New-Object System.Collections.Generic.List[string]
+  foreach ($groupItem in $Bundle.groups) {
+    $rows = foreach ($row in $groupItem.rows) {
+      $cls = if ($row.rank -eq 1) { " class=""top1""" } elseif ($row.rank -eq 2) { " class=""top2""" } else { "" }
+      "<tr$cls><td>$($row.rank)</td><td>$($row.team)</td><td>$($row.played)</td><td>$($row.wins)-$($row.draws)-$($row.losses)</td><td>$($row.points)</td></tr>"
+    }
+    $sections.Add("<div class=""miniGroupCard""><h3>$($groupItem.group)</h3><table><thead><tr><th>排</th><th>球队</th><th>赛</th><th>胜平负</th><th>分</th></tr></thead><tbody>$rows</tbody></table></div>")
+  }
+  return ($sections -join "")
+}
+
 function RootStandingsSectionHtml($Bundle) {
   $sections = New-Object System.Collections.Generic.List[string]
   foreach ($groupItem in $Bundle.groups) {
@@ -1125,6 +1294,18 @@ function RootStandingsSectionHtml($Bundle) {
     $sections.Add("<div class=""groupCard""><h3>$($groupItem.group) 组</h3><div class=""tableWrap""><table><thead><tr><th>排名</th><th>球队</th><th>已赛</th><th>进球</th><th>失球</th><th>净胜</th><th>积分</th><th>状态</th></tr></thead><tbody>$rows</tbody></table></div></div>")
   }
   return ($sections -join "")
+}
+
+function BeijingTomorrowSectionHtml([string]$DateText) {
+  $rows = foreach ($match in @($script:homePageMatches | Sort-Object kickoff)) {
+    "<tr><td>" + (HE (MatchKickoffBeijing $match)) + "</td><td>" + (HE ([string]$match.matchNumStr)) + "</td><td>" + (HE "$($match.home) vs $($match.away)") + "</td><td>" + (HE ([string]$match.group)) + "</td></tr>"
+  }
+
+  if (-not $rows -or @($rows).Count -eq 0) {
+    return "<div class=""fixtureCard""><h3>北京时间下一天赛程</h3><p>下一天赛程数据待补。</p></div>"
+  }
+
+  return "<div class=""fixtureCard""><h3>北京时间下一天赛程</h3><p>按北京时间展示下一天的比赛时间，格式统一为 MM-DD HH:mm，方便首页直接扫一眼次日赛程。</p><div class=""tableWrap""><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>小组</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
 }
 
 function BuildStandingsPageHtml($Bundle, [string]$LatestDate, [string]$DateText, [string]$UpdateTime) {
@@ -1176,7 +1357,8 @@ function BuildRootIndexHtml($RootPath, $Bundle, [string]$LatestDate, [string]$Da
     $cards.Add("<a class=""card"" href=""./$($dir.Name)/""><div><div class=""date"">$($dir.Name)</div><div class=""meta"">&#39044;&#27979;&#30475;&#26495;&#19982;&#36187;&#21518;&#22797;&#30424;</div></div><div class=""go"">&#36827;&#20837; &#8594;</div></a>")
   }
 
-  $groupTables = RootStandingsSectionHtml $Bundle
+  $compactStandings = RootStandingsCompactHtml $Bundle
+  $tomorrowFixtures = BeijingTomorrowSectionHtml $DateText
 
   return @"
 <!DOCTYPE html>
@@ -1188,7 +1370,7 @@ function BuildRootIndexHtml($RootPath, $Bundle, [string]$LatestDate, [string]$Da
 <style>
 :root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(51,226,138,.18),transparent 26%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
-main{max-width:1180px;margin:0 auto;padding:44px 18px}.hero{display:grid;gap:12px;margin-bottom:26px}h1{font-size:clamp(28px,5vw,48px);margin:0}p{color:var(--muted);line-height:1.8;margin:0}.heroMeta{display:flex;gap:12px;flex-wrap:wrap}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.list{display:grid;gap:14px;margin-top:20px;margin-bottom:34px}.card,.groupCard,.spotlight{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;text-decoration:none;color:var(--text);transition:.22s}.card:hover,.spotlight:hover{transform:translateY(-3px);border-color:var(--green)}.date{font-size:24px;font-weight:800;color:var(--blue)}.meta{color:var(--muted);margin-top:6px}.go{color:var(--green);font-weight:800;white-space:nowrap}.spotlight{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px;text-decoration:none;color:var(--text);margin:16px 0 22px}.spotlight strong{display:block;font-size:22px;color:var(--blue)}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}footer{margin-top:40px;color:#8ea8a1;font-size:13px}@media(max-width:620px){.card,.spotlight{align-items:flex-start;flex-direction:column}.go{white-space:normal}}
+main{max-width:1180px;margin:0 auto;padding:44px 18px}.hero{display:grid;gap:12px;margin-bottom:26px}h1{font-size:clamp(28px,5vw,48px);margin:0}p{color:var(--muted);line-height:1.8;margin:0}.heroMeta{display:flex;gap:12px;flex-wrap:wrap}.heroMeta span{display:inline-flex;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#0b201d;color:#8fffd0}.list{display:grid;gap:14px;margin-top:20px;margin-bottom:34px}.card,.groupCard,.spotlight,.fixtureCard,.miniGroupCard{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.22)}.card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;text-decoration:none;color:var(--text);transition:.22s}.card:hover,.spotlight:hover{transform:translateY(-3px);border-color:var(--green)}.date{font-size:24px;font-weight:800;color:var(--blue)}.meta{color:var(--muted);margin-top:6px}.go{color:var(--green);font-weight:800;white-space:nowrap}.spotlight{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px;text-decoration:none;color:var(--text);margin:16px 0 22px}.spotlight strong{display:block;font-size:22px;color:var(--blue)}.sectionTitle{font-size:24px;color:var(--blue);margin:0 0 16px}.groups{display:grid;gap:18px}.groupCard{padding:18px}.groupCard h3{margin:0 0 12px}.tableWrap{overflow-x:auto}table{width:100%;min-width:720px;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid var(--line);text-align:left}th{color:#8fffd0;background:#09211e}.top1 td{background:rgba(51,226,138,.12)}.top2 td{background:rgba(125,211,252,.10)}.homeGrid{display:grid;grid-template-columns:1.3fr .9fr;gap:18px;margin-bottom:28px}.fixtureCard,.miniGroupCard{padding:18px}.fixtureCard h3,.miniGroupCard h3{margin:0 0 12px}.miniStandings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.miniStandings table{min-width:0}.miniStandings th,.miniStandings td{padding:8px 10px;font-size:13px}.miniStandings th{white-space:nowrap}.fixtureCard table{min-width:520px}.fixtureCard td:first-child,.fixtureCard th:first-child{white-space:nowrap}footer{margin-top:40px;color:#8ea8a1;font-size:13px}@media(max-width:920px){.homeGrid{grid-template-columns:1fr}.miniStandings{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.card,.spotlight{align-items:flex-start;flex-direction:column}.go{white-space:normal}.miniStandings{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -1199,14 +1381,12 @@ main{max-width:1180px;margin:0 auto;padding:44px 18px}.hero{display:grid;gap:12p
 <div class="heroMeta"><span>最新更新时间：$(HE $UpdateTime)</span><span>当前主推页面：$(DateTitle $DateText)</span></div>
 </section>
 <a class="spotlight" href="./standings.html"><div><strong>全部小组积分榜</strong><p>按组别查看积分、进球、净胜球和出线状态，头名与次名已高亮，并带有最新更新时间。</p></div><div class="go">查看总榜 →</div></a>
+<section class="homeGrid">
+$tomorrowFixtures
+<div class="fixtureCard"><h3>首页小组排行榜</h3><p>缩小置顶展示全部小组排名，重点保留排名、积分和胜平负，头名/次名继续高亮。</p><div class="miniStandings">$compactStandings</div></div>
+</section>
 <section class="list">
 $($cards -join "`n")
-</section>
-<section>
-<h2 class="sectionTitle">最新小组赛积分榜</h2>
-<div class="groups">
-$groupTables
-</div>
 </section>
 <footer>仅供公开信息分析参考，不构成投注建议。</footer>
 </main>
@@ -1440,6 +1620,7 @@ $html = [System.Net.WebUtility]::HtmlDecode($html)
 $html | Set-Content -Encoding UTF8 $dayIndex
 $html | Set-Content -Encoding UTF8 $predictFile
 
+$script:homePageMatches = @($payload.matches)
 $rootHtml = BuildRootIndexHtml $root $standingsBundle $Date $payload.dateText $payload.lastUpdateTime
 $rootHtml = [System.Net.WebUtility]::HtmlDecode($rootHtml)
 $rootHtml | Set-Content -Encoding UTF8 $rootIndex
