@@ -23,12 +23,16 @@ if (-not (Test-Path $dayDir)) {
 $payload = Get-Content -Raw -Encoding UTF8 $dataFile | ConvertFrom-Json
 $teamAliasFile = Join-Path $root "team_aliases.json"
 $script:teamAliasMap = @{}
+$script:teamDisplayMap = @{}
 if (Test-Path $teamAliasFile) {
   try {
     $aliasEntries = Get-Content -Raw -Encoding UTF8 $teamAliasFile | ConvertFrom-Json
     foreach ($entry in @($aliasEntries)) {
       $code = ([string]$entry.code).Trim().ToUpperInvariant()
       if (-not $code) { continue }
+      if ($entry.zh) {
+        $script:teamDisplayMap[$code] = [string]$entry.zh
+      }
       foreach ($candidate in @([string]$entry.zh, [string]$entry.en, [string]$entry.code) + @($entry.aliases)) {
         if ([string]::IsNullOrWhiteSpace([string]$candidate)) { continue }
         $script:teamAliasMap[([string]$candidate).Trim()] = $code
@@ -47,6 +51,15 @@ $script:teamAliasMap["Congo DR"] = "COD"
 function HE([string]$Text) {
   if ($null -eq $Text) { return "" }
   return [System.Net.WebUtility]::HtmlEncode([string]$Text)
+}
+
+function DisplayTeamName([string]$Team) {
+  if ([string]::IsNullOrWhiteSpace($Team)) { return "" }
+  $teamKey = TeamKey $Team
+  if ($teamKey -and $script:teamDisplayMap.ContainsKey($teamKey)) {
+    return [string]$script:teamDisplayMap[$teamKey]
+  }
+  return [string]$Team
 }
 
 function DateTitle([string]$DateText) {
@@ -140,11 +153,7 @@ function MatchKickoffClock($Match) {
 }
 
 function MatchKickoffBeijing($Match) {
-  $raw = if ($Match.PSObject.Properties.Name -contains "kickoff" -and $Match.kickoff) {
-    [string]$Match.kickoff
-  } else {
-    MatchKickoffLocal $Match
-  }
+  $raw = MatchKickoffLocal $Match
 
   if (-not $raw) {
     return ""
@@ -665,6 +674,36 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
     $share = [math]::Min($share, 0.42)
   }
 
+  $goal2Odd = 0
+  $goal3Odd = 0
+  $goal4Odd = 0
+  if ($Match.odds -and $Match.odds.ttg) {
+    $goal2Odd = ToDouble $Match.odds.ttg.s2 0
+    $goal3Odd = ToDouble $Match.odds.ttg.s3 0
+    $goal4Odd = ToDouble $Match.odds.ttg.s4 0
+  }
+
+  $zeroZeroOdd = GetScoreOdd $Match "0:0"
+  $oneOneOdd = GetScoreOdd $Match "1:1"
+  $tightDrawSignal = $zeroZeroOdd -gt 0 -and $zeroZeroOdd -le 12 -and $oneOneOdd -gt 0 -and $oneOneOdd -le 8.5
+  if ($tightDrawSignal) {
+    $total -= 0.15
+    $share = 0.5 + (($share - 0.5) * 0.65)
+  }
+
+  if ($Lean.strong -and $goal3Odd -gt 0 -and $goal4Odd -gt 0 -and $goal4Odd -le ($goal3Odd + 1.4)) {
+    $total += 0.35
+  }
+  elseif ($Lean.strong -and $goal2Odd -gt 0 -and $goal3Odd -gt 0 -and [math]::Abs($goal2Odd - $goal3Odd) -le 0.25) {
+    $total += 0.15
+  }
+
+  if ($Lean.code -eq "away" -and $Lean.strong -and $goal3Odd -gt 0 -and $goal3Odd -le 3.7) {
+    $total += 0.15
+    $share = [math]::Min($share, 0.38)
+  }
+
+  $total = Clamp $total 1.4 4.8
   $share = Clamp $share 0.28 0.72
   $homeLambda = [math]::Max(0.15, $total * $share)
   $awayLambda = [math]::Max(0.15, $total - $homeLambda)
@@ -730,155 +769,38 @@ function GetRecentTeamSummary([string]$Team) {
 }
 
 function BuildStandingsBundle($Matches, $Snapshot = $null) {
-  if ($Snapshot -and @($Snapshot).Count -gt 0) {
-    $groupRows = New-Object System.Collections.Generic.List[object]
-    $teamLookup = @{}
-    $impactLookup = @{}
-    $groups = @{}
-    $snapshotTeamGroupMap = @{}
+  $groups = @{}
+  $allMatches = New-Object System.Collections.Generic.List[object]
 
-    foreach ($groupItem in @($Snapshot)) {
-      $groupName = NormalizeGroupName ([string]$groupItem.group)
-      $groups[$groupName] = [ordered]@{}
-      foreach ($sourceRow in @($groupItem.rows)) {
-        $teamKey = TeamKey ([string]$sourceRow.team)
-        $row = [pscustomobject]@{
-          team = [string]$sourceRow.team
-          teamKey = $teamKey
-          played = [int](ToDouble $sourceRow.played 0)
-          wins = [int](ToDouble $sourceRow.wins 0)
-          draws = [int](ToDouble $sourceRow.draws 0)
-          losses = [int](ToDouble $sourceRow.losses 0)
-          gf = [int](ToDouble $sourceRow.gf 0)
-          ga = [int](ToDouble $sourceRow.ga 0)
-          gd = [int](ToDouble $sourceRow.gd 0)
-          points = [int](ToDouble $sourceRow.points 0)
-        }
-        $groups[$groupName][$row.teamKey] = $row
-        $snapshotTeamGroupMap[$row.teamKey] = $groupName
-      }
-    }
-
-    foreach ($item in @($script:historicalMatches | Where-Object { $_.result })) {
-      $homeTeam = [string]$item.home
-      $awayTeam = [string]$item.away
-      $homeKey = TeamKey $homeTeam
-      $awayKey = TeamKey $awayTeam
-      $groupName = NormalizeGroupName ([string]$item.group)
-      if (-not $groupName -and $snapshotTeamGroupMap.ContainsKey($homeKey) -and $snapshotTeamGroupMap.ContainsKey($awayKey) -and $snapshotTeamGroupMap[$homeKey] -eq $snapshotTeamGroupMap[$awayKey]) {
-        $groupName = $snapshotTeamGroupMap[$homeKey]
-      }
-      if (-not $groupName -or -not $groups.ContainsKey($groupName)) { continue }
-      if (-not $groups[$groupName].Contains($homeKey) -or -not $groups[$groupName].Contains($awayKey)) { continue }
-
-      $homeRow = $groups[$groupName][$homeKey]
-      $awayRow = $groups[$groupName][$awayKey]
-      if (($homeRow.played -gt 0) -or ($awayRow.played -gt 0)) { continue }
-
-      $homeGoals = [int](ToDouble $item.result.homeGoals 0)
-      $awayGoals = [int](ToDouble $item.result.awayGoals 0)
-
-      $homeRow.played += 1
-      $awayRow.played += 1
-      $homeRow.gf += $homeGoals
-      $homeRow.ga += $awayGoals
-      $awayRow.gf += $awayGoals
-      $awayRow.ga += $homeGoals
-      $homeRow.gd = $homeRow.gf - $homeRow.ga
-      $awayRow.gd = $awayRow.gf - $awayRow.ga
-
-      if ($homeGoals -gt $awayGoals) {
-        $homeRow.wins += 1
-        $awayRow.losses += 1
-        $homeRow.points += 3
-      }
-      elseif ($awayGoals -gt $homeGoals) {
-        $awayRow.wins += 1
-        $homeRow.losses += 1
-        $awayRow.points += 3
-      }
-      else {
-        $homeRow.draws += 1
-        $awayRow.draws += 1
-        $homeRow.points += 1
-        $awayRow.points += 1
-      }
-    }
-
-    foreach ($groupName in ($groups.Keys | Sort-Object)) {
-      $rows = @($groups[$groupName].Values | Sort-Object @{Expression='points';Descending=$true}, @{Expression='gd';Descending=$true}, @{Expression='gf';Descending=$true}, team)
-      for ($idx = 0; $idx -lt $rows.Count; $idx++) {
-        $row = $rows[$idx]
-        $played = [int](ToDouble $row.played 0)
-        $points = [int](ToDouble $row.points 0)
-        $remaining = [math]::Max(0, 3 - $played)
-        $status = "🔵 理论可能"
-        if ($played -eq 0 -and $points -eq 0) {
-          $status = "⚪ 数据待补"
-        }
-        elseif ($idx -lt 2 -and $played -ge 2 -and $points -ge 4) {
-          $status = "🟡 出线主动权"
-        }
-        elseif ($remaining -le 1 -and $points -le 1) {
-          $status = "🟠 生死战"
-        }
-        elseif ($remaining -eq 0 -and $idx -ge 2) {
-          $status = "⚪ 已淘汰"
-        }
-        elseif ($remaining -eq 0 -and $idx -lt 2) {
-          $status = "🟢 已锁定出线"
-        }
-
-        $pointsBonus = [double]($points * 20)
-        $rankBonus = [double]((2 - [math]::Min([int]$idx, 2)) * 12)
-        $remainingBonus = [double]((3 - [int]$remaining) * 6)
-        $qualScore = Clamp ($pointsBonus + $rankBonus + $remainingBonus) 5 98
-        $row | Add-Member -NotePropertyName remaining -NotePropertyValue $remaining -Force
-        $row | Add-Member -NotePropertyName status -NotePropertyValue $status -Force
-        $row | Add-Member -NotePropertyName qualScore -NotePropertyValue ([math]::Round($qualScore)) -Force
-        $row | Add-Member -NotePropertyName rank -NotePropertyValue ($idx + 1) -Force
-        $row | Add-Member -NotePropertyName group -NotePropertyValue $groupName -Force
-        $teamLookup[$row.teamKey] = $row
-      }
-      $groupRows.Add([pscustomobject]@{ group = $groupName; rows = $rows })
-    }
-
-    foreach ($match in @($Matches)) {
-      $group = NormalizeGroupName ([string]$match.group)
-      if (-not $group -or -not ($groups.ContainsKey($group))) { continue }
-      $homeRow = $teamLookup[(TeamKey ([string]$match.home))]
-      $awayRow = $teamLookup[(TeamKey ([string]$match.away))]
-      if (-not $homeRow -or -not $awayRow) { continue }
-      $homePoints = [int](ToDouble $homeRow.points 0)
-      $awayPoints = [int](ToDouble $awayRow.points 0)
-      $remainingHome = [math]::Max(0, 3 - [int](ToDouble $homeRow.played 0))
-      $remainingAway = [math]::Max(0, 3 - [int](ToDouble $awayRow.played 0))
-      $homeWin = [math]::Round((Clamp ((($homePoints + 3) * 18) + (($remainingHome - 1) * 4)) 8 96))
-      $draw = [math]::Round((Clamp ((($homePoints + $awayPoints + 2) * 8)) 6 78))
-      $awayWin = [math]::Round((Clamp ((($awayPoints + 3) * 18) + (($remainingAway - 1) * 4)) 8 96))
-      $impactLookup[[string]$match.id] = "$($match.home)胜→出线主动权估值 $homeWin%；平→局势估值 $draw%；$($match.away)胜→出线主动权估值 $awayWin%。"
-    }
-
-    return [pscustomobject]@{
-      groups = $groupRows
-      teamLookup = $teamLookup
-      impactLookup = $impactLookup
-    }
+  foreach ($item in @($script:historicalMatches)) {
+    $allMatches.Add($item)
   }
 
-  $groups = @{}
-
   foreach ($match in @($Matches)) {
-    $group = NormalizeGroupName ([string]$match.group)
+    $allMatches.Add([pscustomobject]@{
+      id = [string]$match.id
+      date = [string]$payload.date
+      kickoff = MatchKickoffLocal $match
+      group = NormalizeGroupName ([string]$match.group)
+      home = [string]$match.home
+      homeKey = TeamKey ([string]$match.home)
+      away = [string]$match.away
+      awayKey = TeamKey ([string]$match.away)
+      result = $match.result
+    })
+  }
+
+  foreach ($item in $allMatches) {
+    $group = NormalizeGroupName ([string]$item.group)
     if (-not $group) { continue }
     if (-not $groups.ContainsKey($group)) {
       $groups[$group] = [ordered]@{}
     }
-    foreach ($team in @([string]$match.home, [string]$match.away)) {
+    foreach ($team in @([string]$item.home, [string]$item.away)) {
       $teamKey = TeamKey $team
       if (-not $groups[$group].Contains($teamKey)) {
         $groups[$group][$teamKey] = [ordered]@{
-          team = $team
+          team = (DisplayTeamName $team)
           teamKey = $teamKey
           played = 0
           wins = 0
@@ -893,27 +815,38 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
     }
   }
 
-  foreach ($item in @($script:historicalMatches)) {
-    if (-not $item.result -or -not $groups.ContainsKey($item.group)) { continue }
-    if (-not $groups[$item.group].Contains($item.homeKey) -or -not $groups[$item.group].Contains($item.awayKey)) { continue }
+  foreach ($item in ($allMatches | Where-Object { $_.result -and $null -ne $_.result.homeGoals -and $null -ne $_.result.awayGoals })) {
+    $group = NormalizeGroupName ([string]$item.group)
+    if (-not $group -or -not $groups.ContainsKey($group)) { continue }
+    if (-not $groups[$group].Contains($item.homeKey) -or -not $groups[$group].Contains($item.awayKey)) { continue }
 
-    $home = $groups[$item.group][$item.homeKey]
-    $away = $groups[$item.group][$item.awayKey]
-    $hg = [int]$item.result.homeGoals
-    $ag = [int]$item.result.awayGoals
+    $homeRowState = $groups[$group][$item.homeKey]
+    $awayRowState = $groups[$group][$item.awayKey]
+    $hg = [int](ToDouble $item.result.homeGoals 0)
+    $ag = [int](ToDouble $item.result.awayGoals 0)
 
-    $home.played += 1; $away.played += 1
-    $home.gf += $hg; $home.ga += $ag
-    $away.gf += $ag; $away.ga += $hg
+    $homeRowState.played += 1
+    $awayRowState.played += 1
+    $homeRowState.gf += $hg
+    $homeRowState.ga += $ag
+    $awayRowState.gf += $ag
+    $awayRowState.ga += $hg
 
     if ($hg -gt $ag) {
-      $home.wins += 1; $away.losses += 1; $home.points += 3
+      $homeRowState.wins += 1
+      $awayRowState.losses += 1
+      $homeRowState.points += 3
     }
     elseif ($hg -lt $ag) {
-      $away.wins += 1; $home.losses += 1; $away.points += 3
+      $awayRowState.wins += 1
+      $homeRowState.losses += 1
+      $awayRowState.points += 3
     }
     else {
-      $home.draws += 1; $away.draws += 1; $home.points += 1; $away.points += 1
+      $homeRowState.draws += 1
+      $awayRowState.draws += 1
+      $homeRowState.points += 1
+      $awayRowState.points += 1
     }
   }
 
@@ -929,8 +862,8 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
 
     for ($idx = 0; $idx -lt $rows.Count; $idx++) {
       $row = $rows[$idx]
-      $played = [int](ToDouble (($row.played | Select-Object -First 1)) 0)
-      $points = [int](ToDouble (($row.points | Select-Object -First 1)) 0)
+      $played = [int](ToDouble $row.played 0)
+      $points = [int](ToDouble $row.points 0)
       $remaining = [math]::Max(0, 3 - $played)
       $status = "🔵 理论可能"
       if ($played -eq 0 -and $points -eq 0) {
@@ -974,18 +907,13 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
     $awayRow = $teamLookup[(TeamKey ([string]$match.away))]
     if (-not $homeRow -or -not $awayRow) { continue }
 
-    $homePoints = [int](ToDouble (($homeRow.points | Select-Object -First 1)) 0)
-    $awayPoints = [int](ToDouble (($awayRow.points | Select-Object -First 1)) 0)
-    $remainingHome = [math]::Max(0, 3 - [int](ToDouble (($homeRow.played | Select-Object -First 1)) 0))
-    $remainingAway = [math]::Max(0, 3 - [int](ToDouble (($awayRow.played | Select-Object -First 1)) 0))
-    $homeWinBase = [double](($homePoints + 3) * 18)
-    $homeWinAdj = [double](($remainingHome - 1) * 4)
-    $homeWin = [math]::Round((Clamp ($homeWinBase + $homeWinAdj) 8 96))
-    $drawBase = [double](($homePoints + $awayPoints + 2) * 8)
-    $draw = [math]::Round((Clamp $drawBase 6 78))
-    $awayWinBase = [double](($awayPoints + 3) * 18)
-    $awayWinAdj = [double](($remainingAway - 1) * 4)
-    $awayWin = [math]::Round((Clamp ($awayWinBase + $awayWinAdj) 8 96))
+    $homePoints = [int](ToDouble $homeRow.points 0)
+    $awayPoints = [int](ToDouble $awayRow.points 0)
+    $remainingHome = [math]::Max(0, 3 - [int](ToDouble $homeRow.played 0))
+    $remainingAway = [math]::Max(0, 3 - [int](ToDouble $awayRow.played 0))
+    $homeWin = [math]::Round((Clamp ((($homePoints + 3) * 18) + (($remainingHome - 1) * 4)) 8 96))
+    $draw = [math]::Round((Clamp ((($homePoints + $awayPoints + 2) * 8)) 6 78))
+    $awayWin = [math]::Round((Clamp ((($awayPoints + 3) * 18) + (($remainingAway - 1) * 4)) 8 96))
     $impactLookup[[string]$match.id] = "$($match.home)胜→出线主动权估值 $homeWin%；平→局势估值 $draw%；$($match.away)胜→出线主动权估值 $awayWin%。"
   }
 
@@ -1000,7 +928,7 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
   $probs = GetHadProbabilities $Match
   $homeForm = GetRecentTeamSummary ([string]$Match.home)
   $awayForm = GetRecentTeamSummary ([string]$Match.away)
-  $teamRow = if ($Lean.code -eq "away") { $StandingsBundle.teamLookup[[string]$Match.away] } elseif ($Lean.code -eq "home") { $StandingsBundle.teamLookup[[string]$Match.home] } else { $StandingsBundle.teamLookup[[string]$Match.home] }
+  $teamRow = if ($Lean.code -eq "away") { $StandingsBundle.teamLookup[(TeamKey ([string]$Match.away))] } elseif ($Lean.code -eq "home") { $StandingsBundle.teamLookup[(TeamKey ([string]$Match.home))] } else { $StandingsBundle.teamLookup[(TeamKey ([string]$Match.home))] }
   $external = if ($Match.PSObject.Properties.Name -contains "external") { $Match.external } else { $null }
 
   $leanProb = if ($Lean.code -eq "away") { $probs.away } elseif ($Lean.code -eq "draw") { $probs.draw } else { $probs.home }
@@ -1168,10 +1096,24 @@ function BuildHalfFullArtifact($Match, $Lean, $EvArtifact) {
     $ht = "负"
   }
 
+  $zeroZeroOdd = GetScoreOdd $Match "0:0"
+  $oneOneOdd = GetScoreOdd $Match "1:1"
+  $drawPressure = $zeroZeroOdd -gt 0 -and $zeroZeroOdd -le 12 -and $oneOneOdd -gt 0 -and $oneOneOdd -le 8.5
+  if ($drawPressure -and [math]::Abs($fhHome - $fhAway) -lt 0.35) {
+    $ht = "平"
+  }
+
   $ft = switch ($Lean.code) {
     "home" { "胜" }
     "away" { "负" }
     default { "平" }
+  }
+
+  if ($drawPressure -and -not $Lean.strong -and $ft -ne "平") {
+    $primary = "平/$ft"
+  }
+  else {
+    $primary = "$ht/$ft"
   }
 
   if ($ft -eq "平" -and $ht -ne "平") {
@@ -1187,7 +1129,9 @@ function BuildHalfFullArtifact($Match, $Lean, $EvArtifact) {
     $secondary = "$ht/$ft"
   }
 
-  $primary = "$ht/$ft"
+  if ($drawPressure -and $secondary -eq $primary) {
+    $secondary = "平/平"
+  }
   $goalBand = if ($total -le 2.2) {
     "1-2球"
   }
@@ -1302,10 +1246,10 @@ function BeijingTomorrowSectionHtml([string]$DateText) {
   }
 
   if (-not $rows -or @($rows).Count -eq 0) {
-    return "<div class=""fixtureCard""><h3>北京时间下一天赛程</h3><p>下一天赛程数据待补。</p></div>"
+    return "<div class=""fixtureCard""><h3>下一天当地时间赛程</h3><p>下一天赛程数据待补。</p></div>"
   }
 
-  return "<div class=""fixtureCard""><h3>北京时间下一天赛程</h3><p>按北京时间展示下一天的比赛时间，格式统一为 MM-DD HH:mm，方便首页直接扫一眼次日赛程。</p><div class=""tableWrap""><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>小组</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
+  return "<div class=""fixtureCard""><h3>下一天当地时间赛程</h3><p>全部改按比赛当地时间展示，格式统一为 MM-DD HH:mm，首页可以直接扫一眼次日赛程。</p><div class=""tableWrap""><table><thead><tr><th>当地时间</th><th>场次</th><th>对阵</th><th>小组</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
 }
 
 function BuildStandingsPageHtml($Bundle, [string]$LatestDate, [string]$DateText, [string]$UpdateTime) {
@@ -1414,7 +1358,7 @@ function ResultLean($Result) {
 
 function BuildReviewModelNote($Settled, $GoalHits, $SideHits) {
   if ($Settled -le 0) {
-    return "昨日赛果仍在等待完整回填，今日模型先维持赔率主线，并保留平局与偷袭冷门的双重防线。"
+    return "昨日赛果仍在等待完整回填，今日模型先维持赔率主线，但底层已经改成三件事：强热盘不再机械深穿，0:0/1:1低位盘自动补平局保护，积分榜统一按全部已录入赛果实时重算。"
   }
 
   $goalMisses = $Settled - $GoalHits
@@ -1435,7 +1379,7 @@ function BuildReviewModelNote($Settled, $GoalHits, $SideHits) {
     "胜平负方向相对稳定，今日仍以赔率最强侧为锚，但减少深穿预设。"
   }
 
-  return "$goalTone $sideTone"
+  return "$goalTone $sideTone 今日已把底层逻辑直接改掉：一，强队热盘若让球没有同步深压，不再默认大胜，比分和半全场都会保留一球胜与平局回撤；二，0:0、1:1赔率同时偏低的比赛，半全场优先补平/平、平/胜或平/负脚本；三，3球与4球赔率挤在一起的强势盘，Poisson 总进球自动上修 0.15-0.35，避免再次把尾部进球压扁。全部小组积分榜也已改成按历史赛果实时重算，不再依赖静态快照。"
 }
 
 function BuildPreviousReview() {
@@ -1478,7 +1422,22 @@ function BuildPreviousReview() {
     $goalVerdict = if ($goalHit) { "&#21629;&#20013;" } else { "&#26410;&#20013;" }
     $sideVerdict = if ($sideHit) { "&#26041;&#21521;&#21629;&#20013;" } else { "&#26041;&#21521;&#20559;&#31163;" }
     $scoreText = (HE "$($pm.result.homeGoals):$($pm.result.awayGoals)")
-    $note = "&#23454;&#38469;&#24635;&#36827;&#29699; $actualTotal&#65292;&#39044;&#27979;" + $goalVerdict + "&#65307;" + $sideVerdict + "&#12290;"
+    $why = if (-not $sideHit -and $actualLean -eq "draw") {
+      "平局保护不足，已补强 0:0 / 1:1 低位盘的平局脚本。"
+    }
+    elseif (-not $goalHit -and $actualTotal -ge ([int](ToDouble $pm.prediction.totalGoals 0) + 2)) {
+      "尾部进球被低估，已上修强势盘的 3-4 球分布。"
+    }
+    elseif (-not $goalHit -and $actualTotal -lt [int](ToDouble $pm.prediction.totalGoals 0)) {
+      "比赛节奏被压住，已抬高低总进球盘的试探局与慢热权重。"
+    }
+    elseif (-not $sideHit) {
+      "热门方向过热，已降低机械站边权重。"
+    }
+    else {
+      "主线判断仍有效，本次主要用于校正比分尾部。"
+    }
+    $note = "&#23454;&#38469;&#24635;&#36827;&#29699; $actualTotal&#65292;&#39044;&#27979;" + $goalVerdict + "&#65307;" + $sideVerdict + "&#12290;" + (HE $why)
     $reviewRows.Add("<tr><td>" + (HE $pm.matchNumStr) + "</td><td>" + (HE "$($pm.home) vs $($pm.away)") + "</td><td>" + (GoalLabel $pm.prediction.totalGoals) + "</td><td>" + $scoreText + "</td><td>" + $goalVerdict + " / " + $sideVerdict + "</td><td>" + $note + "</td></tr>")
   }
 
@@ -1486,7 +1445,7 @@ function BuildPreviousReview() {
   $sideRate = if ($settled -gt 0) { [math]::Round(($sideHits / $settled) * 100, 1).ToString() + "%" } else { "&#24453;&#23450;" }
 
   $modelNote = BuildReviewModelNote -Settled $settled -GoalHits $goalHits -SideHits $sideHits
-  return "<section id=""reviewModel"" class=""section""><h2>&#26152;&#26085;&#22797;&#30424;&#19982;&#20170;&#26085;&#27169;&#22411;&#20462;&#27491;</h2><div class=""recommend""><div class=""kv""><div><strong>&#24050;&#32467;&#31639;</strong>$settled &#22330;</div><div><strong>&#24635;&#36827;&#29699;&#21629;&#20013;</strong>$goalHits / $settled ($goalRate)</div><div><strong>&#32988;&#24179;&#36127;&#26041;&#21521;</strong>$sideHits / $settled ($sideRate)</div><div><strong>&#20170;&#26085;&#20462;&#27491;</strong>&#38477;&#20302;&#26426;&#26800;&#36319;&#20302;&#36180;&#26435;&#37325;&#65292;&#25260;&#39640;&#23614;&#37096;&#36827;&#29699;&#19982;&#20919;&#38376;&#38450;&#32447;</div></div><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#39044;&#27979;&#24635;&#36827;&#29699;</th><th>&#26368;&#32456;&#27604;&#20998;</th><th>&#21629;&#20013;</th><th>&#22797;&#30424;&#32467;&#35770;</th></tr></thead><tbody>" + ($reviewRows -join "") + "</tbody></table><p class=""modelNote"">&#27169;&#22411;&#21453;&#39304;&#65306;" + (HE $modelNote) + "</p></div></section>"
+  return "<section id=""reviewModel"" class=""section""><h2>&#26152;&#26085;&#22797;&#30424;&#19982;&#20170;&#26085;&#27169;&#22411;&#20462;&#27491;</h2><div class=""recommend""><div class=""kv""><div><strong>&#24050;&#32467;&#31639;</strong>$settled &#22330;</div><div><strong>&#24635;&#36827;&#29699;&#21629;&#20013;</strong>$goalHits / $settled ($goalRate)</div><div><strong>&#32988;&#24179;&#36127;&#26041;&#21521;</strong>$sideHits / $settled ($sideRate)</div><div><strong>&#20170;&#26085;&#20462;&#27491;</strong>&#24179;&#23616;&#20445;&#25252; + &#24378;&#30424;&#23614;&#37096;&#19978;&#20462; + &#20840;&#37327;&#31215;&#20998;&#27036;&#23454;&#26102;&#37325;&#31639;</div></div><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#39044;&#27979;&#24635;&#36827;&#29699;</th><th>&#26368;&#32456;&#27604;&#20998;</th><th>&#21629;&#20013;</th><th>&#22797;&#30424;&#32467;&#35770;</th></tr></thead><tbody>" + ($reviewRows -join "") + "</tbody></table><p class=""modelNote"">&#27169;&#22411;&#21453;&#39304;&#65306;" + (HE $modelNote) + "</p></div></section>"
 }
 
 $script:historicalMatches = GetHistoricalMatches
