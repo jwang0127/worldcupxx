@@ -104,14 +104,25 @@ function C([string]$Key) {
 }
 
 function GetLean($Match) {
-  if (-not $Match.odds -or -not $Match.odds.had) {
+  if (-not $Match.odds) {
     return [pscustomobject]@{ code = "home"; team = $Match.home; text = "&#20027;&#32988;"; strong = $true }
   }
-  $items = @(
-    [pscustomobject]@{ code = "home"; team = $Match.home; text = "&#20027;&#32988;"; value = [decimal]$Match.odds.had.home },
-    [pscustomobject]@{ code = "draw"; team = "draw"; text = "&#24179;&#23616;"; value = [decimal]$Match.odds.had.draw },
-    [pscustomobject]@{ code = "away"; team = $Match.away; text = "&#23458;&#32988;"; value = [decimal]$Match.odds.had.away }
-  )
+
+  $items = @()
+  if ($Match.odds.had) {
+    if ($Match.odds.had.home) { $items += [pscustomobject]@{ code = "home"; team = $Match.home; text = "&#20027;&#32988;"; value = [decimal]$Match.odds.had.home } }
+    if ($Match.odds.had.draw) { $items += [pscustomobject]@{ code = "draw"; team = "draw"; text = "&#24179;&#23616;"; value = [decimal]$Match.odds.had.draw } }
+    if ($Match.odds.had.away) { $items += [pscustomobject]@{ code = "away"; team = $Match.away; text = "&#23458;&#32988;"; value = [decimal]$Match.odds.had.away } }
+  }
+  if (-not $items -and $Match.odds.hhad) {
+    if ($Match.odds.hhad.home) { $items += [pscustomobject]@{ code = "home"; team = $Match.home; text = "&#20027;&#32988;"; value = [decimal]$Match.odds.hhad.home } }
+    if ($Match.odds.hhad.draw) { $items += [pscustomobject]@{ code = "draw"; team = "draw"; text = "&#24179;&#23616;"; value = [decimal]$Match.odds.hhad.draw } }
+    if ($Match.odds.hhad.away) { $items += [pscustomobject]@{ code = "away"; team = $Match.away; text = "&#23458;&#32988;"; value = [decimal]$Match.odds.hhad.away } }
+  }
+  if (-not $items) {
+    return [pscustomobject]@{ code = "home"; team = $Match.home; text = "&#20027;&#32988;"; strong = $false }
+  }
+
   $pick = $items | Sort-Object { $_.value } | Select-Object -First 1
   $strong = $pick.code -ne "draw" -and $pick.value -le 1.65
   return [pscustomobject]@{ code = $pick.code; team = $pick.team; text = $pick.text; strong = $strong }
@@ -1631,8 +1642,26 @@ function BuildPreviousReview() {
   $previousFile = ""
   try {
     $dt = [datetime]::ParseExact($payload.dateText, "yyyy-MM-dd", [System.Globalization.CultureInfo]::InvariantCulture)
-    $prevDate = $dt.AddDays(-1).ToString("yyyyMMdd")
-    $previousFile = Join-Path $root ("data\" + $prevDate + ".json")
+    $candidateFiles = Get-ChildItem -Path (Join-Path $root "data") -Filter "*.json" |
+      Where-Object {
+        $_.BaseName -match "^\d{8}$" -and
+        [datetime]::ParseExact($_.BaseName, "yyyyMMdd", [System.Globalization.CultureInfo]::InvariantCulture) -lt $dt
+      } |
+      Sort-Object BaseName -Descending
+
+    foreach ($candidate in @($candidateFiles)) {
+      $candidatePayload = Get-Content -Raw -Encoding UTF8 $candidate.FullName | ConvertFrom-Json
+      $worldCupMatches = @($candidatePayload.matches | Where-Object { [string]$_.league -eq "世界杯" })
+      $settledWorldCupMatches = @(
+        $worldCupMatches | Where-Object {
+          $_.result -and $null -ne $_.result.homeGoals -and $null -ne $_.result.awayGoals
+        }
+      )
+      if ($settledWorldCupMatches.Count -gt 0) {
+        $previousFile = $candidate.FullName
+        break
+      }
+    }
   }
   catch {
     return ""

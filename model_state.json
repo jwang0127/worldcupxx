@@ -1,19 +1,19 @@
 ﻿{
     "version":  1,
-    "updatedAt":  "2026-06-23T13:04:39",
+    "updatedAt":  "2026-06-23T13:31:49",
     "weights":  {
-                    "odds":  0.30,
+                    "odds":  0.28,
                     "elo":  0.20,
-                    "form":  0.14,
-                    "tactics":  0.14,
-                    "motivation":  0.08,
-                    "external":  0.06,
-                    "mystic":  0.08
+                    "form":  0.15,
+                    "tactics":  0.15,
+                    "motivation":  0.09,
+                    "external":  0.08,
+                    "mystic":  0.05
                 },
     "calibration":  {
-                        "latestReview":  "20260618",
-                        "lesson":  "胜平负方向 3/4，但总进球 0/4。降低总进球最低赔率的机械权重，提高强队盘尾部、弱队偷球、下半场波动和玄学冷门提示权重。",
-                        "todayAdjustment":  "20260619 强热门场次的 3-4 球概率上调；均势场降低置信度并保留 1-1/0-1 冷门防线。"
+                        "latestReview":  "20260622",
+                        "lesson":  "总进球再次 0/4，且平局保护不足。降低赔率单边热度和玄学扰动，提高战术、外部与积分形势权重，避免机械追高总进球。",
+                        "todayAdjustment":  "20260624 继续保留强队方向，但均势盘优先补 1:1/0:0 平局脚本；强热盘只有在 2 球与 3 球赔率同时压低时才上修到 3 球尾部。"
                     },
     "history":  [
                     {
@@ -48,6 +48,12 @@
                     },
                     {
                         "date":  "20260623",
+                        "settled":  0,
+                        "totalGoalHits":  0,
+                        "totalGoalHitRate":  "\u0026#24453;\u0026#23450;"
+                    },
+                    {
+                        "date":  "20260624",
                         "settled":  0,
                         "totalGoalHits":  0,
                         "totalGoalHitRate":  "\u0026#24453;\u0026#23450;"
