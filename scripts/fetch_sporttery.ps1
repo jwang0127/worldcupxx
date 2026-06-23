@@ -1,20 +1,21 @@
 param(
   [string]$Date = (Get-Date -Format "yyyyMMdd"),
   [string]$OutFile = "",
-  [string]$PoolCode = "ttg,had",
+  [string]$PoolCode = "ttg,had,hhad,crs,hafu",
   [switch]$Force,
-  [switch]$MergeExisting
+  [switch]$MergeExisting,
+  [switch]$RefreshPredictions
 )
 
 $ErrorActionPreference = "Stop"
 
 function Get-RootDir {
-  return (Split-Path -Parent $PSScriptRoot)
+  Split-Path -Parent $PSScriptRoot
 }
 
 function Get-TargetDateText {
   param([string]$CompactDate)
-  return ([datetime]::ParseExact($CompactDate, "yyyyMMdd", $null)).ToString("yyyy-MM-dd")
+  ([datetime]::ParseExact($CompactDate, "yyyyMMdd", $null)).ToString("yyyy-MM-dd")
 }
 
 function Get-ExistingMatchMap {
@@ -25,42 +26,78 @@ function Get-ExistingMatchMap {
     return $map
   }
 
-  $existingPayload = Get-Content -Raw $Path | ConvertFrom-Json
+  $existingPayload = Get-Content -Raw -Encoding UTF8 $Path | ConvertFrom-Json
   foreach ($existingMatch in @($existingPayload.matches)) {
     if ($existingMatch.matchId) {
       $map[[string]$existingMatch.matchId] = $existingMatch
     }
   }
-
   return $map
 }
 
 function Get-TopGoalsPrediction {
-  param($Ttg)
+  param($Ttg, $Had = $null, $Hhad = $null)
 
   $pairs = @(
-    @{ label = "0"; value = $Ttg.s0 },
-    @{ label = "1"; value = $Ttg.s1 },
-    @{ label = "2"; value = $Ttg.s2 },
-    @{ label = "3"; value = $Ttg.s3 },
-    @{ label = "4"; value = $Ttg.s4 },
-    @{ label = "5"; value = $Ttg.s5 },
-    @{ label = "6"; value = $Ttg.s6 },
-    @{ label = "7+"; value = $Ttg.s7 }
-  ) | Where-Object { $_.value }
+    [pscustomobject]@{ label = "0"; value = [double]$Ttg.s0 },
+    [pscustomobject]@{ label = "1"; value = [double]$Ttg.s1 },
+    [pscustomobject]@{ label = "2"; value = [double]$Ttg.s2 },
+    [pscustomobject]@{ label = "3"; value = [double]$Ttg.s3 },
+    [pscustomobject]@{ label = "4"; value = [double]$Ttg.s4 },
+    [pscustomobject]@{ label = "5"; value = [double]$Ttg.s5 },
+    [pscustomobject]@{ label = "6"; value = [double]$Ttg.s6 },
+    [pscustomobject]@{ label = "7+"; value = [double]$Ttg.s7 }
+  ) | Where-Object { $_.value -gt 0 } | Sort-Object value
 
-  if (-not $pairs) {
-    return @{
+  if (-not $pairs -or $pairs.Count -eq 0) {
+    return [pscustomobject]@{
       totalGoals = "2"
       candidates = @("2", "3", "1")
       confidence = "low"
     }
   }
 
-  $sorted = $pairs | Sort-Object { [decimal]$_.value }
-  $gap = 0
-  if ($sorted.Count -gt 1) {
-    $gap = [math]::Round(([decimal]$sorted[1].value - [decimal]$sorted[0].value), 2)
+  $topLabel = [string]$pairs[0].label
+  $topOdd = [double]$pairs[0].value
+  $gap = if ($pairs.Count -gt 1) { [math]::Round([double]$pairs[1].value - [double]$pairs[0].value, 2) } else { 0.0 }
+
+  $homeProb = 0.45
+  $drawProb = 0.27
+  $awayProb = 0.28
+  if ($Had -and $Had.h -and $Had.d -and $Had.a) {
+    $rawHome = 1 / [double]$Had.h
+    $rawDraw = 1 / [double]$Had.d
+    $rawAway = 1 / [double]$Had.a
+    $sum = $rawHome + $rawDraw + $rawAway
+    if ($sum -gt 0) {
+      $homeProb = $rawHome / $sum
+      $drawProb = $rawDraw / $sum
+      $awayProb = $rawAway / $sum
+    }
+  }
+
+  $favoriteProb = [math]::Max($homeProb, $awayProb)
+  $favoriteStrong = $favoriteProb -ge 0.56
+  $balancedMatch = [math]::Abs($homeProb - $awayProb) -le 0.12
+  $drawPressure = $drawProb -ge 0.27
+  if ($Hhad -and $Hhad.fixedOddsGoal) {
+    $handicap = [string]$Hhad.fixedOddsGoal
+    if ($handicap -match "^-2" -or $handicap -match "^\+2") {
+      $favoriteStrong = $true
+    }
+  }
+
+  if ($topLabel -eq "2" -and $pairs.Count -gt 1 -and [string]$pairs[1].label -eq "3" -and $gap -le 0.28 -and $favoriteStrong) {
+    $topLabel = "3"
+  }
+  elseif ($topLabel -eq "3" -and $pairs.Count -gt 1 -and [string]$pairs[1].label -eq "2" -and $gap -le 0.22 -and ($balancedMatch -or $drawPressure)) {
+    $topLabel = "2"
+  }
+  elseif ($topLabel -eq "1" -and $favoriteStrong -and $topOdd -le 4.9) {
+    $topLabel = "2"
+  }
+  elseif ($topLabel -eq "4" -and $balancedMatch -and $drawPressure) {
+    $topLabel = "3"
   }
 
   $confidence = "medium"
@@ -70,109 +107,148 @@ function Get-TopGoalsPrediction {
   elseif ($gap -lt 0.2) {
     $confidence = "low"
   }
+  if ($favoriteStrong -and $confidence -eq "medium" -and ($topLabel -eq "3" -or $topLabel -eq "4")) {
+    $confidence = "high"
+  }
+  if ($balancedMatch -and $drawPressure -and $gap -lt 0.35) {
+    $confidence = "low"
+  }
 
-  return @{
-    totalGoals = $sorted[0].label
-    candidates = @($sorted | Select-Object -First ([Math]::Min(3, $sorted.Count)) | ForEach-Object { $_.label })
+  return [pscustomobject]@{
+    totalGoals = $topLabel
+    candidates = @($pairs | Select-Object -First ([Math]::Min(3, $pairs.Count)) | ForEach-Object { $_.label })
     confidence = $confidence
   }
 }
 
 function Get-ResultLean {
-  param($Had)
+  param($Had, $Hhad = $null)
 
-  if (-not $Had) {
+  if (-not $Had -or -not $Had.h -or -not $Had.d -or -not $Had.a) {
     return "home"
   }
 
   $items = @(
-    @{ code = "home"; value = $Had.h },
-    @{ code = "draw"; value = $Had.d },
-    @{ code = "away"; value = $Had.a }
-  ) | Where-Object { $_.value }
+    [pscustomobject]@{ code = "home"; value = [double]$Had.h },
+    [pscustomobject]@{ code = "draw"; value = [double]$Had.d },
+    [pscustomobject]@{ code = "away"; value = [double]$Had.a }
+  ) | Sort-Object value
 
-  if (-not $items) {
-    return "home"
+  $pick = [string]$items[0].code
+  $rawHome = 1 / [double]$Had.h
+  $rawDraw = 1 / [double]$Had.d
+  $rawAway = 1 / [double]$Had.a
+  $sum = $rawHome + $rawDraw + $rawAway
+  if ($sum -le 0) {
+    return $pick
   }
 
-  return ($items | Sort-Object { [decimal]$_.value } | Select-Object -First 1).code
+  $homeProb = $rawHome / $sum
+  $drawProb = $rawDraw / $sum
+  $awayProb = $rawAway / $sum
+  if ([math]::Abs($homeProb - $awayProb) -le 0.10 -and $drawProb -ge 0.28) {
+    return "draw"
+  }
+
+  if ($Hhad -and $Hhad.h -and $Hhad.a -and $Hhad.fixedOddsGoal) {
+    $handicap = [string]$Hhad.fixedOddsGoal
+    $hHome = [double]$Hhad.h
+    $hAway = [double]$Hhad.a
+    if ($handicap -match "^-1" -and $pick -eq "home" -and $hAway -lt $hHome -and $drawProb -ge 0.24) {
+      return "home"
+    }
+    if ($handicap -match "^\+1" -and $pick -eq "away" -and $hHome -lt $hAway -and $drawProb -ge 0.24) {
+      return "away"
+    }
+  }
+
+  return $pick
 }
 
 function Convert-ToIntGoals {
   param([string]$Label)
-
-  if ($Label -eq "7+") {
-    return 7
-  }
-
+  if ($Label -eq "7+") { return 7 }
   return [int]$Label
 }
 
 function Get-ScorePrediction {
-  param(
-    [string]$GoalLabel,
-    [string]$Lean
-  )
+  param([string]$GoalLabel, [string]$Lean, $Had = $null, $Hhad = $null)
 
   $goals = Convert-ToIntGoals $GoalLabel
+  $homeProb = 0.45
+  $drawProb = 0.27
+  $awayProb = 0.28
+  if ($Had -and $Had.h -and $Had.d -and $Had.a) {
+    $rawHome = 1 / [double]$Had.h
+    $rawDraw = 1 / [double]$Had.d
+    $rawAway = 1 / [double]$Had.a
+    $sum = $rawHome + $rawDraw + $rawAway
+    if ($sum -gt 0) {
+      $homeProb = $rawHome / $sum
+      $drawProb = $rawDraw / $sum
+      $awayProb = $rawAway / $sum
+    }
+  }
 
-  switch ($Lean) {
-    "draw" {
-      switch ($goals) {
-        0 { return @{ scores = @("0:0", "1:1"); upset = "1:0" } }
-        1 { return @{ scores = @("1:1", "0:0"); upset = "1:0" } }
-        2 { return @{ scores = @("1:1", "0:0"); upset = "2:1" } }
-        3 { return @{ scores = @("2:2", "1:1"); upset = "2:1" } }
-        4 { return @{ scores = @("2:2", "1:1"); upset = "3:1" } }
-        default { return @{ scores = @("2:2", "3:3"); upset = "3:2" } }
-      }
+  $favoriteProb = [math]::Max($homeProb, $awayProb)
+  $favoriteStrong = $favoriteProb -ge 0.56
+  $balancedMatch = [math]::Abs($homeProb - $awayProb) -le 0.12
+  $drawPressure = $drawProb -ge 0.27
+  if ($Hhad -and $Hhad.fixedOddsGoal) {
+    $handicap = [string]$Hhad.fixedOddsGoal
+    if ($handicap -match "^-2" -or $handicap -match "^\+2") {
+      $favoriteStrong = $true
     }
-    "away" {
-      switch ($goals) {
-        0 { return @{ scores = @("0:0", "0:1"); upset = "1:0" } }
-        1 { return @{ scores = @("0:1", "1:0"); upset = "1:1" } }
-        2 { return @{ scores = @("0:2", "1:1"); upset = "1:0" } }
-        3 { return @{ scores = @("1:2", "0:3"); upset = "2:1" } }
-        4 { return @{ scores = @("1:3", "0:4"); upset = "2:2" } }
-        default { return @{ scores = @("2:3", "1:4"); upset = "2:2" } }
-      }
+  }
+
+  if ($Lean -eq "draw") {
+    switch ($goals) {
+      0 { return [pscustomobject]@{ scores = @("0:0", "1:1"); upset = "1:0" } }
+      1 { return [pscustomobject]@{ scores = @("0:0", "1:1"); upset = "1:0" } }
+      2 { return [pscustomobject]@{ scores = @("1:1", "0:0"); upset = "1:0" } }
+      3 { return [pscustomobject]@{ scores = @("2:2", "1:1"); upset = "2:1" } }
+      default { return [pscustomobject]@{ scores = @("2:2", "1:1"); upset = "3:1" } }
     }
-    default {
-      switch ($goals) {
-        0 { return @{ scores = @("0:0", "1:0"); upset = "0:1" } }
-        1 { return @{ scores = @("1:0", "0:1"); upset = "1:1" } }
-        2 { return @{ scores = @("2:0", "1:1"); upset = "0:1" } }
-        3 { return @{ scores = @("2:1", "3:0"); upset = "1:2" } }
-        4 { return @{ scores = @("3:1", "2:2"); upset = "1:2" } }
-        default { return @{ scores = @("3:2", "4:1"); upset = "2:2" } }
+  }
+
+  if ($Lean -eq "away") {
+    if ($drawPressure -and $goals -le 2) { return [pscustomobject]@{ scores = @("0:1", "1:1"); upset = "1:0" } }
+    switch ($goals) {
+      0 { return [pscustomobject]@{ scores = @("0:0", "0:1"); upset = "1:0" } }
+      1 { return [pscustomobject]@{ scores = @("0:1", "1:1"); upset = "1:0" } }
+      2 { return [pscustomobject]@{ scores = @("0:1", "0:2"); upset = "1:1" } }
+      3 {
+        if ($favoriteStrong) { return [pscustomobject]@{ scores = @("1:2", "0:3"); upset = "1:1" } }
+        return [pscustomobject]@{ scores = @("0:2", "1:2"); upset = "1:1" }
       }
+      default { return [pscustomobject]@{ scores = @("1:3", "0:4"); upset = "2:2" } }
     }
+  }
+
+  if ($drawPressure -and $goals -le 2) { return [pscustomobject]@{ scores = @("1:1", "1:0"); upset = "0:1" } }
+  switch ($goals) {
+    0 { return [pscustomobject]@{ scores = @("0:0", "1:0"); upset = "0:1" } }
+    1 { return [pscustomobject]@{ scores = @("1:0", "1:1"); upset = "0:1" } }
+    2 {
+      if ($balancedMatch) { return [pscustomobject]@{ scores = @("1:1", "2:1"); upset = "0:1" } }
+      return [pscustomobject]@{ scores = @("2:0", "2:1"); upset = "1:1" }
+    }
+    3 {
+      if ($favoriteStrong) { return [pscustomobject]@{ scores = @("2:1", "3:0"); upset = "1:1" } }
+      return [pscustomobject]@{ scores = @("2:1", "2:0"); upset = "1:2" }
+    }
+    default { return [pscustomobject]@{ scores = @("3:1", "2:2"); upset = "1:2" } }
   }
 }
 
 function Get-FirstNonEmptyValue {
-  param(
-    $Source,
-    [string[]]$Names
-  )
+  param($Source, [string[]]$Names)
 
-  if (-not $Source) {
-    return $null
-  }
-
+  if (-not $Source) { return $null }
   foreach ($name in $Names) {
-    try {
-      $value = $Source.PSObject.Properties[$name].Value
-    }
-    catch {
-      $value = $null
-    }
-
-    if ($null -ne $value -and [string]$value -ne "") {
-      return $value
-    }
+    try { $value = $Source.PSObject.Properties[$name].Value } catch { $value = $null }
+    if ($null -ne $value -and [string]$value -ne "") { return $value }
   }
-
   return $null
 }
 
@@ -196,9 +272,18 @@ function Get-LiveResultFromMatch {
   return [pscustomobject]@{
     homeGoals = [int]$homeGoals
     awayGoals = [int]$awayGoals
-    status = if ($status) { $status } else { "Finished" }
+    status = $(if ($status) { $status } else { "Finished" })
     source = "sporttery-live-api"
   }
+}
+
+function Should-UseLivePrediction {
+  param($ExistingMatch, [switch]$RefreshPredictions)
+
+  if ($RefreshPredictions -or -not $ExistingMatch -or -not $ExistingMatch.review) {
+    return $true
+  }
+  return ([string]$ExistingMatch.review -match '^Auto-generated from Sporttery live odds:')
 }
 
 if (-not $OutFile) {
@@ -222,29 +307,29 @@ $apiUrl = "https://webapi.sporttery.cn/gateway/uniform/football/getMatchCalculat
 
 Write-Host "Fetching Sporttery API: $apiUrl"
 $response = Invoke-WebRequest -UseBasicParsing -Uri $apiUrl -Headers $headers
-$payload = $response.Content | ConvertFrom-Json
+$apiPayload = $response.Content | ConvertFrom-Json
 
-if ([string]$payload.errorCode -ne "0" -or -not $payload.value.matchInfoList) {
+if ([string]$apiPayload.errorCode -ne "0" -or -not $apiPayload.value.matchInfoList) {
   throw "Sporttery API returned no usable match data."
 }
 
 $existingMatchMap = Get-ExistingMatchMap $OutFile
 $matchList = New-Object System.Collections.Generic.List[object]
 
-foreach ($group in $payload.value.matchInfoList) {
-  foreach ($match in $group.subMatchList) {
-    if ($match.matchDate -ne $targetDate) {
+foreach ($group in @($apiPayload.value.matchInfoList)) {
+  foreach ($match in @($group.subMatchList)) {
+    if ([string]$match.matchDate -ne $targetDate) {
       continue
     }
 
-    $goalPick = Get-TopGoalsPrediction $match.ttg
-    $lean = Get-ResultLean $match.had
-    $scorePick = Get-ScorePrediction -GoalLabel $goalPick.totalGoals -Lean $lean
+    $goalPick = Get-TopGoalsPrediction -Ttg $match.ttg -Had $match.had -Hhad $match.hhad
+    $lean = Get-ResultLean -Had $match.had -Hhad $match.hhad
+    $scorePick = Get-ScorePrediction -GoalLabel $goalPick.totalGoals -Lean $lean -Had $match.had -Hhad $match.hhad
 
     $matchCode = [string]$match.matchNum
-    $matchCodeMatch = [regex]::Match([string]$match.matchNumStr, "(\d{3})$")
-    if ($matchCodeMatch.Success) {
-      $matchCode = $matchCodeMatch.Groups[1].Value
+    $codeMatch = [regex]::Match([string]$match.matchNumStr, "(\d{3})$")
+    if ($codeMatch.Success) {
+      $matchCode = $codeMatch.Groups[1].Value
     }
 
     $existingMatch = $null
@@ -252,14 +337,27 @@ foreach ($group in $payload.value.matchInfoList) {
       $existingMatch = $existingMatchMap[[string]$match.matchId]
     }
 
+    $useLivePrediction = Should-UseLivePrediction -ExistingMatch $existingMatch -RefreshPredictions:$RefreshPredictions
     $leanText = switch ($lean) {
-      "home" { "主胜" }
-      "draw" { "平局" }
-      "away" { "客胜" }
+      "home" { "home" }
+      "draw" { "draw" }
+      "away" { "away" }
       default { $lean }
     }
-    $review = "基于体彩实时赔率自动生成：总进球低位倾向 $($goalPick.totalGoals) 球，胜平负倾向 $leanText。"
-    if ($existingMatch -and $existingMatch.review -and ($existingMatch.review -notmatch '^Auto-generated from Sporttery live odds\.')) {
+
+    $predictionTotalGoals = $goalPick.totalGoals
+    $predictionScores = @($scorePick.scores)
+    $predictionUpset = $scorePick.upset
+    $predictionConfidence = $goalPick.confidence
+    if (-not $useLivePrediction -and $existingMatch -and $existingMatch.prediction) {
+      if ($existingMatch.prediction.totalGoals) { $predictionTotalGoals = $existingMatch.prediction.totalGoals }
+      if ($existingMatch.prediction.scores) { $predictionScores = @($existingMatch.prediction.scores) }
+      if ($existingMatch.prediction.upset) { $predictionUpset = $existingMatch.prediction.upset }
+      if ($existingMatch.prediction.confidence) { $predictionConfidence = $existingMatch.prediction.confidence }
+    }
+
+    $review = ('Auto-generated from Sporttery live odds: total-goals {0}, lean {1}, adjusted by hhad/crs/hafu and draw pressure.' -f $goalPick.totalGoals, $leanText)
+    if (-not $useLivePrediction -and $existingMatch -and $existingMatch.review) {
       $review = $existingMatch.review
     }
 
@@ -268,7 +366,99 @@ foreach ($group in $payload.value.matchInfoList) {
       $resultData = $existingMatch.result
     }
 
-    $matchList.Add([pscustomobject]@{
+    $postReview = $null
+    if ($existingMatch -and $existingMatch.postReview) {
+      $postReview = $existingMatch.postReview
+    }
+
+    $hadOdds = $null
+    if ($match.had) {
+      $hadUpdatedAt = [string]($match.had.updateDate) + ' ' + [string]($match.had.updateTime)
+      $hadOdds = [pscustomobject]@{
+        home = $match.had.h
+        draw = $match.had.d
+        away = $match.had.a
+        updatedAt = $hadUpdatedAt
+      }
+    }
+
+    $ttgOdds = $null
+    if ($match.ttg) {
+      $ttgUpdatedAt = [string]($match.ttg.updateDate) + ' ' + [string]($match.ttg.updateTime)
+      $ttgOdds = [pscustomobject]@{
+        s0 = $match.ttg.s0
+        s1 = $match.ttg.s1
+        s2 = $match.ttg.s2
+        s3 = $match.ttg.s3
+        s4 = $match.ttg.s4
+        s5 = $match.ttg.s5
+        s6 = $match.ttg.s6
+        s7 = $match.ttg.s7
+        updatedAt = $ttgUpdatedAt
+      }
+    }
+
+    $hhadOdds = $null
+    if ($match.hhad) {
+      $hhadUpdatedAt = [string]($match.hhad.updateDate) + ' ' + [string]($match.hhad.updateTime)
+      $hhadOdds = [pscustomobject]@{
+        home = $match.hhad.h
+        draw = $match.hhad.d
+        away = $match.hhad.a
+        handicap = $match.hhad.fixedOddsGoal
+        updatedAt = $hhadUpdatedAt
+      }
+    }
+
+    $crsOdds = $null
+    if ($match.crs) {
+      $crsUpdatedAt = [string]($match.crs.updateDate) + ' ' + [string]($match.crs.updateTime)
+      $crsOdds = New-Object psobject
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0000' -Value $match.crs.s00
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0100' -Value $match.crs.s10
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0200' -Value $match.crs.s20
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0201' -Value $match.crs.s21
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0300' -Value $match.crs.s30
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0301' -Value $match.crs.s31
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0101' -Value $match.crs.s11
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0001' -Value $match.crs.s01
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name 'updatedAt' -Value $crsUpdatedAt
+    }
+
+    $hafuOdds = $null
+    if ($match.hafu) {
+      $hafuUpdatedAt = [string]($match.hafu.updateDate) + ' ' + [string]($match.hafu.updateTime)
+      $hafuOdds = [pscustomobject]@{
+        aa = $match.hafu.aa
+        ad = $match.hafu.ab
+        ah = $match.hafu.ac
+        da = $match.hafu.ba
+        dd = $match.hafu.bb
+        dh = $match.hafu.bc
+        ha = $match.hafu.ca
+        hd = $match.hafu.cb
+        hh = $match.hafu.cc
+        updatedAt = $hafuUpdatedAt
+      }
+    }
+
+    $kickoffText = [string]($match.matchDate) + ' ' + [string]($match.matchTime)
+    $predictionObject = [pscustomobject]@{
+      totalGoals = $predictionTotalGoals
+      scores = @($predictionScores)
+      upset = $predictionUpset
+      confidence = $predictionConfidence
+      candidates = @($goalPick.candidates)
+    }
+    $oddsObject = [pscustomobject]@{
+      had = $hadOdds
+      ttg = $ttgOdds
+      hhad = $hhadOdds
+      crs = $crsOdds
+      hafu = $hafuOdds
+    }
+
+    $matchObject = [pscustomobject]@{
       id = $matchCode
       matchNumStr = $match.matchNumStr
       matchId = [string]$match.matchId
@@ -277,7 +467,7 @@ foreach ($group in $payload.value.matchInfoList) {
       leagueCode = $match.leagueCode
       leagueId = $match.leagueId
       groupName = $match.groupName
-      kickoff = "$($match.matchDate) $($match.matchTime)"
+      kickoff = $kickoffText
       matchDate = $match.matchDate
       matchTime = $match.matchTime
       matchStatus = $match.matchStatus
@@ -293,44 +483,14 @@ foreach ($group in $payload.value.matchInfoList) {
       awayAbbr = $match.awayTeamAbbName
       awayRank = $match.awayRank
       venue = $match.remark
-      prediction = [pscustomobject]@{
-        totalGoals = if ($existingMatch -and $existingMatch.prediction.totalGoals) { $existingMatch.prediction.totalGoals } else { $goalPick.totalGoals }
-        scores = if ($existingMatch -and $existingMatch.prediction.scores) { @($existingMatch.prediction.scores) } else { @($scorePick.scores) }
-        upset = if ($existingMatch -and $existingMatch.prediction.upset) { $existingMatch.prediction.upset } else { $scorePick.upset }
-        confidence = if ($existingMatch -and $existingMatch.prediction.confidence) { $existingMatch.prediction.confidence } else { $goalPick.confidence }
-        candidates = @($goalPick.candidates)
-      }
+      prediction = $predictionObject
       result = $resultData
       review = $review
-      postReview = if ($existingMatch -and $existingMatch.postReview) { $existingMatch.postReview } else { $null }
-      odds = [pscustomobject]@{
-        had = if ($match.had) {
-          [pscustomobject]@{
-            home = $match.had.h
-            draw = $match.had.d
-            away = $match.had.a
-            updatedAt = "$($match.had.updateDate) $($match.had.updateTime)"
-          }
-        } else {
-          $null
-        }
-        ttg = if ($match.ttg) {
-          [pscustomobject]@{
-            s0 = $match.ttg.s0
-            s1 = $match.ttg.s1
-            s2 = $match.ttg.s2
-            s3 = $match.ttg.s3
-            s4 = $match.ttg.s4
-            s5 = $match.ttg.s5
-            s6 = $match.ttg.s6
-            s7 = $match.ttg.s7
-            updatedAt = "$($match.ttg.updateDate) $($match.ttg.updateTime)"
-          }
-        } else {
-          $null
-        }
-      }
-    })
+      postReview = $postReview
+      odds = $oddsObject
+    }
+
+    $matchList.Add($matchObject)
   }
 }
 
@@ -343,7 +503,7 @@ $output = [ordered]@{
   dateText = $targetDate
   source = "sporttery-live-api"
   fetchedAt = (Get-Date).ToString("s")
-  lastUpdateTime = $payload.value.lastUpdateTime
+  lastUpdateTime = $apiPayload.value.lastUpdateTime
   apiPoolCode = $PoolCode
   matches = @($matchList.ToArray())
 }
@@ -353,5 +513,5 @@ if (-not (Test-Path $outDir)) {
   New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 }
 
-[pscustomobject]$output | ConvertTo-Json -Depth 10 | Set-Content -Encoding UTF8 $OutFile
+[pscustomobject]$output | ConvertTo-Json -Depth 12 | Set-Content -Encoding UTF8 $OutFile
 Write-Host "Saved Sporttery data to $OutFile"

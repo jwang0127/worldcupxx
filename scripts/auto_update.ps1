@@ -37,7 +37,7 @@ if (-not (Test-Path $modelFile)) {
 
 if ($RefreshData -or -not (Test-Path $dataFile)) {
   try {
-    & (Join-Path $PSScriptRoot "fetch_sporttery.ps1") -Date $Date -OutFile $dataFile -Force:$RefreshData
+    & (Join-Path $PSScriptRoot "fetch_sporttery.ps1") -Date $Date -OutFile $dataFile -PoolCode "ttg,had,hhad,crs,hafu" -Force:$RefreshData -RefreshPredictions:$RefreshData
   }
   catch {
     Write-Host "Auto fetch unavailable: $($_.Exception.Message)"

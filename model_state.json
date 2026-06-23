@@ -1,6 +1,6 @@
 ﻿{
     "version":  1,
-    "updatedAt":  "2026-06-21T12:58:34",
+    "updatedAt":  "2026-06-23T13:04:39",
     "weights":  {
                     "odds":  0.30,
                     "elo":  0.20,
@@ -42,6 +42,12 @@
                     },
                     {
                         "date":  "20260621",
+                        "settled":  0,
+                        "totalGoalHits":  0,
+                        "totalGoalHitRate":  "\u0026#24453;\u0026#23450;"
+                    },
+                    {
+                        "date":  "20260623",
                         "settled":  0,
                         "totalGoalHits":  0,
                         "totalGoalHitRate":  "\u0026#24453;\u0026#23450;"

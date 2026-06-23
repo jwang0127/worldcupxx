@@ -732,6 +732,9 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
   $homeForm = GetRecentTeamSummary ([string]$Match.home)
   $awayForm = GetRecentTeamSummary ([string]$Match.away)
   $weather = GetKickoffWeatherScore $Match
+  $favoriteProb = [math]::Max($HadProbs.home, $HadProbs.away)
+  $balancedMatch = [math]::Abs($HadProbs.home - $HadProbs.away) -le 0.12
+  $drawBalanceSignal = $HadProbs.draw -ge 0.28 -and $balancedMatch
 
   $share = 0.5
   $sided = $HadProbs.home + $HadProbs.away
@@ -768,6 +771,10 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
     $total -= 0.15
     $share = 0.5 + (($share - 0.5) * 0.65)
   }
+  if ($drawBalanceSignal) {
+    $total -= 0.18
+    $share = 0.5 + (($share - 0.5) * 0.45)
+  }
 
   $recentOpen = (($homeForm.gf + $homeForm.ga + $awayForm.gf + $awayForm.ga) / [math]::Max(2, ($homeForm.played + $awayForm.played)))
   if ($recentOpen -ge 1.35) {
@@ -785,20 +792,26 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
   elseif ($Lean.strong -and $goal2Odd -gt 0 -and $goal3Odd -gt 0 -and [math]::Abs($goal2Odd - $goal3Odd) -le 0.25) {
     $total += 0.15
   }
+  elseif (-not $Lean.strong -and $goal2Odd -gt 0 -and $goal3Odd -gt 0 -and [math]::Abs($goal2Odd - $goal3Odd) -le 0.18 -and ($tightDrawSignal -or $drawBalanceSignal)) {
+    $total -= 0.10
+  }
 
   if ($Lean.code -eq "away" -and $Lean.strong -and $goal3Odd -gt 0 -and $goal3Odd -le 3.7) {
     $total += 0.15
     $share = [math]::Min($share, 0.38)
+  }
+  if ($favoriteProb -ge 0.62 -and $HadProbs.draw -le 0.23 -and ($Lean.code -eq "home" -or $Lean.code -eq "away")) {
+    $total += 0.10
   }
 
   if ($Match.PSObject.Properties.Name -contains "external" -and $Match.external -and $Match.external.injuries -and $Match.external.injuries.source -eq "api-sports") {
     $homeInjuryCount = @($Match.external.injuries.home).Count
     $awayInjuryCount = @($Match.external.injuries.away).Count
     $total -= (($homeInjuryCount + $awayInjuryCount) * 0.04)
-    if ($homeInjuryCount -ge 2 -and $Lean.code -eq "home") {
+    if ($homeInjuryCount -ge 2) {
       $share -= 0.03
     }
-    if ($awayInjuryCount -ge 2 -and $Lean.code -eq "away") {
+    if ($awayInjuryCount -ge 2) {
       $share += 0.03
     }
   }
@@ -1134,13 +1147,15 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
   $context = BuildContextSignals $Match $Lean $StandingsBundle $homeForm $awayForm
 
   $leanProb = if ($Lean.code -eq "away") { $probs.away } elseif ($Lean.code -eq "draw") { $probs.draw } else { $probs.home }
+  $marketGap = if ($Lean.code -eq "draw") { 1 - [math]::Abs($probs.home - $probs.away) } else { [math]::Abs($probs.home - $probs.away) }
+  $drawPressureSignal = $probs.draw -ge 0.28 -and [math]::Abs($probs.home - $probs.away) -le 0.12
   $formDelta = $homeForm.score - $awayForm.score
   if ($Lean.code -eq "away") { $formDelta *= -1 }
 
-  $basic = Clamp (5 + ($formDelta * 0.6) + (($leanProb - 0.45) * 8)) 2 9.6
+  $basic = Clamp (4.8 + ($formDelta * 0.55) + (($leanProb - 0.43) * 7.2)) 2 9.4
   $lineup = Clamp (5 + (($leanProb - 0.40) * 10)) 3 9.0
-  $elo = Clamp (($leanProb / 0.70) * 10) 2 9.8
-  $odds = Clamp (($leanProb / 0.70) * 10) 2 9.8
+  $elo = Clamp (($leanProb / 0.70) * 10) 2 9.6
+  $odds = Clamp (4.2 + ($marketGap * 6.5) + (($leanProb - 0.40) * 4.5)) 2 9.7
   $trend = 5.2
   if ($Match.odds -and $Match.odds.hhad) {
     $hHome = ToDouble $Match.odds.hhad.home
@@ -1149,9 +1164,12 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
       $trend = if (($Lean.code -eq "home" -and $hHome -lt $hAway) -or ($Lean.code -eq "away" -and $hAway -lt $hHome)) { 7.1 } else { 4.8 }
     }
   }
+  if ($drawPressureSignal -and $Lean.code -ne "draw") {
+    $trend = [math]::Min($trend, 4.7)
+  }
   $h2h = 5.0
   $motivation = $context.needSide
-  $pressure = Clamp (4.0 + ((3 - [math]::Min($context.drawAccept, 3)) * 0.7)) 4 9.8
+  $pressure = Clamp (4.2 + ((8.6 - $context.drawAccept) * 0.55)) 4 9.6
   $weather = $context.weather.score
   $historyStyle = $context.history.score
   $injuryRisk = $context.injuryRisk
@@ -1192,20 +1210,28 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
     $motivation = Clamp (4.5 + ($teamRow.remaining * 0.8) + ((2 - [math]::Min($teamRow.points, 2)) * 0.9)) 4 9.5
     $pressure = Clamp (4.0 + ((3 - [math]::Min($teamRow.remaining, 3)) * 0.7) + ((2 - [math]::Min($teamRow.points, 2)) * 1.2) - (($context.drawAccept - 5) * 0.25)) 4 9.8
   }
+  if ($drawPressureSignal -and $Lean.code -ne "draw") {
+    $basic = [math]::Max(2.0, $basic - 0.35)
+    $odds = [math]::Max(2.0, $odds - 0.30)
+  }
+  if ($context.rotationRisk -ge 6.8 -and $Lean.strong) {
+    $lineup = [math]::Max(2.5, $lineup - 0.30)
+    $rotationRisk = [math]::Max(2.0, $rotationRisk - 0.60)
+  }
 
   $weights = [ordered]@{
-    basic = 0.16
-    lineup = 0.12
-    elo = 0.14
-    odds = 0.14
-    trend = 0.08
-    h2h = 0.08
-    motivation = 0.10
-    pressure = 0.06
-    weather = 0.05
-    historyStyle = 0.04
-    injuryRisk = 0.02
-    rotationRisk = 0.01
+    basic = 0.13
+    lineup = 0.11
+    elo = 0.11
+    odds = 0.12
+    trend = 0.09
+    h2h = 0.07
+    motivation = 0.13
+    pressure = 0.09
+    weather = 0.04
+    historyStyle = 0.05
+    injuryRisk = 0.03
+    rotationRisk = 0.03
   }
 
   $dims = [ordered]@{
