@@ -98,7 +98,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-23 13:54:35",
+                                              "checkedAt":  "2026-06-23 14:22:42",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Portugal",
@@ -284,7 +284,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-23 13:54:35",
+                                              "checkedAt":  "2026-06-23 14:22:42",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "England",
@@ -470,7 +470,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-23 13:54:35",
+                                              "checkedAt":  "2026-06-23 14:22:42",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Panama",
@@ -656,7 +656,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-23 13:54:35",
+                                              "checkedAt":  "2026-06-23 14:22:42",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Colombia",
@@ -746,11 +746,12 @@
                                                                  ]
                                                  }
                                      },
+                        "group":  "K组",
                         "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
                     }
                 ],
     "externalEnrichment":  {
-                               "updatedAt":  "2026-06-23 13:54:35",
+                               "updatedAt":  "2026-06-23 14:22:42",
                                "date":  "20260624",
                                "sources":  [
                                                {
@@ -833,6 +834,17 @@
                                                    "ga":  3,
                                                    "gd":  -2,
                                                    "points":  2
+                                               },
+                                               {
+                                                   "team":  "刚果(金)",
+                                                   "played":  0,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  0,
+                                                   "ga":  0,
+                                                   "gd":  0,
+                                                   "points":  0
                                                }
                                            ]
                               },

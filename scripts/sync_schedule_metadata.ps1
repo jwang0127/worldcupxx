@@ -86,6 +86,21 @@ def parse_dt(value: str):
     except ValueError:
         return None
 
+def infer_group_from_rank(match: dict) -> str:
+    group_suffix = "\u7ec4"
+    for key in ("group", "groupName", "homeRank", "awayRank"):
+        raw = str(match.get(key, "")).strip()
+        if not raw:
+            continue
+        if raw.endswith(group_suffix) and len(raw) <= 3:
+            return raw
+        if "[" in raw and group_suffix in raw:
+            start = raw.find("[") + 1
+            end = raw.find(group_suffix, start)
+            if start > 0 and end > start:
+                return raw[start:end + 1]
+    return ""
+
 changes = []
 unmatched = []
 
@@ -136,6 +151,24 @@ for match in payload.get("matches", []):
                     basis = "home+nearest-kickoff"
 
     if len(candidates) != 1:
+        inferred_group = infer_group_from_rank(match)
+        if inferred_group and not str(match.get("group", "")).strip():
+            match["group"] = inferred_group
+            match["scheduleCheck"] = {
+                "status": "group-inferred",
+                "basis": "rank-tag",
+                "checkedAt": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "scheduleFile": os.path.basename(schedule_file),
+            }
+            changes.append({
+                "id": match.get("id"),
+                "basis": "rank-tag",
+                "diff": {
+                    "group": {"old": "", "new": inferred_group}
+                },
+            })
+            continue
+
         unmatched.append({
             "id": match.get("id"),
             "home": home,

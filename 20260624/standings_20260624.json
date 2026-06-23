@@ -5,6 +5,7 @@
                      {
                          "team":  "德国",
                          "teamKey":  "GER",
+                         "seed":  99,
                          "played":  1,
                          "wins":  1,
                          "draws":  0,
@@ -22,6 +23,7 @@
                      {
                          "team":  "厄瓜多尔",
                          "teamKey":  "ECU",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  1,
@@ -39,6 +41,7 @@
                      {
                          "team":  "库拉索",
                          "teamKey":  "CUW",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  1,
@@ -56,6 +59,7 @@
                      {
                          "team":  "科特迪瓦",
                          "teamKey":  "CIV",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  0,
@@ -78,6 +82,7 @@
                      {
                          "team":  "荷兰",
                          "teamKey":  "NED",
+                         "seed":  99,
                          "played":  1,
                          "wins":  1,
                          "draws":  0,
@@ -95,6 +100,7 @@
                      {
                          "team":  "日本",
                          "teamKey":  "JPN",
+                         "seed":  99,
                          "played":  1,
                          "wins":  1,
                          "draws":  0,
@@ -112,6 +118,7 @@
                      {
                          "team":  "瑞典",
                          "teamKey":  "SWE",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  0,
@@ -129,6 +136,7 @@
                      {
                          "team":  "突尼斯",
                          "teamKey":  "TUN",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  0,
@@ -151,6 +159,7 @@
                      {
                          "team":  "埃及",
                          "teamKey":  "埃及",
+                         "seed":  99,
                          "played":  1,
                          "wins":  1,
                          "draws":  0,
@@ -168,6 +177,7 @@
                      {
                          "team":  "比利时",
                          "teamKey":  "比利时",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  1,
@@ -185,6 +195,7 @@
                      {
                          "team":  "伊朗",
                          "teamKey":  "伊朗",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  1,
@@ -202,6 +213,7 @@
                      {
                          "team":  "新西兰",
                          "teamKey":  "新西兰",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  0,
@@ -224,6 +236,7 @@
                      {
                          "team":  "西班牙",
                          "teamKey":  "西班牙",
+                         "seed":  99,
                          "played":  1,
                          "wins":  1,
                          "draws":  0,
@@ -241,6 +254,7 @@
                      {
                          "team":  "佛得角",
                          "teamKey":  "佛得角",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  1,
@@ -258,6 +272,7 @@
                      {
                          "team":  "乌拉圭",
                          "teamKey":  "乌拉圭",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  1,
@@ -275,6 +290,7 @@
                      {
                          "team":  "沙特阿拉伯",
                          "teamKey":  "沙特阿拉伯",
+                         "seed":  99,
                          "played":  1,
                          "wins":  0,
                          "draws":  0,
@@ -297,6 +313,7 @@
                      {
                          "team":  "法国",
                          "teamKey":  "FRA",
+                         "seed":  99,
                          "played":  2,
                          "wins":  2,
                          "draws":  0,
@@ -314,6 +331,7 @@
                      {
                          "team":  "挪威",
                          "teamKey":  "NOR",
+                         "seed":  99,
                          "played":  2,
                          "wins":  2,
                          "draws":  0,
@@ -331,6 +349,7 @@
                      {
                          "team":  "塞内加尔",
                          "teamKey":  "SEN",
+                         "seed":  99,
                          "played":  2,
                          "wins":  0,
                          "draws":  0,
@@ -348,6 +367,7 @@
                      {
                          "team":  "伊拉克",
                          "teamKey":  "IRQ",
+                         "seed":  99,
                          "played":  2,
                          "wins":  0,
                          "draws":  0,
@@ -370,6 +390,7 @@
                      {
                          "team":  "阿根廷",
                          "teamKey":  "ARG",
+                         "seed":  99,
                          "played":  2,
                          "wins":  2,
                          "draws":  0,
@@ -387,6 +408,7 @@
                      {
                          "team":  "奥地利",
                          "teamKey":  "AUT",
+                         "seed":  99,
                          "played":  2,
                          "wins":  1,
                          "draws":  0,
@@ -404,6 +426,7 @@
                      {
                          "team":  "阿尔及利亚",
                          "teamKey":  "ALG",
+                         "seed":  99,
                          "played":  2,
                          "wins":  1,
                          "draws":  0,
@@ -421,6 +444,7 @@
                      {
                          "team":  "约旦",
                          "teamKey":  "JOR",
+                         "seed":  99,
                          "played":  2,
                          "wins":  0,
                          "draws":  0,
@@ -441,8 +465,9 @@
         "group":  "K组",
         "rows":  [
                      {
-                         "team":  "葡萄牙",
-                         "teamKey":  "POR",
+                         "team":  "哥伦比亚",
+                         "teamKey":  "COL",
+                         "seed":  1,
                          "played":  0,
                          "wins":  0,
                          "draws":  0,
@@ -458,8 +483,9 @@
                          "group":  "K组"
                      },
                      {
-                         "team":  "乌兹别克斯坦",
-                         "teamKey":  "UZB",
+                         "team":  "刚果(金)",
+                         "teamKey":  "COD",
+                         "seed":  2,
                          "played":  0,
                          "wins":  0,
                          "draws":  0,
@@ -473,6 +499,42 @@
                          "qualScore":  12,
                          "rank":  2,
                          "group":  "K组"
+                     },
+                     {
+                         "team":  "葡萄牙",
+                         "teamKey":  "POR",
+                         "seed":  3,
+                         "played":  0,
+                         "wins":  0,
+                         "draws":  0,
+                         "losses":  0,
+                         "gf":  0,
+                         "ga":  0,
+                         "gd":  0,
+                         "points":  0,
+                         "remaining":  3,
+                         "status":  "⚪ 数据待补",
+                         "qualScore":  5,
+                         "rank":  3,
+                         "group":  "K组"
+                     },
+                     {
+                         "team":  "乌兹别克斯坦",
+                         "teamKey":  "UZB",
+                         "seed":  4,
+                         "played":  0,
+                         "wins":  0,
+                         "draws":  0,
+                         "losses":  0,
+                         "gf":  0,
+                         "ga":  0,
+                         "gd":  0,
+                         "points":  0,
+                         "remaining":  3,
+                         "status":  "⚪ 数据待补",
+                         "qualScore":  5,
+                         "rank":  4,
+                         "group":  "K组"
                      }
                  ]
     },
@@ -480,8 +542,9 @@
         "group":  "L组",
         "rows":  [
                      {
-                         "team":  "巴拿马",
-                         "teamKey":  "PAN",
+                         "team":  "英格兰",
+                         "teamKey":  "ENG",
+                         "seed":  1,
                          "played":  0,
                          "wins":  0,
                          "draws":  0,
@@ -499,6 +562,7 @@
                      {
                          "team":  "加纳",
                          "teamKey":  "GHA",
+                         "seed":  2,
                          "played":  0,
                          "wins":  0,
                          "draws":  0,
@@ -514,8 +578,9 @@
                          "group":  "L组"
                      },
                      {
-                         "team":  "克罗地亚",
-                         "teamKey":  "CRO",
+                         "team":  "巴拿马",
+                         "teamKey":  "PAN",
+                         "seed":  3,
                          "played":  0,
                          "wins":  0,
                          "draws":  0,
@@ -531,8 +596,9 @@
                          "group":  "L组"
                      },
                      {
-                         "team":  "英格兰",
-                         "teamKey":  "ENG",
+                         "team":  "克罗地亚",
+                         "teamKey":  "CRO",
+                         "seed":  4,
                          "played":  0,
                          "wins":  0,
                          "draws":  0,

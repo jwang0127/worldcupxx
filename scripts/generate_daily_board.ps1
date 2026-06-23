@@ -249,7 +249,7 @@ function Conf($Value) {
 }
 
 function MatchGroupStandingBrief($Match, $StandingsBundle) {
-  $group = NormalizeGroupName ([string]$Match.group)
+  $group = InferGroupName $Match
   $homeRow = $StandingsBundle.teamLookup[(TeamKey ([string]$Match.home))]
   $awayRow = $StandingsBundle.teamLookup[(TeamKey ([string]$Match.away))]
   if (-not $homeRow -or -not $awayRow) {
@@ -665,6 +665,46 @@ function NormalizeGroupName([string]$Value) {
   return $Value.Trim()
 }
 
+function InferGroupName($Match) {
+  if ($null -eq $Match) { return "" }
+
+  foreach ($prop in @("group", "groupName")) {
+    if ($Match.PSObject.Properties.Name -contains $prop) {
+      $direct = NormalizeGroupName ([string]$Match.$prop)
+      if ($direct) { return $direct }
+    }
+  }
+
+  foreach ($prop in @("homeRank", "awayRank")) {
+    if ($Match.PSObject.Properties.Name -contains $prop) {
+      $rankText = [string]$Match.$prop
+      if ($rankText -match "([A-Z]组)") {
+        return $Matches[1]
+      }
+    }
+  }
+
+  return ""
+}
+
+function InferGroupSeed($Match, [string]$TeamName) {
+  if ($null -eq $Match -or [string]::IsNullOrWhiteSpace($TeamName)) { return 99 }
+  $teamKey = TeamKey $TeamName
+  foreach ($side in @("home", "away")) {
+    $nameProp = $side
+    $rankProp = $side + "Rank"
+    if (($Match.PSObject.Properties.Name -contains $nameProp) -and ($Match.PSObject.Properties.Name -contains $rankProp)) {
+      if ((TeamKey ([string]$Match.$nameProp)) -eq $teamKey) {
+        $rankText = [string]$Match.$rankProp
+        if ($rankText -match "\[(?:[A-Z]组)(\d+)\]") {
+          return [int]$Matches[1]
+        }
+      }
+    }
+  }
+  return 99
+}
+
 function TeamKey([string]$Value) {
   if ([string]::IsNullOrWhiteSpace($Value)) { return "" }
   $trimmed = $Value.Trim()
@@ -743,6 +783,7 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
   $homeForm = GetRecentTeamSummary ([string]$Match.home)
   $awayForm = GetRecentTeamSummary ([string]$Match.away)
   $weather = GetKickoffWeatherScore $Match
+  $dataCompleteness = GetDataCompletenessScore $Match
   $favoriteProb = [math]::Max($HadProbs.home, $HadProbs.away)
   $balancedMatch = [math]::Abs($HadProbs.home - $HadProbs.away) -le 0.12
   $drawBalanceSignal = $HadProbs.draw -ge 0.28 -and $balancedMatch
@@ -827,6 +868,14 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
     }
   }
 
+  if ($dataCompleteness.score -le 5.4) {
+    $total -= 0.10
+    $share = 0.5 + (($share - 0.5) * 0.72)
+  }
+  elseif ($dataCompleteness.score -ge 7.4 -and $Lean.strong -and $favoriteProb -ge 0.60) {
+    $total += 0.06
+  }
+
   $total = Clamp $total 1.4 4.8
   $share = Clamp $share 0.28 0.72
   $homeLambda = [math]::Max(0.15, $total * $share)
@@ -840,12 +889,7 @@ function GetHistoricalMatches() {
     $content = Get-Content -Raw -Encoding UTF8 $_.FullName | ConvertFrom-Json
     foreach ($match in @($content.matches)) {
       $group = ""
-      if ($match.PSObject.Properties.Name -contains "group" -and $match.group) {
-        $group = NormalizeGroupName ([string]$match.group)
-      }
-      elseif ($match.PSObject.Properties.Name -contains "groupName" -and $match.groupName) {
-        $group = NormalizeGroupName ([string]$match.groupName)
-      }
+      $group = InferGroupName $match
 
       $items.Add([pscustomobject]@{
         id = [string]$match.id
@@ -953,11 +997,73 @@ function GetHistoryStyleSignal($HomeForm, $AwayForm) {
   }
 }
 
+function GetDataCompletenessScore($Match) {
+  $score = 4.6
+  $notes = New-Object System.Collections.Generic.List[string]
+
+  if ($Match.odds) {
+    if ($Match.odds.had -and $Match.odds.had.home -and $Match.odds.had.draw -and $Match.odds.had.away) {
+      $score += 1.2
+      $notes.Add("胜平负完整")
+    }
+    if ($Match.odds.ttg -and $Match.odds.ttg.s2 -and $Match.odds.ttg.s3) {
+      $score += 0.7
+      $notes.Add("总进球完整")
+    }
+    if ($Match.odds.hhad -and $Match.odds.hhad.home -and $Match.odds.hhad.away) {
+      $score += 0.4
+      $notes.Add("让球结构可用")
+    }
+    if ($Match.odds.hafu -and ($Match.odds.hafu.aa -or $Match.odds.hafu.hh -or $Match.odds.hafu.ha)) {
+      $score += 0.25
+      $notes.Add("半全场可用")
+    }
+    if ($Match.odds.crs -and $Match.odds.crs.updatedAt) {
+      $score += 0.25
+      $notes.Add("波胆快照可用")
+    }
+  }
+
+  if ($Match.external) {
+    if ($Match.external.teamMeta -and $Match.external.teamMeta.home -and $Match.external.teamMeta.home.status -eq "ok") {
+      $score += 0.35
+    }
+    if ($Match.external.teamMeta -and $Match.external.teamMeta.away -and $Match.external.teamMeta.away.status -eq "ok") {
+      $score += 0.35
+    }
+    if ($Match.external.fifaRanking -and $Match.external.fifaRanking.home -and $Match.external.fifaRanking.home.rank) {
+      $score += 0.35
+    }
+    if ($Match.external.fifaRanking -and $Match.external.fifaRanking.away -and $Match.external.fifaRanking.away.rank) {
+      $score += 0.35
+    }
+    if ($Match.external.injuries -and $Match.external.injuries.status -eq "ok") {
+      $score += 0.45
+      $notes.Add("伤停源可用")
+    }
+    if ($Match.external.h2h -and $Match.external.h2h.status -eq "ok" -and @($Match.external.h2h.matches).Count -gt 0) {
+      $score += 0.55
+      $notes.Add("交锋样本可用")
+    }
+  }
+
+  $groupGuess = InferGroupName $Match
+  if ($groupGuess) {
+    $score += 0.3
+  }
+
+  return [pscustomobject]@{
+    score = [math]::Round((Clamp $score 3.8 8.9), 2)
+    summary = if ($notes.Count -gt 0) { $notes -join " / " } else { "核心数据待补" }
+  }
+}
+
 function BuildContextSignals($Match, $Lean, $StandingsBundle, $HomeForm, $AwayForm) {
   $homeRow = $StandingsBundle.teamLookup[(TeamKey ([string]$Match.home))]
   $awayRow = $StandingsBundle.teamLookup[(TeamKey ([string]$Match.away))]
   $weather = GetKickoffWeatherScore $Match
   $history = GetHistoryStyleSignal $HomeForm $AwayForm
+  $dataCompleteness = GetDataCompletenessScore $Match
 
   $homeNeed = 5.2
   $awayNeed = 5.2
@@ -990,23 +1096,39 @@ function BuildContextSignals($Match, $Lean, $StandingsBundle, $HomeForm, $AwayFo
     drawAccept = [math]::Round($drawAccept, 2)
     rotationRisk = [math]::Round($rotationRisk, 2)
     injuryRisk = [math]::Round($injuryRisk, 2)
+    dataCompleteness = $dataCompleteness
   }
 }
 
 function BuildStandingsBundle($Matches, $Snapshot = $null) {
   $groups = @{}
   $allMatches = New-Object System.Collections.Generic.List[object]
+  $seedLookup = @{}
 
   foreach ($item in @($script:historicalMatches)) {
     $allMatches.Add($item)
   }
 
   foreach ($match in @($Matches)) {
+    $matchGroup = InferGroupName $match
+    foreach ($side in @("home", "away")) {
+      $teamName = [string]$match.$side
+      $teamKey = TeamKey $teamName
+      if (-not $teamKey) { continue }
+      $seed = InferGroupSeed $match $teamName
+      if (-not $seedLookup.ContainsKey($teamKey) -or $seed -lt [int]$seedLookup[$teamKey].seed) {
+        $seedLookup[$teamKey] = [pscustomobject]@{
+          group = $matchGroup
+          seed = $seed
+        }
+      }
+    }
+
     $allMatches.Add([pscustomobject]@{
       id = [string]$match.id
       date = [string]$payload.date
       kickoff = MatchKickoffLocal $match
-      group = NormalizeGroupName ([string]$match.group)
+      group = $matchGroup
       home = [string]$match.home
       homeKey = TeamKey ([string]$match.home)
       away = [string]$match.away
@@ -1027,6 +1149,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
         $groups[$group][$teamKey] = [ordered]@{
           team = (DisplayTeamName $team)
           teamKey = $teamKey
+          seed = if ($seedLookup.ContainsKey($teamKey)) { [int]$seedLookup[$teamKey].seed } else { 99 }
           played = 0
           wins = 0
           draws = 0
@@ -1083,7 +1206,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
     $rows = @($groups[$groupName].Values | ForEach-Object {
       $_.gd = $_.gf - $_.ga
       [pscustomobject]$_
-    } | Sort-Object @{Expression='points';Descending=$true}, @{Expression='gd';Descending=$true}, @{Expression='gf';Descending=$true}, team)
+    } | Sort-Object @{Expression='points';Descending=$true}, @{Expression='gd';Descending=$true}, @{Expression='gf';Descending=$true}, @{Expression='seed';Descending=$false}, team)
 
     for ($idx = 0; $idx -lt $rows.Count; $idx++) {
       $row = $rows[$idx]
@@ -1126,7 +1249,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
   }
 
   foreach ($match in @($Matches)) {
-    $group = NormalizeGroupName ([string]$match.group)
+    $group = InferGroupName $match
     if (-not $group -or -not ($groups.ContainsKey($group))) { continue }
     $homeRow = $teamLookup[(TeamKey ([string]$match.home))]
     $awayRow = $teamLookup[(TeamKey ([string]$match.away))]
@@ -1185,6 +1308,7 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
   $historyStyle = $context.history.score
   $injuryRisk = $context.injuryRisk
   $rotationRisk = 10 - $context.rotationRisk
+  $dataCompleteness = $context.dataCompleteness.score
 
   if ($external -and $external.injuries -and $external.injuries.source -eq "api-sports") {
     $injuryCount = if ($Lean.code -eq "away") { @($external.injuries.away).Count } else { @($external.injuries.home).Count }
@@ -1225,6 +1349,11 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
     $basic = [math]::Max(2.0, $basic - 0.35)
     $odds = [math]::Max(2.0, $odds - 0.30)
   }
+  if ($dataCompleteness -le 5.4) {
+    $lineup = [math]::Max(2.4, $lineup - 0.45)
+    $trend = [math]::Max(3.8, $trend - 0.35)
+    $h2h = [math]::Max(3.8, $h2h - 0.25)
+  }
   if ($context.rotationRisk -ge 6.8 -and $Lean.strong) {
     $lineup = [math]::Max(2.5, $lineup - 0.30)
     $rotationRisk = [math]::Max(2.0, $rotationRisk - 0.60)
@@ -1243,6 +1372,7 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
     historyStyle = 0.05
     injuryRisk = 0.03
     rotationRisk = 0.03
+    dataCompleteness = 0.10
   }
 
   $dims = [ordered]@{
@@ -1258,6 +1388,7 @@ function BuildScoreCard($Match, $Lean, $StandingsBundle) {
     historyStyle = [math]::Round($historyStyle, 2)
     injuryRisk = [math]::Round($injuryRisk, 2)
     rotationRisk = [math]::Round($rotationRisk, 2)
+    dataCompleteness = [math]::Round($dataCompleteness, 2)
   }
 
   $composite = 0.0
@@ -1431,6 +1562,7 @@ function ScoreCardHtml($ScoreCard) {
     historyStyle = "历史风格"
     injuryRisk = "伤停风险"
     rotationRisk = "轮换稳定"
+    dataCompleteness = "数据完整度"
   }
   $items = foreach ($key in $labels.Keys) {
     $val = [double]$ScoreCard.dimensions[$key]
@@ -1455,15 +1587,15 @@ function HalfFullHtml($Artifact) {
 
 function StandingsSectionHtml($Bundle, $Matches) {
   $sections = New-Object System.Collections.Generic.List[string]
-  $groupsToShow = @($Matches | ForEach-Object { NormalizeGroupName ([string]$_.group) } | Where-Object { $_ } | Select-Object -Unique)
+  $groupsToShow = @($Matches | ForEach-Object { InferGroupName $_ } | Where-Object { $_ } | Select-Object -Unique)
   foreach ($groupItem in @($Bundle.groups | Where-Object { $groupsToShow -contains $_.group })) {
-    $highlightTeams = @($Matches | Where-Object { $_.group -eq $groupItem.group } | ForEach-Object { $_.home; $_.away })
+    $highlightTeams = @($Matches | Where-Object { (InferGroupName $_) -eq $groupItem.group } | ForEach-Object { $_.home; $_.away })
     $rows = foreach ($row in $groupItem.rows) {
       $cls = if ($highlightTeams -contains $row.team) { " class=""hl""" } else { "" }
       "<tr$cls><td>$($row.team)</td><td>$($row.played)</td><td>$($row.wins)</td><td>$($row.draws)</td><td>$($row.losses)</td><td>$($row.gf)</td><td>$($row.ga)</td><td>$($row.gd)</td><td>$($row.points)</td><td>$($row.status)</td></tr>"
     }
 
-    $impact = @($Matches | Where-Object { $_.group -eq $groupItem.group } | ForEach-Object {
+    $impact = @($Matches | Where-Object { (InferGroupName $_) -eq $groupItem.group } | ForEach-Object {
       "<p><strong>$($_.home) vs $($_.away)</strong>：$(HE $Bundle.impactLookup[[string]$_.id])</p>"
     }) -join ""
 
@@ -1498,7 +1630,7 @@ function RootStandingsSectionHtml($Bundle) {
 
 function BeijingTomorrowSectionHtml([string]$DateText) {
   $rows = foreach ($match in @($script:homePageMatches | Sort-Object kickoff)) {
-    "<tr><td>" + (HE (MatchKickoffBeijing $match)) + "</td><td>" + (HE ([string]$match.matchNumStr)) + "</td><td>" + (HE "$($match.home) vs $($match.away)") + "</td><td>" + (HE ([string]$match.group)) + "</td></tr>"
+    "<tr><td>" + (HE (MatchKickoffBeijing $match)) + "</td><td>" + (HE ([string]$match.matchNumStr)) + "</td><td>" + (HE "$($match.home) vs $($match.away)") + "</td><td>" + (HE (InferGroupName $match)) + "</td></tr>"
   }
 
   if (-not $rows -or @($rows).Count -eq 0) {
