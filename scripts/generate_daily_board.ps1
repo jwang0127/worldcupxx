@@ -1778,7 +1778,7 @@ foreach ($m in $payload.matches) {
     rows = $evArtifact.rows
     best = $evArtifact.best
   })
-  $rows += [pscustomobject]@{ match = $m; lean = $lean; goalOdd = [decimal](GoalOdd $m); score = $scoreCard; ev = $evArtifact }
+  $rows += [pscustomobject]@{ match = $m; lean = $lean; goalOdd = [decimal](ToDouble (GoalOdd $m) 99); score = $scoreCard; ev = $evArtifact }
 }
 
 $bestStrong = $rows | Where-Object { $_.lean.strong } | Select-Object -First 1

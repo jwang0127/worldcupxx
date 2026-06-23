@@ -1,761 +1,889 @@
-{
-  "date": "20260624",
-  "dateText": "2026-06-24",
-  "source": "sporttery-live-api-filtered",
-  "fetchedAt": "2026-06-23T13:27:58",
-  "lastUpdateTime": "2026-06-23 13:26:16",
-  "apiPoolCode": "ttg,had,hhad,crs,hafu",
-  "matches": [
-    {
-      "id": "045",
-      "matchNumStr": "周二045",
-      "matchId": "2040255",
-      "businessDate": "2026-06-23",
-      "league": "世界杯",
-      "leagueCode": "WCC",
-      "leagueId": 72,
-      "groupName": "K组",
-      "kickoff": "2026-06-24 01:00:00",
-      "matchDate": "2026-06-24",
-      "matchTime": "01:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
-      "taxDateNo": "2606231",
-      "isHot": true,
-      "home": "葡萄牙",
-      "homeCode": "POG",
-      "homeAbbr": "葡萄牙",
-      "homeRank": "[K组3]",
-      "away": "乌兹别克斯坦",
-      "awayCode": "UZB",
-      "awayAbbr": "乌兹别克",
-      "awayRank": "[K组4]",
-      "venue": "比赛将在美国-得克萨斯州休斯敦举行",
-      "prediction": {
-        "totalGoals": "3",
-        "scores": [
-          "2:1",
-          "2:0"
-        ],
-        "upset": "1:1",
-        "confidence": "high",
-        "candidates": [
-          "3",
-          "2",
-          "4"
-        ]
-      },
-      "result": null,
-      "review": "?????????????????????????? 2026-06-22 ????? 1:1 ?????????? 4 ??????",
-      "odds": {
-        "had": {
-          "home": null,
-          "draw": null,
-          "away": null,
-          "updatedAt": " "
-        },
-        "ttg": {
-          "s0": "20.00",
-          "s1": "6.75",
-          "s2": "4.30",
-          "s3": "3.45",
-          "s4": "4.45",
-          "s5": "6.70",
-          "s6": "11.00",
-          "s7": "14.50",
-          "updatedAt": "2026-06-23 11:34:59"
-        },
-        "hhad": {
-          "home": "2.08",
-          "draw": "4.05",
-          "away": "2.49",
-          "handicap": null,
-          "updatedAt": "2026-06-23 12:16:09"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 12:17:15"
-        },
-        "hafu": {
-          "aa": "35.00",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-23 12:16:11"
-        }
-      },
-      "scheduleCheck": {
-        "status": "matched",
-        "basis": "home+away",
-        "checkedAt": "2026-06-23 13:36:00",
-        "scheduleFile": "2026???????.xlsx"
-      },
-      "homeEn": "Portugal",
-      "homeAlias": {
-        "code": "POR",
-        "zh": "葡萄牙",
-        "en": "Portugal",
-        "aliases": [
-          "Portugal",
-          "葡萄牙"
-        ]
-      },
-      "awayEn": "Uzbekistan",
-      "awayAlias": {
-        "code": "UZB",
-        "zh": "乌兹别克斯坦",
-        "en": "Uzbekistan",
-        "aliases": [
-          "Uzbekistan",
-          "乌兹别克斯坦"
-        ]
-      },
-      "external": {
-        "updatedAt": "2026-06-23 13:30:04",
-        "sources": [],
-        "teamMeta": {
-          "home": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "Portugal",
-            "country": "Portugal",
-            "formedYear": "1921",
-            "league": "FIFA World Cup",
-            "stadium": "Estádio Nacional do Jamor",
-            "description": "The Portugal national football team (Portuguese: Seleção Portuguesa de Futebol) represents Portugal in international men's football competition since 1921. It is controlled by the Portuguese Football Federation, the governing body for footb"
-          },
-          "away": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "Uzbekistan",
-            "country": "Uzbekistan",
-            "formedYear": "1992",
-            "league": "FIFA World Cup",
-            "stadium": "Milliy Stadium",
-            "description": "The Uzbekistan national football team (Uzbek: Oʻzbekiston milliy futbol terma jamoasi) represents Uzbekistan in international football and is controlled by the Uzbekistan Football Association, the governing body for football in Uzbekistan.\r"
-          }
-        },
-        "fifaRanking": {
-          "status": "ok",
-          "source": "serpapi",
-          "home": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 17,
-            "points": 1767.85,
-            "query": "Portugal"
-          },
-          "away": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 50,
-            "points": 1458.73,
-            "query": "Uzbekistan"
-          }
-        },
-        "oddsMovement": {
-          "status": "pending-live-odds-source"
-        },
-        "injuries": {
-          "status": "ok",
-          "source": "api-sports",
-          "home": [],
-          "away": []
-        },
-        "h2h": {
-          "status": "pending-team-id",
-          "source": "api-sports",
-          "matches": []
-        }
-      },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;",
-      "group": "K组",
-      "localKickoff": "2026-06-24 13:00:00",
-      "scheduleSource": "2026???????.xlsx"
-    },
-    {
-      "id": "046",
-      "matchNumStr": "周二046",
-      "matchId": "2040256",
-      "businessDate": "2026-06-23",
-      "league": "世界杯",
-      "leagueCode": "WCC",
-      "leagueId": 72,
-      "groupName": "L组",
-      "kickoff": "2026-06-24 04:00:00",
-      "matchDate": "2026-06-24",
-      "matchTime": "04:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
-      "taxDateNo": "2606231",
-      "isHot": true,
-      "home": "英格兰",
-      "homeCode": "ENG",
-      "homeAbbr": "英格兰",
-      "homeRank": "[L组1]",
-      "away": "加纳",
-      "awayCode": "GHA",
-      "awayAbbr": "加纳",
-      "awayRank": "[L组2]",
-      "venue": "比赛将在美国-马萨诸塞州福克斯伯勒举行",
-      "prediction": {
-        "totalGoals": "2",
-        "scores": [
-          "1:1",
-          "2:0"
-        ],
-        "upset": "1:2",
-        "confidence": "medium",
-        "candidates": [
-          "2",
-          "3",
-          "1"
-        ]
-      },
-      "result": null,
-      "review": "????????????????? 2026-06-22 ??????????? 2 ?????? 1:1 ????????",
-      "odds": {
-        "had": {
-          "home": null,
-          "draw": null,
-          "away": null,
-          "updatedAt": " "
-        },
-        "ttg": {
-          "s0": "18.00",
-          "s1": "6.40",
-          "s2": "4.10",
-          "s3": "3.60",
-          "s4": "4.40",
-          "s5": "7.00",
-          "s6": "11.00",
-          "s7": "17.00",
-          "updatedAt": "2026-06-23 10:32:57"
-        },
-        "hhad": {
-          "home": "2.31",
-          "draw": "3.90",
-          "away": "2.27",
-          "handicap": null,
-          "updatedAt": "2026-06-23 12:17:12"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 12:26:44"
-        },
-        "hafu": {
-          "aa": "28.00",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-23 10:30:42"
-        }
-      },
-      "scheduleCheck": {
-        "status": "matched",
-        "basis": "home+away",
-        "checkedAt": "2026-06-23 13:36:00",
-        "scheduleFile": "2026???????.xlsx"
-      },
-      "homeEn": "England",
-      "homeAlias": {
-        "code": "ENG",
-        "zh": "英格兰",
-        "en": "England",
-        "aliases": [
-          "England",
-          "英格兰"
-        ]
-      },
-      "awayEn": "Ghana",
-      "awayAlias": {
-        "code": "GHA",
-        "zh": "加纳",
-        "en": "Ghana",
-        "aliases": [
-          "Ghana",
-          "加纳"
-        ]
-      },
-      "external": {
-        "updatedAt": "2026-06-23 13:30:04",
-        "sources": [],
-        "teamMeta": {
-          "home": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "England",
-            "country": "England",
-            "formedYear": "1872",
-            "league": "FIFA World Cup",
-            "stadium": "Wembley Stadium",
-            "description": "The England national football team represents England in men's international football and is governed by The Football Association, the governing body for football in England. It competes in the three major international tournaments; the FIF"
-          },
-          "away": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "Ghana",
-            "country": "Ghana",
-            "formedYear": "1950",
-            "league": "FIFA World Cup",
-            "stadium": "Accra Sports Stadium",
-            "description": "The Ghana national football team represents Ghana in international association football and has done so since the 1950s. The team is nicknamed the Black Stars after the Black Star of Africa in the flag of Ghana. It is administered by the Gh"
-          }
-        },
-        "fifaRanking": {
-          "status": "ok",
-          "source": "serpapi",
-          "home": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 4,
-            "points": 2083.09,
-            "query": "England"
-          },
-          "away": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 65,
-            "points": 1346.88,
-            "query": "Ghana"
-          }
-        },
-        "oddsMovement": {
-          "status": "pending-live-odds-source"
-        },
-        "injuries": {
-          "status": "ok",
-          "source": "api-sports",
-          "home": [],
-          "away": []
-        },
-        "h2h": {
-          "status": "pending-team-id",
-          "source": "api-sports",
-          "matches": []
-        }
-      },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 2&#12290;",
-      "group": "L组",
-      "localKickoff": "2026-06-24 16:00:00",
-      "scheduleSource": "2026???????.xlsx"
-    },
-    {
-      "id": "047",
-      "matchNumStr": "周二047",
-      "matchId": "2040257",
-      "businessDate": "2026-06-23",
-      "league": "世界杯",
-      "leagueCode": "WCC",
-      "leagueId": 72,
-      "groupName": "L组",
-      "kickoff": "2026-06-25 07:30:00",
-      "matchDate": "2026-06-24",
-      "matchTime": "07:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
-      "taxDateNo": "2606231",
-      "isHot": false,
-      "home": "巴拿马",
-      "homeCode": "PAM",
-      "homeAbbr": "巴拿马",
-      "homeRank": "[L组3]",
-      "away": "克罗地亚",
-      "awayCode": "CRO",
-      "awayAbbr": "克罗地亚",
-      "awayRank": "[L组4]",
-      "venue": "比赛将在加拿大-多伦多举行",
-      "prediction": {
-        "totalGoals": "3",
-        "scores": [
-          "1:2",
-          "0:2"
-        ],
-        "upset": "1:1",
-        "confidence": "high",
-        "candidates": [
-          "3",
-          "2",
-          "4"
-        ]
-      },
-      "result": null,
-      "review": "???????????????? 2 ?? 3 ????????????????????? 3 ????",
-      "odds": {
-        "had": {
-          "home": "6.90",
-          "draw": "4.20",
-          "away": "1.34",
-          "updatedAt": "2026-06-23 11:09:41"
-        },
-        "ttg": {
-          "s0": "14.00",
-          "s1": "5.10",
-          "s2": "3.50",
-          "s3": "3.55",
-          "s4": "4.95",
-          "s5": "8.80",
-          "s6": "16.00",
-          "s7": "24.00",
-          "updatedAt": "2026-06-23 10:38:18"
-        },
-        "hhad": {
-          "home": "2.65",
-          "draw": "3.60",
-          "away": "2.11",
-          "handicap": null,
-          "updatedAt": "2026-06-23 11:37:54"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 10:40:23"
-        },
-        "hafu": {
-          "aa": "1.88",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-23 11:10:46"
-        }
-      },
-      "scheduleCheck": {
-        "status": "matched",
-        "basis": "home+away",
-        "checkedAt": "2026-06-23 13:36:00",
-        "scheduleFile": "2026???????.xlsx"
-      },
-      "homeEn": "Panama",
-      "homeAlias": {
-        "code": "PAN",
-        "zh": "巴拿马",
-        "en": "Panama",
-        "aliases": [
-          "Panama",
-          "巴拿马"
-        ]
-      },
-      "awayEn": "Croatia",
-      "awayAlias": {
-        "code": "CRO",
-        "zh": "克罗地亚",
-        "en": "Croatia",
-        "aliases": [
-          "Croatia",
-          "克罗地亚"
-        ]
-      },
-      "external": {
-        "updatedAt": "2026-06-23 13:30:04",
-        "sources": [],
-        "teamMeta": {
-          "home": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "Panama",
-            "country": "Panama",
-            "formedYear": "1938",
-            "league": "FIFA World Cup",
-            "stadium": "Rommel Fernández Stadium",
-            "description": "The Panama national football team (Spanish: Selección de fútbol de Panamá) represents Panama in men's international association football and it is governed by Panamanian Football Federation, The team represents all three FIFA, CONCACAF and "
-          },
-          "away": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "Croatia",
-            "country": "Croatia",
-            "formedYear": "1993",
-            "league": "FIFA World Cup",
-            "stadium": "Stadion Maksimir",
-            "description": "The Croatia national football team (Croatian: Hrvatska nogometna reprezentacija) represents Croatia in men's international football matches. The team is controlled by the Croatian Football Federation (HNS), the governing body for football i"
-          }
-        },
-        "fifaRanking": {
-          "status": "ok",
-          "source": "serpapi",
-          "home": {
-            "status": "unparsed",
-            "source": "serpapi",
-            "rank": null,
-            "points": 1540.87,
-            "query": "Panama"
-          },
-          "away": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 125,
-            "points": 1714.87,
-            "query": "Croatia"
-          }
-        },
-        "oddsMovement": {
-          "status": "pending-live-odds-source"
-        },
-        "injuries": {
-          "status": "ok",
-          "source": "api-sports",
-          "home": [],
-          "away": []
-        },
-        "h2h": {
-          "status": "pending-team-id",
-          "source": "api-sports",
-          "matches": []
-        }
-      },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#23458;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;",
-      "group": "L组",
-      "localKickoff": "2026-06-24 19:00:00",
-      "scheduleSource": "2026???????.xlsx"
-    },
-    {
-      "id": "048",
-      "matchNumStr": "周二048",
-      "matchId": "2040258",
-      "businessDate": "2026-06-23",
-      "league": "世界杯",
-      "leagueCode": "WCC",
-      "leagueId": 72,
-      "groupName": "",
-      "kickoff": "2026-06-24 10:00:00",
-      "matchDate": "2026-06-24",
-      "matchTime": "10:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
-      "taxDateNo": "2606231",
-      "isHot": false,
-      "home": "哥伦比亚",
-      "homeCode": "COM",
-      "homeAbbr": "哥伦比亚",
-      "homeRank": "[K组1]",
-      "away": "刚果(金)",
-      "awayCode": "COD",
-      "awayAbbr": "刚果金",
-      "awayRank": "[K组2]",
-      "venue": "比赛将在墨西哥-萨波潘举行",
-      "prediction": {
-        "totalGoals": "2",
-        "scores": [
-          "2:0",
-          "2:1"
-        ],
-        "upset": "1:1",
-        "confidence": "high",
-        "candidates": [
-          "2",
-          "3",
-          "1"
-        ]
-      },
-      "result": null,
-      "review": "?????????????? 2026-06-22 ????????????????? 1:1 ??????? 2 ?????",
-      "odds": {
-        "had": {
-          "home": "1.36",
-          "draw": "3.85",
-          "away": "7.50",
-          "updatedAt": "2026-06-21 09:15:03"
-        },
-        "ttg": {
-          "s0": "10.00",
-          "s1": "4.40",
-          "s2": "3.15",
-          "s3": "3.60",
-          "s4": "6.00",
-          "s5": "12.00",
-          "s6": "21.00",
-          "s7": "30.00",
-          "updatedAt": "2026-06-21 09:15:02"
-        },
-        "hhad": {
-          "home": "2.27",
-          "draw": "3.30",
-          "away": "2.60",
-          "handicap": null,
-          "updatedAt": "2026-06-21 09:15:03"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 12:27:52"
-        },
-        "hafu": {
-          "aa": "13.50",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-21 09:15:02"
-        }
-      },
-      "scheduleCheck": {
-        "status": "unmatched",
-        "checkedAt": "2026-06-23 13:30:04",
-        "scheduleFile": "2026年世界杯赛程表.xlsx"
-      },
-      "homeEn": "Colombia",
-      "homeAlias": {
-        "code": "COL",
-        "zh": "哥伦比亚",
-        "en": "Colombia",
-        "aliases": [
-          "Colombia",
-          "哥伦比亚"
-        ]
-      },
-      "awayEn": "DR Congo",
-      "awayAlias": {
-        "code": "COD",
-        "zh": "刚果(金)",
-        "en": "DR Congo",
-        "aliases": [
-          "DR Congo",
-          "Congo DR",
-          "刚果(金)"
-        ]
-      },
-      "external": {
-        "updatedAt": "2026-06-23 13:30:04",
-        "sources": [],
-        "teamMeta": {
-          "home": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "Colombia",
-            "country": "Colombia",
-            "formedYear": "1938",
-            "league": "FIFA World Cup",
-            "stadium": "Estadio Metropolitano Roberto Meléndez",
-            "description": "The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in men's international football and is managed by the Colombian Football Federation, the governing body for football in Colombia. They are an"
-          },
-          "away": {
-            "status": "ok",
-            "source": "thesportsdb",
-            "name": "DR Congo",
-            "country": "DR Congo",
-            "formedYear": "1948",
-            "league": "FIFA World Cup",
-            "stadium": "Stade des Martyrs",
-            "description": "The Democratic Republic of the Congo national football team (formerly known as Zaire, alternatively known as Congo-Kinshasa) is the national team of the Democratic Republic of the Congo and is controlled by the Congolese Association Footbal"
-          }
-        },
-        "fifaRanking": {
-          "status": "ok",
-          "source": "serpapi",
-          "home": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 13,
-            "points": 1698.35,
-            "query": "Colombia"
-          },
-          "away": {
-            "status": "ok",
-            "source": "serpapi",
-            "rank": 46,
-            "points": 1474.43,
-            "query": "DR Congo"
-          }
-        },
-        "oddsMovement": {
-          "status": "pending-live-odds-source"
-        },
-        "injuries": {
-          "status": "ok",
-          "source": "api-sports",
-          "home": [],
-          "away": []
-        },
-        "h2h": {
-          "status": "pending-team-id",
-          "source": "api-sports",
-          "matches": []
-        }
-      },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 2&#12290;"
-    }
-  ],
-  "externalEnrichment": {
-    "updatedAt": "2026-06-23 13:30:04",
-    "date": "20260624",
-    "sources": [
-      {
-        "name": "worldcup26-ir",
-        "enabled": true,
-        "baseUrl": "https://worldcup26.ir/get/games",
-        "role": "world-cup-schedule-score-mirror"
-      },
-      {
-        "name": "football-data",
-        "enabled": true,
-        "baseUrl": "https://api.football-data.org/v4/matches",
-        "role": "official-match-and-standings-backup"
-      },
-      {
-        "name": "api-sports-football",
-        "enabled": true,
-        "baseUrl": "https://v3.football.api-sports.io/",
-        "role": "injuries-h2h-odds-trend-primary"
-      },
-      {
-        "name": "thesportsdb",
-        "enabled": true,
-        "baseUrl": "https://www.thesportsdb.com/api/v1/json/123/",
-        "role": "team-metadata-fallback"
-      },
-      {
-        "name": "serpapi-google",
-        "enabled": true,
-        "baseUrl": "https://serpapi.com/search?engine=google",
-        "role": "fifa-ranking-news-fallback"
-      }
-    ],
-    "standingsSource": "worldcup26-ir"
-  },
-  "standingsSnapshot": []
+﻿{
+    "date":  "20260624",
+    "dateText":  "2026-06-24",
+    "source":  "sporttery-live-api-filtered",
+    "fetchedAt":  "2026-06-23T13:27:58",
+    "lastUpdateTime":  "2026-06-23 13:26:16",
+    "apiPoolCode":  "ttg,had,hhad,crs,hafu",
+    "matches":  [
+                    {
+                        "id":  "045",
+                        "matchNumStr":  "周二045",
+                        "matchId":  "2040255",
+                        "businessDate":  "2026-06-23",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "K组",
+                        "kickoff":  "2026-06-24 01:00:00",
+                        "matchDate":  "2026-06-24",
+                        "matchTime":  "01:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606231",
+                        "isHot":  true,
+                        "home":  "葡萄牙",
+                        "homeCode":  "POG",
+                        "homeAbbr":  "葡萄牙",
+                        "homeRank":  "[K组3]",
+                        "away":  "乌兹别克斯坦",
+                        "awayCode":  "UZB",
+                        "awayAbbr":  "乌兹别克",
+                        "awayRank":  "[K组4]",
+                        "venue":  "比赛将在美国-得克萨斯州休斯敦举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "2:1",
+                                                          "2:0"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "3",
+                                                              "2",
+                                                              "4"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "?????????????????????????? 2026-06-22 ????? 1:1 ?????????? 4 ??????",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  null,
+                                                 "draw":  null,
+                                                 "away":  null,
+                                                 "updatedAt":  " "
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "20.00",
+                                                 "s1":  "6.75",
+                                                 "s2":  "4.30",
+                                                 "s3":  "3.45",
+                                                 "s4":  "4.45",
+                                                 "s5":  "6.70",
+                                                 "s6":  "11.00",
+                                                 "s7":  "14.50",
+                                                 "updatedAt":  "2026-06-23 11:34:59"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.08",
+                                                  "draw":  "4.05",
+                                                  "away":  "2.49",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-23 12:16:09"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-23 12:17:15"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "35.00",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-23 12:16:11"
+                                              }
+                                 },
+                        "scheduleCheck":  {
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-23 13:50:54",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Portugal",
+                        "homeAlias":  {
+                                          "code":  "POR",
+                                          "zh":  "葡萄牙",
+                                          "en":  "Portugal",
+                                          "aliases":  [
+                                                          "Portugal",
+                                                          "葡萄牙"
+                                                      ]
+                                      },
+                        "awayEn":  "Uzbekistan",
+                        "awayAlias":  {
+                                          "code":  "UZB",
+                                          "zh":  "乌兹别克斯坦",
+                                          "en":  "Uzbekistan",
+                                          "aliases":  [
+                                                          "Uzbekistan",
+                                                          "乌兹别克斯坦"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-23 13:30:04",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Portugal",
+                                                                       "country":  "Portugal",
+                                                                       "formedYear":  "1921",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Estádio Nacional do Jamor",
+                                                                       "description":  "The Portugal national football team (Portuguese: Seleção Portuguesa de Futebol) represents Portugal in international men\u0027s football competition since 1921. It is controlled by the Portuguese Football Federation, the governing body for footb"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Uzbekistan",
+                                                                       "country":  "Uzbekistan",
+                                                                       "formedYear":  "1992",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Milliy Stadium",
+                                                                       "description":  "The Uzbekistan national football team (Uzbek: Oʻzbekiston milliy futbol terma jamoasi) represents Uzbekistan in international football and is controlled by the Uzbekistan Football Association, the governing body for football in Uzbekistan.\r"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  17,
+                                                                          "points":  1767.85,
+                                                                          "query":  "Portugal"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  50,
+                                                                          "points":  1458.73,
+                                                                          "query":  "Uzbekistan"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "group":  "K组",
+                        "localKickoff":  "2026-06-24 13:00:00",
+                        "scheduleSource":  "2026???????.xlsx",
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    },
+                    {
+                        "id":  "046",
+                        "matchNumStr":  "周二046",
+                        "matchId":  "2040256",
+                        "businessDate":  "2026-06-23",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "L组",
+                        "kickoff":  "2026-06-24 04:00:00",
+                        "matchDate":  "2026-06-24",
+                        "matchTime":  "04:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606231",
+                        "isHot":  true,
+                        "home":  "英格兰",
+                        "homeCode":  "ENG",
+                        "homeAbbr":  "英格兰",
+                        "homeRank":  "[L组1]",
+                        "away":  "加纳",
+                        "awayCode":  "GHA",
+                        "awayAbbr":  "加纳",
+                        "awayRank":  "[L组2]",
+                        "venue":  "比赛将在美国-马萨诸塞州福克斯伯勒举行",
+                        "prediction":  {
+                                           "totalGoals":  "2",
+                                           "scores":  [
+                                                          "1:1",
+                                                          "2:0"
+                                                      ],
+                                           "upset":  "1:2",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "2",
+                                                              "3",
+                                                              "1"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "????????????????? 2026-06-22 ??????????? 2 ?????? 1:1 ????????",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  null,
+                                                 "draw":  null,
+                                                 "away":  null,
+                                                 "updatedAt":  " "
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "18.00",
+                                                 "s1":  "6.40",
+                                                 "s2":  "4.10",
+                                                 "s3":  "3.60",
+                                                 "s4":  "4.40",
+                                                 "s5":  "7.00",
+                                                 "s6":  "11.00",
+                                                 "s7":  "17.00",
+                                                 "updatedAt":  "2026-06-23 10:32:57"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.31",
+                                                  "draw":  "3.90",
+                                                  "away":  "2.27",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-23 12:17:12"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-23 12:26:44"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "28.00",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-23 10:30:42"
+                                              }
+                                 },
+                        "scheduleCheck":  {
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-23 13:50:54",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "England",
+                        "homeAlias":  {
+                                          "code":  "ENG",
+                                          "zh":  "英格兰",
+                                          "en":  "England",
+                                          "aliases":  [
+                                                          "England",
+                                                          "英格兰"
+                                                      ]
+                                      },
+                        "awayEn":  "Ghana",
+                        "awayAlias":  {
+                                          "code":  "GHA",
+                                          "zh":  "加纳",
+                                          "en":  "Ghana",
+                                          "aliases":  [
+                                                          "Ghana",
+                                                          "加纳"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-23 13:30:04",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "England",
+                                                                       "country":  "England",
+                                                                       "formedYear":  "1872",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Wembley Stadium",
+                                                                       "description":  "The England national football team represents England in men\u0027s international football and is governed by The Football Association, the governing body for football in England. It competes in the three major international tournaments; the FIF"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Ghana",
+                                                                       "country":  "Ghana",
+                                                                       "formedYear":  "1950",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Accra Sports Stadium",
+                                                                       "description":  "The Ghana national football team represents Ghana in international association football and has done so since the 1950s. The team is nicknamed the Black Stars after the Black Star of Africa in the flag of Ghana. It is administered by the Gh"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  4,
+                                                                          "points":  2083.09,
+                                                                          "query":  "England"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  65,
+                                                                          "points":  1346.88,
+                                                                          "query":  "Ghana"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "group":  "L组",
+                        "localKickoff":  "2026-06-24 16:00:00",
+                        "scheduleSource":  "2026???????.xlsx",
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
+                    },
+                    {
+                        "id":  "047",
+                        "matchNumStr":  "周二047",
+                        "matchId":  "2040257",
+                        "businessDate":  "2026-06-23",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "L组",
+                        "kickoff":  "2026-06-25 07:30:00",
+                        "matchDate":  "2026-06-24",
+                        "matchTime":  "07:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606231",
+                        "isHot":  false,
+                        "home":  "巴拿马",
+                        "homeCode":  "PAM",
+                        "homeAbbr":  "巴拿马",
+                        "homeRank":  "[L组3]",
+                        "away":  "克罗地亚",
+                        "awayCode":  "CRO",
+                        "awayAbbr":  "克罗地亚",
+                        "awayRank":  "[L组4]",
+                        "venue":  "比赛将在加拿大-多伦多举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "1:2",
+                                                          "0:2"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "3",
+                                                              "2",
+                                                              "4"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "???????????????? 2 ?? 3 ????????????????????? 3 ????",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "6.90",
+                                                 "draw":  "4.20",
+                                                 "away":  "1.34",
+                                                 "updatedAt":  "2026-06-23 11:09:41"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "14.00",
+                                                 "s1":  "5.10",
+                                                 "s2":  "3.50",
+                                                 "s3":  "3.55",
+                                                 "s4":  "4.95",
+                                                 "s5":  "8.80",
+                                                 "s6":  "16.00",
+                                                 "s7":  "24.00",
+                                                 "updatedAt":  "2026-06-23 10:38:18"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.65",
+                                                  "draw":  "3.60",
+                                                  "away":  "2.11",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-23 11:37:54"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-23 10:40:23"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "1.88",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-23 11:10:46"
+                                              }
+                                 },
+                        "scheduleCheck":  {
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-23 13:50:54",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Panama",
+                        "homeAlias":  {
+                                          "code":  "PAN",
+                                          "zh":  "巴拿马",
+                                          "en":  "Panama",
+                                          "aliases":  [
+                                                          "Panama",
+                                                          "巴拿马"
+                                                      ]
+                                      },
+                        "awayEn":  "Croatia",
+                        "awayAlias":  {
+                                          "code":  "CRO",
+                                          "zh":  "克罗地亚",
+                                          "en":  "Croatia",
+                                          "aliases":  [
+                                                          "Croatia",
+                                                          "克罗地亚"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-23 13:30:04",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Panama",
+                                                                       "country":  "Panama",
+                                                                       "formedYear":  "1938",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Rommel Fernández Stadium",
+                                                                       "description":  "The Panama national football team (Spanish: Selección de fútbol de Panamá) represents Panama in men\u0027s international association football and it is governed by Panamanian Football Federation, The team represents all three FIFA, CONCACAF and "
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Croatia",
+                                                                       "country":  "Croatia",
+                                                                       "formedYear":  "1993",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stadion Maksimir",
+                                                                       "description":  "The Croatia national football team (Croatian: Hrvatska nogometna reprezentacija) represents Croatia in men\u0027s international football matches. The team is controlled by the Croatian Football Federation (HNS), the governing body for football i"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "unparsed",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  null,
+                                                                          "points":  1540.87,
+                                                                          "query":  "Panama"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  125,
+                                                                          "points":  1714.87,
+                                                                          "query":  "Croatia"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "group":  "L组",
+                        "localKickoff":  "2026-06-24 19:00:00",
+                        "scheduleSource":  "2026???????.xlsx",
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#23458;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    },
+                    {
+                        "id":  "048",
+                        "matchNumStr":  "周二048",
+                        "matchId":  "2040258",
+                        "businessDate":  "2026-06-23",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-24 10:00:00",
+                        "matchDate":  "2026-06-24",
+                        "matchTime":  "10:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606231",
+                        "isHot":  false,
+                        "home":  "哥伦比亚",
+                        "homeCode":  "COM",
+                        "homeAbbr":  "哥伦比亚",
+                        "homeRank":  "[K组1]",
+                        "away":  "刚果(金)",
+                        "awayCode":  "COD",
+                        "awayAbbr":  "刚果金",
+                        "awayRank":  "[K组2]",
+                        "venue":  "比赛将在墨西哥-萨波潘举行",
+                        "prediction":  {
+                                           "totalGoals":  "2",
+                                           "scores":  [
+                                                          "2:0",
+                                                          "2:1"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "2",
+                                                              "3",
+                                                              "1"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "?????????????? 2026-06-22 ????????????????? 1:1 ??????? 2 ?????",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "1.36",
+                                                 "draw":  "3.85",
+                                                 "away":  "7.50",
+                                                 "updatedAt":  "2026-06-21 09:15:03"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "10.00",
+                                                 "s1":  "4.40",
+                                                 "s2":  "3.15",
+                                                 "s3":  "3.60",
+                                                 "s4":  "6.00",
+                                                 "s5":  "12.00",
+                                                 "s6":  "21.00",
+                                                 "s7":  "30.00",
+                                                 "updatedAt":  "2026-06-21 09:15:02"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.27",
+                                                  "draw":  "3.30",
+                                                  "away":  "2.60",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-21 09:15:03"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-23 12:27:52"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "13.50",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-21 09:15:02"
+                                              }
+                                 },
+                        "scheduleCheck":  {
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-23 13:50:54",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Colombia",
+                        "homeAlias":  {
+                                          "code":  "COL",
+                                          "zh":  "哥伦比亚",
+                                          "en":  "Colombia",
+                                          "aliases":  [
+                                                          "Colombia",
+                                                          "哥伦比亚"
+                                                      ]
+                                      },
+                        "awayEn":  "DR Congo",
+                        "awayAlias":  {
+                                          "code":  "COD",
+                                          "zh":  "刚果(金)",
+                                          "en":  "DR Congo",
+                                          "aliases":  [
+                                                          "DR Congo",
+                                                          "Congo DR",
+                                                          "刚果(金)"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-23 13:30:04",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Colombia",
+                                                                       "country":  "Colombia",
+                                                                       "formedYear":  "1938",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Estadio Metropolitano Roberto Meléndez",
+                                                                       "description":  "The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in men\u0027s international football and is managed by the Colombian Football Federation, the governing body for football in Colombia. They are an"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "DR Congo",
+                                                                       "country":  "DR Congo",
+                                                                       "formedYear":  "1948",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stade des Martyrs",
+                                                                       "description":  "The Democratic Republic of the Congo national football team (formerly known as Zaire, alternatively known as Congo-Kinshasa) is the national team of the Democratic Republic of the Congo and is controlled by the Congolese Association Footbal"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  13,
+                                                                          "points":  1698.35,
+                                                                          "query":  "Colombia"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  46,
+                                                                          "points":  1474.43,
+                                                                          "query":  "DR Congo"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
+                    }
+                ],
+    "externalEnrichment":  {
+                               "updatedAt":  "2026-06-23 13:50:54",
+                               "date":  "20260624",
+                               "sources":  [
+                                               {
+                                                   "name":  "worldcup26-ir",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://worldcup26.ir/get/games",
+                                                   "role":  "world-cup-schedule-score-mirror"
+                                               },
+                                               {
+                                                   "name":  "football-data",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://api.football-data.org/v4/matches",
+                                                   "role":  "official-match-and-standings-backup"
+                                               },
+                                               {
+                                                   "name":  "api-sports-football",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://v3.football.api-sports.io/",
+                                                   "role":  "injuries-h2h-odds-trend-primary"
+                                               },
+                                               {
+                                                   "name":  "thesportsdb",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://www.thesportsdb.com/api/v1/json/123/",
+                                                   "role":  "team-metadata-fallback"
+                                               },
+                                               {
+                                                   "name":  "serpapi-google",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://serpapi.com/search?engine=google",
+                                                   "role":  "fifa-ranking-news-fallback"
+                                               }
+                                           ],
+                               "standingsSource":  "worldcup26-ir"
+                           },
+    "standingsSnapshot":  [
+                              {
+                                  "group":  "K组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "哥伦比亚",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  3,
+                                                   "ga":  1,
+                                                   "gd":  2,
+                                                   "points":  5
+                                               },
+                                               {
+                                                   "team":  "Democratic Republic of the Congo",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  3,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  1,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "葡萄牙",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  3,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  1,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "乌兹别克斯坦",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  3,
+                                                   "gd":  -2,
+                                                   "points":  2
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "L组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "英格兰",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  2,
+                                                   "gd":  2,
+                                                   "points":  5
+                                               },
+                                               {
+                                                   "team":  "加纳",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  0,
+                                                   "gd":  1,
+                                                   "points":  5
+                                               },
+                                               {
+                                                   "team":  "巴拿马",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  1,
+                                                   "gf":  0,
+                                                   "ga":  1,
+                                                   "gd":  -1,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "克罗地亚",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  4,
+                                                   "gd":  -2,
+                                                   "points":  2
+                                               }
+                                           ]
+                              }
+                          ]
 }

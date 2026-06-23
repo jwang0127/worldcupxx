@@ -1,127 +1,137 @@
 {
   "date": "20260623",
   "dateText": "2026-06-23",
-  "source": "sporttery-live-api",
-  "fetchedAt": "2026-06-23T13:04:28",
-  "lastUpdateTime": "2026-06-23 12:41:49",
-  "apiPoolCode": "ttg,had,hhad,crs,hafu",
+  "source": "manual-corrected-fifa-results",
+  "fetchedAt": "2026-06-23T14:05:00+08:00",
+  "lastUpdateTime": "2026-06-23 14:05:00",
+  "apiPoolCode": "manual-review-reset",
   "matches": [
     {
-      "id": "201",
-      "matchNumStr": "周二201",
-      "matchId": "2040309",
+      "id": "041",
+      "matchNumStr": "周一041",
+      "matchId": "manual-20260623-041",
       "businessDate": "2026-06-23",
-      "league": "芬兰超级联赛",
-      "leagueCode": "FVL",
-      "leagueId": 2064839,
-      "groupName": "",
-      "kickoff": "2026-06-23 23:00:00",
-      "matchDate": "2026-06-23",
-      "matchTime": "23:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "group": "J组",
+      "groupName": "J组",
+      "kickoff": "2026-06-24 01:00:00",
+      "localKickoff": "2026-06-23 21:00:00",
+      "matchDate": "2026-06-24",
+      "matchTime": "01:00:00",
+      "matchStatus": "Finished",
+      "sellStatus": 0,
       "taxDateNo": "2606231",
-      "isHot": false,
-      "home": "拉赫蒂",
-      "homeCode": "LAH",
-      "homeAbbr": "拉赫蒂",
-      "homeRank": "[芬超9]",
-      "away": "TPS图尔库",
-      "awayCode": "TPS",
-      "awayAbbr": "TPS图尔",
-      "awayRank": "[芬超7]",
-      "venue": "",
+      "isHot": true,
+      "home": "阿根廷",
+      "homeCode": "ARG",
+      "homeAbbr": "阿根廷",
+      "homeRank": "[J组1]",
+      "away": "奥地利",
+      "awayCode": "AUT",
+      "awayAbbr": "奥地利",
+      "awayRank": "[J组2]",
+      "venue": "比赛将在美国-得克萨斯州阿灵顿举行",
       "prediction": {
-        "totalGoals": "3",
+        "totalGoals": "2",
         "scores": [
-          "2:1",
-          "2:0"
+          "2:0",
+          "2:1"
         ],
-        "upset": "1:2",
-        "confidence": "medium",
+        "upset": "1:1",
+        "confidence": "high",
         "candidates": [
-          "3",
           "2",
+          "3",
           "1"
         ]
       },
-      "result": null,
-      "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+      "result": {
+        "homeGoals": 2,
+        "awayGoals": 0,
+        "status": "Finished",
+        "source": "fifa-match-report"
+      },
+      "review": "复盘修正后回写：阿根廷方向判断正确，比赛收在低总进球区间。",
       "odds": {
         "had": {
-          "home": "1.66",
-          "draw": "3.55",
-          "away": "4.10",
-          "updatedAt": "2026-06-23 09:39:29"
+          "home": null,
+          "draw": null,
+          "away": null,
+          "updatedAt": ""
         },
-        "ttg": {
-          "s0": "14.00",
-          "s1": "5.10",
-          "s2": "3.60",
-          "s3": "3.35",
-          "s4": "5.15",
-          "s5": "9.00",
-          "s6": "16.00",
-          "s7": "24.00",
-          "updatedAt": "2026-06-23 09:39:28"
-        },
-        "hhad": {
-          "home": "3.05",
-          "draw": "3.45",
-          "away": "1.96",
-          "handicap": null,
-          "updatedAt": "2026-06-23 09:39:29"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 09:39:28"
-        },
-        "hafu": {
-          "aa": "7.00",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-23 09:39:29"
-        }
+        "ttg": {},
+        "hhad": {},
+        "crs": {},
+        "hafu": {}
       },
       "scheduleCheck": {
         "status": "unmatched",
-        "checkedAt": "2026-06-23 13:30:03",
+        "checkedAt": "2026-06-23 13:50:53",
         "scheduleFile": "2026年世界杯赛程表.xlsx"
       },
+      "homeEn": "Argentina",
+      "homeAlias": {
+        "code": "ARG",
+        "zh": "阿根廷",
+        "en": "Argentina",
+        "aliases": [
+          "Argentina",
+          "阿根廷"
+        ]
+      },
+      "awayEn": "Austria",
+      "awayAlias": {
+        "code": "AUT",
+        "zh": "奥地利",
+        "en": "Austria",
+        "aliases": [
+          "Austria",
+          "奥地利"
+        ]
+      },
       "external": {
-        "updatedAt": "2026-06-23 13:04:30",
+        "updatedAt": "2026-06-23 13:46:59",
         "sources": [],
         "teamMeta": {
           "home": {
-            "status": "missing-team-name",
-            "source": "thesportsdb"
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Argentina",
+            "country": "Argentina",
+            "formedYear": "1893",
+            "league": "FIFA World Cup",
+            "stadium": "Estadio Mâs Monumental",
+            "description": "The Argentina national football team (Spanish: Selección de fútbol de Argentina) represents Argentina in men's international football and is administered by the Argentine Football Association, the governing body for football in Argentina. A"
           },
           "away": {
-            "status": "missing-team-name",
-            "source": "thesportsdb"
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Austria",
+            "country": "Austria",
+            "formedYear": "1902",
+            "league": "FIFA World Cup",
+            "stadium": "Ernst-Happel-Stadion",
+            "description": "The Austria national football team (German: Österreichische Fußballnationalmannschaft) represents Austria in men's international football competition and it's controlled by the Austrian Football Association (German: Österreichischer Fußball"
           }
         },
         "fifaRanking": {
           "status": "ok",
           "source": "serpapi",
           "home": {
-            "status": "missing-team-name"
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 2,
+            "points": 1877.27,
+            "query": "Argentina"
           },
           "away": {
-            "status": "missing-team-name"
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 24,
+            "points": 1597.4,
+            "query": "Austria"
           }
         },
         "oddsMovement": {
@@ -139,38 +149,40 @@
           "matches": []
         }
       },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;"
+      "postReview": "&#26368;&#32456;&#27604;&#20998; 2:0&#12290;&#23454;&#38469;&#24635;&#36827;&#29699; 2&#65292;&#39044;&#27979;&#21629;&#20013;&#65307;&#36187;&#26524;&#19982;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#19968;&#33268;&#12290;"
     },
     {
-      "id": "202",
-      "matchNumStr": "周二202",
-      "matchId": "2040310",
+      "id": "045",
+      "matchNumStr": "周一045",
+      "matchId": "manual-20260623-045",
       "businessDate": "2026-06-23",
-      "league": "芬兰超级联赛",
-      "leagueCode": "FVL",
-      "leagueId": 2064839,
-      "groupName": "",
-      "kickoff": "2026-06-23 23:00:00",
-      "matchDate": "2026-06-23",
-      "matchTime": "23:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "group": "I组",
+      "groupName": "I组",
+      "kickoff": "2026-06-24 05:00:00",
+      "localKickoff": "2026-06-23 19:00:00",
+      "matchDate": "2026-06-24",
+      "matchTime": "05:00:00",
+      "matchStatus": "Finished",
+      "sellStatus": 0,
       "taxDateNo": "2606231",
-      "isHot": false,
-      "home": "库奥皮奥",
-      "homeCode": "KUP",
-      "homeAbbr": "库奥皮奥",
-      "homeRank": "[芬超3]",
-      "away": "坦佩雷山猫",
-      "awayCode": "ILV",
-      "awayAbbr": "坦山猫",
-      "awayRank": "[芬超8]",
-      "venue": "",
+      "isHot": true,
+      "home": "法国",
+      "homeCode": "FRA",
+      "homeAbbr": "法国",
+      "homeRank": "[I组1]",
+      "away": "伊拉克",
+      "awayCode": "IRQ",
+      "awayAbbr": "伊拉克",
+      "awayRank": "[I组4]",
+      "venue": "比赛将在美国-宾夕法尼亚州费城举行",
       "prediction": {
         "totalGoals": "3",
         "scores": [
-          "2:1",
-          "3:0"
+          "3:0",
+          "2:0"
         ],
         "upset": "1:1",
         "confidence": "high",
@@ -180,83 +192,91 @@
           "4"
         ]
       },
-      "result": null,
-      "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+      "result": {
+        "homeGoals": 3,
+        "awayGoals": 0,
+        "status": "Finished",
+        "source": "fifa-match-report"
+      },
+      "review": "复盘修正后回写：法国主胜与3球主线同时兑现，说明强势盘主方向仍然有效。",
       "odds": {
         "had": {
-          "home": "1.55",
-          "draw": "3.85",
-          "away": "4.45",
-          "updatedAt": "2026-06-23 09:39:29"
+          "home": null,
+          "draw": null,
+          "away": null,
+          "updatedAt": ""
         },
-        "ttg": {
-          "s0": "17.00",
-          "s1": "5.80",
-          "s2": "3.85",
-          "s3": "3.45",
-          "s4": "4.70",
-          "s5": "7.50",
-          "s6": "14.00",
-          "s7": "18.00",
-          "updatedAt": "2026-06-23 09:39:28"
-        },
-        "hhad": {
-          "home": "2.64",
-          "draw": "3.50",
-          "away": "2.15",
-          "handicap": null,
-          "updatedAt": "2026-06-23 09:39:29"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 09:39:28"
-        },
-        "hafu": {
-          "aa": "7.50",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-23 09:39:29"
-        }
+        "ttg": {},
+        "hhad": {},
+        "crs": {},
+        "hafu": {}
       },
       "scheduleCheck": {
         "status": "unmatched",
-        "checkedAt": "2026-06-23 13:30:03",
+        "checkedAt": "2026-06-23 13:50:53",
         "scheduleFile": "2026年世界杯赛程表.xlsx"
       },
+      "homeEn": "France",
+      "homeAlias": {
+        "code": "FRA",
+        "zh": "法国",
+        "en": "France",
+        "aliases": [
+          "France",
+          "法国"
+        ]
+      },
+      "awayEn": "Iraq",
+      "awayAlias": {
+        "code": "IRQ",
+        "zh": "伊拉克",
+        "en": "Iraq",
+        "aliases": [
+          "Iraq",
+          "伊拉克"
+        ]
+      },
       "external": {
-        "updatedAt": "2026-06-23 13:04:30",
+        "updatedAt": "2026-06-23 13:46:59",
         "sources": [],
         "teamMeta": {
           "home": {
-            "status": "missing-team-name",
-            "source": "thesportsdb"
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "France",
+            "country": "France",
+            "formedYear": "1904",
+            "league": "FIFA World Cup",
+            "stadium": "Stade de France",
+            "description": "The France national football team (French: Équipe de France de football) represents France in men's international football and is controlled by the French Football Federation, also known as FFF, or in French: Fédération française de footbal"
           },
           "away": {
-            "status": "missing-team-name",
-            "source": "thesportsdb"
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Iraq",
+            "country": "Iraq",
+            "formedYear": "1957",
+            "league": "FIFA World Cup",
+            "stadium": "Basra International Stadium",
+            "description": "The Iraq national football team (Arabic: المنتخب العراقي لكرة القدم‎) represents Iraq in international football and is controlled by the Iraq Football Association (IFA), the governing body for football in Iraq. Most of Iraq's home matches a"
           }
         },
         "fifaRanking": {
           "status": "ok",
           "source": "serpapi",
           "home": {
-            "status": "missing-team-name"
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 16,
+            "points": 1889.06,
+            "query": "France"
           },
           "away": {
-            "status": "missing-team-name"
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 57,
+            "points": 1446.28,
+            "query": "Iraq"
           }
         },
         "oddsMovement": {
@@ -274,33 +294,35 @@
           "matches": []
         }
       },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 3&#12290;"
+      "postReview": "&#26368;&#32456;&#27604;&#20998; 3:0&#12290;&#23454;&#38469;&#24635;&#36827;&#29699; 3&#65292;&#39044;&#27979;&#21629;&#20013;&#65307;&#36187;&#26524;&#19982;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#19968;&#33268;&#12290;"
     },
     {
-      "id": "203",
-      "matchNumStr": "周二203",
-      "matchId": "2040311",
+      "id": "046",
+      "matchNumStr": "周一046",
+      "matchId": "manual-20260623-046",
       "businessDate": "2026-06-23",
-      "league": "芬兰超级联赛",
-      "leagueCode": "FVL",
-      "leagueId": 2064839,
-      "groupName": "",
-      "kickoff": "2026-06-23 23:00:00",
-      "matchDate": "2026-06-23",
-      "matchTime": "23:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 1,
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "group": "I组",
+      "groupName": "I组",
+      "kickoff": "2026-06-24 08:00:00",
+      "localKickoff": "2026-06-23 22:00:00",
+      "matchDate": "2026-06-24",
+      "matchTime": "08:00:00",
+      "matchStatus": "Finished",
+      "sellStatus": 0,
       "taxDateNo": "2606231",
       "isHot": false,
-      "home": "瓦萨",
-      "homeCode": "VPS",
-      "homeAbbr": "瓦萨",
-      "homeRank": "[芬超6]",
-      "away": "AC奥卢",
-      "awayCode": "AUU",
-      "awayAbbr": "AC奥卢",
-      "awayRank": "[芬超2]",
-      "venue": "",
+      "home": "挪威",
+      "homeCode": "NOR",
+      "homeAbbr": "挪威",
+      "homeRank": "[I组2]",
+      "away": "塞内加尔",
+      "awayCode": "SEN",
+      "awayAbbr": "塞内加尔",
+      "awayRank": "[I组3]",
+      "venue": "比赛将在美国-新泽西州东卢瑟福举行",
       "prediction": {
         "totalGoals": "2",
         "scores": [
@@ -308,90 +330,98 @@
           "1:0"
         ],
         "upset": "0:1",
-        "confidence": "low",
+        "confidence": "medium",
         "candidates": [
           "2",
-          "3",
-          "1"
+          "1",
+          "3"
         ]
       },
-      "result": null,
-      "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+      "result": {
+        "homeGoals": 3,
+        "awayGoals": 2,
+        "status": "Finished",
+        "source": "fifa-match-report"
+      },
+      "review": "复盘修正后回写：均势盘被低估，5球尾部完全跑出，说明不能把2球低位盘机械压成慢节奏。",
       "odds": {
         "had": {
-          "home": "2.15",
-          "draw": "3.12",
-          "away": "2.91",
-          "updatedAt": "2026-06-23 12:41:37"
+          "home": null,
+          "draw": null,
+          "away": null,
+          "updatedAt": ""
         },
-        "ttg": {
-          "s0": "12.00",
-          "s1": "4.55",
-          "s2": "3.25",
-          "s3": "3.55",
-          "s4": "5.60",
-          "s5": "10.00",
-          "s6": "20.00",
-          "s7": "31.00",
-          "updatedAt": "2026-06-23 09:39:28"
-        },
-        "hhad": {
-          "home": "4.70",
-          "draw": "3.75",
-          "away": "1.54",
-          "handicap": null,
-          "updatedAt": "2026-06-23 12:41:49"
-        },
-        "crs": {
-          "0000": null,
-          "0100": null,
-          "0200": null,
-          "0201": null,
-          "0300": null,
-          "0301": null,
-          "0101": null,
-          "0001": null,
-          "updatedAt": "2026-06-23 09:39:28"
-        },
-        "hafu": {
-          "aa": "4.95",
-          "ad": null,
-          "ah": null,
-          "da": null,
-          "dd": null,
-          "dh": null,
-          "ha": null,
-          "hd": null,
-          "hh": null,
-          "updatedAt": "2026-06-23 09:39:29"
-        }
+        "ttg": {},
+        "hhad": {},
+        "crs": {},
+        "hafu": {}
       },
       "scheduleCheck": {
         "status": "unmatched",
-        "checkedAt": "2026-06-23 13:30:03",
+        "checkedAt": "2026-06-23 13:50:53",
         "scheduleFile": "2026年世界杯赛程表.xlsx"
       },
+      "homeEn": "Norway",
+      "homeAlias": {
+        "code": "NOR",
+        "zh": "挪威",
+        "en": "Norway",
+        "aliases": [
+          "Norway",
+          "挪威"
+        ]
+      },
+      "awayEn": "Senegal",
+      "awayAlias": {
+        "code": "SEN",
+        "zh": "塞内加尔",
+        "en": "Senegal",
+        "aliases": [
+          "Senegal",
+          "塞内加尔"
+        ]
+      },
       "external": {
-        "updatedAt": "2026-06-23 13:04:30",
+        "updatedAt": "2026-06-23 13:46:59",
         "sources": [],
         "teamMeta": {
           "home": {
-            "status": "missing-team-name",
-            "source": "thesportsdb"
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Norway",
+            "country": "Norway",
+            "formedYear": "1902",
+            "league": "World Cup Qualifying UEFA",
+            "stadium": "Ullevaal Stadion",
+            "description": "The Norway national football team (Norwegian: Norges herrelandslag i fotball, or informally Landslaget) represents Norway in men's international football and is controlled by the Norwegian Football Federation, the governing body for footbal"
           },
           "away": {
-            "status": "missing-team-name",
-            "source": "thesportsdb"
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Senegal",
+            "country": "Senegal",
+            "formedYear": "1959",
+            "league": "FIFA World Cup",
+            "stadium": "Stade Léopold Sédar Senghor",
+            "description": "The Senegal national football team, nicknamed the Lions of Teranga, is the national team of Senegal and is controlled by the Fédération Sénégalaise de Football. It made its first FIFA World Cup appearance in 2002 and caused a huge upset by "
           }
         },
         "fifaRanking": {
           "status": "ok",
           "source": "serpapi",
           "home": {
-            "status": "missing-team-name"
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 31,
+            "points": 1557.44,
+            "query": "Norway"
           },
           "away": {
-            "status": "missing-team-name"
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 15,
+            "points": 1684.07,
+            "query": "Senegal"
           }
         },
         "oddsMovement": {
@@ -409,11 +439,156 @@
           "matches": []
         }
       },
-      "postReview": "&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;&#12290;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#20026; &#20027;&#32988;&#65292;&#24635;&#36827;&#29699;&#39044;&#27979;&#20026; 2&#12290;"
+      "postReview": "&#26368;&#32456;&#27604;&#20998; 3:2&#12290;&#23454;&#38469;&#24635;&#36827;&#29699; 5&#65292;&#39044;&#27979;&#26410;&#21629;&#20013;&#65307;&#36187;&#26524;&#19982;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#19968;&#33268;&#12290;"
+    },
+    {
+      "id": "047",
+      "matchNumStr": "周一047",
+      "matchId": "manual-20260623-047",
+      "businessDate": "2026-06-23",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "group": "J组",
+      "groupName": "J组",
+      "kickoff": "2026-06-24 11:00:00",
+      "localKickoff": "2026-06-24 00:00:00",
+      "matchDate": "2026-06-24",
+      "matchTime": "11:00:00",
+      "matchStatus": "Finished",
+      "sellStatus": 0,
+      "taxDateNo": "2606231",
+      "isHot": false,
+      "home": "约旦",
+      "homeCode": "JOR",
+      "homeAbbr": "约旦",
+      "homeRank": "[J组4]",
+      "away": "阿尔及利亚",
+      "awayCode": "ALG",
+      "awayAbbr": "阿尔及利亚",
+      "awayRank": "[J组3]",
+      "venue": "比赛将在美国-加利福尼亚州旧金山湾区举行",
+      "prediction": {
+        "totalGoals": "2",
+        "scores": [
+          "1:1",
+          "1:0"
+        ],
+        "upset": "0:1",
+        "confidence": "medium",
+        "candidates": [
+          "2",
+          "1",
+          "3"
+        ]
+      },
+      "result": {
+        "homeGoals": 1,
+        "awayGoals": 3,
+        "status": "Finished",
+        "source": "fifa-feature-report"
+      },
+      "review": "复盘修正后回写：弱侧偷球出现，但真正跑出的是客强方向和高于主线的尾部进球。",
+      "odds": {
+        "had": {
+          "home": null,
+          "draw": null,
+          "away": null,
+          "updatedAt": ""
+        },
+        "ttg": {},
+        "hhad": {},
+        "crs": {},
+        "hafu": {}
+      },
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-06-23 13:50:53",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      },
+      "homeEn": "Jordan",
+      "homeAlias": {
+        "code": "JOR",
+        "zh": "约旦",
+        "en": "Jordan",
+        "aliases": [
+          "Jordan",
+          "约旦"
+        ]
+      },
+      "awayEn": "Algeria",
+      "awayAlias": {
+        "code": "ALG",
+        "zh": "阿尔及利亚",
+        "en": "Algeria",
+        "aliases": [
+          "Algeria",
+          "阿尔及利亚"
+        ]
+      },
+      "external": {
+        "updatedAt": "2026-06-23 13:46:59",
+        "sources": [],
+        "teamMeta": {
+          "home": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Jordan",
+            "country": "United Kingdom",
+            "formedYear": "1991",
+            "league": "_Defunct Motorsport Teams",
+            "stadium": "",
+            "description": "Jordan Grand Prix was a Formula One constructor that competed from 1991 to 2005. The team was named after Irish businessman and founder Eddie Jordan and was based at Silverstone, England, but raced with an Irish licence.\r\n\r\nIn early 2005, t"
+          },
+          "away": {
+            "status": "ok",
+            "source": "thesportsdb",
+            "name": "Algeria",
+            "country": "Algeria",
+            "formedYear": "1964",
+            "league": "FIFA World Cup",
+            "stadium": "Stade Nelson-Mandela",
+            "description": "The Algeria national football team (Arabic: منتخب الجزائر لكرة القدم‎) represents Algeria in men's international football and it is governed by the Algerian Football Federation. The team plays their home matches at the Mustapha Tchaker Stad"
+          }
+        },
+        "fifaRanking": {
+          "status": "ok",
+          "source": "serpapi",
+          "home": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 63,
+            "points": 1387.74,
+            "query": "Jordan"
+          },
+          "away": {
+            "status": "ok",
+            "source": "serpapi",
+            "rank": 28,
+            "points": 1571.03,
+            "query": "Algeria"
+          }
+        },
+        "oddsMovement": {
+          "status": "pending-live-odds-source"
+        },
+        "injuries": {
+          "status": "ok",
+          "source": "api-sports",
+          "home": [],
+          "away": []
+        },
+        "h2h": {
+          "status": "pending-team-id",
+          "source": "api-sports",
+          "matches": []
+        }
+      },
+      "postReview": "&#26368;&#32456;&#27604;&#20998; 1:3&#12290;&#23454;&#38469;&#24635;&#36827;&#29699; 4&#65292;&#39044;&#27979;&#26410;&#21629;&#20013;&#65307;&#36187;&#26524;&#19982;&#36187;&#21069;&#32988;&#24179;&#36127;&#20542;&#21521;&#30456;&#21453;&#12290;"
     }
   ],
   "externalEnrichment": {
-    "updatedAt": "2026-06-23 13:04:30",
+    "updatedAt": "2026-06-23 13:49:20",
     "date": "20260623",
     "sources": [
       {
@@ -449,5 +624,104 @@
     ],
     "standingsSource": "worldcup26-ir"
   },
-  "standingsSnapshot": []
+  "standingsSnapshot": [
+    {
+      "group": "I组",
+      "rows": [
+        {
+          "team": "法国",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 6,
+          "ga": 1,
+          "gd": 5,
+          "points": 7
+        },
+        {
+          "team": "挪威",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 7,
+          "ga": 3,
+          "gd": 4,
+          "points": 7
+        },
+        {
+          "team": "塞内加尔",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 3,
+          "ga": 6,
+          "gd": -3,
+          "points": 1
+        },
+        {
+          "team": "伊拉克",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 1,
+          "ga": 7,
+          "gd": -6,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "group": "J组",
+      "rows": [
+        {
+          "team": "阿根廷",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 5,
+          "ga": 0,
+          "gd": 5,
+          "points": 7
+        },
+        {
+          "team": "奥地利",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 3,
+          "ga": 3,
+          "gd": 0,
+          "points": 4
+        },
+        {
+          "team": "阿尔及利亚",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 2,
+          "ga": 4,
+          "gd": -2,
+          "points": 4
+        },
+        {
+          "team": "约旦",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 2,
+          "ga": 5,
+          "gd": -3,
+          "points": 1
+        }
+      ]
+    }
+  ]
 }

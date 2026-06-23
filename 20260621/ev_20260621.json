@@ -1,0 +1,224 @@
+﻿[
+    {
+        "id":  "033",
+        "match":  "荷兰 vs 瑞典",
+        "lambdaHome":  2.16,
+        "lambdaAway":  0.84,
+        "totalLambda":  3,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:1",
+                         "odds":  6.3,
+                         "probability":  0.0976,
+                         "ev":  -0.39,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "3:0",
+                         "odds":  12,
+                         "probability":  0.0836,
+                         "ev":  0,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  6.3,
+                         "probability":  0.0903,
+                         "ev":  -0.43,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  13,
+                         "probability":  0.0498,
+                         "ev":  -0.35,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  13,
+                         "probability":  0.0418,
+                         "ev":  -0.46,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "3:0",
+                     "odds":  12,
+                     "probability":  0.0836,
+                     "ev":  0,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    },
+    {
+        "id":  "034",
+        "match":  "德国 vs 科特迪瓦",
+        "lambdaHome":  2.16,
+        "lambdaAway":  0.84,
+        "totalLambda":  3,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:0",
+                         "odds":  7,
+                         "probability":  0.1161,
+                         "ev":  -0.19,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "3:1",
+                         "odds":  10,
+                         "probability":  0.0702,
+                         "ev":  -0.3,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  6.7,
+                         "probability":  0.0903,
+                         "ev":  -0.39,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  15,
+                         "probability":  0.0498,
+                         "ev":  -0.25,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  17.5,
+                         "probability":  0.0418,
+                         "ev":  -0.27,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "2:0",
+                     "odds":  7,
+                     "probability":  0.1161,
+                     "ev":  -0.19,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "035",
+        "match":  "厄瓜多尔 vs 库拉索",
+        "lambdaHome":  2.16,
+        "lambdaAway":  0.84,
+        "totalLambda":  3,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:0",
+                         "odds":  5.4,
+                         "probability":  0.1161,
+                         "ev":  -0.37,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "3:0",
+                         "odds":  5.5,
+                         "probability":  0.0836,
+                         "ev":  -0.54,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "2:1",
+                         "odds":  9,
+                         "probability":  0.0976,
+                         "ev":  -0.12,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  8,
+                         "probability":  0.1075,
+                         "ev":  -0.14,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "2:1",
+                     "odds":  9,
+                     "probability":  0.0976,
+                     "ev":  -0.12,
+                     "mark":  "🔮 冷门低EV"
+                 }
+    },
+    {
+        "id":  "036",
+        "match":  "突尼斯 vs 日本",
+        "lambdaHome":  0.56,
+        "lambdaAway":  1.44,
+        "totalLambda":  2,
+        "halfFull":  {
+                         "primary":  "负/负",
+                         "secondary":  "负/负",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "负",
+                         "fullTimeLean":  "负",
+                         "note":  "上半场更像试探局，后程决胜概率更高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "0:1",
+                         "odds":  6.4,
+                         "probability":  0.1949,
+                         "ev":  0.25,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "0:2",
+                         "odds":  6.5,
+                         "probability":  0.1403,
+                         "ev":  -0.09,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  6.2,
+                         "probability":  0.1091,
+                         "ev":  -0.32,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  11,
+                         "probability":  0.1353,
+                         "ev":  0.49,
+                         "mark":  "✅ 正EV推荐"
+                     }
+                 ],
+        "best":  {
+                     "score":  "0:0",
+                     "odds":  11,
+                     "probability":  0.1353,
+                     "ev":  0.49,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    }
+]

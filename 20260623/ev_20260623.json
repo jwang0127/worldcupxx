@@ -1,0 +1,182 @@
+﻿[
+    {
+        "id":  "041",
+        "match":  "阿根廷 vs 奥地利",
+        "lambdaHome":  1.34,
+        "lambdaAway":  0.83,
+        "totalLambda":  2.17,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "比赛大概率分段展开，上半场试探、下半场提速。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:0",
+                         "odds":  7.6,
+                         "probability":  0.1021,
+                         "ev":  -0.22,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0851,
+                         "ev":  -0.29,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1271,
+                         "ev":  -0.03,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:1",
+                     "odds":  7.6,
+                     "probability":  0.1271,
+                     "ev":  -0.03,
+                     "mark":  "🔮 冷门低EV"
+                 }
+    },
+    {
+        "id":  "045",
+        "match":  "法国 vs 伊拉克",
+        "lambdaHome":  1.96,
+        "lambdaAway":  1.22,
+        "totalLambda":  3.17,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "3:0",
+                         "odds":  8.4,
+                         "probability":  0.0522,
+                         "ev":  -0.56,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "2:0",
+                         "odds":  7.6,
+                         "probability":  0.0801,
+                         "ev":  -0.39,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.0997,
+                         "ev":  -0.24,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:1",
+                     "odds":  7.6,
+                     "probability":  0.0997,
+                     "ev":  -0.24,
+                     "mark":  "🔮 冷门低EV"
+                 }
+    },
+    {
+        "id":  "046",
+        "match":  "挪威 vs 塞内加尔",
+        "lambdaHome":  1.36,
+        "lambdaAway":  0.85,
+        "totalLambda":  2.21,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "比赛大概率分段展开，上半场试探、下半场提速。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1267,
+                         "ev":  -0.04,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  6.8,
+                         "probability":  0.1493,
+                         "ev":  0.02,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0929,
+                         "ev":  -0.37,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:0",
+                     "odds":  6.8,
+                     "probability":  0.1493,
+                     "ev":  0.02,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    },
+    {
+        "id":  "047",
+        "match":  "约旦 vs 阿尔及利亚",
+        "lambdaHome":  1.28,
+        "lambdaAway":  0.8,
+        "totalLambda":  2.08,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "比赛大概率分段展开，上半场试探、下半场提速。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1278,
+                         "ev":  -0.03,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  6.8,
+                         "probability":  0.1599,
+                         "ev":  0.09,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0995,
+                         "ev":  -0.32,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:0",
+                     "odds":  6.8,
+                     "probability":  0.1599,
+                     "ev":  0.09,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    }
+]

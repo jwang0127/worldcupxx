@@ -1,0 +1,194 @@
+﻿[
+    {
+        "id":  "045",
+        "match":  "葡萄牙 vs 乌兹别克斯坦",
+        "lean":  "home",
+        "stars":  "★★★★☆",
+        "composite":  7.21,
+        "dimensions":  {
+                           "basic":  7.44,
+                           "lineup":  7,
+                           "elo":  8.57,
+                           "odds":  7.89,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  8.7,
+                           "pressure":  6.58,
+                           "weather":  5.9,
+                           "historyStyle":  5.97,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2
+                       },
+        "probabilities":  {
+                              "home":  0.6,
+                              "draw":  0.23,
+                              "away":  0.17
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  1,
+                                    "ga":  1,
+                                    "ppg":  1,
+                                    "score":  4.58
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  1,
+                                    "ga":  3,
+                                    "ppg":  0,
+                                    "score":  2
+                                }
+                   }
+    },
+    {
+        "id":  "046",
+        "match":  "英格兰 vs 加纳",
+        "lean":  "away",
+        "stars":  "★★★☆☆",
+        "composite":  6.81,
+        "dimensions":  {
+                           "basic":  5.66,
+                           "lineup":  6.5,
+                           "elo":  7.86,
+                           "odds":  7.08,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  8.7,
+                           "pressure":  6.58,
+                           "weather":  5.9,
+                           "historyStyle":  7.22,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2
+                       },
+        "probabilities":  {
+                              "home":  0.21,
+                              "draw":  0.24,
+                              "away":  0.55
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  4,
+                                    "ga":  2,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  1,
+                                    "ga":  0,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                }
+                   }
+    },
+    {
+        "id":  "047",
+        "match":  "巴拿马 vs 克罗地亚",
+        "lean":  "away",
+        "stars":  "★★★★☆",
+        "composite":  7.44,
+        "dimensions":  {
+                           "basic":  6.46,
+                           "lineup":  7.61,
+                           "elo":  9.44,
+                           "odds":  8.83,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  8.7,
+                           "pressure":  6.58,
+                           "weather":  6.4,
+                           "historyStyle":  7.22,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2
+                       },
+        "probabilities":  {
+                              "home":  0.12833492953892461,
+                              "draw":  0.21083595567109042,
+                              "away":  0.660829114789985
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  0,
+                                    "ga":  1,
+                                    "ppg":  0,
+                                    "score":  2
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  2,
+                                    "ga":  4,
+                                    "ppg":  0,
+                                    "score":  2
+                                }
+                   }
+    },
+    {
+        "id":  "048",
+        "match":  "哥伦比亚 vs 刚果(金)",
+        "lean":  "home",
+        "stars":  "★★★★☆",
+        "composite":  7.21,
+        "dimensions":  {
+                           "basic":  9.1,
+                           "lineup":  7.52,
+                           "elo":  9.31,
+                           "odds":  8.8,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  5.2,
+                           "pressure":  6.29,
+                           "weather":  6.4,
+                           "historyStyle":  5.97,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2
+                       },
+        "probabilities":  {
+                              "home":  0.6516440612940354,
+                              "draw":  0.23019114892464626,
+                              "away":  0.11816478978131842
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  3,
+                                    "ga":  1,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  1,
+                                    "ga":  1,
+                                    "ppg":  1,
+                                    "score":  4.58
+                                }
+                   }
+    }
+]

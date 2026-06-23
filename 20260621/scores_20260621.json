@@ -1,0 +1,178 @@
+﻿[
+    {
+        "id":  "033",
+        "match":  "荷兰 vs 瑞典",
+        "lean":  "home",
+        "stars":  "★★★☆☆",
+        "composite":  6.5,
+        "dimensions":  {
+                           "basic":  5.85,
+                           "lineup":  6.57,
+                           "elo":  7.95,
+                           "odds":  7.95,
+                           "trend":  4.8,
+                           "h2h":  5,
+                           "motivation":  4.5,
+                           "pressure":  6.1
+                       },
+        "probabilities":  {
+                              "home":  0.55682263958762046,
+                              "draw":  0.24730390976098227,
+                              "away":  0.19587345065139747
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                },
+                       "away":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                }
+                   }
+    },
+    {
+        "id":  "034",
+        "match":  "德国 vs 科特迪瓦",
+        "lean":  "home",
+        "stars":  "★★★★☆",
+        "composite":  7.35,
+        "dimensions":  {
+                           "basic":  6.46,
+                           "lineup":  7.33,
+                           "elo":  9.04,
+                           "odds":  9.04,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  4.5,
+                           "pressure":  6.1
+                       },
+        "probabilities":  {
+                              "home":  0.63258002518390888,
+                              "draw":  0.2134004904234873,
+                              "away":  0.15401948439260391
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                },
+                       "away":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                }
+                   }
+    },
+    {
+        "id":  "035",
+        "match":  "厄瓜多尔 vs 库拉索",
+        "lean":  "home",
+        "stars":  "★★★★☆",
+        "composite":  7.08,
+        "dimensions":  {
+                           "basic":  6.2,
+                           "lineup":  7,
+                           "elo":  8.57,
+                           "odds":  8.57,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  4.5,
+                           "pressure":  6.1
+                       },
+        "probabilities":  {
+                              "home":  0.6,
+                              "draw":  0.23,
+                              "away":  0.17
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                },
+                       "away":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                }
+                   }
+    },
+    {
+        "id":  "036",
+        "match":  "突尼斯 vs 日本",
+        "lean":  "away",
+        "stars":  "★★★★☆",
+        "composite":  7.42,
+        "dimensions":  {
+                           "basic":  6.53,
+                           "lineup":  7.41,
+                           "elo":  9.16,
+                           "odds":  9.16,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  4.5,
+                           "pressure":  6.1
+                       },
+        "probabilities":  {
+                              "home":  0.13512751657938074,
+                              "draw":  0.22350637211993532,
+                              "away":  0.641366111300684
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                },
+                       "away":  {
+                                    "played":  0,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  5
+                                }
+                   }
+    }
+]
