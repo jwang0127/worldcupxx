@@ -150,7 +150,7 @@
         "stars":  "★★★☆☆",
         "composite":  5.63,
         "dimensions":  {
-                           "basic":  3.2,
+                           "basic":  3.44,
                            "lineup":  5.5,
                            "elo":  6.43,
                            "odds":  5.53,
@@ -159,7 +159,7 @@
                            "motivation":  6.3,
                            "pressure":  8.85,
                            "weather":  4.8,
-                           "historyStyle":  7.54,
+                           "historyStyle":  6.9,
                            "injuryRisk":  5,
                            "rotationRisk":  2.8
                        },
@@ -175,7 +175,7 @@
                                     "draws":  0,
                                     "losses":  2,
                                     "gf":  2,
-                                    "ga":  6,
+                                    "ga":  5,
                                     "ppg":  0,
                                     "score":  2
                                 },
@@ -184,10 +184,10 @@
                                     "wins":  1,
                                     "draws":  0,
                                     "losses":  1,
-                                    "gf":  3,
+                                    "gf":  2,
                                     "ga":  4,
                                     "ppg":  1.5,
-                                    "score":  5.18
+                                    "score":  4.7299999999999995
                                 }
                    }
     }
