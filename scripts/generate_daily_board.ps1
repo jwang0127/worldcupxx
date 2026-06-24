@@ -266,6 +266,11 @@ function MatchGroupStandingBrief($Match, $StandingsBundle) {
   if (-not $homeRow -or -not $awayRow) {
     return ""
   }
+  $homePlayed = [int](ToDouble $homeRow.played 0)
+  $awayPlayed = [int](ToDouble $awayRow.played 0)
+  if ($homePlayed -eq 0 -and $awayPlayed -eq 0) {
+    return "$group&#65306;&#39318;&#36718;&#26410;&#24320;&#36187;&#65292;" + (HE $Match.home) + "&#21021;&#22987;&#39034;&#20301;&#31532;$($homeRow.rank)&#65292;" + (HE $Match.away) + "&#21021;&#22987;&#39034;&#20301;&#31532;$($awayRow.rank)"
+  }
   return "$group&#65306;" + (HE $Match.home) + "&#31532;$($homeRow.rank)&#65288;$($homeRow.points)&#20998;/&#36827;$($homeRow.gf)&#29699;&#65289;&#65292;" + (HE $Match.away) + "&#31532;$($awayRow.rank)&#65288;$($awayRow.points)&#20998;/&#36827;$($awayRow.gf)&#29699;&#65289;"
 }
 
@@ -1131,6 +1136,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
   $groups = @{}
   $allMatches = New-Object System.Collections.Generic.List[object]
   $seedLookup = @{}
+  $snapshotGroups = @{}
 
   foreach ($item in @($script:historicalMatches)) {
     $allMatches.Add($item)
@@ -1164,6 +1170,35 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
     })
   }
 
+  foreach ($snapshotGroup in @($Snapshot)) {
+    $groupName = NormalizeGroupName ([string]$snapshotGroup.group)
+    if (-not $groupName) { continue }
+    $snapshotGroups[$groupName] = $true
+    if (-not $groups.ContainsKey($groupName)) {
+      $groups[$groupName] = [ordered]@{}
+    }
+
+    foreach ($snapshotRow in @($snapshotGroup.rows)) {
+      $teamName = DisplayTeamName ([string]$snapshotRow.team)
+      $teamKey = TeamKey $teamName
+      if (-not $teamKey) { continue }
+      $seed = if ($seedLookup.ContainsKey($teamKey)) { [int]$seedLookup[$teamKey].seed } else { 99 }
+      $groups[$groupName][$teamKey] = [ordered]@{
+        team = $teamName
+        teamKey = $teamKey
+        seed = $seed
+        played = [int](ToDouble $snapshotRow.played 0)
+        wins = [int](ToDouble $snapshotRow.wins 0)
+        draws = [int](ToDouble $snapshotRow.draws 0)
+        losses = [int](ToDouble $snapshotRow.losses 0)
+        gf = [int](ToDouble $snapshotRow.gf 0)
+        ga = [int](ToDouble $snapshotRow.ga 0)
+        gd = [int](ToDouble $snapshotRow.gd 0)
+        points = [int](ToDouble $snapshotRow.points 0)
+      }
+    }
+  }
+
   foreach ($item in $allMatches) {
     $group = NormalizeGroupName ([string]$item.group)
     if (-not $group) { continue }
@@ -1193,6 +1228,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
   foreach ($item in ($allMatches | Where-Object { $_.result -and $null -ne $_.result.homeGoals -and $null -ne $_.result.awayGoals })) {
     $group = NormalizeGroupName ([string]$item.group)
     if (-not $group -or -not $groups.ContainsKey($group)) { continue }
+    if ($snapshotGroups.ContainsKey($group)) { continue }
     if (-not $groups[$group].Contains($item.homeKey) -or -not $groups[$group].Contains($item.awayKey)) { continue }
 
     $homeRowState = $groups[$group][$item.homeKey]
@@ -1242,7 +1278,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
       $remaining = [math]::Max(0, 3 - $played)
       $status = "🔵 理论可能"
       if ($played -eq 0 -and $points -eq 0) {
-        $status = "⚪ 数据待补"
+        $status = "⚪ 首轮未开赛"
       }
       elseif ($idx -lt 2 -and $played -ge 2 -and $points -ge 4) {
         $status = "🟡 出线主动权"

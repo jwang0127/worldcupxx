@@ -2,8 +2,8 @@
     "date":  "20260625",
     "dateText":  "2026-06-25",
     "source":  "sporttery-live-api",
-    "fetchedAt":  "2026-06-24T13:37:53",
-    "lastUpdateTime":  "2026-06-24 13:31:42",
+    "fetchedAt":  "2026-06-24T14:00:09",
+    "lastUpdateTime":  "2026-06-24 13:55:30",
     "apiPoolCode":  "ttg,had,hhad,crs,hafu",
     "matches":  [
                     {
@@ -99,7 +99,7 @@
                         "group":  "B组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:11",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Switzerland",
@@ -123,7 +123,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 13:37:56",
+                                         "updatedAt":  "2026-06-24 14:00:12",
                                          "sources":  [
 
                                                      ],
@@ -139,14 +139,9 @@
                                                                        "description":  "The Switzerland national football team (German: Schweizer Fußballnationalmannschaft, French: Équipe de Suisse de football, Italian: Nazionale di calcio della Svizzera, Romansh: Squadra naziunala da ballape da la Svizra) represents Switzerla"
                                                                    },
                                                           "away":  {
-                                                                       "status":  "ok",
+                                                                       "status":  "unavailable",
                                                                        "source":  "thesportsdb",
-                                                                       "name":  "Canada",
-                                                                       "country":  "Canada",
-                                                                       "formedYear":  "1885",
-                                                                       "league":  "FIFA World Cup",
-                                                                       "stadium":  "BMO Field",
-                                                                       "description":  "The Canada men\u0027s national soccer team (CanMNT; French: Équipe du Canada de soccer masculin) represents Canada in men\u0027s international soccer competitions at the senior men\u0027s level officially since 1924. They are overseen by the Canadian Socc"
+                                                                       "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
                                                                    }
                                                       },
                                          "fifaRanking":  {
@@ -160,11 +155,9 @@
                                                                           "query":  "Switzerland"
                                                                       },
                                                              "away":  {
-                                                                          "status":  "ok",
+                                                                          "status":  "unavailable",
                                                                           "source":  "serpapi",
-                                                                          "rank":  30,
-                                                                          "points":  1559.48,
-                                                                          "query":  "Canada"
+                                                                          "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
                                                                       }
                                                          },
                                          "oddsMovement":  {
@@ -234,9 +227,9 @@
                         "odds":  {
                                      "had":  {
                                                  "home":  "1.28",
-                                                 "draw":  "4.91",
-                                                 "away":  "6.90",
-                                                 "updatedAt":  "2026-06-24 12:21:43"
+                                                 "draw":  "5.00",
+                                                 "away":  "6.75",
+                                                 "updatedAt":  "2026-06-24 13:55:30"
                                              },
                                      "ttg":  {
                                                  "s0":  "18.00",
@@ -283,7 +276,7 @@
                         "group":  "B组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:11",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Bosnia and Herzegovina",
@@ -308,7 +301,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 13:37:56",
+                                         "updatedAt":  "2026-06-24 14:00:12",
                                          "sources":  [
 
                                                      ],
@@ -338,9 +331,11 @@
                                                              "status":  "ok",
                                                              "source":  "serpapi",
                                                              "home":  {
-                                                                          "status":  "unavailable",
+                                                                          "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
+                                                                          "rank":  13,
+                                                                          "points":  1387.22,
+                                                                          "query":  "Bosnia and Herzegovina"
                                                                       },
                                                              "away":  {
                                                                           "status":  "ok",
@@ -448,7 +443,7 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 12:20:22"
+                                                 "updatedAt":  "2026-06-24 13:34:07"
                                              },
                                      "hafu":  {
                                                   "aa":  "1.67",
@@ -466,7 +461,7 @@
                         "group":  "C组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:11",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Scotland",
@@ -490,7 +485,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 13:37:56",
+                                         "updatedAt":  "2026-06-24 14:00:12",
                                          "sources":  [
 
                                                      ],
@@ -650,7 +645,7 @@
                         "group":  "C组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:11",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Morocco",
@@ -674,7 +669,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 13:37:56",
+                                         "updatedAt":  "2026-06-24 14:00:12",
                                          "sources":  [
 
                                                      ],
@@ -690,9 +685,14 @@
                                                                        "description":  "The Morocco national football team, nicknamed Les Lions de l\u0027Atlas (French: Équipe du Maroc de football) represents Morocco in international men\u0027s football and it is controlled by the Royal Moroccan Football Federation, also known as FRMF, "
                                                                    },
                                                           "away":  {
-                                                                       "status":  "unavailable",
+                                                                       "status":  "ok",
                                                                        "source":  "thesportsdb",
-                                                                       "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
+                                                                       "name":  "Haiti",
+                                                                       "country":  "Haiti",
+                                                                       "formedYear":  "1925",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stade Sylvio Cator",
+                                                                       "description":  "The Haiti national football team (French: Équipe d\u0027Haïti de football, Haitian Creole: Ekip foutbòl Ayiti) represents Haiti in international football. Haiti is administered by the Fédération Haïtienne de Football (FHF), the governing body fo"
                                                                    }
                                                       },
                                          "fifaRanking":  {
@@ -779,10 +779,10 @@
                         "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "5.45",
-                                                 "draw":  "3.70",
-                                                 "away":  "1.48",
-                                                 "updatedAt":  "2026-06-24 12:07:18"
+                                                 "home":  "5.55",
+                                                 "draw":  "3.78",
+                                                 "away":  "1.46",
+                                                 "updatedAt":  "2026-06-24 13:55:30"
                                              },
                                      "ttg":  {
                                                  "s0":  "9.00",
@@ -829,7 +829,7 @@
                         "group":  "A组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:11",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "South Africa",
@@ -854,7 +854,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 13:37:56",
+                                         "updatedAt":  "2026-06-24 14:00:12",
                                          "sources":  [
 
                                                      ],
@@ -1014,7 +1014,7 @@
                         "group":  "A组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:11",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Czech Republic",
@@ -1039,7 +1039,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 13:37:56",
+                                         "updatedAt":  "2026-06-24 14:00:12",
                                          "sources":  [
 
                                                      ],
@@ -1108,7 +1108,7 @@
                     }
                 ],
     "externalEnrichment":  {
-                               "updatedAt":  "2026-06-24 13:44:50",
+                               "updatedAt":  "2026-06-24 14:00:12",
                                "date":  "20260625",
                                "sources":  [
                                                {

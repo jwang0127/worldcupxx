@@ -103,7 +103,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:10",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Portugal",
@@ -294,7 +294,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:10",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "England",
@@ -348,9 +348,11 @@
                                                              "status":  "ok",
                                                              "source":  "serpapi",
                                                              "home":  {
-                                                                          "status":  "unavailable",
+                                                                          "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
+                                                                          "rank":  5,
+                                                                          "points":  2083.09,
+                                                                          "query":  "England"
                                                                       },
                                                              "away":  {
                                                                           "status":  "ok",
@@ -483,7 +485,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:10",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Panama",
@@ -674,7 +676,7 @@
                                  },
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 13:44:50",
+                                              "checkedAt":  "2026-06-24 14:00:10",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Colombia",
@@ -715,9 +717,14 @@
                                                                        "description":  "The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in men\u0027s international football and is managed by the Colombian Football Federation, the governing body for football in Colombia. They are an"
                                                                    },
                                                           "away":  {
-                                                                       "status":  "unavailable",
+                                                                       "status":  "ok",
                                                                        "source":  "thesportsdb",
-                                                                       "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
+                                                                       "name":  "DR Congo",
+                                                                       "country":  "DR Congo",
+                                                                       "formedYear":  "1948",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stade des Martyrs",
+                                                                       "description":  "The Democratic Republic of the Congo national football team (formerly known as Zaire, alternatively known as Congo-Kinshasa) is the national team of the Democratic Republic of the Congo and is controlled by the Congolese Association Footbal"
                                                                    }
                                                       },
                                          "fifaRanking":  {
@@ -764,7 +771,7 @@
                     }
                 ],
     "externalEnrichment":  {
-                               "updatedAt":  "2026-06-24 13:44:50",
+                               "updatedAt":  "2026-06-24 14:00:10",
                                "date":  "20260624",
                                "sources":  [
                                                {
