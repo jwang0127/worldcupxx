@@ -38,5 +38,13 @@
   {"code":"COL","zh":"哥伦比亚","en":"Colombia","aliases":["Colombia","哥伦比亚"]},
   {"code":"PAN","zh":"巴拿马","en":"Panama","aliases":["Panama","巴拿马"]},
   {"code":"ENG","zh":"英格兰","en":"England","aliases":["England","英格兰"]},
-  {"code":"POR","zh":"葡萄牙","en":"Portugal","aliases":["Portugal","葡萄牙"]}
+  {"code":"POR","zh":"葡萄牙","en":"Portugal","aliases":["Portugal","葡萄牙"]},
+  {"code":"EGY","zh":"埃及","en":"Egypt","aliases":["Egypt","埃及"]},
+  {"code":"IRN","zh":"伊朗","en":"Iran","aliases":["Iran","Iran IR","伊朗"]},
+  {"code":"BEL","zh":"比利时","en":"Belgium","aliases":["Belgium","比利时"]},
+  {"code":"NZL","zh":"新西兰","en":"New Zealand","aliases":["New Zealand","新西兰"]},
+  {"code":"ESP","zh":"西班牙","en":"Spain","aliases":["Spain","西班牙"]},
+  {"code":"URU","zh":"乌拉圭","en":"Uruguay","aliases":["Uruguay","乌拉圭"]},
+  {"code":"CPV","zh":"佛得角","en":"Cape Verde Islands","aliases":["Cape Verde Islands","Cape Verde","佛得角"]},
+  {"code":"KSA","zh":"沙特阿拉伯","en":"Saudi Arabia","aliases":["Saudi Arabia","Saudi","沙特阿拉伯"]}
 ]

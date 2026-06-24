@@ -2,8 +2,8 @@
     "date":  "20260625",
     "dateText":  "2026-06-25",
     "source":  "sporttery-live-api",
-    "fetchedAt":  "2026-06-24T14:00:09",
-    "lastUpdateTime":  "2026-06-24 13:55:30",
+    "fetchedAt":  "2026-06-24T19:12:47",
+    "lastUpdateTime":  "2026-06-24 18:55:11",
     "apiPoolCode":  "ttg,had,hhad,crs,hafu",
     "matches":  [
                     {
@@ -50,9 +50,9 @@
                         "odds":  {
                                      "had":  {
                                                  "home":  "2.21",
-                                                 "draw":  "2.71",
-                                                 "away":  "3.25",
-                                                 "updatedAt":  "2026-06-24 13:01:53"
+                                                 "draw":  "2.66",
+                                                 "away":  "3.32",
+                                                 "updatedAt":  "2026-06-24 16:36:28"
                                              },
                                      "ttg":  {
                                                  "s0":  "8.00",
@@ -67,10 +67,10 @@
                                              },
                                      "hhad":  {
                                                   "home":  "4.70",
-                                                  "draw":  "4.00",
-                                                  "away":  "1.50",
+                                                  "draw":  "3.86",
+                                                  "away":  "1.52",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-24 12:04:20"
+                                                  "updatedAt":  "2026-06-24 14:18:47"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -81,10 +81,10 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 12:45:46"
+                                                 "updatedAt":  "2026-06-24 15:17:59"
                                              },
                                      "hafu":  {
-                                                  "aa":  "5.65",
+                                                  "aa":  "5.75",
                                                   "ad":  null,
                                                   "ah":  null,
                                                   "da":  null,
@@ -93,13 +93,13 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-24 12:10:59"
+                                                  "updatedAt":  "2026-06-24 17:36:07"
                                               }
                                  },
                         "group":  "B组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 14:00:11",
+                                              "checkedAt":  "2026-06-24 19:12:49",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Switzerland",
@@ -123,7 +123,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 14:00:12",
+                                         "updatedAt":  "2026-06-24 19:12:50",
                                          "sources":  [
 
                                                      ],
@@ -139,9 +139,14 @@
                                                                        "description":  "The Switzerland national football team (German: Schweizer Fußballnationalmannschaft, French: Équipe de Suisse de football, Italian: Nazionale di calcio della Svizzera, Romansh: Squadra naziunala da ballape da la Svizra) represents Switzerla"
                                                                    },
                                                           "away":  {
-                                                                       "status":  "unavailable",
+                                                                       "status":  "ok",
                                                                        "source":  "thesportsdb",
-                                                                       "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
+                                                                       "name":  "Canada",
+                                                                       "country":  "Canada",
+                                                                       "formedYear":  "1885",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "BMO Field",
+                                                                       "description":  "The Canada men\u0027s national soccer team (CanMNT; French: Équipe du Canada de soccer masculin) represents Canada in men\u0027s international soccer competitions at the senior men\u0027s level officially since 1924. They are overseen by the Canadian Socc"
                                                                    }
                                                       },
                                          "fifaRanking":  {
@@ -155,9 +160,11 @@
                                                                           "query":  "Switzerland"
                                                                       },
                                                              "away":  {
-                                                                          "status":  "unavailable",
+                                                                          "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "error":  "\u003curlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)\u003e"
+                                                                          "rank":  30,
+                                                                          "points":  null,
+                                                                          "query":  "Canada"
                                                                       }
                                                          },
                                          "oddsMovement":  {
@@ -226,28 +233,28 @@
                         "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "1.28",
-                                                 "draw":  "5.00",
-                                                 "away":  "6.75",
-                                                 "updatedAt":  "2026-06-24 13:55:30"
+                                                 "home":  "1.26",
+                                                 "draw":  "5.17",
+                                                 "away":  "7.00",
+                                                 "updatedAt":  "2026-06-24 18:53:40"
                                              },
                                      "ttg":  {
                                                  "s0":  "18.00",
                                                  "s1":  "6.25",
-                                                 "s2":  "4.10",
+                                                 "s2":  "3.90",
                                                  "s3":  "3.30",
                                                  "s4":  "4.55",
-                                                 "s5":  "7.50",
-                                                 "s6":  "12.50",
-                                                 "s7":  "17.00",
-                                                 "updatedAt":  "2026-06-24 10:51:21"
+                                                 "s5":  "7.70",
+                                                 "s6":  "13.50",
+                                                 "s7":  "18.00",
+                                                 "updatedAt":  "2026-06-24 18:55:11"
                                              },
                                      "hhad":  {
-                                                  "home":  "1.93",
+                                                  "home":  "1.89",
                                                   "draw":  "3.60",
-                                                  "away":  "3.00",
+                                                  "away":  "3.10",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-24 12:21:47"
+                                                  "updatedAt":  "2026-06-24 16:06:29"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -258,7 +265,7 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 11:40:03"
+                                                 "updatedAt":  "2026-06-24 16:12:48"
                                              },
                                      "hafu":  {
                                                   "aa":  "13.00",
@@ -276,7 +283,7 @@
                         "group":  "B组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 14:00:11",
+                                              "checkedAt":  "2026-06-24 19:12:49",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Bosnia and Herzegovina",
@@ -301,7 +308,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 14:00:12",
+                                         "updatedAt":  "2026-06-24 19:12:50",
                                          "sources":  [
 
                                                      ],
@@ -331,16 +338,16 @@
                                                              "status":  "ok",
                                                              "source":  "serpapi",
                                                              "home":  {
-                                                                          "status":  "ok",
+                                                                          "status":  "unparsed",
                                                                           "source":  "serpapi",
-                                                                          "rank":  13,
+                                                                          "rank":  null,
                                                                           "points":  1387.22,
                                                                           "query":  "Bosnia and Herzegovina"
                                                                       },
                                                              "away":  {
                                                                           "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "rank":  56,
+                                                                          "rank":  48,
                                                                           "points":  null,
                                                                           "query":  "Qatar"
                                                                       }
@@ -428,11 +435,11 @@
                                                  "updatedAt":  "2026-06-22 09:27:17"
                                              },
                                      "hhad":  {
-                                                  "home":  "3.57",
-                                                  "draw":  "3.60",
-                                                  "away":  "1.75",
+                                                  "home":  "3.70",
+                                                  "draw":  "3.80",
+                                                  "away":  "1.68",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-24 13:31:27"
+                                                  "updatedAt":  "2026-06-24 18:47:17"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -443,7 +450,7 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 13:34:07"
+                                                 "updatedAt":  "2026-06-24 16:55:09"
                                              },
                                      "hafu":  {
                                                   "aa":  "1.67",
@@ -461,7 +468,7 @@
                         "group":  "C组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 14:00:11",
+                                              "checkedAt":  "2026-06-24 19:12:49",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Scotland",
@@ -485,7 +492,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 14:00:12",
+                                         "updatedAt":  "2026-06-24 19:12:50",
                                          "sources":  [
 
                                                      ],
@@ -517,7 +524,7 @@
                                                              "home":  {
                                                                           "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "rank":  30,
+                                                                          "rank":  42,
                                                                           "points":  1503.34,
                                                                           "query":  "Scotland"
                                                                       },
@@ -525,7 +532,7 @@
                                                                           "status":  "ok",
                                                                           "source":  "serpapi",
                                                                           "rank":  17,
-                                                                          "points":  null,
+                                                                          "points":  1765.86,
                                                                           "query":  "Brazil"
                                                                       }
                                                          },
@@ -587,8 +594,8 @@
                                            "confidence":  "high",
                                            "candidates":  [
                                                               "3",
-                                                              "2",
-                                                              "4"
+                                                              "4",
+                                                              "2"
                                                           ]
                                        },
                         "result":  null,
@@ -601,15 +608,15 @@
                                                  "updatedAt":  " "
                                              },
                                      "ttg":  {
-                                                 "s0":  "20.00",
-                                                 "s1":  "6.35",
-                                                 "s2":  "4.15",
-                                                 "s3":  "3.55",
-                                                 "s4":  "4.40",
-                                                 "s5":  "7.00",
-                                                 "s6":  "11.50",
-                                                 "s7":  "15.00",
-                                                 "updatedAt":  "2026-06-22 09:27:17"
+                                                 "s0":  "21.00",
+                                                 "s1":  "6.80",
+                                                 "s2":  "4.40",
+                                                 "s3":  "3.45",
+                                                 "s4":  "4.30",
+                                                 "s5":  "7.10",
+                                                 "s6":  "10.50",
+                                                 "s7":  "13.50",
+                                                 "updatedAt":  "2026-06-24 17:42:57"
                                              },
                                      "hhad":  {
                                                   "home":  "2.19",
@@ -627,7 +634,7 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 13:07:09"
+                                                 "updatedAt":  "2026-06-24 16:24:29"
                                              },
                                      "hafu":  {
                                                   "aa":  "30.00",
@@ -645,7 +652,7 @@
                         "group":  "C组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 14:00:11",
+                                              "checkedAt":  "2026-06-24 19:12:49",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Morocco",
@@ -669,7 +676,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 14:00:12",
+                                         "updatedAt":  "2026-06-24 19:12:50",
                                          "sources":  [
 
                                                      ],
@@ -701,7 +708,7 @@
                                                              "home":  {
                                                                           "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "rank":  12,
+                                                                          "rank":  7,
                                                                           "points":  1755.1,
                                                                           "query":  "Morocco"
                                                                       },
@@ -768,7 +775,7 @@
                                                           "0:2"
                                                       ],
                                            "upset":  "1:1",
-                                           "confidence":  "high",
+                                           "confidence":  "medium",
                                            "candidates":  [
                                                               "2",
                                                               "3",
@@ -785,15 +792,15 @@
                                                  "updatedAt":  "2026-06-24 13:55:30"
                                              },
                                      "ttg":  {
-                                                 "s0":  "9.00",
-                                                 "s1":  "4.20",
-                                                 "s2":  "3.20",
-                                                 "s3":  "3.80",
+                                                 "s0":  "10.00",
+                                                 "s1":  "4.40",
+                                                 "s2":  "3.10",
+                                                 "s3":  "3.65",
                                                  "s4":  "6.00",
                                                  "s5":  "11.00",
                                                  "s6":  "22.00",
                                                  "s7":  "37.00",
-                                                 "updatedAt":  "2026-06-24 12:09:15"
+                                                 "updatedAt":  "2026-06-24 18:33:46"
                                              },
                                      "hhad":  {
                                                   "home":  "2.28",
@@ -811,7 +818,7 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 13:04:30"
+                                                 "updatedAt":  "2026-06-24 18:34:01"
                                              },
                                      "hafu":  {
                                                   "aa":  "2.35",
@@ -823,13 +830,13 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-24 12:07:52"
+                                                  "updatedAt":  "2026-06-24 16:02:51"
                                               }
                                  },
                         "group":  "A组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 14:00:11",
+                                              "checkedAt":  "2026-06-24 19:12:49",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "South Africa",
@@ -854,7 +861,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 14:00:12",
+                                         "updatedAt":  "2026-06-24 19:12:50",
                                          "sources":  [
 
                                                      ],
@@ -893,7 +900,7 @@
                                                              "away":  {
                                                                           "status":  "ok",
                                                                           "source":  "serpapi",
-                                                                          "rank":  49,
+                                                                          "rank":  2,
                                                                           "points":  null,
                                                                           "query":  "South Korea"
                                                                       }
@@ -964,10 +971,10 @@
                         "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "3.75",
-                                                 "draw":  "3.40",
-                                                 "away":  "1.76",
-                                                 "updatedAt":  "2026-06-24 13:11:46"
+                                                 "home":  "3.55",
+                                                 "draw":  "3.50",
+                                                 "away":  "1.78",
+                                                 "updatedAt":  "2026-06-24 18:50:03"
                                              },
                                      "ttg":  {
                                                  "s0":  "9.50",
@@ -981,11 +988,11 @@
                                                  "updatedAt":  "2026-06-22 09:27:17"
                                              },
                                      "hhad":  {
-                                                  "home":  "1.81",
-                                                  "draw":  "3.43",
-                                                  "away":  "3.50",
+                                                  "home":  "1.78",
+                                                  "draw":  "3.45",
+                                                  "away":  "3.60",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-24 13:11:56"
+                                                  "updatedAt":  "2026-06-24 18:50:14"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -1014,7 +1021,7 @@
                         "group":  "A组",
                         "scheduleCheck":  {
                                               "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 14:00:11",
+                                              "checkedAt":  "2026-06-24 19:12:49",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Czech Republic",
@@ -1039,7 +1046,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 14:00:12",
+                                         "updatedAt":  "2026-06-24 19:12:50",
                                          "sources":  [
 
                                                      ],
@@ -1108,7 +1115,7 @@
                     }
                 ],
     "externalEnrichment":  {
-                               "updatedAt":  "2026-06-24 14:00:12",
+                               "updatedAt":  "2026-06-24 19:12:50",
                                "date":  "20260625",
                                "sources":  [
                                                {
@@ -1142,7 +1149,7 @@
                                                    "role":  "fifa-ranking-news-fallback"
                                                }
                                            ],
-                               "standingsSource":  "worldcup26-ir"
+                               "standingsSource":  "football-data-standings"
                            },
     "standingsSnapshot":  [
                               {
@@ -1150,47 +1157,47 @@
                                   "rows":  [
                                                {
                                                    "team":  "墨西哥",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  2,
-                                                   "draws":  1,
+                                                   "draws":  0,
                                                    "losses":  0,
                                                    "gf":  3,
                                                    "ga":  0,
                                                    "gd":  3,
-                                                   "points":  7
+                                                   "points":  6
                                                },
                                                {
                                                    "team":  "韩国",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  1,
-                                                   "draws":  1,
+                                                   "draws":  0,
                                                    "losses":  1,
                                                    "gf":  2,
                                                    "ga":  2,
                                                    "gd":  0,
-                                                   "points":  4
+                                                   "points":  3
                                                },
                                                {
                                                    "team":  "捷克",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  0,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  2,
                                                    "ga":  3,
                                                    "gd":  -1,
-                                                   "points":  2
+                                                   "points":  1
                                                },
                                                {
                                                    "team":  "南非",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  0,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  1,
                                                    "ga":  3,
                                                    "gd":  -2,
-                                                   "points":  2
+                                                   "points":  1
                                                }
                                            ]
                               },
@@ -1199,47 +1206,47 @@
                                   "rows":  [
                                                {
                                                    "team":  "加拿大",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  1,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  0,
                                                    "gf":  7,
                                                    "ga":  1,
                                                    "gd":  6,
-                                                   "points":  5
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "瑞士",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  1,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  0,
                                                    "gf":  5,
                                                    "ga":  2,
                                                    "gd":  3,
-                                                   "points":  5
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "波黑",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  0,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  2,
                                                    "ga":  5,
                                                    "gd":  -3,
-                                                   "points":  2
+                                                   "points":  1
                                                },
                                                {
                                                    "team":  "卡塔尔",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  0,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  1,
                                                    "ga":  7,
                                                    "gd":  -6,
-                                                   "points":  2
+                                                   "points":  1
                                                }
                                            ]
                               },
@@ -1248,47 +1255,488 @@
                                   "rows":  [
                                                {
                                                    "team":  "巴西",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  1,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  0,
                                                    "gf":  4,
                                                    "ga":  1,
                                                    "gd":  3,
-                                                   "points":  5
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "摩洛哥",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  1,
-                                                   "draws":  2,
+                                                   "draws":  1,
                                                    "losses":  0,
                                                    "gf":  2,
                                                    "ga":  1,
                                                    "gd":  1,
-                                                   "points":  5
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "苏格兰",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  1,
-                                                   "draws":  1,
+                                                   "draws":  0,
                                                    "losses":  1,
                                                    "gf":  1,
                                                    "ga":  1,
                                                    "gd":  0,
-                                                   "points":  4
+                                                   "points":  3
                                                },
                                                {
                                                    "team":  "海地",
-                                                   "played":  3,
+                                                   "played":  2,
                                                    "wins":  0,
-                                                   "draws":  1,
+                                                   "draws":  0,
                                                    "losses":  2,
                                                    "gf":  0,
                                                    "ga":  4,
                                                    "gd":  -4,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "D组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "美国",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  1,
+                                                   "gd":  5,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "澳大利亚",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "巴拉圭",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  4,
+                                                   "gd":  -2,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "土耳其",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  0,
+                                                   "ga":  3,
+                                                   "gd":  -3,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "E组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "德国",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  9,
+                                                   "ga":  2,
+                                                   "gd":  7,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "科特迪瓦",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "厄瓜多尔",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  0,
+                                                   "ga":  1,
+                                                   "gd":  -1,
                                                    "points":  1
+                                               },
+                                               {
+                                                   "team":  "库拉索",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  7,
+                                                   "gd":  -6,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "F组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "荷兰",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  7,
+                                                   "ga":  3,
+                                                   "gd":  4,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "日本",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  2,
+                                                   "gd":  4,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "瑞典",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  6,
+                                                   "ga":  6,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "突尼斯",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  9,
+                                                   "gd":  -8,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "G组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "埃及",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  2,
+                                                   "gd":  2,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "伊朗",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "比利时",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  1,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "新西兰",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  3,
+                                                   "ga":  5,
+                                                   "gd":  -2,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "H组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "西班牙",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  0,
+                                                   "gd":  4,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "乌拉圭",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  3,
+                                                   "ga":  3,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "佛得角",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "沙特阿拉伯",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  5,
+                                                   "gd":  -4,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "I组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "法国",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  1,
+                                                   "gd":  5,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "挪威",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  7,
+                                                   "ga":  3,
+                                                   "gd":  4,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "塞内加尔",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  3,
+                                                   "ga":  6,
+                                                   "gd":  -3,
+                                                   "points":  0
+                                               },
+                                               {
+                                                   "team":  "伊拉克",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  7,
+                                                   "gd":  -6,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "J组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "阿根廷",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  5,
+                                                   "ga":  0,
+                                                   "gd":  5,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "奥地利",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  3,
+                                                   "ga":  3,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "阿尔及利亚",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  4,
+                                                   "gd":  -2,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "约旦",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  2,
+                                                   "ga":  5,
+                                                   "gd":  -3,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "K组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "哥伦比亚",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  1,
+                                                   "gd":  3,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "葡萄牙",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  1,
+                                                   "gd":  5,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "刚果(金)",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  2,
+                                                   "gd":  -1,
+                                                   "points":  1
+                                               },
+                                               {
+                                                   "team":  "乌兹别克斯坦",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  8,
+                                                   "gd":  -7,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "L组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "英格兰",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  2,
+                                                   "gd":  2,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "加纳",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  0,
+                                                   "gd":  1,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "克罗地亚",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  3,
+                                                   "ga":  4,
+                                                   "gd":  -1,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "巴拿马",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  0,
+                                                   "ga":  2,
+                                                   "gd":  -2,
+                                                   "points":  0
                                                }
                                            ]
                               }

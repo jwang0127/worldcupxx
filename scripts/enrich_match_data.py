@@ -262,6 +262,34 @@ def football_data_matches(token: str) -> list[dict[str, Any]]:
     return data.get("matches") or []
 
 
+def football_data_standings(token: str) -> list[dict[str, Any]]:
+    data = http_json("https://api.football-data.org/v4/competitions/WC/standings", headers={"X-Auth-Token": token})
+    snapshot: list[dict[str, Any]] = []
+    for block in data.get("standings") or []:
+        group = normalize_group_name(str(block.get("group") or ""))
+        if not group:
+            continue
+        rows: list[dict[str, Any]] = []
+        for row in block.get("table") or []:
+            team_info = row.get("team") or {}
+            team_alias = lookup_team(str(team_info.get("name") or ""), str(team_info.get("tla") or ""))
+            team_name = (team_alias or {}).get("zh") or str(team_info.get("name") or "")
+            rows.append({
+                "team": team_name,
+                "played": int(row.get("playedGames") or 0),
+                "wins": int(row.get("won") or 0),
+                "draws": int(row.get("draw") or 0),
+                "losses": int(row.get("lost") or 0),
+                "gf": int(row.get("goalsFor") or 0),
+                "ga": int(row.get("goalsAgainst") or 0),
+                "gd": int(row.get("goalDifference") or 0),
+                "points": int(row.get("points") or 0),
+            })
+        if rows:
+            snapshot.append({"group": group, "rows": rows})
+    return snapshot
+
+
 def serpapi_fifa_rank(english_name: str, api_key: str, cache: dict[str, Any]) -> dict[str, Any]:
     if not english_name:
         return {"status": "missing-team-name"}
@@ -490,37 +518,47 @@ def main() -> int:
                 "away": away_inj.get("items", []),
             }
 
-    external_matches: list[dict[str, Any]] = []
     snapshot_source = ""
-    try:
-        external_matches = worldcup26_matches()
-        snapshot_source = "worldcup26-ir"
-    except Exception:
-        token = os.environ.get("FOOTBALL_DATA_TOKEN", "").strip()
-        if token:
-            try:
-                rows = football_data_matches(token)
-                for row in rows:
-                    comp = row.get("competition") or {}
-                    if "world" not in json.dumps(comp, ensure_ascii=False).lower():
-                        continue
-                    stage = str(row.get("stage") or "")
-                    group = normalize_group_name(stage.replace("GROUP_", "").replace("_", " "))
-                    external_matches.append({
-                        "home_en": ((row.get("homeTeam") or {}).get("name") or ""),
-                        "away_en": ((row.get("awayTeam") or {}).get("name") or ""),
-                        "group": group,
-                        "home_goals": to_int(((row.get("score") or {}).get("fullTime") or {}).get("home")),
-                        "away_goals": to_int(((row.get("score") or {}).get("fullTime") or {}).get("away")),
-                        "status": (row.get("status") or ""),
-                        "date": (row.get("utcDate") or ""),
-                    })
-                snapshot_source = "football-data"
-            except Exception:
-                pass
+    token = os.environ.get("FOOTBALL_DATA_TOKEN", "").strip()
+    if token:
+        try:
+            payload["standingsSnapshot"] = football_data_standings(token)
+            snapshot_source = "football-data-standings"
+        except Exception:
+            pass
 
-    if external_matches:
-        payload["standingsSnapshot"] = build_snapshot(payload, external_matches)
+    if not snapshot_source:
+        external_matches: list[dict[str, Any]] = []
+        try:
+            external_matches = worldcup26_matches()
+            snapshot_source = "worldcup26-ir"
+        except Exception:
+            if token:
+                try:
+                    rows = football_data_matches(token)
+                    for row in rows:
+                        comp = row.get("competition") or {}
+                        if "world" not in json.dumps(comp, ensure_ascii=False).lower():
+                            continue
+                        stage = str(row.get("group") or row.get("stage") or "")
+                        group = normalize_group_name(stage.replace("GROUP_", "").replace("_", " "))
+                        external_matches.append({
+                            "home_en": ((row.get("homeTeam") or {}).get("name") or ""),
+                            "away_en": ((row.get("awayTeam") or {}).get("name") or ""),
+                            "group": group,
+                            "home_goals": to_int(((row.get("score") or {}).get("fullTime") or {}).get("home")),
+                            "away_goals": to_int(((row.get("score") or {}).get("fullTime") or {}).get("away")),
+                            "status": (row.get("status") or ""),
+                            "date": (row.get("utcDate") or ""),
+                        })
+                    snapshot_source = "football-data-matches"
+                except Exception:
+                    pass
+
+        if external_matches:
+            payload["standingsSnapshot"] = build_snapshot(payload, external_matches)
+
+    if snapshot_source:
         payload["externalEnrichment"]["standingsSource"] = snapshot_source
     else:
         payload.setdefault("standingsSnapshot", [])

@@ -4,26 +4,26 @@
         "match":  "瑞士 vs 加拿大",
         "lean":  "home",
         "stars":  "★★★☆☆",
-        "composite":  6.04,
+        "composite":  6.1,
         "dimensions":  {
                            "basic":  4.59,
                            "lineup":  5.01,
                            "elo":  5.72,
-                           "odds":  5.04,
+                           "odds":  5.07,
                            "trend":  4.8,
                            "h2h":  5,
-                           "motivation":  4.5,
-                           "pressure":  5.52,
+                           "motivation":  5.3,
+                           "pressure":  4.98,
                            "weather":  5.9,
                            "historyStyle":  8.8,
                            "injuryRisk":  5,
                            "rotationRisk":  2.8,
-                           "dataCompleteness":  8.85
+                           "dataCompleteness":  8.9
                        },
         "probabilities":  {
-                              "home":  0.40072159460578455,
-                              "draw":  0.32678772106228188,
-                              "away":  0.27249068433193352
+                              "home":  0.40056243479838527,
+                              "draw":  0.33279811312196667,
+                              "away":  0.26663945207964806
                           },
         "recent":  {
                        "home":  {
@@ -53,16 +53,16 @@
         "match":  "波黑 vs 卡塔尔",
         "lean":  "home",
         "stars":  "★★★★☆",
-        "composite":  7.91,
+        "composite":  8.23,
         "dimensions":  {
-                           "basic":  6.68,
-                           "lineup":  7.92,
+                           "basic":  6.76,
+                           "lineup":  8.02,
                            "elo":  9.6,
-                           "odds":  9.16,
+                           "odds":  9.3,
                            "trend":  7.1,
                            "h2h":  5,
-                           "motivation":  4.5,
-                           "pressure":  5.98,
+                           "motivation":  6.2,
+                           "pressure":  6.62,
                            "weather":  5.9,
                            "historyStyle":  8.8,
                            "injuryRisk":  5,
@@ -70,9 +70,9 @@
                            "dataCompleteness":  8.9
                        },
         "probabilities":  {
-                              "home":  0.69174011067841779,
-                              "draw":  0.17708546833367494,
-                              "away":  0.13117442098790735
+                              "home":  0.70238839225063177,
+                              "draw":  0.17118169714425457,
+                              "away":  0.12642991060511372
                           },
         "recent":  {
                        "home":  {
@@ -102,7 +102,7 @@
         "match":  "苏格兰 vs 巴西",
         "lean":  "away",
         "stars":  "★★★★☆",
-        "composite":  8.06,
+        "composite":  8.11,
         "dimensions":  {
                            "basic":  9.4,
                            "lineup":  8.14,
@@ -110,8 +110,8 @@
                            "odds":  9.7,
                            "trend":  7.1,
                            "h2h":  5,
-                           "motivation":  4.5,
-                           "pressure":  5.78,
+                           "motivation":  5.3,
+                           "pressure":  5.22,
                            "weather":  6.4,
                            "historyStyle":  5.27,
                            "injuryRisk":  5,
@@ -151,7 +151,7 @@
         "match":  "摩洛哥 vs 海地",
         "lean":  "home",
         "stars":  "★★★★☆",
-        "composite":  7.62,
+        "composite":  7.67,
         "dimensions":  {
                            "basic":  9.4,
                            "lineup":  7,
@@ -159,8 +159,8 @@
                            "odds":  7.89,
                            "trend":  7.1,
                            "h2h":  5,
-                           "motivation":  4.5,
-                           "pressure":  6.45,
+                           "motivation":  5.3,
+                           "pressure":  5.75,
                            "weather":  6.4,
                            "historyStyle":  5.27,
                            "injuryRisk":  5,
@@ -200,20 +200,20 @@
         "match":  "南非 vs 韩国",
         "lean":  "away",
         "stars":  "★★★☆☆",
-        "composite":  6.75,
+        "composite":  6.96,
         "dimensions":  {
                            "basic":  4.65,
-                           "lineup":  6.76,
+                           "lineup":  7.06,
                            "elo":  8.66,
                            "odds":  8.03,
                            "trend":  4.8,
                            "h2h":  5,
-                           "motivation":  4.5,
-                           "pressure":  6.18,
+                           "motivation":  5.3,
+                           "pressure":  5.62,
                            "weather":  6.4,
                            "historyStyle":  4.02,
                            "injuryRisk":  5,
-                           "rotationRisk":  2.2,
+                           "rotationRisk":  6.2,
                            "dataCompleteness":  8.9
                        },
         "probabilities":  {
@@ -249,16 +249,16 @@
         "match":  "捷克 vs 墨西哥",
         "lean":  "away",
         "stars":  "★★★☆☆",
-        "composite":  6.79,
+        "composite":  6.8,
         "dimensions":  {
-                           "basic":  8.03,
-                           "lineup":  6.03,
-                           "elo":  7.19,
-                           "odds":  6.4,
+                           "basic":  7.99,
+                           "lineup":  5.98,
+                           "elo":  7.11,
+                           "odds":  6.25,
                            "trend":  4.8,
                            "h2h":  5,
-                           "motivation":  4.5,
-                           "pressure":  6.45,
+                           "motivation":  5.3,
+                           "pressure":  5.75,
                            "weather":  6.4,
                            "historyStyle":  4.02,
                            "injuryRisk":  5,
@@ -266,9 +266,9 @@
                            "dataCompleteness":  8.9
                        },
         "probabilities":  {
-                              "home":  0.23620431041288387,
-                              "draw":  0.26051946001421017,
-                              "away":  0.50327622957290608
+                              "home":  0.24945943781532795,
+                              "draw":  0.25302314406983262,
+                              "away":  0.49751741811483946
                           },
         "recent":  {
                        "home":  {
