@@ -2,9 +2,9 @@
     {
         "id":  "049",
         "match":  "瑞士 vs 加拿大",
-        "lambdaHome":  1.48,
-        "lambdaAway":  0.7,
-        "totalLambda":  2.17,
+        "lambdaHome":  1.75,
+        "lambdaAway":  0.82,
+        "totalLambda":  2.57,
         "halfFull":  {
                          "primary":  "胜/胜",
                          "secondary":  "胜/胜",
@@ -17,38 +17,38 @@
                      {
                          "score":  "1:1",
                          "odds":  7.6,
-                         "probability":  0.117,
-                         "ev":  -0.11,
+                         "probability":  0.11,
+                         "ev":  -0.16,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.0764,
+                         "ev":  -0.54,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "1:0",
                          "odds":  6.8,
-                         "probability":  0.1683,
-                         "ev":  0.14,
-                         "mark":  "✅ 正EV推荐"
+                         "probability":  0.1336,
+                         "ev":  -0.09,
+                         "mark":  "🔮 冷门低EV"
                      },
                      {
                          "score":  "0:1",
                          "odds":  6.8,
-                         "probability":  0.0792,
-                         "ev":  -0.46,
-                         "mark":  "🔮 冷门低EV"
-                     },
-                     {
-                         "score":  "0:0",
-                         "odds":  6,
-                         "probability":  0.1139,
-                         "ev":  -0.32,
+                         "probability":  0.0629,
+                         "ev":  -0.57,
                          "mark":  "⚪ 负EV观望"
                      }
                  ],
         "best":  {
                      "score":  "1:0",
                      "odds":  6.8,
-                     "probability":  0.1683,
-                     "ev":  0.14,
-                     "mark":  "✅ 正EV推荐"
+                     "probability":  0.1336,
+                     "ev":  -0.09,
+                     "mark":  "🔮 冷门低EV"
                  }
     },
     {
@@ -296,25 +296,11 @@
                      },
         "rows":  [
                      {
-                         "score":  "0:1",
-                         "odds":  6.8,
-                         "probability":  0.1613,
-                         "ev":  0.1,
-                         "mark":  "✅ 正EV推荐"
-                     },
-                     {
-                         "score":  "0:2",
-                         "odds":  7.6,
-                         "probability":  0.1188,
-                         "ev":  -0.1,
-                         "mark":  "⚪ 负EV观望"
-                     },
-                     {
                          "score":  "1:1",
                          "odds":  7.6,
                          "probability":  0.1192,
                          "ev":  -0.09,
-                         "mark":  "🔮 冷门低EV"
+                         "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "0:0",
@@ -322,6 +308,20 @@
                          "probability":  0.1095,
                          "ev":  -0.34,
                          "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  6.8,
+                         "probability":  0.0809,
+                         "ev":  -0.45,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.1613,
+                         "ev":  0.1,
+                         "mark":  "✅ 正EV推荐"
                      }
                  ],
         "best":  {

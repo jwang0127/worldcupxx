@@ -199,13 +199,13 @@
         "id":  "053",
         "match":  "南非 vs 韩国",
         "lean":  "away",
-        "stars":  "★★★☆☆",
-        "composite":  6.96,
+        "stars":  "★★★★☆",
+        "composite":  7,
         "dimensions":  {
-                           "basic":  4.65,
-                           "lineup":  7.06,
-                           "elo":  8.66,
-                           "odds":  8.03,
+                           "basic":  4.71,
+                           "lineup":  7.15,
+                           "elo":  8.78,
+                           "odds":  8.14,
                            "trend":  4.8,
                            "h2h":  5,
                            "motivation":  5.3,
@@ -217,9 +217,9 @@
                            "dataCompleteness":  8.9
                        },
         "probabilities":  {
-                              "home":  0.15949920233058196,
-                              "draw":  0.23418533675521955,
-                              "away":  0.60631546091419841
+                              "home":  0.15665241480506997,
+                              "draw":  0.22870442988337086,
+                              "away":  0.61464315531155922
                           },
         "recent":  {
                        "home":  {

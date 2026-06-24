@@ -2,8 +2,8 @@
     "date":  "20260625",
     "dateText":  "2026-06-25",
     "source":  "sporttery-live-api",
-    "fetchedAt":  "2026-06-24T19:12:47",
-    "lastUpdateTime":  "2026-06-24 18:55:11",
+    "fetchedAt":  "2026-06-24T19:42:22",
+    "lastUpdateTime":  "2026-06-24 19:36:39",
     "apiPoolCode":  "ttg,had,hhad,crs,hafu",
     "matches":  [
                     {
@@ -32,12 +32,12 @@
                         "awayRank":  "[B组1]",
                         "venue":  "比赛将在加拿大-温哥华举行",
                         "prediction":  {
-                                           "totalGoals":  "2",
+                                           "totalGoals":  "1",
                                            "scores":  [
                                                           "1:1",
-                                                          "1:0"
+                                                          "0:0"
                                                       ],
-                                           "upset":  "0:1",
+                                           "upset":  "1:0",
                                            "confidence":  "high",
                                            "candidates":  [
                                                               "2",
@@ -46,7 +46,7 @@
                                                           ]
                                        },
                         "result":  null,
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 1, lean draw, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
                                                  "home":  "2.21",
@@ -56,14 +56,14 @@
                                              },
                                      "ttg":  {
                                                  "s0":  "8.00",
-                                                 "s1":  "4.80",
-                                                 "s2":  "3.05",
-                                                 "s3":  "3.90",
+                                                 "s1":  "4.85",
+                                                 "s2":  "3.00",
+                                                 "s3":  "3.80",
                                                  "s4":  "5.75",
-                                                 "s5":  "11.00",
+                                                 "s5":  "12.50",
                                                  "s6":  "22.00",
                                                  "s7":  "37.00",
-                                                 "updatedAt":  "2026-06-24 12:43:37"
+                                                 "updatedAt":  "2026-06-24 19:31:29"
                                              },
                                      "hhad":  {
                                                   "home":  "4.70",
@@ -81,7 +81,7 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-24 15:17:59"
+                                                 "updatedAt":  "2026-06-24 19:34:32"
                                              },
                                      "hafu":  {
                                                   "aa":  "5.75",
@@ -98,8 +98,9 @@
                                  },
                         "group":  "B组",
                         "scheduleCheck":  {
-                                              "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 19:12:49",
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-24 19:42:22",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Switzerland",
@@ -123,7 +124,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 19:12:50",
+                                         "updatedAt":  "2026-06-24 19:42:22",
                                          "sources":  [
 
                                                      ],
@@ -188,7 +189,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 1\u0026#12290;"
                     },
                     {
                         "id":  "050",
@@ -282,8 +283,9 @@
                                  },
                         "group":  "B组",
                         "scheduleCheck":  {
-                                              "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 19:12:49",
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-24 19:42:22",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Bosnia and Herzegovina",
@@ -308,7 +310,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 19:12:50",
+                                         "updatedAt":  "2026-06-24 19:42:22",
                                          "sources":  [
 
                                                      ],
@@ -425,14 +427,14 @@
                                              },
                                      "ttg":  {
                                                  "s0":  "14.00",
-                                                 "s1":  "5.30",
-                                                 "s2":  "3.70",
-                                                 "s3":  "3.40",
-                                                 "s4":  "5.00",
-                                                 "s5":  "8.50",
+                                                 "s1":  "5.40",
+                                                 "s2":  "3.80",
+                                                 "s3":  "3.30",
+                                                 "s4":  "4.85",
+                                                 "s5":  "8.80",
                                                  "s6":  "15.00",
                                                  "s7":  "22.00",
-                                                 "updatedAt":  "2026-06-22 09:27:17"
+                                                 "updatedAt":  "2026-06-24 19:33:22"
                                              },
                                      "hhad":  {
                                                   "home":  "3.70",
@@ -462,13 +464,14 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-24 11:18:14"
+                                                  "updatedAt":  "2026-06-24 19:25:29"
                                               }
                                  },
                         "group":  "C组",
                         "scheduleCheck":  {
-                                              "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 19:12:49",
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-24 19:42:22",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Scotland",
@@ -492,7 +495,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 19:12:50",
+                                         "updatedAt":  "2026-06-24 19:42:22",
                                          "sources":  [
 
                                                      ],
@@ -651,8 +654,9 @@
                                  },
                         "group":  "C组",
                         "scheduleCheck":  {
-                                              "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 19:12:49",
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-24 19:42:22",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Morocco",
@@ -676,7 +680,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 19:12:50",
+                                         "updatedAt":  "2026-06-24 19:42:22",
                                          "sources":  [
 
                                                      ],
@@ -786,10 +790,10 @@
                         "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "5.55",
-                                                 "draw":  "3.78",
-                                                 "away":  "1.46",
-                                                 "updatedAt":  "2026-06-24 13:55:30"
+                                                 "home":  "5.65",
+                                                 "draw":  "3.87",
+                                                 "away":  "1.44",
+                                                 "updatedAt":  "2026-06-24 19:36:39"
                                              },
                                      "ttg":  {
                                                  "s0":  "10.00",
@@ -835,8 +839,9 @@
                                  },
                         "group":  "A组",
                         "scheduleCheck":  {
-                                              "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 19:12:49",
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-24 19:42:22",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "South Africa",
@@ -861,7 +866,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 19:12:50",
+                                         "updatedAt":  "2026-06-24 19:42:22",
                                          "sources":  [
 
                                                      ],
@@ -956,10 +961,10 @@
                         "prediction":  {
                                            "totalGoals":  "2",
                                            "scores":  [
-                                                          "0:1",
-                                                          "0:2"
+                                                          "1:1",
+                                                          "0:0"
                                                       ],
-                                           "upset":  "1:1",
+                                           "upset":  "1:0",
                                            "confidence":  "medium",
                                            "candidates":  [
                                                               "2",
@@ -968,7 +973,7 @@
                                                           ]
                                        },
                         "result":  null,
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean draw, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
                                                  "home":  "3.55",
@@ -1015,13 +1020,14 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-24 11:32:11"
+                                                  "updatedAt":  "2026-06-24 19:29:12"
                                               }
                                  },
                         "group":  "A组",
                         "scheduleCheck":  {
-                                              "status":  "unmatched",
-                                              "checkedAt":  "2026-06-24 19:12:49",
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-24 19:42:22",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Czech Republic",
@@ -1046,7 +1052,7 @@
                                                       ]
                                       },
                         "external":  {
-                                         "updatedAt":  "2026-06-24 19:12:50",
+                                         "updatedAt":  "2026-06-24 19:42:22",
                                          "sources":  [
 
                                                      ],
@@ -1115,7 +1121,7 @@
                     }
                 ],
     "externalEnrichment":  {
-                               "updatedAt":  "2026-06-24 19:12:50",
+                               "updatedAt":  "2026-06-24 19:42:22",
                                "date":  "20260625",
                                "sources":  [
                                                {
