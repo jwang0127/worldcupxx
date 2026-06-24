@@ -123,6 +123,17 @@ function GetLean($Match) {
     return [pscustomobject]@{ code = "home"; team = $Match.home; text = "&#20027;&#32988;"; strong = $false }
   }
 
+  if (-not ($Match.odds.had -and $Match.odds.had.home -and $Match.odds.had.draw -and $Match.odds.had.away) -and $Match.odds.hhad) {
+    $hHome = ToDouble $Match.odds.hhad.home 0
+    $hAway = ToDouble $Match.odds.hhad.away 0
+    $seedGap = [math]::Abs((InferGroupSeed $Match ([string]$Match.home)) - (InferGroupSeed $Match ([string]$Match.away)))
+    $goal2 = ToDouble $Match.odds.ttg.s2 0
+    $goal3 = ToDouble $Match.odds.ttg.s3 0
+    if ($hHome -gt 0 -and $hAway -gt 0 -and [math]::Abs($hHome - $hAway) -le 0.08 -and $seedGap -le 1 -and $goal2 -gt 0 -and $goal3 -gt 0 -and $goal2 -le 4.4 -and $goal3 -le 3.8) {
+      return [pscustomobject]@{ code = "draw"; team = "draw"; text = "&#24179;&#23616;"; strong = $false }
+    }
+  }
+
   $pick = $items | Sort-Object { $_.value } | Select-Object -First 1
   $strong = $pick.code -ne "draw" -and $pick.value -le 1.65
   return [pscustomobject]@{ code = $pick.code; team = $pick.team; text = $pick.text; strong = $strong }
@@ -648,6 +659,9 @@ function Quick($Match, $Lean) {
 }
 
 function MysticBrief($Match, $Lean) {
+  if ($Lean.code -eq "draw") {
+    return "平局保护优先，球路看 " + (GoalLabel $Match.prediction.totalGoals) + "，冷门防 " + (HE $Match.prediction.upset)
+  }
   return (HE $Lean.team) + "&#24471;&#21183;&#65292;&#29699;&#36335;&#30475; " + (GoalLabel $Match.prediction.totalGoals) + "&#65292;&#20919;&#38376;&#38450; " + (HE $Match.prediction.upset)
 }
 
@@ -787,6 +801,9 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
   $favoriteProb = [math]::Max($HadProbs.home, $HadProbs.away)
   $balancedMatch = [math]::Abs($HadProbs.home - $HadProbs.away) -le 0.12
   $drawBalanceSignal = $HadProbs.draw -ge 0.28 -and $balancedMatch
+  $homeRank = if ($Match.external -and $Match.external.fifaRanking -and $Match.external.fifaRanking.home) { ToDouble $Match.external.fifaRanking.home.rank 0 } else { 0 }
+  $awayRank = if ($Match.external -and $Match.external.fifaRanking -and $Match.external.fifaRanking.away) { ToDouble $Match.external.fifaRanking.away.rank 0 } else { 0 }
+  $rankGap = if ($homeRank -gt 0 -and $awayRank -gt 0) { [math]::Abs($homeRank - $awayRank) } else { 0 }
 
   $share = 0.5
   $sided = $HadProbs.home + $HadProbs.away
@@ -854,6 +871,16 @@ function GetExpectedGoals($Match, $Lean, $HadProbs) {
   }
   if ($favoriteProb -ge 0.62 -and $HadProbs.draw -le 0.23 -and ($Lean.code -eq "home" -or $Lean.code -eq "away")) {
     $total += 0.10
+  }
+  if ($rankGap -ge 25 -and $Lean.code -ne "draw") {
+    if ($goal3Odd -gt 0 -and $goal4Odd -gt 0 -and $goal4Odd -le ($goal3Odd + 1.8)) {
+      $total += 0.22
+    }
+    $share = if ($Lean.code -eq "home") { [math]::Max($share, 0.68) } else { [math]::Min($share, 0.32) }
+  }
+  if ($Lean.code -eq "draw" -and $balancedMatch) {
+    $total -= 0.18
+    $share = 0.5 + (($share - 0.5) * 0.35)
   }
 
   if ($Match.PSObject.Properties.Name -contains "external" -and $Match.external -and $Match.external.injuries -and $Match.external.injuries.source -eq "api-sports") {
@@ -1767,7 +1794,7 @@ function BuildReviewModelNote($Settled, $GoalHits, $SideHits) {
     "胜平负方向相对稳定，今日仍以赔率最强侧为锚，但减少深穿预设。"
   }
 
-  return "$goalTone $sideTone 今日已把底层逻辑直接改掉：一，强队热盘若让球没有同步深压，不再默认大胜，比分和半全场都会保留一球胜与平局回撤；二，0:0、1:1赔率同时偏低的比赛，半全场优先补平/平、平/胜或平/负脚本；三，3球与4球赔率挤在一起的强势盘，Poisson 总进球自动上修 0.15-0.35，避免再次把尾部进球压扁。全部小组积分榜也已改成按历史赛果实时重算，不再依赖静态快照。"
+  return "$goalTone $sideTone 结合6月24日复盘，今日额外强调两类小组赛剧本：像英格兰 0比0 加纳这种同组卡位战，优先判断先不输而不是先冲穿盘；像葡萄牙 5比0 乌兹别克斯坦这种强弱分明首轮，净胜球价值会显著抬高，强队领先后仍可能继续前压。今日已把底层逻辑直接改掉：一，强队热盘若让球没有同步深压，不再默认大胜，比分和半全场都会保留一球胜与平局回撤；二，0:0、1:1赔率同时偏低的比赛，半全场优先补平/平、平/胜或平/负脚本；三，3球与4球赔率挤在一起的强势盘，Poisson 总进球自动上修 0.15-0.35，避免再次把尾部进球压扁。全部小组积分榜也已改成按历史赛果实时重算，不再依赖静态快照。"
 }
 
 function BuildPreviousReview() {

@@ -224,43 +224,6 @@ $reviewFile = Join-Path $dayDir "review.html"
 $html = [System.Net.WebUtility]::HtmlDecode($html)
 $html | Set-Content -Encoding UTF8 $reviewFile
 
-$cards = New-Object System.Collections.Generic.List[string]
-Get-ChildItem -Path $root -Directory |
-  Where-Object { $_.Name -match "^\d{8}$" -and (Test-Path (Join-Path $_.FullName "index.html")) } |
-  Sort-Object Name |
-  ForEach-Object {
-    $d = $_.Name
-    $cards.Add("<a class=""card"" href=""./$d/""><div><div class=""date"">$d</div><div class=""meta"">&#39044;&#27979;&#30475;&#26495;&#19982;&#36187;&#21518;&#22797;&#30424;</div></div><div class=""go"">&#36827;&#20837; &rarr;</div></a>")
-  }
-
-$rootIndexHtml = @"
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 &#19990;&#30028;&#26479;&#39044;&#27979;&#20013;&#24515;</title>
-<style>
-:root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:"Microsoft YaHei",Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(51,226,138,.18),transparent 26%),linear-gradient(135deg,#020807,#071b2a);color:var(--text)}
-main{max-width:980px;margin:0 auto;padding:44px 18px}h1{font-size:clamp(28px,5vw,48px);margin:0 0 10px}p{color:var(--muted);line-height:1.8}.list{display:grid;gap:14px;margin-top:26px}.card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));text-decoration:none;color:var(--text);transition:.22s}.card:hover{transform:translateY(-3px);border-color:var(--green)}.date{font-size:24px;font-weight:800;color:var(--blue)}.meta{color:var(--muted);margin-top:6px}.go{color:var(--green);font-weight:800;white-space:nowrap}footer{margin-top:40px;color:#8ea8a1;font-size:13px}@media(max-width:620px){.card{align-items:flex-start;flex-direction:column}.go{white-space:normal}}
-</style>
-</head>
-<body>
-<main>
-<h1>2026 &#19990;&#30028;&#26479;&#39044;&#27979;&#20013;&#24515;</h1>
-<p>&#36825;&#37324;&#27719;&#24635;&#27599;&#26085;&#39044;&#27979;&#30475;&#26495;&#12289;&#36187;&#26524;&#22797;&#30424;&#21644;&#27169;&#22411;&#26657;&#20934;&#35760;&#24405;&#65292;&#39029;&#38754;&#22522;&#20110;&#20844;&#24320;&#36180;&#29575;&#19982;&#20844;&#24320;&#36187;&#26524;&#25345;&#32493;&#26356;&#26032;&#12290;</p>
-<section class="list">
-$($cards -join "`n")
-</section>
-<footer>&#20165;&#20379;&#20844;&#24320;&#20449;&#24687;&#20998;&#26512;&#21442;&#32771;&#65292;&#19981;&#26500;&#25104;&#25237;&#27880;&#24314;&#35758;&#12290;</footer>
-</main>
-</body>
-</html>
-"@
-$rootIndexHtml = [System.Net.WebUtility]::HtmlDecode($rootIndexHtml)
-$rootIndexHtml | Set-Content -Encoding UTF8 (Join-Path $root "index.html")
-
 if (-not $NoPush) {
   & (Join-Path $root "push_to_github.ps1")
 }
