@@ -2054,18 +2054,18 @@ $standingsSection
 </html>
 "@
 
-$html = [System.Net.WebUtility]::HtmlDecode($html)
-Set-Content -LiteralPath $dayIndex -Encoding UTF8 -Value $html
-Set-Content -LiteralPath $predictFile -Encoding UTF8 -Value $html
+$html = [string][System.Net.WebUtility]::HtmlDecode([string]$html)
+Set-Content -LiteralPath $dayIndex -Encoding UTF8 -Value @($html)
+Set-Content -LiteralPath $predictFile -Encoding UTF8 -Value @($html)
 
 $script:homePageMatches = @($payload.matches)
 $rootHtml = BuildRootIndexHtml $root $standingsBundle $Date $payload.dateText $payload.lastUpdateTime
-$rootHtml = [System.Net.WebUtility]::HtmlDecode($rootHtml)
-Set-Content -LiteralPath $rootIndex -Encoding UTF8 -Value $rootHtml
+$rootHtml = [string][System.Net.WebUtility]::HtmlDecode([string]$rootHtml)
+Set-Content -LiteralPath $rootIndex -Encoding UTF8 -Value @($rootHtml)
 
 $standingsHtml = BuildStandingsPageHtml $standingsBundle $Date $payload.dateText $payload.lastUpdateTime
-$standingsHtml = [System.Net.WebUtility]::HtmlDecode($standingsHtml)
-Set-Content -LiteralPath $rootStandingsPage -Encoding UTF8 -Value $standingsHtml
+$standingsHtml = [string][System.Net.WebUtility]::HtmlDecode([string]$standingsHtml)
+Set-Content -LiteralPath $rootStandingsPage -Encoding UTF8 -Value @($standingsHtml)
 
 $scoreJsonFile = Join-Path $dayDir ("scores_" + $Date + ".json")
 $evJsonFile = Join-Path $dayDir ("ev_" + $Date + ".json")

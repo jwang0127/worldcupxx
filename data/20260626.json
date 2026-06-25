@@ -1,0 +1,1753 @@
+﻿{
+    "date":  "20260626",
+    "dateText":  "2026-06-26",
+    "source":  "sporttery-live-api",
+    "fetchedAt":  "2026-06-25T11:53:52",
+    "lastUpdateTime":  "2026-06-25 11:45:10",
+    "apiPoolCode":  "ttg,had,hhad,crs,hafu",
+    "matches":  [
+                    {
+                        "id":  "055",
+                        "matchNumStr":  "周四055",
+                        "matchId":  "2040291",
+                        "businessDate":  "2026-06-25",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-26 04:00:00",
+                        "matchDate":  "2026-06-26",
+                        "matchTime":  "04:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606251",
+                        "isHot":  false,
+                        "home":  "厄瓜多尔",
+                        "homeCode":  "ECU",
+                        "homeAbbr":  "厄瓜多尔",
+                        "homeRank":  "[E组3]",
+                        "away":  "德国",
+                        "awayCode":  "GER",
+                        "awayAbbr":  "德国",
+                        "awayRank":  "[E组1]",
+                        "venue":  "比赛将在美国-新泽西州东拉瑟福德举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "1:2",
+                                                          "0:3"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "3",
+                                                              "2",
+                                                              "4"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "5.05",
+                                                 "draw":  "4.72",
+                                                 "away":  "1.39",
+                                                 "updatedAt":  "2026-06-25 11:41:17"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "16.00",
+                                                 "s1":  "5.85",
+                                                 "s2":  "3.80",
+                                                 "s3":  "3.45",
+                                                 "s4":  "4.65",
+                                                 "s5":  "7.60",
+                                                 "s6":  "14.00",
+                                                 "s7":  "20.00",
+                                                 "updatedAt":  "2026-06-25 11:14:10"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.52",
+                                                  "draw":  "3.55",
+                                                  "away":  "2.22",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-25 11:41:22"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-25 11:41:36"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "2.15",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-25 11:41:28"
+                                              }
+                                 },
+                        "group":  "E组",
+                        "scheduleCheck":  {
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Ecuador",
+                        "homeAlias":  {
+                                          "code":  "ECU",
+                                          "zh":  "厄瓜多尔",
+                                          "en":  "Ecuador",
+                                          "aliases":  [
+                                                          "Ecuador",
+                                                          "厄瓜多尔"
+                                                      ]
+                                      },
+                        "awayEn":  "Germany",
+                        "awayAlias":  {
+                                          "code":  "GER",
+                                          "zh":  "德国",
+                                          "en":  "Germany",
+                                          "aliases":  [
+                                                          "Germany",
+                                                          "德国"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-25 11:53:56",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Ecuador",
+                                                                       "country":  "Ecuador",
+                                                                       "formedYear":  "1962",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Estadio Rodrigo Paz Delgado",
+                                                                       "description":  "The Ecuador national football team (Spanish: Selección de fútbol de Ecuador) has represented Ecuador in men\u0027s international football since 1938, and is controlled by the Ecuadorian Football Federation (Federación Ecuatoriana de Fútbol). The"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Germany",
+                                                                       "country":  "Germany",
+                                                                       "formedYear":  "1899",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Olympiastadion Berlin",
+                                                                       "description":  "The Germany national football team (German: Deutsche Fußballnationalmannschaft or Die Mannschaft) represents Germany in men\u0027s international football and played its first match in 1908. The team is governed by the German Football Association"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "unparsed",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  null,
+                                                                          "points":  null,
+                                                                          "query":  "Ecuador"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  10,
+                                                                          "points":  1735.77,
+                                                                          "query":  "Germany"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#23458;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    },
+                    {
+                        "id":  "056",
+                        "matchNumStr":  "周四056",
+                        "matchId":  "2040292",
+                        "businessDate":  "2026-06-25",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-26 04:00:00",
+                        "matchDate":  "2026-06-26",
+                        "matchTime":  "04:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606251",
+                        "isHot":  false,
+                        "home":  "库拉索",
+                        "homeCode":  "CUR",
+                        "homeAbbr":  "库拉索",
+                        "homeRank":  "[E组4]",
+                        "away":  "科特迪瓦",
+                        "awayCode":  "CIV",
+                        "awayAbbr":  "科特迪瓦",
+                        "awayRank":  "[E组2]",
+                        "venue":  "比赛将在美国-宾夕法尼亚州费城举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "0:2",
+                                                          "1:2"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "3",
+                                                              "2",
+                                                              "4"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  null,
+                                                 "draw":  null,
+                                                 "away":  null,
+                                                 "updatedAt":  " "
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "21.00",
+                                                 "s1":  "6.60",
+                                                 "s2":  "4.30",
+                                                 "s3":  "3.65",
+                                                 "s4":  "4.40",
+                                                 "s5":  "6.70",
+                                                 "s6":  "10.50",
+                                                 "s7":  "13.00",
+                                                 "updatedAt":  "2026-06-25 11:44:58"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.46",
+                                                  "draw":  "3.88",
+                                                  "away":  "2.15",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-25 11:43:55"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-25 11:45:10"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "1.37",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-23 09:39:29"
+                                              }
+                                 },
+                        "group":  "E组",
+                        "scheduleCheck":  {
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Curacao",
+                        "homeAlias":  {
+                                          "code":  "CUW",
+                                          "zh":  "库拉索",
+                                          "en":  "Curacao",
+                                          "aliases":  [
+                                                          "Curacao",
+                                                          "Curaçao",
+                                                          "库拉索"
+                                                      ]
+                                      },
+                        "awayEn":  "Ivory Coast",
+                        "awayAlias":  {
+                                          "code":  "CIV",
+                                          "zh":  "科特迪瓦",
+                                          "en":  "Ivory Coast",
+                                          "aliases":  [
+                                                          "Ivory Coast",
+                                                          "Cote d\u0027Ivoire",
+                                                          "科特迪瓦"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-25 11:53:56",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Curaçao",
+                                                                       "country":  "Curacao",
+                                                                       "formedYear":  "2011",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stadion Ergilio Hato",
+                                                                       "description":  "The Curaçao national football team (Dutch: Curaçaos voetbalelftal; Papiamentu, Selekshon di Futbòl Kòrsou) represents Curaçao in International association football and is controlled by the Curaçao Football Federation (Federashon Futbòl Kòrs"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Ivory Coast",
+                                                                       "country":  "Ivory Coast",
+                                                                       "formedYear":  "1960",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stade Olympique Alassane Ouattara",
+                                                                       "description":  "The Ivory Coast national football team (French: Équipe de Côte d\u0027Ivoire de football), nicknamed Les Éléphants (The Elephants), represents Ivory Coast in international football and is controlled by the Ivorian Football Federation (FIF). Unti"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "unparsed",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  null,
+                                                                          "points":  null,
+                                                                          "query":  "Curacao"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  44,
+                                                                          "points":  1568.62,
+                                                                          "query":  "Ivory Coast"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    },
+                    {
+                        "id":  "057",
+                        "matchNumStr":  "周四057",
+                        "matchId":  "2040293",
+                        "businessDate":  "2026-06-25",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-26 07:00:00",
+                        "matchDate":  "2026-06-26",
+                        "matchTime":  "07:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606251",
+                        "isHot":  false,
+                        "home":  "突尼斯",
+                        "homeCode":  "TUN",
+                        "homeAbbr":  "突尼斯",
+                        "homeRank":  "[F组4]",
+                        "away":  "荷兰",
+                        "awayCode":  "NET",
+                        "awayAbbr":  "荷兰",
+                        "awayRank":  "[F组1]",
+                        "venue":  "比赛将在美国-密苏里州堪萨斯城举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "0:2",
+                                                          "1:2"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "3",
+                                                              "4",
+                                                              "2"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  null,
+                                                 "draw":  null,
+                                                 "away":  null,
+                                                 "updatedAt":  " "
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "25.00",
+                                                 "s1":  "7.50",
+                                                 "s2":  "4.55",
+                                                 "s3":  "3.65",
+                                                 "s4":  "4.25",
+                                                 "s5":  "6.20",
+                                                 "s6":  "10.00",
+                                                 "s7":  "11.00",
+                                                 "updatedAt":  "2026-06-25 10:23:18"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "3.15",
+                                                  "draw":  "4.10",
+                                                  "away":  "1.76",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-25 11:28:27"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-25 11:28:55"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "1.22",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-25 11:28:37"
+                                              }
+                                 },
+                        "group":  "F组",
+                        "scheduleCheck":  {
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Tunisia",
+                        "homeAlias":  {
+                                          "code":  "TUN",
+                                          "zh":  "突尼斯",
+                                          "en":  "Tunisia",
+                                          "aliases":  [
+                                                          "Tunisia",
+                                                          "突尼斯"
+                                                      ]
+                                      },
+                        "awayEn":  "Netherlands",
+                        "awayAlias":  {
+                                          "code":  "NED",
+                                          "zh":  "荷兰",
+                                          "en":  "Netherlands",
+                                          "aliases":  [
+                                                          "Netherlands",
+                                                          "Holland",
+                                                          "荷兰"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-25 11:53:56",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Tunisia",
+                                                                       "country":  "Tunisia",
+                                                                       "formedYear":  "1957",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Stade Olympique de Radès",
+                                                                       "description":  "The Tunisia national football team (Arabic: منتخب تونس لكرة القدم‎), nicknamed Les Aigles de Carthage (The Eagles of Carthage or The Carthage Eagles), is the national team of Tunisia and is controlled by the Tunisian Football Federation. Th"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Netherlands",
+                                                                       "country":  "The Netherlands",
+                                                                       "formedYear":  "1905",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Johan Cruijff ArenA",
+                                                                       "description":  "The Netherlands national football team (Dutch: Het Nederlands Elftal) has represented the Netherlands in international football matches since 1905. The national team is controlled by the Royal Dutch Football Association (KNVB), which is a p"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  14,
+                                                                          "points":  1476.41,
+                                                                          "query":  "Tunisia"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  14,
+                                                                          "points":  null,
+                                                                          "query":  "Netherlands"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    },
+                    {
+                        "id":  "058",
+                        "matchNumStr":  "周四058",
+                        "matchId":  "2040294",
+                        "businessDate":  "2026-06-25",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-26 07:00:00",
+                        "matchDate":  "2026-06-26",
+                        "matchTime":  "07:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606251",
+                        "isHot":  false,
+                        "home":  "日本",
+                        "homeCode":  "JPN",
+                        "homeAbbr":  "日本",
+                        "homeRank":  "[F组2]",
+                        "away":  "瑞典",
+                        "awayCode":  "SWE",
+                        "awayAbbr":  "瑞典",
+                        "awayRank":  "[F组3]",
+                        "venue":  "比赛将在美国-得克萨斯州阿灵顿举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "2:1",
+                                                          "2:0"
+                                                      ],
+                                           "upset":  "1:2",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "3",
+                                                              "2",
+                                                              "4"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "1.74",
+                                                 "draw":  "3.40",
+                                                 "away":  "3.85",
+                                                 "updatedAt":  "2026-06-25 10:32:18"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "13.00",
+                                                 "s1":  "5.70",
+                                                 "s2":  "3.85",
+                                                 "s3":  "3.45",
+                                                 "s4":  "4.75",
+                                                 "s5":  "8.30",
+                                                 "s6":  "14.00",
+                                                 "s7":  "20.00",
+                                                 "updatedAt":  "2026-06-25 11:40:07"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "3.10",
+                                                  "draw":  "3.75",
+                                                  "away":  "1.85",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-25 10:32:59"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-25 11:34:48"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "6.60",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-25 11:13:37"
+                                              }
+                                 },
+                        "group":  "F组",
+                        "scheduleCheck":  {
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Japan",
+                        "homeAlias":  {
+                                          "code":  "JPN",
+                                          "zh":  "日本",
+                                          "en":  "Japan",
+                                          "aliases":  [
+                                                          "Japan",
+                                                          "日本"
+                                                      ]
+                                      },
+                        "awayEn":  "Sweden",
+                        "awayAlias":  {
+                                          "code":  "SWE",
+                                          "zh":  "瑞典",
+                                          "en":  "Sweden",
+                                          "aliases":  [
+                                                          "Sweden",
+                                                          "瑞典"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-25 11:53:56",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Japan",
+                                                                       "country":  "Japan",
+                                                                       "formedYear":  "1917",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Saitama Stadium 2002",
+                                                                       "description":  "The Japan national football team (Japanese: サッカー日本代表, Hepburn: Sakkā Nippon Daihyō), nicknamed the Samurai Blue (サムライ・ブルー), represents Japan in men\u0027s international football and it is controlled by the Japan Football Association (JFA), the g"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Sweden",
+                                                                       "country":  "Sweden",
+                                                                       "formedYear":  "1904",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Strawberry Arena",
+                                                                       "description":  "The Sweden national football team (Swedish: svenska fotbollslandslaget) represents Sweden in men\u0027s international football and it is controlled by the Swedish Football Association, the governing body of football in Sweden. Sweden\u0027s home grou"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  18,
+                                                                          "points":  1661.58,
+                                                                          "query":  "Japan"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  25,
+                                                                          "points":  null,
+                                                                          "query":  "Sweden"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    },
+                    {
+                        "id":  "059",
+                        "matchNumStr":  "周四059",
+                        "matchId":  "2040295",
+                        "businessDate":  "2026-06-25",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-26 10:00:00",
+                        "matchDate":  "2026-06-26",
+                        "matchTime":  "10:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606251",
+                        "isHot":  false,
+                        "home":  "巴拉圭",
+                        "homeCode":  "PGY",
+                        "homeAbbr":  "巴拉圭",
+                        "homeRank":  "[D组3]",
+                        "away":  "澳大利亚",
+                        "awayCode":  "AUA",
+                        "awayAbbr":  "澳大利亚",
+                        "awayRank":  "[D组2]",
+                        "venue":  "比赛将在美国-加利福尼亚州圣克拉拉举行",
+                        "prediction":  {
+                                           "totalGoals":  "2",
+                                           "scores":  [
+                                                          "1:1",
+                                                          "0:0"
+                                                      ],
+                                           "upset":  "1:0",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "2",
+                                                              "1",
+                                                              "0"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean draw, adjusted by hhad/crs/hafu and draw pressure.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "2.70",
+                                                 "draw":  "2.06",
+                                                 "away":  "3.65",
+                                                 "updatedAt":  "2026-06-25 11:32:40"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "4.50",
+                                                 "s1":  "4.25",
+                                                 "s2":  "2.60",
+                                                 "s3":  "5.15",
+                                                 "s4":  "7.90",
+                                                 "s5":  "24.00",
+                                                 "s6":  "30.00",
+                                                 "s7":  "60.00",
+                                                 "updatedAt":  "2026-06-23 09:39:28"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "6.20",
+                                                  "draw":  "4.40",
+                                                  "away":  "1.35",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-25 11:32:49"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-23 09:39:28"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "7.75",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-23 09:39:29"
+                                              }
+                                 },
+                        "group":  "D组",
+                        "scheduleCheck":  {
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Paraguay",
+                        "homeAlias":  {
+                                          "code":  "PAR",
+                                          "zh":  "巴拉圭",
+                                          "en":  "Paraguay",
+                                          "aliases":  [
+                                                          "Paraguay",
+                                                          "巴拉圭"
+                                                      ]
+                                      },
+                        "awayEn":  "Australia",
+                        "awayAlias":  {
+                                          "code":  "AUS",
+                                          "zh":  "澳大利亚",
+                                          "en":  "Australia",
+                                          "aliases":  [
+                                                          "Australia",
+                                                          "澳大利亚"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-25 11:53:56",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Paraguay",
+                                                                       "country":  "Paraguay",
+                                                                       "formedYear":  "1919",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Estadio Defensores del Chaco",
+                                                                       "description":  "The Paraguay national football team (Spanish: Seléccion de fútbol de Paraguay) represents Paraguay in men\u0027s international football competitions, and are controlled by the Paraguayan Football Association (Asociación Fútbol de Paraguay). Para"
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Australia",
+                                                                       "country":  "Australia",
+                                                                       "formedYear":  "1922",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Melbourne Cricket Ground",
+                                                                       "description":  "The Australia national soccer team represents Australia in international men\u0027s soccer. Officially nicknamed the Socceroos, the team is controlled by the governing body for soccer in Australia, Football Federation Australia (FFA), which is c"
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  8,
+                                                                          "points":  null,
+                                                                          "query":  "Paraguay"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  23,
+                                                                          "points":  null,
+                                                                          "query":  "Australia"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#24179;\u0026#23616;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
+                    },
+                    {
+                        "id":  "060",
+                        "matchNumStr":  "周四060",
+                        "matchId":  "2040296",
+                        "businessDate":  "2026-06-25",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-26 10:00:00",
+                        "matchDate":  "2026-06-26",
+                        "matchTime":  "10:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606251",
+                        "isHot":  false,
+                        "home":  "土耳其",
+                        "homeCode":  "TUR",
+                        "homeAbbr":  "土耳其",
+                        "homeRank":  "[D组4]",
+                        "away":  "美国",
+                        "awayCode":  "USA",
+                        "awayAbbr":  "美国",
+                        "awayRank":  "[D组1]",
+                        "venue":  "比赛将在美国-加利福尼亚州英格尔伍德举行",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "0:2",
+                                                          "1:2"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "3",
+                                                              "2",
+                                                              "4"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "3.52",
+                                                 "draw":  "3.70",
+                                                 "away":  "1.74",
+                                                 "updatedAt":  "2026-06-25 11:20:41"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "14.00",
+                                                 "s1":  "5.50",
+                                                 "s2":  "3.70",
+                                                 "s3":  "3.40",
+                                                 "s4":  "4.90",
+                                                 "s5":  "8.50",
+                                                 "s6":  "14.00",
+                                                 "s7":  "23.00",
+                                                 "updatedAt":  "2026-06-23 09:39:28"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "1.85",
+                                                  "draw":  "3.90",
+                                                  "away":  "3.02",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "2026-06-25 11:20:47"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "2026-06-25 10:35:57"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  "2.75",
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "2026-06-25 10:35:51"
+                                              }
+                                 },
+                        "group":  "D组",
+                        "scheduleCheck":  {
+                                              "status":  "group-inferred",
+                                              "basis":  "rank-tag",
+                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          },
+                        "homeEn":  "Turkey",
+                        "homeAlias":  {
+                                          "code":  "TUR",
+                                          "zh":  "土耳其",
+                                          "en":  "Turkey",
+                                          "aliases":  [
+                                                          "Turkey",
+                                                          "Türkiye",
+                                                          "土耳其"
+                                                      ]
+                                      },
+                        "awayEn":  "United States",
+                        "awayAlias":  {
+                                          "code":  "USA",
+                                          "zh":  "美国",
+                                          "en":  "United States",
+                                          "aliases":  [
+                                                          "United States",
+                                                          "USA",
+                                                          "United States of America",
+                                                          "美国"
+                                                      ]
+                                      },
+                        "external":  {
+                                         "updatedAt":  "2026-06-25 11:53:56",
+                                         "sources":  [
+
+                                                     ],
+                                         "teamMeta":  {
+                                                          "home":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "Turkey",
+                                                                       "country":  "Turkey",
+                                                                       "formedYear":  "1923",
+                                                                       "league":  "FIFA World Cup",
+                                                                       "stadium":  "Rams Park",
+                                                                       "description":  "The Turkey national football team (Turkish: Türkiye Millî Futbol Takımı) represents Turkey in men\u0027s international football and is controlled by the Turkish Football Federation, the governing body for football in Turkey. The team represents "
+                                                                   },
+                                                          "away":  {
+                                                                       "status":  "ok",
+                                                                       "source":  "thesportsdb",
+                                                                       "name":  "United States U17",
+                                                                       "country":  "United States",
+                                                                       "formedYear":  "0",
+                                                                       "league":  "FIFA U-17 World Cup",
+                                                                       "stadium":  "",
+                                                                       "description":  "The United States U-17 men\u0027s national soccer team is controlled by the United States Soccer Federation. The highest level of competition in which the team may compete is in the FIFA U-17 World Cup, which is held every two years."
+                                                                   }
+                                                      },
+                                         "fifaRanking":  {
+                                                             "status":  "ok",
+                                                             "source":  "serpapi",
+                                                             "home":  {
+                                                                          "status":  "unparsed",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  null,
+                                                                          "points":  null,
+                                                                          "query":  "Turkey"
+                                                                      },
+                                                             "away":  {
+                                                                          "status":  "ok",
+                                                                          "source":  "serpapi",
+                                                                          "rank":  17,
+                                                                          "points":  1671.23,
+                                                                          "query":  "United States"
+                                                                      }
+                                                         },
+                                         "oddsMovement":  {
+                                                              "status":  "pending-live-odds-source"
+                                                          },
+                                         "injuries":  {
+                                                          "status":  "ok",
+                                                          "source":  "api-sports",
+                                                          "home":  [
+
+                                                                   ],
+                                                          "away":  [
+
+                                                                   ]
+                                                      },
+                                         "h2h":  {
+                                                     "status":  "pending-team-id",
+                                                     "source":  "api-sports",
+                                                     "matches":  [
+
+                                                                 ]
+                                                 }
+                                     },
+                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#23458;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                    }
+                ],
+    "externalEnrichment":  {
+                               "updatedAt":  "2026-06-25 11:53:56",
+                               "date":  "20260626",
+                               "sources":  [
+                                               {
+                                                   "name":  "worldcup26-ir",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://worldcup26.ir/get/games",
+                                                   "role":  "world-cup-schedule-score-mirror"
+                                               },
+                                               {
+                                                   "name":  "football-data",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://api.football-data.org/v4/matches",
+                                                   "role":  "official-match-and-standings-backup"
+                                               },
+                                               {
+                                                   "name":  "api-sports-football",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://v3.football.api-sports.io/",
+                                                   "role":  "injuries-h2h-odds-trend-primary"
+                                               },
+                                               {
+                                                   "name":  "thesportsdb",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://www.thesportsdb.com/api/v1/json/123/",
+                                                   "role":  "team-metadata-fallback"
+                                               },
+                                               {
+                                                   "name":  "serpapi-google",
+                                                   "enabled":  true,
+                                                   "baseUrl":  "https://serpapi.com/search?engine=google",
+                                                   "role":  "fifa-ranking-news-fallback"
+                                               }
+                                           ],
+                               "standingsSource":  "football-data-standings"
+                           },
+    "standingsSnapshot":  [
+                              {
+                                  "group":  "A组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "墨西哥",
+                                                   "played":  3,
+                                                   "wins":  3,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  0,
+                                                   "gd":  6,
+                                                   "points":  9
+                                               },
+                                               {
+                                                   "team":  "南非",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  3,
+                                                   "gd":  -1,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "韩国",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  2,
+                                                   "ga":  3,
+                                                   "gd":  -1,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "捷克",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  2,
+                                                   "gf":  2,
+                                                   "ga":  6,
+                                                   "gd":  -4,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "B组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "瑞士",
+                                                   "played":  3,
+                                                   "wins":  2,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  7,
+                                                   "ga":  3,
+                                                   "gd":  4,
+                                                   "points":  7
+                                               },
+                                               {
+                                                   "team":  "加拿大",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  8,
+                                                   "ga":  3,
+                                                   "gd":  5,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "波黑",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  5,
+                                                   "ga":  6,
+                                                   "gd":  -1,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "卡塔尔",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  2,
+                                                   "gf":  2,
+                                                   "ga":  10,
+                                                   "gd":  -8,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "C组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "巴西",
+                                                   "played":  3,
+                                                   "wins":  2,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  7,
+                                                   "ga":  1,
+                                                   "gd":  6,
+                                                   "points":  7
+                                               },
+                                               {
+                                                   "team":  "摩洛哥",
+                                                   "played":  3,
+                                                   "wins":  2,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  3,
+                                                   "gd":  3,
+                                                   "points":  7
+                                               },
+                                               {
+                                                   "team":  "苏格兰",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  4,
+                                                   "gd":  -3,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "海地",
+                                                   "played":  3,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  3,
+                                                   "gf":  2,
+                                                   "ga":  8,
+                                                   "gd":  -6,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "D组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "美国",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  1,
+                                                   "gd":  5,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "澳大利亚",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "巴拉圭",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  4,
+                                                   "gd":  -2,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "土耳其",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  0,
+                                                   "ga":  3,
+                                                   "gd":  -3,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "E组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "德国",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  9,
+                                                   "ga":  2,
+                                                   "gd":  7,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "科特迪瓦",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "厄瓜多尔",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  0,
+                                                   "ga":  1,
+                                                   "gd":  -1,
+                                                   "points":  1
+                                               },
+                                               {
+                                                   "team":  "库拉索",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  7,
+                                                   "gd":  -6,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "F组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "荷兰",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  7,
+                                                   "ga":  3,
+                                                   "gd":  4,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "日本",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  2,
+                                                   "gd":  4,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "瑞典",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  6,
+                                                   "ga":  6,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "突尼斯",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  9,
+                                                   "gd":  -8,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "G组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "埃及",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  2,
+                                                   "gd":  2,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "伊朗",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "比利时",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  1,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "新西兰",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  3,
+                                                   "ga":  5,
+                                                   "gd":  -2,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "H组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "西班牙",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  0,
+                                                   "gd":  4,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "乌拉圭",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  3,
+                                                   "ga":  3,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "佛得角",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  2,
+                                                   "losses":  0,
+                                                   "gf":  2,
+                                                   "ga":  2,
+                                                   "gd":  0,
+                                                   "points":  2
+                                               },
+                                               {
+                                                   "team":  "沙特阿拉伯",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  5,
+                                                   "gd":  -4,
+                                                   "points":  1
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "I组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "法国",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  1,
+                                                   "gd":  5,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "挪威",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  7,
+                                                   "ga":  3,
+                                                   "gd":  4,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "塞内加尔",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  3,
+                                                   "ga":  6,
+                                                   "gd":  -3,
+                                                   "points":  0
+                                               },
+                                               {
+                                                   "team":  "伊拉克",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  7,
+                                                   "gd":  -6,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "J组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "阿根廷",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  5,
+                                                   "ga":  0,
+                                                   "gd":  5,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "奥地利",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  3,
+                                                   "ga":  3,
+                                                   "gd":  0,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "阿尔及利亚",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  2,
+                                                   "ga":  4,
+                                                   "gd":  -2,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "约旦",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  2,
+                                                   "ga":  5,
+                                                   "gd":  -3,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "K组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "哥伦比亚",
+                                                   "played":  2,
+                                                   "wins":  2,
+                                                   "draws":  0,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  1,
+                                                   "gd":  3,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "葡萄牙",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  6,
+                                                   "ga":  1,
+                                                   "gd":  5,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "刚果(金)",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  1,
+                                                   "losses":  1,
+                                                   "gf":  1,
+                                                   "ga":  2,
+                                                   "gd":  -1,
+                                                   "points":  1
+                                               },
+                                               {
+                                                   "team":  "乌兹别克斯坦",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  1,
+                                                   "ga":  8,
+                                                   "gd":  -7,
+                                                   "points":  0
+                                               }
+                                           ]
+                              },
+                              {
+                                  "group":  "L组",
+                                  "rows":  [
+                                               {
+                                                   "team":  "英格兰",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  4,
+                                                   "ga":  2,
+                                                   "gd":  2,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "加纳",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  1,
+                                                   "ga":  0,
+                                                   "gd":  1,
+                                                   "points":  4
+                                               },
+                                               {
+                                                   "team":  "克罗地亚",
+                                                   "played":  2,
+                                                   "wins":  1,
+                                                   "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  3,
+                                                   "ga":  4,
+                                                   "gd":  -1,
+                                                   "points":  3
+                                               },
+                                               {
+                                                   "team":  "巴拿马",
+                                                   "played":  2,
+                                                   "wins":  0,
+                                                   "draws":  0,
+                                                   "losses":  2,
+                                                   "gf":  0,
+                                                   "ga":  2,
+                                                   "gd":  -2,
+                                                   "points":  0
+                                               }
+                                           ]
+                              }
+                          ]
+}

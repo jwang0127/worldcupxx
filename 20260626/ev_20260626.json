@@ -1,0 +1,349 @@
+﻿[
+    {
+        "id":  "055",
+        "match":  "厄瓜多尔 vs 德国",
+        "lambdaHome":  1.07,
+        "lambdaAway":  2.76,
+        "totalLambda":  3.83,
+        "halfFull":  {
+                         "primary":  "负/负",
+                         "secondary":  "负/负",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "负",
+                         "fullTimeLean":  "负",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:2",
+                         "odds":  8.4,
+                         "probability":  0.0885,
+                         "ev":  -0.26,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:3",
+                         "odds":  8.4,
+                         "probability":  0.0758,
+                         "ev":  -0.36,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.0641,
+                         "ev":  -0.51,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.0217,
+                         "ev":  -0.87,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0598,
+                         "ev":  -0.59,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:2",
+                     "odds":  8.4,
+                     "probability":  0.0885,
+                     "ev":  -0.26,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "056",
+        "match":  "库拉索 vs 科特迪瓦",
+        "lambdaHome":  0.89,
+        "lambdaAway":  2.28,
+        "totalLambda":  3.17,
+        "halfFull":  {
+                         "primary":  "负/负",
+                         "secondary":  "负/负",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "负",
+                         "fullTimeLean":  "负",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "0:2",
+                         "odds":  7.6,
+                         "probability":  0.1093,
+                         "ev":  -0.17,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:2",
+                         "odds":  8.4,
+                         "probability":  0.0971,
+                         "ev":  -0.18,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.085,
+                         "ev":  -0.35,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.0419,
+                         "ev":  -0.75,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0957,
+                         "ev":  -0.35,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "0:2",
+                     "odds":  7.6,
+                     "probability":  0.1093,
+                     "ev":  -0.17,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "057",
+        "match":  "突尼斯 vs 荷兰",
+        "lambdaHome":  0.9,
+        "lambdaAway":  2.31,
+        "totalLambda":  3.21,
+        "halfFull":  {
+                         "primary":  "负/负",
+                         "secondary":  "负/负",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "负",
+                         "fullTimeLean":  "负",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "0:2",
+                         "odds":  7.6,
+                         "probability":  0.1077,
+                         "ev":  -0.18,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:2",
+                         "odds":  8.4,
+                         "probability":  0.0969,
+                         "ev":  -0.19,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.0838,
+                         "ev":  -0.36,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.0403,
+                         "ev":  -0.76,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0931,
+                         "ev":  -0.37,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "0:2",
+                     "odds":  7.6,
+                     "probability":  0.1077,
+                     "ev":  -0.18,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "058",
+        "match":  "日本 vs 瑞典",
+        "lambdaHome":  2.21,
+        "lambdaAway":  1,
+        "totalLambda":  3.21,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0985,
+                         "ev":  -0.17,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "2:0",
+                         "odds":  7.6,
+                         "probability":  0.0986,
+                         "ev":  -0.25,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:2",
+                         "odds":  8.4,
+                         "probability":  0.0445,
+                         "ev":  -0.63,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.0403,
+                         "ev":  -0.76,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0403,
+                         "ev":  -0.73,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "2:1",
+                     "odds":  8.4,
+                     "probability":  0.0985,
+                     "ev":  -0.17,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "059",
+        "match":  "巴拉圭 vs 澳大利亚",
+        "lambdaHome":  0.95,
+        "lambdaAway":  0.9,
+        "totalLambda":  1.85,
+        "halfFull":  {
+                         "primary":  "平/平",
+                         "secondary":  "平/平",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "平",
+                         "fullTimeLean":  "平",
+                         "note":  "上半场更像试探局，后程决胜概率更高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1345,
+                         "ev":  0.02,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.1569,
+                         "ev":  -0.06,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  6.8,
+                         "probability":  0.1487,
+                         "ev":  0.01,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.1419,
+                         "ev":  -0.04,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:1",
+                     "odds":  7.6,
+                     "probability":  0.1345,
+                     "ev":  0.02,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    },
+    {
+        "id":  "060",
+        "match":  "土耳其 vs 美国",
+        "lambdaHome":  1.06,
+        "lambdaAway":  2.15,
+        "totalLambda":  3.21,
+        "halfFull":  {
+                         "primary":  "负/负",
+                         "secondary":  "负/负",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "负",
+                         "fullTimeLean":  "负",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "0:2",
+                         "odds":  7.6,
+                         "probability":  0.093,
+                         "ev":  -0.29,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:2",
+                         "odds":  8.4,
+                         "probability":  0.0989,
+                         "ev":  -0.17,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.092,
+                         "ev":  -0.3,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.0403,
+                         "ev":  -0.76,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.0866,
+                         "ev":  -0.41,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:2",
+                     "odds":  8.4,
+                     "probability":  0.0989,
+                     "ev":  -0.17,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    }
+]

@@ -231,9 +231,9 @@
     {
         "id":  "053",
         "match":  "南非 vs 韩国",
-        "lambdaHome":  0.68,
-        "lambdaAway":  1.74,
-        "totalLambda":  2.42,
+        "lambdaHome":  0.63,
+        "lambdaAway":  1.61,
+        "totalLambda":  2.24,
         "halfFull":  {
                          "primary":  "负/负",
                          "secondary":  "负/负",
@@ -246,37 +246,37 @@
                      {
                          "score":  "0:1",
                          "odds":  6.8,
-                         "probability":  0.1548,
-                         "ev":  0.05,
+                         "probability":  0.1715,
+                         "ev":  0.17,
                          "mark":  "✅ 正EV推荐"
                      },
                      {
                          "score":  "0:2",
                          "odds":  7.6,
-                         "probability":  0.1349,
-                         "ev":  0.03,
+                         "probability":  0.1384,
+                         "ev":  0.05,
                          "mark":  "✅ 正EV推荐"
                      },
                      {
                          "score":  "1:1",
                          "odds":  7.6,
-                         "probability":  0.1049,
-                         "ev":  -0.2,
+                         "probability":  0.1077,
+                         "ev":  -0.18,
                          "mark":  "🔮 冷门低EV"
                      },
                      {
                          "score":  "0:0",
                          "odds":  6,
-                         "probability":  0.0887,
-                         "ev":  -0.47,
+                         "probability":  0.1062,
+                         "ev":  -0.36,
                          "mark":  "⚪ 负EV观望"
                      }
                  ],
         "best":  {
                      "score":  "0:1",
                      "odds":  6.8,
-                     "probability":  0.1548,
-                     "ev":  0.05,
+                     "probability":  0.1715,
+                     "ev":  0.17,
                      "mark":  "✅ 正EV推荐"
                  }
     },

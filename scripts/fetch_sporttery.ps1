@@ -118,6 +118,21 @@ function Get-StandingsContext {
   }
 }
 
+function Get-HhadValue {
+  param($Hhad, [string]$PrimaryName, [string]$FallbackName = "")
+
+  if (-not $Hhad) {
+    return $null
+  }
+  if ($PrimaryName -and $Hhad.PSObject.Properties.Name -contains $PrimaryName) {
+    return $Hhad.$PrimaryName
+  }
+  if ($FallbackName -and $Hhad.PSObject.Properties.Name -contains $FallbackName) {
+    return $Hhad.$FallbackName
+  }
+  return $null
+}
+
 function Get-TopGoalsPrediction {
   param($Ttg, $Had = $null, $Hhad = $null, $Context = $null)
 
@@ -158,13 +173,30 @@ function Get-TopGoalsPrediction {
       $awayProb = $rawAway / $sum
     }
   }
+  else {
+    $hhadHome = Get-HhadValue $Hhad "home" "h"
+    $hhadDraw = Get-HhadValue $Hhad "draw" "d"
+    $hhadAway = Get-HhadValue $Hhad "away" "a"
+    if ($hhadHome -and $hhadDraw -and $hhadAway) {
+      $rawHome = 1 / [double]$hhadHome
+      $rawDraw = 1 / [double]$hhadDraw
+      $rawAway = 1 / [double]$hhadAway
+      $sum = $rawHome + $rawDraw + $rawAway
+      if ($sum -gt 0) {
+        $homeProb = $rawHome / $sum
+        $drawProb = $rawDraw / $sum
+        $awayProb = $rawAway / $sum
+      }
+    }
+  }
 
   $favoriteProb = [math]::Max($homeProb, $awayProb)
   $favoriteStrong = $favoriteProb -ge 0.56
   $balancedMatch = [math]::Abs($homeProb - $awayProb) -le 0.12
   $drawPressure = $drawProb -ge 0.27
-  if ($Hhad -and $Hhad.fixedOddsGoal) {
-    $handicap = [string]$Hhad.fixedOddsGoal
+  $hhadHandicap = Get-HhadValue $Hhad "handicap" "fixedOddsGoal"
+  if ($hhadHandicap) {
+    $handicap = [string]$hhadHandicap
     if ($handicap -match "^-2" -or $handicap -match "^\+2") {
       $favoriteStrong = $true
     }
@@ -185,8 +217,8 @@ function Get-TopGoalsPrediction {
 
   if ($Context) {
     if ($Context.bothSafeOnDraw -and $drawPressure) {
-      if ($topLabel -eq "3") { $topLabel = "2" }
-      elseif ($topLabel -eq "2") { $topLabel = "1" }
+      if ($topLabel -eq "4") { $topLabel = "3" }
+      elseif ($topLabel -eq "3") { $topLabel = "2" }
       $confidence = if ($favoriteStrong) { "medium" } else { "low" }
     }
     elseif (($Context.homeDesperate -and $awayProb -gt $homeProb) -or ($Context.awayDesperate -and $homeProb -gt $awayProb)) {
@@ -218,20 +250,43 @@ function Get-TopGoalsPrediction {
 function Get-ResultLean {
   param($Had, $Hhad = $null, $Context = $null)
 
-  if (-not $Had -or -not $Had.h -or -not $Had.d -or -not $Had.a) {
+  $items = @()
+  if ($Had -and $Had.h -and $Had.d -and $Had.a) {
+    $items = @(
+      [pscustomobject]@{ code = "home"; value = [double]$Had.h },
+      [pscustomobject]@{ code = "draw"; value = [double]$Had.d },
+      [pscustomobject]@{ code = "away"; value = [double]$Had.a }
+    )
+  }
+  else {
+    $hhadHome = Get-HhadValue $Hhad "home" "h"
+    $hhadDraw = Get-HhadValue $Hhad "draw" "d"
+    $hhadAway = Get-HhadValue $Hhad "away" "a"
+    if ($hhadHome -and $hhadDraw -and $hhadAway) {
+      $items = @(
+        [pscustomobject]@{ code = "home"; value = [double]$hhadHome },
+        [pscustomobject]@{ code = "draw"; value = [double]$hhadDraw },
+        [pscustomobject]@{ code = "away"; value = [double]$hhadAway }
+      )
+    }
+  }
+  if (-not $items -or $items.Count -eq 0) {
     return "home"
   }
 
-  $items = @(
-    [pscustomobject]@{ code = "home"; value = [double]$Had.h },
-    [pscustomobject]@{ code = "draw"; value = [double]$Had.d },
-    [pscustomobject]@{ code = "away"; value = [double]$Had.a }
-  ) | Sort-Object value
+  $items = $items | Sort-Object value
 
   $pick = [string]$items[0].code
-  $rawHome = 1 / [double]$Had.h
-  $rawDraw = 1 / [double]$Had.d
-  $rawAway = 1 / [double]$Had.a
+  if ($Had -and $Had.h -and $Had.d -and $Had.a) {
+    $rawHome = 1 / [double]$Had.h
+    $rawDraw = 1 / [double]$Had.d
+    $rawAway = 1 / [double]$Had.a
+  }
+  else {
+    $rawHome = 1 / [double](Get-HhadValue $Hhad "home" "h")
+    $rawDraw = 1 / [double](Get-HhadValue $Hhad "draw" "d")
+    $rawAway = 1 / [double](Get-HhadValue $Hhad "away" "a")
+  }
   $sum = $rawHome + $rawDraw + $rawAway
   if ($sum -le 0) {
     return $pick
@@ -244,7 +299,7 @@ function Get-ResultLean {
     return "draw"
   }
 
-  if ($Context -and $Context.bothSafeOnDraw -and $drawProb -ge 0.24 -and [math]::Abs($homeProb - $awayProb) -le 0.18) {
+  if ($Context -and $Context.bothSafeOnDraw -and $drawProb -ge 0.27 -and [math]::Abs($homeProb - $awayProb) -le 0.10) {
     return "draw"
   }
 
@@ -257,10 +312,13 @@ function Get-ResultLean {
     }
   }
 
-  if ($Hhad -and $Hhad.h -and $Hhad.a -and $Hhad.fixedOddsGoal) {
-    $handicap = [string]$Hhad.fixedOddsGoal
-    $hHome = [double]$Hhad.h
-    $hAway = [double]$Hhad.a
+  $hhadHandicap = Get-HhadValue $Hhad "handicap" "fixedOddsGoal"
+  $hhadHome = Get-HhadValue $Hhad "home" "h"
+  $hhadAway = Get-HhadValue $Hhad "away" "a"
+  if ($hhadHome -and $hhadAway -and $hhadHandicap) {
+    $handicap = [string]$hhadHandicap
+    $hHome = [double]$hhadHome
+    $hAway = [double]$hhadAway
     if ($handicap -match "^-1" -and $pick -eq "home" -and $hAway -lt $hHome -and $drawProb -ge 0.24) {
       return "home"
     }
@@ -296,23 +354,52 @@ function Get-ScorePrediction {
       $awayProb = $rawAway / $sum
     }
   }
+  else {
+    $hhadHome = Get-HhadValue $Hhad "home" "h"
+    $hhadDraw = Get-HhadValue $Hhad "draw" "d"
+    $hhadAway = Get-HhadValue $Hhad "away" "a"
+    if ($hhadHome -and $hhadDraw -and $hhadAway) {
+      $rawHome = 1 / [double]$hhadHome
+      $rawDraw = 1 / [double]$hhadDraw
+      $rawAway = 1 / [double]$hhadAway
+      $sum = $rawHome + $rawDraw + $rawAway
+      if ($sum -gt 0) {
+        $homeProb = $rawHome / $sum
+        $drawProb = $rawDraw / $sum
+        $awayProb = $rawAway / $sum
+      }
+    }
+  }
 
   $favoriteProb = [math]::Max($homeProb, $awayProb)
   $favoriteStrong = $favoriteProb -ge 0.56
   $balancedMatch = [math]::Abs($homeProb - $awayProb) -le 0.12
   $drawPressure = $drawProb -ge 0.27
-  if ($Hhad -and $Hhad.fixedOddsGoal) {
-    $handicap = [string]$Hhad.fixedOddsGoal
+  $hhadHandicap = Get-HhadValue $Hhad "handicap" "fixedOddsGoal"
+  if ($hhadHandicap) {
+    $handicap = [string]$hhadHandicap
     if ($handicap -match "^-2" -or $handicap -match "^\+2") {
       $favoriteStrong = $true
     }
   }
 
   if ($Context -and $Context.bothSafeOnDraw) {
-    if ($goals -le 2) {
-      return [pscustomobject]@{ scores = @("1:1", "0:0"); upset = "1:0" }
+    if ($Lean -eq "draw") {
+      if ($goals -le 2) {
+        return [pscustomobject]@{ scores = @("1:1", "0:0"); upset = "1:0" }
+      }
+      return [pscustomobject]@{ scores = @("1:1", "2:2"); upset = "1:0" }
     }
-    return [pscustomobject]@{ scores = @("1:1", "2:2"); upset = "1:0" }
+    if ($Lean -eq "home") {
+      if ($goals -le 2) {
+        return [pscustomobject]@{ scores = @("1:0", "1:1"); upset = "0:1" }
+      }
+      return [pscustomobject]@{ scores = @("2:1", "1:1"); upset = "0:1" }
+    }
+    if ($goals -le 2) {
+      return [pscustomobject]@{ scores = @("0:1", "1:1"); upset = "1:0" }
+    }
+    return [pscustomobject]@{ scores = @("1:2", "1:1"); upset = "2:1" }
   }
 
   if ($Context -and $Context.finalRound) {
