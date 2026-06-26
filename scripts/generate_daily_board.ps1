@@ -1277,7 +1277,16 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
       $points = [int](ToDouble $row.points 0)
       $remaining = [math]::Max(0, 3 - $played)
       $status = "🔵 理论可能"
-      if ($played -eq 0 -and $points -eq 0) {
+      if ($remaining -eq 0 -and $idx -lt 2) {
+        $status = "🟢 已晋级"
+      }
+      elseif ($remaining -eq 0 -and $points -ge 4) {
+        $status = "🟡 第三名待比较"
+      }
+      elseif ($remaining -eq 0) {
+        $status = "⚪ 已淘汰"
+      }
+      elseif ($played -eq 0 -and $points -eq 0) {
         $status = "⚪ 首轮未开赛"
       }
       elseif ($idx -lt 2 -and $played -ge 2 -and $points -ge 4) {
@@ -1285,12 +1294,6 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
       }
       elseif ($remaining -le 1 -and $points -le 1) {
         $status = "🟠 生死战"
-      }
-      elseif ($remaining -eq 0 -and $idx -ge 2) {
-        $status = "⚪ 已淘汰"
-      }
-      elseif ($remaining -eq 0 -and $idx -lt 2) {
-        $status = "🟢 已锁定出线"
       }
 
       $pointsBonus = [double]($points * 20)

@@ -2,8 +2,8 @@
     "date":  "20260626",
     "dateText":  "2026-06-26",
     "source":  "sporttery-live-api",
-    "fetchedAt":  "2026-06-25T11:53:52",
-    "lastUpdateTime":  "2026-06-25 11:45:10",
+    "fetchedAt":  "2026-06-26T13:29:41",
+    "lastUpdateTime":  "2026-06-26 用户赛果回填",
     "apiPoolCode":  "ttg,had,hhad,crs,hafu",
     "matches":  [
                     {
@@ -45,7 +45,12 @@
                                                               "4"
                                                           ]
                                        },
-                        "result":  null,
+                        "result":  {
+                                       "homeGoals":  2,
+                                       "awayGoals":  1,
+                                       "status":  "Finished",
+                                       "source":  "user-image-2026-06-26"
+                                   },
                         "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
@@ -98,9 +103,8 @@
                                  },
                         "group":  "E组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-26 13:30:00",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Ecuador",
@@ -189,7 +193,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#23458;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                        "postReview":  "最终比分 2:1。实际总进球 3，预测总进球 3 命中；胜平负方向偏离。末轮出线压力与轮换/保守心态需比赔率强弱更高权重处理。"
                     },
                     {
                         "id":  "056",
@@ -230,7 +234,12 @@
                                                               "4"
                                                           ]
                                        },
-                        "result":  null,
+                        "result":  {
+                                       "homeGoals":  0,
+                                       "awayGoals":  2,
+                                       "status":  "Finished",
+                                       "source":  "user-image-2026-06-26"
+                                   },
                         "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
@@ -283,9 +292,8 @@
                                  },
                         "group":  "E组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-26 13:30:00",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Curacao",
@@ -376,7 +384,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                        "postReview":  "最终比分 0:2。实际总进球 2，预测总进球 3 未中；胜平负方向命中。末轮出线压力与轮换/保守心态需比赔率强弱更高权重处理。"
                     },
                     {
                         "id":  "057",
@@ -417,7 +425,12 @@
                                                               "2"
                                                           ]
                                        },
-                        "result":  null,
+                        "result":  {
+                                       "homeGoals":  1,
+                                       "awayGoals":  3,
+                                       "status":  "Finished",
+                                       "source":  "user-image-2026-06-26"
+                                   },
                         "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
@@ -470,9 +483,8 @@
                                  },
                         "group":  "F组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-26 13:30:00",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Tunisia",
@@ -562,7 +574,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                        "postReview":  "最终比分 1:3。实际总进球 4，预测总进球 3 未中；胜平负方向命中。末轮出线压力与轮换/保守心态需比赔率强弱更高权重处理。"
                     },
                     {
                         "id":  "058",
@@ -603,7 +615,12 @@
                                                               "4"
                                                           ]
                                        },
-                        "result":  null,
+                        "result":  {
+                                       "homeGoals":  1,
+                                       "awayGoals":  1,
+                                       "status":  "Finished",
+                                       "source":  "user-image-2026-06-26"
+                                   },
                         "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
@@ -656,9 +673,8 @@
                                  },
                         "group":  "F组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-26 13:30:00",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Japan",
@@ -747,7 +763,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#20027;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                        "postReview":  "最终比分 1:1。实际总进球 2，预测总进球 3 未中；胜平负方向偏离。末轮出线压力与轮换/保守心态需比赔率强弱更高权重处理。"
                     },
                     {
                         "id":  "059",
@@ -788,7 +804,12 @@
                                                               "0"
                                                           ]
                                        },
-                        "result":  null,
+                        "result":  {
+                                       "homeGoals":  0,
+                                       "awayGoals":  0,
+                                       "status":  "Finished",
+                                       "source":  "user-image-2026-06-26"
+                                   },
                         "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean draw, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
@@ -841,9 +862,8 @@
                                  },
                         "group":  "D组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-26 13:30:00",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Paraguay",
@@ -932,7 +952,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#24179;\u0026#23616;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 2\u0026#12290;"
+                        "postReview":  "最终比分 0:0。实际总进球 0，预测总进球 2 未中；胜平负方向命中。末轮出线压力与轮换/保守心态需比赔率强弱更高权重处理。"
                     },
                     {
                         "id":  "060",
@@ -973,7 +993,12 @@
                                                               "4"
                                                           ]
                                        },
-                        "result":  null,
+                        "result":  {
+                                       "homeGoals":  3,
+                                       "awayGoals":  2,
+                                       "status":  "Finished",
+                                       "source":  "user-image-2026-06-26"
+                                   },
                         "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
                         "odds":  {
                                      "had":  {
@@ -1026,9 +1051,8 @@
                                  },
                         "group":  "D组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-25 11:53:55",
+                                              "status":  "unmatched",
+                                              "checkedAt":  "2026-06-26 13:30:00",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           },
                         "homeEn":  "Turkey",
@@ -1120,7 +1144,7 @@
                                                                  ]
                                                  }
                                      },
-                        "postReview":  "\u0026#31561;\u0026#24453;\u0026#36187;\u0026#26524;\u0026#22238;\u0026#22635;\u0026#12290;\u0026#36187;\u0026#21069;\u0026#32988;\u0026#24179;\u0026#36127;\u0026#20542;\u0026#21521;\u0026#20026; \u0026#23458;\u0026#32988;\u0026#65292;\u0026#24635;\u0026#36827;\u0026#29699;\u0026#39044;\u0026#27979;\u0026#20026; 3\u0026#12290;"
+                        "postReview":  "最终比分 3:2。实际总进球 5，预测总进球 3 未中；胜平负方向偏离。末轮出线压力与轮换/保守心态需比赔率强弱更高权重处理。"
                     }
                 ],
     "externalEnrichment":  {
@@ -1313,47 +1337,47 @@
                                   "rows":  [
                                                {
                                                    "team":  "美国",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  2,
                                                    "draws":  0,
-                                                   "losses":  0,
-                                                   "gf":  6,
-                                                   "ga":  1,
-                                                   "gd":  5,
+                                                   "losses":  1,
+                                                   "gf":  8,
+                                                   "ga":  4,
+                                                   "gd":  4,
                                                    "points":  6
                                                },
                                                {
                                                    "team":  "澳大利亚",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  1,
-                                                   "draws":  0,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  2,
                                                    "ga":  2,
                                                    "gd":  0,
-                                                   "points":  3
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "巴拉圭",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  1,
-                                                   "draws":  0,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  2,
                                                    "ga":  4,
                                                    "gd":  -2,
-                                                   "points":  3
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "土耳其",
-                                                   "played":  2,
-                                                   "wins":  0,
+                                                   "played":  3,
+                                                   "wins":  1,
                                                    "draws":  0,
                                                    "losses":  2,
-                                                   "gf":  0,
-                                                   "ga":  3,
-                                                   "gd":  -3,
-                                                   "points":  0
+                                                   "gf":  3,
+                                                   "ga":  5,
+                                                   "gd":  -2,
+                                                   "points":  3
                                                }
                                            ]
                               },
@@ -1362,46 +1386,46 @@
                                   "rows":  [
                                                {
                                                    "team":  "德国",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  2,
                                                    "draws":  0,
-                                                   "losses":  0,
-                                                   "gf":  9,
-                                                   "ga":  2,
-                                                   "gd":  7,
+                                                   "losses":  1,
+                                                   "gf":  10,
+                                                   "ga":  4,
+                                                   "gd":  6,
                                                    "points":  6
                                                },
                                                {
                                                    "team":  "科特迪瓦",
-                                                   "played":  2,
-                                                   "wins":  1,
+                                                   "played":  3,
+                                                   "wins":  2,
                                                    "draws":  0,
+                                                   "losses":  1,
+                                                   "gf":  4,
+                                                   "ga":  2,
+                                                   "gd":  2,
+                                                   "points":  6
+                                               },
+                                               {
+                                                   "team":  "厄瓜多尔",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  1,
                                                    "losses":  1,
                                                    "gf":  2,
                                                    "ga":  2,
                                                    "gd":  0,
-                                                   "points":  3
-                                               },
-                                               {
-                                                   "team":  "厄瓜多尔",
-                                                   "played":  2,
-                                                   "wins":  0,
-                                                   "draws":  1,
-                                                   "losses":  1,
-                                                   "gf":  0,
-                                                   "ga":  1,
-                                                   "gd":  -1,
-                                                   "points":  1
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "库拉索",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  0,
                                                    "draws":  1,
-                                                   "losses":  1,
+                                                   "losses":  2,
                                                    "gf":  1,
-                                                   "ga":  7,
-                                                   "gd":  -6,
+                                                   "ga":  9,
+                                                   "gd":  -8,
                                                    "points":  1
                                                }
                                            ]
@@ -1411,46 +1435,46 @@
                                   "rows":  [
                                                {
                                                    "team":  "荷兰",
-                                                   "played":  2,
-                                                   "wins":  1,
+                                                   "played":  3,
+                                                   "wins":  2,
                                                    "draws":  1,
+                                                   "losses":  0,
+                                                   "gf":  10,
+                                                   "ga":  4,
+                                                   "gd":  6,
+                                                   "points":  7
+                                               },
+                                               {
+                                                   "team":  "日本",
+                                                   "played":  3,
+                                                   "wins":  1,
+                                                   "draws":  2,
                                                    "losses":  0,
                                                    "gf":  7,
                                                    "ga":  3,
                                                    "gd":  4,
-                                                   "points":  4
-                                               },
-                                               {
-                                                   "team":  "日本",
-                                                   "played":  2,
-                                                   "wins":  1,
-                                                   "draws":  1,
-                                                   "losses":  0,
-                                                   "gf":  6,
-                                                   "ga":  2,
-                                                   "gd":  4,
-                                                   "points":  4
+                                                   "points":  5
                                                },
                                                {
                                                    "team":  "瑞典",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  1,
-                                                   "draws":  0,
+                                                   "draws":  1,
                                                    "losses":  1,
-                                                   "gf":  6,
-                                                   "ga":  6,
+                                                   "gf":  7,
+                                                   "ga":  7,
                                                    "gd":  0,
-                                                   "points":  3
+                                                   "points":  4
                                                },
                                                {
                                                    "team":  "突尼斯",
-                                                   "played":  2,
+                                                   "played":  3,
                                                    "wins":  0,
                                                    "draws":  0,
-                                                   "losses":  2,
-                                                   "gf":  1,
-                                                   "ga":  9,
-                                                   "gd":  -8,
+                                                   "losses":  3,
+                                                   "gf":  2,
+                                                   "ga":  12,
+                                                   "gd":  -10,
                                                    "points":  0
                                                }
                                            ]

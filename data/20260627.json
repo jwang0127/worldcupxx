@@ -1,0 +1,1194 @@
+{
+  "date": "20260627",
+  "dateText": "2026-06-27",
+  "source": "sporttery-live-api",
+  "fetchedAt": "2026-06-26T13:34:42",
+  "lastUpdateTime": "2026-06-26 13:28:54",
+  "apiPoolCode": "ttg,had,hhad,crs,hafu",
+  "matches": [
+    {
+      "id": "061",
+      "matchNumStr": "周五061",
+      "matchId": "2040297",
+      "businessDate": "2026-06-26",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-06-27 03:00:00",
+      "matchDate": "2026-06-27",
+      "matchTime": "03:00:00",
+      "matchStatus": "Selling",
+      "sellStatus": 1,
+      "taxDateNo": "2606261",
+      "isHot": false,
+      "home": "挪威",
+      "homeCode": "NOW",
+      "homeAbbr": "挪威",
+      "homeRank": "[I组2]",
+      "away": "法国",
+      "awayCode": "FRA",
+      "awayAbbr": "法国",
+      "awayRank": "[I组1]",
+      "venue": "比赛将在美国-马萨诸塞州福克斯伯勒举行",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "1:2",
+          "1:1"
+        ],
+        "upset": "2:1",
+        "confidence": "high",
+        "candidates": [
+          "3",
+          "2",
+          "4"
+        ]
+      },
+      "result": null,
+      "review": "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": "4.40",
+          "draw": "4.25",
+          "away": "1.50",
+          "updatedAt": "2026-06-26 13:24:57"
+        },
+        "ttg": {
+          "s0": "21.00",
+          "s1": "6.60",
+          "s2": "4.15",
+          "s3": "3.75",
+          "s4": "4.60",
+          "s5": "6.40",
+          "s6": "10.00",
+          "s7": "13.50",
+          "updatedAt": "2026-06-26 13:28:23"
+        },
+        "hhad": {
+          "home": "2.25",
+          "draw": "3.40",
+          "away": "2.56",
+          "handicap": null,
+          "updatedAt": "2026-06-26 13:25:04"
+        },
+        "crs": {
+          "0000": null,
+          "0100": null,
+          "0200": null,
+          "0201": null,
+          "0300": null,
+          "0301": null,
+          "0101": null,
+          "0001": null,
+          "updatedAt": "2026-06-26 13:28:32"
+        },
+        "hafu": {
+          "aa": "2.15",
+          "ad": null,
+          "ah": null,
+          "da": null,
+          "dd": null,
+          "dh": null,
+          "ha": null,
+          "hd": null,
+          "hh": null,
+          "updatedAt": "2026-06-26 12:48:42"
+        }
+      },
+      "group": "I组",
+      "scheduleCheck": {
+        "status": "group-inferred",
+        "basis": "rank-tag",
+        "checkedAt": "2026-06-26 13:34:54",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      }
+    },
+    {
+      "id": "062",
+      "matchNumStr": "周五062",
+      "matchId": "2040298",
+      "businessDate": "2026-06-26",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-06-27 03:00:00",
+      "matchDate": "2026-06-27",
+      "matchTime": "03:00:00",
+      "matchStatus": "Selling",
+      "sellStatus": 1,
+      "taxDateNo": "2606261",
+      "isHot": false,
+      "home": "塞内加尔",
+      "homeCode": "SEN",
+      "homeAbbr": "塞内加尔",
+      "homeRank": "[I组3]",
+      "away": "伊拉克",
+      "awayCode": "IRQ",
+      "awayAbbr": "伊拉克",
+      "awayRank": "[I组4]",
+      "venue": "比赛将在加拿大-多伦多举行",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "0:2",
+          "1:2"
+        ],
+        "upset": "1:1",
+        "confidence": "high",
+        "candidates": [
+          "3",
+          "2",
+          "4"
+        ]
+      },
+      "result": null,
+      "review": "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": null,
+          "draw": null,
+          "away": null,
+          "updatedAt": " "
+        },
+        "ttg": {
+          "s0": "24.00",
+          "s1": "6.70",
+          "s2": "4.10",
+          "s3": "3.40",
+          "s4": "4.50",
+          "s5": "6.70",
+          "s6": "12.00",
+          "s7": "14.50",
+          "updatedAt": "2026-06-24 10:05:48"
+        },
+        "hhad": {
+          "home": "2.47",
+          "draw": "3.80",
+          "away": "2.17",
+          "handicap": null,
+          "updatedAt": "2026-06-26 13:01:17"
+        },
+        "crs": {
+          "0000": null,
+          "0100": null,
+          "0200": null,
+          "0201": null,
+          "0300": null,
+          "0301": null,
+          "0101": null,
+          "0001": null,
+          "updatedAt": "2026-06-26 10:22:42"
+        },
+        "hafu": {
+          "aa": "21.00",
+          "ad": null,
+          "ah": null,
+          "da": null,
+          "dd": null,
+          "dh": null,
+          "ha": null,
+          "hd": null,
+          "hh": null,
+          "updatedAt": "2026-06-26 10:22:14"
+        }
+      },
+      "group": "I组",
+      "scheduleCheck": {
+        "status": "group-inferred",
+        "basis": "rank-tag",
+        "checkedAt": "2026-06-26 13:34:54",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      }
+    },
+    {
+      "id": "063",
+      "matchNumStr": "周五063",
+      "matchId": "2040299",
+      "businessDate": "2026-06-26",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-06-27 08:00:00",
+      "matchDate": "2026-06-27",
+      "matchTime": "08:00:00",
+      "matchStatus": "Selling",
+      "sellStatus": 1,
+      "taxDateNo": "2606261",
+      "isHot": false,
+      "home": "佛得角",
+      "homeCode": "CVI",
+      "homeAbbr": "佛得角",
+      "homeRank": "[H组3]",
+      "away": "沙特阿拉伯",
+      "awayCode": "SAR",
+      "awayAbbr": "沙特",
+      "awayRank": "[H组4]",
+      "venue": "比赛将在美国-得克萨斯州休斯敦举行",
+      "prediction": {
+        "totalGoals": "2",
+        "scores": [
+          "1:1",
+          "0:0"
+        ],
+        "upset": "1:0",
+        "confidence": "medium",
+        "candidates": [
+          "2",
+          "3",
+          "1"
+        ]
+      },
+      "result": null,
+      "review": "Auto-generated from Sporttery live odds: total-goals 2, lean draw, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": "2.40",
+          "draw": "3.05",
+          "away": "2.60",
+          "updatedAt": "2026-06-25 13:42:17"
+        },
+        "ttg": {
+          "s0": "10.00",
+          "s1": "4.25",
+          "s2": "3.15",
+          "s3": "3.60",
+          "s4": "6.00",
+          "s5": "12.00",
+          "s6": "22.00",
+          "s7": "35.00",
+          "updatedAt": "2026-06-24 10:05:48"
+        },
+        "hhad": {
+          "home": "5.55",
+          "draw": "4.00",
+          "away": "1.43",
+          "handicap": null,
+          "updatedAt": "2026-06-25 13:42:20"
+        },
+        "crs": {
+          "0000": null,
+          "0100": null,
+          "0200": null,
+          "0201": null,
+          "0300": null,
+          "0301": null,
+          "0101": null,
+          "0001": null,
+          "updatedAt": "2026-06-26 12:09:27"
+        },
+        "hafu": {
+          "aa": "4.10",
+          "ad": null,
+          "ah": null,
+          "da": null,
+          "dd": null,
+          "dh": null,
+          "ha": null,
+          "hd": null,
+          "hh": null,
+          "updatedAt": "2026-06-24 10:05:49"
+        }
+      },
+      "group": "H组",
+      "scheduleCheck": {
+        "status": "group-inferred",
+        "basis": "rank-tag",
+        "checkedAt": "2026-06-26 13:34:54",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      }
+    },
+    {
+      "id": "064",
+      "matchNumStr": "周五064",
+      "matchId": "2040300",
+      "businessDate": "2026-06-26",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-06-27 08:00:00",
+      "matchDate": "2026-06-27",
+      "matchTime": "08:00:00",
+      "matchStatus": "Selling",
+      "sellStatus": 1,
+      "taxDateNo": "2606261",
+      "isHot": false,
+      "home": "乌拉圭",
+      "homeCode": "URU",
+      "homeAbbr": "乌拉圭",
+      "homeRank": "[H组2]",
+      "away": "西班牙",
+      "awayCode": "SPA",
+      "awayAbbr": "西班牙",
+      "awayRank": "[H组1]",
+      "venue": "比赛将在墨西哥-萨波潘举行",
+      "prediction": {
+        "totalGoals": "2",
+        "scores": [
+          "0:1",
+          "0:2"
+        ],
+        "upset": "1:1",
+        "confidence": "medium",
+        "candidates": [
+          "2",
+          "3",
+          "1"
+        ]
+      },
+      "result": null,
+      "review": "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": "6.90",
+          "draw": "3.85",
+          "away": "1.38",
+          "updatedAt": "2026-06-26 13:18:37"
+        },
+        "ttg": {
+          "s0": "10.00",
+          "s1": "4.45",
+          "s2": "3.40",
+          "s3": "3.75",
+          "s4": "5.80",
+          "s5": "10.00",
+          "s6": "17.00",
+          "s7": "27.00",
+          "updatedAt": "2026-06-26 12:39:26"
+        },
+        "hhad": {
+          "home": "2.57",
+          "draw": "3.42",
+          "away": "2.23",
+          "handicap": null,
+          "updatedAt": "2026-06-26 12:28:28"
+        },
+        "crs": {
+          "0000": null,
+          "0100": null,
+          "0200": null,
+          "0201": null,
+          "0300": null,
+          "0301": null,
+          "0101": null,
+          "0001": null,
+          "updatedAt": "2026-06-26 13:18:48"
+        },
+        "hafu": {
+          "aa": "1.92",
+          "ad": null,
+          "ah": null,
+          "da": null,
+          "dd": null,
+          "dh": null,
+          "ha": null,
+          "hd": null,
+          "hh": null,
+          "updatedAt": "2026-06-26 12:44:46"
+        }
+      },
+      "group": "H组",
+      "scheduleCheck": {
+        "status": "group-inferred",
+        "basis": "rank-tag",
+        "checkedAt": "2026-06-26 13:34:54",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      }
+    },
+    {
+      "id": "065",
+      "matchNumStr": "周五065",
+      "matchId": "2040301",
+      "businessDate": "2026-06-26",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-06-27 11:00:00",
+      "matchDate": "2026-06-27",
+      "matchTime": "11:00:00",
+      "matchStatus": "Selling",
+      "sellStatus": 1,
+      "taxDateNo": "2606261",
+      "isHot": false,
+      "home": "埃及",
+      "homeCode": "EGY",
+      "homeAbbr": "埃及",
+      "homeRank": "[G组1]",
+      "away": "伊朗",
+      "awayCode": "IRA",
+      "awayAbbr": "伊朗",
+      "awayRank": "[G组2]",
+      "venue": "比赛将在美国-华盛顿州西雅图举行",
+      "prediction": {
+        "totalGoals": "2",
+        "scores": [
+          "1:1",
+          "1:0"
+        ],
+        "upset": "0:1",
+        "confidence": "high",
+        "candidates": [
+          "2",
+          "1",
+          "3"
+        ]
+      },
+      "result": null,
+      "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": "2.20",
+          "draw": "2.50",
+          "away": "3.64",
+          "updatedAt": "2026-06-26 13:28:46"
+        },
+        "ttg": {
+          "s0": "6.00",
+          "s1": "3.60",
+          "s2": "2.80",
+          "s3": "4.65",
+          "s4": "7.50",
+          "s5": "18.00",
+          "s6": "34.00",
+          "s7": "50.00",
+          "updatedAt": "2026-06-24 10:05:48"
+        },
+        "hhad": {
+          "home": "5.10",
+          "draw": "3.75",
+          "away": "1.50",
+          "handicap": null,
+          "updatedAt": "2026-06-26 13:28:50"
+        },
+        "crs": {
+          "0000": null,
+          "0100": null,
+          "0200": null,
+          "0201": null,
+          "0300": null,
+          "0301": null,
+          "0101": null,
+          "0001": null,
+          "updatedAt": "2026-06-26 13:26:58"
+        },
+        "hafu": {
+          "aa": "6.00",
+          "ad": null,
+          "ah": null,
+          "da": null,
+          "dd": null,
+          "dh": null,
+          "ha": null,
+          "hd": null,
+          "hh": null,
+          "updatedAt": "2026-06-26 13:28:54"
+        }
+      },
+      "group": "G组",
+      "scheduleCheck": {
+        "status": "group-inferred",
+        "basis": "rank-tag",
+        "checkedAt": "2026-06-26 13:34:54",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      }
+    },
+    {
+      "id": "066",
+      "matchNumStr": "周五066",
+      "matchId": "2040302",
+      "businessDate": "2026-06-26",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-06-27 11:00:00",
+      "matchDate": "2026-06-27",
+      "matchTime": "11:00:00",
+      "matchStatus": "Selling",
+      "sellStatus": 1,
+      "taxDateNo": "2606261",
+      "isHot": false,
+      "home": "新西兰",
+      "homeCode": "NZD",
+      "homeAbbr": "新西兰",
+      "homeRank": "[G组4]",
+      "away": "比利时",
+      "awayCode": "BEG",
+      "awayAbbr": "比利时",
+      "awayRank": "[G组3]",
+      "venue": "比赛将在加拿大-温哥华举行",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "0:2",
+          "1:2"
+        ],
+        "upset": "1:1",
+        "confidence": "medium",
+        "candidates": [
+          "3",
+          "4",
+          "2"
+        ]
+      },
+      "result": null,
+      "review": "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": null,
+          "draw": null,
+          "away": null,
+          "updatedAt": " "
+        },
+        "ttg": {
+          "s0": "29.00",
+          "s1": "7.50",
+          "s2": "4.60",
+          "s3": "3.60",
+          "s4": "4.10",
+          "s5": "6.10",
+          "s6": "10.00",
+          "s7": "12.00",
+          "updatedAt": "2026-06-26 10:32:08"
+        },
+        "hhad": {
+          "home": "2.58",
+          "draw": "3.95",
+          "away": "2.05",
+          "handicap": null,
+          "updatedAt": "2026-06-26 10:30:57"
+        },
+        "crs": {
+          "0000": null,
+          "0100": null,
+          "0200": null,
+          "0201": null,
+          "0300": null,
+          "0301": null,
+          "0101": null,
+          "0001": null,
+          "updatedAt": "2026-06-26 12:45:57"
+        },
+        "hafu": {
+          "aa": "1.32",
+          "ad": null,
+          "ah": null,
+          "da": null,
+          "dd": null,
+          "dh": null,
+          "ha": null,
+          "hd": null,
+          "hh": null,
+          "updatedAt": "2026-06-26 10:31:49"
+        }
+      },
+      "group": "G组",
+      "scheduleCheck": {
+        "status": "group-inferred",
+        "basis": "rank-tag",
+        "checkedAt": "2026-06-26 13:34:54",
+        "scheduleFile": "2026年世界杯赛程表.xlsx"
+      }
+    }
+  ],
+  "standingsSnapshot": [
+    {
+      "group": "A组",
+      "rows": [
+        {
+          "team": "墨西哥",
+          "played": 3,
+          "wins": 3,
+          "draws": 0,
+          "losses": 0,
+          "gf": 6,
+          "ga": 0,
+          "gd": 6,
+          "points": 9
+        },
+        {
+          "team": "南非",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 2,
+          "ga": 3,
+          "gd": -1,
+          "points": 4
+        },
+        {
+          "team": "韩国",
+          "played": 3,
+          "wins": 1,
+          "draws": 0,
+          "losses": 2,
+          "gf": 2,
+          "ga": 3,
+          "gd": -1,
+          "points": 3
+        },
+        {
+          "team": "捷克",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 2,
+          "ga": 6,
+          "gd": -4,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "group": "B组",
+      "rows": [
+        {
+          "team": "瑞士",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 7,
+          "ga": 3,
+          "gd": 4,
+          "points": 7
+        },
+        {
+          "team": "加拿大",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 8,
+          "ga": 3,
+          "gd": 5,
+          "points": 4
+        },
+        {
+          "team": "波黑",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 5,
+          "ga": 6,
+          "gd": -1,
+          "points": 4
+        },
+        {
+          "team": "卡塔尔",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 2,
+          "ga": 10,
+          "gd": -8,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "group": "C组",
+      "rows": [
+        {
+          "team": "巴西",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 7,
+          "ga": 1,
+          "gd": 6,
+          "points": 7
+        },
+        {
+          "team": "摩洛哥",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 6,
+          "ga": 3,
+          "gd": 3,
+          "points": 7
+        },
+        {
+          "team": "苏格兰",
+          "played": 3,
+          "wins": 1,
+          "draws": 0,
+          "losses": 2,
+          "gf": 1,
+          "ga": 4,
+          "gd": -3,
+          "points": 3
+        },
+        {
+          "team": "海地",
+          "played": 3,
+          "wins": 0,
+          "draws": 0,
+          "losses": 3,
+          "gf": 2,
+          "ga": 8,
+          "gd": -6,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "D组",
+      "rows": [
+        {
+          "team": "美国",
+          "played": 3,
+          "wins": 2,
+          "draws": 0,
+          "losses": 1,
+          "gf": 8,
+          "ga": 4,
+          "gd": 4,
+          "points": 6
+        },
+        {
+          "team": "澳大利亚",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 4
+        },
+        {
+          "team": "巴拉圭",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 2,
+          "ga": 4,
+          "gd": -2,
+          "points": 4
+        },
+        {
+          "team": "土耳其",
+          "played": 3,
+          "wins": 1,
+          "draws": 0,
+          "losses": 2,
+          "gf": 3,
+          "ga": 5,
+          "gd": -2,
+          "points": 3
+        }
+      ]
+    },
+    {
+      "group": "E组",
+      "rows": [
+        {
+          "team": "德国",
+          "played": 3,
+          "wins": 2,
+          "draws": 0,
+          "losses": 1,
+          "gf": 10,
+          "ga": 4,
+          "gd": 6,
+          "points": 6
+        },
+        {
+          "team": "科特迪瓦",
+          "played": 3,
+          "wins": 2,
+          "draws": 0,
+          "losses": 1,
+          "gf": 4,
+          "ga": 2,
+          "gd": 2,
+          "points": 6
+        },
+        {
+          "team": "厄瓜多尔",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 4
+        },
+        {
+          "team": "库拉索",
+          "played": 3,
+          "wins": 0,
+          "draws": 1,
+          "losses": 2,
+          "gf": 1,
+          "ga": 9,
+          "gd": -8,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "group": "F组",
+      "rows": [
+        {
+          "team": "荷兰",
+          "played": 3,
+          "wins": 2,
+          "draws": 1,
+          "losses": 0,
+          "gf": 10,
+          "ga": 4,
+          "gd": 6,
+          "points": 7
+        },
+        {
+          "team": "日本",
+          "played": 3,
+          "wins": 1,
+          "draws": 2,
+          "losses": 0,
+          "gf": 7,
+          "ga": 3,
+          "gd": 4,
+          "points": 5
+        },
+        {
+          "team": "瑞典",
+          "played": 3,
+          "wins": 1,
+          "draws": 1,
+          "losses": 1,
+          "gf": 7,
+          "ga": 7,
+          "gd": 0,
+          "points": 4
+        },
+        {
+          "team": "突尼斯",
+          "played": 3,
+          "wins": 0,
+          "draws": 0,
+          "losses": 3,
+          "gf": 2,
+          "ga": 12,
+          "gd": -10,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "G组",
+      "rows": [
+        {
+          "team": "埃及",
+          "played": 2,
+          "wins": 1,
+          "draws": 1,
+          "losses": 0,
+          "gf": 4,
+          "ga": 2,
+          "gd": 2,
+          "points": 4
+        },
+        {
+          "team": "伊朗",
+          "played": 2,
+          "wins": 0,
+          "draws": 2,
+          "losses": 0,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 2
+        },
+        {
+          "team": "比利时",
+          "played": 2,
+          "wins": 0,
+          "draws": 2,
+          "losses": 0,
+          "gf": 1,
+          "ga": 1,
+          "gd": 0,
+          "points": 2
+        },
+        {
+          "team": "新西兰",
+          "played": 2,
+          "wins": 0,
+          "draws": 1,
+          "losses": 1,
+          "gf": 3,
+          "ga": 5,
+          "gd": -2,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "group": "H组",
+      "rows": [
+        {
+          "team": "西班牙",
+          "played": 2,
+          "wins": 1,
+          "draws": 1,
+          "losses": 0,
+          "gf": 4,
+          "ga": 0,
+          "gd": 4,
+          "points": 4
+        },
+        {
+          "team": "乌拉圭",
+          "played": 2,
+          "wins": 0,
+          "draws": 2,
+          "losses": 0,
+          "gf": 3,
+          "ga": 3,
+          "gd": 0,
+          "points": 2
+        },
+        {
+          "team": "佛得角",
+          "played": 2,
+          "wins": 0,
+          "draws": 2,
+          "losses": 0,
+          "gf": 2,
+          "ga": 2,
+          "gd": 0,
+          "points": 2
+        },
+        {
+          "team": "沙特阿拉伯",
+          "played": 2,
+          "wins": 0,
+          "draws": 1,
+          "losses": 1,
+          "gf": 1,
+          "ga": 5,
+          "gd": -4,
+          "points": 1
+        }
+      ]
+    },
+    {
+      "group": "I组",
+      "rows": [
+        {
+          "team": "法国",
+          "played": 2,
+          "wins": 2,
+          "draws": 0,
+          "losses": 0,
+          "gf": 6,
+          "ga": 1,
+          "gd": 5,
+          "points": 6
+        },
+        {
+          "team": "挪威",
+          "played": 2,
+          "wins": 2,
+          "draws": 0,
+          "losses": 0,
+          "gf": 7,
+          "ga": 3,
+          "gd": 4,
+          "points": 6
+        },
+        {
+          "team": "塞内加尔",
+          "played": 2,
+          "wins": 0,
+          "draws": 0,
+          "losses": 2,
+          "gf": 3,
+          "ga": 6,
+          "gd": -3,
+          "points": 0
+        },
+        {
+          "team": "伊拉克",
+          "played": 2,
+          "wins": 0,
+          "draws": 0,
+          "losses": 2,
+          "gf": 1,
+          "ga": 7,
+          "gd": -6,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "J组",
+      "rows": [
+        {
+          "team": "阿根廷",
+          "played": 2,
+          "wins": 2,
+          "draws": 0,
+          "losses": 0,
+          "gf": 5,
+          "ga": 0,
+          "gd": 5,
+          "points": 6
+        },
+        {
+          "team": "奥地利",
+          "played": 2,
+          "wins": 1,
+          "draws": 0,
+          "losses": 1,
+          "gf": 3,
+          "ga": 3,
+          "gd": 0,
+          "points": 3
+        },
+        {
+          "team": "阿尔及利亚",
+          "played": 2,
+          "wins": 1,
+          "draws": 0,
+          "losses": 1,
+          "gf": 2,
+          "ga": 4,
+          "gd": -2,
+          "points": 3
+        },
+        {
+          "team": "约旦",
+          "played": 2,
+          "wins": 0,
+          "draws": 0,
+          "losses": 2,
+          "gf": 2,
+          "ga": 5,
+          "gd": -3,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "K组",
+      "rows": [
+        {
+          "team": "哥伦比亚",
+          "played": 2,
+          "wins": 2,
+          "draws": 0,
+          "losses": 0,
+          "gf": 4,
+          "ga": 1,
+          "gd": 3,
+          "points": 6
+        },
+        {
+          "team": "葡萄牙",
+          "played": 2,
+          "wins": 1,
+          "draws": 1,
+          "losses": 0,
+          "gf": 6,
+          "ga": 1,
+          "gd": 5,
+          "points": 4
+        },
+        {
+          "team": "刚果(金)",
+          "played": 2,
+          "wins": 0,
+          "draws": 1,
+          "losses": 1,
+          "gf": 1,
+          "ga": 2,
+          "gd": -1,
+          "points": 1
+        },
+        {
+          "team": "乌兹别克斯坦",
+          "played": 2,
+          "wins": 0,
+          "draws": 0,
+          "losses": 2,
+          "gf": 1,
+          "ga": 8,
+          "gd": -7,
+          "points": 0
+        }
+      ]
+    },
+    {
+      "group": "L组",
+      "rows": [
+        {
+          "team": "英格兰",
+          "played": 2,
+          "wins": 1,
+          "draws": 1,
+          "losses": 0,
+          "gf": 4,
+          "ga": 2,
+          "gd": 2,
+          "points": 4
+        },
+        {
+          "team": "加纳",
+          "played": 2,
+          "wins": 1,
+          "draws": 1,
+          "losses": 0,
+          "gf": 1,
+          "ga": 0,
+          "gd": 1,
+          "points": 4
+        },
+        {
+          "team": "克罗地亚",
+          "played": 2,
+          "wins": 1,
+          "draws": 0,
+          "losses": 1,
+          "gf": 3,
+          "ga": 4,
+          "gd": -1,
+          "points": 3
+        },
+        {
+          "team": "巴拿马",
+          "played": 2,
+          "wins": 0,
+          "draws": 0,
+          "losses": 2,
+          "gf": 0,
+          "ga": 2,
+          "gd": -2,
+          "points": 0
+        }
+      ]
+    }
+  ]
+}

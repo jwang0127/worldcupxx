@@ -238,9 +238,9 @@
     {
         "id":  "059",
         "match":  "巴拉圭 vs 澳大利亚",
-        "lambdaHome":  0.95,
-        "lambdaAway":  0.9,
-        "totalLambda":  1.85,
+        "lambdaHome":  0.79,
+        "lambdaAway":  0.76,
+        "totalLambda":  1.55,
         "halfFull":  {
                          "primary":  "平/平",
                          "secondary":  "平/平",
@@ -253,37 +253,37 @@
                      {
                          "score":  "1:1",
                          "odds":  7.6,
-                         "probability":  0.1345,
-                         "ev":  0.02,
-                         "mark":  "✅ 正EV推荐"
+                         "probability":  0.1275,
+                         "ev":  -0.03,
+                         "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "0:0",
                          "odds":  6,
-                         "probability":  0.1569,
-                         "ev":  -0.06,
-                         "mark":  "⚪ 负EV观望"
+                         "probability":  0.2118,
+                         "ev":  0.27,
+                         "mark":  "✅ 正EV推荐"
                      },
                      {
                          "score":  "1:0",
                          "odds":  6.8,
-                         "probability":  0.1487,
-                         "ev":  0.01,
+                         "probability":  0.1682,
+                         "ev":  0.14,
                          "mark":  "✅ 正EV推荐"
                      },
                      {
                          "score":  "0:1",
                          "odds":  6.8,
-                         "probability":  0.1419,
-                         "ev":  -0.04,
-                         "mark":  "⚪ 负EV观望"
+                         "probability":  0.1605,
+                         "ev":  0.09,
+                         "mark":  "✅ 正EV推荐"
                      }
                  ],
         "best":  {
-                     "score":  "1:1",
-                     "odds":  7.6,
-                     "probability":  0.1345,
-                     "ev":  0.02,
+                     "score":  "0:0",
+                     "odds":  6,
+                     "probability":  0.2118,
+                     "ev":  0.27,
                      "mark":  "✅ 正EV推荐"
                  }
     },
