@@ -1877,7 +1877,8 @@ function BuildPreviousReview() {
 
   foreach ($pm in @($previous.matches)) {
     if (-not $pm.result -or $null -eq $pm.result.homeGoals -or $null -eq $pm.result.awayGoals) {
-      $reviewRows.Add("<tr><td>" + (HE $pm.matchNumStr) + "</td><td>" + (HE "$($pm.home) vs $($pm.away)") + "</td><td>" + (GoalLabel $pm.prediction.totalGoals) + "</td><td>&#24453;&#22238;&#22635;</td><td>&#24453;&#23450;</td><td>&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;</td></tr>")
+      $predictedScores = if ($pm.prediction -and $pm.prediction.scores) { HE (@($pm.prediction.scores) -join " / ") } else { "-" }
+      $reviewRows.Add("<tr><td>" + (HE $pm.matchNumStr) + "</td><td>" + (HE "$($pm.home) vs $($pm.away)") + "</td><td>" + (GoalLabel $pm.prediction.totalGoals) + "</td><td>" + $predictedScores + "</td><td>&#24453;&#22238;&#22635;</td><td>&#24453;&#23450;</td><td>&#31561;&#24453;&#36187;&#26524;&#22238;&#22635;</td></tr>")
       continue
     }
 
@@ -1893,6 +1894,7 @@ function BuildPreviousReview() {
 
     $goalVerdict = if ($goalHit) { "&#21629;&#20013;" } else { "&#26410;&#20013;" }
     $sideVerdict = if ($sideHit) { "&#26041;&#21521;&#21629;&#20013;" } else { "&#26041;&#21521;&#20559;&#31163;" }
+    $predictedScores = if ($pm.prediction -and $pm.prediction.scores) { HE (@($pm.prediction.scores) -join " / ") } else { "-" }
     $scoreText = (HE "$($pm.result.homeGoals):$($pm.result.awayGoals)")
     $why = if (-not $sideHit -and $actualLean -eq "draw") {
       "平局保护不足，已补强 0:0 / 1:1 低位盘的平局脚本。"
@@ -1910,14 +1912,14 @@ function BuildPreviousReview() {
       "主线判断仍有效，本次主要用于校正比分尾部。"
     }
     $note = "&#23454;&#38469;&#24635;&#36827;&#29699; $actualTotal&#65292;&#39044;&#27979;" + $goalVerdict + "&#65307;" + $sideVerdict + "&#12290;" + (HE $why)
-    $reviewRows.Add("<tr><td>" + (HE $pm.matchNumStr) + "</td><td>" + (HE "$($pm.home) vs $($pm.away)") + "</td><td>" + (GoalLabel $pm.prediction.totalGoals) + "</td><td>" + $scoreText + "</td><td>" + $goalVerdict + " / " + $sideVerdict + "</td><td>" + $note + "</td></tr>")
+    $reviewRows.Add("<tr><td>" + (HE $pm.matchNumStr) + "</td><td>" + (HE "$($pm.home) vs $($pm.away)") + "</td><td>" + (GoalLabel $pm.prediction.totalGoals) + "</td><td>" + $predictedScores + "</td><td>" + $scoreText + "</td><td>" + $goalVerdict + " / " + $sideVerdict + "</td><td>" + $note + "</td></tr>")
   }
 
   $goalRate = if ($settled -gt 0) { [math]::Round(($goalHits / $settled) * 100, 1).ToString() + "%" } else { "&#24453;&#23450;" }
   $sideRate = if ($settled -gt 0) { [math]::Round(($sideHits / $settled) * 100, 1).ToString() + "%" } else { "&#24453;&#23450;" }
 
   $modelNote = BuildReviewModelNote -Settled $settled -GoalHits $goalHits -SideHits $sideHits
-  return "<section id=""reviewModel"" class=""section""><h2>&#26152;&#26085;&#22797;&#30424;&#19982;&#20170;&#26085;&#27169;&#22411;&#20462;&#27491;</h2><div class=""recommend""><div class=""kv""><div><strong>&#24050;&#32467;&#31639;</strong>$settled &#22330;</div><div><strong>&#24635;&#36827;&#29699;&#21629;&#20013;</strong>$goalHits / $settled ($goalRate)</div><div><strong>&#32988;&#24179;&#36127;&#26041;&#21521;</strong>$sideHits / $settled ($sideRate)</div><div><strong>&#20170;&#26085;&#20462;&#27491;</strong>&#24179;&#23616;&#20445;&#25252; + &#24378;&#30424;&#23614;&#37096;&#19978;&#20462; + &#20840;&#37327;&#31215;&#20998;&#27036;&#23454;&#26102;&#37325;&#31639;</div></div><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#39044;&#27979;&#24635;&#36827;&#29699;</th><th>&#26368;&#32456;&#27604;&#20998;</th><th>&#21629;&#20013;</th><th>&#22797;&#30424;&#32467;&#35770;</th></tr></thead><tbody>" + ($reviewRows -join "") + "</tbody></table><p class=""modelNote"">&#27169;&#22411;&#21453;&#39304;&#65306;" + (HE $modelNote) + "</p></div></section>"
+  return "<section id=""reviewModel"" class=""section""><h2>&#26152;&#26085;&#22797;&#30424;&#19982;&#20170;&#26085;&#27169;&#22411;&#20462;&#27491;</h2><div class=""recommend""><div class=""kv""><div><strong>&#24050;&#32467;&#31639;</strong>$settled &#22330;</div><div><strong>&#24635;&#36827;&#29699;&#21629;&#20013;</strong>$goalHits / $settled ($goalRate)</div><div><strong>&#32988;&#24179;&#36127;&#26041;&#21521;</strong>$sideHits / $settled ($sideRate)</div><div><strong>&#20170;&#26085;&#20462;&#27491;</strong>&#24179;&#23616;&#20445;&#25252; + &#24378;&#30424;&#23614;&#37096;&#19978;&#20462; + &#20840;&#37327;&#31215;&#20998;&#27036;&#23454;&#26102;&#37325;&#31639;</div></div><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#39044;&#27979;&#24635;&#36827;&#29699;</th><th>&#39044;&#27979;&#27604;&#20998;</th><th>&#26368;&#32456;&#27604;&#20998;</th><th>&#21629;&#20013;</th><th>&#22797;&#30424;&#32467;&#35770;</th></tr></thead><tbody>" + ($reviewRows -join "") + "</tbody></table><p class=""modelNote"">&#27169;&#22411;&#21453;&#39304;&#65306;" + (HE $modelNote) + "</p></div></section>"
 }
 
 $script:historicalMatches = GetHistoricalMatches
