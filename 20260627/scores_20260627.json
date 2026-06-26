@@ -1,0 +1,296 @@
+﻿[
+    {
+        "id":  "061",
+        "match":  "挪威 vs 法国",
+        "lean":  "away",
+        "stars":  "★★★☆☆",
+        "composite":  6.86,
+        "dimensions":  {
+                           "basic":  5.95,
+                           "lineup":  6.6,
+                           "elo":  8.43,
+                           "odds":  7.59,
+                           "trend":  4.8,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  4.68,
+                           "weather":  5.9,
+                           "historyStyle":  8.2,
+                           "injuryRisk":  5,
+                           "rotationRisk":  2.2,
+                           "dataCompleteness":  7.7
+                       },
+        "probabilities":  {
+                              "home":  0.20126282557221783,
+                              "draw":  0.20836621941594319,
+                              "away":  0.590370955011839
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  2,
+                                    "wins":  2,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  7,
+                                    "ga":  3,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                },
+                       "away":  {
+                                    "played":  2,
+                                    "wins":  2,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  6,
+                                    "ga":  1,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                }
+                   }
+    },
+    {
+        "id":  "062",
+        "match":  "塞内加尔 vs 伊拉克",
+        "lean":  "away",
+        "stars":  "★★★★☆",
+        "composite":  7.43,
+        "dimensions":  {
+                           "basic":  5.66,
+                           "lineup":  6.5,
+                           "elo":  7.86,
+                           "odds":  7.08,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  7.1,
+                           "pressure":  7.98,
+                           "weather":  5.9,
+                           "historyStyle":  8.2,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2,
+                           "dataCompleteness":  6.5
+                       },
+        "probabilities":  {
+                              "home":  0.21,
+                              "draw":  0.24,
+                              "away":  0.55
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  2,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  2,
+                                    "gf":  3,
+                                    "ga":  6,
+                                    "ppg":  0,
+                                    "score":  2
+                                },
+                       "away":  {
+                                    "played":  2,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  2,
+                                    "gf":  1,
+                                    "ga":  7,
+                                    "ppg":  0,
+                                    "score":  2
+                                }
+                   }
+    },
+    {
+        "id":  "063",
+        "match":  "佛得角 vs 沙特阿拉伯",
+        "lean":  "home",
+        "stars":  "★★★☆☆",
+        "composite":  5.96,
+        "dimensions":  {
+                           "basic":  5.43,
+                           "lineup":  4.69,
+                           "elo":  5.27,
+                           "odds":  3.95,
+                           "trend":  4.7,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.52,
+                           "weather":  6.4,
+                           "historyStyle":  7.27,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2,
+                           "dataCompleteness":  7.7
+                       },
+        "probabilities":  {
+                              "home":  0.36900884132154493,
+                              "draw":  0.29036761284318291,
+                              "away":  0.34062354583527221
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  2,
+                                    "ga":  2,
+                                    "ppg":  1,
+                                    "score":  4.58
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  0,
+                                    "ga":  4,
+                                    "ppg":  0,
+                                    "score":  2
+                                }
+                   }
+    },
+    {
+        "id":  "064",
+        "match":  "乌拉圭 vs 西班牙",
+        "lean":  "away",
+        "stars":  "★★★★☆",
+        "composite":  7.78,
+        "dimensions":  {
+                           "basic":  9.03,
+                           "lineup":  7.12,
+                           "elo":  9.17,
+                           "odds":  8.62,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.48,
+                           "weather":  6.4,
+                           "historyStyle":  7.27,
+                           "injuryRisk":  5,
+                           "rotationRisk":  2.2,
+                           "dataCompleteness":  7.7
+                       },
+        "probabilities":  {
+                              "home":  0.12833333333333335,
+                              "draw":  0.22999999999999998,
+                              "away":  0.64166666666666683
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  2,
+                                    "ga":  2,
+                                    "ppg":  1,
+                                    "score":  4.58
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  4,
+                                    "ga":  0,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                }
+                   }
+    },
+    {
+        "id":  "065",
+        "match":  "埃及 vs 伊朗",
+        "lean":  "home",
+        "stars":  "★★★☆☆",
+        "composite":  6.16,
+        "dimensions":  {
+                           "basic":  7.31,
+                           "lineup":  5.03,
+                           "elo":  5.75,
+                           "odds":  5.25,
+                           "trend":  4.8,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.48,
+                           "weather":  4.8,
+                           "historyStyle":  4.67,
+                           "injuryRisk":  5,
+                           "rotationRisk":  2.8,
+                           "dataCompleteness":  7.7
+                       },
+        "probabilities":  {
+                              "home":  0.40251238499646147,
+                              "draw":  0.35421089879688611,
+                              "away":  0.2432767162066525
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  3,
+                                    "ga":  1,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  4.58
+                                }
+                   }
+    },
+    {
+        "id":  "066",
+        "match":  "新西兰 vs 比利时",
+        "lean":  "away",
+        "stars":  "★★★☆☆",
+        "composite":  6.94,
+        "dimensions":  {
+                           "basic":  7.08,
+                           "lineup":  6.5,
+                           "elo":  7.86,
+                           "odds":  7.08,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.52,
+                           "weather":  4.8,
+                           "historyStyle":  4.67,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2,
+                           "dataCompleteness":  6.5
+                       },
+        "probabilities":  {
+                              "home":  0.21,
+                              "draw":  0.24,
+                              "away":  0.55
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  1,
+                                    "ga":  3,
+                                    "ppg":  0,
+                                    "score":  2
+                                },
+                       "away":  {
+                                    "played":  1,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  0,
+                                    "ga":  0,
+                                    "ppg":  1,
+                                    "score":  4.58
+                                }
+                   }
+    }
+]
