@@ -1280,7 +1280,7 @@ function BuildStandingsBundle($Matches, $Snapshot = $null) {
       if ($remaining -eq 0 -and $idx -lt 2) {
         $status = "🟢 已晋级"
       }
-      elseif ($remaining -eq 0 -and $points -ge 4) {
+      elseif ($remaining -eq 0 -and $idx -eq 2 -and $points -ge 3) {
         $status = "🟡 第三名待比较"
       }
       elseif ($remaining -eq 0) {
@@ -1670,6 +1670,43 @@ function StandingsSectionHtml($Bundle, $Matches) {
   return ($sections -join "")
 }
 
+function KnockoutStatusText($Row) {
+  $played = [int](ToDouble $Row.played 0)
+  $rank = [int](ToDouble $Row.rank 99)
+  $points = [int](ToDouble $Row.points 0)
+
+  if ($played -lt 3) {
+    if ($rank -le 2) { return "小组前二在手，末轮优先守住净胜球与不败线。" }
+    if ($rank -eq 3) { return "第三名边缘位，末轮必须先拿分，再看净胜球。" }
+    return "仍有理论机会，剧本必须从先抢开局和提高进球数开始。"
+  }
+
+  if ($rank -le 2) { return "直通淘汰赛。淘汰赛首轮应降低开放对攻权重，优先评估体能、轮换和一球胜负脚本。" }
+  if ($rank -eq 3 -and $points -ge 4) { return "第三名高分待比较，晋级概率偏高；若入围淘汰赛，定位为防反和低比分拉扯型。" }
+  if ($rank -eq 3 -and $points -eq 3) { return "第三名压线待比较，需要看其他组净胜球；淘汰赛剧本以逆风开局和必须提速为主。" }
+  return "小组出局或基本出局，后续只保留复盘样本价值。"
+}
+
+function KnockoutScenarioSectionHtml($Bundle) {
+  $rows = New-Object System.Collections.Generic.List[string]
+  foreach ($groupItem in $Bundle.groups) {
+    foreach ($row in $groupItem.rows) {
+      $tag = if ([int](ToDouble $row.rank 99) -le 2) {
+        "直通区"
+      }
+      elseif ([int](ToDouble $row.rank 99) -eq 3) {
+        "第三名池"
+      }
+      else {
+        "淘汰区"
+      }
+      $rows.Add("<tr><td>$($groupItem.group)</td><td>$($row.rank)</td><td>$($row.team)</td><td>$($row.points)</td><td>$($row.gd)</td><td>" + (HE $tag) + "</td><td>" + (HE (KnockoutStatusText $row)) + "</td></tr>")
+    }
+  }
+
+  return "<section id=""knockoutScenario"" class=""section""><h2>淘汰赛阶段剧本分析</h2><div class=""recommend""><p class=""modelNote"">按当前小组积分榜覆盖全部球队，先区分直通区、第三名池和淘汰区，再给出淘汰赛首轮的节奏脚本。该模块随每日赛果自动重算。</p><div class=""tableWrap""><table><thead><tr><th>小组</th><th>排名</th><th>球队</th><th>积分</th><th>净胜</th><th>分层</th><th>淘汰赛剧本</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div></section>"
+}
+
 function RootStandingsCompactHtml($Bundle) {
   $sections = New-Object System.Collections.Generic.List[string]
   foreach ($groupItem in $Bundle.groups) {
@@ -2021,6 +2058,7 @@ if (Test-Path (Join-Path $dayDir "review.html")) {
 }
 $previousReviewSection = BuildPreviousReview
 $standingsSection = "<section id=""standings"" class=""section""><h2>&#23567;&#32452;&#31215;&#20998;&#27036;&#19982;&#20986;&#32447;&#20998;&#26512;</h2>" + (StandingsSectionHtml $standingsBundle $payload.matches) + "</section>"
+$knockoutScenarioSection = KnockoutScenarioSectionHtml $standingsBundle
 
 $html = @"
 <!DOCTYPE html>
@@ -2044,7 +2082,7 @@ details{border:1px solid #1b463f;border-radius:8px;margin:9px 0;background:#0718
 </style>
 </head>
 <body>
-<header><div class="hero"><h1>&#127757; 2026&#19990;&#30028;&#26479; &#39044;&#27979;&#30475;&#26495; $(DateTitle $payload.dateText)</h1><nav><a href="#reviewModel">&#22797;&#30424;&#20462;&#27491;</a><a href="#final">$(C "final")</a><a href="#overview">$(C "overview")</a>$($navLinks -join "")<a href="#standings">&#23567;&#32452;&#31215;&#20998;&#27036;</a><a href="#combo">$(C "combo")</a>$reviewLink<a href="../index.html">$(C "home")</a></nav></div></header>
+<header><div class="hero"><h1>&#127757; 2026&#19990;&#30028;&#26479; &#39044;&#27979;&#30475;&#26495; $(DateTitle $payload.dateText)</h1><nav><a href="#reviewModel">&#22797;&#30424;&#20462;&#27491;</a><a href="#final">$(C "final")</a><a href="#overview">$(C "overview")</a>$($navLinks -join "")<a href="#standings">&#23567;&#32452;&#31215;&#20998;&#27036;</a><a href="#knockoutScenario">&#28120;&#27760;&#36187;&#21095;&#26412;</a><a href="#combo">$(C "combo")</a>$reviewLink<a href="../index.html">$(C "home")</a></nav></div></header>
 <main>
 $previousReviewSection
 <section id="final" class="section"><h2>$(C "final")</h2><div class="recommend"><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#27604;&#36187;</th><th>&#25152;&#23646;&#23567;&#32452;&#25490;&#21517;</th><th>&#32988;&#24179;&#36127;&#26041;&#21521;</th><th>&#21322;&#20840;&#22330;</th><th>&#24635;&#36827;&#29699;</th><th>&#31283;&#32966;&#27604;&#20998;</th><th>&#20919;&#38376;&#27604;&#20998;</th><th>&#29572;&#23398;&#29420;&#31435;&#32467;&#35770;</th><th>&#32622;&#20449;</th></tr></thead><tbody>$($resultRows -join "")</tbody></table></div></div></section>
@@ -2052,6 +2090,7 @@ $previousReviewSection
 <section id="overview" class="section"><h2>$(C "summary")</h2><div class="grid">$($summaryCards -join "")</div><div class="kv"><div><strong>$(C "best")</strong>$(HE $bestStrong.match.home) vs $(HE $bestStrong.match.away) / $(GoalLabel $bestStrong.match.prediction.totalGoals)</div><div><strong>$(C "biggestCold")</strong>$(HE $bestCold.match.home) vs $(HE $bestCold.match.away) / $(HE $bestCold.match.prediction.upset)</div><div><strong>$(C "route")</strong>$goalRoute</div><div><strong>$(C "luck")</strong>$dayLuck</div></div></section>
 $($detailCards -join "")
 $standingsSection
+$knockoutScenarioSection
 <section id="combo" class="section"><h2>$(C "combo")</h2><div class="combo"><h3>&#19977;&#20018;&#19968; &#24635;&#36827;&#29699;&#25968;</h3><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#25512;&#33616;&#24635;&#36827;&#29699;</th><th>&#21333;&#39033;&#36180;&#29575;</th><th>&#27169;&#22411;&#29702;&#30001;</th></tr></thead><tbody>$($goalComboRows -join "")</tbody></table></div><p><strong>&#32452;&#21512;&#36180;&#29575;&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f $goalCombo))</span></p></div><div class="combo"><h3>&#19977;&#20018;&#19968; &#27604;&#20998;</h3><div class="tableWrap"><table><thead><tr><th>&#22330;&#27425;</th><th>&#25512;&#33616;&#31283;&#32966;&#27604;&#20998;</th><th>&#20272;&#31639;&#36180;&#29575;</th><th>&#27169;&#22411;&#29702;&#30001;</th></tr></thead><tbody>$($scoreComboRows -join "")</tbody></table></div><p><strong>&#32452;&#21512;&#36180;&#29575;&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f $scoreCombo))</span></p><p><strong>&#32452;&#21512;EV&#20272;&#31639;&#65306;</strong>&#8776; <span class="big">$(('{0:N2}' -f ($scoreComboEv - 1)))</span></p></div><div class="combo"><h3>$(C "risk")</h3><p>&#32452;&#21512;&#20165;&#20026;&#23089;&#20048;&#21442;&#32771;&#65292;&#19981;&#20445;&#35777;&#21629;&#20013;&#12290;&#33509;&#25152;&#26377;&#27604;&#20998;EV&#37117;&#20026;&#36127;&#65292;&#20248;&#20808;&#20445;&#30041;&#24635;&#36827;&#29699;&#20027;&#32447;&#25110;&#32988;&#24179;&#36127;&#26041;&#21521;&#65292;&#27604;&#20998;&#24314;&#35758;&#38477;&#19968;&#26723;&#22788;&#29702;&#12290;</p></div></section>
 </main>
 <footer>&#9888;&#65039; &#20165;&#20379;&#23089;&#20048;&#20998;&#26512;&#21442;&#32771;&#65292;&#19981;&#26500;&#25104;&#20219;&#20309;&#36141;&#24425;&#24314;&#35758;&#65292;&#35831;&#29702;&#24615;&#36141;&#24425;&#65281;</footer>

@@ -1,251 +1,43 @@
 ﻿{
-    "date":  "20260627",
-    "dateText":  "2026-06-27",
-    "source":  "sporttery-live-api",
-    "fetchedAt":  "2026-06-27T14:44:36",
-    "lastUpdateTime":  "2026-06-27 用户赛果回填",
-    "apiPoolCode":  "ttg,had,hhad,crs,hafu",
+    "date":  "20260628",
+    "dateText":  "2026-06-28",
+    "source":  "local-fallback-after-sporttery-unavailable",
+    "fetchedAt":  "2026-06-27T14:53:34",
+    "lastUpdateTime":  "2026-06-28 本地兜底预测",
+    "apiPoolCode":  "local",
     "matches":  [
                     {
-                        "id":  "061",
-                        "matchNumStr":  "周五061",
-                        "matchId":  "2040297",
-                        "businessDate":  "2026-06-26",
-                        "league":  "世界杯",
-                        "leagueCode":  "WCC",
-                        "leagueId":  72,
-                        "groupName":  "",
-                        "kickoff":  "2026-06-27 03:00:00",
-                        "matchDate":  "2026-06-27",
-                        "matchTime":  "03:00:00",
-                        "matchStatus":  "Selling",
-                        "sellStatus":  1,
-                        "taxDateNo":  "2606261",
-                        "isHot":  false,
-                        "home":  "挪威",
-                        "homeCode":  "NOW",
-                        "homeAbbr":  "挪威",
-                        "homeRank":  "[I组2]",
-                        "away":  "法国",
-                        "awayCode":  "FRA",
-                        "awayAbbr":  "法国",
-                        "awayRank":  "[I组1]",
-                        "venue":  "比赛将在美国-马萨诸塞州福克斯伯勒举行",
-                        "prediction":  {
-                                           "totalGoals":  "3",
-                                           "scores":  [
-                                                          "1:2",
-                                                          "1:1"
-                                                      ],
-                                           "upset":  "2:1",
-                                           "confidence":  "high",
-                                           "candidates":  [
-                                                              "3",
-                                                              "2",
-                                                              "4"
-                                                          ]
-                                       },
-                        "result":  {
-                                       "homeGoals":  1,
-                                       "awayGoals":  4,
-                                       "status":  "Finished",
-                                       "source":  "user-image-2026-06-27"
-                                   },
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  "最终比分 1:4。实际总进球 5，预测总进球 3 未中；胜平负方向命中；高总进球尾部明显打开。淘汰赛前要把净胜球需求、第三名比较和强队末轮提速纳入更高权重。",
-                        "odds":  {
-                                     "had":  {
-                                                 "home":  "4.40",
-                                                 "draw":  "4.25",
-                                                 "away":  "1.50",
-                                                 "updatedAt":  "2026-06-26 13:24:57"
-                                             },
-                                     "ttg":  {
-                                                 "s0":  "21.00",
-                                                 "s1":  "6.60",
-                                                 "s2":  "4.15",
-                                                 "s3":  "3.75",
-                                                 "s4":  "4.60",
-                                                 "s5":  "6.40",
-                                                 "s6":  "10.00",
-                                                 "s7":  "13.50",
-                                                 "updatedAt":  "2026-06-26 13:28:23"
-                                             },
-                                     "hhad":  {
-                                                  "home":  "2.25",
-                                                  "draw":  "3.40",
-                                                  "away":  "2.56",
-                                                  "handicap":  null,
-                                                  "updatedAt":  "2026-06-26 13:25:04"
-                                              },
-                                     "crs":  {
-                                                 "0000":  null,
-                                                 "0100":  null,
-                                                 "0200":  null,
-                                                 "0201":  null,
-                                                 "0300":  null,
-                                                 "0301":  null,
-                                                 "0101":  null,
-                                                 "0001":  null,
-                                                 "updatedAt":  "2026-06-26 13:28:32"
-                                             },
-                                     "hafu":  {
-                                                  "aa":  "2.15",
-                                                  "ad":  null,
-                                                  "ah":  null,
-                                                  "da":  null,
-                                                  "dd":  null,
-                                                  "dh":  null,
-                                                  "ha":  null,
-                                                  "hd":  null,
-                                                  "hh":  null,
-                                                  "updatedAt":  "2026-06-26 12:48:42"
-                                              }
-                                 },
-                        "group":  "I组",
-                        "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-26 13:34:54",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
-                                          }
-                    },
-                    {
-                        "id":  "062",
-                        "matchNumStr":  "周五062",
-                        "matchId":  "2040298",
-                        "businessDate":  "2026-06-26",
-                        "league":  "世界杯",
-                        "leagueCode":  "WCC",
-                        "leagueId":  72,
-                        "groupName":  "",
-                        "kickoff":  "2026-06-27 03:00:00",
-                        "matchDate":  "2026-06-27",
-                        "matchTime":  "03:00:00",
-                        "matchStatus":  "Selling",
-                        "sellStatus":  1,
-                        "taxDateNo":  "2606261",
-                        "isHot":  false,
-                        "home":  "塞内加尔",
-                        "homeCode":  "SEN",
-                        "homeAbbr":  "塞内加尔",
-                        "homeRank":  "[I组3]",
-                        "away":  "伊拉克",
-                        "awayCode":  "IRQ",
-                        "awayAbbr":  "伊拉克",
-                        "awayRank":  "[I组4]",
-                        "venue":  "比赛将在加拿大-多伦多举行",
-                        "prediction":  {
-                                           "totalGoals":  "3",
-                                           "scores":  [
-                                                          "0:2",
-                                                          "1:2"
-                                                      ],
-                                           "upset":  "1:1",
-                                           "confidence":  "high",
-                                           "candidates":  [
-                                                              "3",
-                                                              "2",
-                                                              "4"
-                                                          ]
-                                       },
-                        "result":  {
-                                       "homeGoals":  5,
-                                       "awayGoals":  0,
-                                       "status":  "Finished",
-                                       "source":  "user-image-2026-06-27"
-                                   },
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  "最终比分 5:0。实际总进球 5，预测总进球 3 未中；胜平负方向偏离；高总进球尾部明显打开。淘汰赛前要把净胜球需求、第三名比较和强队末轮提速纳入更高权重。",
-                        "odds":  {
-                                     "had":  {
-                                                 "home":  null,
-                                                 "draw":  null,
-                                                 "away":  null,
-                                                 "updatedAt":  " "
-                                             },
-                                     "ttg":  {
-                                                 "s0":  "24.00",
-                                                 "s1":  "6.70",
-                                                 "s2":  "4.10",
-                                                 "s3":  "3.40",
-                                                 "s4":  "4.50",
-                                                 "s5":  "6.70",
-                                                 "s6":  "12.00",
-                                                 "s7":  "14.50",
-                                                 "updatedAt":  "2026-06-24 10:05:48"
-                                             },
-                                     "hhad":  {
-                                                  "home":  "2.47",
-                                                  "draw":  "3.80",
-                                                  "away":  "2.17",
-                                                  "handicap":  null,
-                                                  "updatedAt":  "2026-06-26 13:01:17"
-                                              },
-                                     "crs":  {
-                                                 "0000":  null,
-                                                 "0100":  null,
-                                                 "0200":  null,
-                                                 "0201":  null,
-                                                 "0300":  null,
-                                                 "0301":  null,
-                                                 "0101":  null,
-                                                 "0001":  null,
-                                                 "updatedAt":  "2026-06-26 10:22:42"
-                                             },
-                                     "hafu":  {
-                                                  "aa":  "21.00",
-                                                  "ad":  null,
-                                                  "ah":  null,
-                                                  "da":  null,
-                                                  "dd":  null,
-                                                  "dh":  null,
-                                                  "ha":  null,
-                                                  "hd":  null,
-                                                  "hh":  null,
-                                                  "updatedAt":  "2026-06-26 10:22:14"
-                                              }
-                                 },
-                        "group":  "I组",
-                        "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-26 13:34:54",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
-                                          }
-                    },
-                    {
                         "id":  "063",
-                        "matchNumStr":  "周五063",
-                        "matchId":  "2040299",
-                        "businessDate":  "2026-06-26",
+                        "matchNumStr":  "周日063",
+                        "matchId":  "local20260628063",
+                        "businessDate":  "2026-06-28",
                         "league":  "世界杯",
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-27 08:00:00",
-                        "matchDate":  "2026-06-27",
-                        "matchTime":  "08:00:00",
+                        "kickoff":  "2026-06-28 00:00:00",
+                        "matchDate":  "2026-06-28",
+                        "matchTime":  "00:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
-                        "taxDateNo":  "2606261",
+                        "taxDateNo":  "2606281",
                         "isHot":  false,
-                        "home":  "佛得角",
-                        "homeCode":  "CVI",
-                        "homeAbbr":  "佛得角",
-                        "homeRank":  "[H组3]",
-                        "away":  "沙特阿拉伯",
-                        "awayCode":  "SAR",
-                        "awayAbbr":  "沙特",
-                        "awayRank":  "[H组4]",
-                        "venue":  "比赛将在美国-得克萨斯州休斯敦举行",
+                        "home":  "阿尔及利亚",
+                        "homeCode":  "",
+                        "homeAbbr":  "阿尔及利亚",
+                        "homeRank":  "[J组]",
+                        "away":  "奥地利",
+                        "awayCode":  "",
+                        "awayAbbr":  "奥地利",
+                        "awayRank":  "[J组]",
+                        "venue":  "J组赛程基准，本地兜底预测",
                         "prediction":  {
                                            "totalGoals":  "2",
                                            "scores":  [
                                                           "1:1",
-                                                          "0:0"
+                                                          "0:1"
                                                       ],
-                                           "upset":  "1:0",
+                                           "upset":  "2:1",
                                            "confidence":  "medium",
                                            "candidates":  [
                                                               "2",
@@ -253,38 +45,32 @@
                                                               "1"
                                                           ]
                                        },
-                        "result":  {
-                                       "homeGoals":  0,
-                                       "awayGoals":  0,
-                                       "status":  "Finished",
-                                       "source":  "user-image-2026-06-27"
-                                   },
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean draw, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  "最终比分 0:0。实际总进球 0，预测总进球 2 未中；胜平负方向偏离；低比分锁局成立。淘汰赛前要把净胜球需求、第三名比较和强队末轮提速纳入更高权重。",
+                        "result":  null,
+                        "review":  "同分卡位战，奥地利纸面略顺，但阿尔及利亚必须抢分，主线压在2球和平局保护。",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "2.40",
-                                                 "draw":  "3.05",
-                                                 "away":  "2.60",
-                                                 "updatedAt":  "2026-06-25 13:42:17"
+                                                 "home":  "2.70",
+                                                 "draw":  "2.90",
+                                                 "away":  "2.45",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "ttg":  {
-                                                 "s0":  "10.00",
-                                                 "s1":  "4.25",
-                                                 "s2":  "3.15",
-                                                 "s3":  "3.60",
-                                                 "s4":  "6.00",
-                                                 "s5":  "12.00",
-                                                 "s6":  "22.00",
-                                                 "s7":  "35.00",
-                                                 "updatedAt":  "2026-06-24 10:05:48"
+                                                 "s0":  "9.50",
+                                                 "s1":  "4.50",
+                                                 "s2":  "3.25",
+                                                 "s3":  "3.65",
+                                                 "s4":  "5.20",
+                                                 "s5":  "8.50",
+                                                 "s6":  "14.00",
+                                                 "s7":  "22.00",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hhad":  {
-                                                  "home":  "5.55",
-                                                  "draw":  "4.00",
-                                                  "away":  "1.43",
+                                                  "home":  "2.70",
+                                                  "draw":  "2.90",
+                                                  "away":  "2.45",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-25 13:42:20"
+                                                  "updatedAt":  "local-fallback"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -295,10 +81,10 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-26 12:09:27"
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hafu":  {
-                                                  "aa":  "4.10",
+                                                  "aa":  null,
                                                   "ad":  null,
                                                   "ah":  null,
                                                   "da":  null,
@@ -307,49 +93,147 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-24 10:05:49"
+                                                  "updatedAt":  "local-fallback"
                                               }
                                  },
-                        "group":  "H组",
+                        "group":  "J组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-26 13:34:54",
+                                              "status":  "local-schedule",
+                                              "basis":  "schedule-workbook",
+                                              "checkedAt":  "2026-06-27T14:53:34",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           }
                     },
                     {
                         "id":  "064",
-                        "matchNumStr":  "周五064",
-                        "matchId":  "2040300",
-                        "businessDate":  "2026-06-26",
+                        "matchNumStr":  "周日064",
+                        "matchId":  "local20260628064",
+                        "businessDate":  "2026-06-28",
                         "league":  "世界杯",
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-27 08:00:00",
-                        "matchDate":  "2026-06-27",
-                        "matchTime":  "08:00:00",
+                        "kickoff":  "2026-06-28 00:00:00",
+                        "matchDate":  "2026-06-28",
+                        "matchTime":  "00:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
-                        "taxDateNo":  "2606261",
+                        "taxDateNo":  "2606281",
                         "isHot":  false,
-                        "home":  "乌拉圭",
-                        "homeCode":  "URU",
-                        "homeAbbr":  "乌拉圭",
-                        "homeRank":  "[H组2]",
-                        "away":  "西班牙",
-                        "awayCode":  "SPA",
-                        "awayAbbr":  "西班牙",
-                        "awayRank":  "[H组1]",
-                        "venue":  "比赛将在墨西哥-萨波潘举行",
+                        "home":  "约旦",
+                        "homeCode":  "",
+                        "homeAbbr":  "约旦",
+                        "homeRank":  "[J组]",
+                        "away":  "阿根廷",
+                        "awayCode":  "",
+                        "awayAbbr":  "阿根廷",
+                        "awayRank":  "[J组]",
+                        "venue":  "J组赛程基准，本地兜底预测",
+                        "prediction":  {
+                                           "totalGoals":  "3",
+                                           "scores":  [
+                                                          "0:3",
+                                                          "1:3"
+                                                      ],
+                                           "upset":  "1:1",
+                                           "confidence":  "high",
+                                           "candidates":  [
+                                                              "3",
+                                                              "3",
+                                                              "1"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "阿根廷争头名和净胜球价值仍在，约旦出线压力会迫使后段打开，保留3-4球尾部。",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "9.50",
+                                                 "draw":  "5.00",
+                                                 "away":  "1.25",
+                                                 "updatedAt":  "local-fallback"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "18.00",
+                                                 "s1":  "6.80",
+                                                 "s2":  "4.30",
+                                                 "s3":  "3.35",
+                                                 "s4":  "3.90",
+                                                 "s5":  "6.20",
+                                                 "s6":  "10.00",
+                                                 "s7":  "16.00",
+                                                 "updatedAt":  "local-fallback"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "9.50",
+                                                  "draw":  "5.00",
+                                                  "away":  "1.25",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "local-fallback"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "local-fallback"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  null,
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "local-fallback"
+                                              }
+                                 },
+                        "group":  "J组",
+                        "scheduleCheck":  {
+                                              "status":  "local-schedule",
+                                              "basis":  "schedule-workbook",
+                                              "checkedAt":  "2026-06-27T14:53:34",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          }
+                    },
+                    {
+                        "id":  "069",
+                        "matchNumStr":  "周日069",
+                        "matchId":  "local20260628069",
+                        "businessDate":  "2026-06-28",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-28 16:00:00",
+                        "matchDate":  "2026-06-28",
+                        "matchTime":  "16:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606281",
+                        "isHot":  false,
+                        "home":  "哥伦比亚",
+                        "homeCode":  "",
+                        "homeAbbr":  "哥伦比亚",
+                        "homeRank":  "[K组]",
+                        "away":  "葡萄牙",
+                        "awayCode":  "",
+                        "awayAbbr":  "葡萄牙",
+                        "awayRank":  "[K组]",
+                        "venue":  "K组赛程基准，本地兜底预测",
                         "prediction":  {
                                            "totalGoals":  "2",
                                            "scores":  [
-                                                          "0:1",
-                                                          "0:2"
+                                                          "1:1",
+                                                          "1:2"
                                                       ],
-                                           "upset":  "1:1",
+                                           "upset":  "2:1",
                                            "confidence":  "medium",
                                            "candidates":  [
                                                               "2",
@@ -357,38 +241,32 @@
                                                               "1"
                                                           ]
                                        },
-                        "result":  {
-                                       "homeGoals":  0,
-                                       "awayGoals":  1,
-                                       "status":  "Finished",
-                                       "source":  "user-image-2026-06-27"
-                                   },
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  "最终比分 0:1。实际总进球 1，预测总进球 2 未中；胜平负方向命中；低比分锁局成立。淘汰赛前要把净胜球需求、第三名比较和强队末轮提速纳入更高权重。",
+                        "result":  null,
+                        "review":  "小组头名战，哥伦比亚可保护，葡萄牙仍要确保前二，主线是2球区间和客队不败。",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "6.90",
-                                                 "draw":  "3.85",
-                                                 "away":  "1.38",
-                                                 "updatedAt":  "2026-06-26 13:18:37"
+                                                 "home":  "2.65",
+                                                 "draw":  "2.95",
+                                                 "away":  "2.35",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "ttg":  {
-                                                 "s0":  "10.00",
-                                                 "s1":  "4.45",
-                                                 "s2":  "3.40",
+                                                 "s0":  "8.80",
+                                                 "s1":  "4.10",
+                                                 "s2":  "3.15",
                                                  "s3":  "3.75",
-                                                 "s4":  "5.80",
-                                                 "s5":  "10.00",
-                                                 "s6":  "17.00",
-                                                 "s7":  "27.00",
-                                                 "updatedAt":  "2026-06-26 12:39:26"
+                                                 "s4":  "5.50",
+                                                 "s5":  "9.00",
+                                                 "s6":  "15.00",
+                                                 "s7":  "23.00",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hhad":  {
-                                                  "home":  "2.57",
-                                                  "draw":  "3.42",
-                                                  "away":  "2.23",
+                                                  "home":  "2.65",
+                                                  "draw":  "2.95",
+                                                  "away":  "2.35",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-26 12:28:28"
+                                                  "updatedAt":  "local-fallback"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -399,10 +277,10 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-26 13:18:48"
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hafu":  {
-                                                  "aa":  "1.92",
+                                                  "aa":  null,
                                                   "ad":  null,
                                                   "ah":  null,
                                                   "da":  null,
@@ -411,88 +289,82 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-26 12:44:46"
+                                                  "updatedAt":  "local-fallback"
                                               }
                                  },
-                        "group":  "H组",
+                        "group":  "K组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-26 13:34:54",
+                                              "status":  "local-schedule",
+                                              "basis":  "schedule-workbook",
+                                              "checkedAt":  "2026-06-27T14:53:34",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           }
                     },
                     {
-                        "id":  "065",
-                        "matchNumStr":  "周五065",
-                        "matchId":  "2040301",
-                        "businessDate":  "2026-06-26",
+                        "id":  "070",
+                        "matchNumStr":  "周日070",
+                        "matchId":  "local20260628070",
+                        "businessDate":  "2026-06-28",
                         "league":  "世界杯",
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-27 11:00:00",
-                        "matchDate":  "2026-06-27",
-                        "matchTime":  "11:00:00",
+                        "kickoff":  "2026-06-28 16:00:00",
+                        "matchDate":  "2026-06-28",
+                        "matchTime":  "16:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
-                        "taxDateNo":  "2606261",
+                        "taxDateNo":  "2606281",
                         "isHot":  false,
-                        "home":  "埃及",
-                        "homeCode":  "EGY",
-                        "homeAbbr":  "埃及",
-                        "homeRank":  "[G组1]",
-                        "away":  "伊朗",
-                        "awayCode":  "IRA",
-                        "awayAbbr":  "伊朗",
-                        "awayRank":  "[G组2]",
-                        "venue":  "比赛将在美国-华盛顿州西雅图举行",
+                        "home":  "刚果民主共和国",
+                        "homeCode":  "",
+                        "homeAbbr":  "刚果民主共和国",
+                        "homeRank":  "[K组]",
+                        "away":  "乌兹别克斯坦",
+                        "awayCode":  "",
+                        "awayAbbr":  "乌兹别克斯坦",
+                        "awayRank":  "[K组]",
+                        "venue":  "K组赛程基准，本地兜底预测",
                         "prediction":  {
                                            "totalGoals":  "2",
                                            "scores":  [
-                                                          "1:1",
-                                                          "1:0"
+                                                          "1:0",
+                                                          "1:1"
                                                       ],
                                            "upset":  "0:1",
-                                           "confidence":  "high",
+                                           "confidence":  "medium",
                                            "candidates":  [
                                                               "2",
-                                                              "1",
-                                                              "3"
+                                                              "3",
+                                                              "1"
                                                           ]
                                        },
-                        "result":  {
-                                       "homeGoals":  1,
-                                       "awayGoals":  1,
-                                       "status":  "Finished",
-                                       "source":  "user-image-2026-06-27"
-                                   },
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  "最终比分 1:1。实际总进球 2，预测总进球 2 命中；胜平负方向偏离；主线节奏正常。淘汰赛前要把净胜球需求、第三名比较和强队末轮提速纳入更高权重。",
+                        "result":  null,
+                        "review":  "刚果民主共和国必须拿三分，乌兹别克斯坦已处劣势，先看小胜和低比分拉扯。",
                         "odds":  {
                                      "had":  {
-                                                 "home":  "2.20",
-                                                 "draw":  "2.50",
-                                                 "away":  "3.64",
-                                                 "updatedAt":  "2026-06-26 13:28:46"
+                                                 "home":  "1.95",
+                                                 "draw":  "3.10",
+                                                 "away":  "3.60",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "ttg":  {
-                                                 "s0":  "6.00",
-                                                 "s1":  "3.60",
-                                                 "s2":  "2.80",
-                                                 "s3":  "4.65",
-                                                 "s4":  "7.50",
-                                                 "s5":  "18.00",
-                                                 "s6":  "34.00",
-                                                 "s7":  "50.00",
-                                                 "updatedAt":  "2026-06-24 10:05:48"
+                                                 "s0":  "8.50",
+                                                 "s1":  "4.00",
+                                                 "s2":  "3.05",
+                                                 "s3":  "3.80",
+                                                 "s4":  "5.80",
+                                                 "s5":  "9.80",
+                                                 "s6":  "16.00",
+                                                 "s7":  "25.00",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hhad":  {
-                                                  "home":  "5.10",
-                                                  "draw":  "3.75",
-                                                  "away":  "1.50",
+                                                  "home":  "1.95",
+                                                  "draw":  "3.10",
+                                                  "away":  "3.60",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-26 13:28:50"
+                                                  "updatedAt":  "local-fallback"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -503,10 +375,10 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-26 13:26:58"
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hafu":  {
-                                                  "aa":  "6.00",
+                                                  "aa":  null,
                                                   "ad":  null,
                                                   "ah":  null,
                                                   "da":  null,
@@ -515,42 +387,42 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-26 13:28:54"
+                                                  "updatedAt":  "local-fallback"
                                               }
                                  },
-                        "group":  "G组",
+                        "group":  "K组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-26 13:34:54",
+                                              "status":  "local-schedule",
+                                              "basis":  "schedule-workbook",
+                                              "checkedAt":  "2026-06-27T14:53:34",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           }
                     },
                     {
-                        "id":  "066",
-                        "matchNumStr":  "周五066",
-                        "matchId":  "2040302",
-                        "businessDate":  "2026-06-26",
+                        "id":  "071",
+                        "matchNumStr":  "周日071",
+                        "matchId":  "local20260628071",
+                        "businessDate":  "2026-06-28",
                         "league":  "世界杯",
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-27 11:00:00",
-                        "matchDate":  "2026-06-27",
-                        "matchTime":  "11:00:00",
+                        "kickoff":  "2026-06-28 19:00:00",
+                        "matchDate":  "2026-06-28",
+                        "matchTime":  "19:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
-                        "taxDateNo":  "2606261",
+                        "taxDateNo":  "2606281",
                         "isHot":  false,
-                        "home":  "新西兰",
-                        "homeCode":  "NZD",
-                        "homeAbbr":  "新西兰",
-                        "homeRank":  "[G组4]",
-                        "away":  "比利时",
-                        "awayCode":  "BEG",
-                        "awayAbbr":  "比利时",
-                        "awayRank":  "[G组3]",
-                        "venue":  "比赛将在加拿大-温哥华举行",
+                        "home":  "巴拿马",
+                        "homeCode":  "",
+                        "homeAbbr":  "巴拿马",
+                        "homeRank":  "[L组]",
+                        "away":  "英格兰",
+                        "awayCode":  "",
+                        "awayAbbr":  "英格兰",
+                        "awayRank":  "[L组]",
+                        "venue":  "L组赛程基准，本地兜底预测",
                         "prediction":  {
                                            "totalGoals":  "3",
                                            "scores":  [
@@ -558,45 +430,39 @@
                                                           "1:2"
                                                       ],
                                            "upset":  "1:1",
-                                           "confidence":  "medium",
+                                           "confidence":  "high",
                                            "candidates":  [
                                                               "3",
-                                                              "4",
-                                                              "2"
+                                                              "3",
+                                                              "1"
                                                           ]
                                        },
-                        "result":  {
-                                       "homeGoals":  1,
-                                       "awayGoals":  5,
-                                       "status":  "Finished",
-                                       "source":  "user-image-2026-06-27"
-                                   },
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  "最终比分 1:5。实际总进球 6，预测总进球 3 未中；胜平负方向命中；高总进球尾部明显打开。淘汰赛前要把净胜球需求、第三名比较和强队末轮提速纳入更高权重。",
+                        "result":  null,
+                        "review":  "英格兰仍要争小组排序，巴拿马需要冒险，强弱差和末轮空间支撑3球主线。",
                         "odds":  {
                                      "had":  {
-                                                 "home":  null,
-                                                 "draw":  null,
-                                                 "away":  null,
-                                                 "updatedAt":  " "
+                                                 "home":  "7.50",
+                                                 "draw":  "4.50",
+                                                 "away":  "1.35",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "ttg":  {
-                                                 "s0":  "29.00",
-                                                 "s1":  "7.50",
-                                                 "s2":  "4.60",
-                                                 "s3":  "3.60",
-                                                 "s4":  "4.10",
-                                                 "s5":  "6.10",
-                                                 "s6":  "10.00",
-                                                 "s7":  "12.00",
-                                                 "updatedAt":  "2026-06-26 10:32:08"
+                                                 "s0":  "16.00",
+                                                 "s1":  "6.00",
+                                                 "s2":  "3.85",
+                                                 "s3":  "3.30",
+                                                 "s4":  "4.50",
+                                                 "s5":  "7.20",
+                                                 "s6":  "12.00",
+                                                 "s7":  "19.00",
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hhad":  {
-                                                  "home":  "2.58",
-                                                  "draw":  "3.95",
-                                                  "away":  "2.05",
+                                                  "home":  "7.50",
+                                                  "draw":  "4.50",
+                                                  "away":  "1.35",
                                                   "handicap":  null,
-                                                  "updatedAt":  "2026-06-26 10:30:57"
+                                                  "updatedAt":  "local-fallback"
                                               },
                                      "crs":  {
                                                  "0000":  null,
@@ -607,10 +473,10 @@
                                                  "0301":  null,
                                                  "0101":  null,
                                                  "0001":  null,
-                                                 "updatedAt":  "2026-06-26 12:45:57"
+                                                 "updatedAt":  "local-fallback"
                                              },
                                      "hafu":  {
-                                                  "aa":  "1.32",
+                                                  "aa":  null,
                                                   "ad":  null,
                                                   "ah":  null,
                                                   "da":  null,
@@ -619,14 +485,112 @@
                                                   "ha":  null,
                                                   "hd":  null,
                                                   "hh":  null,
-                                                  "updatedAt":  "2026-06-26 10:31:49"
+                                                  "updatedAt":  "local-fallback"
                                               }
                                  },
-                        "group":  "G组",
+                        "group":  "L组",
                         "scheduleCheck":  {
-                                              "status":  "group-inferred",
-                                              "basis":  "rank-tag",
-                                              "checkedAt":  "2026-06-26 13:34:54",
+                                              "status":  "local-schedule",
+                                              "basis":  "schedule-workbook",
+                                              "checkedAt":  "2026-06-27T14:53:34",
+                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                          }
+                    },
+                    {
+                        "id":  "072",
+                        "matchNumStr":  "周日072",
+                        "matchId":  "local20260628072",
+                        "businessDate":  "2026-06-28",
+                        "league":  "世界杯",
+                        "leagueCode":  "WCC",
+                        "leagueId":  72,
+                        "groupName":  "",
+                        "kickoff":  "2026-06-28 19:00:00",
+                        "matchDate":  "2026-06-28",
+                        "matchTime":  "19:00:00",
+                        "matchStatus":  "Selling",
+                        "sellStatus":  1,
+                        "taxDateNo":  "2606281",
+                        "isHot":  false,
+                        "home":  "克罗地亚",
+                        "homeCode":  "",
+                        "homeAbbr":  "克罗地亚",
+                        "homeRank":  "[L组]",
+                        "away":  "加纳",
+                        "awayCode":  "",
+                        "awayAbbr":  "加纳",
+                        "awayRank":  "[L组]",
+                        "venue":  "L组赛程基准，本地兜底预测",
+                        "prediction":  {
+                                           "totalGoals":  "2",
+                                           "scores":  [
+                                                          "1:1",
+                                                          "2:1"
+                                                      ],
+                                           "upset":  "0:1",
+                                           "confidence":  "medium",
+                                           "candidates":  [
+                                                              "2",
+                                                              "3",
+                                                              "1"
+                                                          ]
+                                       },
+                        "result":  null,
+                        "review":  "克罗地亚必须赢更主动，加纳可接受低风险局，主线是2球并防1:1。",
+                        "odds":  {
+                                     "had":  {
+                                                 "home":  "2.20",
+                                                 "draw":  "3.00",
+                                                 "away":  "2.90",
+                                                 "updatedAt":  "local-fallback"
+                                             },
+                                     "ttg":  {
+                                                 "s0":  "8.70",
+                                                 "s1":  "4.20",
+                                                 "s2":  "3.10",
+                                                 "s3":  "3.70",
+                                                 "s4":  "5.70",
+                                                 "s5":  "9.20",
+                                                 "s6":  "15.00",
+                                                 "s7":  "24.00",
+                                                 "updatedAt":  "local-fallback"
+                                             },
+                                     "hhad":  {
+                                                  "home":  "2.20",
+                                                  "draw":  "3.00",
+                                                  "away":  "2.90",
+                                                  "handicap":  null,
+                                                  "updatedAt":  "local-fallback"
+                                              },
+                                     "crs":  {
+                                                 "0000":  null,
+                                                 "0100":  null,
+                                                 "0200":  null,
+                                                 "0201":  null,
+                                                 "0300":  null,
+                                                 "0301":  null,
+                                                 "0101":  null,
+                                                 "0001":  null,
+                                                 "updatedAt":  "local-fallback"
+                                             },
+                                     "hafu":  {
+                                                  "aa":  null,
+                                                  "ad":  null,
+                                                  "ah":  null,
+                                                  "da":  null,
+                                                  "dd":  null,
+                                                  "dh":  null,
+                                                  "ha":  null,
+                                                  "hd":  null,
+                                                  "hh":  null,
+                                                  "updatedAt":  "local-fallback"
+                                              }
+                                 },
+                        "group":  "L组",
+                        "scheduleCheck":  {
+                                              "status":  "local-schedule",
+                                              "basis":  "schedule-workbook",
+                                              "checkedAt":  "2026-06-27T14:53:34",
                                               "scheduleFile":  "2026年世界杯赛程表.xlsx"
                                           }
                     }

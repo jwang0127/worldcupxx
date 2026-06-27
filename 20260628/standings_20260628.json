@@ -467,7 +467,7 @@
                      {
                          "team":  "比利时",
                          "teamKey":  "BEL",
-                         "seed":  3,
+                         "seed":  99,
                          "played":  3,
                          "wins":  1,
                          "draws":  2,
@@ -485,7 +485,7 @@
                      {
                          "team":  "埃及",
                          "teamKey":  "EGY",
-                         "seed":  1,
+                         "seed":  99,
                          "played":  3,
                          "wins":  1,
                          "draws":  2,
@@ -503,7 +503,7 @@
                      {
                          "team":  "伊朗",
                          "teamKey":  "IRN",
-                         "seed":  2,
+                         "seed":  99,
                          "played":  3,
                          "wins":  0,
                          "draws":  3,
@@ -521,7 +521,7 @@
                      {
                          "team":  "新西兰",
                          "teamKey":  "NZL",
-                         "seed":  4,
+                         "seed":  99,
                          "played":  3,
                          "wins":  0,
                          "draws":  1,
@@ -544,7 +544,7 @@
                      {
                          "team":  "西班牙",
                          "teamKey":  "ESP",
-                         "seed":  1,
+                         "seed":  99,
                          "played":  3,
                          "wins":  2,
                          "draws":  1,
@@ -562,7 +562,7 @@
                      {
                          "team":  "佛得角",
                          "teamKey":  "CPV",
-                         "seed":  3,
+                         "seed":  99,
                          "played":  3,
                          "wins":  0,
                          "draws":  3,
@@ -580,7 +580,7 @@
                      {
                          "team":  "乌拉圭",
                          "teamKey":  "URU",
-                         "seed":  2,
+                         "seed":  99,
                          "played":  3,
                          "wins":  0,
                          "draws":  2,
@@ -598,7 +598,7 @@
                      {
                          "team":  "沙特阿拉伯",
                          "teamKey":  "KSA",
-                         "seed":  4,
+                         "seed":  99,
                          "played":  3,
                          "wins":  0,
                          "draws":  2,
@@ -621,7 +621,7 @@
                      {
                          "team":  "法国",
                          "teamKey":  "FRA",
-                         "seed":  1,
+                         "seed":  99,
                          "played":  3,
                          "wins":  3,
                          "draws":  0,
@@ -639,7 +639,7 @@
                      {
                          "team":  "挪威",
                          "teamKey":  "NOR",
-                         "seed":  2,
+                         "seed":  99,
                          "played":  3,
                          "wins":  2,
                          "draws":  0,
@@ -657,7 +657,7 @@
                      {
                          "team":  "塞内加尔",
                          "teamKey":  "SEN",
-                         "seed":  3,
+                         "seed":  99,
                          "played":  3,
                          "wins":  1,
                          "draws":  0,
@@ -675,7 +675,7 @@
                      {
                          "team":  "伊拉克",
                          "teamKey":  "IRQ",
-                         "seed":  4,
+                         "seed":  99,
                          "played":  3,
                          "wins":  0,
                          "draws":  0,
