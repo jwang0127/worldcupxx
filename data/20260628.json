@@ -2,8 +2,8 @@
     "date":  "20260628",
     "dateText":  "2026-06-28",
     "source":  "local-fallback-after-sporttery-unavailable",
-    "fetchedAt":  "2026-06-27T14:53:34",
-    "lastUpdateTime":  "2026-06-28 本地兜底预测",
+    "fetchedAt":  "2026-06-27T15:28:05",
+    "lastUpdateTime":  "2026-06-28 北京时间赛程按用户截图校正",
     "apiPoolCode":  "local",
     "matches":  [
                     {
@@ -15,9 +15,9 @@
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-28 00:00:00",
+                        "kickoff":  "2026-06-28 10:00:00",
                         "matchDate":  "2026-06-28",
-                        "matchTime":  "00:00:00",
+                        "matchTime":  "10:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
                         "taxDateNo":  "2606281",
@@ -98,10 +98,10 @@
                                  },
                         "group":  "J组",
                         "scheduleCheck":  {
-                                              "status":  "local-schedule",
-                                              "basis":  "schedule-workbook",
-                                              "checkedAt":  "2026-06-27T14:53:34",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                              "status":  "user-image-beijing-time",
+                                              "basis":  "2026-06-28 screenshot",
+                                              "checkedAt":  "2026-06-27T15:28:05",
+                                              "scheduleFile":  "user-provided-image"
                                           }
                     },
                     {
@@ -113,9 +113,9 @@
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-28 00:00:00",
+                        "kickoff":  "2026-06-28 10:00:00",
                         "matchDate":  "2026-06-28",
-                        "matchTime":  "00:00:00",
+                        "matchTime":  "10:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
                         "taxDateNo":  "2606281",
@@ -196,10 +196,10 @@
                                  },
                         "group":  "J组",
                         "scheduleCheck":  {
-                                              "status":  "local-schedule",
-                                              "basis":  "schedule-workbook",
-                                              "checkedAt":  "2026-06-27T14:53:34",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                              "status":  "user-image-beijing-time",
+                                              "basis":  "2026-06-28 screenshot",
+                                              "checkedAt":  "2026-06-27T15:28:05",
+                                              "scheduleFile":  "user-provided-image"
                                           }
                     },
                     {
@@ -211,9 +211,9 @@
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-28 16:00:00",
+                        "kickoff":  "2026-06-28 07:30:00",
                         "matchDate":  "2026-06-28",
-                        "matchTime":  "16:00:00",
+                        "matchTime":  "07:30:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
                         "taxDateNo":  "2606281",
@@ -294,10 +294,10 @@
                                  },
                         "group":  "K组",
                         "scheduleCheck":  {
-                                              "status":  "local-schedule",
-                                              "basis":  "schedule-workbook",
-                                              "checkedAt":  "2026-06-27T14:53:34",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                              "status":  "user-image-beijing-time",
+                                              "basis":  "2026-06-28 screenshot",
+                                              "checkedAt":  "2026-06-27T15:28:05",
+                                              "scheduleFile":  "user-provided-image"
                                           }
                     },
                     {
@@ -309,9 +309,9 @@
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-28 16:00:00",
+                        "kickoff":  "2026-06-28 07:30:00",
                         "matchDate":  "2026-06-28",
-                        "matchTime":  "16:00:00",
+                        "matchTime":  "07:30:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
                         "taxDateNo":  "2606281",
@@ -392,10 +392,10 @@
                                  },
                         "group":  "K组",
                         "scheduleCheck":  {
-                                              "status":  "local-schedule",
-                                              "basis":  "schedule-workbook",
-                                              "checkedAt":  "2026-06-27T14:53:34",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                              "status":  "user-image-beijing-time",
+                                              "basis":  "2026-06-28 screenshot",
+                                              "checkedAt":  "2026-06-27T15:28:05",
+                                              "scheduleFile":  "user-provided-image"
                                           }
                     },
                     {
@@ -407,9 +407,9 @@
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-28 19:00:00",
+                        "kickoff":  "2026-06-28 05:00:00",
                         "matchDate":  "2026-06-28",
-                        "matchTime":  "19:00:00",
+                        "matchTime":  "05:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
                         "taxDateNo":  "2606281",
@@ -490,10 +490,10 @@
                                  },
                         "group":  "L组",
                         "scheduleCheck":  {
-                                              "status":  "local-schedule",
-                                              "basis":  "schedule-workbook",
-                                              "checkedAt":  "2026-06-27T14:53:34",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                              "status":  "user-image-beijing-time",
+                                              "basis":  "2026-06-28 screenshot",
+                                              "checkedAt":  "2026-06-27T15:28:05",
+                                              "scheduleFile":  "user-provided-image"
                                           }
                     },
                     {
@@ -505,9 +505,9 @@
                         "leagueCode":  "WCC",
                         "leagueId":  72,
                         "groupName":  "",
-                        "kickoff":  "2026-06-28 19:00:00",
+                        "kickoff":  "2026-06-28 05:00:00",
                         "matchDate":  "2026-06-28",
-                        "matchTime":  "19:00:00",
+                        "matchTime":  "05:00:00",
                         "matchStatus":  "Selling",
                         "sellStatus":  1,
                         "taxDateNo":  "2606281",
@@ -588,10 +588,10 @@
                                  },
                         "group":  "L组",
                         "scheduleCheck":  {
-                                              "status":  "local-schedule",
-                                              "basis":  "schedule-workbook",
-                                              "checkedAt":  "2026-06-27T14:53:34",
-                                              "scheduleFile":  "2026年世界杯赛程表.xlsx"
+                                              "status":  "user-image-beijing-time",
+                                              "basis":  "2026-06-28 screenshot",
+                                              "checkedAt":  "2026-06-27T15:28:05",
+                                              "scheduleFile":  "user-provided-image"
                                           }
                     }
                 ],

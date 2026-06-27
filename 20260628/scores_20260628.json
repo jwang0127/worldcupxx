@@ -1,206 +1,10 @@
 ﻿[
     {
-        "id":  "063",
-        "match":  "阿尔及利亚 vs 奥地利",
-        "lean":  "away",
-        "stars":  "★★★☆☆",
-        "composite":  5.7,
-        "dimensions":  {
-                           "basic":  4.47,
-                           "lineup":  4.63,
-                           "elo":  5.19,
-                           "odds":  3.95,
-                           "trend":  4.7,
-                           "h2h":  5,
-                           "motivation":  5.3,
-                           "pressure":  5.12,
-                           "weather":  5.9,
-                           "historyStyle":  6.57,
-                           "injuryRisk":  5,
-                           "rotationRisk":  6.2,
-                           "dataCompleteness":  7.45
-                       },
-        "probabilities":  {
-                              "home":  0.32969837587006962,
-                              "draw":  0.30696055684454759,
-                              "away":  0.36334106728538285
-                          },
-        "recent":  {
-                       "home":  {
-                                    "played":  2,
-                                    "wins":  1,
-                                    "draws":  0,
-                                    "losses":  1,
-                                    "gf":  2,
-                                    "ga":  4,
-                                    "ppg":  1.5,
-                                    "score":  4.7299999999999995
-                                },
-                       "away":  {
-                                    "played":  2,
-                                    "wins":  1,
-                                    "draws":  0,
-                                    "losses":  1,
-                                    "gf":  3,
-                                    "ga":  3,
-                                    "ppg":  1.5,
-                                    "score":  5.63
-                                }
-                   }
-    },
-    {
-        "id":  "064",
-        "match":  "约旦 vs 阿根廷",
-        "lean":  "away",
-        "stars":  "★★★★☆",
-        "composite":  8.04,
-        "dimensions":  {
-                           "basic":  9.4,
-                           "lineup":  7.94,
-                           "elo":  9.6,
-                           "odds":  9.7,
-                           "trend":  7.1,
-                           "h2h":  5,
-                           "motivation":  5.3,
-                           "pressure":  5.75,
-                           "weather":  5.9,
-                           "historyStyle":  6.57,
-                           "injuryRisk":  5,
-                           "rotationRisk":  2.2,
-                           "dataCompleteness":  7.45
-                       },
-        "probabilities":  {
-                              "home":  0.095238095238095219,
-                              "draw":  0.18095238095238095,
-                              "away":  0.72380952380952379
-                          },
-        "recent":  {
-                       "home":  {
-                                    "played":  2,
-                                    "wins":  0,
-                                    "draws":  0,
-                                    "losses":  2,
-                                    "gf":  2,
-                                    "ga":  5,
-                                    "ppg":  0,
-                                    "score":  2
-                                },
-                       "away":  {
-                                    "played":  2,
-                                    "wins":  2,
-                                    "draws":  0,
-                                    "losses":  0,
-                                    "gf":  5,
-                                    "ga":  0,
-                                    "ppg":  3,
-                                    "score":  9.5
-                                }
-                   }
-    },
-    {
-        "id":  "069",
-        "match":  "哥伦比亚 vs 葡萄牙",
-        "lean":  "away",
-        "stars":  "★★★☆☆",
-        "composite":  5.49,
-        "dimensions":  {
-                           "basic":  3.72,
-                           "lineup":  4.73,
-                           "elo":  5.32,
-                           "odds":  4.05,
-                           "trend":  4.7,
-                           "h2h":  5,
-                           "motivation":  5.3,
-                           "pressure":  5.18,
-                           "weather":  4.8,
-                           "historyStyle":  6.27,
-                           "injuryRisk":  5,
-                           "rotationRisk":  2.8,
-                           "dataCompleteness":  7.45
-                       },
-        "probabilities":  {
-                              "home":  0.33047312596829936,
-                              "draw":  0.29686568942915026,
-                              "away":  0.37266118460255032
-                          },
-        "recent":  {
-                       "home":  {
-                                    "played":  2,
-                                    "wins":  2,
-                                    "draws":  0,
-                                    "losses":  0,
-                                    "gf":  4,
-                                    "ga":  1,
-                                    "ppg":  3,
-                                    "score":  9.5
-                                },
-                       "away":  {
-                                    "played":  2,
-                                    "wins":  1,
-                                    "draws":  1,
-                                    "losses":  0,
-                                    "gf":  6,
-                                    "ga":  1,
-                                    "ppg":  2,
-                                    "score":  8.93
-                                }
-                   }
-    },
-    {
-        "id":  "070",
-        "match":  "刚果民主共和国 vs 乌兹别克斯坦",
-        "lean":  "home",
-        "stars":  "★★★☆☆",
-        "composite":  6.77,
-        "dimensions":  {
-                           "basic":  5.61,
-                           "lineup":  5.61,
-                           "elo":  6.58,
-                           "odds":  5.85,
-                           "trend":  7.1,
-                           "h2h":  5,
-                           "motivation":  6.2,
-                           "pressure":  6.88,
-                           "weather":  4.8,
-                           "historyStyle":  6.27,
-                           "injuryRisk":  5,
-                           "rotationRisk":  6.2,
-                           "dataCompleteness":  7.45
-                       },
-        "probabilities":  {
-                              "home":  0.46068111455108363,
-                              "draw":  0.28978328173374612,
-                              "away":  0.24953560371517028
-                          },
-        "recent":  {
-                       "home":  {
-                                    "played":  2,
-                                    "wins":  0,
-                                    "draws":  1,
-                                    "losses":  1,
-                                    "gf":  1,
-                                    "ga":  2,
-                                    "ppg":  0.5,
-                                    "score":  3.08
-                                },
-                       "away":  {
-                                    "played":  2,
-                                    "wins":  0,
-                                    "draws":  0,
-                                    "losses":  2,
-                                    "gf":  1,
-                                    "ga":  8,
-                                    "ppg":  0,
-                                    "score":  2
-                                }
-                   }
-    },
-    {
         "id":  "071",
         "match":  "巴拿马 vs 英格兰",
         "lean":  "away",
         "stars":  "★★★★☆",
-        "composite":  7.86,
+        "composite":  7.82,
         "dimensions":  {
                            "basic":  9.4,
                            "lineup":  7.46,
@@ -210,7 +14,7 @@
                            "h2h":  5,
                            "motivation":  5.3,
                            "pressure":  5.75,
-                           "weather":  6.8,
+                           "weather":  5.9,
                            "historyStyle":  4.97,
                            "injuryRisk":  5,
                            "rotationRisk":  2.2,
@@ -249,7 +53,7 @@
         "match":  "克罗地亚 vs 加纳",
         "lean":  "home",
         "stars":  "★★★☆☆",
-        "composite":  5.57,
+        "composite":  5.53,
         "dimensions":  {
                            "basic":  3.17,
                            "lineup":  5.01,
@@ -259,7 +63,7 @@
                            "h2h":  5,
                            "motivation":  5.3,
                            "pressure":  5.22,
-                           "weather":  6.8,
+                           "weather":  5.9,
                            "historyStyle":  4.97,
                            "injuryRisk":  5,
                            "rotationRisk":  2.8,
@@ -290,6 +94,202 @@
                                     "ga":  0,
                                     "ppg":  2,
                                     "score":  7.13
+                                }
+                   }
+    },
+    {
+        "id":  "069",
+        "match":  "哥伦比亚 vs 葡萄牙",
+        "lean":  "away",
+        "stars":  "★★★☆☆",
+        "composite":  5.55,
+        "dimensions":  {
+                           "basic":  3.72,
+                           "lineup":  4.73,
+                           "elo":  5.32,
+                           "odds":  4.05,
+                           "trend":  4.7,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.18,
+                           "weather":  6.4,
+                           "historyStyle":  6.27,
+                           "injuryRisk":  5,
+                           "rotationRisk":  2.8,
+                           "dataCompleteness":  7.45
+                       },
+        "probabilities":  {
+                              "home":  0.33047312596829936,
+                              "draw":  0.29686568942915026,
+                              "away":  0.37266118460255032
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  2,
+                                    "wins":  2,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  4,
+                                    "ga":  1,
+                                    "ppg":  3,
+                                    "score":  9.5
+                                },
+                       "away":  {
+                                    "played":  2,
+                                    "wins":  1,
+                                    "draws":  1,
+                                    "losses":  0,
+                                    "gf":  6,
+                                    "ga":  1,
+                                    "ppg":  2,
+                                    "score":  8.93
+                                }
+                   }
+    },
+    {
+        "id":  "070",
+        "match":  "刚果民主共和国 vs 乌兹别克斯坦",
+        "lean":  "home",
+        "stars":  "★★★☆☆",
+        "composite":  6.84,
+        "dimensions":  {
+                           "basic":  5.61,
+                           "lineup":  5.61,
+                           "elo":  6.58,
+                           "odds":  5.85,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  6.2,
+                           "pressure":  6.88,
+                           "weather":  6.4,
+                           "historyStyle":  6.27,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2,
+                           "dataCompleteness":  7.45
+                       },
+        "probabilities":  {
+                              "home":  0.46068111455108363,
+                              "draw":  0.28978328173374612,
+                              "away":  0.24953560371517028
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  2,
+                                    "wins":  0,
+                                    "draws":  1,
+                                    "losses":  1,
+                                    "gf":  1,
+                                    "ga":  2,
+                                    "ppg":  0.5,
+                                    "score":  3.08
+                                },
+                       "away":  {
+                                    "played":  2,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  2,
+                                    "gf":  1,
+                                    "ga":  8,
+                                    "ppg":  0,
+                                    "score":  2
+                                }
+                   }
+    },
+    {
+        "id":  "063",
+        "match":  "阿尔及利亚 vs 奥地利",
+        "lean":  "away",
+        "stars":  "★★★☆☆",
+        "composite":  5.72,
+        "dimensions":  {
+                           "basic":  4.47,
+                           "lineup":  4.63,
+                           "elo":  5.19,
+                           "odds":  3.95,
+                           "trend":  4.7,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.12,
+                           "weather":  6.4,
+                           "historyStyle":  6.57,
+                           "injuryRisk":  5,
+                           "rotationRisk":  6.2,
+                           "dataCompleteness":  7.45
+                       },
+        "probabilities":  {
+                              "home":  0.32969837587006962,
+                              "draw":  0.30696055684454759,
+                              "away":  0.36334106728538285
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  2,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  2,
+                                    "ga":  4,
+                                    "ppg":  1.5,
+                                    "score":  4.7299999999999995
+                                },
+                       "away":  {
+                                    "played":  2,
+                                    "wins":  1,
+                                    "draws":  0,
+                                    "losses":  1,
+                                    "gf":  3,
+                                    "ga":  3,
+                                    "ppg":  1.5,
+                                    "score":  5.63
+                                }
+                   }
+    },
+    {
+        "id":  "064",
+        "match":  "约旦 vs 阿根廷",
+        "lean":  "away",
+        "stars":  "★★★★☆",
+        "composite":  8.06,
+        "dimensions":  {
+                           "basic":  9.4,
+                           "lineup":  7.94,
+                           "elo":  9.6,
+                           "odds":  9.7,
+                           "trend":  7.1,
+                           "h2h":  5,
+                           "motivation":  5.3,
+                           "pressure":  5.75,
+                           "weather":  6.4,
+                           "historyStyle":  6.57,
+                           "injuryRisk":  5,
+                           "rotationRisk":  2.2,
+                           "dataCompleteness":  7.45
+                       },
+        "probabilities":  {
+                              "home":  0.095238095238095219,
+                              "draw":  0.18095238095238095,
+                              "away":  0.72380952380952379
+                          },
+        "recent":  {
+                       "home":  {
+                                    "played":  2,
+                                    "wins":  0,
+                                    "draws":  0,
+                                    "losses":  2,
+                                    "gf":  2,
+                                    "ga":  5,
+                                    "ppg":  0,
+                                    "score":  2
+                                },
+                       "away":  {
+                                    "played":  2,
+                                    "wins":  2,
+                                    "draws":  0,
+                                    "losses":  0,
+                                    "gf":  5,
+                                    "ga":  0,
+                                    "ppg":  3,
+                                    "score":  9.5
                                 }
                    }
     }

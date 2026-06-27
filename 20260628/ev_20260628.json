@@ -1,59 +1,7 @@
 ﻿[
     {
-        "id":  "063",
-        "match":  "阿尔及利亚 vs 奥地利",
-        "lambdaHome":  0.92,
-        "lambdaAway":  1.07,
-        "totalLambda":  1.99,
-        "halfFull":  {
-                         "primary":  "平/负",
-                         "secondary":  "平/负",
-                         "totalBand":  "1-2球",
-                         "firstHalfLean":  "平",
-                         "fullTimeLean":  "负",
-                         "note":  "上半场更像试探局，后程决胜概率更高。"
-                     },
-        "rows":  [
-                     {
-                         "score":  "1:1",
-                         "odds":  7.6,
-                         "probability":  0.1346,
-                         "ev":  0.02,
-                         "mark":  "✅ 正EV推荐"
-                     },
-                     {
-                         "score":  "0:1",
-                         "odds":  6.8,
-                         "probability":  0.1457,
-                         "ev":  -0.01,
-                         "mark":  "⚪ 负EV观望"
-                     },
-                     {
-                         "score":  "2:1",
-                         "odds":  8.4,
-                         "probability":  0.0622,
-                         "ev":  -0.48,
-                         "mark":  "🔮 冷门低EV"
-                     },
-                     {
-                         "score":  "0:0",
-                         "odds":  6,
-                         "probability":  0.1364,
-                         "ev":  -0.18,
-                         "mark":  "⚪ 负EV观望"
-                     }
-                 ],
-        "best":  {
-                     "score":  "1:1",
-                     "odds":  7.6,
-                     "probability":  0.1346,
-                     "ev":  0.02,
-                     "mark":  "✅ 正EV推荐"
-                 }
-    },
-    {
-        "id":  "064",
-        "match":  "约旦 vs 阿根廷",
+        "id":  "071",
+        "match":  "巴拿马 vs 英格兰",
         "lambdaHome":  1.07,
         "lambdaAway":  2.76,
         "totalLambda":  3.83,
@@ -67,17 +15,17 @@
                      },
         "rows":  [
                      {
-                         "score":  "0:3",
-                         "odds":  8.4,
-                         "probability":  0.0758,
-                         "ev":  -0.36,
+                         "score":  "0:2",
+                         "odds":  7.6,
+                         "probability":  0.0825,
+                         "ev":  -0.37,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
-                         "score":  "1:3",
-                         "odds":  9.2,
-                         "probability":  0.0814,
-                         "ev":  -0.25,
+                         "score":  "1:2",
+                         "odds":  8.4,
+                         "probability":  0.0885,
+                         "ev":  -0.26,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
@@ -103,19 +51,71 @@
                      }
                  ],
         "best":  {
-                     "score":  "1:3",
-                     "odds":  9.2,
-                     "probability":  0.0814,
-                     "ev":  -0.25,
+                     "score":  "1:2",
+                     "odds":  8.4,
+                     "probability":  0.0885,
+                     "ev":  -0.26,
                      "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "072",
+        "match":  "克罗地亚 vs 加纳",
+        "lambdaHome":  1.07,
+        "lambdaAway":  0.92,
+        "totalLambda":  1.99,
+        "halfFull":  {
+                         "primary":  "平/胜",
+                         "secondary":  "平/胜",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "平",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场更像试探局，后程决胜概率更高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1346,
+                         "ev":  0.02,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0719,
+                         "ev":  -0.4,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.1261,
+                         "ev":  -0.14,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.1364,
+                         "ev":  -0.18,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:1",
+                     "odds":  7.6,
+                     "probability":  0.1346,
+                     "ev":  0.02,
+                     "mark":  "✅ 正EV推荐"
                  }
     },
     {
         "id":  "069",
         "match":  "哥伦比亚 vs 葡萄牙",
-        "lambdaHome":  0.88,
-        "lambdaAway":  1.02,
-        "totalLambda":  1.9,
+        "lambdaHome":  0.94,
+        "lambdaAway":  1.09,
+        "totalLambda":  2.03,
         "halfFull":  {
                          "primary":  "平/负",
                          "secondary":  "平/负",
@@ -128,53 +128,53 @@
                      {
                          "score":  "1:1",
                          "odds":  7.6,
-                         "probability":  0.1343,
+                         "probability":  0.1346,
                          "ev":  0.02,
                          "mark":  "✅ 正EV推荐"
                      },
                      {
                          "score":  "1:2",
                          "odds":  8.4,
-                         "probability":  0.0685,
-                         "ev":  -0.42,
+                         "probability":  0.0733,
+                         "ev":  -0.38,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "2:1",
                          "odds":  8.4,
-                         "probability":  0.0593,
-                         "ev":  -0.5,
+                         "probability":  0.0635,
+                         "ev":  -0.47,
                          "mark":  "🔮 冷门低EV"
                      },
                      {
                          "score":  "0:0",
                          "odds":  6,
-                         "probability":  0.149,
-                         "ev":  -0.11,
+                         "probability":  0.1311,
+                         "ev":  -0.21,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "0:1",
                          "odds":  6.8,
-                         "probability":  0.152,
-                         "ev":  0.03,
-                         "mark":  "✅ 正EV推荐"
+                         "probability":  0.1428,
+                         "ev":  -0.03,
+                         "mark":  "⚪ 负EV观望"
                      }
                  ],
         "best":  {
-                     "score":  "0:1",
-                     "odds":  6.8,
-                     "probability":  0.152,
-                     "ev":  0.03,
+                     "score":  "1:1",
+                     "odds":  7.6,
+                     "probability":  0.1346,
+                     "ev":  0.02,
                      "mark":  "✅ 正EV推荐"
                  }
     },
     {
         "id":  "070",
         "match":  "刚果民主共和国 vs 乌兹别克斯坦",
-        "lambdaHome":  1.35,
-        "lambdaAway":  0.73,
-        "totalLambda":  2.08,
+        "lambdaHome":  1.43,
+        "lambdaAway":  0.78,
+        "totalLambda":  2.21,
         "halfFull":  {
                          "primary":  "胜/胜",
                          "secondary":  "胜/胜",
@@ -187,46 +187,98 @@
                      {
                          "score":  "1:0",
                          "odds":  6.8,
-                         "probability":  0.1682,
-                         "ev":  0.14,
+                         "probability":  0.1571,
+                         "ev":  0.07,
                          "mark":  "✅ 正EV推荐"
                      },
                      {
                          "score":  "1:1",
                          "odds":  7.6,
-                         "probability":  0.1232,
-                         "ev":  -0.06,
+                         "probability":  0.1221,
+                         "ev":  -0.07,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "0:1",
                          "odds":  6.8,
-                         "probability":  0.0911,
-                         "ev":  -0.38,
+                         "probability":  0.0851,
+                         "ev":  -0.42,
                          "mark":  "🔮 冷门低EV"
                      },
                      {
                          "score":  "0:0",
                          "odds":  6,
-                         "probability":  0.1244,
-                         "ev":  -0.25,
+                         "probability":  0.1095,
+                         "ev":  -0.34,
                          "mark":  "⚪ 负EV观望"
                      }
                  ],
         "best":  {
                      "score":  "1:0",
                      "odds":  6.8,
-                     "probability":  0.1682,
-                     "ev":  0.14,
+                     "probability":  0.1571,
+                     "ev":  0.07,
                      "mark":  "✅ 正EV推荐"
                  }
     },
     {
-        "id":  "071",
-        "match":  "巴拿马 vs 英格兰",
-        "lambdaHome":  1.09,
-        "lambdaAway":  2.81,
-        "totalLambda":  3.9,
+        "id":  "063",
+        "match":  "阿尔及利亚 vs 奥地利",
+        "lambdaHome":  0.94,
+        "lambdaAway":  1.09,
+        "totalLambda":  2.03,
+        "halfFull":  {
+                         "primary":  "平/负",
+                         "secondary":  "平/负",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "平",
+                         "fullTimeLean":  "负",
+                         "note":  "上半场更像试探局，后程决胜概率更高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1346,
+                         "ev":  0.02,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.1428,
+                         "ev":  -0.03,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0635,
+                         "ev":  -0.47,
+                         "mark":  "🔮 冷门低EV"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.1311,
+                         "ev":  -0.21,
+                         "mark":  "⚪ 负EV观望"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:1",
+                     "odds":  7.6,
+                     "probability":  0.1346,
+                     "ev":  0.02,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    },
+    {
+        "id":  "064",
+        "match":  "约旦 vs 阿根廷",
+        "lambdaHome":  1.08,
+        "lambdaAway":  2.79,
+        "totalLambda":  3.87,
         "halfFull":  {
                          "primary":  "负/负",
                          "secondary":  "负/负",
@@ -237,99 +289,47 @@
                      },
         "rows":  [
                      {
-                         "score":  "0:2",
-                         "odds":  7.6,
-                         "probability":  0.0796,
-                         "ev":  -0.39,
+                         "score":  "0:3",
+                         "odds":  8.4,
+                         "probability":  0.0752,
+                         "ev":  -0.37,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
-                         "score":  "1:2",
-                         "odds":  8.4,
-                         "probability":  0.0871,
-                         "ev":  -0.27,
+                         "score":  "1:3",
+                         "odds":  9.2,
+                         "probability":  0.0815,
+                         "ev":  -0.25,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "1:1",
                          "odds":  7.6,
-                         "probability":  0.0619,
-                         "ev":  -0.53,
+                         "probability":  0.0629,
+                         "ev":  -0.52,
                          "mark":  "🔮 冷门低EV"
                      },
                      {
                          "score":  "0:0",
                          "odds":  6,
-                         "probability":  0.0202,
+                         "probability":  0.0208,
                          "ev":  -0.88,
                          "mark":  "⚪ 负EV观望"
                      },
                      {
                          "score":  "0:1",
                          "odds":  6.8,
-                         "probability":  0.0567,
+                         "probability":  0.058,
                          "ev":  -0.61,
                          "mark":  "⚪ 负EV观望"
                      }
                  ],
         "best":  {
-                     "score":  "1:2",
-                     "odds":  8.4,
-                     "probability":  0.0871,
-                     "ev":  -0.27,
+                     "score":  "1:3",
+                     "odds":  9.2,
+                     "probability":  0.0815,
+                     "ev":  -0.25,
                      "mark":  "⚪ 负EV观望"
-                 }
-    },
-    {
-        "id":  "072",
-        "match":  "克罗地亚 vs 加纳",
-        "lambdaHome":  1.11,
-        "lambdaAway":  0.96,
-        "totalLambda":  2.06,
-        "halfFull":  {
-                         "primary":  "平/胜",
-                         "secondary":  "平/胜",
-                         "totalBand":  "1-2球",
-                         "firstHalfLean":  "平",
-                         "fullTimeLean":  "胜",
-                         "note":  "比赛大概率分段展开，上半场试探、下半场提速。"
-                     },
-        "rows":  [
-                     {
-                         "score":  "1:1",
-                         "odds":  7.6,
-                         "probability":  0.1345,
-                         "ev":  0.02,
-                         "mark":  "✅ 正EV推荐"
-                     },
-                     {
-                         "score":  "2:1",
-                         "odds":  8.4,
-                         "probability":  0.0744,
-                         "ev":  -0.38,
-                         "mark":  "⚪ 负EV观望"
-                     },
-                     {
-                         "score":  "0:1",
-                         "odds":  6.8,
-                         "probability":  0.1216,
-                         "ev":  -0.17,
-                         "mark":  "🔮 冷门低EV"
-                     },
-                     {
-                         "score":  "0:0",
-                         "odds":  6,
-                         "probability":  0.1269,
-                         "ev":  -0.24,
-                         "mark":  "⚪ 负EV观望"
-                     }
-                 ],
-        "best":  {
-                     "score":  "1:1",
-                     "odds":  7.6,
-                     "probability":  0.1345,
-                     "ev":  0.02,
-                     "mark":  "✅ 正EV推荐"
                  }
     }
 ]

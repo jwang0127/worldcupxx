@@ -1732,15 +1732,33 @@ function RootStandingsSectionHtml($Bundle) {
 }
 
 function BeijingTomorrowSectionHtml([string]$DateText) {
+  $label = "当前主推日"
+  try {
+    $targetDate = [datetime]::ParseExact($DateText, "yyyy-MM-dd", [System.Globalization.CultureInfo]::InvariantCulture).Date
+    $today = (Get-Date).Date
+    if ($targetDate -eq $today) {
+      $label = "今日"
+    }
+    elseif ($targetDate -eq $today.AddDays(1)) {
+      $label = "明日"
+    }
+    else {
+      $label = $targetDate.ToString("MM-dd")
+    }
+  }
+  catch {
+    $label = "当前主推日"
+  }
+
   $rows = foreach ($match in @($script:homePageMatches | Sort-Object kickoff, id)) {
     "<tr><td>" + (HE (MatchKickoffBeijing $match)) + "</td><td>" + (HE ([string]$match.matchNumStr)) + "</td><td>" + (HE "$($match.home) vs $($match.away)") + "</td><td>" + (HE (InferGroupName $match)) + "</td></tr>"
   }
 
   if (-not $rows -or @($rows).Count -eq 0) {
-    return "<div class=""fixtureCard""><h3>今日北京时间赛程</h3><p>当前主推日赛程数据待补。</p></div>"
+    return "<div class=""fixtureCard""><h3>$label&#21271;&#20140;&#26102;&#38388;&#36187;&#31243;</h3><p>$label&#36187;&#31243;&#25968;&#25454;&#24453;&#34917;&#12290;</p></div>"
   }
 
-  return "<div class=""fixtureCard""><h3>今日北京时间赛程</h3><p>全部按当前主推日的北京时间展示，格式统一为 MM-DD HH:mm，首页可以直接扫一眼今日赛程。</p><div class=""tableWrap""><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>小组</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
+  return "<div class=""fixtureCard""><h3>$label&#21271;&#20140;&#26102;&#38388;&#36187;&#31243;</h3><p>&#20840;&#37096;&#25353;$label&#30340;&#21271;&#20140;&#26102;&#38388;&#23637;&#31034;&#65292;&#26684;&#24335;&#32479;&#19968;&#20026; MM-DD HH:mm&#65292;&#39318;&#39029;&#21487;&#20197;&#30452;&#25509;&#25195;&#19968;&#30524;$label&#36187;&#31243;&#12290;</p><div class=""tableWrap""><table><thead><tr><th>&#21271;&#20140;&#26102;&#38388;</th><th>&#22330;&#27425;</th><th>&#23545;&#38453;</th><th>&#23567;&#32452;</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
 }
 
 function BuildStandingsPageHtml($Bundle, [string]$LatestDate, [string]$DateText, [string]$UpdateTime) {
@@ -1961,7 +1979,8 @@ function BuildPreviousReview() {
 
 $script:historicalMatches = GetHistoricalMatches
 $standingsSnapshot = if ($payload.PSObject.Properties.Name -contains "standingsSnapshot") { $payload.standingsSnapshot } else { $null }
-$standingsBundle = BuildStandingsBundle $payload.matches $standingsSnapshot
+$orderedMatches = @($payload.matches | Sort-Object kickoff, id)
+$standingsBundle = BuildStandingsBundle $orderedMatches $standingsSnapshot
 
 $summaryCards = New-Object System.Collections.Generic.List[string]
 $detailCards = New-Object System.Collections.Generic.List[string]
@@ -1975,7 +1994,7 @@ $evArtifacts = New-Object System.Collections.Generic.List[object]
 $rows = @()
 
 $i = 0
-foreach ($m in $payload.matches) {
+foreach ($m in $orderedMatches) {
   $i += 1
   $lean = GetLean $m
   $scoreCard = BuildScoreCard $m $lean $standingsBundle
@@ -2057,7 +2076,7 @@ if (Test-Path (Join-Path $dayDir "review.html")) {
   $reviewLink = "<a href=""./review.html"">" + (C "review") + "</a>"
 }
 $previousReviewSection = BuildPreviousReview
-$standingsSection = "<section id=""standings"" class=""section""><h2>&#23567;&#32452;&#31215;&#20998;&#27036;&#19982;&#20986;&#32447;&#20998;&#26512;</h2>" + (StandingsSectionHtml $standingsBundle $payload.matches) + "</section>"
+$standingsSection = "<section id=""standings"" class=""section""><h2>&#23567;&#32452;&#31215;&#20998;&#27036;&#19982;&#20986;&#32447;&#20998;&#26512;</h2>" + (StandingsSectionHtml $standingsBundle $orderedMatches) + "</section>"
 $knockoutScenarioSection = KnockoutScenarioSectionHtml $standingsBundle
 
 $html = @"
@@ -2102,7 +2121,7 @@ $html = [string][System.Net.WebUtility]::HtmlDecode([string]$html)
 Set-Content -LiteralPath $dayIndex -Encoding UTF8 -Value @($html)
 Set-Content -LiteralPath $predictFile -Encoding UTF8 -Value @($html)
 
-$script:homePageMatches = @($payload.matches)
+$script:homePageMatches = @($orderedMatches)
 $rootHtml = BuildRootIndexHtml $root $standingsBundle $Date $payload.dateText $payload.lastUpdateTime
 $rootHtml = [string][System.Net.WebUtility]::HtmlDecode([string]$rootHtml)
 Set-Content -LiteralPath $rootIndex -Encoding UTF8 -Value @($rootHtml)
