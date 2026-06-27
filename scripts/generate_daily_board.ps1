@@ -1732,15 +1732,15 @@ function RootStandingsSectionHtml($Bundle) {
 }
 
 function BeijingTomorrowSectionHtml([string]$DateText) {
-  $rows = foreach ($match in @($script:homePageMatches | Sort-Object kickoff)) {
+  $rows = foreach ($match in @($script:homePageMatches | Sort-Object kickoff, id)) {
     "<tr><td>" + (HE (MatchKickoffBeijing $match)) + "</td><td>" + (HE ([string]$match.matchNumStr)) + "</td><td>" + (HE "$($match.home) vs $($match.away)") + "</td><td>" + (HE (InferGroupName $match)) + "</td></tr>"
   }
 
   if (-not $rows -or @($rows).Count -eq 0) {
-    return "<div class=""fixtureCard""><h3>下一天北京时间赛程</h3><p>下一天赛程数据待补。</p></div>"
+    return "<div class=""fixtureCard""><h3>今日北京时间赛程</h3><p>当前主推日赛程数据待补。</p></div>"
   }
 
-  return "<div class=""fixtureCard""><h3>下一天北京时间赛程</h3><p>全部按北京时间展示，格式统一为 MM-DD HH:mm，首页可以直接扫一眼次日赛程。</p><div class=""tableWrap""><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>小组</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
+  return "<div class=""fixtureCard""><h3>今日北京时间赛程</h3><p>全部按当前主推日的北京时间展示，格式统一为 MM-DD HH:mm，首页可以直接扫一眼今日赛程。</p><div class=""tableWrap""><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>小组</th></tr></thead><tbody>" + ($rows -join "") + "</tbody></table></div></div>"
 }
 
 function BuildStandingsPageHtml($Bundle, [string]$LatestDate, [string]$DateText, [string]$UpdateTime) {
