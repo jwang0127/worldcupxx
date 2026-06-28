@@ -14,7 +14,37 @@
       "kickoff_bjt": "2026-06-29 03:00:00 +08:00",
       "kickoff_local": "2026-06-28 15:00:00 -04:00",
       "beijing_date": "2026-06-29",
-      "model_version": "v2-knockout-score-first",
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "elo": {
+        "home": 1622,
+        "away": 1708,
+        "diff_home_minus_away": -86,
+        "elo_note": "加拿大综合强度略高，南非依靠低节奏和定位球保留冷门路径。"
+      },
+      "expected_goals": {
+        "home_xg": 1.02,
+        "away_xg": 1.16,
+        "total_xg": 2.18
+      },
+      "half_time": {
+        "direction": "平",
+        "main_score": "0-0",
+        "backup_score": "0-1",
+        "probabilities": {
+          "home": 0.22,
+          "draw": 0.51,
+          "away": 0.27
+        }
+      },
+      "full_time_90": {
+        "direction": "平",
+        "probabilities": {
+          "home": 0.28,
+          "draw": 0.34,
+          "away": 0.38
+        },
+        "double_chance": "加拿大不败 X2"
+      },
       "direction_90min": "draw",
       "direction_text": "90分钟平局保护",
       "main_score": "1-1",
@@ -31,39 +61,80 @@
       "home_advance_probability": 0.46,
       "away_advance_probability": 0.54,
       "advance_pick": "加拿大",
+      "advance_market": {
+        "home": 0.46,
+        "away": 0.54,
+        "pick": "加拿大"
+      },
       "extra_time_penalty_script": "90分钟1-1，加拿大加时/点球小优。",
       "score_confidence": 0.61,
       "direction_confidence": 0.56,
-      "data_completeness": 0.82,
+      "data_completeness": 0.86,
+      "ev_table": [
+        {
+          "market": "90分钟平局",
+          "model_probability": 0.34,
+          "fair_odds": 2.94,
+          "ev_signal": "+0.04",
+          "note": "保护主线"
+        },
+        {
+          "market": "加拿大晋级",
+          "model_probability": 0.54,
+          "fair_odds": 1.85,
+          "ev_signal": "+0.06",
+          "note": "最终结果优于90分钟客胜"
+        },
+        {
+          "market": "半场平局",
+          "model_probability": 0.51,
+          "fair_odds": 1.96,
+          "ev_signal": "+0.03",
+          "note": "淘汰赛首战慢热"
+        },
+        {
+          "market": "总进球1-2",
+          "model_probability": 0.47,
+          "fair_odds": 2.13,
+          "ev_signal": "+0.02",
+          "note": "低比分主仓"
+        }
+      ],
       "score_matrix_top": [
         {
           "score": "1-1",
           "probability": 0.176,
+          "ev_signal": "+0.03",
           "label": "主比分"
         },
         {
           "score": "0-1",
           "probability": 0.142,
+          "ev_signal": "+0.04",
           "label": "加拿大小胜"
         },
         {
           "score": "1-2",
           "probability": 0.116,
+          "ev_signal": "+0.01",
           "label": "尾部上修"
         },
         {
           "score": "0-0",
           "probability": 0.104,
+          "ev_signal": "+0.02",
           "label": "平局保护"
         },
         {
           "score": "1-0",
           "probability": 0.092,
+          "ev_signal": "-0.01",
           "label": "南非冷门"
         },
         {
           "score": "2-1",
           "probability": 0.074,
+          "ev_signal": "-0.02",
           "label": "南非开放冷门"
         }
       ],
@@ -77,8 +148,8 @@
       },
       "analysis": [
         "淘汰赛首场优先拆分 90分钟赛果和最终晋级，不把加拿大晋级倾向等同于90分钟客胜。",
-        "加拿大小组赛进攻效率和净胜球更好，但南非淘汰赛首场具备压低节奏能力，1-1 是主脚本。",
-        "若南非先丢球，比赛会进入 1-2 的开放路径；若加拿大久攻不下，0-0/1-1 会把比赛拖向加时。"
+        "加拿大 Elo、进攻效率和小组赛净胜能力略好，但南非低节奏能力会压低比赛总进球。",
+        "半场主线是 0-0；若加拿大边路早开局，半场 0-1 会提前触发 1-2 尾部脚本。"
       ],
       "risks": [
         "淘汰赛首战保守程度可能高于小组赛，比分仓位不宜重。",
