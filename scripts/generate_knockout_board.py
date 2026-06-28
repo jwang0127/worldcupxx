@@ -24,6 +24,7 @@ DATA_DIR = ROOT / "data"
 TODAY = datetime(2026, 6, 28)
 PREDICTION_DATE = "20260629"
 FIRST_GAME_ID = "53452545"
+PREDICTION_GAME_IDS = ["53452545", "53452557", "53452541", "53452547"]
 GLOBAL_SCHEDULE: list[dict[str, Any]] = []
 
 
@@ -411,6 +412,116 @@ def first_prediction(schedule: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+ADDITIONAL_MATCH_MODELS: dict[str, dict[str, Any]] = {
+    "53452557": {
+        "model_version": "v3-knockout-elo-ev-halftime",
+        "half_time": "巴西 1-0 日本",
+        "direction_text": "巴西90分钟胜",
+        "main_score": "2-1",
+        "backup_scores": ["2-0", "1-1"],
+        "upset_score": "1-2",
+        "goals_range": "2-3球",
+        "advance_pick": "巴西",
+        "advance_probability_text": "巴西 62% / 日本 38%",
+        "next_opponent_note": "胜者下轮对阵 科特迪瓦 / 挪威 胜者",
+        "core_view": "巴西纸面和淘汰赛经验占优，日本有反击质量，但更像能制造进球而不是掀翻主线。",
+        "team_reading": [
+            "巴西小组赛进攻效率稳定，面对中低位防守时仍有单点破局能力。",
+            "日本小组赛韧性强，适合把比赛拖进1球差，但防线承压时间过长会暴露身后空间。",
+            "本场合理打法：巴西先抢节奏和禁区前沿，日本守住前30分钟后打反击。"
+        ],
+        "model_reasoning": [
+            "主线不走大胜：日本具备把比分压住的能力。",
+            "巴西胜面来自前场个人能力和淘汰赛控场经验。",
+            "若半场仍是0-0，1-1保护升权；若巴西先入球，2-0/2-1成为主路径。"
+        ],
+        "mystic_summary": [
+            "梅花/六爻：主队气更足，巴西小优。",
+            "五行/飞星：黄绿木火有进攻象，但日本白蓝金水能守，比分不宜过大。",
+            "玄学赛果：巴西2-1，防1-1。"
+        ],
+    },
+    "53452541": {
+        "model_version": "v3-knockout-elo-ev-halftime",
+        "half_time": "德国 1-0 巴拉圭",
+        "direction_text": "德国90分钟胜",
+        "main_score": "2-0",
+        "backup_scores": ["2-1", "1-0"],
+        "upset_score": "1-1",
+        "goals_range": "2-3球",
+        "advance_pick": "德国",
+        "advance_probability_text": "德国 68% / 巴拉圭 32%",
+        "next_opponent_note": "胜者下轮对阵 法国 / 瑞典 胜者",
+        "core_view": "德国小组赛火力和压迫质量更强，巴拉圭能守但反击持续性不足，德国常规时间解决概率最高。",
+        "team_reading": [
+            "德国小组赛进球能力强，进入淘汰赛后仍有主动控场空间。",
+            "巴拉圭以第三名路径出线，防守优先，但如果先丢球很难长时间对攻。",
+            "本场合理打法：德国前压制造早球，巴拉圭先守低位并等待定位球。"
+        ],
+        "model_reasoning": [
+            "德国优势不是单纯纸面强，而是能持续制造射门和二次进攻。",
+            "巴拉圭冷门条件只有一个：上半场守到0-0并通过定位球制造1-1。",
+            "若德国30分钟前进球，2-0是主线；若久攻不下，1-0降速收场。"
+        ],
+        "mystic_summary": [
+            "梅花/六爻：主队世爻旺，德国主动。",
+            "奇门/五行：金水秩序感强，利德国控场。",
+            "玄学赛果：德国2-0，防2-1。"
+        ],
+    },
+    "53452547": {
+        "model_version": "v3-knockout-elo-ev-halftime",
+        "half_time": "荷兰 0-0 摩洛哥",
+        "direction_text": "90分钟平局保护",
+        "main_score": "1-1",
+        "backup_scores": ["1-0", "0-1"],
+        "upset_score": "0-2",
+        "goals_range": "1-2球",
+        "advance_pick": "荷兰",
+        "advance_probability_text": "荷兰 53% / 摩洛哥 47%",
+        "next_opponent_note": "胜者下轮对阵 南非 / 加拿大 胜者",
+        "core_view": "这是四场里最接近的一场。荷兰整体结构更稳，摩洛哥反击和身体对抗有爆点，90分钟必须防平。",
+        "team_reading": [
+            "荷兰小组赛进攻数据好，但淘汰赛面对摩洛哥不会轻松打穿。",
+            "摩洛哥韧性和转换速度足够制造冷门，尤其适合在下半场偷一个。",
+            "本场合理打法：荷兰控球压节奏，摩洛哥守住中路后打身后。"
+        ],
+        "model_reasoning": [
+            "荷兰晋级略优，但不等同于90分钟主胜。",
+            "摩洛哥若先入球，比赛会转向0-1/0-2冷门线。",
+            "主线是1-1；荷兰靠加时、点球或最后30分钟质量晋级。"
+        ],
+        "mystic_summary": [
+            "梅花/六爻：主客相持，平局象重。",
+            "奇门/飞星：伏吟偏慢，先守后变。",
+            "玄学赛果：1-1，荷兰最终晋级。"
+        ],
+    },
+}
+
+
+def additional_prediction(schedule: list[dict[str, Any]], game_id: str) -> dict[str, Any]:
+    match = next(item for item in schedule if item["game_id"] == game_id)
+    model = ADDITIONAL_MATCH_MODELS[game_id]
+    return {
+        **model,
+        "game_id": match["game_id"],
+        "match_no": match["match_no"],
+        "round": match["round"],
+        "home_team": match["home_team"],
+        "away_team": match["away_team"],
+        "kickoff_bjt": match["kickoff_bjt"],
+        "kickoff_local": match["kickoff_local"],
+        "beijing_date": match["beijing_date"],
+    }
+
+
+def all_predictions(schedule: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    predictions = [first_prediction(schedule)]
+    predictions.extend(additional_prediction(schedule, game_id) for game_id in PREDICTION_GAME_IDS[1:])
+    return predictions
+
+
 def mystic_panel() -> dict[str, Any]:
     return {
         "title": "玄学综参",
@@ -744,7 +855,10 @@ def render_group_archive_page() -> str:
 
 
 def render_knockout_archive_page() -> str:
-    cards = '<a class="miniCard" href="../20260629/"><strong>20260629</strong><span>南非 vs 加拿大</span></a>'
+    cards = (
+        '<a class="miniCard" href="../20260629/"><strong>20260629</strong><span>南非 vs 加拿大</span></a>'
+        '<a class="miniCard" href="../20260630/"><strong>20260630</strong><span>巴西/德国/荷兰三场</span></a>'
+    )
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>淘汰赛预测归档</title><style>{css()}</style></head>
@@ -755,6 +869,53 @@ def render_knockout_archive_page() -> str:
 </header>
 <main>
   <section class="section"><h2>按日期查看</h2><div class="miniGrid">{cards}</div></section>
+</main>
+</body>
+</html>"""
+
+
+def render_prediction_card(item: dict[str, Any]) -> str:
+    team_reading = render_bullets(item["team_reading"])
+    model_reasoning = render_bullets(item["model_reasoning"])
+    mystic = render_bullets(item["mystic_summary"])
+    backup = " / ".join(item["backup_scores"])
+    kickoff = item["kickoff_bjt"].replace(" +08:00", "")
+    return f"""
+<section class="section">
+  <h2>{esc(item['home_team'])} vs {esc(item['away_team'])}</h2>
+  <div class="card">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>{esc(kickoff)}</strong></div>
+      <div class="metric">半场<strong>{esc(item['half_time'])}</strong></div>
+      <div class="metric">90分钟<strong>{esc(item['direction_text'])}</strong></div>
+      <div class="metric">晋级<strong class="adv">{esc(item['advance_pick'])}</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">{esc(item['main_score'])}</div><p>备选：{esc(backup)}</p><p>冷门：{esc(item['upset_score'])}</p></div>
+      <div class="panel"><h3>判断口径</h3><p>{esc(item['core_view'])}</p><p>{esc(item['advance_probability_text'])}</p></div>
+      <div class="panel"><h3>下场对手</h3><p>{esc(item['next_opponent_note'])}</p></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul>{team_reading}</ul></div>
+      <div class="panel"><h3>模型解释</h3><ul>{model_reasoning}</ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul>{mystic}</ul></div>
+    </div>
+  </div>
+</section>"""
+
+
+def render_multi_prediction_page(date_label: str, predictions: list[dict[str, Any]]) -> str:
+    cards = "".join(render_prediction_card(item) for item in predictions)
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{date_label} 淘汰赛预测</title><style>{css()}</style></head>
+<body>
+<header>
+  <h1>{date_label} 淘汰赛预测</h1>
+  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a></nav>
+</header>
+<main>
+  {cards}
 </main>
 </body>
 </html>"""
@@ -862,7 +1023,9 @@ def main() -> int:
     schedule = normalize_schedule(md_rows)
     GLOBAL_SCHEDULE = schedule
     stats = qualified_team_stats(schedule)
-    prediction = first_prediction(schedule)
+    predictions = all_predictions(schedule)
+    prediction = predictions[0]
+    predictions_0630 = [item for item in predictions if item["beijing_date"] == "2026-06-30"]
     model = prediction_model_v3()
 
     write_json(DATA_DIR / "knockout_schedule.json", {"source": SCHEDULE_MD.name, "excelVerification": verification, "matches": schedule})
@@ -870,16 +1033,21 @@ def main() -> int:
     write_json(DATA_DIR / "knockout_model_v3.json", model)
     write_json(DATA_DIR / "model_review_lessons_20260629.json", model_review_lessons())
     write_json(DATA_DIR / "knockout_predictions_20260629.json", {"date": PREDICTION_DATE, "stage": "knockout", "matches": [prediction]})
+    write_json(DATA_DIR / "knockout_predictions_20260630.json", {"date": "20260630", "stage": "knockout", "matches": predictions_0630})
+    write_json(DATA_DIR / "knockout_predictions_20260629_0630.json", {"stage": "knockout", "matches": predictions})
 
     knockout_dir = ROOT / "knockout"
     day_dir = ROOT / PREDICTION_DATE
+    day_0630_dir = ROOT / "20260630"
     group_dir = ROOT / "group"
     knockout_dir.mkdir(exist_ok=True)
     day_dir.mkdir(exist_ok=True)
+    day_0630_dir.mkdir(exist_ok=True)
     group_dir.mkdir(exist_ok=True)
 
     home_html = render_home_page(schedule, stats, prediction)
     prediction_html = render_prediction_page(schedule, stats, prediction)
+    prediction_0630_html = render_multi_prediction_page("20260630", predictions_0630)
     teams_html = render_teams_page(stats, schedule)
     group_html = render_group_archive_page()
     knockout_archive_html = render_knockout_archive_page()
@@ -890,6 +1058,8 @@ def main() -> int:
     (day_dir / "index.html").write_text(prediction_html, encoding="utf-8")
     (day_dir / f"predict_{PREDICTION_DATE}.html").write_text(prediction_html, encoding="utf-8")
     (day_dir / "teams.html").write_text(teams_html, encoding="utf-8")
+    (day_0630_dir / "index.html").write_text(prediction_0630_html, encoding="utf-8")
+    (day_0630_dir / "predict_20260630.html").write_text(prediction_0630_html, encoding="utf-8")
     (knockout_dir / "knockout_prediction_model_v3.md").write_text(render_model_doc(model, prediction), encoding="utf-8")
 
     if MODEL_MD.exists():
@@ -902,6 +1072,7 @@ def main() -> int:
     print("Generated:")
     print(ROOT / "index.html")
     print(day_dir / f"predict_{PREDICTION_DATE}.html")
+    print(day_0630_dir / "predict_20260630.html")
     print(knockout_dir / "teams.html")
     print(knockout_dir / "knockout_prediction_model_v3.md")
     return 0
