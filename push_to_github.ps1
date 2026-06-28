@@ -50,6 +50,11 @@ Get-ChildItem -Path $workTree -Recurse -Filter "*.json" |
   ForEach-Object {
     & $git --git-dir="$gitDir" --work-tree="$workTree" add $_.FullName
   }
+Get-ChildItem -Path $workTree -Recurse -Filter "*.xlsx" |
+  Where-Object { $_.FullName -notmatch "\\.git\\" } |
+  ForEach-Object {
+    & $git --git-dir="$gitDir" --work-tree="$workTree" add $_.FullName
+  }
 & $git --git-dir="$gitDir" --work-tree="$workTree" add -u
 
 & $git --git-dir="$gitDir" --work-tree="$workTree" diff --cached --quiet

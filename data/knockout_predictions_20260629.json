@@ -1,0 +1,90 @@
+{
+  "date": "20260629",
+  "stage": "knockout",
+  "matches": [
+    {
+      "game_id": "53452545",
+      "match_no": "73",
+      "round": "32强赛",
+      "stage": "knockout",
+      "home_team": "南非",
+      "home_code": "RSA",
+      "away_team": "加拿大",
+      "away_code": "CAN",
+      "kickoff_bjt": "2026-06-29 03:00:00 +08:00",
+      "kickoff_local": "2026-06-28 15:00:00 -04:00",
+      "beijing_date": "2026-06-29",
+      "model_version": "v2-knockout-score-first",
+      "direction_90min": "draw",
+      "direction_text": "90分钟平局保护",
+      "main_score": "1-1",
+      "safe_scores": [
+        "0-1",
+        "1-2"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "upset_score": "1-0",
+      "goals_range": "1-2球",
+      "home_advance_probability": 0.46,
+      "away_advance_probability": 0.54,
+      "advance_pick": "加拿大",
+      "extra_time_penalty_script": "90分钟1-1，加拿大加时/点球小优。",
+      "score_confidence": 0.61,
+      "direction_confidence": 0.56,
+      "data_completeness": 0.82,
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.176,
+          "label": "主比分"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.142,
+          "label": "加拿大小胜"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.116,
+          "label": "尾部上修"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.104,
+          "label": "平局保护"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.092,
+          "label": "南非冷门"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.074,
+          "label": "南非开放冷门"
+        }
+      ],
+      "scenario": {
+        "winner_advances_to_match_id": "53452511",
+        "next_opponent_source": "荷兰 / 摩洛哥 胜者",
+        "home_win_script": "南非 晋级后进入 53452511，下轮对阵 荷兰 / 摩洛哥 胜者",
+        "away_win_script": "加拿大 晋级后进入 53452511，下轮对阵 荷兰 / 摩洛哥 胜者",
+        "home_loss_script": "南非 输球即出局",
+        "away_loss_script": "加拿大 输球即出局"
+      },
+      "analysis": [
+        "淘汰赛首场优先拆分 90分钟赛果和最终晋级，不把加拿大晋级倾向等同于90分钟客胜。",
+        "加拿大小组赛进攻效率和净胜球更好，但南非淘汰赛首场具备压低节奏能力，1-1 是主脚本。",
+        "若南非先丢球，比赛会进入 1-2 的开放路径；若加拿大久攻不下，0-0/1-1 会把比赛拖向加时。"
+      ],
+      "risks": [
+        "淘汰赛首战保守程度可能高于小组赛，比分仓位不宜重。",
+        "若加拿大边路早早打穿，0-1 会升级为 1-2。",
+        "若南非定位球先手，1-0 冷门路径成立。"
+      ]
+    }
+  ]
+}
