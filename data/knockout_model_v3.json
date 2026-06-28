@@ -27,5 +27,11 @@
     "EV = model_probability * market_decimal_odds - 1",
     "无真实赔率时只输出模型 EV 倾向，不给出下注指令",
     "比分 EV 以 Top6 覆盖为主，冷门比分单独标注，不覆盖主线"
+  ],
+  "data_pipeline": [
+    "体彩实时赔率页背后的 getMatchCalculatorV1 接口为第一优先级赔率源，写入 had/ttg/hhad/crs/hafu。",
+    "had/hhad 负责胜平负和让球强弱，ttg 负责总进球区间，crs 负责比分池，hafu 负责半场/全场节奏。",
+    "worldcup26.ir/get/games 用作赛程和赛果兜底校验，不能覆盖已人工确认的赛程主客队。",
+    "football-data.org、api-football、TheSportsDB、SerpApi 只作为球队资料、伤停、历史和新闻补充；缺数据时降权，不编造首发。"
   ]
 }

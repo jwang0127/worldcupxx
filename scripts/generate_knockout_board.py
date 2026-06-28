@@ -24,6 +24,7 @@ DATA_DIR = ROOT / "data"
 TODAY = datetime(2026, 6, 28)
 PREDICTION_DATE = "20260629"
 FIRST_GAME_ID = "53452545"
+GLOBAL_SCHEDULE: list[dict[str, Any]] = []
 
 
 TEAM_ALIAS = {
@@ -280,6 +281,12 @@ def prediction_model_v3() -> dict[str, Any]:
             "无真实赔率时只输出模型 EV 倾向，不给出下注指令",
             "比分 EV 以 Top6 覆盖为主，冷门比分单独标注，不覆盖主线",
         ],
+        "data_pipeline": [
+            "体彩实时赔率页背后的 getMatchCalculatorV1 接口为第一优先级赔率源，写入 had/ttg/hhad/crs/hafu。",
+            "had/hhad 负责胜平负和让球强弱，ttg 负责总进球区间，crs 负责比分池，hafu 负责半场/全场节奏。",
+            "worldcup26.ir/get/games 用作赛程和赛果兜底校验，不能覆盖已人工确认的赛程主客队。",
+            "football-data.org、api-football、TheSportsDB、SerpApi 只作为球队资料、伤停、历史和新闻补充；缺数据时降权，不编造首发。",
+        ],
     }
 
 
@@ -336,22 +343,26 @@ def first_prediction(schedule: list[dict[str, Any]]) -> dict[str, Any]:
         "data_completeness": 0.86,
         "team_profiles": {
             "home": [
-                "南非小组赛以第二名出线，三场 1胜1平1负，进2失3，进攻产量一般但能把比赛压进低比分区间。",
-                "可用路径是先稳住中路、减少被加拿大连续冲击的次数，再依靠定位球和二点球制造冷门比分。",
-                "风险在于一旦先丢球，南非必须主动拉开阵型，比赛会从 1-1 脚本转向 1-2 或 0-2。"
+                "小组赛三场：1胜1平1负、进2失3。能出线靠的是防守韧性，不是持续压制能力。",
+                "已确认末轮 1-0 韩国：这说明南非在必须拿分时能把比赛压低，并通过单球解决问题。",
+                "对捷克打成 1-1，对墨西哥这种小组最强档吃亏，说明南非遇到高压边路时守得住一段时间，但抗压上限有限。",
+                "本地结构化数据没有可靠首发/伤停回填；模型不把任何球员缺阵当成确定事实，只把“阵容信息不完整”计入风险降权。",
+                "本场合理打法：先守中路和二点球，争取半场不落后，靠定位球或反击保留 1-0/1-1 的路径。"
             ],
             "away": [
-                "加拿大小组赛进8失3，攻击效率明显高于南非，但防线并非零失误，领先后也可能给对手定位球机会。",
-                "加拿大的优势在边路推进和后程体能，若上半场不被拖乱，60分钟后晋级概率会继续抬升。",
-                "风险在于淘汰赛首战过热，若久攻不下，90分钟客胜价值会下降，晋级优势更适合放在加时/点球维度。"
+                "小组赛三场：1胜1平1负、进8失3。进攻爆发力明显强于南非，但防线不是零风险。",
+                "已确认 6-0 卡塔尔和 1-2 瑞士：加拿大能打穿弱队，也会在强队对抗里丢球，不能简单按大胜思路处理。",
+                "另一个平局样本把加拿大拉回现实：对抗更接近时，90分钟赢球并不稳，晋级优势更多体现在后程和点球前的深度。",
+                "本地结构化数据没有可靠首发/伤停回填；模型不假设加拿大满员碾压，只承认其整体推进和得分能力更好。",
+                "本场合理打法：前60分钟避免被南非拖进纯身体战，后30分钟用边路和换人把 0-1/1-2 路径打开。"
             ]
         },
         "model_insights": [
-            {"title": "主线判断", "content": "模型把 90分钟结果和最终晋级拆开：90分钟最优先防平，最终晋级轻微偏加拿大。"},
-            {"title": "Elo 与状态", "content": "加拿大 Elo 高出 86 点，小组赛进攻样本更强；南非的抵抗来自低节奏和定位球，而不是持续压制。"},
-            {"title": "半场逻辑", "content": "半场平局概率 51%，0-0 是主线。淘汰赛首战的试探成本高，双方早段都不适合无保护压上。"},
-            {"title": "进球区间", "content": "总 xG 约 2.18，1-2球是主仓；只有加拿大早进球或南非被迫追分时，才上修到 3球。"},
-            {"title": "EV 解释", "content": "无真实赔率时只输出模型 EV 信号：90分钟平、加拿大晋级、半场平、总进球1-2均为轻正向。"}
+            {"title": "统一结论", "content": "这场不是“加拿大90分钟稳胜”。统一口径是：半场偏 0-0，90分钟防 1-1，最终晋级略偏加拿大。"},
+            {"title": "为什么不追加拿大大胜", "content": "加拿大进攻更强，但南非已经证明能把必须拿分的比赛压成单球局；淘汰赛首战也会天然降低冒险程度。"},
+            {"title": "为什么仍选加拿大晋级", "content": "加拿大有更好的进攻上限和后程换人空间。只要不被南非定位球先手，比赛越往后，加拿大越容易拿到决定性机会。"},
+            {"title": "比分怎么用", "content": "主比分只看 1-1。保守备选是 0-1，开放备选是 1-2。南非冷门只保留 1-0，不再给多条互相冲突路线。"},
+            {"title": "伤停/首发处理", "content": "当前本地数据没有可靠首发和伤停确认，所以模型不使用具体球员缺阵判断；临场若确认加拿大主力边路缺席，晋级优势要下调。"}
         ],
         "match_plan": [
             {"phase": "0-30分钟", "home": "南非优先压低节奏，减少中场身后空间。", "away": "加拿大试探边路，不急于把阵型压死。"},
@@ -402,18 +413,33 @@ def first_prediction(schedule: list[dict[str, Any]]) -> dict[str, Any]:
 
 def mystic_panel() -> dict[str, Any]:
     return {
-        "title": "玄学独立面板",
+        "title": "玄学综参",
         "status": "仅作娱乐表达，不进入 Elo、EV、半场、胜平负和比分概率。",
         "local_time_rule": "起卦使用比赛当地时间：2026-06-28 15:00 -04:00。",
-        "framework": [
-            {"name": "时间框架", "content": "玄学只使用比赛当地时间，不使用北京时间混算。南非 vs 加拿大按 2026-06-28 15:00 -04:00 起盘。"},
-            {"name": "节奏判断", "content": "首场淘汰赛象意偏慢热，前 30 分钟更像试探局，半场平局优先级高。"},
-            {"name": "势能变化", "content": "加拿大后程推进更强，若上半场不失球，60 分钟后晋级倾向会放大。"},
-            {"name": "冷门触发", "content": "南非定位球或早段身体对抗占优时，1-0 冷门路径成立，但不改变主模型权重。"},
-            {"name": "比分象意", "content": "单数小比分更贴合本场叙事，1-1 是主像，0-1 是客队兑现优势，1-0 是南非冷门线。"},
-            {"name": "临场修正", "content": "若赛前盘口继续压加拿大，玄学层面不追热，仍以平局保护和小球为表达核心。"},
+        "data_pack": [
+            {"field": "主队", "value": "南非；现 SAFA 1991 年重组/成立；队名首字“南”按 9 画取数；球衣意象黄绿，对应土木。"},
+            {"field": "客队", "value": "加拿大；加拿大足协源流 1912 年；队名首字“加”按 5 画取数；球衣意象红白，对应火金。"},
+            {"field": "时间", "value": "当地 2026-06-28 15:00，按申时取 9；本场为淘汰赛首战，慢热和低比分权重提高。"},
+            {"field": "方位", "value": "按中立场处理，名义主队为地盘/世爻，名义客队为天盘/应爻。"},
         ],
-        "reading": "玄学面板只解释比赛叙事和节奏，不参与 Elo、EV、半场、胜平负、比分概率计算。",
+        "framework": [
+            {"name": "梅花易数", "content": "队名笔画起卦：南 9 余 1 为乾， 加 5 余 5 为巽，动五爻。体卦乾金克用卦巽木，玄学层面给南非抗衡信号；但年份卦巽巽比和，最终更像常规时间难分胜负。"},
+            {"name": "六爻世应", "content": "世爻取南非，应爻取加拿大。世应不呈一边倒，初至三爻偏静，上半场不宜追早球；四至六爻客方动能增强，加拿大后程更容易把比赛拖向加时/点球优势。"},
+            {"name": "紫微流时", "content": "申时金气动，利组织、纪律和防线站位。南非得守势之稳，加拿大得迁移宫之动，盘面不是大开大合，更像客队后程施压。"},
+            {"name": "奇门遁甲", "content": "中立场按名义主队落地盘、客队落天盘。伏吟象较重，节奏拖沓、试探时间长；比和与相克并见，平局和点球决胜信号强于90分钟客胜。"},
+            {"name": "干支五行", "content": "丙午年火势偏旺，申时金动。南非黄绿为土木，受火生土但木被金制；加拿大红白为火金，得时令与申金呼应。五行层面客队后段更顺。"},
+            {"name": "九宫飞星", "content": "本场取小球盘：一白/六白的秩序感强于九紫大球象，二黑五黄不显强攻，宜 0-0、1-1、0-1 这类低比分。"},
+            {"name": "诸葛神数 / 米卦", "content": "队名数与申时合取偏“相持后动”的签意：先难后易、久攻见机。米卦以黄绿对红白，土木遇火金，主队能守，客队有破局但不宜早判大胜。"},
+            {"name": "塔罗辅助", "content": "虚拟三张：隐士（过去）- 节制（现在）- 命运之轮（结果）。对应谨慎开局、节奏均衡、加时/点球或尾段转折。"},
+            {"name": "⚡民俗趣味", "content": "南非黄绿有承接火土之象，加拿大红白更贴合火金流时；趣味层面为“主队抗、客队转”，不支撑大比分碾压。"},
+        ],
+        "summary": {
+            "旺方": "均势偏客队后程；南非有90分钟抗衡象，加拿大有最终晋级象。",
+            "宜": "小球，重点 0-0 / 1-1 / 0-1；若早球出现再上修 1-2。",
+            "爆冷征兆": "南非定位球先手、早段黄牌压低节奏、半场0-0后进入点球随机区。",
+            "玄学日运": "火金并见，先守后动；不宜追热大胜，宜防平局与低比分。",
+        },
+        "reading": "玄学结论与主模型一致保留平局保护，但玄学更强调南非90分钟不败阻力；最终晋级仍不覆盖主模型的加拿大小优。",
     }
 
 
@@ -459,6 +485,10 @@ def render_bullets(rows: list[str]) -> str:
     return "".join(f"<li>{esc(item)}</li>" for item in rows)
 
 
+def render_review_lessons(review: dict[str, Any]) -> str:
+    return "".join(f"<li>{esc(item)}</li>" for item in review.get("lessons", []))
+
+
 def render_stats_rows(stats: list[dict[str, Any]]) -> str:
     rows = []
     for item in stats:
@@ -478,7 +508,7 @@ def render_upcoming_rows(matches: list[dict[str, Any]]) -> str:
         f"<td>{esc(item['beijing_date'][5:])} {esc(item['beijing_time'])}</td>"
         f"<td>{esc(item['match_no'])}</td><td>{esc(item['round'])}</td>"
         f"<td>{esc(item['home_team'])} vs {esc(item['away_team'])}</td>"
-        f"<td>{esc(item['winner_advances_to'])}</td></tr>"
+        f"<td>{esc(next_opponent_source(GLOBAL_SCHEDULE, item['winner_advances_to'], item['game_id']))}</td></tr>"
         for item in matches
     )
 
@@ -532,6 +562,79 @@ def home_stats_subset(stats: list[dict[str, Any]], matches: list[dict[str, Any]]
     return selected
 
 
+def score_direction(score: str) -> str:
+    try:
+        left, right = re.split(r"[:：-]", score)[:2]
+        home, away = int(left), int(right)
+    except Exception:
+        return "unknown"
+    if home > away:
+        return "home"
+    if home < away:
+        return "away"
+    return "draw"
+
+
+def model_review_lessons() -> dict[str, Any]:
+    settled = []
+    for path in sorted(DATA_DIR.glob("202606*.json")):
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        for match in payload.get("matches", []):
+            result = match.get("result")
+            prediction = match.get("prediction", {})
+            if not result or result.get("status") != "Finished":
+                continue
+            home_goals = result.get("homeGoals")
+            away_goals = result.get("awayGoals")
+            if home_goals is None or away_goals is None:
+                continue
+            actual_score = f"{home_goals}:{away_goals}"
+            predicted_scores = prediction.get("scores", [])
+            predicted_total = str(prediction.get("totalGoals", ""))
+            first_score = predicted_scores[0] if predicted_scores else ""
+            settled.append(
+                {
+                    "date": path.stem,
+                    "match": f"{match.get('home')} vs {match.get('away')}",
+                    "predicted_total": predicted_total,
+                    "predicted_scores": predicted_scores,
+                    "actual_score": actual_score,
+                    "actual_total": int(home_goals) + int(away_goals),
+                    "direction_hit": score_direction(first_score) == score_direction(actual_score),
+                    "score_hit": actual_score in predicted_scores,
+                    "total_hit": predicted_total == str(int(home_goals) + int(away_goals)),
+                }
+            )
+    total = len(settled)
+    if not total:
+        return {"settled": 0, "lessons": ["本地暂未找到可结算赛果。"], "summary": "暂无足够复盘样本。"}
+    direction_hits = sum(1 for row in settled if row["direction_hit"])
+    total_hits = sum(1 for row in settled if row["total_hit"])
+    score_hits = sum(1 for row in settled if row["score_hit"])
+    high_miss = sum(1 for row in settled if row["actual_total"] >= 4 and row["predicted_total"] in {"1", "2"})
+    low_miss = sum(1 for row in settled if row["actual_total"] <= 1 and row["predicted_total"] in {"3", "4", "5"})
+    lessons = [
+        f"已回填 {total} 场小组赛赛果：方向比比分更可靠，比分不能只盯一个主比分。",
+        f"方向命中约 {direction_hits}/{total}，说明强弱判断可保留；总进球命中约 {total_hits}/{total}，说明进球区间要用范围表达。",
+        f"出现 {high_miss} 场低估大比分、{low_miss} 场高估进球的偏差；淘汰赛模型必须同时保留低比分锁局和尾部上修。",
+        f"精确比分命中 {score_hits}/{total}，所以今天输出改为“主比分 + 两条备选脚本”，不再把单一比分说死。",
+        "末轮阶段常被净胜球需求放大，淘汰赛首战则相反：先压节奏，再看60分钟后的体能和换人。",
+    ]
+    return {
+        "settled": total,
+        "direction_hits": direction_hits,
+        "total_hits": total_hits,
+        "score_hits": score_hits,
+        "high_miss": high_miss,
+        "low_miss": low_miss,
+        "lessons": lessons,
+        "summary": "复盘后模型口径：方向可以明确，比分要给主线和触发条件；淘汰赛优先防低比分和平局。",
+    }
+
+
 def css() -> str:
     return """
 :root{--bg:#06120f;--panel:#102528;--soft:#0b201d;--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}
@@ -539,7 +642,7 @@ def css() -> str:
 body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f 0%,#092225 48%,#061324 100%);z-index:-2}
 body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -20%,rgba(51,226,138,.13),transparent 42%);z-index:-1;pointer-events:none}
 header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
-h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.subhead{margin:0;color:var(--muted);line-height:1.7;max-width:880px}
+h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.subhead{margin:0;color:var(--muted);line-height:1.7;max-width:880px}.topbar{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.topActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}@media(max-width:850px){.topbar{display:block}.topActions{justify-content:flex-start;margin-top:12px}}
 nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0;display:inline-flex;align-items:center;gap:6px}
 .section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px;margin:0 0 12px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);box-shadow:0 16px 36px rgba(0,0,0,.22);padding:18px;margin:14px 0}
 .entryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.entryCard{min-height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#0f2a2b,#091b1d);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.entryCard:hover{border-color:var(--green)}.entryCard span{color:var(--muted)}.entryCard strong{font-size:30px;color:var(--green);display:block;margin:8px 0}.entryCard em{font-style:normal;color:var(--text);line-height:1.6}
@@ -549,6 +652,7 @@ nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{paddi
 ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
 .miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
 .mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
+.mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
 footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 """
 
@@ -561,19 +665,19 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2026世界杯预测入口</title><style>{css()}</style></head>
 <body>
 <header>
-  <h1>2026世界杯预测入口</h1>
-  <p class="subhead">首页只保留导航和赛程摘要。详细预测、模型分析和完整 32 强战绩都放在对应子页面，避免主页面堆叠过多信息。</p>
+  <div class="topbar"><div><h1>2026世界杯预测入口</h1>
+  <p class="subhead">首页只保留导航和赛程摘要。详细预测、模型分析和完整 32 强战绩都放在对应子页面，避免主页面堆叠过多信息。</p></div><div class="topActions"><a class="buttonLink" href="knockout/teams.html">完整32强战绩</a></div></div>
   <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#teams">相关球队</a></nav>
 </header>
 <main>
   <section class="section" id="entry">
     <h2>赛事阶段</h2>
     <div class="entryGrid">
-      <a class="entryCard" href="20260628/"><span>历史归档</span><strong>小组赛</strong><em>按日期查看 20260617-20260628 的小组赛预测、复盘和积分榜。</em></a>
+      <a class="entryCard" href="group/"><span>历史归档</span><strong>小组赛</strong><em>按日期查看 20260617-20260628 的全部小组赛预测、复盘和积分榜。</em></a>
       <a class="entryCard" href="20260629/"><span>当前阶段</span><strong>淘汰赛</strong><em>进入南非 vs 加拿大首场淘汰赛预测，含 Elo、EV、半场、晋级和风险分析。</em></a>
     </div>
   </section>
-  <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>胜者进入</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
+  <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
   <section class="section" id="teams"><h2>未来三日相关球队</h2><p class="muted">这里只显示未来三天比赛涉及球队和胜场前三球队；完整 32 强战绩见独立页面。</p><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>首场淘汰赛</th></tr></thead><tbody>{render_stats_rows(subset)}</tbody></table></div><a class="buttonLink" href="knockout/teams.html">查看完整 32 强战绩</a></section>
   <footer>根首页不直接承载预测结论；预测模型和完整数据均在子页面。</footer>
 </main>
@@ -582,14 +686,25 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 
 
 def render_mystic_framework(mystic: dict[str, Any]) -> str:
+    data_pack = "".join(
+        f"<div class=\"mysticItem\"><strong>{esc(item['field'])}</strong><p>{esc(item['value'])}</p></div>"
+        for item in mystic["data_pack"]
+    )
     items = "".join(
         f"<div class=\"mysticItem\"><strong>{esc(item['name'])}</strong><p>{esc(item['content'])}</p></div>"
         for item in mystic["framework"]
     )
+    summary = "".join(
+        f"<div><strong>{esc(key)}</strong><p>{esc(value)}</p></div>"
+        for key, value in mystic["summary"].items()
+    )
     return (
         f"<p>{esc(mystic['status'])}</p>"
         f"<p>{esc(mystic['local_time_rule'])}</p>"
+        f"<h3>基础包</h3><div class=\"mysticGrid\">{data_pack}</div>"
+        f"<h3>术数拆解</h3>"
         f"<div class=\"mysticGrid\">{items}</div>"
+        f"<h3>综合结论</h3><div class=\"mysticSummary\">{summary}</div>"
         f"<p class=\"muted\">{esc(mystic['reading'])}</p>"
     )
 
@@ -608,8 +723,27 @@ def render_teams_page(stats: list[dict[str, Any]], schedule: list[dict[str, Any]
 </header>
 <main>
   <section class="section" id="teams"><h2>完整 32 强战绩</h2><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>首场淘汰赛</th></tr></thead><tbody>{rows}</tbody></table></div></section>
-  <section class="section" id="future"><h2>未来三天赛程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>胜者进入</th></tr></thead><tbody>{upcoming}</tbody></table></div></section>
+  <section class="section" id="future"><h2>未来三天赛程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{upcoming}</tbody></table></div></section>
   <footer>数据来源：小组赛最终积分榜 + 淘汰赛赛程表校验。</footer>
+</main>
+</body>
+</html>"""
+
+
+def render_group_archive_page() -> str:
+    cards = render_group_cards("../")
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>小组赛预测归档</title><style>{css()}</style></head>
+<body>
+<header>
+  <h1>小组赛预测归档</h1>
+  <p class="subhead">这里集中查看 20260617-20260628 的全部小组赛预测和复盘，不再只跳到最后一天。</p>
+  <nav><a href="../index.html">首页</a><a href="../20260629/">淘汰赛预测</a></nav>
+</header>
+<main>
+  <section class="section"><h2>按日期查看</h2><div class="miniGrid">{cards}</div></section>
+  <footer>小组赛历史页面保留原始预测与复盘，淘汰赛模型从复盘偏差中继续修正。</footer>
 </main>
 </body>
 </html>"""
@@ -625,6 +759,8 @@ def render_prediction_page(schedule: list[dict[str, Any]], stats: list[dict[str,
     insight_cards = render_insight_cards(prediction["model_insights"])
     plan_rows = render_match_plan(prediction["match_plan"])
     mystic_html = render_mystic_framework(mystic)
+    review_lessons = render_review_lessons(model_review_lessons())
+    data_pipeline = render_bullets(prediction_model_v3()["data_pipeline"])
     next_opponent = prediction["scenario"]["next_opponent_source"]
     home_profile = render_bullets(prediction["team_profiles"]["home"])
     away_profile = render_bullets(prediction["team_profiles"]["away"])
@@ -654,11 +790,11 @@ def render_prediction_page(schedule: list[dict[str, Any]], stats: list[dict[str,
       </div>
     </div>
   </section>
-  <section class="section" id="profiles"><h2>球队画像</h2><div class="coreGrid"><div class="panel"><h3>{esc(prediction['home_team'])}</h3><ul>{home_profile}</ul></div><div class="panel"><h3>{esc(prediction['away_team'])}</h3><ul>{away_profile}</ul></div><div class="panel"><h3>Elo / xG</h3><p>Elo：{prediction['elo']['home']} - {prediction['elo']['away']}（差值 {prediction['elo']['diff_home_minus_away']}）</p><p>xG：{prediction['expected_goals']['home_xg']} - {prediction['expected_goals']['away_xg']}，合计 {prediction['expected_goals']['total_xg']}</p><p>{esc(prediction['elo']['elo_note'])}</p></div></div></section>
-  <section class="section" id="model"><h2>模型解释</h2><div class="coreGrid">{insight_cards}</div><div class="card"><h3>比赛阶段脚本</h3><div class="tableWrap"><table><thead><tr><th>阶段</th><th>{esc(prediction['home_team'])}</th><th>{esc(prediction['away_team'])}</th></tr></thead><tbody>{plan_rows}</tbody></table></div></div><div class="card"><h3>触发条件</h3><ul>{triggers}</ul></div></section>
+  <section class="section" id="profiles"><h2>球队画像</h2><div class="coreGrid"><div class="panel"><h3>{esc(prediction['home_team'])}</h3><ul>{home_profile}</ul></div><div class="panel"><h3>{esc(prediction['away_team'])}</h3><ul>{away_profile}</ul></div><div class="panel"><h3>实力判断</h3><p>加拿大整体进攻更好，南非防守韧性更强。</p><p>所以本场不走“加拿大轻松赢”的路线，而是走“南非拖住90分钟，加拿大靠后程和加时/点球晋级”的路线。</p><p>模型结论：半场平，90分钟平局优先，最终晋级加拿大。</p></div></div></section>
+  <section class="section" id="model"><h2>模型解释</h2><div class="coreGrid">{insight_cards}</div><div class="card"><h3>数据源如何影响判断</h3><ul>{data_pipeline}</ul></div><div class="card"><h3>前面赛果复盘后的修正</h3><ul>{review_lessons}</ul></div><div class="card"><h3>比赛阶段脚本</h3><div class="tableWrap"><table><thead><tr><th>阶段</th><th>{esc(prediction['home_team'])}</th><th>{esc(prediction['away_team'])}</th></tr></thead><tbody>{plan_rows}</tbody></table></div></div><div class="card"><h3>触发条件</h3><ul>{triggers}</ul></div></section>
   <section class="section" id="scores"><h2>比分与 EV</h2><div class="card"><h3>比分池</h3><span class="scoreTag">{esc(prediction['main_score'])}</span><span class="scoreTag">{esc(prediction['safe_scores'][0])}</span><span class="scoreTag">{esc(prediction['safe_scores'][1])}</span><span class="scoreTag">{esc(prediction['draw_protection_scores'][0])}</span><span class="scoreTag danger">{esc(prediction['upset_score'])}</span><div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody>{matrix_rows}</tbody></table></div></div><div class="card"><h3>市场 EV / 半场 / 胜负</h3><div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{ev_rows}</tbody></table></div></div></section>
   <section class="section" id="story"><h2>比赛剧本与风险</h2><div class="coreGrid"><div class="panel"><h3>晋级剧本</h3><p>{esc(prediction['scenario']['home_win_script'])}</p><p>{esc(prediction['scenario']['away_win_script'])}</p></div><div class="panel"><h3>分析依据</h3><ul>{analysis}</ul></div><div class="panel"><h3>风险提示</h3><ul>{risks}</ul></div></div></section>
-  <section class="section" id="mystic"><h2>{esc(mystic['title'])}</h2><div class="card">{mystic_html}</div></section>
+  <section class="section" id="mystic"><h2>{esc(mystic['title'])}</h2><div class="card mysticCard">{mystic_html}</div></section>
   <footer>赛程主源：Markdown；Excel 用于一致性校验。玄学面板独立展示，不进入模型评分。</footer>
 </main>
 </body>
@@ -709,6 +845,7 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
 
 
 def main() -> int:
+    global GLOBAL_SCHEDULE
     md_rows = parse_markdown_table(SCHEDULE_MD)
     xlsx_rows = read_excel_rows(SCHEDULE_XLSX)
     verification = verify_schedule(md_rows, xlsx_rows)
@@ -716,6 +853,7 @@ def main() -> int:
         raise RuntimeError("Knockout schedule markdown/xlsx mismatch: " + json.dumps(verification, ensure_ascii=False))
 
     schedule = normalize_schedule(md_rows)
+    GLOBAL_SCHEDULE = schedule
     stats = qualified_team_stats(schedule)
     prediction = first_prediction(schedule)
     model = prediction_model_v3()
@@ -723,17 +861,22 @@ def main() -> int:
     write_json(DATA_DIR / "knockout_schedule.json", {"source": SCHEDULE_MD.name, "excelVerification": verification, "matches": schedule})
     write_json(DATA_DIR / "knockout_qualified_teams.json", stats)
     write_json(DATA_DIR / "knockout_model_v3.json", model)
+    write_json(DATA_DIR / "model_review_lessons_20260629.json", model_review_lessons())
     write_json(DATA_DIR / "knockout_predictions_20260629.json", {"date": PREDICTION_DATE, "stage": "knockout", "matches": [prediction]})
 
     knockout_dir = ROOT / "knockout"
     day_dir = ROOT / PREDICTION_DATE
+    group_dir = ROOT / "group"
     knockout_dir.mkdir(exist_ok=True)
     day_dir.mkdir(exist_ok=True)
+    group_dir.mkdir(exist_ok=True)
 
     home_html = render_home_page(schedule, stats, prediction)
     prediction_html = render_prediction_page(schedule, stats, prediction)
     teams_html = render_teams_page(stats, schedule)
+    group_html = render_group_archive_page()
     (ROOT / "index.html").write_text(home_html, encoding="utf-8")
+    (group_dir / "index.html").write_text(group_html, encoding="utf-8")
     (knockout_dir / "index.html").write_text(prediction_html, encoding="utf-8")
     (knockout_dir / "teams.html").write_text(teams_html, encoding="utf-8")
     (day_dir / "index.html").write_text(prediction_html, encoding="utf-8")
