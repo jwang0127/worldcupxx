@@ -334,6 +334,37 @@ def first_prediction(schedule: list[dict[str, Any]]) -> dict[str, Any]:
         "score_confidence": 0.61,
         "direction_confidence": 0.56,
         "data_completeness": 0.86,
+        "team_profiles": {
+            "home": [
+                "南非小组赛以第二名出线，三场 1胜1平1负，进2失3，进攻产量一般但能把比赛压进低比分区间。",
+                "可用路径是先稳住中路、减少被加拿大连续冲击的次数，再依靠定位球和二点球制造冷门比分。",
+                "风险在于一旦先丢球，南非必须主动拉开阵型，比赛会从 1-1 脚本转向 1-2 或 0-2。"
+            ],
+            "away": [
+                "加拿大小组赛进8失3，攻击效率明显高于南非，但防线并非零失误，领先后也可能给对手定位球机会。",
+                "加拿大的优势在边路推进和后程体能，若上半场不被拖乱，60分钟后晋级概率会继续抬升。",
+                "风险在于淘汰赛首战过热，若久攻不下，90分钟客胜价值会下降，晋级优势更适合放在加时/点球维度。"
+            ]
+        },
+        "model_insights": [
+            {"title": "主线判断", "content": "模型把 90分钟结果和最终晋级拆开：90分钟最优先防平，最终晋级轻微偏加拿大。"},
+            {"title": "Elo 与状态", "content": "加拿大 Elo 高出 86 点，小组赛进攻样本更强；南非的抵抗来自低节奏和定位球，而不是持续压制。"},
+            {"title": "半场逻辑", "content": "半场平局概率 51%，0-0 是主线。淘汰赛首战的试探成本高，双方早段都不适合无保护压上。"},
+            {"title": "进球区间", "content": "总 xG 约 2.18，1-2球是主仓；只有加拿大早进球或南非被迫追分时，才上修到 3球。"},
+            {"title": "EV 解释", "content": "无真实赔率时只输出模型 EV 信号：90分钟平、加拿大晋级、半场平、总进球1-2均为轻正向。"}
+        ],
+        "match_plan": [
+            {"phase": "0-30分钟", "home": "南非优先压低节奏，减少中场身后空间。", "away": "加拿大试探边路，不急于把阵型压死。"},
+            {"phase": "30-60分钟", "home": "若仍是平局，南非会接受慢节奏并等待定位球。", "away": "加拿大需要提高传中和肋部冲击频率。"},
+            {"phase": "60-90分钟", "home": "南非体能下降后更依赖反击和死球。", "away": "加拿大晋级倾向在后程增强，0-1/1-2脚本开始升权。"},
+            {"phase": "加时/点球", "home": "若拖到点球，南非冷门概率上升。", "away": "加拿大整体深度略优，但必须避免点球变成纯随机。"}
+        ],
+        "triggers": [
+            "加拿大先入球：主比分从 1-1 下修为 0-1，开放尾部升到 1-2。",
+            "南非先入球：比赛进入 1-0 冷门保护，同时加拿大反扑会带来 1-1。",
+            "半场 0-0：继续保留 1-1 主线，加拿大晋级不等同于 90分钟客胜。",
+            "早段黄牌偏多：总进球下修，半场平局和小比分权重提高。"
+        ],
         "ev_table": [
             {"market": "90分钟平局", "model_probability": 0.34, "fair_odds": 2.94, "ev_signal": "+0.04", "note": "保护主线"},
             {"market": "加拿大晋级", "model_probability": 0.54, "fair_odds": 1.85, "ev_signal": "+0.06", "note": "最终结果优于90分钟客胜"},
@@ -369,12 +400,20 @@ def first_prediction(schedule: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
-def mystic_panel() -> dict[str, str]:
+def mystic_panel() -> dict[str, Any]:
     return {
         "title": "玄学独立面板",
         "status": "仅作娱乐表达，不进入 Elo、EV、半场、胜平负和比分概率。",
         "local_time_rule": "起卦使用比赛当地时间：2026-06-28 15:00 -04:00。",
-        "reading": "首场淘汰赛象意偏慢热，先稳后变；主线仍按数据模型保留 1-1。",
+        "framework": [
+            {"name": "时间框架", "content": "玄学只使用比赛当地时间，不使用北京时间混算。南非 vs 加拿大按 2026-06-28 15:00 -04:00 起盘。"},
+            {"name": "节奏判断", "content": "首场淘汰赛象意偏慢热，前 30 分钟更像试探局，半场平局优先级高。"},
+            {"name": "势能变化", "content": "加拿大后程推进更强，若上半场不失球，60 分钟后晋级倾向会放大。"},
+            {"name": "冷门触发", "content": "南非定位球或早段身体对抗占优时，1-0 冷门路径成立，但不改变主模型权重。"},
+            {"name": "比分象意", "content": "单数小比分更贴合本场叙事，1-1 是主像，0-1 是客队兑现优势，1-0 是南非冷门线。"},
+            {"name": "临场修正", "content": "若赛前盘口继续压加拿大，玄学层面不追热，仍以平局保护和小球为表达核心。"},
+        ],
+        "reading": "玄学面板只解释比赛叙事和节奏，不参与 Elo、EV、半场、胜平负、比分概率计算。",
     }
 
 
@@ -399,6 +438,25 @@ def render_ev_rows(rows: list[dict[str, Any]]) -> str:
         f"<td>{float(item['fair_odds']):.2f}</td><td>{esc(item['ev_signal'])}</td><td>{esc(item['note'])}</td></tr>"
         for item in rows
     )
+
+
+def render_insight_cards(rows: list[dict[str, str]]) -> str:
+    return "".join(
+        f"<div class=\"panel\"><h3>{esc(item['title'])}</h3><p>{esc(item['content'])}</p></div>"
+        for item in rows
+    )
+
+
+def render_match_plan(rows: list[dict[str, str]]) -> str:
+    return "".join(
+        "<tr>"
+        f"<td>{esc(item['phase'])}</td><td>{esc(item['home'])}</td><td>{esc(item['away'])}</td></tr>"
+        for item in rows
+    )
+
+
+def render_bullets(rows: list[str]) -> str:
+    return "".join(f"<li>{esc(item)}</li>" for item in rows)
 
 
 def render_stats_rows(stats: list[dict[str, Any]]) -> str:
@@ -477,98 +535,130 @@ def home_stats_subset(stats: list[dict[str, Any]], matches: list[dict[str, Any]]
 def css() -> str:
     return """
 :root{--bg:#06120f;--panel:#102528;--soft:#0b201d;--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}
-*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:linear-gradient(135deg,#020807,#071b2a);color:var(--text)}a{color:inherit;text-decoration:none}
-header,main{max-width:1240px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
-h1{margin:0 0 12px;font-size:clamp(28px,5vw,44px)}nav{display:flex;gap:10px;flex-wrap:wrap}nav a{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0}
-.section{margin:22px 0 34px}.section h2{color:var(--blue);font-size:26px}.card,.panel,.archiveBox{border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,rgba(16,37,40,.96),rgba(9,26,29,.96));box-shadow:0 16px 36px rgba(0,0,0,.24);padding:18px;margin:16px 0}
-.dateGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}.dateCard,.miniCard{display:flex;flex-direction:column;gap:7px;padding:16px;border:1px solid var(--line);border-radius:8px;background:#071817}.dateCard:hover,.miniCard:hover{border-color:var(--green)}.dateCard span{color:var(--muted)}.dateCard strong{font-size:24px;color:var(--green)}.dateCard em,.miniCard span{font-style:normal;color:var(--muted)}
-.heroGrid,.coreGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.coreGrid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.heroGrid,.coreGrid{grid-template-columns:1fr}}
-.metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:24px;margin-top:4px}
-.bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:860px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
-textarea{width:100%;min-height:130px;resize:vertical;border:1px solid var(--line);border-radius:8px;background:#071817;color:var(--text);padding:14px;font:16px/1.7 Consolas,"Microsoft YaHei",monospace}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#05110f;color:var(--text)}a{color:inherit;text-decoration:none}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f 0%,#092225 48%,#061324 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -20%,rgba(51,226,138,.13),transparent 42%);z-index:-1;pointer-events:none}
+header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
+h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.subhead{margin:0;color:var(--muted);line-height:1.7;max-width:880px}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0;display:inline-flex;align-items:center;gap:6px}
+.section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px;margin:0 0 12px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);box-shadow:0 16px 36px rgba(0,0,0,.22);padding:18px;margin:14px 0}
+.entryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.entryCard{min-height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#0f2a2b,#091b1d);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.entryCard:hover{border-color:var(--green)}.entryCard span{color:var(--muted)}.entryCard strong{font-size:30px;color:var(--green);display:block;margin:8px 0}.entryCard em{font-style:normal;color:var(--text);line-height:1.6}
+.heroGrid,.coreGrid,.summaryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.coreGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.summaryGrid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.entryGrid,.heroGrid,.coreGrid,.summaryGrid{grid-template-columns:1fr}}
+.metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:23px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px;line-height:1.5}
+.bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
 ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
-.miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}footer{color:#8ea8a1;font-size:13px;margin-top:36px}
+.miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
+.mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
+footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 """
 
 
 def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
     matches = future_matches(schedule, TODAY, 3)
-    tomorrow_matches = [m for m in matches if m["beijing_date"] == "2026-06-29"]
     subset = home_stats_subset(stats, matches)
-    mystic = mystic_panel()
-    tomorrow_text = "；".join(f"{m['beijing_time']} {m['home_team']} vs {m['away_team']}" for m in tomorrow_matches)
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2026世界杯预测首页</title><style>{css()}</style></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2026世界杯预测入口</title><style>{css()}</style></head>
 <body>
 <header>
-  <h1>2026世界杯预测首页</h1>
-  <nav><a href="#dates">日期选择</a><a href="#tomorrow">明日比赛预测</a><a href="#future">未来三天</a><a href="#teams">32强战绩</a><a href="#groups">小组赛预测</a><a href="#mystic">玄学面板</a></nav>
+  <h1>2026世界杯预测入口</h1>
+  <p class="subhead">首页只保留导航和赛程摘要。详细预测、模型分析和完整 32 强战绩都放在对应子页面，避免主页面堆叠过多信息。</p>
+  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#teams">相关球队</a></nav>
 </header>
 <main>
-  <section class="section" id="dates"><h2>按日期进入预测</h2><div class="dateGrid">{render_date_cards()}</div></section>
-  <section class="section" id="tomorrow"><h2>明日比赛预测</h2><div class="card"><p class="muted">{esc(tomorrow_text)}</p><div class="heroGrid"><div class="metric">首场<strong>{esc(prediction['home_team'])} vs {esc(prediction['away_team'])}</strong></div><div class="metric">90分钟<strong>{esc(prediction['direction_text'])}</strong></div><div class="metric">主比分<strong>{esc(prediction['main_score'])}</strong></div><div class="metric">晋级<strong class="adv">{esc(prediction['advance_pick'])}</strong></div></div><p><a class="scoreTag" href="20260629/">进入 20260629 详细预测</a></p></div></section>
-  <section class="section" id="future"><h2>未来三天比赛文本框</h2><textarea readonly>{esc(future_text(matches))}</textarea></section>
-  <section class="section" id="teams"><h2>32强当前战绩子窗口</h2><p class="muted">主页只显示胜场前三球队，以及未来三天出场球队；完整 32 强表在每日预测页。</p><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>首场淘汰赛</th></tr></thead><tbody>{render_stats_rows(subset)}</tbody></table></div></section>
-  <section class="section" id="groups"><h2>小组赛预测选择卡</h2><p class="muted">404 原因已修正：根首页链接使用 202606DD/，不再使用 ../202606DD/。</p><div class="miniGrid">{render_group_cards()}</div></section>
-  <section class="section" id="mystic"><h2>{esc(mystic['title'])}</h2><div class="card"><p>{esc(mystic['status'])}</p><p>{esc(mystic['local_time_rule'])}</p><p>{esc(mystic['reading'])}</p></div></section>
-  <footer>根首页仅做日期入口与摘要；详细预测看板在每日目录内。模型版本：v3-knockout-elo-ev-halftime。</footer>
+  <section class="section" id="entry">
+    <h2>赛事阶段</h2>
+    <div class="entryGrid">
+      <a class="entryCard" href="20260628/"><span>历史归档</span><strong>小组赛</strong><em>按日期查看 20260617-20260628 的小组赛预测、复盘和积分榜。</em></a>
+      <a class="entryCard" href="20260629/"><span>当前阶段</span><strong>淘汰赛</strong><em>进入南非 vs 加拿大首场淘汰赛预测，含 Elo、EV、半场、晋级和风险分析。</em></a>
+    </div>
+  </section>
+  <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>胜者进入</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
+  <section class="section" id="teams"><h2>未来三日相关球队</h2><p class="muted">这里只显示未来三天比赛涉及球队和胜场前三球队；完整 32 强战绩见独立页面。</p><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>首场淘汰赛</th></tr></thead><tbody>{render_stats_rows(subset)}</tbody></table></div><a class="buttonLink" href="knockout/teams.html">查看完整 32 强战绩</a></section>
+  <footer>根首页不直接承载预测结论；预测模型和完整数据均在子页面。</footer>
+</main>
+</body>
+</html>"""
+
+
+def render_mystic_framework(mystic: dict[str, Any]) -> str:
+    items = "".join(
+        f"<div class=\"mysticItem\"><strong>{esc(item['name'])}</strong><p>{esc(item['content'])}</p></div>"
+        for item in mystic["framework"]
+    )
+    return (
+        f"<p>{esc(mystic['status'])}</p>"
+        f"<p>{esc(mystic['local_time_rule'])}</p>"
+        f"<div class=\"mysticGrid\">{items}</div>"
+        f"<p class=\"muted\">{esc(mystic['reading'])}</p>"
+    )
+
+
+def render_teams_page(stats: list[dict[str, Any]], schedule: list[dict[str, Any]]) -> str:
+    rows = render_stats_rows(stats)
+    upcoming = render_upcoming_rows(future_matches(schedule, TODAY, 3))
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>32强当前战绩</title><style>{css()}</style></head>
+<body>
+<header>
+  <h1>32强当前战绩</h1>
+  <p class="subhead">独立数据页用于承载完整球队信息，主页面只保留摘要，预测页只保留与比赛直接相关的分析。</p>
+  <nav><a href="../index.html">首页</a><a href="../20260629/">淘汰赛预测</a><a href="#teams">完整战绩</a><a href="#future">未来三天</a></nav>
+</header>
+<main>
+  <section class="section" id="teams"><h2>完整 32 强战绩</h2><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>首场淘汰赛</th></tr></thead><tbody>{rows}</tbody></table></div></section>
+  <section class="section" id="future"><h2>未来三天赛程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>胜者进入</th></tr></thead><tbody>{upcoming}</tbody></table></div></section>
+  <footer>数据来源：小组赛最终积分榜 + 淘汰赛赛程表校验。</footer>
 </main>
 </body>
 </html>"""
 
 
 def render_prediction_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
-    matches = future_matches(schedule, TODAY, 3)
     mystic = mystic_panel()
     matrix_rows = render_score_matrix(prediction["score_matrix_top"])
     ev_rows = render_ev_rows(prediction["ev_table"])
-    analysis = "".join(f"<li>{esc(item)}</li>" for item in prediction["analysis"])
-    risks = "".join(f"<li>{esc(item)}</li>" for item in prediction["risks"])
-    model = prediction_model_v3()
-    weights = "".join(f"<li>{esc(k)}：{v:.0%}</li>" for k, v in model["weights"].items())
+    analysis = render_bullets(prediction["analysis"])
+    risks = render_bullets(prediction["risks"])
+    triggers = render_bullets(prediction["triggers"])
+    insight_cards = render_insight_cards(prediction["model_insights"])
+    plan_rows = render_match_plan(prediction["match_plan"])
+    mystic_html = render_mystic_framework(mystic)
+    next_opponent = prediction["scenario"]["next_opponent_source"]
+    home_profile = render_bullets(prediction["team_profiles"]["home"])
+    away_profile = render_bullets(prediction["team_profiles"]["away"])
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>20260629 南非 vs 加拿大预测</title><style>{css()}</style></head>
 <body>
 <header>
-  <h1>20260629 淘汰赛预测看板</h1>
-  <nav><a href="../index.html">首页</a><a href="#today">首场预测</a><a href="#model">模型</a><a href="#mystic">玄学独立面板</a><a href="#archive">小组赛</a></nav>
+  <h1>南非 vs 加拿大</h1>
+  <p class="subhead">首场淘汰赛预测。页面只保留本场相关内容：结论、球队画像、模型解释、阶段脚本、EV、玄学分析和下一轮潜在对手。</p>
+  <nav><a href="../index.html">首页</a><a href="#summary">结论</a><a href="#profiles">球队画像</a><a href="#model">模型解释</a><a href="#mystic">玄学分析</a></nav>
 </header>
 <main>
-  <section class="section" id="today">
-    <h2>首场淘汰赛预测：{esc(prediction['home_team'])} vs {esc(prediction['away_team'])}</h2>
+  <section class="section" id="summary">
+    <h2>核心结论</h2>
     <div class="card">
       <div class="heroGrid">
-        <div class="metric">轮次<strong>{esc(prediction['round'])}</strong></div>
-        <div class="metric">北京时间<strong>{esc(prediction['kickoff_bjt'].replace(' +08:00',''))}</strong></div>
-        <div class="metric">90分钟方向<strong>{esc(prediction['direction_text'])}</strong></div>
-        <div class="metric">晋级倾向<strong class="adv">{esc(prediction['advance_pick'])}</strong></div>
+        <div class="metric">北京时间<strong>{esc(prediction['kickoff_bjt'].replace(' +08:00',''))}</strong><small>当地时间：{esc(prediction['kickoff_local'])}</small></div>
+        <div class="metric">半场<strong>{esc(prediction['half_time']['main_score'])}</strong><small>方向：{esc(prediction['half_time']['direction'])}，备选 {esc(prediction['half_time']['backup_score'])}</small></div>
+        <div class="metric">90分钟<strong>{esc(prediction['main_score'])}</strong><small>{esc(prediction['direction_text'])}，总进球 {esc(prediction['goals_range'])}</small></div>
+        <div class="metric">晋级<strong class="adv">{esc(prediction['advance_pick'])}</strong><small>{esc(prediction['extra_time_penalty_script'])}</small></div>
       </div>
       <div class="coreGrid">
-        <div class="panel"><h3>主比分</h3><div class="bigScore">{esc(prediction['main_score'])}</div><p class="muted">总进球：{esc(prediction['goals_range'])}</p></div>
-        <div class="panel"><h3>半场</h3><p>方向：{esc(prediction['half_time']['direction'])}</p><p>主比分：{esc(prediction['half_time']['main_score'])}</p><p>备选：{esc(prediction['half_time']['backup_score'])}</p></div>
-        <div class="panel"><h3>胜平负</h3><p>主胜 {prediction['full_time_90']['probabilities']['home']:.0%} / 平 {prediction['full_time_90']['probabilities']['draw']:.0%} / 客胜 {prediction['full_time_90']['probabilities']['away']:.0%}</p><p>{esc(prediction['full_time_90']['double_chance'])}</p></div>
+        <div class="panel"><h3>90分钟胜平负</h3><p>主胜 {prediction['full_time_90']['probabilities']['home']:.0%} / 平 {prediction['full_time_90']['probabilities']['draw']:.0%} / 客胜 {prediction['full_time_90']['probabilities']['away']:.0%}</p><p>{esc(prediction['full_time_90']['double_chance'])}</p></div>
+        <div class="panel"><h3>晋级概率</h3><p>{esc(prediction['home_team'])}: {prediction['home_advance_probability']:.0%}</p><p>{esc(prediction['away_team'])}: {prediction['away_advance_probability']:.0%}</p></div>
+        <div class="panel"><h3>下一场潜在对手</h3><p>胜者进入 {esc(prediction['scenario']['winner_advances_to_match_id'])}</p><p>{esc(next_opponent)}</p></div>
       </div>
-      <div class="coreGrid">
-        <div class="panel"><h3>Elo / xG</h3><p>Elo：{prediction['elo']['home']} - {prediction['elo']['away']}（差值 {prediction['elo']['diff_home_minus_away']}）</p><p>xG：{prediction['expected_goals']['home_xg']} - {prediction['expected_goals']['away_xg']}</p></div>
-        <div class="panel"><h3>晋级概率</h3><p>{esc(prediction['home_team'])}: {prediction['home_advance_probability']:.0%}</p><p>{esc(prediction['away_team'])}: {prediction['away_advance_probability']:.0%}</p><p>{esc(prediction['extra_time_penalty_script'])}</p></div>
-        <div class="panel"><h3>比分池</h3><span class="scoreTag">{esc(prediction['safe_scores'][0])}</span><span class="scoreTag">{esc(prediction['safe_scores'][1])}</span><span class="scoreTag">{esc(prediction['draw_protection_scores'][0])}</span><span class="scoreTag danger">{esc(prediction['upset_score'])}</span></div>
-      </div>
-      <div class="coreGrid">
-        <div class="panel"><h3>剧本分析</h3><p>{esc(prediction['scenario']['home_win_script'])}</p><p>{esc(prediction['scenario']['away_win_script'])}</p><p>{esc(prediction['scenario']['home_loss_script'])}</p><p>{esc(prediction['scenario']['away_loss_script'])}</p></div>
-        <div class="panel"><h3>分析依据</h3><ul>{analysis}</ul></div>
-        <div class="panel"><h3>风险提示</h3><ul>{risks}</ul></div>
-      </div>
-      <h3>比分 EV</h3><div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody>{matrix_rows}</tbody></table></div>
-      <h3>市场 EV / 半场 / 胜负</h3><div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{ev_rows}</tbody></table></div>
     </div>
   </section>
-  <section class="section" id="model"><h2>v3 模型结构</h2><div class="card"><p>按上传的两份执行文档重建：赛程强校验、Elo、EV、半场、90分钟胜平负、最终晋级分层输出。</p><ul>{weights}</ul></div></section>
-  <section class="section" id="mystic"><h2>{esc(mystic['title'])}</h2><div class="card"><p>{esc(mystic['status'])}</p><p>{esc(mystic['local_time_rule'])}</p><p>{esc(mystic['reading'])}</p></div></section>
-  <section class="section" id="upcoming"><h2>未来三天比赛（北京时间）</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>胜者进入</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
-  <section class="section" id="qualified"><h2>32强球队当前战绩</h2><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th><th>首场淘汰赛</th></tr></thead><tbody>{render_stats_rows(stats)}</tbody></table></div></section>
-  <section class="section" id="archive"><h2>小组赛预测选择卡</h2><div class="miniGrid">{render_group_cards('../')}</div></section>
+  <section class="section" id="profiles"><h2>球队画像</h2><div class="coreGrid"><div class="panel"><h3>{esc(prediction['home_team'])}</h3><ul>{home_profile}</ul></div><div class="panel"><h3>{esc(prediction['away_team'])}</h3><ul>{away_profile}</ul></div><div class="panel"><h3>Elo / xG</h3><p>Elo：{prediction['elo']['home']} - {prediction['elo']['away']}（差值 {prediction['elo']['diff_home_minus_away']}）</p><p>xG：{prediction['expected_goals']['home_xg']} - {prediction['expected_goals']['away_xg']}，合计 {prediction['expected_goals']['total_xg']}</p><p>{esc(prediction['elo']['elo_note'])}</p></div></div></section>
+  <section class="section" id="model"><h2>模型解释</h2><div class="coreGrid">{insight_cards}</div><div class="card"><h3>比赛阶段脚本</h3><div class="tableWrap"><table><thead><tr><th>阶段</th><th>{esc(prediction['home_team'])}</th><th>{esc(prediction['away_team'])}</th></tr></thead><tbody>{plan_rows}</tbody></table></div></div><div class="card"><h3>触发条件</h3><ul>{triggers}</ul></div></section>
+  <section class="section" id="scores"><h2>比分与 EV</h2><div class="card"><h3>比分池</h3><span class="scoreTag">{esc(prediction['main_score'])}</span><span class="scoreTag">{esc(prediction['safe_scores'][0])}</span><span class="scoreTag">{esc(prediction['safe_scores'][1])}</span><span class="scoreTag">{esc(prediction['draw_protection_scores'][0])}</span><span class="scoreTag danger">{esc(prediction['upset_score'])}</span><div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody>{matrix_rows}</tbody></table></div></div><div class="card"><h3>市场 EV / 半场 / 胜负</h3><div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{ev_rows}</tbody></table></div></div></section>
+  <section class="section" id="story"><h2>比赛剧本与风险</h2><div class="coreGrid"><div class="panel"><h3>晋级剧本</h3><p>{esc(prediction['scenario']['home_win_script'])}</p><p>{esc(prediction['scenario']['away_win_script'])}</p></div><div class="panel"><h3>分析依据</h3><ul>{analysis}</ul></div><div class="panel"><h3>风险提示</h3><ul>{risks}</ul></div></div></section>
+  <section class="section" id="mystic"><h2>{esc(mystic['title'])}</h2><div class="card">{mystic_html}</div></section>
   <footer>赛程主源：Markdown；Excel 用于一致性校验。玄学面板独立展示，不进入模型评分。</footer>
 </main>
 </body>
@@ -642,10 +732,13 @@ def main() -> int:
 
     home_html = render_home_page(schedule, stats, prediction)
     prediction_html = render_prediction_page(schedule, stats, prediction)
+    teams_html = render_teams_page(stats, schedule)
     (ROOT / "index.html").write_text(home_html, encoding="utf-8")
     (knockout_dir / "index.html").write_text(prediction_html, encoding="utf-8")
+    (knockout_dir / "teams.html").write_text(teams_html, encoding="utf-8")
     (day_dir / "index.html").write_text(prediction_html, encoding="utf-8")
     (day_dir / f"predict_{PREDICTION_DATE}.html").write_text(prediction_html, encoding="utf-8")
+    (day_dir / "teams.html").write_text(teams_html, encoding="utf-8")
     (knockout_dir / "knockout_prediction_model_v3.md").write_text(render_model_doc(model, prediction), encoding="utf-8")
 
     if MODEL_MD.exists():
@@ -658,6 +751,7 @@ def main() -> int:
     print("Generated:")
     print(ROOT / "index.html")
     print(day_dir / f"predict_{PREDICTION_DATE}.html")
+    print(knockout_dir / "teams.html")
     print(knockout_dir / "knockout_prediction_model_v3.md")
     return 0
 
