@@ -627,14 +627,17 @@ foreach ($group in @($apiPayload.value.matchInfoList)) {
     if ($match.crs) {
       $crsUpdatedAt = [string]($match.crs.updateDate) + ' ' + [string]($match.crs.updateTime)
       $crsOdds = New-Object psobject
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0000' -Value $match.crs.s00
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0100' -Value $match.crs.s10
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0200' -Value $match.crs.s20
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0201' -Value $match.crs.s21
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0300' -Value $match.crs.s30
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0301' -Value $match.crs.s31
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0101' -Value $match.crs.s11
-      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name '0001' -Value $match.crs.s01
+      foreach ($prop in @($match.crs.PSObject.Properties)) {
+        if ($prop.Name -match '^s(\d{2})s(\d{2})$') {
+          $homeScore = [int]$Matches[1]
+          $awayScore = [int]$Matches[2]
+          $scoreKey = ('{0}-{1}' -f $homeScore, $awayScore)
+          Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name $scoreKey -Value $prop.Value -Force
+        }
+      }
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name 'homeOther' -Value $match.crs.s1sh -Force
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name 'drawOther' -Value $match.crs.s1sd -Force
+      Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name 'awayOther' -Value $match.crs.s1sa -Force
       Add-Member -InputObject $crsOdds -MemberType NoteProperty -Name 'updatedAt' -Value $crsUpdatedAt
     }
 
@@ -643,14 +646,14 @@ foreach ($group in @($apiPayload.value.matchInfoList)) {
       $hafuUpdatedAt = [string]($match.hafu.updateDate) + ' ' + [string]($match.hafu.updateTime)
       $hafuOdds = [pscustomobject]@{
         aa = $match.hafu.aa
-        ad = $match.hafu.ab
-        ah = $match.hafu.ac
-        da = $match.hafu.ba
-        dd = $match.hafu.bb
-        dh = $match.hafu.bc
-        ha = $match.hafu.ca
-        hd = $match.hafu.cb
-        hh = $match.hafu.cc
+        ad = $match.hafu.ad
+        ah = $match.hafu.ah
+        da = $match.hafu.da
+        dd = $match.hafu.dd
+        dh = $match.hafu.dh
+        ha = $match.hafu.ha
+        hd = $match.hafu.hd
+        hh = $match.hafu.hh
         updatedAt = $hafuUpdatedAt
       }
     }
