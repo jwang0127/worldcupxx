@@ -500,11 +500,100 @@ ADDITIONAL_MATCH_MODELS: dict[str, dict[str, Any]] = {
 }
 
 
+ADDITIONAL_MATCH_DETAILS: dict[str, dict[str, Any]] = {
+    "53452557": {
+        "review_adjustment": "南非-加拿大复盘：低比分方向正确，但90分钟平局保护过重。加拿大补时绝杀说明淘汰赛强方即使打不开局，也要给90+阶段的边路、二点球和替补冲击保留小胜权重。本场巴西仍走胜，但比分从大胜压回2-1/2-0。",
+        "score_matrix_top": [
+            {"score": "2-1", "probability": 0.168, "ev_signal": "+0.04", "label": "主比分"},
+            {"score": "2-0", "probability": 0.142, "ev_signal": "+0.03", "label": "巴西控场小胜"},
+            {"score": "1-1", "probability": 0.118, "ev_signal": "+0.02", "label": "日本拖住节奏"},
+            {"score": "1-0", "probability": 0.096, "ev_signal": "+0.01", "label": "低比分保护"},
+            {"score": "1-2", "probability": 0.072, "ev_signal": "-0.01", "label": "日本冷门"},
+            {"score": "3-1", "probability": 0.066, "ev_signal": "-0.02", "label": "尾部上修"},
+        ],
+        "ev_table": [
+            {"market": "巴西90分钟胜", "model_probability": 0.54, "fair_odds": 1.85, "ev_signal": "+0.05", "note": "胜面保留，但不追穿盘大胜"},
+            {"market": "总进球2-3", "model_probability": 0.51, "fair_odds": 1.96, "ev_signal": "+0.04", "note": "主比分池集中在2球和3球"},
+            {"market": "半场巴西不败", "model_probability": 0.72, "fair_odds": 1.39, "ev_signal": "+0.02", "note": "日本前30分钟抗压是关键"},
+            {"market": "日本进球", "model_probability": 0.46, "fair_odds": 2.17, "ev_signal": "+0.01", "note": "反击质量足够制造一个球"},
+        ],
+        "model_insights": [
+            {"title": "统一结论", "content": "巴西90分钟胜是主线，但不是碾压局；日本的转换能力要求比分池保留1-1和2-1。"},
+            {"title": "复盘校正", "content": "昨日加拿大补时进球提醒模型：强方久攻不下时不能简单降为平局，要保留90分钟末段小胜。"},
+            {"title": "比分怎么用", "content": "主比分2-1，保守备选2-0，若半场0-0则1-1升权；巴西早进球才上修3-1。"},
+        ],
+        "triggers": [
+            "巴西30分钟前进球：2-0、3-1升权，日本被迫前压后空间会变大。",
+            "半场0-0：1-1保护升权，巴西胜从常规胜转为尾段小胜。",
+            "日本先进球：比赛转向1-1/1-2冷门线，巴西需要尽快提高射门频率。",
+        ],
+    },
+    "53452541": {
+        "review_adjustment": "南非-加拿大复盘：淘汰赛首战的低比分、防守耐心和补时决胜都得到验证。德国优势更明显，但巴拉圭的低位防守会把比赛压成1-0/2-0区间，冷门主要来自定位球1-1。",
+        "score_matrix_top": [
+            {"score": "2-0", "probability": 0.184, "ev_signal": "+0.05", "label": "主比分"},
+            {"score": "1-0", "probability": 0.146, "ev_signal": "+0.03", "label": "久攻小胜"},
+            {"score": "2-1", "probability": 0.122, "ev_signal": "+0.02", "label": "定位球丢球"},
+            {"score": "1-1", "probability": 0.092, "ev_signal": "+0.01", "label": "冷门保护"},
+            {"score": "3-0", "probability": 0.081, "ev_signal": "-0.01", "label": "早球放大"},
+            {"score": "3-1", "probability": 0.064, "ev_signal": "-0.02", "label": "尾部上修"},
+        ],
+        "ev_table": [
+            {"market": "德国90分钟胜", "model_probability": 0.61, "fair_odds": 1.64, "ev_signal": "+0.06", "note": "今日三场里最明确的方向"},
+            {"market": "德国零封", "model_probability": 0.45, "fair_odds": 2.22, "ev_signal": "+0.03", "note": "巴拉圭运动战持续性不足"},
+            {"market": "总进球2-3", "model_probability": 0.49, "fair_odds": 2.04, "ev_signal": "+0.02", "note": "不追4球以上"},
+            {"market": "半场德国领先", "model_probability": 0.43, "fair_odds": 2.33, "ev_signal": "+0.01", "note": "早段压迫质量决定上限"},
+        ],
+        "model_insights": [
+            {"title": "统一结论", "content": "德国胜面清楚，主线2-0；巴拉圭能守，但如果先丢球，反扑质量不足。"},
+            {"title": "复盘校正", "content": "昨日低比分和补时绝杀说明淘汰赛不能只按实力差拉大比分，德国胜也要优先用1-0/2-0表达。"},
+            {"title": "比分怎么用", "content": "2-0为主，1-0是久攻不下的保守脚本，2-1来自巴拉圭定位球或二点球。"},
+        ],
+        "triggers": [
+            "德国30分钟前进球：2-0主线加强，3-0进入尾部。",
+            "半场0-0：1-0升权，巴拉圭1-1冷门保护同步上升。",
+            "巴拉圭定位球威胁连续出现：2-1和1-1权重提高。",
+        ],
+    },
+    "53452547": {
+        "review_adjustment": "南非-加拿大复盘：平局保护有价值，但不能忽视补时阶段强侧或阵容深度更好一方的小胜。荷兰-摩洛哥强弱差更窄，因此仍以1-1为主，但把0-1/1-0同时放进核心比分池。",
+        "score_matrix_top": [
+            {"score": "1-1", "probability": 0.176, "ev_signal": "+0.05", "label": "主比分"},
+            {"score": "1-0", "probability": 0.126, "ev_signal": "+0.03", "label": "荷兰尾段小胜"},
+            {"score": "0-1", "probability": 0.118, "ev_signal": "+0.03", "label": "摩洛哥反击"},
+            {"score": "0-0", "probability": 0.101, "ev_signal": "+0.02", "label": "低节奏锁局"},
+            {"score": "2-1", "probability": 0.084, "ev_signal": "-0.01", "label": "荷兰开放胜"},
+            {"score": "0-2", "probability": 0.061, "ev_signal": "-0.01", "label": "摩洛哥冷门放大"},
+        ],
+        "ev_table": [
+            {"market": "90分钟平局", "model_probability": 0.35, "fair_odds": 2.86, "ev_signal": "+0.05", "note": "双方都能接受先不犯错"},
+            {"market": "总进球1-2", "model_probability": 0.52, "fair_odds": 1.92, "ev_signal": "+0.04", "note": "低比分主线最稳"},
+            {"market": "荷兰晋级", "model_probability": 0.53, "fair_odds": 1.89, "ev_signal": "+0.02", "note": "晋级略优，不等于90分钟主胜"},
+            {"market": "双方进球", "model_probability": 0.47, "fair_odds": 2.13, "ev_signal": "+0.01", "note": "1-1是最高权重比分"},
+        ],
+        "model_insights": [
+            {"title": "统一结论", "content": "这场不适合强行分胜负。90分钟1-1优先，最终晋级荷兰略占优。"},
+            {"title": "复盘校正", "content": "昨日南非-加拿大证明低比分和平局保护有效，但补时小胜必须保留，所以1-0和0-1都进入核心池。"},
+            {"title": "比分怎么用", "content": "主比分1-1；荷兰尾段质量对应1-0，摩洛哥转换效率对应0-1，0-0只作为节奏极慢保护。"},
+        ],
+        "triggers": [
+            "半场0-0：1-1和0-0继续升权，荷兰晋级倾向不等于90分钟赢球。",
+            "摩洛哥先进球：0-1/0-2冷门线升权，荷兰会被迫打开边路。",
+            "荷兰60分钟后换人提升压迫：1-0、2-1升权。",
+        ],
+    },
+}
+
+
 def additional_prediction(schedule: list[dict[str, Any]], game_id: str) -> dict[str, Any]:
     match = next(item for item in schedule if item["game_id"] == game_id)
     model = ADDITIONAL_MATCH_MODELS[game_id]
+    details = ADDITIONAL_MATCH_DETAILS[game_id]
     return {
         **model,
+        **details,
+        "safe_scores": model["backup_scores"],
+        "draw_protection_scores": ["0-0", "1-1"],
         "game_id": match["game_id"],
         "match_no": match["match_no"],
         "round": match["round"],
@@ -731,7 +820,9 @@ def model_review_lessons() -> dict[str, Any]:
         f"方向命中约 {direction_hits}/{total}，说明强弱判断可保留；总进球命中约 {total_hits}/{total}，说明进球区间要用范围表达。",
         f"出现 {high_miss} 场低估大比分、{low_miss} 场高估进球的偏差；淘汰赛模型必须同时保留低比分锁局和尾部上修。",
         f"精确比分命中 {score_hits}/{total}，所以今天输出改为“主比分 + 两条备选脚本”，不再把单一比分说死。",
-        "末轮阶段常被净胜球需求放大，淘汰赛首战则相反：先压节奏，再看60分钟后的体能和换人。",
+        "南非-加拿大 0-1 复盘：模型低比分和加拿大最终优势方向有效，但90分钟平局保护偏重；补时进球说明强侧尾段小胜权重需要上调。",
+        "今日修正：强弱差明确的场次不再因为淘汰赛保守而过度压成平局；比分池保留1球差、补时小胜和定位球冷门三条脚本。",
+        "末轮阶段常被净胜球需求放大，淘汰赛首战则相反：先压节奏，再看60分钟后的体能、换人和补时阶段。",
     ]
     return {
         "settled": total,
@@ -741,7 +832,7 @@ def model_review_lessons() -> dict[str, Any]:
         "high_miss": high_miss,
         "low_miss": low_miss,
         "lessons": lessons,
-        "summary": "复盘后模型口径：方向可以明确，比分要给主线和触发条件；淘汰赛优先防低比分和平局。",
+        "summary": "复盘后模型口径：方向可以明确，比分要给主线和触发条件；淘汰赛优先防低比分，但强侧90分钟尾段小胜必须保留。",
     }
 
 
@@ -763,6 +854,7 @@ ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8
 .miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
 .mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
 .mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
+.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 90px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary::-webkit-details-marker{display:none}.matchDetails summary:before{content:"展开";color:#8fffd0;border:1px solid var(--line);border-radius:8px;padding:5px 8px;justify-self:start;grid-column:1/-1;display:none}.matchDetails:not([open]) summary:before{display:inline-block}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted);line-height:1.5}.matchDetails:not([open]) summary{border-bottom:0}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;box-shadow:none}@media(max-width:850px){.matchDetails summary{grid-template-columns:1fr}.matchDetails summary strong{font-size:28px}}
 footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 """
 
@@ -878,12 +970,21 @@ def render_prediction_card(item: dict[str, Any]) -> str:
     team_reading = render_bullets(item["team_reading"])
     model_reasoning = render_bullets(item["model_reasoning"])
     mystic = render_bullets(item["mystic_summary"])
+    triggers = render_bullets(item.get("triggers", []))
+    matrix_rows = render_score_matrix(item.get("score_matrix_top", []))
+    ev_rows = render_ev_rows(item.get("ev_table", []))
+    insight_cards = render_insight_cards(item.get("model_insights", []))
     backup = " / ".join(item["backup_scores"])
     kickoff = item["kickoff_bjt"].replace(" +08:00", "")
     return f"""
 <section class="section">
-  <h2>{esc(item['home_team'])} vs {esc(item['away_team'])}</h2>
-  <div class="card">
+  <details class="matchDetails" open>
+  <summary>
+    <span>{esc(item['home_team'])} vs {esc(item['away_team'])}</span>
+    <strong>{esc(item['main_score'])}</strong>
+    <em>{esc(item['direction_text'])} / 晋级 {esc(item['advance_pick'])}</em>
+  </summary>
+  <div class="card matchBody">
     <div class="heroGrid">
       <div class="metric">北京时间<strong>{esc(kickoff)}</strong></div>
       <div class="metric">半场<strong>{esc(item['half_time'])}</strong></div>
@@ -895,17 +996,40 @@ def render_prediction_card(item: dict[str, Any]) -> str:
       <div class="panel"><h3>判断口径</h3><p>{esc(item['core_view'])}</p><p>{esc(item['advance_probability_text'])}</p></div>
       <div class="panel"><h3>下场对手</h3><p>{esc(item['next_opponent_note'])}</p></div>
     </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>{esc(item.get('review_adjustment', '南非-加拿大0-1复盘后，今日统一提高低比分、尾段小胜和触发条件权重。'))}</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">{esc(item['main_score'])}</span>
+      <span class="scoreTag">{esc(item['backup_scores'][0])}</span>
+      <span class="scoreTag">{esc(item['backup_scores'][1])}</span>
+      <span class="scoreTag danger">{esc(item['upset_score'])}</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody>{matrix_rows}</tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{ev_rows}</tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      {insight_cards}
+    </div>
+    <div class="card"><h3>触发条件</h3><ul>{triggers}</ul></div>
     <div class="coreGrid">
       <div class="panel"><h3>球队画像</h3><ul>{team_reading}</ul></div>
       <div class="panel"><h3>模型解释</h3><ul>{model_reasoning}</ul></div>
       <div class="panel mysticCard"><h3>玄学综参</h3><ul>{mystic}</ul></div>
     </div>
   </div>
+  </details>
 </section>"""
 
 
 def render_multi_prediction_page(date_label: str, predictions: list[dict[str, Any]]) -> str:
     cards = "".join(render_prediction_card(item) for item in predictions)
+    review = model_review_lessons()
+    review_lessons = render_review_lessons(review)
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{date_label} 淘汰赛预测</title><style>{css()}</style></head>
@@ -915,6 +1039,14 @@ def render_multi_prediction_page(date_label: str, predictions: list[dict[str, An
   <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a></nav>
 </header>
 <main>
+  <section class="section">
+    <h2>昨日复盘与模型修正</h2>
+    <div class="card">
+      <p><strong>南非-加拿大 0-1：</strong>90分钟后伤停补时加拿大进球。昨日模型保留了低比分和加拿大最终优势，但90分钟平局保护偏重；今日已把强侧尾段小胜、替补冲击、定位球/二点球触发条件上调。</p>
+      <p>{esc(review.get('summary', ''))}</p>
+      <ul>{review_lessons}</ul>
+    </div>
+  </section>
   {cards}
 </main>
 </body>

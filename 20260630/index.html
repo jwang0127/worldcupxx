@@ -17,6 +17,7 @@ ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8
 .miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
 .mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
 .mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
+.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 90px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary::-webkit-details-marker{display:none}.matchDetails summary:before{content:"展开";color:#8fffd0;border:1px solid var(--line);border-radius:8px;padding:5px 8px;justify-self:start;grid-column:1/-1;display:none}.matchDetails:not([open]) summary:before{display:inline-block}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted);line-height:1.5}.matchDetails:not([open]) summary{border-bottom:0}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;box-shadow:none}@media(max-width:850px){.matchDetails summary{grid-template-columns:1fr}.matchDetails summary strong{font-size:28px}}
 footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 </style></head>
 <body>
@@ -25,10 +26,23 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
   <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a></nav>
 </header>
 <main>
+  <section class="section">
+    <h2>昨日复盘与模型修正</h2>
+    <div class="card">
+      <p><strong>南非-加拿大 0-1：</strong>90分钟后伤停补时加拿大进球。昨日模型保留了低比分和加拿大最终优势，但90分钟平局保护偏重；今日已把强侧尾段小胜、替补冲击、定位球/二点球触发条件上调。</p>
+      <p>复盘后模型口径：方向可以明确，比分要给主线和触发条件；淘汰赛优先防低比分，但强侧90分钟尾段小胜必须保留。</p>
+      <ul><li>已回填 50 场小组赛赛果：方向比比分更可靠，比分不能只盯一个主比分。</li><li>方向命中约 34/50，说明强弱判断可保留；总进球命中约 8/50，说明进球区间要用范围表达。</li><li>出现 5 场低估大比分、3 场高估进球的偏差；淘汰赛模型必须同时保留低比分锁局和尾部上修。</li><li>精确比分命中 13/50，所以今天输出改为“主比分 + 两条备选脚本”，不再把单一比分说死。</li><li>南非-加拿大 0-1 复盘：模型低比分和加拿大最终优势方向有效，但90分钟平局保护偏重；补时进球说明强侧尾段小胜权重需要上调。</li><li>今日修正：强弱差明确的场次不再因为淘汰赛保守而过度压成平局；比分池保留1球差、补时小胜和定位球冷门三条脚本。</li><li>末轮阶段常被净胜球需求放大，淘汰赛首战则相反：先压节奏，再看60分钟后的体能、换人和补时阶段。</li></ul>
+    </div>
+  </section>
   
 <section class="section">
-  <h2>巴西 vs 日本</h2>
-  <div class="card">
+  <details class="matchDetails" open>
+  <summary>
+    <span>巴西 vs 日本</span>
+    <strong>2-1</strong>
+    <em>巴西90分钟胜 / 晋级 巴西</em>
+  </summary>
+  <div class="card matchBody">
     <div class="heroGrid">
       <div class="metric">北京时间<strong>2026-06-30 01:00:00</strong></div>
       <div class="metric">半场<strong>巴西 1-0 日本</strong></div>
@@ -40,16 +54,42 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
       <div class="panel"><h3>判断口径</h3><p>巴西纸面和淘汰赛经验占优，日本有反击质量，但更像能制造进球而不是掀翻主线。</p><p>巴西 62% / 日本 38%</p></div>
       <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 科特迪瓦 / 挪威 胜者</p></div>
     </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>南非-加拿大复盘：低比分方向正确，但90分钟平局保护过重。加拿大补时绝杀说明淘汰赛强方即使打不开局，也要给90+阶段的边路、二点球和替补冲击保留小胜权重。本场巴西仍走胜，但比分从大胜压回2-1/2-0。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">2-1</span>
+      <span class="scoreTag">2-0</span>
+      <span class="scoreTag">1-1</span>
+      <span class="scoreTag danger">1-2</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>2-1</td><td>16.8%</td><td>+0.04</td><td>主比分</td></tr><tr><td>2-0</td><td>14.2%</td><td>+0.03</td><td>巴西控场小胜</td></tr><tr><td>1-1</td><td>11.8%</td><td>+0.02</td><td>日本拖住节奏</td></tr><tr><td>1-0</td><td>9.6%</td><td>+0.01</td><td>低比分保护</td></tr><tr><td>1-2</td><td>7.2%</td><td>-0.01</td><td>日本冷门</td></tr><tr><td>3-1</td><td>6.6%</td><td>-0.02</td><td>尾部上修</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>巴西90分钟胜</td><td>54.0%</td><td>1.85</td><td>+0.05</td><td>胜面保留，但不追穿盘大胜</td></tr><tr><td>总进球2-3</td><td>51.0%</td><td>1.96</td><td>+0.04</td><td>主比分池集中在2球和3球</td></tr><tr><td>半场巴西不败</td><td>72.0%</td><td>1.39</td><td>+0.02</td><td>日本前30分钟抗压是关键</td></tr><tr><td>日本进球</td><td>46.0%</td><td>2.17</td><td>+0.01</td><td>反击质量足够制造一个球</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>统一结论</h3><p>巴西90分钟胜是主线，但不是碾压局；日本的转换能力要求比分池保留1-1和2-1。</p></div><div class="panel"><h3>复盘校正</h3><p>昨日加拿大补时进球提醒模型：强方久攻不下时不能简单降为平局，要保留90分钟末段小胜。</p></div><div class="panel"><h3>比分怎么用</h3><p>主比分2-1，保守备选2-0，若半场0-0则1-1升权；巴西早进球才上修3-1。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>巴西30分钟前进球：2-0、3-1升权，日本被迫前压后空间会变大。</li><li>半场0-0：1-1保护升权，巴西胜从常规胜转为尾段小胜。</li><li>日本先进球：比赛转向1-1/1-2冷门线，巴西需要尽快提高射门频率。</li></ul></div>
     <div class="coreGrid">
       <div class="panel"><h3>球队画像</h3><ul><li>巴西小组赛进攻效率稳定，面对中低位防守时仍有单点破局能力。</li><li>日本小组赛韧性强，适合把比赛拖进1球差，但防线承压时间过长会暴露身后空间。</li><li>本场合理打法：巴西先抢节奏和禁区前沿，日本守住前30分钟后打反击。</li></ul></div>
       <div class="panel"><h3>模型解释</h3><ul><li>主线不走大胜：日本具备把比分压住的能力。</li><li>巴西胜面来自前场个人能力和淘汰赛控场经验。</li><li>若半场仍是0-0，1-1保护升权；若巴西先入球，2-0/2-1成为主路径。</li></ul></div>
       <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>梅花/六爻：主队气更足，巴西小优。</li><li>五行/飞星：黄绿木火有进攻象，但日本白蓝金水能守，比分不宜过大。</li><li>玄学赛果：巴西2-1，防1-1。</li></ul></div>
     </div>
   </div>
+  </details>
 </section>
 <section class="section">
-  <h2>德国 vs 巴拉圭</h2>
-  <div class="card">
+  <details class="matchDetails" open>
+  <summary>
+    <span>德国 vs 巴拉圭</span>
+    <strong>2-0</strong>
+    <em>德国90分钟胜 / 晋级 德国</em>
+  </summary>
+  <div class="card matchBody">
     <div class="heroGrid">
       <div class="metric">北京时间<strong>2026-06-30 04:30:00</strong></div>
       <div class="metric">半场<strong>德国 1-0 巴拉圭</strong></div>
@@ -61,16 +101,42 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
       <div class="panel"><h3>判断口径</h3><p>德国小组赛火力和压迫质量更强，巴拉圭能守但反击持续性不足，德国常规时间解决概率最高。</p><p>德国 68% / 巴拉圭 32%</p></div>
       <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 法国 / 瑞典 胜者</p></div>
     </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>南非-加拿大复盘：淘汰赛首战的低比分、防守耐心和补时决胜都得到验证。德国优势更明显，但巴拉圭的低位防守会把比赛压成1-0/2-0区间，冷门主要来自定位球1-1。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">2-0</span>
+      <span class="scoreTag">2-1</span>
+      <span class="scoreTag">1-0</span>
+      <span class="scoreTag danger">1-1</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>2-0</td><td>18.4%</td><td>+0.05</td><td>主比分</td></tr><tr><td>1-0</td><td>14.6%</td><td>+0.03</td><td>久攻小胜</td></tr><tr><td>2-1</td><td>12.2%</td><td>+0.02</td><td>定位球丢球</td></tr><tr><td>1-1</td><td>9.2%</td><td>+0.01</td><td>冷门保护</td></tr><tr><td>3-0</td><td>8.1%</td><td>-0.01</td><td>早球放大</td></tr><tr><td>3-1</td><td>6.4%</td><td>-0.02</td><td>尾部上修</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>德国90分钟胜</td><td>61.0%</td><td>1.64</td><td>+0.06</td><td>今日三场里最明确的方向</td></tr><tr><td>德国零封</td><td>45.0%</td><td>2.22</td><td>+0.03</td><td>巴拉圭运动战持续性不足</td></tr><tr><td>总进球2-3</td><td>49.0%</td><td>2.04</td><td>+0.02</td><td>不追4球以上</td></tr><tr><td>半场德国领先</td><td>43.0%</td><td>2.33</td><td>+0.01</td><td>早段压迫质量决定上限</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>统一结论</h3><p>德国胜面清楚，主线2-0；巴拉圭能守，但如果先丢球，反扑质量不足。</p></div><div class="panel"><h3>复盘校正</h3><p>昨日低比分和补时绝杀说明淘汰赛不能只按实力差拉大比分，德国胜也要优先用1-0/2-0表达。</p></div><div class="panel"><h3>比分怎么用</h3><p>2-0为主，1-0是久攻不下的保守脚本，2-1来自巴拉圭定位球或二点球。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>德国30分钟前进球：2-0主线加强，3-0进入尾部。</li><li>半场0-0：1-0升权，巴拉圭1-1冷门保护同步上升。</li><li>巴拉圭定位球威胁连续出现：2-1和1-1权重提高。</li></ul></div>
     <div class="coreGrid">
       <div class="panel"><h3>球队画像</h3><ul><li>德国小组赛进球能力强，进入淘汰赛后仍有主动控场空间。</li><li>巴拉圭以第三名路径出线，防守优先，但如果先丢球很难长时间对攻。</li><li>本场合理打法：德国前压制造早球，巴拉圭先守低位并等待定位球。</li></ul></div>
       <div class="panel"><h3>模型解释</h3><ul><li>德国优势不是单纯纸面强，而是能持续制造射门和二次进攻。</li><li>巴拉圭冷门条件只有一个：上半场守到0-0并通过定位球制造1-1。</li><li>若德国30分钟前进球，2-0是主线；若久攻不下，1-0降速收场。</li></ul></div>
       <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>梅花/六爻：主队世爻旺，德国主动。</li><li>奇门/五行：金水秩序感强，利德国控场。</li><li>玄学赛果：德国2-0，防2-1。</li></ul></div>
     </div>
   </div>
+  </details>
 </section>
 <section class="section">
-  <h2>荷兰 vs 摩洛哥</h2>
-  <div class="card">
+  <details class="matchDetails" open>
+  <summary>
+    <span>荷兰 vs 摩洛哥</span>
+    <strong>1-1</strong>
+    <em>90分钟平局保护 / 晋级 荷兰</em>
+  </summary>
+  <div class="card matchBody">
     <div class="heroGrid">
       <div class="metric">北京时间<strong>2026-06-30 09:00:00</strong></div>
       <div class="metric">半场<strong>荷兰 0-0 摩洛哥</strong></div>
@@ -82,12 +148,33 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
       <div class="panel"><h3>判断口径</h3><p>这是四场里最接近的一场。荷兰整体结构更稳，摩洛哥反击和身体对抗有爆点，90分钟必须防平。</p><p>荷兰 53% / 摩洛哥 47%</p></div>
       <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 南非 / 加拿大 胜者</p></div>
     </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>南非-加拿大复盘：平局保护有价值，但不能忽视补时阶段强侧或阵容深度更好一方的小胜。荷兰-摩洛哥强弱差更窄，因此仍以1-1为主，但把0-1/1-0同时放进核心比分池。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">1-1</span>
+      <span class="scoreTag">1-0</span>
+      <span class="scoreTag">0-1</span>
+      <span class="scoreTag danger">0-2</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>1-1</td><td>17.6%</td><td>+0.05</td><td>主比分</td></tr><tr><td>1-0</td><td>12.6%</td><td>+0.03</td><td>荷兰尾段小胜</td></tr><tr><td>0-1</td><td>11.8%</td><td>+0.03</td><td>摩洛哥反击</td></tr><tr><td>0-0</td><td>10.1%</td><td>+0.02</td><td>低节奏锁局</td></tr><tr><td>2-1</td><td>8.4%</td><td>-0.01</td><td>荷兰开放胜</td></tr><tr><td>0-2</td><td>6.1%</td><td>-0.01</td><td>摩洛哥冷门放大</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>90分钟平局</td><td>35.0%</td><td>2.86</td><td>+0.05</td><td>双方都能接受先不犯错</td></tr><tr><td>总进球1-2</td><td>52.0%</td><td>1.92</td><td>+0.04</td><td>低比分主线最稳</td></tr><tr><td>荷兰晋级</td><td>53.0%</td><td>1.89</td><td>+0.02</td><td>晋级略优，不等于90分钟主胜</td></tr><tr><td>双方进球</td><td>47.0%</td><td>2.13</td><td>+0.01</td><td>1-1是最高权重比分</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>统一结论</h3><p>这场不适合强行分胜负。90分钟1-1优先，最终晋级荷兰略占优。</p></div><div class="panel"><h3>复盘校正</h3><p>昨日南非-加拿大证明低比分和平局保护有效，但补时小胜必须保留，所以1-0和0-1都进入核心池。</p></div><div class="panel"><h3>比分怎么用</h3><p>主比分1-1；荷兰尾段质量对应1-0，摩洛哥转换效率对应0-1，0-0只作为节奏极慢保护。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>半场0-0：1-1和0-0继续升权，荷兰晋级倾向不等于90分钟赢球。</li><li>摩洛哥先进球：0-1/0-2冷门线升权，荷兰会被迫打开边路。</li><li>荷兰60分钟后换人提升压迫：1-0、2-1升权。</li></ul></div>
     <div class="coreGrid">
       <div class="panel"><h3>球队画像</h3><ul><li>荷兰小组赛进攻数据好，但淘汰赛面对摩洛哥不会轻松打穿。</li><li>摩洛哥韧性和转换速度足够制造冷门，尤其适合在下半场偷一个。</li><li>本场合理打法：荷兰控球压节奏，摩洛哥守住中路后打身后。</li></ul></div>
       <div class="panel"><h3>模型解释</h3><ul><li>荷兰晋级略优，但不等同于90分钟主胜。</li><li>摩洛哥若先入球，比赛会转向0-1/0-2冷门线。</li><li>主线是1-1；荷兰靠加时、点球或最后30分钟质量晋级。</li></ul></div>
       <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>梅花/六爻：主客相持，平局象重。</li><li>奇门/飞星：伏吟偏慢，先守后变。</li><li>玄学赛果：1-1，荷兰最终晋级。</li></ul></div>
     </div>
   </div>
+  </details>
 </section>
 </main>
 </body>
