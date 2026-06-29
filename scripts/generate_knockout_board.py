@@ -978,7 +978,7 @@ def render_prediction_card(item: dict[str, Any]) -> str:
     kickoff = item["kickoff_bjt"].replace(" +08:00", "")
     return f"""
 <section class="section">
-  <details class="matchDetails" open>
+  <details class="matchDetails">
   <summary>
     <span>{esc(item['home_team'])} vs {esc(item['away_team'])}</span>
     <strong>{esc(item['main_score'])}</strong>
