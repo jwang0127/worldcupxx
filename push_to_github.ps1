@@ -35,6 +35,7 @@ if (Test-Path (Join-Path $workTree "data")) {
 if (Test-Path (Join-Path $workTree "scripts")) {
   & $git --git-dir="$gitDir" --work-tree="$workTree" add (Join-Path $workTree "scripts")
 }
+& $git --git-dir="$gitDir" --work-tree="$workTree" rm -r --cached --ignore-unmatch (Join-Path $workTree "scripts\__pycache__")
 Get-ChildItem -Path $workTree -Recurse -Filter "*.html" |
   Where-Object { $_.FullName -notmatch "\\.git\\" } |
   ForEach-Object {

@@ -26,6 +26,13 @@ PREDICTION_DATE = "20260629"
 FIRST_GAME_ID = "53452545"
 PREDICTION_GAME_IDS = ["53452545", "53452557", "53452541", "53452547", "53452561", "53452543", "53452563"]
 GLOBAL_SCHEDULE: list[dict[str, Any]] = []
+PARLAY_POLICY = {
+    "enabled_match_count": 3,
+    "single_match_mode": "regular_prediction_only",
+    "required_markets": ["crs", "ttg", "hafu"],
+    "odds_source": "Sporttery getMatchCalculatorV1 website API via scripts/fetch_sporttery.ps1",
+    "parlay_types": ["比分三串一", "总进球数三串一", "半场胜平负三串一"],
+}
 
 
 TEAM_ALIAS = {
@@ -375,6 +382,7 @@ def prediction_model_v3() -> dict[str, Any]:
             "worldcup26.ir/get/games 用作赛程和赛果兜底校验，不能覆盖已人工确认的赛程主客队。",
             "football-data.org、api-football、TheSportsDB、SerpApi 只作为球队资料、伤停、历史和新闻补充；缺数据时降权，不编造首发。",
         ],
+        "parlay_policy": PARLAY_POLICY,
     }
 
 
@@ -1299,7 +1307,7 @@ def render_parlay_table(title: str, rows: list[dict[str, Any]], note: str) -> st
 
 
 def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) -> str:
-    if len(predictions) != 3:
+    if len(predictions) != PARLAY_POLICY["enabled_match_count"]:
         return ""
     odds_lookup = load_live_odds(date_label)
     if not odds_lookup:
@@ -1314,6 +1322,8 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
         if not odds_match:
             return ""
         odds = odds_match.get("odds", {})
+        if not odds.get("crs") or not odds.get("ttg") or not odds.get("hafu"):
+            return ""
         match_label = f"{item['home_team']} vs {item['away_team']}"
 
         score_pick = str(item["main_score"])
@@ -1367,13 +1377,14 @@ def render_multi_prediction_page(date_label: str, predictions: list[dict[str, An
     review = model_review_lessons()
     review_lessons = render_review_lessons(review)
     parlay = render_parlay_section(date_label, predictions)
+    parlay_nav = '<a href="#parlay">三串一</a>' if parlay else ""
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{date_label} 淘汰赛预测</title><style>{css()}</style></head>
 <body>
 <header>
   <h1>{date_label} 淘汰赛预测</h1>
-  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a><a href="#parlay">三串一</a></nav>
+  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a>{parlay_nav}</nav>
 </header>
 <main>
   <section class="section">
@@ -1443,6 +1454,8 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
     weights = "\n".join(f"- `{k}`: {v:.0%}" for k, v in model["weights"].items())
     checks = "\n".join(f"- {item}" for item in model["mandatory_checks"])
     ev_rules = "\n".join(f"- {item}" for item in model["ev_rules"])
+    parlay_types = "、".join(PARLAY_POLICY["parlay_types"])
+    required_markets = "、".join(PARLAY_POLICY["required_markets"])
     return f"""# 淘汰赛预测模型 v3
 
 生成时间：2026-06-28
@@ -1466,6 +1479,13 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
 ## EV 规则
 
 {ev_rules}
+
+## 三串一生成规则
+
+- 当日预测场次正好为 {PARLAY_POLICY["enabled_match_count"]} 场时，生成 `{parlay_types}` 三个三串一模块。
+- 三串一赔率只从网站实时赔率数据读取：`{PARLAY_POLICY["odds_source"]}`。
+- 必须同时匹配 `{required_markets}` 三类赔率；缺任一市场或无法匹配场次时，不输出三串一模块。
+- 当日只有 1 场比赛时，只输出常规预测，不生成三串一。
 
 ## 首场输出
 

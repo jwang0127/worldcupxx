@@ -31,6 +31,8 @@ import requests
 
 
 DEFAULT_ROOT = Path(r"D:\WorldCupPredict")
+PARLAY_MATCH_COUNT = 3
+PARLAY_RULE_NOTE = "当日正好 3 场比赛时生成比分、总进球数、半场胜平负三类三串一；当日只有 1 场比赛时只做常规预测。赔率由 fetch_sporttery.ps1 从网站实时赔率接口拉取。"
 
 
 def parse_args() -> argparse.Namespace:
@@ -517,6 +519,42 @@ def pick_score_combo(predictions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return combo
 
 
+def pick_half_time_combo(predictions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """生成半场胜平负三串一。"""
+    selected = predictions[:3]
+    combo = []
+    for item in selected:
+        combo.append(
+            {
+                "match_id": item["match_id"],
+                "match_name": f'{item["home_team"]} vs {item["away_team"]}',
+                "pick_type": "half_time_outcome",
+                "pick_value": item.get("half_time_pick", "draw"),
+            }
+        )
+    return combo
+
+
+def build_combo_payload(predictions: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """只在三场比赛日生成三串一；单场日只保留常规预测。"""
+    if len(predictions) != PARLAY_MATCH_COUNT:
+        return {
+            "enabled": False,
+            "rule": PARLAY_RULE_NOTE,
+            "total_goals": [],
+            "score": [],
+            "half_time": [],
+        }
+    return {
+        "enabled": True,
+        "rule": PARLAY_RULE_NOTE,
+        "odds_source": "scripts/fetch_sporttery.ps1 -> Sporttery getMatchCalculatorV1 website API",
+        "total_goals": pick_total_goals_combo(predictions),
+        "score": pick_score_combo(predictions),
+        "half_time": pick_half_time_combo(predictions),
+    }
+
+
 def outcome_label(value: str) -> str:
     """将内部方向值转成中文。"""
     return {"home": "主胜", "draw": "平局", "away": "客胜"}.get(value, value)
@@ -583,6 +621,32 @@ def generate_html(target_date: str, predictions: List[Dict[str, Any]], payload: 
             """
         )
 
+    combo_html = ""
+    combo = payload.get("combo", {})
+    if combo.get("enabled"):
+        combo_html = f"""
+    <section class="combo">
+      <article class="combo-card">
+        <h2>总进球三串一</h2>
+        <ul>
+          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(item['pick_value'])} 球</li>" for item in combo['total_goals'])}
+        </ul>
+      </article>
+      <article class="combo-card">
+        <h2>比分三串一</h2>
+        <ul>
+          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(item['pick_value'])}</li>" for item in combo['score'])}
+        </ul>
+      </article>
+      <article class="combo-card">
+        <h2>半场胜平负三串一</h2>
+        <ul>
+          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(outcome_label(item['pick_value']))}</li>" for item in combo['half_time'])}
+        </ul>
+      </article>
+    </section>
+        """
+
     embedded_json = json.dumps(payload, ensure_ascii=False, indent=2)
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -637,7 +701,7 @@ def generate_html(target_date: str, predictions: List[Dict[str, Any]], payload: 
       margin-top: 22px;
       display: grid;
       gap: 14px;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }}
     .combo-card, .card {{
       background: var(--paper);
@@ -750,20 +814,7 @@ def generate_html(target_date: str, predictions: List[Dict[str, Any]], payload: 
       <p>本页由自动化脚本生成，综合赛程、昨日赛果、历史交锋与模型判断输出。复盘程序会直接读取本页内嵌 JSON 统计命中率。</p>
     </section>
 
-    <section class="combo">
-      <article class="combo-card">
-        <h2>总进球三串一</h2>
-        <ul>
-          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(item['pick_value'])} 球</li>" for item in payload['combo']['total_goals'])}
-        </ul>
-      </article>
-      <article class="combo-card">
-        <h2>比分三串一</h2>
-        <ul>
-          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(item['pick_value'])}</li>" for item in payload['combo']['score'])}
-        </ul>
-      </article>
-    </section>
+    {combo_html}
 
     <main class="board">
       {''.join(cards)}
@@ -823,10 +874,7 @@ def main() -> int:
             "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "engine": args.model,
             "matches": predictions,
-            "combo": {
-                "total_goals": pick_total_goals_combo(predictions),
-                "score": pick_score_combo(predictions),
-            },
+            "combo": build_combo_payload(predictions),
         }
 
         html_text = generate_html(args.date, predictions, payload)
