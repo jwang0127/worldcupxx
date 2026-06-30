@@ -21,10 +21,10 @@ MODEL_MD = ROOT / "world_cup_knockout_model_optimization_codex.md"
 GROUP_MODEL_MD = ROOT / "SHAREABLE_PREDICTION_REVIEW_LOGIC.md"
 SHARE_NOTE_MD = ROOT / "1.md"
 DATA_DIR = ROOT / "data"
-TODAY = datetime(2026, 6, 28)
+TODAY = datetime(2026, 7, 1)
 PREDICTION_DATE = "20260629"
 FIRST_GAME_ID = "53452545"
-PREDICTION_GAME_IDS = ["53452545", "53452557", "53452541", "53452547"]
+PREDICTION_GAME_IDS = ["53452545", "53452557", "53452541", "53452547", "53452561", "53452543", "53452563"]
 GLOBAL_SCHEDULE: list[dict[str, Any]] = []
 
 
@@ -584,6 +584,90 @@ ADDITIONAL_MATCH_MODELS: dict[str, dict[str, Any]] = {
             "玄学赛果：1-1，荷兰最终晋级。"
         ],
     },
+    "53452561": {
+        "model_version": "v3-knockout-elo-ev-halftime",
+        "half_time": "科特迪瓦 0-0 挪威",
+        "direction_text": "90分钟平局保护",
+        "main_score": "1-1",
+        "backup_scores": ["1-2", "0-1"],
+        "upset_score": "2-1",
+        "goals_range": "1-3球",
+        "advance_pick": "挪威",
+        "advance_probability_text": "科特迪瓦 45% / 挪威 55%",
+        "next_opponent_note": "胜者下轮对阵 巴西 / 日本 胜者",
+        "core_view": "科特迪瓦身体对抗和边路冲击能压低挪威节奏，但挪威禁区终结点更清楚，90分钟先防平，晋级略偏挪威。",
+        "team_reading": [
+            "科特迪瓦适合把比赛带入身体对抗和定位球节奏，能制造1球差冷门路径。",
+            "挪威进攻结构更直接，禁区内终结质量高，但遇到高强度贴防时推进会断续。",
+            "本场合理打法：科特迪瓦先压低中路空间，挪威避免急躁长传，等待边路传中和二点球。"
+        ],
+        "model_reasoning": [
+            "6月30日三场验证了低比分与平局保护价值，尤其德国被拖成1-1后，强弱差不能直接放大成2球胜。",
+            "挪威优势主要在终结点，不在全场压制；如果迟迟打不开，1-1会长期保持高权重。",
+            "若挪威先入球，0-1/1-2升权；若科特迪瓦定位球先手，2-1冷门线成立。"
+        ],
+        "mystic_summary": [
+            "梅花/六爻：客方后劲较足，先滞后通。",
+            "五行/飞星：橙绿土木对抗红白金水，慢局象重。",
+            "玄学赛果：1-1，挪威最终晋级。"
+        ],
+    },
+    "53452543": {
+        "model_version": "v3-knockout-elo-ev-halftime",
+        "half_time": "法国 1-0 瑞典",
+        "direction_text": "法国90分钟胜",
+        "main_score": "2-1",
+        "backup_scores": ["1-0", "1-1"],
+        "upset_score": "0-1",
+        "goals_range": "1-3球",
+        "advance_pick": "法国",
+        "advance_probability_text": "法国 64% / 瑞典 36%",
+        "next_opponent_note": "胜者下轮对阵 德国 / 巴拉圭 胜者",
+        "core_view": "法国单点爆破和阵容深度仍是主线，但瑞典定位球和防守纪律会把比分压住，主比分不追大胜。",
+        "team_reading": [
+            "法国在淘汰赛里有更好的前场个人能力和换人空间，能在僵持局里制造质量机会。",
+            "瑞典低位防守和定位球威胁稳定，足够保留1-1或0-1冷门保护。",
+            "本场合理打法：法国先抢半场领先，瑞典先守住禁区正面并争取定位球。"
+        ],
+        "model_reasoning": [
+            "巴西2-1命中说明强方小胜仍要保留；德国1-1提醒模型不能低估北欧/南美低位防守的拖慢能力。",
+            "法国胜面更清楚，但比分池要集中在1球差，避免把纸面优势直接翻译成3-0。",
+            "若半场0-0，1-1显著升权；若法国早进球，2-1和2-0尾部升权。"
+        ],
+        "mystic_summary": [
+            "梅花/六爻：主队动爻更旺，法国主动。",
+            "奇门/五行：蓝白金水成势，利控制与尾段加速。",
+            "玄学赛果：法国2-1，防1-1。"
+        ],
+    },
+    "53452563": {
+        "model_version": "v3-knockout-elo-ev-halftime",
+        "half_time": "墨西哥 0-0 厄瓜多尔",
+        "direction_text": "90分钟平局保护",
+        "main_score": "1-1",
+        "backup_scores": ["0-1", "1-0"],
+        "upset_score": "1-2",
+        "goals_range": "1-2球",
+        "advance_pick": "厄瓜多尔",
+        "advance_probability_text": "墨西哥 48% / 厄瓜多尔 52%",
+        "next_opponent_note": "胜者下轮对阵 英格兰 / 刚果民主共和国 胜者",
+        "core_view": "双方强弱差很窄，墨西哥主场气质和控场能撑住90分钟，厄瓜多尔转换和身体优势让最终晋级略优。",
+        "team_reading": [
+            "墨西哥节奏控制和比赛经验好，适合把淘汰赛拖进低比分。",
+            "厄瓜多尔对抗和纵向推进更有爆点，尤其下半场能通过转换制造决定性机会。",
+            "本场合理打法：墨西哥控球降速，厄瓜多尔守住肋部后打快速前插。"
+        ],
+        "model_reasoning": [
+            "荷兰-摩洛哥1-1命中说明接近场次要坚持平局主线，不强行给胜负。",
+            "厄瓜多尔晋级略优来自下半场冲击力，不等同于90分钟稳胜。",
+            "若墨西哥先进球，1-0/1-1升权；若厄瓜多尔先入球，0-1/1-2成为主路径。"
+        ],
+        "mystic_summary": [
+            "梅花/六爻：主客比和，平象重。",
+            "飞星/五行：绿白相持，后段客方动能略强。",
+            "玄学赛果：1-1，厄瓜多尔最终晋级。"
+        ],
+    },
 }
 
 
@@ -667,6 +751,87 @@ ADDITIONAL_MATCH_DETAILS: dict[str, dict[str, Any]] = {
             "半场0-0：1-1和0-0继续升权，荷兰晋级倾向不等于90分钟赢球。",
             "摩洛哥先进球：0-1/0-2冷门线升权，荷兰会被迫打开边路。",
             "荷兰60分钟后换人提升压迫：1-0、2-1升权。",
+        ],
+    },
+    "53452561": {
+        "review_adjustment": "6月30日复盘：巴西2-1与荷兰1-1命中，说明强方小胜和平局保护都有效；德国1-1偏离主线，暴露低位防守和定位球冷门权重仍不足。本场挪威只给晋级小优，90分钟先防1-1。",
+        "score_matrix_top": [
+            {"score": "1-1", "probability": 0.164, "ev_signal": "+0.04", "label": "主比分"},
+            {"score": "0-1", "probability": 0.132, "ev_signal": "+0.03", "label": "挪威小胜"},
+            {"score": "1-2", "probability": 0.108, "ev_signal": "+0.02", "label": "后段上修"},
+            {"score": "0-0", "probability": 0.096, "ev_signal": "+0.02", "label": "慢热锁局"},
+            {"score": "2-1", "probability": 0.082, "ev_signal": "-0.01", "label": "科特迪瓦定位球冷门"},
+            {"score": "2-2", "probability": 0.061, "ev_signal": "-0.02", "label": "开放尾部"},
+        ],
+        "ev_table": [
+            {"market": "90分钟平局", "model_probability": 0.34, "fair_odds": 2.94, "ev_signal": "+0.04", "note": "双方都不适合早段冒险"},
+            {"market": "挪威晋级", "model_probability": 0.55, "fair_odds": 1.82, "ev_signal": "+0.03", "note": "终结点优势更适合加时/点球前兑现"},
+            {"market": "总进球1-3", "model_probability": 0.61, "fair_odds": 1.64, "ev_signal": "+0.03", "note": "不追大球"},
+            {"market": "双方进球", "model_probability": 0.48, "fair_odds": 2.08, "ev_signal": "+0.01", "note": "身体对抗和定位球都能制造进球"},
+        ],
+        "model_insights": [
+            {"title": "统一结论", "content": "90分钟1-1优先，最终晋级略偏挪威；不把挪威终结优势直接翻译成常规时间稳胜。"},
+            {"title": "复盘校正", "content": "德国1-1提醒模型：遇到低位和定位球强队，强方胜面要降一档，用平局保护承接。"},
+            {"title": "比分怎么用", "content": "主比分1-1，挪威小胜看0-1/1-2，科特迪瓦冷门只保留2-1。"},
+        ],
+        "triggers": [
+            "半场0-0：1-1和0-0继续升权，挪威晋级不等于90分钟胜。",
+            "挪威先进球：0-1、1-2升权，科特迪瓦会提高边路冲击。",
+            "科特迪瓦定位球连续制造威胁：2-1冷门和1-1主线同步升权。",
+        ],
+    },
+    "53452543": {
+        "review_adjustment": "6月30日复盘：巴西2-1说明强方一球小胜仍是淘汰赛主线；德国1-1说明不能低估纪律型防守的拖慢能力。本场法国仍走胜，但比分收窄到2-1/1-0，并保留1-1保护。",
+        "score_matrix_top": [
+            {"score": "2-1", "probability": 0.172, "ev_signal": "+0.05", "label": "主比分"},
+            {"score": "1-0", "probability": 0.138, "ev_signal": "+0.03", "label": "法国小胜"},
+            {"score": "1-1", "probability": 0.116, "ev_signal": "+0.02", "label": "瑞典拖住"},
+            {"score": "2-0", "probability": 0.102, "ev_signal": "+0.01", "label": "法国控场"},
+            {"score": "0-1", "probability": 0.066, "ev_signal": "-0.01", "label": "瑞典定位球冷门"},
+            {"score": "3-1", "probability": 0.058, "ev_signal": "-0.02", "label": "早球放大"},
+        ],
+        "ev_table": [
+            {"market": "法国90分钟胜", "model_probability": 0.57, "fair_odds": 1.75, "ev_signal": "+0.05", "note": "胜面明确但只按小胜处理"},
+            {"market": "总进球2-3", "model_probability": 0.52, "fair_odds": 1.92, "ev_signal": "+0.04", "note": "主比分集中在2-1/1-1"},
+            {"market": "瑞典进球", "model_probability": 0.44, "fair_odds": 2.27, "ev_signal": "+0.02", "note": "定位球和二点球不能忽视"},
+            {"market": "半场法国不败", "model_probability": 0.73, "fair_odds": 1.37, "ev_signal": "+0.01", "note": "法国开局控制力更好"},
+        ],
+        "model_insights": [
+            {"title": "统一结论", "content": "法国90分钟胜是主线，主比分2-1；瑞典的防守纪律要求保留1-0和1-1。"},
+            {"title": "复盘校正", "content": "德国被巴拉圭拖平后，模型对纪律型防守的平局保护上调。"},
+            {"title": "比分怎么用", "content": "2-1为主，1-0是低节奏小胜，1-1是半场打不开时的保护。"},
+        ],
+        "triggers": [
+            "法国30分钟前进球：2-0、3-1升权，瑞典必须提前打开阵型。",
+            "半场0-0：1-1和1-0升权，法国胜面从压制胜转为尾段小胜。",
+            "瑞典定位球质量持续出现：2-1和0-1冷门保护同步上升。",
+        ],
+    },
+    "53452563": {
+        "review_adjustment": "6月30日复盘：荷兰-摩洛哥1-1完全符合接近场次的平局保护逻辑。本场墨西哥-厄瓜多尔同属窄差对抗，主线继续用1-1表达，晋级小优交给厄瓜多尔的后段冲击。",
+        "score_matrix_top": [
+            {"score": "1-1", "probability": 0.181, "ev_signal": "+0.05", "label": "主比分"},
+            {"score": "0-1", "probability": 0.124, "ev_signal": "+0.03", "label": "厄瓜多尔小胜"},
+            {"score": "1-0", "probability": 0.119, "ev_signal": "+0.03", "label": "墨西哥控场小胜"},
+            {"score": "0-0", "probability": 0.104, "ev_signal": "+0.02", "label": "慢节奏锁局"},
+            {"score": "1-2", "probability": 0.079, "ev_signal": "-0.01", "label": "厄瓜多尔后段放大"},
+            {"score": "2-1", "probability": 0.072, "ev_signal": "-0.01", "label": "墨西哥开放胜"},
+        ],
+        "ev_table": [
+            {"market": "90分钟平局", "model_probability": 0.36, "fair_odds": 2.78, "ev_signal": "+0.05", "note": "窄差对抗优先防平"},
+            {"market": "总进球1-2", "model_probability": 0.54, "fair_odds": 1.85, "ev_signal": "+0.04", "note": "低比分最稳"},
+            {"market": "厄瓜多尔晋级", "model_probability": 0.52, "fair_odds": 1.92, "ev_signal": "+0.02", "note": "后段身体优势略好"},
+            {"market": "双方进球", "model_probability": 0.49, "fair_odds": 2.04, "ev_signal": "+0.01", "note": "1-1是最高权重比分"},
+        ],
+        "model_insights": [
+            {"title": "统一结论", "content": "90分钟1-1优先，最终晋级略偏厄瓜多尔；两队都不具备稳定碾压对方的条件。"},
+            {"title": "复盘校正", "content": "荷兰1-1命中后，接近场次继续把平局保护放在主线，而不是强行选胜负。"},
+            {"title": "比分怎么用", "content": "1-1为主，0-1和1-0是两侧小胜保护，1-2只在厄瓜多尔先进球后上修。"},
+        ],
+        "triggers": [
+            "半场0-0：1-1和0-0升权，比赛更可能进入加时/点球逻辑。",
+            "厄瓜多尔先进球：0-1、1-2升权，墨西哥会被迫提高边路投入。",
+            "墨西哥先进球：1-0、1-1升权，厄瓜多尔后段反扑会制造双方进球。"
         ],
     },
 }
@@ -908,7 +1073,8 @@ def model_review_lessons() -> dict[str, Any]:
         f"出现 {high_miss} 场低估大比分、{low_miss} 场高估进球的偏差；淘汰赛模型必须同时保留低比分锁局和尾部上修。",
         f"精确比分命中 {score_hits}/{total}，所以今天输出改为“主比分 + 两条备选脚本”，不再把单一比分说死。",
         "南非-加拿大 0-1 复盘：模型低比分和加拿大最终优势方向有效，但90分钟平局保护偏重；补时进球说明强侧尾段小胜权重需要上调。",
-        "今日修正：强弱差明确的场次不再因为淘汰赛保守而过度压成平局；比分池保留1球差、补时小胜和定位球冷门三条脚本。",
+        "6月30日三场复盘：巴西-日本 2-1 命中主比分，荷兰-摩洛哥 1-1 命中主比分，德国-巴拉圭 1-1 命中冷门保护但主线过强。",
+        "今日修正：强方小胜保留，但面对低位防守、定位球强队和窄差对抗时，上调90分钟平局、1-1、0-0/1-0低比分权重。",
         "末轮阶段常被净胜球需求放大，淘汰赛首战则相反：先压节奏，再看60分钟后的体能、换人和补时阶段。",
     ]
     return {
@@ -919,7 +1085,8 @@ def model_review_lessons() -> dict[str, Any]:
         "high_miss": high_miss,
         "low_miss": low_miss,
         "lessons": lessons,
-        "summary": "复盘后模型口径：方向可以明确，比分要给主线和触发条件；淘汰赛优先防低比分，但强侧90分钟尾段小胜必须保留。",
+        "headline": "6月30日复盘：巴西2-1、日本进球、荷兰1-1命中；德国被巴拉圭拖成1-1，提醒模型继续上调平局和定位球冷门保护。",
+        "summary": "复盘后模型口径：强方一球小胜仍可作为主线，但淘汰赛窄差局优先保留1-1、低比分和最终晋级/90分钟赛果拆分。",
     }
 
 
@@ -1006,7 +1173,7 @@ def render_teams_page(stats: list[dict[str, Any]], schedule: list[dict[str, Any]
 <body>
 <header>
   <h1>32强当前战绩</h1>
-  <nav><a href="../index.html">首页</a><a href="../20260629/">淘汰赛预测</a><a href="#teams">完整战绩</a><a href="#future">未来三天</a></nav>
+  <nav><a href="../index.html">首页</a><a href="../20260701/">淘汰赛预测</a><a href="#teams">完整战绩</a><a href="#future">未来三天</a></nav>
 </header>
 <main>
   <section class="section" id="teams"><h2>完整 32 强战绩</h2><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th></tr></thead><tbody>{rows}</tbody></table></div></section>
@@ -1024,7 +1191,7 @@ def render_group_archive_page() -> str:
 <body>
 <header>
   <h1>小组赛预测归档</h1>
-  <nav><a href="../index.html">首页</a><a href="../20260629/">淘汰赛预测</a></nav>
+  <nav><a href="../index.html">首页</a><a href="../20260701/">淘汰赛预测</a></nav>
 </header>
 <main>
   <section class="section"><h2>按日期查看</h2><div class="miniGrid">{cards}</div></section>
@@ -1037,6 +1204,7 @@ def render_knockout_archive_page() -> str:
     cards = (
         '<a class="miniCard" href="../20260629/"><strong>20260629</strong><span>南非 vs 加拿大</span></a>'
         '<a class="miniCard" href="../20260630/"><strong>20260630</strong><span>巴西/德国/荷兰三场</span></a>'
+        '<a class="miniCard" href="../20260701/"><strong>20260701</strong><span>科特迪瓦/法国/墨西哥三场</span></a>'
     )
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -1211,7 +1379,7 @@ def render_multi_prediction_page(date_label: str, predictions: list[dict[str, An
   <section class="section">
     <h2>昨日复盘与模型修正</h2>
     <div class="card">
-      <p><strong>南非-加拿大 0-1：</strong>90分钟后伤停补时加拿大进球。昨日模型保留了低比分和加拿大最终优势，但90分钟平局保护偏重；今日已把强侧尾段小胜、替补冲击、定位球/二点球触发条件上调。</p>
+      <p><strong>{esc(review.get('headline', '昨日赛果已完成复盘并写入模型校正。'))}</strong></p>
       <p>{esc(review.get('summary', ''))}</p>
       <ul>{review_lessons}</ul>
     </div>
@@ -1328,28 +1496,45 @@ def main() -> int:
     predictions = all_predictions(schedule)
     prediction = predictions[0]
     predictions_0630 = [item for item in predictions if item["beijing_date"] == "2026-06-30"]
+    predictions_0701 = [item for item in predictions if item["beijing_date"] == "2026-07-01"]
     model = prediction_model_v3()
+    results_0630 = {
+        "date": "20260630",
+        "stage": "knockout",
+        "status": "90min_finished",
+        "matches": [
+            {"game_id": "53452557", "match_no": "74", "home_team": "巴西", "away_team": "日本", "score": "2-1", "home_goals": 2, "away_goals": 1, "prediction_main_score": "2-1", "review": "命中主比分；强方小胜和日本进球保护有效。"},
+            {"game_id": "53452541", "match_no": "75", "home_team": "德国", "away_team": "巴拉圭", "score": "1-1", "home_goals": 1, "away_goals": 1, "prediction_main_score": "2-0", "review": "命中冷门保护比分；德国胜主线过强，需上调低位防守和平局权重。"},
+            {"game_id": "53452547", "match_no": "76", "home_team": "荷兰", "away_team": "摩洛哥", "score": "1-1", "home_goals": 1, "away_goals": 1, "prediction_main_score": "1-1", "review": "命中主比分；窄差对抗坚持90分钟平局保护有效。"},
+        ],
+    }
 
     write_json(DATA_DIR / "knockout_schedule.json", {"source": SCHEDULE_MD.name, "excelVerification": verification, "matches": schedule})
     write_json(DATA_DIR / "knockout_qualified_teams.json", stats)
     write_json(DATA_DIR / "knockout_model_v3.json", model)
     write_json(DATA_DIR / "model_review_lessons_20260629.json", model_review_lessons())
+    write_json(DATA_DIR / "model_review_lessons_20260630.json", model_review_lessons())
+    write_json(DATA_DIR / "knockout_results_20260630.json", results_0630)
     write_json(DATA_DIR / "knockout_predictions_20260629.json", {"date": PREDICTION_DATE, "stage": "knockout", "matches": [prediction]})
     write_json(DATA_DIR / "knockout_predictions_20260630.json", {"date": "20260630", "stage": "knockout", "matches": predictions_0630})
-    write_json(DATA_DIR / "knockout_predictions_20260629_0630.json", {"stage": "knockout", "matches": predictions})
+    write_json(DATA_DIR / "knockout_predictions_20260701.json", {"date": "20260701", "stage": "knockout", "matches": predictions_0701})
+    write_json(DATA_DIR / "knockout_predictions_20260629_0701.json", {"stage": "knockout", "matches": predictions})
 
     knockout_dir = ROOT / "knockout"
     day_dir = ROOT / PREDICTION_DATE
     day_0630_dir = ROOT / "20260630"
+    day_0701_dir = ROOT / "20260701"
     group_dir = ROOT / "group"
     knockout_dir.mkdir(exist_ok=True)
     day_dir.mkdir(exist_ok=True)
     day_0630_dir.mkdir(exist_ok=True)
+    day_0701_dir.mkdir(exist_ok=True)
     group_dir.mkdir(exist_ok=True)
 
     home_html = render_home_page(schedule, stats, prediction)
     prediction_html = render_prediction_page(schedule, stats, prediction)
     prediction_0630_html = render_multi_prediction_page("20260630", predictions_0630)
+    prediction_0701_html = render_multi_prediction_page("20260701", predictions_0701)
     teams_html = render_teams_page(stats, schedule)
     group_html = render_group_archive_page()
     knockout_archive_html = render_knockout_archive_page()
@@ -1362,6 +1547,8 @@ def main() -> int:
     (day_dir / "teams.html").write_text(teams_html, encoding="utf-8")
     (day_0630_dir / "index.html").write_text(prediction_0630_html, encoding="utf-8")
     (day_0630_dir / "predict_20260630.html").write_text(prediction_0630_html, encoding="utf-8")
+    (day_0701_dir / "index.html").write_text(prediction_0701_html, encoding="utf-8")
+    (day_0701_dir / "predict_20260701.html").write_text(prediction_0701_html, encoding="utf-8")
     (knockout_dir / "knockout_prediction_model_v3.md").write_text(render_model_doc(model, prediction), encoding="utf-8")
 
     if MODEL_MD.exists():
@@ -1375,6 +1562,7 @@ def main() -> int:
     print(ROOT / "index.html")
     print(day_dir / f"predict_{PREDICTION_DATE}.html")
     print(day_0630_dir / "predict_20260630.html")
+    print(day_0701_dir / "predict_20260701.html")
     print(knockout_dir / "teams.html")
     print(knockout_dir / "knockout_prediction_model_v3.md")
     return 0

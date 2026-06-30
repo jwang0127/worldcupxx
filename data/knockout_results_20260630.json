@@ -1,0 +1,40 @@
+{
+  "date": "20260630",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452557",
+      "match_no": "74",
+      "home_team": "巴西",
+      "away_team": "日本",
+      "score": "2-1",
+      "home_goals": 2,
+      "away_goals": 1,
+      "prediction_main_score": "2-1",
+      "review": "命中主比分；强方小胜和日本进球保护有效。"
+    },
+    {
+      "game_id": "53452541",
+      "match_no": "75",
+      "home_team": "德国",
+      "away_team": "巴拉圭",
+      "score": "1-1",
+      "home_goals": 1,
+      "away_goals": 1,
+      "prediction_main_score": "2-0",
+      "review": "命中冷门保护比分；德国胜主线过强，需上调低位防守和平局权重。"
+    },
+    {
+      "game_id": "53452547",
+      "match_no": "76",
+      "home_team": "荷兰",
+      "away_team": "摩洛哥",
+      "score": "1-1",
+      "home_goals": 1,
+      "away_goals": 1,
+      "prediction_main_score": "1-1",
+      "review": "命中主比分；窄差对抗坚持90分钟平局保护有效。"
+    }
+  ]
+}

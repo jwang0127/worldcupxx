@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>20260701 淘汰赛预测</title><style>
+:root{--bg:#06120f;--panel:#102528;--soft:#0b201d;--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#05110f;color:var(--text)}a{color:inherit;text-decoration:none}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f 0%,#092225 48%,#061324 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -20%,rgba(51,226,138,.13),transparent 42%);z-index:-1;pointer-events:none}
+header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
+h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.topbar{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.topActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}@media(max-width:850px){.topbar{display:block}.topActions{justify-content:flex-start;margin-top:12px}}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0;display:inline-flex;align-items:center;gap:6px}
+.section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px;margin:0 0 12px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);box-shadow:0 16px 36px rgba(0,0,0,.22);padding:18px;margin:14px 0}
+.entryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.entryCard{min-height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#0f2a2b,#091b1d);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.entryCard:hover{border-color:var(--green)}.entryCard span{color:var(--muted)}.entryCard strong{font-size:30px;color:var(--green);display:block;margin:8px 0}.entryCard em{font-style:normal;color:var(--text);line-height:1.6}
+.heroGrid,.coreGrid,.summaryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.coreGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.summaryGrid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.entryGrid,.heroGrid,.coreGrid,.summaryGrid{grid-template-columns:1fr}}
+.metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:23px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px;line-height:1.5}
+.bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
+ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
+.miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
+.mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
+.mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
+.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 90px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary::-webkit-details-marker{display:none}.matchDetails summary:before{content:"展开";color:#8fffd0;border:1px solid var(--line);border-radius:8px;padding:5px 8px;justify-self:start;grid-column:1/-1;display:none}.matchDetails:not([open]) summary:before{display:inline-block}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted);line-height:1.5}.matchDetails:not([open]) summary{border-bottom:0}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;box-shadow:none}@media(max-width:850px){.matchDetails summary{grid-template-columns:1fr}.matchDetails summary strong{font-size:28px}}
+footer{color:#8ea8a1;font-size:13px;margin-top:36px}
+</style></head>
+<body>
+<header>
+  <h1>20260701 淘汰赛预测</h1>
+  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a><a href="#parlay">三串一</a></nav>
+</header>
+<main>
+  <section class="section">
+    <h2>昨日复盘与模型修正</h2>
+    <div class="card">
+      <p><strong>6月30日复盘：巴西2-1、日本进球、荷兰1-1命中；德国被巴拉圭拖成1-1，提醒模型继续上调平局和定位球冷门保护。</strong></p>
+      <p>复盘后模型口径：强方一球小胜仍可作为主线，但淘汰赛窄差局优先保留1-1、低比分和最终晋级/90分钟赛果拆分。</p>
+      <ul><li>已回填 50 场小组赛赛果：方向比比分更可靠，比分不能只盯一个主比分。</li><li>方向命中约 34/50，说明强弱判断可保留；总进球命中约 8/50，说明进球区间要用范围表达。</li><li>出现 5 场低估大比分、3 场高估进球的偏差；淘汰赛模型必须同时保留低比分锁局和尾部上修。</li><li>精确比分命中 13/50，所以今天输出改为“主比分 + 两条备选脚本”，不再把单一比分说死。</li><li>南非-加拿大 0-1 复盘：模型低比分和加拿大最终优势方向有效，但90分钟平局保护偏重；补时进球说明强侧尾段小胜权重需要上调。</li><li>6月30日三场复盘：巴西-日本 2-1 命中主比分，荷兰-摩洛哥 1-1 命中主比分，德国-巴拉圭 1-1 命中冷门保护但主线过强。</li><li>今日修正：强方小胜保留，但面对低位防守、定位球强队和窄差对抗时，上调90分钟平局、1-1、0-0/1-0低比分权重。</li><li>末轮阶段常被净胜球需求放大，淘汰赛首战则相反：先压节奏，再看60分钟后的体能、换人和补时阶段。</li></ul>
+    </div>
+  </section>
+  
+  
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>科特迪瓦 vs 挪威</span>
+    <strong>1-1</strong>
+    <em>90分钟平局保护 / 晋级 挪威</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-01 01:00:00</strong></div>
+      <div class="metric">半场<strong>科特迪瓦 0-0 挪威</strong></div>
+      <div class="metric">90分钟<strong>90分钟平局保护</strong></div>
+      <div class="metric">晋级<strong class="adv">挪威</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">1-1</div><p>备选：1-2 / 0-1</p><p>冷门：2-1</p></div>
+      <div class="panel"><h3>判断口径</h3><p>科特迪瓦身体对抗和边路冲击能压低挪威节奏，但挪威禁区终结点更清楚，90分钟先防平，晋级略偏挪威。</p><p>科特迪瓦 45% / 挪威 55%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 巴西 / 日本 胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>6月30日复盘：巴西2-1与荷兰1-1命中，说明强方小胜和平局保护都有效；德国1-1偏离主线，暴露低位防守和定位球冷门权重仍不足。本场挪威只给晋级小优，90分钟先防1-1。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">1-1</span>
+      <span class="scoreTag">1-2</span>
+      <span class="scoreTag">0-1</span>
+      <span class="scoreTag danger">2-1</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>1-1</td><td>16.4%</td><td>+0.04</td><td>主比分</td></tr><tr><td>0-1</td><td>13.2%</td><td>+0.03</td><td>挪威小胜</td></tr><tr><td>1-2</td><td>10.8%</td><td>+0.02</td><td>后段上修</td></tr><tr><td>0-0</td><td>9.6%</td><td>+0.02</td><td>慢热锁局</td></tr><tr><td>2-1</td><td>8.2%</td><td>-0.01</td><td>科特迪瓦定位球冷门</td></tr><tr><td>2-2</td><td>6.1%</td><td>-0.02</td><td>开放尾部</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>90分钟平局</td><td>34.0%</td><td>2.94</td><td>+0.04</td><td>双方都不适合早段冒险</td></tr><tr><td>挪威晋级</td><td>55.0%</td><td>1.82</td><td>+0.03</td><td>终结点优势更适合加时/点球前兑现</td></tr><tr><td>总进球1-3</td><td>61.0%</td><td>1.64</td><td>+0.03</td><td>不追大球</td></tr><tr><td>双方进球</td><td>48.0%</td><td>2.08</td><td>+0.01</td><td>身体对抗和定位球都能制造进球</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>统一结论</h3><p>90分钟1-1优先，最终晋级略偏挪威；不把挪威终结优势直接翻译成常规时间稳胜。</p></div><div class="panel"><h3>复盘校正</h3><p>德国1-1提醒模型：遇到低位和定位球强队，强方胜面要降一档，用平局保护承接。</p></div><div class="panel"><h3>比分怎么用</h3><p>主比分1-1，挪威小胜看0-1/1-2，科特迪瓦冷门只保留2-1。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>半场0-0：1-1和0-0继续升权，挪威晋级不等于90分钟胜。</li><li>挪威先进球：0-1、1-2升权，科特迪瓦会提高边路冲击。</li><li>科特迪瓦定位球连续制造威胁：2-1冷门和1-1主线同步升权。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>科特迪瓦适合把比赛带入身体对抗和定位球节奏，能制造1球差冷门路径。</li><li>挪威进攻结构更直接，禁区内终结质量高，但遇到高强度贴防时推进会断续。</li><li>本场合理打法：科特迪瓦先压低中路空间，挪威避免急躁长传，等待边路传中和二点球。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>6月30日三场验证了低比分与平局保护价值，尤其德国被拖成1-1后，强弱差不能直接放大成2球胜。</li><li>挪威优势主要在终结点，不在全场压制；如果迟迟打不开，1-1会长期保持高权重。</li><li>若挪威先入球，0-1/1-2升权；若科特迪瓦定位球先手，2-1冷门线成立。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>梅花/六爻：客方后劲较足，先滞后通。</li><li>五行/飞星：橙绿土木对抗红白金水，慢局象重。</li><li>玄学赛果：1-1，挪威最终晋级。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>法国 vs 瑞典</span>
+    <strong>2-1</strong>
+    <em>法国90分钟胜 / 晋级 法国</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-01 05:00:00</strong></div>
+      <div class="metric">半场<strong>法国 1-0 瑞典</strong></div>
+      <div class="metric">90分钟<strong>法国90分钟胜</strong></div>
+      <div class="metric">晋级<strong class="adv">法国</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">2-1</div><p>备选：1-0 / 1-1</p><p>冷门：0-1</p></div>
+      <div class="panel"><h3>判断口径</h3><p>法国单点爆破和阵容深度仍是主线，但瑞典定位球和防守纪律会把比分压住，主比分不追大胜。</p><p>法国 64% / 瑞典 36%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 德国 / 巴拉圭 胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>6月30日复盘：巴西2-1说明强方一球小胜仍是淘汰赛主线；德国1-1说明不能低估纪律型防守的拖慢能力。本场法国仍走胜，但比分收窄到2-1/1-0，并保留1-1保护。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">2-1</span>
+      <span class="scoreTag">1-0</span>
+      <span class="scoreTag">1-1</span>
+      <span class="scoreTag danger">0-1</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>2-1</td><td>17.2%</td><td>+0.05</td><td>主比分</td></tr><tr><td>1-0</td><td>13.8%</td><td>+0.03</td><td>法国小胜</td></tr><tr><td>1-1</td><td>11.6%</td><td>+0.02</td><td>瑞典拖住</td></tr><tr><td>2-0</td><td>10.2%</td><td>+0.01</td><td>法国控场</td></tr><tr><td>0-1</td><td>6.6%</td><td>-0.01</td><td>瑞典定位球冷门</td></tr><tr><td>3-1</td><td>5.8%</td><td>-0.02</td><td>早球放大</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>法国90分钟胜</td><td>57.0%</td><td>1.75</td><td>+0.05</td><td>胜面明确但只按小胜处理</td></tr><tr><td>总进球2-3</td><td>52.0%</td><td>1.92</td><td>+0.04</td><td>主比分集中在2-1/1-1</td></tr><tr><td>瑞典进球</td><td>44.0%</td><td>2.27</td><td>+0.02</td><td>定位球和二点球不能忽视</td></tr><tr><td>半场法国不败</td><td>73.0%</td><td>1.37</td><td>+0.01</td><td>法国开局控制力更好</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>统一结论</h3><p>法国90分钟胜是主线，主比分2-1；瑞典的防守纪律要求保留1-0和1-1。</p></div><div class="panel"><h3>复盘校正</h3><p>德国被巴拉圭拖平后，模型对纪律型防守的平局保护上调。</p></div><div class="panel"><h3>比分怎么用</h3><p>2-1为主，1-0是低节奏小胜，1-1是半场打不开时的保护。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>法国30分钟前进球：2-0、3-1升权，瑞典必须提前打开阵型。</li><li>半场0-0：1-1和1-0升权，法国胜面从压制胜转为尾段小胜。</li><li>瑞典定位球质量持续出现：2-1和0-1冷门保护同步上升。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>法国在淘汰赛里有更好的前场个人能力和换人空间，能在僵持局里制造质量机会。</li><li>瑞典低位防守和定位球威胁稳定，足够保留1-1或0-1冷门保护。</li><li>本场合理打法：法国先抢半场领先，瑞典先守住禁区正面并争取定位球。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>巴西2-1命中说明强方小胜仍要保留；德国1-1提醒模型不能低估北欧/南美低位防守的拖慢能力。</li><li>法国胜面更清楚，但比分池要集中在1球差，避免把纸面优势直接翻译成3-0。</li><li>若半场0-0，1-1显著升权；若法国早进球，2-1和2-0尾部升权。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>梅花/六爻：主队动爻更旺，法国主动。</li><li>奇门/五行：蓝白金水成势，利控制与尾段加速。</li><li>玄学赛果：法国2-1，防1-1。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>墨西哥 vs 厄瓜多尔</span>
+    <strong>1-1</strong>
+    <em>90分钟平局保护 / 晋级 厄瓜多尔</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-01 09:00:00</strong></div>
+      <div class="metric">半场<strong>墨西哥 0-0 厄瓜多尔</strong></div>
+      <div class="metric">90分钟<strong>90分钟平局保护</strong></div>
+      <div class="metric">晋级<strong class="adv">厄瓜多尔</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">1-1</div><p>备选：0-1 / 1-0</p><p>冷门：1-2</p></div>
+      <div class="panel"><h3>判断口径</h3><p>双方强弱差很窄，墨西哥主场气质和控场能撑住90分钟，厄瓜多尔转换和身体优势让最终晋级略优。</p><p>墨西哥 48% / 厄瓜多尔 52%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 英格兰 / 刚果民主共和国 胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>6月30日复盘：荷兰-摩洛哥1-1完全符合接近场次的平局保护逻辑。本场墨西哥-厄瓜多尔同属窄差对抗，主线继续用1-1表达，晋级小优交给厄瓜多尔的后段冲击。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">1-1</span>
+      <span class="scoreTag">0-1</span>
+      <span class="scoreTag">1-0</span>
+      <span class="scoreTag danger">1-2</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>1-1</td><td>18.1%</td><td>+0.05</td><td>主比分</td></tr><tr><td>0-1</td><td>12.4%</td><td>+0.03</td><td>厄瓜多尔小胜</td></tr><tr><td>1-0</td><td>11.9%</td><td>+0.03</td><td>墨西哥控场小胜</td></tr><tr><td>0-0</td><td>10.4%</td><td>+0.02</td><td>慢节奏锁局</td></tr><tr><td>1-2</td><td>7.9%</td><td>-0.01</td><td>厄瓜多尔后段放大</td></tr><tr><td>2-1</td><td>7.2%</td><td>-0.01</td><td>墨西哥开放胜</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>90分钟平局</td><td>36.0%</td><td>2.78</td><td>+0.05</td><td>窄差对抗优先防平</td></tr><tr><td>总进球1-2</td><td>54.0%</td><td>1.85</td><td>+0.04</td><td>低比分最稳</td></tr><tr><td>厄瓜多尔晋级</td><td>52.0%</td><td>1.92</td><td>+0.02</td><td>后段身体优势略好</td></tr><tr><td>双方进球</td><td>49.0%</td><td>2.04</td><td>+0.01</td><td>1-1是最高权重比分</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>统一结论</h3><p>90分钟1-1优先，最终晋级略偏厄瓜多尔；两队都不具备稳定碾压对方的条件。</p></div><div class="panel"><h3>复盘校正</h3><p>荷兰1-1命中后，接近场次继续把平局保护放在主线，而不是强行选胜负。</p></div><div class="panel"><h3>比分怎么用</h3><p>1-1为主，0-1和1-0是两侧小胜保护，1-2只在厄瓜多尔先进球后上修。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>半场0-0：1-1和0-0升权，比赛更可能进入加时/点球逻辑。</li><li>厄瓜多尔先进球：0-1、1-2升权，墨西哥会被迫提高边路投入。</li><li>墨西哥先进球：1-0、1-1升权，厄瓜多尔后段反扑会制造双方进球。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>墨西哥节奏控制和比赛经验好，适合把淘汰赛拖进低比分。</li><li>厄瓜多尔对抗和纵向推进更有爆点，尤其下半场能通过转换制造决定性机会。</li><li>本场合理打法：墨西哥控球降速，厄瓜多尔守住肋部后打快速前插。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>荷兰-摩洛哥1-1命中说明接近场次要坚持平局主线，不强行给胜负。</li><li>厄瓜多尔晋级略优来自下半场冲击力，不等同于90分钟稳胜。</li><li>若墨西哥先进球，1-0/1-1升权；若厄瓜多尔先入球，0-1/1-2成为主路径。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>梅花/六爻：主客比和，平象重。</li><li>飞星/五行：绿白相持，后段客方动能略强。</li><li>玄学赛果：1-1，厄瓜多尔最终晋级。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,1036 @@
+{
+  "stage": "knockout",
+  "matches": [
+    {
+      "game_id": "53452545",
+      "match_no": "73",
+      "round": "32强赛",
+      "stage": "knockout",
+      "home_team": "南非",
+      "home_code": "RSA",
+      "away_team": "加拿大",
+      "away_code": "CAN",
+      "kickoff_bjt": "2026-06-29 03:00:00 +08:00",
+      "kickoff_local": "2026-06-28 15:00:00 -04:00",
+      "beijing_date": "2026-06-29",
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "elo": {
+        "home": 1622,
+        "away": 1708,
+        "diff_home_minus_away": -86,
+        "elo_note": "加拿大综合强度略高，南非依靠低节奏和定位球保留冷门路径。"
+      },
+      "expected_goals": {
+        "home_xg": 1.02,
+        "away_xg": 1.16,
+        "total_xg": 2.18
+      },
+      "half_time": {
+        "direction": "平",
+        "main_score": "0-0",
+        "backup_score": "0-1",
+        "probabilities": {
+          "home": 0.22,
+          "draw": 0.51,
+          "away": 0.27
+        }
+      },
+      "full_time_90": {
+        "direction": "平",
+        "probabilities": {
+          "home": 0.28,
+          "draw": 0.34,
+          "away": 0.38
+        },
+        "double_chance": "加拿大不败 X2"
+      },
+      "direction_90min": "draw",
+      "direction_text": "90分钟平局保护",
+      "main_score": "1-1",
+      "safe_scores": [
+        "0-1",
+        "1-2"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "upset_score": "1-0",
+      "goals_range": "1-2球",
+      "home_advance_probability": 0.46,
+      "away_advance_probability": 0.54,
+      "advance_pick": "加拿大",
+      "advance_market": {
+        "home": 0.46,
+        "away": 0.54,
+        "pick": "加拿大"
+      },
+      "extra_time_penalty_script": "90分钟1-1，加拿大加时/点球小优。",
+      "score_confidence": 0.61,
+      "direction_confidence": 0.56,
+      "data_completeness": 0.86,
+      "team_profiles": {
+        "home": [
+          "小组赛三场：1胜1平1负、进2失3。能出线靠的是防守韧性，不是持续压制能力。",
+          "已确认末轮 1-0 韩国：这说明南非在必须拿分时能把比赛压低，并通过单球解决问题。",
+          "对捷克打成 1-1，对墨西哥这种小组最强档吃亏，说明南非遇到高压边路时守得住一段时间，但抗压上限有限。"
+        ],
+        "away": [
+          "小组赛三场：1胜1平1负、进8失3。进攻爆发力明显强于南非，但防线不是零风险。",
+          "已确认 6-0 卡塔尔和 1-2 瑞士：加拿大能打穿弱队，也会在强队对抗里丢球，不能简单按大胜思路处理。",
+          "另一个平局样本把加拿大拉回现实：对抗更接近时，90分钟赢球并不稳，晋级优势更多体现在后程和点球前的深度。"
+        ]
+      },
+      "game_plan": {
+        "home": "南非：先守中路和二点球，争取半场不落后，靠定位球或反击保留 1-0 / 1-1 路径。",
+        "away": "加拿大：前60分钟避免被拖进纯身体战，后30分钟用边路和换人把 0-1 / 1-2 路径打开。"
+      },
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "这场不是“加拿大90分钟稳胜”。统一口径是：半场偏 0-0，90分钟防 1-1，最终晋级略偏加拿大。"
+        },
+        {
+          "title": "为什么不追加拿大大胜",
+          "content": "加拿大进攻更强，但南非已经证明能把必须拿分的比赛压成单球局；淘汰赛首战也会天然降低冒险程度。"
+        },
+        {
+          "title": "为什么仍选加拿大晋级",
+          "content": "加拿大有更好的进攻上限和后程换人空间。只要不被南非定位球先手，比赛越往后，加拿大越容易拿到决定性机会。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "主比分只看 1-1。保守备选是 0-1，开放备选是 1-2。南非冷门只保留 1-0，不再给多条互相冲突路线。"
+        },
+        {
+          "title": "临场修正",
+          "content": "若加拿大早段边路推进有效，0-1 升权；若南非定位球先手，比赛转向 1-0 / 1-1。"
+        }
+      ],
+      "match_plan": [
+        {
+          "phase": "0-30分钟",
+          "home": "南非优先压低节奏，减少中场身后空间。",
+          "away": "加拿大试探边路，不急于把阵型压死。"
+        },
+        {
+          "phase": "30-60分钟",
+          "home": "若仍是平局，南非会接受慢节奏并等待定位球。",
+          "away": "加拿大需要提高传中和肋部冲击频率。"
+        },
+        {
+          "phase": "60-90分钟",
+          "home": "南非体能下降后更依赖反击和死球。",
+          "away": "加拿大晋级倾向在后程增强，0-1/1-2脚本开始升权。"
+        },
+        {
+          "phase": "加时/点球",
+          "home": "若拖到点球，南非冷门概率上升。",
+          "away": "加拿大整体深度略优，但必须避免点球变成纯随机。"
+        }
+      ],
+      "triggers": [
+        "加拿大先入球：主比分从 1-1 下修为 0-1，开放尾部升到 1-2。",
+        "南非先入球：比赛进入 1-0 冷门保护，同时加拿大反扑会带来 1-1。",
+        "半场 0-0：继续保留 1-1 主线，加拿大晋级不等同于 90分钟客胜。",
+        "早段黄牌偏多：总进球下修，半场平局和小比分权重提高。"
+      ],
+      "ev_table": [
+        {
+          "market": "90分钟平局",
+          "model_probability": 0.34,
+          "fair_odds": 2.94,
+          "ev_signal": "+0.04",
+          "note": "保护主线"
+        },
+        {
+          "market": "加拿大晋级",
+          "model_probability": 0.54,
+          "fair_odds": 1.85,
+          "ev_signal": "+0.06",
+          "note": "最终结果优于90分钟客胜"
+        },
+        {
+          "market": "半场平局",
+          "model_probability": 0.51,
+          "fair_odds": 1.96,
+          "ev_signal": "+0.03",
+          "note": "淘汰赛首战慢热"
+        },
+        {
+          "market": "总进球1-2",
+          "model_probability": 0.47,
+          "fair_odds": 2.13,
+          "ev_signal": "+0.02",
+          "note": "低比分主仓"
+        }
+      ],
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.176,
+          "ev_signal": "+0.03",
+          "label": "主比分"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.142,
+          "ev_signal": "+0.04",
+          "label": "加拿大小胜"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.116,
+          "ev_signal": "+0.01",
+          "label": "尾部上修"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.104,
+          "ev_signal": "+0.02",
+          "label": "平局保护"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.092,
+          "ev_signal": "-0.01",
+          "label": "南非冷门"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.074,
+          "ev_signal": "-0.02",
+          "label": "南非开放冷门"
+        }
+      ],
+      "scenario": {
+        "winner_advances_to_match_id": "53452511",
+        "next_opponent_source": "荷兰 / 摩洛哥 胜者",
+        "home_win_script": "南非 晋级后下轮对阵 荷兰 / 摩洛哥 胜者",
+        "away_win_script": "加拿大 晋级后下轮对阵 荷兰 / 摩洛哥 胜者",
+        "home_loss_script": "南非 输球即出局",
+        "away_loss_script": "加拿大 输球即出局"
+      },
+      "analysis": [
+        "淘汰赛首场优先拆分 90分钟赛果和最终晋级，不把加拿大晋级倾向等同于90分钟客胜。",
+        "加拿大 Elo、进攻效率和小组赛净胜能力略好，但南非低节奏能力会压低比赛总进球。",
+        "半场主线是 0-0；若加拿大边路早开局，半场 0-1 会提前触发 1-2 尾部脚本。"
+      ],
+      "risks": [
+        "淘汰赛首战保守程度可能高于小组赛，比分仓位不宜重。",
+        "若加拿大边路早早打穿，0-1 会升级为 1-2。",
+        "若南非定位球先手，1-0 冷门路径成立。"
+      ]
+    },
+    {
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "half_time": "巴西 1-0 日本",
+      "direction_text": "巴西90分钟胜",
+      "main_score": "2-1",
+      "backup_scores": [
+        "2-0",
+        "1-1"
+      ],
+      "upset_score": "1-2",
+      "goals_range": "2-3球",
+      "advance_pick": "巴西",
+      "advance_probability_text": "巴西 62% / 日本 38%",
+      "next_opponent_note": "胜者下轮对阵 科特迪瓦 / 挪威 胜者",
+      "core_view": "巴西纸面和淘汰赛经验占优，日本有反击质量，但更像能制造进球而不是掀翻主线。",
+      "team_reading": [
+        "巴西小组赛进攻效率稳定，面对中低位防守时仍有单点破局能力。",
+        "日本小组赛韧性强，适合把比赛拖进1球差，但防线承压时间过长会暴露身后空间。",
+        "本场合理打法：巴西先抢节奏和禁区前沿，日本守住前30分钟后打反击。"
+      ],
+      "model_reasoning": [
+        "主线不走大胜：日本具备把比分压住的能力。",
+        "巴西胜面来自前场个人能力和淘汰赛控场经验。",
+        "若半场仍是0-0，1-1保护升权；若巴西先入球，2-0/2-1成为主路径。"
+      ],
+      "mystic_summary": [
+        "梅花/六爻：主队气更足，巴西小优。",
+        "五行/飞星：黄绿木火有进攻象，但日本白蓝金水能守，比分不宜过大。",
+        "玄学赛果：巴西2-1，防1-1。"
+      ],
+      "review_adjustment": "南非-加拿大复盘：低比分方向正确，但90分钟平局保护过重。加拿大补时绝杀说明淘汰赛强方即使打不开局，也要给90+阶段的边路、二点球和替补冲击保留小胜权重。本场巴西仍走胜，但比分从大胜压回2-1/2-0。",
+      "score_matrix_top": [
+        {
+          "score": "2-1",
+          "probability": 0.168,
+          "ev_signal": "+0.04",
+          "label": "主比分"
+        },
+        {
+          "score": "2-0",
+          "probability": 0.142,
+          "ev_signal": "+0.03",
+          "label": "巴西控场小胜"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.118,
+          "ev_signal": "+0.02",
+          "label": "日本拖住节奏"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.096,
+          "ev_signal": "+0.01",
+          "label": "低比分保护"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.072,
+          "ev_signal": "-0.01",
+          "label": "日本冷门"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.066,
+          "ev_signal": "-0.02",
+          "label": "尾部上修"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "巴西90分钟胜",
+          "model_probability": 0.54,
+          "fair_odds": 1.85,
+          "ev_signal": "+0.05",
+          "note": "胜面保留，但不追穿盘大胜"
+        },
+        {
+          "market": "总进球2-3",
+          "model_probability": 0.51,
+          "fair_odds": 1.96,
+          "ev_signal": "+0.04",
+          "note": "主比分池集中在2球和3球"
+        },
+        {
+          "market": "半场巴西不败",
+          "model_probability": 0.72,
+          "fair_odds": 1.39,
+          "ev_signal": "+0.02",
+          "note": "日本前30分钟抗压是关键"
+        },
+        {
+          "market": "日本进球",
+          "model_probability": 0.46,
+          "fair_odds": 2.17,
+          "ev_signal": "+0.01",
+          "note": "反击质量足够制造一个球"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "巴西90分钟胜是主线，但不是碾压局；日本的转换能力要求比分池保留1-1和2-1。"
+        },
+        {
+          "title": "复盘校正",
+          "content": "昨日加拿大补时进球提醒模型：强方久攻不下时不能简单降为平局，要保留90分钟末段小胜。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "主比分2-1，保守备选2-0，若半场0-0则1-1升权；巴西早进球才上修3-1。"
+        }
+      ],
+      "triggers": [
+        "巴西30分钟前进球：2-0、3-1升权，日本被迫前压后空间会变大。",
+        "半场0-0：1-1保护升权，巴西胜从常规胜转为尾段小胜。",
+        "日本先进球：比赛转向1-1/1-2冷门线，巴西需要尽快提高射门频率。"
+      ],
+      "safe_scores": [
+        "2-0",
+        "1-1"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "game_id": "53452557",
+      "match_no": "74",
+      "round": "32强赛",
+      "home_team": "巴西",
+      "away_team": "日本",
+      "kickoff_bjt": "2026-06-30 01:00:00 +08:00",
+      "kickoff_local": "2026-06-29 13:00:00 -04:00",
+      "beijing_date": "2026-06-30"
+    },
+    {
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "half_time": "德国 1-0 巴拉圭",
+      "direction_text": "德国90分钟胜",
+      "main_score": "2-0",
+      "backup_scores": [
+        "2-1",
+        "1-0"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "2-3球",
+      "advance_pick": "德国",
+      "advance_probability_text": "德国 68% / 巴拉圭 32%",
+      "next_opponent_note": "胜者下轮对阵 法国 / 瑞典 胜者",
+      "core_view": "德国小组赛火力和压迫质量更强，巴拉圭能守但反击持续性不足，德国常规时间解决概率最高。",
+      "team_reading": [
+        "德国小组赛进球能力强，进入淘汰赛后仍有主动控场空间。",
+        "巴拉圭以第三名路径出线，防守优先，但如果先丢球很难长时间对攻。",
+        "本场合理打法：德国前压制造早球，巴拉圭先守低位并等待定位球。"
+      ],
+      "model_reasoning": [
+        "德国优势不是单纯纸面强，而是能持续制造射门和二次进攻。",
+        "巴拉圭冷门条件只有一个：上半场守到0-0并通过定位球制造1-1。",
+        "若德国30分钟前进球，2-0是主线；若久攻不下，1-0降速收场。"
+      ],
+      "mystic_summary": [
+        "梅花/六爻：主队世爻旺，德国主动。",
+        "奇门/五行：金水秩序感强，利德国控场。",
+        "玄学赛果：德国2-0，防2-1。"
+      ],
+      "review_adjustment": "南非-加拿大复盘：淘汰赛首战的低比分、防守耐心和补时决胜都得到验证。德国优势更明显，但巴拉圭的低位防守会把比赛压成1-0/2-0区间，冷门主要来自定位球1-1。",
+      "score_matrix_top": [
+        {
+          "score": "2-0",
+          "probability": 0.184,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.146,
+          "ev_signal": "+0.03",
+          "label": "久攻小胜"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.122,
+          "ev_signal": "+0.02",
+          "label": "定位球丢球"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.092,
+          "ev_signal": "+0.01",
+          "label": "冷门保护"
+        },
+        {
+          "score": "3-0",
+          "probability": 0.081,
+          "ev_signal": "-0.01",
+          "label": "早球放大"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.064,
+          "ev_signal": "-0.02",
+          "label": "尾部上修"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "德国90分钟胜",
+          "model_probability": 0.61,
+          "fair_odds": 1.64,
+          "ev_signal": "+0.06",
+          "note": "今日三场里最明确的方向"
+        },
+        {
+          "market": "德国零封",
+          "model_probability": 0.45,
+          "fair_odds": 2.22,
+          "ev_signal": "+0.03",
+          "note": "巴拉圭运动战持续性不足"
+        },
+        {
+          "market": "总进球2-3",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "ev_signal": "+0.02",
+          "note": "不追4球以上"
+        },
+        {
+          "market": "半场德国领先",
+          "model_probability": 0.43,
+          "fair_odds": 2.33,
+          "ev_signal": "+0.01",
+          "note": "早段压迫质量决定上限"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "德国胜面清楚，主线2-0；巴拉圭能守，但如果先丢球，反扑质量不足。"
+        },
+        {
+          "title": "复盘校正",
+          "content": "昨日低比分和补时绝杀说明淘汰赛不能只按实力差拉大比分，德国胜也要优先用1-0/2-0表达。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "2-0为主，1-0是久攻不下的保守脚本，2-1来自巴拉圭定位球或二点球。"
+        }
+      ],
+      "triggers": [
+        "德国30分钟前进球：2-0主线加强，3-0进入尾部。",
+        "半场0-0：1-0升权，巴拉圭1-1冷门保护同步上升。",
+        "巴拉圭定位球威胁连续出现：2-1和1-1权重提高。"
+      ],
+      "safe_scores": [
+        "2-1",
+        "1-0"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "game_id": "53452541",
+      "match_no": "75",
+      "round": "32强赛",
+      "home_team": "德国",
+      "away_team": "巴拉圭",
+      "kickoff_bjt": "2026-06-30 04:30:00 +08:00",
+      "kickoff_local": "2026-06-29 16:30:00 -04:00",
+      "beijing_date": "2026-06-30"
+    },
+    {
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "half_time": "荷兰 0-0 摩洛哥",
+      "direction_text": "90分钟平局保护",
+      "main_score": "1-1",
+      "backup_scores": [
+        "1-0",
+        "0-1"
+      ],
+      "upset_score": "0-2",
+      "goals_range": "1-2球",
+      "advance_pick": "荷兰",
+      "advance_probability_text": "荷兰 53% / 摩洛哥 47%",
+      "next_opponent_note": "胜者下轮对阵 南非 / 加拿大 胜者",
+      "core_view": "这是四场里最接近的一场。荷兰整体结构更稳，摩洛哥反击和身体对抗有爆点，90分钟必须防平。",
+      "team_reading": [
+        "荷兰小组赛进攻数据好，但淘汰赛面对摩洛哥不会轻松打穿。",
+        "摩洛哥韧性和转换速度足够制造冷门，尤其适合在下半场偷一个。",
+        "本场合理打法：荷兰控球压节奏，摩洛哥守住中路后打身后。"
+      ],
+      "model_reasoning": [
+        "荷兰晋级略优，但不等同于90分钟主胜。",
+        "摩洛哥若先入球，比赛会转向0-1/0-2冷门线。",
+        "主线是1-1；荷兰靠加时、点球或最后30分钟质量晋级。"
+      ],
+      "mystic_summary": [
+        "梅花/六爻：主客相持，平局象重。",
+        "奇门/飞星：伏吟偏慢，先守后变。",
+        "玄学赛果：1-1，荷兰最终晋级。"
+      ],
+      "review_adjustment": "南非-加拿大复盘：平局保护有价值，但不能忽视补时阶段强侧或阵容深度更好一方的小胜。荷兰-摩洛哥强弱差更窄，因此仍以1-1为主，但把0-1/1-0同时放进核心比分池。",
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.176,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.126,
+          "ev_signal": "+0.03",
+          "label": "荷兰尾段小胜"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.118,
+          "ev_signal": "+0.03",
+          "label": "摩洛哥反击"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.101,
+          "ev_signal": "+0.02",
+          "label": "低节奏锁局"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.084,
+          "ev_signal": "-0.01",
+          "label": "荷兰开放胜"
+        },
+        {
+          "score": "0-2",
+          "probability": 0.061,
+          "ev_signal": "-0.01",
+          "label": "摩洛哥冷门放大"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "90分钟平局",
+          "model_probability": 0.35,
+          "fair_odds": 2.86,
+          "ev_signal": "+0.05",
+          "note": "双方都能接受先不犯错"
+        },
+        {
+          "market": "总进球1-2",
+          "model_probability": 0.52,
+          "fair_odds": 1.92,
+          "ev_signal": "+0.04",
+          "note": "低比分主线最稳"
+        },
+        {
+          "market": "荷兰晋级",
+          "model_probability": 0.53,
+          "fair_odds": 1.89,
+          "ev_signal": "+0.02",
+          "note": "晋级略优，不等于90分钟主胜"
+        },
+        {
+          "market": "双方进球",
+          "model_probability": 0.47,
+          "fair_odds": 2.13,
+          "ev_signal": "+0.01",
+          "note": "1-1是最高权重比分"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "这场不适合强行分胜负。90分钟1-1优先，最终晋级荷兰略占优。"
+        },
+        {
+          "title": "复盘校正",
+          "content": "昨日南非-加拿大证明低比分和平局保护有效，但补时小胜必须保留，所以1-0和0-1都进入核心池。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "主比分1-1；荷兰尾段质量对应1-0，摩洛哥转换效率对应0-1，0-0只作为节奏极慢保护。"
+        }
+      ],
+      "triggers": [
+        "半场0-0：1-1和0-0继续升权，荷兰晋级倾向不等于90分钟赢球。",
+        "摩洛哥先进球：0-1/0-2冷门线升权，荷兰会被迫打开边路。",
+        "荷兰60分钟后换人提升压迫：1-0、2-1升权。"
+      ],
+      "safe_scores": [
+        "1-0",
+        "0-1"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "game_id": "53452547",
+      "match_no": "76",
+      "round": "32强赛",
+      "home_team": "荷兰",
+      "away_team": "摩洛哥",
+      "kickoff_bjt": "2026-06-30 09:00:00 +08:00",
+      "kickoff_local": "2026-06-29 21:00:00 -04:00",
+      "beijing_date": "2026-06-30"
+    },
+    {
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "half_time": "科特迪瓦 0-0 挪威",
+      "direction_text": "90分钟平局保护",
+      "main_score": "1-1",
+      "backup_scores": [
+        "1-2",
+        "0-1"
+      ],
+      "upset_score": "2-1",
+      "goals_range": "1-3球",
+      "advance_pick": "挪威",
+      "advance_probability_text": "科特迪瓦 45% / 挪威 55%",
+      "next_opponent_note": "胜者下轮对阵 巴西 / 日本 胜者",
+      "core_view": "科特迪瓦身体对抗和边路冲击能压低挪威节奏，但挪威禁区终结点更清楚，90分钟先防平，晋级略偏挪威。",
+      "team_reading": [
+        "科特迪瓦适合把比赛带入身体对抗和定位球节奏，能制造1球差冷门路径。",
+        "挪威进攻结构更直接，禁区内终结质量高，但遇到高强度贴防时推进会断续。",
+        "本场合理打法：科特迪瓦先压低中路空间，挪威避免急躁长传，等待边路传中和二点球。"
+      ],
+      "model_reasoning": [
+        "6月30日三场验证了低比分与平局保护价值，尤其德国被拖成1-1后，强弱差不能直接放大成2球胜。",
+        "挪威优势主要在终结点，不在全场压制；如果迟迟打不开，1-1会长期保持高权重。",
+        "若挪威先入球，0-1/1-2升权；若科特迪瓦定位球先手，2-1冷门线成立。"
+      ],
+      "mystic_summary": [
+        "梅花/六爻：客方后劲较足，先滞后通。",
+        "五行/飞星：橙绿土木对抗红白金水，慢局象重。",
+        "玄学赛果：1-1，挪威最终晋级。"
+      ],
+      "review_adjustment": "6月30日复盘：巴西2-1与荷兰1-1命中，说明强方小胜和平局保护都有效；德国1-1偏离主线，暴露低位防守和定位球冷门权重仍不足。本场挪威只给晋级小优，90分钟先防1-1。",
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.164,
+          "ev_signal": "+0.04",
+          "label": "主比分"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.132,
+          "ev_signal": "+0.03",
+          "label": "挪威小胜"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.108,
+          "ev_signal": "+0.02",
+          "label": "后段上修"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.096,
+          "ev_signal": "+0.02",
+          "label": "慢热锁局"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.082,
+          "ev_signal": "-0.01",
+          "label": "科特迪瓦定位球冷门"
+        },
+        {
+          "score": "2-2",
+          "probability": 0.061,
+          "ev_signal": "-0.02",
+          "label": "开放尾部"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "90分钟平局",
+          "model_probability": 0.34,
+          "fair_odds": 2.94,
+          "ev_signal": "+0.04",
+          "note": "双方都不适合早段冒险"
+        },
+        {
+          "market": "挪威晋级",
+          "model_probability": 0.55,
+          "fair_odds": 1.82,
+          "ev_signal": "+0.03",
+          "note": "终结点优势更适合加时/点球前兑现"
+        },
+        {
+          "market": "总进球1-3",
+          "model_probability": 0.61,
+          "fair_odds": 1.64,
+          "ev_signal": "+0.03",
+          "note": "不追大球"
+        },
+        {
+          "market": "双方进球",
+          "model_probability": 0.48,
+          "fair_odds": 2.08,
+          "ev_signal": "+0.01",
+          "note": "身体对抗和定位球都能制造进球"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "90分钟1-1优先，最终晋级略偏挪威；不把挪威终结优势直接翻译成常规时间稳胜。"
+        },
+        {
+          "title": "复盘校正",
+          "content": "德国1-1提醒模型：遇到低位和定位球强队，强方胜面要降一档，用平局保护承接。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "主比分1-1，挪威小胜看0-1/1-2，科特迪瓦冷门只保留2-1。"
+        }
+      ],
+      "triggers": [
+        "半场0-0：1-1和0-0继续升权，挪威晋级不等于90分钟胜。",
+        "挪威先进球：0-1、1-2升权，科特迪瓦会提高边路冲击。",
+        "科特迪瓦定位球连续制造威胁：2-1冷门和1-1主线同步升权。"
+      ],
+      "safe_scores": [
+        "1-2",
+        "0-1"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "game_id": "53452561",
+      "match_no": "77",
+      "round": "32强赛",
+      "home_team": "科特迪瓦",
+      "away_team": "挪威",
+      "kickoff_bjt": "2026-07-01 01:00:00 +08:00",
+      "kickoff_local": "2026-06-30 13:00:00 -04:00",
+      "beijing_date": "2026-07-01"
+    },
+    {
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "half_time": "法国 1-0 瑞典",
+      "direction_text": "法国90分钟胜",
+      "main_score": "2-1",
+      "backup_scores": [
+        "1-0",
+        "1-1"
+      ],
+      "upset_score": "0-1",
+      "goals_range": "1-3球",
+      "advance_pick": "法国",
+      "advance_probability_text": "法国 64% / 瑞典 36%",
+      "next_opponent_note": "胜者下轮对阵 德国 / 巴拉圭 胜者",
+      "core_view": "法国单点爆破和阵容深度仍是主线，但瑞典定位球和防守纪律会把比分压住，主比分不追大胜。",
+      "team_reading": [
+        "法国在淘汰赛里有更好的前场个人能力和换人空间，能在僵持局里制造质量机会。",
+        "瑞典低位防守和定位球威胁稳定，足够保留1-1或0-1冷门保护。",
+        "本场合理打法：法国先抢半场领先，瑞典先守住禁区正面并争取定位球。"
+      ],
+      "model_reasoning": [
+        "巴西2-1命中说明强方小胜仍要保留；德国1-1提醒模型不能低估北欧/南美低位防守的拖慢能力。",
+        "法国胜面更清楚，但比分池要集中在1球差，避免把纸面优势直接翻译成3-0。",
+        "若半场0-0，1-1显著升权；若法国早进球，2-1和2-0尾部升权。"
+      ],
+      "mystic_summary": [
+        "梅花/六爻：主队动爻更旺，法国主动。",
+        "奇门/五行：蓝白金水成势，利控制与尾段加速。",
+        "玄学赛果：法国2-1，防1-1。"
+      ],
+      "review_adjustment": "6月30日复盘：巴西2-1说明强方一球小胜仍是淘汰赛主线；德国1-1说明不能低估纪律型防守的拖慢能力。本场法国仍走胜，但比分收窄到2-1/1-0，并保留1-1保护。",
+      "score_matrix_top": [
+        {
+          "score": "2-1",
+          "probability": 0.172,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.138,
+          "ev_signal": "+0.03",
+          "label": "法国小胜"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.116,
+          "ev_signal": "+0.02",
+          "label": "瑞典拖住"
+        },
+        {
+          "score": "2-0",
+          "probability": 0.102,
+          "ev_signal": "+0.01",
+          "label": "法国控场"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.066,
+          "ev_signal": "-0.01",
+          "label": "瑞典定位球冷门"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.058,
+          "ev_signal": "-0.02",
+          "label": "早球放大"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "法国90分钟胜",
+          "model_probability": 0.57,
+          "fair_odds": 1.75,
+          "ev_signal": "+0.05",
+          "note": "胜面明确但只按小胜处理"
+        },
+        {
+          "market": "总进球2-3",
+          "model_probability": 0.52,
+          "fair_odds": 1.92,
+          "ev_signal": "+0.04",
+          "note": "主比分集中在2-1/1-1"
+        },
+        {
+          "market": "瑞典进球",
+          "model_probability": 0.44,
+          "fair_odds": 2.27,
+          "ev_signal": "+0.02",
+          "note": "定位球和二点球不能忽视"
+        },
+        {
+          "market": "半场法国不败",
+          "model_probability": 0.73,
+          "fair_odds": 1.37,
+          "ev_signal": "+0.01",
+          "note": "法国开局控制力更好"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "法国90分钟胜是主线，主比分2-1；瑞典的防守纪律要求保留1-0和1-1。"
+        },
+        {
+          "title": "复盘校正",
+          "content": "德国被巴拉圭拖平后，模型对纪律型防守的平局保护上调。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "2-1为主，1-0是低节奏小胜，1-1是半场打不开时的保护。"
+        }
+      ],
+      "triggers": [
+        "法国30分钟前进球：2-0、3-1升权，瑞典必须提前打开阵型。",
+        "半场0-0：1-1和1-0升权，法国胜面从压制胜转为尾段小胜。",
+        "瑞典定位球质量持续出现：2-1和0-1冷门保护同步上升。"
+      ],
+      "safe_scores": [
+        "1-0",
+        "1-1"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "game_id": "53452543",
+      "match_no": "78",
+      "round": "32强赛",
+      "home_team": "法国",
+      "away_team": "瑞典",
+      "kickoff_bjt": "2026-07-01 05:00:00 +08:00",
+      "kickoff_local": "2026-06-30 17:00:00 -04:00",
+      "beijing_date": "2026-07-01"
+    },
+    {
+      "model_version": "v3-knockout-elo-ev-halftime",
+      "half_time": "墨西哥 0-0 厄瓜多尔",
+      "direction_text": "90分钟平局保护",
+      "main_score": "1-1",
+      "backup_scores": [
+        "0-1",
+        "1-0"
+      ],
+      "upset_score": "1-2",
+      "goals_range": "1-2球",
+      "advance_pick": "厄瓜多尔",
+      "advance_probability_text": "墨西哥 48% / 厄瓜多尔 52%",
+      "next_opponent_note": "胜者下轮对阵 英格兰 / 刚果民主共和国 胜者",
+      "core_view": "双方强弱差很窄，墨西哥主场气质和控场能撑住90分钟，厄瓜多尔转换和身体优势让最终晋级略优。",
+      "team_reading": [
+        "墨西哥节奏控制和比赛经验好，适合把淘汰赛拖进低比分。",
+        "厄瓜多尔对抗和纵向推进更有爆点，尤其下半场能通过转换制造决定性机会。",
+        "本场合理打法：墨西哥控球降速，厄瓜多尔守住肋部后打快速前插。"
+      ],
+      "model_reasoning": [
+        "荷兰-摩洛哥1-1命中说明接近场次要坚持平局主线，不强行给胜负。",
+        "厄瓜多尔晋级略优来自下半场冲击力，不等同于90分钟稳胜。",
+        "若墨西哥先进球，1-0/1-1升权；若厄瓜多尔先入球，0-1/1-2成为主路径。"
+      ],
+      "mystic_summary": [
+        "梅花/六爻：主客比和，平象重。",
+        "飞星/五行：绿白相持，后段客方动能略强。",
+        "玄学赛果：1-1，厄瓜多尔最终晋级。"
+      ],
+      "review_adjustment": "6月30日复盘：荷兰-摩洛哥1-1完全符合接近场次的平局保护逻辑。本场墨西哥-厄瓜多尔同属窄差对抗，主线继续用1-1表达，晋级小优交给厄瓜多尔的后段冲击。",
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.181,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.124,
+          "ev_signal": "+0.03",
+          "label": "厄瓜多尔小胜"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.119,
+          "ev_signal": "+0.03",
+          "label": "墨西哥控场小胜"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.104,
+          "ev_signal": "+0.02",
+          "label": "慢节奏锁局"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.079,
+          "ev_signal": "-0.01",
+          "label": "厄瓜多尔后段放大"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.072,
+          "ev_signal": "-0.01",
+          "label": "墨西哥开放胜"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "90分钟平局",
+          "model_probability": 0.36,
+          "fair_odds": 2.78,
+          "ev_signal": "+0.05",
+          "note": "窄差对抗优先防平"
+        },
+        {
+          "market": "总进球1-2",
+          "model_probability": 0.54,
+          "fair_odds": 1.85,
+          "ev_signal": "+0.04",
+          "note": "低比分最稳"
+        },
+        {
+          "market": "厄瓜多尔晋级",
+          "model_probability": 0.52,
+          "fair_odds": 1.92,
+          "ev_signal": "+0.02",
+          "note": "后段身体优势略好"
+        },
+        {
+          "market": "双方进球",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "ev_signal": "+0.01",
+          "note": "1-1是最高权重比分"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "统一结论",
+          "content": "90分钟1-1优先，最终晋级略偏厄瓜多尔；两队都不具备稳定碾压对方的条件。"
+        },
+        {
+          "title": "复盘校正",
+          "content": "荷兰1-1命中后，接近场次继续把平局保护放在主线，而不是强行选胜负。"
+        },
+        {
+          "title": "比分怎么用",
+          "content": "1-1为主，0-1和1-0是两侧小胜保护，1-2只在厄瓜多尔先进球后上修。"
+        }
+      ],
+      "triggers": [
+        "半场0-0：1-1和0-0升权，比赛更可能进入加时/点球逻辑。",
+        "厄瓜多尔先进球：0-1、1-2升权，墨西哥会被迫提高边路投入。",
+        "墨西哥先进球：1-0、1-1升权，厄瓜多尔后段反扑会制造双方进球。"
+      ],
+      "safe_scores": [
+        "0-1",
+        "1-0"
+      ],
+      "draw_protection_scores": [
+        "0-0",
+        "1-1"
+      ],
+      "game_id": "53452563",
+      "match_no": "79",
+      "round": "32强赛",
+      "home_team": "墨西哥",
+      "away_team": "厄瓜多尔",
+      "kickoff_bjt": "2026-07-01 09:00:00 +08:00",
+      "kickoff_local": "2026-06-30 21:00:00 -04:00",
+      "beijing_date": "2026-07-01"
+    }
+  ]
+}
