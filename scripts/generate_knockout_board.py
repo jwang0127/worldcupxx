@@ -31,7 +31,7 @@ PARLAY_POLICY = {
     "single_match_mode": "regular_prediction_only",
     "required_markets": ["crs", "ttg", "hafu"],
     "odds_source": "Sporttery getMatchCalculatorV1 website API via scripts/fetch_sporttery.ps1",
-    "parlay_types": ["比分三串一", "总进球数三串一", "半场胜平负三串一"],
+    "parlay_types": ["比分三串一", "总进球数三串一", "半全场胜负平三串一"],
 }
 
 
@@ -97,6 +97,10 @@ def half_direction_label(direction: str) -> str:
     return {"home": "半场主胜", "draw": "半场平", "away": "半场客胜"}.get(direction, direction)
 
 
+def outcome_short_label(direction: str) -> str:
+    return {"home": "胜", "draw": "平", "away": "负"}.get(direction, direction)
+
+
 def load_live_odds(date_label: str) -> dict[str, Any]:
     path = DATA_DIR / f"{date_label}.json"
     if not path.exists():
@@ -123,18 +127,20 @@ def odds_match_for_prediction(item: dict[str, Any], odds_lookup: dict[str, Any])
     return odds_lookup.get(key)
 
 
-def hafu_half_odds(hafu: dict[str, Any] | None, direction: str) -> float | None:
+def hafu_key(half_direction: str, full_direction: str) -> str:
+    prefix = {"home": "h", "draw": "d", "away": "a"}.get(half_direction, "d")
+    suffix = {"home": "h", "draw": "d", "away": "a"}.get(full_direction, "d")
+    return prefix + suffix
+
+
+def hafu_label(half_direction: str, full_direction: str) -> str:
+    return outcome_short_label(half_direction) + outcome_short_label(full_direction)
+
+
+def hafu_exact_odds(hafu: dict[str, Any] | None, half_direction: str, full_direction: str) -> float | None:
     if not hafu:
         return None
-    prefixes = {"home": "h", "draw": "d", "away": "a"}.get(direction, "d")
-    implied = 0.0
-    for suffix in ("h", "d", "a"):
-        odd = odds_float(hafu.get(prefixes + suffix))
-        if odd and odd > 0:
-            implied += 1 / odd
-    if implied <= 0:
-        return None
-    return 1 / implied
+    return odds_float(hafu.get(hafu_key(half_direction, full_direction)))
 
 
 def product_odds(rows: list[dict[str, Any]]) -> float | None:
@@ -1315,7 +1321,7 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
 
     score_rows: list[dict[str, Any]] = []
     goals_rows: list[dict[str, Any]] = []
-    half_rows: list[dict[str, Any]] = []
+    hafu_rows: list[dict[str, Any]] = []
 
     for item in predictions:
         odds_match = odds_match_for_prediction(item, odds_lookup)
@@ -1350,25 +1356,26 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
         )
 
         half_direction = half_direction_from_text(str(item["half_time"]))
+        full_direction = half_direction_from_text(str(item["main_score"]))
         hafu = odds.get("hafu") or {}
-        half_rows.append(
+        hafu_rows.append(
             {
                 "match": match_label,
-                "pick": half_direction_label(half_direction),
-                "odds": hafu_half_odds(hafu, half_direction),
+                "pick": hafu_label(half_direction, full_direction),
+                "odds": hafu_exact_odds(hafu, half_direction, full_direction),
                 "updated_at": hafu.get("updatedAt", "-"),
             }
         )
 
     score_html = render_parlay_table("比分三串一", score_rows, "按每场主比分选择，赔率来自体彩比分市场。")
     goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场主比分折算出的总进球数选择，赔率来自体彩总进球市场。")
-    half_html = render_parlay_table("半场胜平负三串一", half_rows, "体彩接口提供半全场市场；这里按同一半场方向合成参考赔率，不等同于独立半场盘。")
+    hafu_html = render_parlay_table("半全场胜负平三串一", hafu_rows, "按半场方向 + 全场主比分方向组合，直接读取体彩半全场市场赔率；例如半场胜、全场负记为胜负。")
     return f"""
   <section class="section" id="parlay">
     <h2>今日三串一</h2>
     {score_html}
     {goals_html}
-    {half_html}
+    {hafu_html}
   </section>"""
 
 

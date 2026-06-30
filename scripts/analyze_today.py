@@ -32,7 +32,7 @@ import requests
 
 DEFAULT_ROOT = Path(r"D:\WorldCupPredict")
 PARLAY_MATCH_COUNT = 3
-PARLAY_RULE_NOTE = "当日正好 3 场比赛时生成比分、总进球数、半场胜平负三类三串一；当日只有 1 场比赛时只做常规预测。赔率由 fetch_sporttery.ps1 从网站实时赔率接口拉取。"
+PARLAY_RULE_NOTE = "当日正好 3 场比赛时生成比分、总进球数、半全场胜负平三类三串一；当日只有 1 场比赛时只做常规预测。赔率由 fetch_sporttery.ps1 从网站实时赔率接口拉取。"
 
 
 def parse_args() -> argparse.Namespace:
@@ -519,17 +519,19 @@ def pick_score_combo(predictions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return combo
 
 
-def pick_half_time_combo(predictions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """生成半场胜平负三串一。"""
+def pick_half_full_combo(predictions: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """生成半全场胜负平三串一。"""
     selected = predictions[:3]
     combo = []
     for item in selected:
+        half_pick = item.get("half_time_pick", "draw")
+        full_pick = item.get("stable_pick", "draw")
         combo.append(
             {
                 "match_id": item["match_id"],
                 "match_name": f'{item["home_team"]} vs {item["away_team"]}',
-                "pick_type": "half_time_outcome",
-                "pick_value": item.get("half_time_pick", "draw"),
+                "pick_type": "half_full_outcome",
+                "pick_value": f"{half_pick}-{full_pick}",
             }
         )
     return combo
@@ -543,7 +545,7 @@ def build_combo_payload(predictions: List[Dict[str, Any]]) -> Dict[str, Any]:
             "rule": PARLAY_RULE_NOTE,
             "total_goals": [],
             "score": [],
-            "half_time": [],
+            "half_full": [],
         }
     return {
         "enabled": True,
@@ -551,13 +553,24 @@ def build_combo_payload(predictions: List[Dict[str, Any]]) -> Dict[str, Any]:
         "odds_source": "scripts/fetch_sporttery.ps1 -> Sporttery getMatchCalculatorV1 website API",
         "total_goals": pick_total_goals_combo(predictions),
         "score": pick_score_combo(predictions),
-        "half_time": pick_half_time_combo(predictions),
+        "half_full": pick_half_full_combo(predictions),
     }
 
 
 def outcome_label(value: str) -> str:
     """将内部方向值转成中文。"""
     return {"home": "主胜", "draw": "平局", "away": "客胜"}.get(value, value)
+
+
+def outcome_short_label(value: str) -> str:
+    """将内部方向值转成半全场短标签。"""
+    return {"home": "胜", "draw": "平", "away": "负"}.get(value, value)
+
+
+def half_full_label(value: str) -> str:
+    """将 home-away 这类半全场值转成 胜负。"""
+    half_pick, _, full_pick = str(value).partition("-")
+    return outcome_short_label(half_pick) + outcome_short_label(full_pick)
 
 
 def extract_json_text(raw_text: str) -> str:
@@ -639,9 +652,9 @@ def generate_html(target_date: str, predictions: List[Dict[str, Any]], payload: 
         </ul>
       </article>
       <article class="combo-card">
-        <h2>半场胜平负三串一</h2>
+        <h2>半全场胜负平三串一</h2>
         <ul>
-          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(outcome_label(item['pick_value']))}</li>" for item in combo['half_time'])}
+          {''.join(f"<li>{html.escape(item['match_name'])}：{html.escape(half_full_label(item['pick_value']))}</li>" for item in combo['half_full'])}
         </ul>
       </article>
     </section>
