@@ -1103,6 +1103,190 @@ def render_knockout_result_rows(rows: list[dict[str, Any]]) -> str:
     )
 
 
+def prediction_match_lookup() -> dict[str, dict[str, Any]]:
+    lookup: dict[str, dict[str, Any]] = {}
+    for path in sorted(DATA_DIR.glob("knockout_predictions_*.json")):
+        if re.search(r"_\d{4}$", path.stem):
+            continue
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        date_label = str(payload.get("date") or path.stem.rsplit("_", 1)[-1])
+        for item in payload.get("matches", []):
+            copied = dict(item)
+            copied["_prediction_date"] = date_label
+            match_no = str(item.get("match_no", "")).strip().lstrip("0")
+            game_id = str(item.get("game_id", "")).strip()
+            if match_no:
+                lookup[f"no:{match_no}"] = copied
+            if game_id:
+                lookup[f"game:{game_id}"] = copied
+    return lookup
+
+
+def actual_half_direction(item: dict[str, Any]) -> str | None:
+    for key in ("half_time_score", "half_time", "half_score"):
+        value = item.get(key)
+        if value:
+            return half_direction_from_text(str(value))
+    home = item.get("half_home_goals")
+    away = item.get("half_away_goals")
+    if home is None or away is None:
+        return None
+    try:
+        home_goals = int(home)
+        away_goals = int(away)
+    except (TypeError, ValueError):
+        return None
+    if home_goals > away_goals:
+        return "home"
+    if home_goals < away_goals:
+        return "away"
+    return "draw"
+
+
+def predicted_half_direction(item: dict[str, Any]) -> str | None:
+    value = item.get("half_time_pick")
+    if value in ("home", "draw", "away"):
+        return str(value)
+    value = item.get("half_time")
+    if isinstance(value, dict):
+        direction = value.get("direction")
+        if direction in ("home", "draw", "away"):
+            return str(direction)
+        value = value.get("main_score") or value.get("score")
+    if value:
+        return half_direction_from_text(str(value))
+    return None
+
+
+def pct(hit: int, total: int) -> str:
+    if total <= 0:
+        return "暂无"
+    return f"{hit}/{total} ({hit / total:.0%})"
+
+
+def knockout_hit_stats() -> dict[str, Any]:
+    predictions = prediction_match_lookup()
+    rows = []
+    score_hit = direction_hit = total_hit = half_hit = 0
+    scored = direction_total = total_total = half_total = 0
+    parlay_groups: dict[str, list[dict[str, Any]]] = {}
+
+    for result in knockout_results():
+        match_no = str(result.get("match_no", "")).strip().lstrip("0")
+        pred = predictions.get(f"no:{match_no}")
+        if not pred:
+            continue
+        actual_score = str(result.get("score", ""))
+        predicted_score = str(pred.get("main_score", result.get("prediction_main_score", "")))
+        actual_total = score_total(actual_score)
+        predicted_total = score_total(predicted_score)
+        actual_direction = score_direction(actual_score)
+        predicted_direction = score_direction(predicted_score)
+        actual_half = actual_half_direction(result)
+        predicted_half = predicted_half_direction(pred)
+
+        score_ok = predicted_score == actual_score
+        direction_ok = predicted_direction == actual_direction
+        total_ok = actual_total is not None and predicted_total is not None and actual_total == predicted_total
+        half_ok = actual_half is not None and predicted_half is not None and actual_half == predicted_half
+
+        scored += 1
+        direction_total += 1
+        total_total += 1
+        score_hit += int(score_ok)
+        direction_hit += int(direction_ok)
+        total_hit += int(total_ok)
+        if actual_half is not None and predicted_half is not None:
+            half_total += 1
+            half_hit += int(half_ok)
+
+        row = {
+            "date": result["date"],
+            "match_no": match_no,
+            "score_hit": score_ok,
+            "direction_hit": direction_ok,
+            "total_hit": total_ok,
+            "half_hit": half_ok if actual_half is not None and predicted_half is not None else None,
+        }
+        rows.append(row)
+        parlay_groups.setdefault(str(result["date"]), []).append(row)
+
+    parlay_rows = []
+    parlay_score_hit = parlay_total_hit = parlay_half_hit = 0
+    parlay_score_total = parlay_total_total = parlay_half_total = 0
+    for date_label, items in sorted(parlay_groups.items()):
+        if len(items) != PARLAY_POLICY["enabled_match_count"]:
+            continue
+        score_ok = all(item["score_hit"] for item in items)
+        total_ok = all(item["total_hit"] for item in items)
+        half_available = all(item["half_hit"] is not None for item in items)
+        half_ok = half_available and all(bool(item["half_hit"]) for item in items)
+        parlay_score_total += 1
+        parlay_total_total += 1
+        parlay_score_hit += int(score_ok)
+        parlay_total_hit += int(total_ok)
+        if half_available:
+            parlay_half_total += 1
+            parlay_half_hit += int(half_ok)
+        parlay_rows.append(
+            {
+                "date": date_label,
+                "score": score_ok,
+                "total": total_ok,
+                "half": half_ok if half_available else None,
+            }
+        )
+
+    return {
+        "score": {"hit": score_hit, "total": scored},
+        "direction": {"hit": direction_hit, "total": direction_total},
+        "total_goals": {"hit": total_hit, "total": total_total},
+        "half": {"hit": half_hit, "total": half_total},
+        "parlay_score": {"hit": parlay_score_hit, "total": parlay_score_total},
+        "parlay_total": {"hit": parlay_total_hit, "total": parlay_total_total},
+        "parlay_half": {"hit": parlay_half_hit, "total": parlay_half_total},
+        "parlay_rows": parlay_rows,
+    }
+
+
+def render_hit_metric(label: str, stat: dict[str, int]) -> str:
+    return f'<div class="metric">{esc(label)}<strong>{esc(pct(stat["hit"], stat["total"]))}</strong><small>已结算样本</small></div>'
+
+
+def render_parlay_hit_rows(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return '<tr><td colspan="4">暂无满足 3 场的已结算日期。</td></tr>'
+    return "".join(
+        "<tr>"
+        f"<td>{esc(row['date'][4:6] + '-' + row['date'][6:8])}</td>"
+        f"<td>{'命中' if row['score'] else '未中'}</td>"
+        f"<td>{'命中' if row['total'] else '未中'}</td>"
+        f"<td>{'命中' if row['half'] is True else ('未中' if row['half'] is False else '半场赛果未回填')}</td>"
+        "</tr>"
+        for row in rows
+    )
+
+
+def render_knockout_hit_stats(stats: dict[str, Any]) -> str:
+    return f"""
+  <section class="section" id="hitStats">
+    <h2>淘汰赛命中统计</h2>
+    <div class="heroGrid">
+      {render_hit_metric("精确比分", stats["score"])}
+      {render_hit_metric("胜平负方向", stats["direction"])}
+      {render_hit_metric("总进球数", stats["total_goals"])}
+      {render_hit_metric("半场胜平负", stats["half"])}
+      {render_hit_metric("比分三串一", stats["parlay_score"])}
+      {render_hit_metric("总进球三串一", stats["parlay_total"])}
+      {render_hit_metric("半场三串一", stats["parlay_half"])}
+    </div>
+    <div class="card tableWrap"><table><thead><tr><th>日期</th><th>比分三串一</th><th>总进球三串一</th><th>半场三串一</th></tr></thead><tbody>{render_parlay_hit_rows(stats["parlay_rows"])}</tbody></table></div>
+  </section>"""
+
+
 def future_text(matches: list[dict[str, Any]]) -> str:
     return "\n".join(
         f"{item['beijing_date'][5:]} {item['beijing_time']}  {item['match_no']}  {item['home_team']} vs {item['away_team']}  {item['round']}"
@@ -1255,6 +1439,7 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
     matches = rolling_future_matches(schedule, 3)
     results = knockout_results()
+    hit_stats = knockout_hit_stats()
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2026世界杯预测入口</title><style>{css()}</style></head>
@@ -1262,7 +1447,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <header>
   <div class="topbar"><div><h1>2026世界杯预测入口</h1>
   </div><div class="topActions"><a class="buttonLink" href="knockout/teams.html">完整32强战绩</a></div></div>
-  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#teams">淘汰赛赛果</a></nav>
+  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
 </header>
 <main>
   <section class="section" id="entry">
@@ -1273,6 +1458,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
     </div>
   </section>
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
+  {render_knockout_hit_stats(hit_stats)}
   <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
 </main>
 </body>
