@@ -1,0 +1,52 @@
+{
+  "date": "20260701",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452561",
+      "match_no": "77",
+      "home_team": "科特迪瓦",
+      "away_team": "挪威",
+      "score": "1-2",
+      "home_goals": 1,
+      "away_goals": 2,
+      "prediction_main_score": "1-1",
+      "prediction_backup_scores": [
+        "1-2",
+        "0-1"
+      ],
+      "review": "方向命中挪威晋级，小胜比分在保护池内；模型对90分钟平局权重略重，强队临门终结权重需要上调。"
+    },
+    {
+      "game_id": "53452543",
+      "match_no": "78",
+      "home_team": "法国",
+      "away_team": "瑞典",
+      "score": "3-0",
+      "home_goals": 3,
+      "away_goals": 0,
+      "prediction_main_score": "2-1",
+      "prediction_backup_scores": [
+        "1-0",
+        "1-1"
+      ],
+      "review": "方向命中但低估法国拉开比分能力；强队早段领先后，大球和零封穿盘权重需要提高。"
+    },
+    {
+      "game_id": "53452563",
+      "match_no": "79",
+      "home_team": "墨西哥",
+      "away_team": "厄瓜多尔",
+      "score": "2-0",
+      "home_goals": 2,
+      "away_goals": 0,
+      "prediction_main_score": "1-1",
+      "prediction_backup_scores": [
+        "0-1",
+        "1-0"
+      ],
+      "review": "低比分判断接近，但主场强队控制力被低估；窄差对抗里仍要保留主队2-0/2-1拉开线。"
+    }
+  ]
+}

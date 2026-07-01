@@ -5,9 +5,10 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import shutil
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -21,7 +22,6 @@ MODEL_MD = ROOT / "world_cup_knockout_model_optimization_codex.md"
 GROUP_MODEL_MD = ROOT / "SHAREABLE_PREDICTION_REVIEW_LOGIC.md"
 SHARE_NOTE_MD = ROOT / "1.md"
 DATA_DIR = ROOT / "data"
-TODAY = datetime(2026, 7, 1)
 PREDICTION_DATE = "20260629"
 FIRST_GAME_ID = "53452545"
 PREDICTION_GAME_IDS = ["53452545", "53452557", "53452541", "53452547", "53452561", "53452543", "53452563"]
@@ -322,6 +322,55 @@ def future_matches(schedule: list[dict[str, Any]], start: datetime, days: int = 
         item
         for item in schedule
         if start <= dt_bjt(item["kickoff_bjt"]) < end and not item["home_team"].startswith("待定")
+    ]
+    return sorted(matches, key=lambda item: (item["beijing_date"], item["beijing_time"], int(item["match_no"])))
+
+
+def current_bjt() -> datetime:
+    override = os.environ.get("WORLD_CUP_NOW_BJT", "").strip()
+    if override:
+        for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y%m%d%H%M", "%Y%m%d"):
+            try:
+                return datetime.strptime(override, fmt)
+            except ValueError:
+                continue
+        raise ValueError(f"Invalid WORLD_CUP_NOW_BJT: {override}")
+    return datetime.now(timezone(timedelta(hours=8))).replace(tzinfo=None)
+
+
+def settled_match_keys() -> set[str]:
+    keys: set[str] = set()
+    for path in DATA_DIR.glob("knockout_results_*.json"):
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        for item in payload.get("matches", []):
+            game_id = str(item.get("game_id", "")).strip()
+            match_no = str(item.get("match_no", "")).strip().lstrip("0")
+            if game_id:
+                keys.add(f"game:{game_id}")
+            if match_no:
+                keys.add(f"no:{match_no}")
+    return keys
+
+
+def is_settled_match(item: dict[str, Any], settled: set[str]) -> bool:
+    game_id = str(item.get("game_id", "")).strip()
+    match_no = str(item.get("match_no", "")).strip().lstrip("0")
+    return f"game:{game_id}" in settled or f"no:{match_no}" in settled
+
+
+def rolling_future_matches(schedule: list[dict[str, Any]], days: int = 3) -> list[dict[str, Any]]:
+    start = current_bjt()
+    end = start + timedelta(days=days)
+    settled = settled_match_keys()
+    matches = [
+        item
+        for item in schedule
+        if start <= dt_bjt(item["kickoff_bjt"]) < end
+        and not item["home_team"].startswith("寰呭畾")
+        and not is_settled_match(item, settled)
     ]
     return sorted(matches, key=lambda item: (item["beijing_date"], item["beijing_time"], int(item["match_no"])))
 
@@ -987,7 +1036,7 @@ def future_text(matches: list[dict[str, Any]]) -> str:
 
 def date_dirs() -> list[Path]:
     return sorted(
-        [p for p in ROOT.glob("2026*") if p.is_dir() and re.match(r"^202606\d{2}$", p.name)],
+        [p for p in ROOT.glob("2026*") if p.is_dir() and re.match(r"^2026\d{4}$", p.name)],
         key=lambda p: p.name,
         reverse=True,
     )
@@ -1128,7 +1177,7 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 
 
 def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
-    matches = future_matches(schedule, TODAY, 3)
+    matches = rolling_future_matches(schedule, 3)
     subset = home_stats_subset(stats, matches)
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -1180,7 +1229,7 @@ def render_mystic_framework(mystic: dict[str, Any]) -> str:
 
 def render_teams_page(stats: list[dict[str, Any]], schedule: list[dict[str, Any]]) -> str:
     rows = render_stats_rows(stats)
-    upcoming = render_upcoming_rows(future_matches(schedule, TODAY, 3))
+    upcoming = render_upcoming_rows(rolling_future_matches(schedule, 3))
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>32强当前战绩</title><style>{css()}</style></head>
@@ -1215,10 +1264,16 @@ def render_group_archive_page() -> str:
 
 
 def render_knockout_archive_page() -> str:
-    cards = (
-        '<a class="miniCard" href="../20260629/"><strong>20260629</strong><span>南非 vs 加拿大</span></a>'
-        '<a class="miniCard" href="../20260630/"><strong>20260630</strong><span>巴西/德国/荷兰三场</span></a>'
-        '<a class="miniCard" href="../20260701/"><strong>20260701</strong><span>科特迪瓦/法国/墨西哥三场</span></a>'
+    labels = {
+        "20260629": "南非 vs 加拿大",
+        "20260630": "巴西/德国/荷兰三场",
+        "20260701": "科特迪瓦/法国/墨西哥三场",
+        "20260702": "英格兰/比利时/美国三场",
+    }
+    cards = "".join(
+        f'<a class="miniCard" href="../{p.name}/"><strong>{p.name}</strong><span>{labels.get(p.name, "淘汰赛预测")}</span></a>'
+        for p in date_dirs()
+        if p.name >= "20260629"
     )
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">

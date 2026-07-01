@@ -1,0 +1,645 @@
+{
+  "date": "20260702",
+  "stage": "knockout",
+  "source": "manual-review-plus-sporttery-odds",
+  "generated_at": "2026-07-01 12:46:14",
+  "review_basis": "昨日赛果：科特迪瓦1-2挪威、法国3-0瑞典、墨西哥2-0厄瓜多尔。",
+  "matches": [
+    {
+      "game_id": "53452565",
+      "match_no": "80",
+      "round": "32强赛",
+      "home_team": "英格兰",
+      "away_team": "刚果(金)",
+      "kickoff_bjt": "2026-07-02 00:00:00 +08:00",
+      "model_version": "v4-knockout-review-big-goals",
+      "direction_text": "英格兰90分钟胜",
+      "main_score": "3-0",
+      "backup_scores": [
+        "2-0",
+        "3-1"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "2-4球",
+      "advance_pick": "英格兰",
+      "advance_probability_text": "英格兰 73% / 刚果(金) 27%",
+      "core_view": "英格兰纸面强度、阵容深度和定位球质量都占优；昨日法国3-0提醒模型不要把顶级强队机械压成小胜。冷门只来自刚果(金)前30分钟守住后，用身体对抗和反击制造一次高质量机会。",
+      "score_matrix_top": [
+        {
+          "score": "3-0",
+          "probability": 0.156,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "2-0",
+          "probability": 0.148,
+          "ev_signal": "+0.04",
+          "label": "稳胜零封"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.112,
+          "ev_signal": "+0.02",
+          "label": "刚果反击进球"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.098,
+          "ev_signal": "+0.02",
+          "label": "大球上修"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.073,
+          "ev_signal": "-0.01",
+          "label": "冷门拖住"
+        },
+        {
+          "score": "4-0",
+          "probability": 0.061,
+          "ev_signal": "-0.01",
+          "label": "早球放大"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "英格兰90分钟胜",
+          "model_probability": 0.68,
+          "fair_odds": 1.47,
+          "ev_signal": "+0.04",
+          "note": "正路明确，但不追极端穿盘"
+        },
+        {
+          "market": "总进球3+",
+          "model_probability": 0.55,
+          "fair_odds": 1.82,
+          "ev_signal": "+0.05",
+          "note": "2球与3球赔率接近，强队上调大球"
+        },
+        {
+          "market": "英格兰零封",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "ev_signal": "+0.03",
+          "note": "昨日法国/墨西哥零封后升权"
+        },
+        {
+          "market": "冷门平局",
+          "model_probability": 0.18,
+          "fair_odds": 5.56,
+          "ev_signal": "保护",
+          "note": "半场0-0时再上修"
+        }
+      ],
+      "triggers": [
+        "英格兰30分钟内进球：3-0、4-0、3-1升权，大球优先。",
+        "半场0-0：2-0降为主线，1-1冷门保护升权。",
+        "刚果(金)连续制造反击或定位球：2-1、1-1同步升权。"
+      ],
+      "team_reading": [
+        "英格兰适合用边路和定位球压制，领先后替补深度能继续放大比分。",
+        "刚果(金)的冷门路径不是控场，而是低位抗住后打转换和二点球。"
+      ],
+      "odds_snapshot": {
+        "id": "080",
+        "matchNumStr": "周三080",
+        "matchId": "2040352",
+        "businessDate": "2026-07-01",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-02 00:00:00",
+        "matchDate": "2026-07-02",
+        "matchTime": "00:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607011",
+        "isHot": true,
+        "home": "英格兰",
+        "homeCode": "ENG",
+        "homeAbbr": "英格兰",
+        "homeRank": "[世界杯1]",
+        "away": "刚果(金)",
+        "awayCode": "COD",
+        "awayAbbr": "刚果金",
+        "awayRank": "[世界杯1]",
+        "venue": "比赛将在美国-佐治亚州亚特兰大举行",
+        "prediction": {
+          "totalGoals": "3",
+          "scores": [
+            "2:1",
+            "3:0"
+          ],
+          "upset": "1:1",
+          "confidence": "high",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.16",
+            "draw": "5.35",
+            "away": "12.50",
+            "updatedAt": "2026-06-30 17:17:20"
+          },
+          "ttg": {
+            "s0": "12.00",
+            "s1": "4.75",
+            "s2": "3.50",
+            "s3": "3.70",
+            "s4": "5.05",
+            "s5": "9.20",
+            "s6": "17.00",
+            "s7": "26.00",
+            "updatedAt": "2026-07-01 11:40:16"
+          },
+          "hhad": {
+            "home": "1.63",
+            "draw": "3.75",
+            "away": "4.01",
+            "handicap": null,
+            "updatedAt": "2026-07-01 09:51:08"
+          },
+          "crs": {
+            "0-0": "12.00",
+            "0-1": "26.00",
+            "0-2": "100.0",
+            "0-3": "400.0",
+            "0-4": "1000",
+            "0-5": "1000",
+            "1-0": "5.30",
+            "1-1": "10.00",
+            "1-2": "45.00",
+            "1-3": "250.0",
+            "1-4": "700.0",
+            "1-5": "1000",
+            "2-0": "4.70",
+            "2-1": "7.50",
+            "2-2": "28.00",
+            "2-3": "175.0",
+            "2-4": "700.0",
+            "2-5": "1000",
+            "3-0": "6.25",
+            "3-1": "9.50",
+            "3-2": "40.00",
+            "3-3": "125.0",
+            "4-0": "11.50",
+            "4-1": "20.00",
+            "4-2": "65.00",
+            "5-0": "24.00",
+            "5-1": "45.00",
+            "5-2": "125.0",
+            "homeOther": "25.00",
+            "drawOther": "650.0",
+            "awayOther": "700.0",
+            "updatedAt": "2026-07-01 12:03:43"
+          },
+          "hafu": {
+            "aa": "22.00",
+            "ad": "26.00",
+            "ah": "28.00",
+            "da": "25.00",
+            "dd": "7.50",
+            "dh": "3.65",
+            "ha": "90.00",
+            "hd": "26.00",
+            "hh": "1.57",
+            "updatedAt": "2026-07-01 12:25:32"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "53452555",
+      "match_no": "81",
+      "round": "32强赛",
+      "home_team": "比利时",
+      "away_team": "塞内加尔",
+      "kickoff_bjt": "2026-07-02 04:00:00 +08:00",
+      "model_version": "v4-knockout-review-big-goals",
+      "direction_text": "比利时小胜，防平/防客胜",
+      "main_score": "2-1",
+      "backup_scores": [
+        "1-1",
+        "1-2"
+      ],
+      "upset_score": "0-1",
+      "goals_range": "2-3球",
+      "advance_pick": "比利时",
+      "advance_probability_text": "比利时 54% / 塞内加尔 46%",
+      "core_view": "这场不是纯强弱盘，主胜接近2.00且比分赔率1-1最低，说明市场对塞内加尔抗衡很重视。昨日强队拉开比分让2-1成为主线，但冷门保护不能降太多。",
+      "score_matrix_top": [
+        {
+          "score": "2-1",
+          "probability": 0.151,
+          "ev_signal": "+0.04",
+          "label": "主比分"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.143,
+          "ev_signal": "+0.04",
+          "label": "最高保护"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.096,
+          "ev_signal": "+0.02",
+          "label": "塞内加尔反击冷门"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.088,
+          "ev_signal": "+0.01",
+          "label": "比利时小胜"
+        },
+        {
+          "score": "2-2",
+          "probability": 0.074,
+          "ev_signal": "-0.01",
+          "label": "大球平局"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.069,
+          "ev_signal": "保护",
+          "label": "低比分冷门"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "双方进球",
+          "model_probability": 0.57,
+          "fair_odds": 1.75,
+          "ev_signal": "+0.05",
+          "note": "2-1/1-1/1-2共同指向"
+        },
+        {
+          "market": "总进球2-3",
+          "model_probability": 0.62,
+          "fair_odds": 1.61,
+          "ev_signal": "+0.04",
+          "note": "不追4球以上"
+        },
+        {
+          "market": "比利时晋级",
+          "model_probability": 0.54,
+          "fair_odds": 1.85,
+          "ev_signal": "+0.02",
+          "note": "90分钟优势有限"
+        },
+        {
+          "market": "塞内加尔不败保护",
+          "model_probability": 0.39,
+          "fair_odds": 2.56,
+          "ev_signal": "冷门",
+          "note": "非洲身体对抗和转换是核心风险"
+        }
+      ],
+      "triggers": [
+        "比利时先入球：2-1/2-0升权，但塞内加尔追平能力仍保留。",
+        "半场0-0：1-1成为主线，0-1冷门保护升权。",
+        "塞内加尔边路冲击持续成功：1-2和2-2升权。"
+      ],
+      "team_reading": [
+        "比利时控球和中前场经验更好，但防线回追速度是风险点。",
+        "塞内加尔适合打强度和纵深，若先手进球，比赛会快速转向冷门脚本。"
+      ],
+      "odds_snapshot": {
+        "id": "081",
+        "matchNumStr": "周三081",
+        "matchId": "2040353",
+        "businessDate": "2026-07-01",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-02 04:00:00",
+        "matchDate": "2026-07-02",
+        "matchTime": "04:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607011",
+        "isHot": true,
+        "home": "比利时",
+        "homeCode": "BEG",
+        "homeAbbr": "比利时",
+        "homeRank": "[世界杯1]",
+        "away": "塞内加尔",
+        "awayCode": "SEN",
+        "awayAbbr": "塞内加尔",
+        "awayRank": "[世界杯3]",
+        "venue": "比赛将在美国-华盛顿州西雅图举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "1:1",
+            "1:0"
+          ],
+          "upset": "0:1",
+          "confidence": "medium",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.96",
+            "draw": "2.98",
+            "away": "3.52",
+            "updatedAt": "2026-07-01 11:08:29"
+          },
+          "ttg": {
+            "s0": "9.50",
+            "s1": "4.60",
+            "s2": "3.20",
+            "s3": "3.75",
+            "s4": "5.60",
+            "s5": "10.50",
+            "s6": "21.00",
+            "s7": "32.00",
+            "updatedAt": "2026-07-01 11:30:25"
+          },
+          "hhad": {
+            "home": "4.18",
+            "draw": "3.52",
+            "away": "1.65",
+            "handicap": null,
+            "updatedAt": "2026-07-01 11:29:34"
+          },
+          "crs": {
+            "0-0": "9.50",
+            "0-1": "10.00",
+            "0-2": "18.00",
+            "0-3": "50.00",
+            "0-4": "175.0",
+            "0-5": "500.0",
+            "1-0": "7.10",
+            "1-1": "5.25",
+            "1-2": "11.00",
+            "1-3": "30.00",
+            "1-4": "100.0",
+            "1-5": "400.0",
+            "2-0": "9.35",
+            "2-1": "6.30",
+            "2-2": "12.50",
+            "2-3": "40.00",
+            "2-4": "150.0",
+            "2-5": "400.0",
+            "3-0": "19.00",
+            "3-1": "16.00",
+            "3-2": "25.00",
+            "3-3": "50.00",
+            "4-0": "60.00",
+            "4-1": "40.00",
+            "4-2": "70.00",
+            "5-0": "155.0",
+            "5-1": "125.0",
+            "5-2": "200.0",
+            "homeOther": "80.00",
+            "drawOther": "300.0",
+            "awayOther": "150.0",
+            "updatedAt": "2026-07-01 11:01:05"
+          },
+          "hafu": {
+            "aa": "5.70",
+            "ad": "13.50",
+            "ah": "26.00",
+            "da": "7.00",
+            "dd": "5.00",
+            "dh": "4.75",
+            "ha": "32.00",
+            "hd": "13.50",
+            "hh": "3.25",
+            "updatedAt": "2026-07-01 11:30:03"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "53452553",
+      "match_no": "82",
+      "round": "32强赛",
+      "home_team": "美国",
+      "away_team": "波黑",
+      "kickoff_bjt": "2026-07-02 08:00:00 +08:00",
+      "model_version": "v4-knockout-review-big-goals",
+      "direction_text": "美国90分钟胜",
+      "main_score": "3-1",
+      "backup_scores": [
+        "2-0",
+        "2-1"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "3-4球",
+      "advance_pick": "美国",
+      "advance_probability_text": "美国 67% / 波黑 33%",
+      "core_view": "美国主场气质和进攻速度明显占优，竞彩总进球3球赔率最低，且昨日强队零封/大比分给了上修依据。波黑的冷门路径主要是定位球或美国压上后的身后球。",
+      "score_matrix_top": [
+        {
+          "score": "3-1",
+          "probability": 0.145,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.132,
+          "ev_signal": "+0.04",
+          "label": "稳胜"
+        },
+        {
+          "score": "2-0",
+          "probability": 0.121,
+          "ev_signal": "+0.03",
+          "label": "零封线"
+        },
+        {
+          "score": "3-0",
+          "probability": 0.104,
+          "ev_signal": "+0.02",
+          "label": "强队放大"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.071,
+          "ev_signal": "保护",
+          "label": "冷门平局"
+        },
+        {
+          "score": "2-2",
+          "probability": 0.058,
+          "ev_signal": "-0.01",
+          "label": "大球冷门"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "美国90分钟胜",
+          "model_probability": 0.63,
+          "fair_odds": 1.59,
+          "ev_signal": "+0.04",
+          "note": "正路优先"
+        },
+        {
+          "market": "总进球3+",
+          "model_probability": 0.59,
+          "fair_odds": 1.69,
+          "ev_signal": "+0.06",
+          "note": "今日大球最清晰的一场"
+        },
+        {
+          "market": "美国-1方向",
+          "model_probability": 0.48,
+          "fair_odds": 2.08,
+          "ev_signal": "+0.03",
+          "note": "2-0/3-1/3-0覆盖"
+        },
+        {
+          "market": "波黑进球",
+          "model_probability": 0.43,
+          "fair_odds": 2.33,
+          "ev_signal": "保护",
+          "note": "定位球风险不可删"
+        }
+      ],
+      "triggers": [
+        "美国先入球：3-1、3-0、4-1升权，大球优先。",
+        "波黑先入球：2-1/2-2升权，美国胜仍保留但穿盘降权。",
+        "半场0-0：2-0/1-0升权，3-1降为次线。"
+      ],
+      "team_reading": [
+        "美国速度和主场环境优势明显，适合把比赛推到3球区间。",
+        "波黑身体和定位球有破门点，但持续抵抗美国边路冲击难度较高。"
+      ],
+      "odds_snapshot": {
+        "id": "082",
+        "matchNumStr": "周三082",
+        "matchId": "2040339",
+        "businessDate": "2026-07-01",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-02 08:00:00",
+        "matchDate": "2026-07-02",
+        "matchTime": "08:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607011",
+        "isHot": false,
+        "home": "美国",
+        "homeCode": "USA",
+        "homeAbbr": "美国",
+        "homeRank": "[世界杯1]",
+        "away": "波黑",
+        "awayCode": "BOS",
+        "awayAbbr": "波黑",
+        "awayRank": "[世界杯5]",
+        "venue": "比赛将在美国-加利福尼亚州圣克拉拉举行",
+        "prediction": {
+          "totalGoals": "3",
+          "scores": [
+            "2:1",
+            "3:0"
+          ],
+          "upset": "1:1",
+          "confidence": "high",
+          "candidates": [
+            "3",
+            "2",
+            "4"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.22",
+            "draw": "4.91",
+            "away": "9.40",
+            "updatedAt": "2026-07-01 11:17:41"
+          },
+          "ttg": {
+            "s0": "14.00",
+            "s1": "5.50",
+            "s2": "3.85",
+            "s3": "3.45",
+            "s4": "4.70",
+            "s5": "8.20",
+            "s6": "14.00",
+            "s7": "22.00",
+            "updatedAt": "2026-07-01 11:06:38"
+          },
+          "hhad": {
+            "home": "1.80",
+            "draw": "3.72",
+            "away": "3.28",
+            "handicap": null,
+            "updatedAt": "2026-07-01 12:22:32"
+          },
+          "crs": {
+            "0-0": "14.00",
+            "0-1": "21.00",
+            "0-2": "60.00",
+            "0-3": "175.0",
+            "0-4": "600.0",
+            "0-5": "1000",
+            "1-0": "6.30",
+            "1-1": "8.40",
+            "1-2": "25.00",
+            "1-3": "100.0",
+            "1-4": "400.0",
+            "1-5": "1000",
+            "2-0": "5.50",
+            "2-1": "6.40",
+            "2-2": "17.00",
+            "2-3": "85.00",
+            "2-4": "350.0",
+            "2-5": "1000",
+            "3-0": "8.00",
+            "3-1": "8.50",
+            "3-2": "27.00",
+            "3-3": "70.00",
+            "4-0": "16.00",
+            "4-1": "20.00",
+            "4-2": "45.00",
+            "5-0": "40.00",
+            "5-1": "45.00",
+            "5-2": "100.0",
+            "homeOther": "32.00",
+            "drawOther": "500.0",
+            "awayOther": "450.0",
+            "updatedAt": "2026-07-01 11:06:44"
+          },
+          "hafu": {
+            "aa": "14.00",
+            "ad": "20.00",
+            "ah": "27.00",
+            "da": "17.00",
+            "dd": "6.75",
+            "dh": "3.75",
+            "ha": "60.00",
+            "hd": "20.00",
+            "hh": "1.80",
+            "updatedAt": "2026-07-01 10:15:18"
+          }
+        }
+      }
+    }
+  ]
+}
