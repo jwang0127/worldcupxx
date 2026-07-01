@@ -33,6 +33,58 @@ def odds_for(match: dict[str, Any], market: str, key: str) -> str:
     return "-" if value in (None, "") else str(value)
 
 
+def odds_float(value: Any) -> float | None:
+    try:
+        if value in (None, ""):
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def fmt_odds(value: float | None) -> str:
+    return "-" if value is None else f"{value:.2f}"
+
+
+def score_total(score: str) -> int | None:
+    left, sep, right = str(score).partition("-")
+    if not sep:
+        left, sep, right = str(score).partition(":")
+    if not sep:
+        return None
+    try:
+        return int(left.strip()) + int(right.strip())
+    except ValueError:
+        return None
+
+
+def product_odds(rows: list[dict[str, Any]]) -> float | None:
+    product = 1.0
+    for row in rows:
+        odd = row.get("odds")
+        if odd is None:
+            return None
+        product *= float(odd)
+    return product
+
+
+def half_result_label(direction: str) -> str:
+    return {"home": "半场主胜", "draw": "半场平", "away": "半场客胜"}.get(direction, direction)
+
+
+def half_result_implied_odds(match: dict[str, Any], half_direction: str) -> float | None:
+    hafu = ((match.get("odds") or {}).get("hafu") or {})
+    prefix = {"home": "h", "draw": "d", "away": "a"}.get(half_direction, "d")
+    implied_probability = 0.0
+    for suffix in ("h", "d", "a"):
+        odd = odds_float(hafu.get(prefix + suffix))
+        if odd and odd > 0:
+            implied_probability += 1 / odd
+    if implied_probability <= 0:
+        return None
+    return 1 / implied_probability
+
+
 def refreshed_odds_by_no() -> dict[str, dict[str, Any]]:
     payload = read_json(DATA / "20260702.json")
     return {str(item["id"]).lstrip("0"): item for item in payload.get("matches", [])}
@@ -116,6 +168,7 @@ def prediction_payload() -> dict[str, Any]:
             "kickoff_bjt": "2026-07-02 00:00:00 +08:00",
             "model_version": "v4-knockout-review-big-goals",
             "direction_text": "英格兰90分钟胜",
+            "half_time_pick": "home",
             "main_score": "3-0",
             "backup_scores": ["2-0", "3-1"],
             "upset_score": "1-1",
@@ -157,6 +210,7 @@ def prediction_payload() -> dict[str, Any]:
             "kickoff_bjt": "2026-07-02 04:00:00 +08:00",
             "model_version": "v4-knockout-review-big-goals",
             "direction_text": "比利时小胜，防平/防客胜",
+            "half_time_pick": "draw",
             "main_score": "2-1",
             "backup_scores": ["1-1", "1-2"],
             "upset_score": "0-1",
@@ -198,6 +252,7 @@ def prediction_payload() -> dict[str, Any]:
             "kickoff_bjt": "2026-07-02 08:00:00 +08:00",
             "model_version": "v4-knockout-review-big-goals",
             "direction_text": "美国90分钟胜",
+            "half_time_pick": "home",
             "main_score": "3-1",
             "backup_scores": ["2-0", "2-1"],
             "upset_score": "1-1",
@@ -289,6 +344,57 @@ def odds_row(item: dict[str, Any]) -> str:
     )
 
 
+def render_parlay_table(title: str, rows: list[dict[str, Any]], note: str) -> str:
+    body = "".join(
+        "<tr>"
+        f"<td>{esc(row['match'])}</td><td>{esc(row['pick'])}</td><td>{fmt_odds(row.get('odds'))}</td>"
+        f"<td>{esc(row.get('updated_at', '-'))}</td></tr>"
+        for row in rows
+    )
+    return f"""
+    <div class="card">
+      <h3>{esc(title)}</h3>
+      <p class="muted">{esc(note)}</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody>{body}</tbody></table></div>
+      <p><strong>三串一理论乘积赔率：{esc(fmt_odds(product_odds(rows)))}</strong></p>
+    </div>"""
+
+
+def render_parlay_section(predictions: dict[str, Any]) -> str:
+    matches = predictions.get("matches", [])
+    if len(matches) != 3:
+        return ""
+
+    score_rows: list[dict[str, Any]] = []
+    goals_rows: list[dict[str, Any]] = []
+    half_rows: list[dict[str, Any]] = []
+    for item in matches:
+        odds_match = item.get("odds_snapshot") or {}
+        odds = odds_match.get("odds") or {}
+        if not odds.get("crs") or not odds.get("ttg") or not odds.get("hafu"):
+            return ""
+        match_label = f"{item['home_team']} vs {item['away_team']}"
+        score_pick = str(item["main_score"])
+        total_pick = score_total(score_pick)
+        ttg_key = "s7" if total_pick is not None and total_pick >= 7 else f"s{total_pick}"
+        half_pick = str(item.get("half_time_pick", "draw"))
+
+        crs = odds.get("crs") or {}
+        ttg = odds.get("ttg") or {}
+        hafu = odds.get("hafu") or {}
+        score_rows.append({"match": match_label, "pick": score_pick, "odds": odds_float(crs.get(score_pick)), "updated_at": crs.get("updatedAt", "-")})
+        goals_rows.append({"match": match_label, "pick": f"总进球 {total_pick}", "odds": odds_float(ttg.get(ttg_key)), "updated_at": ttg.get("updatedAt", "-")})
+        half_rows.append({"match": match_label, "pick": half_result_label(half_pick), "odds": half_result_implied_odds(odds_match, half_pick), "updated_at": hafu.get("updatedAt", "-")})
+
+    return f"""
+  <section class="section" id="parlay">
+    <h2>今日三串一</h2>
+    {render_parlay_table("比分三串一", score_rows, "按每场主比分选择，赔率来自网站比分市场。")}
+    {render_parlay_table("总进球数三串一", goals_rows, "按每场主比分折算总进球数，赔率来自网站总进球市场。")}
+    {render_parlay_table("半场胜平负三串一", half_rows, "按每场半场方向选择；赔率由网站半全场赔率池折算为半场主胜/平/客胜隐含赔率。")}
+  </section>"""
+
+
 def card(item: dict[str, Any]) -> str:
     return f"""
 <details class="matchDetails" open>
@@ -330,6 +436,8 @@ def render_page(predictions: dict[str, Any], lessons: dict[str, Any]) -> str:
     match_cards = "".join(card(item) for item in predictions["matches"])
     lesson_items = bullets(lessons["lessons"])
     odds_rows = "".join(odds_row(item) for item in predictions["matches"])
+    parlay = render_parlay_section(predictions)
+    parlay_nav = '<a href="#parlay">三串一</a>' if parlay else ""
     embedded = json.dumps(predictions, ensure_ascii=False, indent=2)
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -337,7 +445,7 @@ def render_page(predictions: dict[str, Any], lessons: dict[str, Any]) -> str:
 <body>
 <header>
   <h1>20260702 淘汰赛预测</h1>
-  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛归档</a><a href="#review">复盘修正</a><a href="#odds">赔率快照</a></nav>
+  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛归档</a><a href="#review">复盘修正</a><a href="#odds">赔率快照</a>{parlay_nav}</nav>
 </header>
 <main>
   <section class="section" id="review">
@@ -352,6 +460,7 @@ def render_page(predictions: dict[str, Any], lessons: dict[str, Any]) -> str:
     <h2>竞彩赔率快照</h2>
     <div class="card tableWrap"><table><thead><tr><th>比赛</th><th>主胜</th><th>平</th><th>客胜</th><th>2球</th><th>3球</th><th>4球</th></tr></thead><tbody>{odds_rows}</tbody></table></div>
   </section>
+  {parlay}
   <section class="section">
     <h2>今日三场预测</h2>
     {match_cards}

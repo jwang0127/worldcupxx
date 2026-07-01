@@ -1,0 +1,22 @@
+{
+  "date": "20260629",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452545",
+      "match_no": "73",
+      "home_team": "南非",
+      "away_team": "加拿大",
+      "score": "0-1",
+      "home_goals": 0,
+      "away_goals": 1,
+      "prediction_main_score": "1-1",
+      "prediction_backup_scores": [
+        "0-1",
+        "1-2"
+      ],
+      "review": "低比分方向和加拿大最终优势有效；90分钟平局保护偏重，补时小胜权重需要上调。"
+    }
+  ]
+}

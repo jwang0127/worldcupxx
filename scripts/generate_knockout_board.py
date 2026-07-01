@@ -31,7 +31,7 @@ PARLAY_POLICY = {
     "single_match_mode": "regular_prediction_only",
     "required_markets": ["crs", "ttg", "hafu"],
     "odds_source": "Sporttery getMatchCalculatorV1 website API via scripts/fetch_sporttery.ps1",
-    "parlay_types": ["比分三串一", "总进球数三串一", "半全场胜负平三串一"],
+    "parlay_types": ["比分三串一", "总进球数三串一", "半场胜平负三串一"],
 }
 
 
@@ -141,6 +141,24 @@ def hafu_exact_odds(hafu: dict[str, Any] | None, half_direction: str, full_direc
     if not hafu:
         return None
     return odds_float(hafu.get(hafu_key(half_direction, full_direction)))
+
+
+def half_result_label(direction: str) -> str:
+    return {"home": "半场主胜", "draw": "半场平", "away": "半场客胜"}.get(direction, direction)
+
+
+def half_result_implied_odds(hafu: dict[str, Any] | None, half_direction: str) -> float | None:
+    if not hafu:
+        return None
+    prefix = {"home": "h", "draw": "d", "away": "a"}.get(half_direction, "d")
+    implied_probability = 0.0
+    for suffix in ("h", "d", "a"):
+        odd = odds_float(hafu.get(prefix + suffix))
+        if odd and odd > 0:
+            implied_probability += 1 / odd
+    if implied_probability <= 0:
+        return None
+    return 1 / implied_probability
 
 
 def product_odds(rows: list[dict[str, Any]]) -> float | None:
@@ -1027,6 +1045,64 @@ def render_upcoming_rows(matches: list[dict[str, Any]]) -> str:
     )
 
 
+def knockout_results() -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for path in sorted(DATA_DIR.glob("knockout_results_*.json")):
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        date_label = str(payload.get("date") or path.stem.rsplit("_", 1)[-1])
+        for item in payload.get("matches", []):
+            home_goals = item.get("home_goals")
+            away_goals = item.get("away_goals")
+            if home_goals is None or away_goals is None:
+                score_text = str(item.get("score", ""))
+                matched = re.match(r"^\s*(\d+)\s*[-:：]\s*(\d+)\s*$", score_text)
+                if matched:
+                    home_goals = int(matched.group(1))
+                    away_goals = int(matched.group(2))
+            if home_goals is None or away_goals is None:
+                result_text = "已赛"
+            elif int(home_goals) > int(away_goals):
+                result_text = f"{item.get('home_team', '')}胜"
+            elif int(home_goals) < int(away_goals):
+                result_text = f"{item.get('away_team', '')}胜"
+            else:
+                result_text = "90分钟平"
+            rows.append(
+                {
+                    "date": date_label,
+                    "date_text": f"{date_label[4:6]}-{date_label[6:8]}" if len(date_label) == 8 else date_label,
+                    "match_no": str(item.get("match_no", "")),
+                    "home_team": item.get("home_team", ""),
+                    "away_team": item.get("away_team", ""),
+                    "score": item.get("score", ""),
+                    "result": result_text,
+                    "prediction_main_score": item.get("prediction_main_score", ""),
+                    "review": item.get("review", ""),
+                }
+            )
+    return sorted(rows, key=lambda item: (item["date"], int(str(item["match_no"] or "0"))))
+
+
+def render_knockout_result_rows(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return '<tr><td colspan="7">暂无淘汰赛赛果，赛后同步后自动回填。</td></tr>'
+    return "".join(
+        "<tr>"
+        f"<td>{esc(item['date_text'])}</td>"
+        f"<td>{esc(item['match_no'])}</td>"
+        f"<td>{esc(item['home_team'])} vs {esc(item['away_team'])}</td>"
+        f"<td><strong>{esc(item['score'])}</strong></td>"
+        f"<td>{esc(item['result'])}</td>"
+        f"<td>{esc(item['prediction_main_score'])}</td>"
+        f"<td>{esc(item['review'])}</td>"
+        "</tr>"
+        for item in rows
+    )
+
+
 def future_text(matches: list[dict[str, Any]]) -> str:
     return "\n".join(
         f"{item['beijing_date'][5:]} {item['beijing_time']}  {item['match_no']}  {item['home_team']} vs {item['away_team']}  {item['round']}"
@@ -1178,7 +1254,7 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 
 def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
     matches = rolling_future_matches(schedule, 3)
-    subset = home_stats_subset(stats, matches)
+    results = knockout_results()
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>2026世界杯预测入口</title><style>{css()}</style></head>
@@ -1186,7 +1262,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <header>
   <div class="topbar"><div><h1>2026世界杯预测入口</h1>
   </div><div class="topActions"><a class="buttonLink" href="knockout/teams.html">完整32强战绩</a></div></div>
-  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#teams">相关球队</a></nav>
+  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#teams">淘汰赛赛果</a></nav>
 </header>
 <main>
   <section class="section" id="entry">
@@ -1197,7 +1273,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
     </div>
   </section>
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
-  <section class="section" id="teams"><h2>未来三日相关球队</h2><div class="card tableWrap"><table><thead><tr><th>球队</th><th>代码</th><th>小组</th><th>出线路径</th><th>胜</th><th>平</th><th>负</th><th>进</th><th>失</th><th>净胜</th><th>积分</th></tr></thead><tbody>{render_stats_rows(subset)}</tbody></table></div><a class="buttonLink" href="knockout/teams.html">查看完整 32 强战绩</a></section>
+  <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
 </main>
 </body>
 </html>"""
@@ -1376,7 +1452,7 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
 
     score_rows: list[dict[str, Any]] = []
     goals_rows: list[dict[str, Any]] = []
-    hafu_rows: list[dict[str, Any]] = []
+    half_rows: list[dict[str, Any]] = []
 
     for item in predictions:
         odds_match = odds_match_for_prediction(item, odds_lookup)
@@ -1411,26 +1487,25 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
         )
 
         half_direction = half_direction_from_text(str(item["half_time"]))
-        full_direction = half_direction_from_text(str(item["main_score"]))
         hafu = odds.get("hafu") or {}
-        hafu_rows.append(
+        half_rows.append(
             {
                 "match": match_label,
-                "pick": hafu_label(half_direction, full_direction),
-                "odds": hafu_exact_odds(hafu, half_direction, full_direction),
+                "pick": half_result_label(half_direction),
+                "odds": half_result_implied_odds(hafu, half_direction),
                 "updated_at": hafu.get("updatedAt", "-"),
             }
         )
 
     score_html = render_parlay_table("比分三串一", score_rows, "按每场主比分选择，赔率来自体彩比分市场。")
     goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场主比分折算出的总进球数选择，赔率来自体彩总进球市场。")
-    hafu_html = render_parlay_table("半全场胜负平三串一", hafu_rows, "按半场方向 + 全场主比分方向组合，直接读取体彩半全场市场赔率；例如半场胜、全场负记为胜负。")
+    half_html = render_parlay_table("半场胜平负三串一", half_rows, "按每场半场方向选择；赔率由网站半全场赔率池折算为半场主胜/平/客胜隐含赔率。")
     return f"""
   <section class="section" id="parlay">
     <h2>今日三串一</h2>
     {score_html}
     {goals_html}
-    {hafu_html}
+    {half_html}
   </section>"""
 
 
@@ -1546,7 +1621,7 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
 
 - 当日预测场次正好为 {PARLAY_POLICY["enabled_match_count"]} 场时，生成 `{parlay_types}` 三个三串一模块。
 - 三串一赔率只从网站实时赔率数据读取：`{PARLAY_POLICY["odds_source"]}`。
-- 必须同时匹配 `{required_markets}` 三类赔率；缺任一市场或无法匹配场次时，不输出三串一模块。
+- 必须同时匹配 `{required_markets}` 三类赔率；比分用 crs，总进球用 ttg，半场胜平负由 hafu 半全场赔率池折算；缺任一市场或无法匹配场次时，不输出三串一模块。
 - 当日只有 1 场比赛时，只输出常规预测，不生成三串一。
 
 ## 首场输出

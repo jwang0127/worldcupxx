@@ -2,7 +2,7 @@
   "date": "20260702",
   "stage": "knockout",
   "source": "manual-review-plus-sporttery-odds",
-  "generated_at": "2026-07-01 12:46:14",
+  "generated_at": "2026-07-01 13:10:17",
   "review_basis": "昨日赛果：科特迪瓦1-2挪威、法国3-0瑞典、墨西哥2-0厄瓜多尔。",
   "matches": [
     {
@@ -14,6 +14,7 @@
       "kickoff_bjt": "2026-07-02 00:00:00 +08:00",
       "model_version": "v4-knockout-review-big-goals",
       "direction_text": "英格兰90分钟胜",
+      "half_time_pick": "home",
       "main_score": "3-0",
       "backup_scores": [
         "2-0",
@@ -124,7 +125,7 @@
         "away": "刚果(金)",
         "awayCode": "COD",
         "awayAbbr": "刚果金",
-        "awayRank": "[世界杯1]",
+        "awayRank": "[世界杯3]",
         "venue": "比赛将在美国-佐治亚州亚特兰大举行",
         "prediction": {
           "totalGoals": "3",
@@ -226,6 +227,7 @@
       "kickoff_bjt": "2026-07-02 04:00:00 +08:00",
       "model_version": "v4-knockout-review-big-goals",
       "direction_text": "比利时小胜，防平/防客胜",
+      "half_time_pick": "draw",
       "main_score": "2-1",
       "backup_scores": [
         "1-1",
@@ -357,10 +359,10 @@
         "postReview": null,
         "odds": {
           "had": {
-            "home": "1.96",
-            "draw": "2.98",
-            "away": "3.52",
-            "updatedAt": "2026-07-01 11:08:29"
+            "home": "1.93",
+            "draw": "3.02",
+            "away": "3.57",
+            "updatedAt": "2026-07-01 12:55:10"
           },
           "ttg": {
             "s0": "9.50",
@@ -375,10 +377,10 @@
           },
           "hhad": {
             "home": "4.18",
-            "draw": "3.52",
-            "away": "1.65",
+            "draw": "3.43",
+            "away": "1.67",
             "handicap": null,
-            "updatedAt": "2026-07-01 11:29:34"
+            "updatedAt": "2026-07-01 12:56:05"
           },
           "crs": {
             "0-0": "9.50",
@@ -415,16 +417,16 @@
             "updatedAt": "2026-07-01 11:01:05"
           },
           "hafu": {
-            "aa": "5.70",
+            "aa": "6.00",
             "ad": "13.50",
-            "ah": "26.00",
+            "ah": "23.00",
             "da": "7.00",
             "dd": "5.00",
             "dh": "4.75",
-            "ha": "32.00",
+            "ha": "29.00",
             "hd": "13.50",
             "hh": "3.25",
-            "updatedAt": "2026-07-01 11:30:03"
+            "updatedAt": "2026-07-01 13:00:15"
           }
         }
       }
@@ -438,6 +440,7 @@
       "kickoff_bjt": "2026-07-02 08:00:00 +08:00",
       "model_version": "v4-knockout-review-big-goals",
       "direction_text": "美国90分钟胜",
+      "half_time_pick": "home",
       "main_score": "3-1",
       "backup_scores": [
         "2-0",
@@ -548,7 +551,7 @@
         "away": "波黑",
         "awayCode": "BOS",
         "awayAbbr": "波黑",
-        "awayRank": "[世界杯5]",
+        "awayRank": "[世界杯3]",
         "venue": "比赛将在美国-加利福尼亚州圣克拉拉举行",
         "prediction": {
           "totalGoals": "3",
