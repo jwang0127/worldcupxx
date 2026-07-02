@@ -1,0 +1,687 @@
+{
+  "date": "20260703",
+  "stage": "knockout",
+  "source": "manual-review-plus-sporttery-odds",
+  "generated_at": "2026-07-02 10:32:09",
+  "review_basis": "昨日赛果：英格兰2-1刚果金、比利时90分钟2-2且加时3-2塞内加尔、美国2-0波黑。",
+  "matches": [
+    {
+      "game_id": "53452551",
+      "match_no": "83",
+      "round": "32强赛",
+      "home_team": "西班牙",
+      "away_team": "奥地利",
+      "kickoff_bjt": "2026-07-03 03:00:00 +08:00",
+      "model_version": "v5-knockout-early-upset-correction",
+      "direction_text": "西班牙90分钟胜，防2-1窄胜",
+      "half_time": "西班牙 1-0 奥地利",
+      "half_time_pick": "home",
+      "main_score": "2-1",
+      "backup_scores": [
+        "2-0",
+        "3-1"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "2-4球",
+      "advance_pick": "西班牙",
+      "advance_probability_text": "西班牙 76% / 奥地利 24%",
+      "next_opponent_note": "胜者下轮对阵 葡萄牙 / 克罗地亚 胜者",
+      "core_view": "西班牙赔率和控场优势最清晰，但昨日英格兰被6分钟先手提醒：强队场要保留下风方早球，主比分从3-0回收为2-1。",
+      "team_reading": [
+        "西班牙主线优势更清晰，但不等于大胜。",
+        "奥地利的冷门路径来自早球、定位球和半场不落后。",
+        "合理打法：先控风险，再看60分钟后的体能和换人。"
+      ],
+      "model_reasoning": [
+        "强盘正路，但不追穿盘；若早球出现再上修3球以上。",
+        "昨日英格兰先丢球和比利时2-2，要求今日保留早球冷门与90分钟平局保护。",
+        "主比分服务于三串一，备选比分用于临场触发修正。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "节奏先慢后变，强队优势更多在后程兑现。",
+        "玄学赛果：2-1，防1-1。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "2-1",
+          "probability": 0.162,
+          "ev_signal": "+0.04",
+          "label": "主比分"
+        },
+        {
+          "score": "2-0",
+          "probability": 0.148,
+          "ev_signal": "+0.03",
+          "label": "控场零封"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.108,
+          "ev_signal": "+0.02",
+          "label": "早球上修"
+        },
+        {
+          "score": "3-0",
+          "probability": 0.096,
+          "ev_signal": "+0.01",
+          "label": "强队放大"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.074,
+          "ev_signal": "保护",
+          "label": "奥地利拖住"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.068,
+          "ev_signal": "-0.01",
+          "label": "慢热小胜"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "西班牙90分钟胜，防2-1窄胜",
+          "model_probability": 0.7,
+          "fair_odds": 1.43,
+          "ev_signal": "+0.03",
+          "note": "正路保留但不追穿盘。"
+        },
+        {
+          "market": "总进球3",
+          "model_probability": 0.3,
+          "fair_odds": 3.33,
+          "ev_signal": "+0.02",
+          "note": "跟随主比分和网站总进球赔率。"
+        },
+        {
+          "market": "半场方向",
+          "model_probability": 0.47,
+          "fair_odds": 2.13,
+          "ev_signal": "保护",
+          "note": "半场主胜"
+        },
+        {
+          "market": "冷门保护",
+          "model_probability": 0.25,
+          "fair_odds": 4.0,
+          "ev_signal": "冷门",
+          "note": "1-1"
+        }
+      ],
+      "triggers": [
+        "强队30分钟前进球：3球以上比分升权。",
+        "半场0-0：平局保护和低比分升权。",
+        "下风方先手进球：主比分回收，冷门比分升权。"
+      ],
+      "odds_snapshot": {
+        "id": "083",
+        "matchNumStr": "周四083",
+        "matchId": "2040354",
+        "businessDate": "2026-07-02",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-03 03:00:00",
+        "matchDate": "2026-07-03",
+        "matchTime": "03:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 2,
+        "taxDateNo": "2607021",
+        "isHot": true,
+        "home": "西班牙",
+        "homeCode": "SPA",
+        "homeAbbr": "西班牙",
+        "homeRank": "[世界杯1]",
+        "away": "奥地利",
+        "awayCode": "AUS",
+        "awayAbbr": "奥地利",
+        "awayRank": "[世界杯2]",
+        "venue": "比赛将在美国-加利福尼亚州英格尔伍德举行",
+        "prediction": {
+          "totalGoals": "3",
+          "scores": [
+            "2:1",
+            "3:0"
+          ],
+          "upset": "1:1",
+          "confidence": "low",
+          "candidates": [
+            "3",
+            "2",
+            "4"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.23",
+            "draw": "4.75",
+            "away": "9.40",
+            "updatedAt": "2026-07-01 10:13:15"
+          },
+          "ttg": {
+            "s0": "13.00",
+            "s1": "5.20",
+            "s2": "3.60",
+            "s3": "3.45",
+            "s4": "5.10",
+            "s5": "8.50",
+            "s6": "16.00",
+            "s7": "24.00",
+            "updatedAt": "2026-06-30 10:02:08"
+          },
+          "hhad": {
+            "home": "1.85",
+            "draw": "3.55",
+            "away": "3.25",
+            "handicap": null,
+            "updatedAt": "2026-07-01 10:13:18"
+          },
+          "crs": {
+            "0-0": "13.00",
+            "0-1": "20.00",
+            "0-2": "60.00",
+            "0-3": "250.0",
+            "0-4": "700.0",
+            "0-5": "1000",
+            "1-0": "6.25",
+            "1-1": "9.00",
+            "1-2": "29.00",
+            "1-3": "125.0",
+            "1-4": "500.0",
+            "1-5": "1000",
+            "2-0": "5.10",
+            "2-1": "7.00",
+            "2-2": "22.00",
+            "2-3": "90.00",
+            "2-4": "500.0",
+            "2-5": "1000",
+            "3-0": "7.00",
+            "3-1": "9.50",
+            "3-2": "29.00",
+            "3-3": "90.00",
+            "4-0": "13.50",
+            "4-1": "18.00",
+            "4-2": "45.00",
+            "5-0": "35.00",
+            "5-1": "45.00",
+            "5-2": "100.0",
+            "homeOther": "30.00",
+            "drawOther": "400.0",
+            "awayOther": "500.0",
+            "updatedAt": "2026-07-01 10:13:34"
+          },
+          "hafu": {
+            "aa": "16.50",
+            "ad": "21.00",
+            "ah": "27.00",
+            "da": "20.00",
+            "dd": "7.20",
+            "dh": "3.75",
+            "ha": "60.00",
+            "hd": "21.00",
+            "hh": "1.70",
+            "updatedAt": "2026-07-01 10:13:22"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "53452549",
+      "match_no": "84",
+      "round": "32强赛",
+      "home_team": "葡萄牙",
+      "away_team": "克罗地亚",
+      "kickoff_bjt": "2026-07-03 07:00:00 +08:00",
+      "model_version": "v5-knockout-early-upset-correction",
+      "direction_text": "葡萄牙小胜，防90分钟平",
+      "half_time": "葡萄牙 0-0 克罗地亚",
+      "half_time_pick": "draw",
+      "main_score": "2-1",
+      "backup_scores": [
+        "1-1",
+        "2-2"
+      ],
+      "upset_score": "1-2",
+      "goals_range": "2-3球",
+      "advance_pick": "葡萄牙",
+      "advance_probability_text": "葡萄牙 59% / 克罗地亚 41%",
+      "next_opponent_note": "胜者下轮对阵 西班牙 / 奥地利 胜者",
+      "core_view": "葡萄牙主胜赔率占优，但克罗地亚淘汰赛经验和中场控制会把比赛压成窄差，昨日比利时2-2要求这场必须防平。",
+      "team_reading": [
+        "葡萄牙主线优势更清晰，但不等于大胜。",
+        "克罗地亚的冷门路径来自早球、定位球和半场不落后。",
+        "合理打法：先控风险，再看60分钟后的体能和换人。"
+      ],
+      "model_reasoning": [
+        "主胜不等于穿盘，半场平优先，60分钟后葡萄牙优势再兑现。",
+        "昨日英格兰先丢球和比利时2-2，要求今日保留早球冷门与90分钟平局保护。",
+        "主比分服务于三串一，备选比分用于临场触发修正。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "节奏先慢后变，强队优势更多在后程兑现。",
+        "玄学赛果：2-1，防1-2。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "2-1",
+          "probability": 0.154,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.136,
+          "ev_signal": "+0.04",
+          "label": "平局保护"
+        },
+        {
+          "score": "2-2",
+          "probability": 0.088,
+          "ev_signal": "+0.02",
+          "label": "大球平局"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.086,
+          "ev_signal": "+0.01",
+          "label": "小胜"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.074,
+          "ev_signal": "保护",
+          "label": "克罗地亚冷门"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.066,
+          "ev_signal": "-0.01",
+          "label": "早球放大"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "葡萄牙小胜，防90分钟平",
+          "model_probability": 0.55,
+          "fair_odds": 1.82,
+          "ev_signal": "+0.03",
+          "note": "正路保留但不追穿盘。"
+        },
+        {
+          "market": "总进球3",
+          "model_probability": 0.3,
+          "fair_odds": 3.33,
+          "ev_signal": "+0.02",
+          "note": "跟随主比分和网站总进球赔率。"
+        },
+        {
+          "market": "半场方向",
+          "model_probability": 0.51,
+          "fair_odds": 1.96,
+          "ev_signal": "保护",
+          "note": "半场平"
+        },
+        {
+          "market": "冷门保护",
+          "model_probability": 0.25,
+          "fair_odds": 4.0,
+          "ev_signal": "冷门",
+          "note": "1-2"
+        }
+      ],
+      "triggers": [
+        "强队30分钟前进球：3球以上比分升权。",
+        "半场0-0：平局保护和低比分升权。",
+        "下风方先手进球：主比分回收，冷门比分升权。"
+      ],
+      "odds_snapshot": {
+        "id": "084",
+        "matchNumStr": "周四084",
+        "matchId": "2040355",
+        "businessDate": "2026-07-02",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-03 07:00:00",
+        "matchDate": "2026-07-03",
+        "matchTime": "07:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 2,
+        "taxDateNo": "2607021",
+        "isHot": true,
+        "home": "葡萄牙",
+        "homeCode": "POG",
+        "homeAbbr": "葡萄牙",
+        "homeRank": "[世界杯2]",
+        "away": "克罗地亚",
+        "awayCode": "CRO",
+        "awayAbbr": "克罗地亚",
+        "awayRank": "[世界杯2]",
+        "venue": "比赛将在加拿大-多伦多举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "2:0",
+            "2:1"
+          ],
+          "upset": "1:1",
+          "confidence": "low",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.59",
+            "draw": "3.40",
+            "away": "4.85",
+            "updatedAt": "2026-06-30 10:02:08"
+          },
+          "ttg": {
+            "s0": "11.00",
+            "s1": "4.70",
+            "s2": "3.50",
+            "s3": "3.50",
+            "s4": "5.40",
+            "s5": "10.00",
+            "s6": "18.00",
+            "s7": "26.00",
+            "updatedAt": "2026-06-30 10:02:08"
+          },
+          "hhad": {
+            "home": "3.11",
+            "draw": "3.12",
+            "away": "2.05",
+            "handicap": null,
+            "updatedAt": "2026-07-01 16:16:10"
+          },
+          "crs": {
+            "0-0": "11.00",
+            "0-1": "13.00",
+            "0-2": "26.00",
+            "0-3": "80.00",
+            "0-4": "300.0",
+            "0-5": "600.0",
+            "1-0": "7.00",
+            "1-1": "6.50",
+            "1-2": "15.00",
+            "1-3": "45.00",
+            "1-4": "150.0",
+            "1-5": "500.0",
+            "2-0": "7.50",
+            "2-1": "5.80",
+            "2-2": "13.00",
+            "2-3": "50.00",
+            "2-4": "200.0",
+            "2-5": "500.0",
+            "3-0": "12.00",
+            "3-1": "11.00",
+            "3-2": "20.00",
+            "3-3": "60.00",
+            "4-0": "30.00",
+            "4-1": "28.00",
+            "4-2": "65.00",
+            "5-0": "80.00",
+            "5-1": "80.00",
+            "5-2": "150.0",
+            "homeOther": "65.00",
+            "drawOther": "300.0",
+            "awayOther": "200.0",
+            "updatedAt": "2026-07-01 21:31:51"
+          },
+          "hafu": {
+            "aa": "8.50",
+            "ad": "16.00",
+            "ah": "22.00",
+            "da": "10.50",
+            "dd": "5.60",
+            "dh": "4.20",
+            "ha": "35.00",
+            "hd": "16.00",
+            "hh": "2.35",
+            "updatedAt": "2026-06-30 10:02:08"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "53452505",
+      "match_no": "85",
+      "round": "32强赛",
+      "home_team": "瑞士",
+      "away_team": "阿尔及利亚",
+      "kickoff_bjt": "2026-07-03 11:00:00 +08:00",
+      "model_version": "v5-knockout-early-upset-correction",
+      "direction_text": "90分钟平局保护，瑞士晋级小优",
+      "half_time": "瑞士 0-0 阿尔及利亚",
+      "half_time_pick": "draw",
+      "main_score": "1-1",
+      "backup_scores": [
+        "1-0",
+        "2-1"
+      ],
+      "upset_score": "0-1",
+      "goals_range": "1-3球",
+      "advance_pick": "瑞士",
+      "advance_probability_text": "瑞士 53% / 阿尔及利亚 47%",
+      "next_opponent_note": "胜者下轮对阵 哥伦比亚 / 加纳 胜者",
+      "core_view": "这是今日冷门风险最高的一场。瑞士主胜赔率不深，比分赔率1-1最低，模型优先走90分钟平局，瑞士靠纪律和点球/加时小优。",
+      "team_reading": [
+        "瑞士主线优势更清晰，但不等于大胜。",
+        "阿尔及利亚的冷门路径来自早球、定位球和半场不落后。",
+        "合理打法：先控风险，再看60分钟后的体能和换人。"
+      ],
+      "model_reasoning": [
+        "赔率和比分池都提示1-1是核心，不强行给瑞士90分钟胜。",
+        "昨日英格兰先丢球和比利时2-2，要求今日保留早球冷门与90分钟平局保护。",
+        "主比分服务于三串一，备选比分用于临场触发修正。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "节奏先慢后变，强队优势更多在后程兑现。",
+        "玄学赛果：1-1，防0-1。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.178,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.132,
+          "ev_signal": "+0.03",
+          "label": "瑞士小胜"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.104,
+          "ev_signal": "+0.02",
+          "label": "后段小胜"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.096,
+          "ev_signal": "保护",
+          "label": "阿尔及利亚冷门"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.084,
+          "ev_signal": "+0.01",
+          "label": "慢节奏锁局"
+        },
+        {
+          "score": "2-2",
+          "probability": 0.058,
+          "ev_signal": "-0.01",
+          "label": "开放尾部"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "90分钟平局保护，瑞士晋级小优",
+          "model_probability": 0.55,
+          "fair_odds": 1.82,
+          "ev_signal": "+0.03",
+          "note": "正路保留但不追穿盘。"
+        },
+        {
+          "market": "总进球2",
+          "model_probability": 0.3,
+          "fair_odds": 3.33,
+          "ev_signal": "+0.02",
+          "note": "跟随主比分和网站总进球赔率。"
+        },
+        {
+          "market": "半场方向",
+          "model_probability": 0.51,
+          "fair_odds": 1.96,
+          "ev_signal": "保护",
+          "note": "半场平"
+        },
+        {
+          "market": "冷门保护",
+          "model_probability": 0.25,
+          "fair_odds": 4.0,
+          "ev_signal": "冷门",
+          "note": "0-1"
+        }
+      ],
+      "triggers": [
+        "强队30分钟前进球：3球以上比分升权。",
+        "半场0-0：平局保护和低比分升权。",
+        "下风方先手进球：主比分回收，冷门比分升权。"
+      ],
+      "odds_snapshot": {
+        "id": "085",
+        "matchNumStr": "周四085",
+        "matchId": "2040356",
+        "businessDate": "2026-07-02",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-03 11:00:00",
+        "matchDate": "2026-07-03",
+        "matchTime": "11:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 2,
+        "taxDateNo": "2607021",
+        "isHot": false,
+        "home": "瑞士",
+        "homeCode": "SWI",
+        "homeAbbr": "瑞士",
+        "homeRank": "[世界杯1]",
+        "away": "阿尔及利亚",
+        "awayCode": "ALG",
+        "awayAbbr": "阿尔及利",
+        "awayRank": "[世界杯3]",
+        "venue": "比赛将在加拿大-温哥华举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "1:1",
+            "1:0"
+          ],
+          "upset": "0:1",
+          "confidence": "high",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.80",
+            "draw": "3.05",
+            "away": "4.06",
+            "updatedAt": "2026-07-01 12:50:50"
+          },
+          "ttg": {
+            "s0": "8.50",
+            "s1": "4.20",
+            "s2": "3.00",
+            "s3": "3.75",
+            "s4": "6.20",
+            "s5": "14.00",
+            "s6": "25.00",
+            "s7": "40.00",
+            "updatedAt": "2026-06-30 10:02:08"
+          },
+          "hhad": {
+            "home": "3.73",
+            "draw": "3.30",
+            "away": "1.79",
+            "handicap": null,
+            "updatedAt": "2026-07-01 12:50:53"
+          },
+          "crs": {
+            "0-0": "8.50",
+            "0-1": "10.00",
+            "0-2": "20.00",
+            "0-3": "60.00",
+            "0-4": "250.0",
+            "0-5": "700.0",
+            "1-0": "6.00",
+            "1-1": "5.20",
+            "1-2": "12.00",
+            "1-3": "40.00",
+            "1-4": "150.0",
+            "1-5": "600.0",
+            "2-0": "7.50",
+            "2-1": "7.00",
+            "2-2": "15.00",
+            "2-3": "40.00",
+            "2-4": "200.0",
+            "2-5": "500.0",
+            "3-0": "16.00",
+            "3-1": "15.00",
+            "3-2": "30.00",
+            "3-3": "70.00",
+            "4-0": "45.00",
+            "4-1": "40.00",
+            "4-2": "80.00",
+            "5-0": "150.0",
+            "5-1": "120.0",
+            "5-2": "250.0",
+            "homeOther": "120.0",
+            "drawOther": "500.0",
+            "awayOther": "300.0",
+            "updatedAt": "2026-06-30 10:02:08"
+          },
+          "hafu": {
+            "aa": "6.75",
+            "ad": "14.00",
+            "ah": "25.00",
+            "da": "8.50",
+            "dd": "4.75",
+            "dh": "4.60",
+            "ha": "30.00",
+            "hd": "14.00",
+            "hh": "2.90",
+            "updatedAt": "2026-06-30 10:02:08"
+          }
+        }
+      }
+    }
+  ]
+}

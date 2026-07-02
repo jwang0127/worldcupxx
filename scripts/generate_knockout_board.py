@@ -387,7 +387,7 @@ def rolling_future_matches(schedule: list[dict[str, Any]], days: int = 3) -> lis
         item
         for item in schedule
         if start <= dt_bjt(item["kickoff_bjt"]) < end
-        and not item["home_team"].startswith("寰呭畾")
+        and not item["home_team"].startswith("待定")
         and not is_settled_match(item, settled)
     ]
     return sorted(matches, key=lambda item: (item["beijing_date"], item["beijing_time"], int(item["match_no"])))
@@ -1081,6 +1081,11 @@ def knockout_results() -> list[dict[str, Any]]:
                     "result": result_text,
                     "prediction_main_score": item.get("prediction_main_score", ""),
                     "review": item.get("review", ""),
+                    "half_time_score": item.get("half_time_score", ""),
+                    "half_time": item.get("half_time", ""),
+                    "half_score": item.get("half_score", ""),
+                    "half_home_goals": item.get("half_home_goals"),
+                    "half_away_goals": item.get("half_away_goals"),
                 }
             )
     return sorted(rows, key=lambda item: (item["date"], int(str(item["match_no"] or "0"))))
@@ -1531,6 +1536,7 @@ def render_knockout_archive_page() -> str:
         "20260630": "巴西/德国/荷兰三场",
         "20260701": "科特迪瓦/法国/墨西哥三场",
         "20260702": "英格兰/比利时/美国三场",
+        "20260703": "西班牙/葡萄牙/瑞士三场",
     }
     cards = "".join(
         f'<a class="miniCard" href="../{p.name}/"><strong>{p.name}</strong><span>{labels.get(p.name, "淘汰赛预测")}</span></a>'

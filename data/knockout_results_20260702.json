@@ -1,0 +1,59 @@
+{
+  "date": "20260702",
+  "stage": "knockout",
+  "status": "90min_finished_with_extra_time_note",
+  "matches": [
+    {
+      "game_id": "53452565",
+      "match_no": "80",
+      "home_team": "英格兰",
+      "away_team": "刚果民主共和国",
+      "score": "2-1",
+      "home_goals": 2,
+      "away_goals": 1,
+      "half_time_score": "0-1",
+      "half_home_goals": 0,
+      "half_away_goals": 1,
+      "prediction_main_score": "3-0",
+      "prediction_backup_scores": [
+        "2-0",
+        "3-1",
+        "2-1"
+      ],
+      "review": "方向和总进球命中，比分落在保护池；刚果金6分钟破门验证强队场也必须保留下风方早球和半场客胜冷门触发。"
+    },
+    {
+      "game_id": "53452555",
+      "match_no": "81",
+      "home_team": "比利时",
+      "away_team": "塞内加尔",
+      "score": "2-2",
+      "home_goals": 2,
+      "away_goals": 2,
+      "extra_time_score": "3-2",
+      "advance_team": "比利时",
+      "prediction_main_score": "2-1",
+      "prediction_backup_scores": [
+        "1-1",
+        "1-2",
+        "2-2"
+      ],
+      "review": "90分钟方向未中但加时晋级方向命中；2-2在比分池内，说明中等优势强队不能只走常规时间小胜，需提高大球平局和加时强侧权重。"
+    },
+    {
+      "game_id": "53452553",
+      "match_no": "82",
+      "home_team": "美国",
+      "away_team": "波黑",
+      "score": "2-0",
+      "home_goals": 2,
+      "away_goals": 0,
+      "prediction_main_score": "3-1",
+      "prediction_backup_scores": [
+        "2-0",
+        "2-1"
+      ],
+      "review": "方向命中且2-0备选命中；模型高估波黑定位球进球和4球区间，今日对强队场从3-1/4球回收一档到2-1/2-0。"
+    }
+  ]
+}
