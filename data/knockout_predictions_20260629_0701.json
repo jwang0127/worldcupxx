@@ -205,9 +205,9 @@
       ],
       "scenario": {
         "winner_advances_to_match_id": "53452511",
-        "next_opponent_source": "荷兰 / 摩洛哥 胜者",
-        "home_win_script": "南非 晋级后下轮对阵 荷兰 / 摩洛哥 胜者",
-        "away_win_script": "加拿大 晋级后下轮对阵 荷兰 / 摩洛哥 胜者",
+        "next_opponent_source": "下一轮对手待定",
+        "home_win_script": "南非 晋级后下轮对阵 下一轮对手待定",
+        "away_win_script": "加拿大 晋级后下轮对阵 下一轮对手待定",
         "home_loss_script": "南非 输球即出局",
         "away_loss_script": "加拿大 输球即出局"
       },

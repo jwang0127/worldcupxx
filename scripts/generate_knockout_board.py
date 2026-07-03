@@ -1307,6 +1307,46 @@ def date_dirs() -> list[Path]:
     )
 
 
+def prediction_payload_paths() -> list[Path]:
+    paths = []
+    for path in sorted(DATA_DIR.glob("knockout_predictions_*.json")):
+        date_label = path.stem.rsplit("_", 1)[-1]
+        if re.match(r"^2026\d{4}$", date_label):
+            paths.append(path)
+    return paths
+
+
+def read_prediction_payloads() -> dict[str, dict[str, Any]]:
+    payloads: dict[str, dict[str, Any]] = {}
+    for path in prediction_payload_paths():
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        date_label = str(payload.get("date") or path.stem.rsplit("_", 1)[-1])
+        if re.match(r"^2026\d{4}$", date_label):
+            payloads[date_label] = payload
+    return payloads
+
+
+def knockout_archive_label(date_label: str, payload: dict[str, Any] | None = None) -> str:
+    labels = {
+        "20260629": "南非 vs 加拿大",
+    }
+    if date_label in labels:
+        return labels[date_label]
+    matches = (payload or {}).get("matches", [])
+    teams = [str(item.get("home_team", "")).strip() for item in matches if item.get("home_team")]
+    if len(teams) >= 3:
+        return "/".join(teams[:3]) + "三场"
+    if len(matches) == 1:
+        item = matches[0]
+        return f"{item.get('home_team', '')} vs {item.get('away_team', '')}"
+    if matches:
+        return f"{len(matches)}场淘汰赛预测"
+    return "淘汰赛预测"
+
+
 def render_date_cards(prefix: str = "") -> str:
     cards = []
     for p in date_dirs():
@@ -1531,16 +1571,9 @@ def render_group_archive_page() -> str:
 
 
 def render_knockout_archive_page() -> str:
-    labels = {
-        "20260629": "南非 vs 加拿大",
-        "20260630": "巴西/德国/荷兰三场",
-        "20260701": "科特迪瓦/法国/墨西哥三场",
-        "20260702": "英格兰/比利时/美国三场",
-        "20260703": "西班牙/葡萄牙/瑞士三场",
-        "20260704": "澳大利亚/阿根廷/哥伦比亚三场",
-    }
+    payloads = read_prediction_payloads()
     cards = "".join(
-        f'<a class="miniCard" href="../{p.name}/"><strong>{p.name}</strong><span>{labels.get(p.name, "淘汰赛预测")}</span></a>'
+        f'<a class="miniCard" href="../{p.name}/"><strong>{p.name}</strong><span>{knockout_archive_label(p.name, payloads.get(p.name))}</span></a>'
         for p in date_dirs()
         if p.name >= "20260629"
     )
@@ -1560,15 +1593,19 @@ def render_knockout_archive_page() -> str:
 
 
 def render_prediction_card(item: dict[str, Any]) -> str:
-    team_reading = render_bullets(item["team_reading"])
-    model_reasoning = render_bullets(item["model_reasoning"])
-    mystic = render_bullets(item["mystic_summary"])
+    team_reading = render_bullets(item.get("team_reading", []))
+    model_reasoning = render_bullets(item.get("model_reasoning", item.get("triggers", [])))
+    mystic = render_bullets(item.get("mystic_summary", ["仅作娱乐表达，不进入模型权重。"]))
     triggers = render_bullets(item.get("triggers", []))
     matrix_rows = render_score_matrix(item.get("score_matrix_top", []))
     ev_rows = render_ev_rows(item.get("ev_table", []))
     insight_cards = render_insight_cards(item.get("model_insights", []))
-    backup = " / ".join(item["backup_scores"])
-    kickoff = item["kickoff_bjt"].replace(" +08:00", "")
+    backup = " / ".join(item.get("backup_scores", item.get("safe_scores", [])))
+    kickoff = str(item.get("kickoff_bjt", "")).replace(" +08:00", "")
+    half_time = item.get("half_time")
+    if not half_time:
+        half_time = half_result_label(str(item.get("half_time_pick", "draw")))
+    next_note = item.get("next_opponent_note", "下场对手待定")
     return f"""
 <section class="section">
   <details class="matchDetails">
@@ -1580,14 +1617,14 @@ def render_prediction_card(item: dict[str, Any]) -> str:
   <div class="card matchBody">
     <div class="heroGrid">
       <div class="metric">北京时间<strong>{esc(kickoff)}</strong></div>
-      <div class="metric">半场<strong>{esc(item['half_time'])}</strong></div>
+      <div class="metric">半场<strong>{esc(half_time)}</strong></div>
       <div class="metric">90分钟<strong>{esc(item['direction_text'])}</strong></div>
       <div class="metric">晋级<strong class="adv">{esc(item['advance_pick'])}</strong></div>
     </div>
     <div class="coreGrid">
       <div class="panel"><h3>主比分</h3><div class="bigScore">{esc(item['main_score'])}</div><p>备选：{esc(backup)}</p><p>冷门：{esc(item['upset_score'])}</p></div>
       <div class="panel"><h3>判断口径</h3><p>{esc(item['core_view'])}</p><p>{esc(item['advance_probability_text'])}</p></div>
-      <div class="panel"><h3>下场对手</h3><p>{esc(item['next_opponent_note'])}</p></div>
+      <div class="panel"><h3>下场对手</h3><p>{esc(next_note)}</p></div>
     </div>
     <div class="card">
       <h3>昨日复盘校正</h3>
@@ -1679,7 +1716,11 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
             }
         )
 
-        half_direction = half_direction_from_text(str(item["half_time"]))
+        half_value = item.get("half_time")
+        if half_value:
+            half_direction = half_direction_from_text(str(half_value))
+        else:
+            half_direction = str(item.get("half_time_pick", "draw"))
         hafu = odds.get("hafu") or {}
         half_rows.append(
             {
@@ -1702,10 +1743,46 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
   </section>"""
 
 
+def previous_date_label(date_label: str) -> str:
+    try:
+        return (datetime.strptime(date_label, "%Y%m%d") - timedelta(days=1)).strftime("%Y%m%d")
+    except ValueError:
+        return date_label
+
+
+def model_review_for_prediction_date(date_label: str) -> dict[str, Any]:
+    candidates = [
+        DATA_DIR / f"model_review_lessons_{previous_date_label(date_label)}.json",
+        DATA_DIR / f"model_review_lessons_{date_label}.json",
+    ]
+    for path in candidates:
+        if not path.exists():
+            continue
+        try:
+            return read_json(path)
+        except Exception:
+            continue
+    return model_review_lessons()
+
+
+def render_extra_review_section(review: dict[str, Any]) -> str:
+    text = " ".join(str(item) for item in review.get("lessons", [])) + " " + str(review.get("summary", ""))
+    if "瑞士" not in text or "2-0" not in text:
+        return ""
+    return """
+  <section class="section" id="swiss">
+    <h2>瑞士 2-0 漏出原因</h2>
+    <div class="card">
+      <p>瑞士场不是方向问题，而是比分池结构问题：模型把 <strong>1-1最低比分赔率</strong> 和淘汰赛防平权重放得过高，却没有把 <strong>主胜、总进球2球最低、对手终结弱、瑞士低风险零封</strong> 合并成 2-0 路径。修正后，中等优势队的低比分池必须同时检查 1-0、2-0、2-1、1-1。</p>
+    </div>
+  </section>"""
+
+
 def render_multi_prediction_page(date_label: str, predictions: list[dict[str, Any]]) -> str:
     cards = "".join(render_prediction_card(item) for item in predictions)
-    review = model_review_lessons()
+    review = model_review_for_prediction_date(date_label)
     review_lessons = render_review_lessons(review)
+    extra_review = render_extra_review_section(review)
     parlay = render_parlay_section(date_label, predictions)
     parlay_nav = '<a href="#parlay">三串一</a>' if parlay else ""
     return f"""<!DOCTYPE html>
@@ -1725,6 +1802,7 @@ def render_multi_prediction_page(date_label: str, predictions: list[dict[str, An
       <ul>{review_lessons}</ul>
     </div>
   </section>
+  {extra_review}
   {parlay}
   {cards}
 </main>
@@ -1832,6 +1910,27 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
 """
 
 
+def render_all_prediction_payload_pages(prediction: dict[str, Any]) -> list[Path]:
+    written: list[Path] = []
+    payloads = read_prediction_payloads()
+    for date_label, payload in sorted(payloads.items()):
+        day_dir = ROOT / date_label
+        day_dir.mkdir(exist_ok=True)
+        if date_label == PREDICTION_DATE:
+            html_text = render_prediction_page(GLOBAL_SCHEDULE, qualified_team_stats(GLOBAL_SCHEDULE), prediction)
+        else:
+            matches = payload.get("matches", [])
+            if not matches:
+                continue
+            html_text = render_multi_prediction_page(date_label, matches)
+        index_path = day_dir / "index.html"
+        prediction_path = day_dir / f"predict_{date_label}.html"
+        index_path.write_text(html_text, encoding="utf-8")
+        prediction_path.write_text(html_text, encoding="utf-8")
+        written.extend([index_path, prediction_path])
+    return written
+
+
 def main() -> int:
     global GLOBAL_SCHEDULE
     xlsx_rows = read_excel_rows(SCHEDULE_XLSX)
@@ -1867,21 +1966,15 @@ def main() -> int:
     write_json(DATA_DIR / "knockout_predictions_20260701.json", {"date": "20260701", "stage": "knockout", "matches": predictions_0701})
     write_json(DATA_DIR / "knockout_predictions_20260629_0701.json", {"stage": "knockout", "matches": predictions})
 
+    payloads = read_prediction_payloads()
     knockout_dir = ROOT / "knockout"
-    day_dir = ROOT / PREDICTION_DATE
-    day_0630_dir = ROOT / "20260630"
-    day_0701_dir = ROOT / "20260701"
     group_dir = ROOT / "group"
     knockout_dir.mkdir(exist_ok=True)
-    day_dir.mkdir(exist_ok=True)
-    day_0630_dir.mkdir(exist_ok=True)
-    day_0701_dir.mkdir(exist_ok=True)
     group_dir.mkdir(exist_ok=True)
+    for date_label in payloads:
+        (ROOT / date_label).mkdir(exist_ok=True)
 
     home_html = render_home_page(schedule, stats, prediction)
-    prediction_html = render_prediction_page(schedule, stats, prediction)
-    prediction_0630_html = render_multi_prediction_page("20260630", predictions_0630)
-    prediction_0701_html = render_multi_prediction_page("20260701", predictions_0701)
     teams_html = render_teams_page(stats, schedule)
     group_html = render_group_archive_page()
     knockout_archive_html = render_knockout_archive_page()
@@ -1889,13 +1982,8 @@ def main() -> int:
     (group_dir / "index.html").write_text(group_html, encoding="utf-8")
     (knockout_dir / "index.html").write_text(knockout_archive_html, encoding="utf-8")
     (knockout_dir / "teams.html").write_text(teams_html, encoding="utf-8")
-    (day_dir / "index.html").write_text(prediction_html, encoding="utf-8")
-    (day_dir / f"predict_{PREDICTION_DATE}.html").write_text(prediction_html, encoding="utf-8")
-    (day_dir / "teams.html").write_text(teams_html, encoding="utf-8")
-    (day_0630_dir / "index.html").write_text(prediction_0630_html, encoding="utf-8")
-    (day_0630_dir / "predict_20260630.html").write_text(prediction_0630_html, encoding="utf-8")
-    (day_0701_dir / "index.html").write_text(prediction_0701_html, encoding="utf-8")
-    (day_0701_dir / "predict_20260701.html").write_text(prediction_0701_html, encoding="utf-8")
+    written_prediction_pages = render_all_prediction_payload_pages(prediction)
+    (ROOT / PREDICTION_DATE / "teams.html").write_text(teams_html, encoding="utf-8")
     (knockout_dir / "knockout_prediction_model_v3.md").write_text(render_model_doc(model, prediction), encoding="utf-8")
 
     if MODEL_MD.exists():
@@ -1907,9 +1995,8 @@ def main() -> int:
 
     print("Generated:")
     print(ROOT / "index.html")
-    print(day_dir / f"predict_{PREDICTION_DATE}.html")
-    print(day_0630_dir / "predict_20260630.html")
-    print(day_0701_dir / "predict_20260701.html")
+    for path in written_prediction_pages:
+        print(path)
     print(knockout_dir / "teams.html")
     print(knockout_dir / "knockout_prediction_model_v3.md")
     return 0
