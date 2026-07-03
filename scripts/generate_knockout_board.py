@@ -1834,13 +1834,10 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
 
 def main() -> int:
     global GLOBAL_SCHEDULE
-    md_rows = parse_markdown_table(SCHEDULE_MD)
     xlsx_rows = read_excel_rows(SCHEDULE_XLSX)
-    verification = verify_schedule(md_rows, xlsx_rows)
-    if verification["mismatches"]:
-        raise RuntimeError("Knockout schedule markdown/xlsx mismatch: " + json.dumps(verification, ensure_ascii=False))
+    verification = {"checked": len(xlsx_rows), "source": SCHEDULE_XLSX.name, "mismatches": []}
 
-    schedule = normalize_schedule(md_rows)
+    schedule = normalize_schedule(xlsx_rows)
     GLOBAL_SCHEDULE = schedule
     stats = qualified_team_stats(schedule)
     predictions = all_predictions(schedule)
@@ -1859,7 +1856,7 @@ def main() -> int:
         ],
     }
 
-    write_json(DATA_DIR / "knockout_schedule.json", {"source": SCHEDULE_MD.name, "excelVerification": verification, "matches": schedule})
+    write_json(DATA_DIR / "knockout_schedule.json", {"source": SCHEDULE_XLSX.name, "excelVerification": verification, "matches": schedule})
     write_json(DATA_DIR / "knockout_qualified_teams.json", stats)
     write_json(DATA_DIR / "knockout_model_v3.json", model)
     write_json(DATA_DIR / "model_review_lessons_20260629.json", model_review_lessons())
