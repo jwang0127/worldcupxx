@@ -1,0 +1,688 @@
+{
+  "date": "20260704",
+  "stage": "knockout",
+  "source": "manual-review-plus-sporttery-odds",
+  "generated_at": "2026-07-03 13:11:31",
+  "review_basis": "昨日赛果：西班牙3-0奥地利、葡萄牙2-1克罗地亚、瑞士2-0阿尔及利亚。",
+  "note": "世界杯淘汰赛可预测场次为86-88三场；第89场为7月5日01:00且队伍仍待定，暂不纳入三串一。",
+  "matches": [
+    {
+      "game_id": "53452503",
+      "match_no": "86",
+      "round": "32强赛",
+      "home_team": "澳大利亚",
+      "away_team": "埃及",
+      "kickoff_bjt": "2026-07-04 02:00:00 +08:00",
+      "model_version": "v6-knockout-favorite-tier-clean-sheet",
+      "direction_text": "埃及90分钟小胜，防平",
+      "half_time": "澳大利亚 0-0 埃及",
+      "half_time_pick": "draw",
+      "main_score": "0-1",
+      "backup_scores": [
+        "1-1",
+        "0-0"
+      ],
+      "upset_score": "1-0",
+      "goals_range": "0-2球",
+      "advance_pick": "埃及",
+      "advance_probability_text": "澳大利亚 45% / 埃及 55%",
+      "next_opponent_note": "胜者下轮对阵 阿根廷 / 佛得角 胜者",
+      "core_view": "这是均衡偏客局。埃及客胜赔率低于澳大利亚主胜，总进球2球最低且1-1比分最低，模型优先低比分客胜，平局保护较重。",
+      "team_reading": [
+        "澳大利亚 vs 埃及 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。",
+        "昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。",
+        "临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。"
+      ],
+      "model_reasoning": [
+        "均衡偏客不能追大，0-1和1-1是主轴；若埃及先进球，0-1/0-2升权。",
+        "瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。",
+        "三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "今日分化明显：阿根廷强势，哥伦比亚稳胜，澳大利亚-埃及低比分缠斗。",
+        "玄学赛果：0-1，防1-0。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "0-1",
+          "probability": 0.158,
+          "ev_signal": "+0.04",
+          "label": "主比分"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.146,
+          "ev_signal": "+0.04",
+          "label": "平局保护"
+        },
+        {
+          "score": "0-0",
+          "probability": 0.112,
+          "ev_signal": "+0.02",
+          "label": "低节奏锁局"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.096,
+          "ev_signal": "保护",
+          "label": "澳大利亚冷门"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.082,
+          "ev_signal": "+0.01",
+          "label": "埃及后段放大"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.064,
+          "ev_signal": "-0.01",
+          "label": "主队开放胜"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "埃及90分钟小胜，防平",
+          "model_probability": 0.44,
+          "fair_odds": 2.27,
+          "ev_signal": "+0.03",
+          "note": "与主线方向一致。"
+        },
+        {
+          "market": "总进球1",
+          "model_probability": 0.32,
+          "fair_odds": 3.13,
+          "ev_signal": "+0.02",
+          "note": "跟随主比分和网站总进球赔率。"
+        },
+        {
+          "market": "半场方向",
+          "model_probability": 0.52,
+          "fair_odds": 1.92,
+          "ev_signal": "保护",
+          "note": "半场平"
+        },
+        {
+          "market": "冷门保护",
+          "model_probability": 0.22,
+          "fair_odds": 4.55,
+          "ev_signal": "冷门",
+          "note": "1-0"
+        }
+      ],
+      "triggers": [
+        "领先方0-30分钟进球且持续压制：3球以上比分升权。",
+        "半场0-0：低比分和平局保护升权。",
+        "下风方先手进球：主比分回收，冷门比分升权。"
+      ],
+      "odds_snapshot": {
+        "id": "086",
+        "matchNumStr": "周五086",
+        "matchId": "2040347",
+        "businessDate": "2026-07-03",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-04 02:00:00",
+        "matchDate": "2026-07-04",
+        "matchTime": "02:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607031",
+        "isHot": false,
+        "home": "澳大利亚",
+        "homeCode": "AUA",
+        "homeAbbr": "澳大利亚",
+        "homeRank": "[世界杯2]",
+        "away": "埃及",
+        "awayCode": "EGY",
+        "awayAbbr": "埃及",
+        "awayRank": "[世界杯2]",
+        "venue": "比赛将在美国-得克萨斯州阿灵顿举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "0:1",
+            "1:1"
+          ],
+          "upset": "1:0",
+          "confidence": "medium",
+          "candidates": [
+            "2",
+            "1",
+            "3"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "3.15",
+            "draw": "2.65",
+            "away": "2.30",
+            "updatedAt": "2026-07-03 11:36:23"
+          },
+          "ttg": {
+            "s0": "6.00",
+            "s1": "3.35",
+            "s2": "2.90",
+            "s3": "4.20",
+            "s4": "8.50",
+            "s5": "22.00",
+            "s6": "38.00",
+            "s7": "60.00",
+            "updatedAt": "2026-07-01 09:20:09"
+          },
+          "hhad": {
+            "home": "1.48",
+            "draw": "3.55",
+            "away": "5.80",
+            "handicap": null,
+            "updatedAt": "2026-07-03 11:36:32"
+          },
+          "crs": {
+            "0-0": "6.00",
+            "0-1": "5.75",
+            "0-2": "10.00",
+            "0-3": "25.00",
+            "0-4": "75.00",
+            "0-5": "350.0",
+            "1-0": "7.30",
+            "1-1": "4.75",
+            "1-2": "7.50",
+            "1-3": "23.00",
+            "1-4": "90.00",
+            "1-5": "350.0",
+            "2-0": "15.00",
+            "2-1": "9.50",
+            "2-2": "16.00",
+            "2-3": "45.00",
+            "2-4": "175.0",
+            "2-5": "500.0",
+            "3-0": "45.00",
+            "3-1": "33.00",
+            "3-2": "55.00",
+            "3-3": "100.0",
+            "4-0": "175.0",
+            "4-1": "150.0",
+            "4-2": "300.0",
+            "5-0": "600.0",
+            "5-1": "500.0",
+            "5-2": "700.0",
+            "homeOther": "350.0",
+            "drawOther": "600.0",
+            "awayOther": "250.0",
+            "updatedAt": "2026-07-03 10:24:56"
+          },
+          "hafu": {
+            "aa": "4.15",
+            "ad": "13.00",
+            "ah": "25.00",
+            "da": "5.20",
+            "dd": "3.90",
+            "dh": "6.50",
+            "ha": "24.00",
+            "hd": "13.00",
+            "hh": "5.70",
+            "updatedAt": "2026-07-03 10:24:42"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "53452569",
+      "match_no": "87",
+      "round": "32强赛",
+      "home_team": "阿根廷",
+      "away_team": "佛得角",
+      "kickoff_bjt": "2026-07-04 06:00:00 +08:00",
+      "model_version": "v6-knockout-favorite-tier-clean-sheet",
+      "direction_text": "阿根廷90分钟胜，走大胜主线",
+      "half_time": "阿根廷 1-0 佛得角",
+      "half_time_pick": "home",
+      "main_score": "3-0",
+      "backup_scores": [
+        "2-0",
+        "3-1"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "2-4球",
+      "advance_pick": "阿根廷",
+      "advance_probability_text": "阿根廷 82% / 佛得角 18%",
+      "next_opponent_note": "胜者下轮对阵 澳大利亚 / 埃及 胜者",
+      "core_view": "阿根廷属于绝对强队层，比分市场2-0、3-0都处低位，总进球3球最低。昨日西班牙3-0证明这类盘不能再降档，主线直接看3-0。",
+      "team_reading": [
+        "阿根廷 vs 佛得角 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。",
+        "昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。",
+        "临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。"
+      ],
+      "model_reasoning": [
+        "绝对强队不机械保守；早球后3-0/4-0升权，半场0-0才回落2-0。",
+        "瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。",
+        "三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "今日分化明显：阿根廷强势，哥伦比亚稳胜，澳大利亚-埃及低比分缠斗。",
+        "玄学赛果：3-0，防1-1。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "3-0",
+          "probability": 0.176,
+          "ev_signal": "+0.06",
+          "label": "主比分"
+        },
+        {
+          "score": "2-0",
+          "probability": 0.162,
+          "ev_signal": "+0.05",
+          "label": "稳胜零封"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.108,
+          "ev_signal": "+0.02",
+          "label": "大球备选"
+        },
+        {
+          "score": "4-0",
+          "probability": 0.084,
+          "ev_signal": "+0.01",
+          "label": "早球放大"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.072,
+          "ev_signal": "保护",
+          "label": "下风方进球"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.044,
+          "ev_signal": "冷门",
+          "label": "爆冷拖住"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "阿根廷90分钟胜，走大胜主线",
+          "model_probability": 0.62,
+          "fair_odds": 1.61,
+          "ev_signal": "+0.03",
+          "note": "与主线方向一致。"
+        },
+        {
+          "market": "总进球3",
+          "model_probability": 0.32,
+          "fair_odds": 3.13,
+          "ev_signal": "+0.02",
+          "note": "跟随主比分和网站总进球赔率。"
+        },
+        {
+          "market": "半场方向",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "ev_signal": "保护",
+          "note": "半场主胜"
+        },
+        {
+          "market": "冷门保护",
+          "model_probability": 0.22,
+          "fair_odds": 4.55,
+          "ev_signal": "冷门",
+          "note": "1-1"
+        }
+      ],
+      "triggers": [
+        "领先方0-30分钟进球且持续压制：3球以上比分升权。",
+        "半场0-0：低比分和平局保护升权。",
+        "下风方先手进球：主比分回收，冷门比分升权。"
+      ],
+      "odds_snapshot": {
+        "id": "087",
+        "matchNumStr": "周五087",
+        "matchId": "2040348",
+        "businessDate": "2026-07-03",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-04 06:00:00",
+        "matchDate": "2026-07-04",
+        "matchTime": "06:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607031",
+        "isHot": true,
+        "home": "阿根廷",
+        "homeCode": "ARG",
+        "homeAbbr": "阿根廷",
+        "homeRank": "[世界杯1]",
+        "away": "佛得角",
+        "awayCode": "CVI",
+        "awayAbbr": "佛得角",
+        "awayRank": "[世界杯2]",
+        "venue": "比赛将在美国-佛罗里达州迈阿密加登斯举行",
+        "prediction": {
+          "totalGoals": "3",
+          "scores": [
+            "2:1",
+            "2:0"
+          ],
+          "upset": "1:2",
+          "confidence": "high",
+          "candidates": [
+            "3",
+            "2",
+            "4"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": null,
+            "draw": null,
+            "away": null,
+            "updatedAt": " "
+          },
+          "ttg": {
+            "s0": "18.00",
+            "s1": "6.30",
+            "s2": "4.00",
+            "s3": "3.30",
+            "s4": "4.40",
+            "s5": "7.50",
+            "s6": "14.00",
+            "s7": "18.00",
+            "updatedAt": "2026-07-03 11:45:01"
+          },
+          "hhad": {
+            "home": "2.13",
+            "draw": "3.62",
+            "away": "2.62",
+            "handicap": null,
+            "updatedAt": "2026-07-03 12:33:10"
+          },
+          "crs": {
+            "0-0": "18.00",
+            "0-1": "36.00",
+            "0-2": "150.0",
+            "0-3": "500.0",
+            "0-4": "1000",
+            "0-5": "1000",
+            "1-0": "6.70",
+            "1-1": "13.00",
+            "1-2": "60.00",
+            "1-3": "300.0",
+            "1-4": "800.0",
+            "1-5": "1000",
+            "2-0": "4.50",
+            "2-1": "10.00",
+            "2-2": "40.00",
+            "2-3": "200.0",
+            "2-4": "800.0",
+            "2-5": "1000",
+            "3-0": "4.80",
+            "3-1": "11.00",
+            "3-2": "60.00",
+            "3-3": "150.0",
+            "4-0": "8.00",
+            "4-1": "19.00",
+            "4-2": "75.00",
+            "5-0": "14.00",
+            "5-1": "32.00",
+            "5-2": "150.0",
+            "homeOther": "11.50",
+            "drawOther": "600.0",
+            "awayOther": "800.0",
+            "updatedAt": "2026-07-03 11:35:33"
+          },
+          "hafu": {
+            "aa": "45.00",
+            "ad": "30.00",
+            "ah": "30.00",
+            "da": "48.00",
+            "dd": "12.00",
+            "dh": "3.84",
+            "ha": "100.0",
+            "hd": "30.00",
+            "hh": "1.32",
+            "updatedAt": "2026-07-03 11:07:01"
+          }
+        }
+      }
+    },
+    {
+      "game_id": "53452507",
+      "match_no": "88",
+      "round": "32强赛",
+      "home_team": "哥伦比亚",
+      "away_team": "加纳",
+      "kickoff_bjt": "2026-07-04 09:30:00 +08:00",
+      "model_version": "v6-knockout-favorite-tier-clean-sheet",
+      "direction_text": "哥伦比亚90分钟胜，防2-1",
+      "half_time": "哥伦比亚 1-0 加纳",
+      "half_time_pick": "home",
+      "main_score": "2-0",
+      "backup_scores": [
+        "2-1",
+        "3-0"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "2-3球",
+      "advance_pick": "哥伦比亚",
+      "advance_probability_text": "哥伦比亚 70% / 加纳 30%",
+      "next_opponent_note": "胜者下轮对阵 瑞士 / 阿尔及利亚 胜者",
+      "core_view": "哥伦比亚是强队但未到阿根廷级别，主胜1.29且总进球2球最低。瑞士2-0复盘后，这种强队低风险零封必须进核心池，主比分给2-0。",
+      "team_reading": [
+        "哥伦比亚 vs 加纳 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。",
+        "昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。",
+        "临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。"
+      ],
+      "model_reasoning": [
+        "强队低风险零封路径上调；若早球出现，3-0和3-1再升权。",
+        "瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。",
+        "三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "今日分化明显：阿根廷强势，哥伦比亚稳胜，澳大利亚-埃及低比分缠斗。",
+        "玄学赛果：2-0，防1-1。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "2-0",
+          "probability": 0.168,
+          "ev_signal": "+0.05",
+          "label": "主比分"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.142,
+          "ev_signal": "+0.04",
+          "label": "防加纳进球"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.118,
+          "ev_signal": "+0.02",
+          "label": "慢热小胜"
+        },
+        {
+          "score": "3-0",
+          "probability": 0.106,
+          "ev_signal": "+0.02",
+          "label": "早球上修"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.082,
+          "ev_signal": "保护",
+          "label": "加纳拖住"
+        },
+        {
+          "score": "3-1",
+          "probability": 0.068,
+          "ev_signal": "-0.01",
+          "label": "开放尾部"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "哥伦比亚90分钟胜，防2-1",
+          "model_probability": 0.62,
+          "fair_odds": 1.61,
+          "ev_signal": "+0.03",
+          "note": "与主线方向一致。"
+        },
+        {
+          "market": "总进球2",
+          "model_probability": 0.32,
+          "fair_odds": 3.13,
+          "ev_signal": "+0.02",
+          "note": "跟随主比分和网站总进球赔率。"
+        },
+        {
+          "market": "半场方向",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "ev_signal": "保护",
+          "note": "半场主胜"
+        },
+        {
+          "market": "冷门保护",
+          "model_probability": 0.22,
+          "fair_odds": 4.55,
+          "ev_signal": "冷门",
+          "note": "1-1"
+        }
+      ],
+      "triggers": [
+        "领先方0-30分钟进球且持续压制：3球以上比分升权。",
+        "半场0-0：低比分和平局保护升权。",
+        "下风方先手进球：主比分回收，冷门比分升权。"
+      ],
+      "odds_snapshot": {
+        "id": "088",
+        "matchNumStr": "周五088",
+        "matchId": "2040357",
+        "businessDate": "2026-07-03",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-04 09:30:00",
+        "matchDate": "2026-07-04",
+        "matchTime": "09:30:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607031",
+        "isHot": true,
+        "home": "哥伦比亚",
+        "homeCode": "COM",
+        "homeAbbr": "哥伦比亚",
+        "homeRank": "[世界杯1]",
+        "away": "加纳",
+        "awayCode": "GHA",
+        "awayAbbr": "加纳",
+        "awayRank": "[世界杯3]",
+        "venue": "比赛将在美国-密苏里州堪萨斯城举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "2:0",
+            "2:1"
+          ],
+          "upset": "1:1",
+          "confidence": "medium",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.29",
+            "draw": "4.20",
+            "away": "8.60",
+            "updatedAt": "2026-07-03 11:48:34"
+          },
+          "ttg": {
+            "s0": "9.50",
+            "s1": "4.05",
+            "s2": "3.15",
+            "s3": "3.60",
+            "s4": "6.20",
+            "s5": "13.00",
+            "s6": "23.00",
+            "s7": "40.00",
+            "updatedAt": "2026-07-01 09:20:09"
+          },
+          "hhad": {
+            "home": "2.20",
+            "draw": "2.95",
+            "away": "2.98",
+            "handicap": null,
+            "updatedAt": "2026-07-03 11:48:39"
+          },
+          "crs": {
+            "0-0": "9.50",
+            "0-1": "17.50",
+            "0-2": "60.00",
+            "0-3": "225.0",
+            "0-4": "700.0",
+            "0-5": "1000",
+            "1-0": "5.25",
+            "1-1": "7.55",
+            "1-2": "25.00",
+            "1-3": "125.0",
+            "1-4": "500.0",
+            "1-5": "900.0",
+            "2-0": "5.00",
+            "2-1": "5.25",
+            "2-2": "24.00",
+            "2-3": "120.0",
+            "2-4": "600.0",
+            "2-5": "900.0",
+            "3-0": "7.50",
+            "3-1": "12.50",
+            "3-2": "40.00",
+            "3-3": "150.0",
+            "4-0": "17.00",
+            "4-1": "30.00",
+            "4-2": "80.00",
+            "5-0": "50.00",
+            "5-1": "75.00",
+            "5-2": "200.0",
+            "homeOther": "65.00",
+            "drawOther": "600.0",
+            "awayOther": "700.0",
+            "updatedAt": "2026-07-03 12:18:28"
+          },
+          "hafu": {
+            "aa": "16.00",
+            "ad": "20.00",
+            "ah": "28.00",
+            "da": "18.00",
+            "dd": "5.80",
+            "dh": "3.50",
+            "ha": "60.00",
+            "hd": "20.00",
+            "hh": "1.90",
+            "updatedAt": "2026-07-03 11:49:24"
+          }
+        }
+      }
+    }
+  ]
+}

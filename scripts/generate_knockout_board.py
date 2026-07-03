@@ -1537,6 +1537,7 @@ def render_knockout_archive_page() -> str:
         "20260701": "科特迪瓦/法国/墨西哥三场",
         "20260702": "英格兰/比利时/美国三场",
         "20260703": "西班牙/葡萄牙/瑞士三场",
+        "20260704": "澳大利亚/阿根廷/哥伦比亚三场",
     }
     cards = "".join(
         f'<a class="miniCard" href="../{p.name}/"><strong>{p.name}</strong><span>{labels.get(p.name, "淘汰赛预测")}</span></a>'

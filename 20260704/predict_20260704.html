@@ -1,0 +1,688 @@
+<!DOCTYPE html><html lang='zh-CN'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>20260704 淘汰赛预测</title><style>:root{--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#05110f;color:var(--text)}body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f,#092225 50%,#061324);z-index:-1}a{color:inherit;text-decoration:none}header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);border-bottom:1px solid var(--line);z-index:5}h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px)}nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0}.section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);padding:18px;margin:14px 0}.heroGrid,.coreGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}@media(max-width:850px){.heroGrid,.coreGrid{grid-template-columns:1fr}}.metric{background:#071817;border:1px solid var(--line);border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:24px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px}.adv{color:var(--orange)}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden;margin:16px 0}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 110px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted)}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0}</style></head><body><header><h1>20260704 淘汰赛预测</h1><nav><a href='../index.html'>首页</a><a href='../knockout/'>淘汰赛归档</a><a href='#review'>复盘修正</a><a href='#swiss'>瑞士2-0复盘</a><a href='#odds'>赔率快照</a><a href='#parlay'>三串一</a></nav></header><main><section class='section' id='review'><h2>昨日复盘与模型修正</h2><div class='card'><p><strong>7月3日复盘：绝对强队不能降档，瑞士2-0暴露中等优势队零封池缺口。</strong></p><p>西班牙3-0说明1.20附近绝对强队在3球赔率最低、比分市场支持3-0时，赛前就应保留大胜主线；葡萄牙2-1验证中等强队窄胜；瑞士2-0的关键问题不是方向，而是比分池漏掉“中等优势+低总进球+零封”的2-0路径。</p><ul><li>绝对强队分层：主胜≤1.25且3球赔率最低时，主比分允许直接给3-0/3-1，不再机械回收到2-1。</li><li>早球实时规则：强队0-30分钟领先后，若射门、角球、禁区触球继续占优，3球以上权重立即上调；若领先后降速，才回落2-0/2-1。</li><li>瑞士2-0漏出原因：模型把1-1最低比分赔率权重过高，未把让球盘、对手终结弱、低总进球下的零封胜合并评分。</li><li>中等优势队新规则：主胜1.60-1.90、总进球2球最低、让球客胜不低于1.75时，比分池必须同时含1-0、2-0、2-1、1-1。</li><li>今日模型：阿根廷这种绝对强队走3-0；哥伦比亚按强队低风险2-0；澳大利亚-埃及是均衡偏客，优先0-1/1-1低比分。</li></ul></div></section><section class='section' id='swiss'><h2>瑞士 2-0 漏出原因</h2><div class='card'><p>瑞士场不是方向问题，而是比分池结构问题：模型把 <strong>1-1最低比分赔率</strong> 和淘汰赛防平权重放得过高，却没有把 <strong>主胜1.80、总进球2球最低、阿尔及利亚终结弱、瑞士低风险零封</strong> 合并成 2-0 路径。修正后，中等优势队的低比分池必须同时检查 1-0、2-0、2-1、1-1，不能只给 1-1/1-0/2-1。</p></div></section><section class='section' id='odds'><h2>竞彩赔率快照</h2><div class='card tableWrap'><table><thead><tr><th>比赛</th><th>主胜</th><th>平</th><th>客胜</th><th>2球</th><th>3球</th><th>4球</th></tr></thead><tbody><tr><td>澳大利亚 vs 埃及</td><td>3.15</td><td>2.65</td><td>2.30</td><td>2.90</td><td>4.20</td><td>8.50</td></tr><tr><td>阿根廷 vs 佛得角</td><td>-</td><td>-</td><td>-</td><td>4.00</td><td>3.30</td><td>4.40</td></tr><tr><td>哥伦比亚 vs 加纳</td><td>1.29</td><td>4.20</td><td>8.60</td><td>3.15</td><td>3.60</td><td>6.20</td></tr></tbody></table></div></section><section class='section' id='parlay'><h2>今日三串一</h2><div class='card'><h3>比分三串一</h3><p class='muted'>按每场主比分选择，赔率来自网站比分市场。</p><div class='tableWrap'><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>澳大利亚 vs 埃及</td><td>0-1</td><td>5.75</td><td>2026-07-03 10:24:56</td></tr><tr><td>阿根廷 vs 佛得角</td><td>3-0</td><td>4.80</td><td>2026-07-03 11:35:33</td></tr><tr><td>哥伦比亚 vs 加纳</td><td>2-0</td><td>5.00</td><td>2026-07-03 12:18:28</td></tr></tbody></table></div><p><strong>三串一理论乘积赔率：138.00</strong></p></div><div class='card'><h3>总进球数三串一</h3><p class='muted'>按每场主比分折算总进球数，赔率来自网站总进球市场。</p><div class='tableWrap'><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>澳大利亚 vs 埃及</td><td>总进球 1</td><td>3.35</td><td>2026-07-01 09:20:09</td></tr><tr><td>阿根廷 vs 佛得角</td><td>总进球 3</td><td>3.30</td><td>2026-07-03 11:45:01</td></tr><tr><td>哥伦比亚 vs 加纳</td><td>总进球 2</td><td>3.15</td><td>2026-07-01 09:20:09</td></tr></tbody></table></div><p><strong>三串一理论乘积赔率：34.82</strong></p></div><div class='card'><h3>半场胜平负三串一</h3><p class='muted'>按每场半场方向选择；赔率由网站半全场赔率池折算为半场主胜/平/客胜隐含赔率。</p><div class='tableWrap'><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>澳大利亚 vs 埃及</td><td>半场平</td><td>1.66</td><td>2026-07-03 10:24:42</td></tr><tr><td>阿根廷 vs 佛得角</td><td>半场主胜</td><td>1.25</td><td>2026-07-03 11:07:01</td></tr><tr><td>哥伦比亚 vs 加纳</td><td>半场主胜</td><td>1.69</td><td>2026-07-03 11:49:24</td></tr></tbody></table></div><p><strong>三串一理论乘积赔率：3.49</strong></p></div></section><section class='section'><h2>今日世界杯三场预测</h2><p class='muted'>第89场为7月5日01:00且队伍仍待定，暂不纳入今日三串一。</p><details class='matchDetails' open><summary><span>86 澳大利亚 vs 埃及</span><strong>0-1</strong><em>埃及90分钟小胜，防平；0-2球；晋级：埃及</em></summary><div class='card matchBody'><div class='heroGrid'><div class='metric'>北京时间<strong>2026-07-04 02:00:00</strong><small>32强赛</small></div><div class='metric'>半场<strong>澳大利亚 0-0 埃及</strong><small>半场平</small></div><div class='metric'>晋级概率<strong class='adv'>澳大利亚 45% / 埃及 55%</strong><small>胜者下轮对阵 阿根廷 / 佛得角 胜者</small></div></div><p>这是均衡偏客局。埃及客胜赔率低于澳大利亚主胜，总进球2球最低且1-1比分最低，模型优先低比分客胜，平局保护较重。</p><div><span class='scoreTag'>0-1</span><span class='scoreTag'>1-1</span><span class='scoreTag'>0-0</span><span class='scoreTag danger'>1-0</span></div><div class='coreGrid'><div class='panel'><h3>球队画像</h3><ul><li>澳大利亚 vs 埃及 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。</li><li>昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。</li><li>临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。</li></ul></div><div class='panel'><h3>模型解释</h3><ul><li>均衡偏客不能追大，0-1和1-1是主轴；若埃及先进球，0-1/0-2升权。</li><li>瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。</li><li>三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。</li></ul></div><div class='panel'><h3>触发条件</h3><ul><li>领先方0-30分钟进球且持续压制：3球以上比分升权。</li><li>半场0-0：低比分和平局保护升权。</li><li>下风方先手进球：主比分回收，冷门比分升权。</li></ul></div></div><div class='card'><h3>比分矩阵</h3><div class='tableWrap'><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>0-1</td><td>15.8%</td><td>+0.04</td><td>主比分</td></tr><tr><td>1-1</td><td>14.6%</td><td>+0.04</td><td>平局保护</td></tr><tr><td>0-0</td><td>11.2%</td><td>+0.02</td><td>低节奏锁局</td></tr><tr><td>1-0</td><td>9.6%</td><td>保护</td><td>澳大利亚冷门</td></tr><tr><td>1-2</td><td>8.2%</td><td>+0.01</td><td>埃及后段放大</td></tr><tr><td>2-1</td><td>6.4%</td><td>-0.01</td><td>主队开放胜</td></tr></tbody></table></div></div><div class='card'><h3>市场 EV / 大球 / 冷门</h3><div class='tableWrap'><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>信号</th><th>说明</th></tr></thead><tbody><tr><td>埃及90分钟小胜，防平</td><td>44.0%</td><td>2.27</td><td>+0.03</td><td>与主线方向一致。</td></tr><tr><td>总进球1</td><td>32.0%</td><td>3.13</td><td>+0.02</td><td>跟随主比分和网站总进球赔率。</td></tr><tr><td>半场方向</td><td>52.0%</td><td>1.92</td><td>保护</td><td>半场平</td></tr><tr><td>冷门保护</td><td>22.0%</td><td>4.55</td><td>冷门</td><td>1-0</td></tr></tbody></table></div></div></div></details><details class='matchDetails' open><summary><span>87 阿根廷 vs 佛得角</span><strong>3-0</strong><em>阿根廷90分钟胜，走大胜主线；2-4球；晋级：阿根廷</em></summary><div class='card matchBody'><div class='heroGrid'><div class='metric'>北京时间<strong>2026-07-04 06:00:00</strong><small>32强赛</small></div><div class='metric'>半场<strong>阿根廷 1-0 佛得角</strong><small>半场主胜</small></div><div class='metric'>晋级概率<strong class='adv'>阿根廷 82% / 佛得角 18%</strong><small>胜者下轮对阵 澳大利亚 / 埃及 胜者</small></div></div><p>阿根廷属于绝对强队层，比分市场2-0、3-0都处低位，总进球3球最低。昨日西班牙3-0证明这类盘不能再降档，主线直接看3-0。</p><div><span class='scoreTag'>3-0</span><span class='scoreTag'>2-0</span><span class='scoreTag'>3-1</span><span class='scoreTag danger'>1-1</span></div><div class='coreGrid'><div class='panel'><h3>球队画像</h3><ul><li>阿根廷 vs 佛得角 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。</li><li>昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。</li><li>临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。</li></ul></div><div class='panel'><h3>模型解释</h3><ul><li>绝对强队不机械保守；早球后3-0/4-0升权，半场0-0才回落2-0。</li><li>瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。</li><li>三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。</li></ul></div><div class='panel'><h3>触发条件</h3><ul><li>领先方0-30分钟进球且持续压制：3球以上比分升权。</li><li>半场0-0：低比分和平局保护升权。</li><li>下风方先手进球：主比分回收，冷门比分升权。</li></ul></div></div><div class='card'><h3>比分矩阵</h3><div class='tableWrap'><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>3-0</td><td>17.6%</td><td>+0.06</td><td>主比分</td></tr><tr><td>2-0</td><td>16.2%</td><td>+0.05</td><td>稳胜零封</td></tr><tr><td>3-1</td><td>10.8%</td><td>+0.02</td><td>大球备选</td></tr><tr><td>4-0</td><td>8.4%</td><td>+0.01</td><td>早球放大</td></tr><tr><td>2-1</td><td>7.2%</td><td>保护</td><td>下风方进球</td></tr><tr><td>1-1</td><td>4.4%</td><td>冷门</td><td>爆冷拖住</td></tr></tbody></table></div></div><div class='card'><h3>市场 EV / 大球 / 冷门</h3><div class='tableWrap'><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>信号</th><th>说明</th></tr></thead><tbody><tr><td>阿根廷90分钟胜，走大胜主线</td><td>62.0%</td><td>1.61</td><td>+0.03</td><td>与主线方向一致。</td></tr><tr><td>总进球3</td><td>32.0%</td><td>3.13</td><td>+0.02</td><td>跟随主比分和网站总进球赔率。</td></tr><tr><td>半场方向</td><td>49.0%</td><td>2.04</td><td>保护</td><td>半场主胜</td></tr><tr><td>冷门保护</td><td>22.0%</td><td>4.55</td><td>冷门</td><td>1-1</td></tr></tbody></table></div></div></div></details><details class='matchDetails' open><summary><span>88 哥伦比亚 vs 加纳</span><strong>2-0</strong><em>哥伦比亚90分钟胜，防2-1；2-3球；晋级：哥伦比亚</em></summary><div class='card matchBody'><div class='heroGrid'><div class='metric'>北京时间<strong>2026-07-04 09:30:00</strong><small>32强赛</small></div><div class='metric'>半场<strong>哥伦比亚 1-0 加纳</strong><small>半场主胜</small></div><div class='metric'>晋级概率<strong class='adv'>哥伦比亚 70% / 加纳 30%</strong><small>胜者下轮对阵 瑞士 / 阿尔及利亚 胜者</small></div></div><p>哥伦比亚是强队但未到阿根廷级别，主胜1.29且总进球2球最低。瑞士2-0复盘后，这种强队低风险零封必须进核心池，主比分给2-0。</p><div><span class='scoreTag'>2-0</span><span class='scoreTag'>2-1</span><span class='scoreTag'>3-0</span><span class='scoreTag danger'>1-1</span></div><div class='coreGrid'><div class='panel'><h3>球队画像</h3><ul><li>哥伦比亚 vs 加纳 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。</li><li>昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。</li><li>临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。</li></ul></div><div class='panel'><h3>模型解释</h3><ul><li>强队低风险零封路径上调；若早球出现，3-0和3-1再升权。</li><li>瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。</li><li>三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。</li></ul></div><div class='panel'><h3>触发条件</h3><ul><li>领先方0-30分钟进球且持续压制：3球以上比分升权。</li><li>半场0-0：低比分和平局保护升权。</li><li>下风方先手进球：主比分回收，冷门比分升权。</li></ul></div></div><div class='card'><h3>比分矩阵</h3><div class='tableWrap'><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>2-0</td><td>16.8%</td><td>+0.05</td><td>主比分</td></tr><tr><td>2-1</td><td>14.2%</td><td>+0.04</td><td>防加纳进球</td></tr><tr><td>1-0</td><td>11.8%</td><td>+0.02</td><td>慢热小胜</td></tr><tr><td>3-0</td><td>10.6%</td><td>+0.02</td><td>早球上修</td></tr><tr><td>1-1</td><td>8.2%</td><td>保护</td><td>加纳拖住</td></tr><tr><td>3-1</td><td>6.8%</td><td>-0.01</td><td>开放尾部</td></tr></tbody></table></div></div><div class='card'><h3>市场 EV / 大球 / 冷门</h3><div class='tableWrap'><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>信号</th><th>说明</th></tr></thead><tbody><tr><td>哥伦比亚90分钟胜，防2-1</td><td>62.0%</td><td>1.61</td><td>+0.03</td><td>与主线方向一致。</td></tr><tr><td>总进球2</td><td>32.0%</td><td>3.13</td><td>+0.02</td><td>跟随主比分和网站总进球赔率。</td></tr><tr><td>半场方向</td><td>49.0%</td><td>2.04</td><td>保护</td><td>半场主胜</td></tr><tr><td>冷门保护</td><td>22.0%</td><td>4.55</td><td>冷门</td><td>1-1</td></tr></tbody></table></div></div></div></details></section><script id='prediction-data' type='application/json'>{
+  &quot;date&quot;: &quot;20260704&quot;,
+  &quot;stage&quot;: &quot;knockout&quot;,
+  &quot;source&quot;: &quot;manual-review-plus-sporttery-odds&quot;,
+  &quot;generated_at&quot;: &quot;2026-07-03 13:11:31&quot;,
+  &quot;review_basis&quot;: &quot;昨日赛果：西班牙3-0奥地利、葡萄牙2-1克罗地亚、瑞士2-0阿尔及利亚。&quot;,
+  &quot;note&quot;: &quot;世界杯淘汰赛可预测场次为86-88三场；第89场为7月5日01:00且队伍仍待定，暂不纳入三串一。&quot;,
+  &quot;matches&quot;: [
+    {
+      &quot;game_id&quot;: &quot;53452503&quot;,
+      &quot;match_no&quot;: &quot;86&quot;,
+      &quot;round&quot;: &quot;32强赛&quot;,
+      &quot;home_team&quot;: &quot;澳大利亚&quot;,
+      &quot;away_team&quot;: &quot;埃及&quot;,
+      &quot;kickoff_bjt&quot;: &quot;2026-07-04 02:00:00 +08:00&quot;,
+      &quot;model_version&quot;: &quot;v6-knockout-favorite-tier-clean-sheet&quot;,
+      &quot;direction_text&quot;: &quot;埃及90分钟小胜，防平&quot;,
+      &quot;half_time&quot;: &quot;澳大利亚 0-0 埃及&quot;,
+      &quot;half_time_pick&quot;: &quot;draw&quot;,
+      &quot;main_score&quot;: &quot;0-1&quot;,
+      &quot;backup_scores&quot;: [
+        &quot;1-1&quot;,
+        &quot;0-0&quot;
+      ],
+      &quot;upset_score&quot;: &quot;1-0&quot;,
+      &quot;goals_range&quot;: &quot;0-2球&quot;,
+      &quot;advance_pick&quot;: &quot;埃及&quot;,
+      &quot;advance_probability_text&quot;: &quot;澳大利亚 45% / 埃及 55%&quot;,
+      &quot;next_opponent_note&quot;: &quot;胜者下轮对阵 阿根廷 / 佛得角 胜者&quot;,
+      &quot;core_view&quot;: &quot;这是均衡偏客局。埃及客胜赔率低于澳大利亚主胜，总进球2球最低且1-1比分最低，模型优先低比分客胜，平局保护较重。&quot;,
+      &quot;team_reading&quot;: [
+        &quot;澳大利亚 vs 埃及 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。&quot;,
+        &quot;昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。&quot;,
+        &quot;临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。&quot;
+      ],
+      &quot;model_reasoning&quot;: [
+        &quot;均衡偏客不能追大，0-1和1-1是主轴；若埃及先进球，0-1/0-2升权。&quot;,
+        &quot;瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。&quot;,
+        &quot;三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。&quot;
+      ],
+      &quot;mystic_summary&quot;: [
+        &quot;仅作娱乐表达，不进入模型权重。&quot;,
+        &quot;今日分化明显：阿根廷强势，哥伦比亚稳胜，澳大利亚-埃及低比分缠斗。&quot;,
+        &quot;玄学赛果：0-1，防1-0。&quot;
+      ],
+      &quot;score_matrix_top&quot;: [
+        {
+          &quot;score&quot;: &quot;0-1&quot;,
+          &quot;probability&quot;: 0.158,
+          &quot;ev_signal&quot;: &quot;+0.04&quot;,
+          &quot;label&quot;: &quot;主比分&quot;
+        },
+        {
+          &quot;score&quot;: &quot;1-1&quot;,
+          &quot;probability&quot;: 0.146,
+          &quot;ev_signal&quot;: &quot;+0.04&quot;,
+          &quot;label&quot;: &quot;平局保护&quot;
+        },
+        {
+          &quot;score&quot;: &quot;0-0&quot;,
+          &quot;probability&quot;: 0.112,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;label&quot;: &quot;低节奏锁局&quot;
+        },
+        {
+          &quot;score&quot;: &quot;1-0&quot;,
+          &quot;probability&quot;: 0.096,
+          &quot;ev_signal&quot;: &quot;保护&quot;,
+          &quot;label&quot;: &quot;澳大利亚冷门&quot;
+        },
+        {
+          &quot;score&quot;: &quot;1-2&quot;,
+          &quot;probability&quot;: 0.082,
+          &quot;ev_signal&quot;: &quot;+0.01&quot;,
+          &quot;label&quot;: &quot;埃及后段放大&quot;
+        },
+        {
+          &quot;score&quot;: &quot;2-1&quot;,
+          &quot;probability&quot;: 0.064,
+          &quot;ev_signal&quot;: &quot;-0.01&quot;,
+          &quot;label&quot;: &quot;主队开放胜&quot;
+        }
+      ],
+      &quot;ev_table&quot;: [
+        {
+          &quot;market&quot;: &quot;埃及90分钟小胜，防平&quot;,
+          &quot;model_probability&quot;: 0.44,
+          &quot;fair_odds&quot;: 2.27,
+          &quot;ev_signal&quot;: &quot;+0.03&quot;,
+          &quot;note&quot;: &quot;与主线方向一致。&quot;
+        },
+        {
+          &quot;market&quot;: &quot;总进球1&quot;,
+          &quot;model_probability&quot;: 0.32,
+          &quot;fair_odds&quot;: 3.13,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;note&quot;: &quot;跟随主比分和网站总进球赔率。&quot;
+        },
+        {
+          &quot;market&quot;: &quot;半场方向&quot;,
+          &quot;model_probability&quot;: 0.52,
+          &quot;fair_odds&quot;: 1.92,
+          &quot;ev_signal&quot;: &quot;保护&quot;,
+          &quot;note&quot;: &quot;半场平&quot;
+        },
+        {
+          &quot;market&quot;: &quot;冷门保护&quot;,
+          &quot;model_probability&quot;: 0.22,
+          &quot;fair_odds&quot;: 4.55,
+          &quot;ev_signal&quot;: &quot;冷门&quot;,
+          &quot;note&quot;: &quot;1-0&quot;
+        }
+      ],
+      &quot;triggers&quot;: [
+        &quot;领先方0-30分钟进球且持续压制：3球以上比分升权。&quot;,
+        &quot;半场0-0：低比分和平局保护升权。&quot;,
+        &quot;下风方先手进球：主比分回收，冷门比分升权。&quot;
+      ],
+      &quot;odds_snapshot&quot;: {
+        &quot;id&quot;: &quot;086&quot;,
+        &quot;matchNumStr&quot;: &quot;周五086&quot;,
+        &quot;matchId&quot;: &quot;2040347&quot;,
+        &quot;businessDate&quot;: &quot;2026-07-03&quot;,
+        &quot;league&quot;: &quot;世界杯&quot;,
+        &quot;leagueCode&quot;: &quot;WCC&quot;,
+        &quot;leagueId&quot;: 72,
+        &quot;groupName&quot;: &quot;&quot;,
+        &quot;kickoff&quot;: &quot;2026-07-04 02:00:00&quot;,
+        &quot;matchDate&quot;: &quot;2026-07-04&quot;,
+        &quot;matchTime&quot;: &quot;02:00:00&quot;,
+        &quot;matchStatus&quot;: &quot;Selling&quot;,
+        &quot;sellStatus&quot;: 1,
+        &quot;taxDateNo&quot;: &quot;2607031&quot;,
+        &quot;isHot&quot;: false,
+        &quot;home&quot;: &quot;澳大利亚&quot;,
+        &quot;homeCode&quot;: &quot;AUA&quot;,
+        &quot;homeAbbr&quot;: &quot;澳大利亚&quot;,
+        &quot;homeRank&quot;: &quot;[世界杯2]&quot;,
+        &quot;away&quot;: &quot;埃及&quot;,
+        &quot;awayCode&quot;: &quot;EGY&quot;,
+        &quot;awayAbbr&quot;: &quot;埃及&quot;,
+        &quot;awayRank&quot;: &quot;[世界杯2]&quot;,
+        &quot;venue&quot;: &quot;比赛将在美国-得克萨斯州阿灵顿举行&quot;,
+        &quot;prediction&quot;: {
+          &quot;totalGoals&quot;: &quot;2&quot;,
+          &quot;scores&quot;: [
+            &quot;0:1&quot;,
+            &quot;1:1&quot;
+          ],
+          &quot;upset&quot;: &quot;1:0&quot;,
+          &quot;confidence&quot;: &quot;medium&quot;,
+          &quot;candidates&quot;: [
+            &quot;2&quot;,
+            &quot;1&quot;,
+            &quot;3&quot;
+          ]
+        },
+        &quot;result&quot;: null,
+        &quot;review&quot;: &quot;Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.&quot;,
+        &quot;postReview&quot;: null,
+        &quot;odds&quot;: {
+          &quot;had&quot;: {
+            &quot;home&quot;: &quot;3.15&quot;,
+            &quot;draw&quot;: &quot;2.65&quot;,
+            &quot;away&quot;: &quot;2.30&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:36:23&quot;
+          },
+          &quot;ttg&quot;: {
+            &quot;s0&quot;: &quot;6.00&quot;,
+            &quot;s1&quot;: &quot;3.35&quot;,
+            &quot;s2&quot;: &quot;2.90&quot;,
+            &quot;s3&quot;: &quot;4.20&quot;,
+            &quot;s4&quot;: &quot;8.50&quot;,
+            &quot;s5&quot;: &quot;22.00&quot;,
+            &quot;s6&quot;: &quot;38.00&quot;,
+            &quot;s7&quot;: &quot;60.00&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-01 09:20:09&quot;
+          },
+          &quot;hhad&quot;: {
+            &quot;home&quot;: &quot;1.48&quot;,
+            &quot;draw&quot;: &quot;3.55&quot;,
+            &quot;away&quot;: &quot;5.80&quot;,
+            &quot;handicap&quot;: null,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:36:32&quot;
+          },
+          &quot;crs&quot;: {
+            &quot;0-0&quot;: &quot;6.00&quot;,
+            &quot;0-1&quot;: &quot;5.75&quot;,
+            &quot;0-2&quot;: &quot;10.00&quot;,
+            &quot;0-3&quot;: &quot;25.00&quot;,
+            &quot;0-4&quot;: &quot;75.00&quot;,
+            &quot;0-5&quot;: &quot;350.0&quot;,
+            &quot;1-0&quot;: &quot;7.30&quot;,
+            &quot;1-1&quot;: &quot;4.75&quot;,
+            &quot;1-2&quot;: &quot;7.50&quot;,
+            &quot;1-3&quot;: &quot;23.00&quot;,
+            &quot;1-4&quot;: &quot;90.00&quot;,
+            &quot;1-5&quot;: &quot;350.0&quot;,
+            &quot;2-0&quot;: &quot;15.00&quot;,
+            &quot;2-1&quot;: &quot;9.50&quot;,
+            &quot;2-2&quot;: &quot;16.00&quot;,
+            &quot;2-3&quot;: &quot;45.00&quot;,
+            &quot;2-4&quot;: &quot;175.0&quot;,
+            &quot;2-5&quot;: &quot;500.0&quot;,
+            &quot;3-0&quot;: &quot;45.00&quot;,
+            &quot;3-1&quot;: &quot;33.00&quot;,
+            &quot;3-2&quot;: &quot;55.00&quot;,
+            &quot;3-3&quot;: &quot;100.0&quot;,
+            &quot;4-0&quot;: &quot;175.0&quot;,
+            &quot;4-1&quot;: &quot;150.0&quot;,
+            &quot;4-2&quot;: &quot;300.0&quot;,
+            &quot;5-0&quot;: &quot;600.0&quot;,
+            &quot;5-1&quot;: &quot;500.0&quot;,
+            &quot;5-2&quot;: &quot;700.0&quot;,
+            &quot;homeOther&quot;: &quot;350.0&quot;,
+            &quot;drawOther&quot;: &quot;600.0&quot;,
+            &quot;awayOther&quot;: &quot;250.0&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 10:24:56&quot;
+          },
+          &quot;hafu&quot;: {
+            &quot;aa&quot;: &quot;4.15&quot;,
+            &quot;ad&quot;: &quot;13.00&quot;,
+            &quot;ah&quot;: &quot;25.00&quot;,
+            &quot;da&quot;: &quot;5.20&quot;,
+            &quot;dd&quot;: &quot;3.90&quot;,
+            &quot;dh&quot;: &quot;6.50&quot;,
+            &quot;ha&quot;: &quot;24.00&quot;,
+            &quot;hd&quot;: &quot;13.00&quot;,
+            &quot;hh&quot;: &quot;5.70&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 10:24:42&quot;
+          }
+        }
+      }
+    },
+    {
+      &quot;game_id&quot;: &quot;53452569&quot;,
+      &quot;match_no&quot;: &quot;87&quot;,
+      &quot;round&quot;: &quot;32强赛&quot;,
+      &quot;home_team&quot;: &quot;阿根廷&quot;,
+      &quot;away_team&quot;: &quot;佛得角&quot;,
+      &quot;kickoff_bjt&quot;: &quot;2026-07-04 06:00:00 +08:00&quot;,
+      &quot;model_version&quot;: &quot;v6-knockout-favorite-tier-clean-sheet&quot;,
+      &quot;direction_text&quot;: &quot;阿根廷90分钟胜，走大胜主线&quot;,
+      &quot;half_time&quot;: &quot;阿根廷 1-0 佛得角&quot;,
+      &quot;half_time_pick&quot;: &quot;home&quot;,
+      &quot;main_score&quot;: &quot;3-0&quot;,
+      &quot;backup_scores&quot;: [
+        &quot;2-0&quot;,
+        &quot;3-1&quot;
+      ],
+      &quot;upset_score&quot;: &quot;1-1&quot;,
+      &quot;goals_range&quot;: &quot;2-4球&quot;,
+      &quot;advance_pick&quot;: &quot;阿根廷&quot;,
+      &quot;advance_probability_text&quot;: &quot;阿根廷 82% / 佛得角 18%&quot;,
+      &quot;next_opponent_note&quot;: &quot;胜者下轮对阵 澳大利亚 / 埃及 胜者&quot;,
+      &quot;core_view&quot;: &quot;阿根廷属于绝对强队层，比分市场2-0、3-0都处低位，总进球3球最低。昨日西班牙3-0证明这类盘不能再降档，主线直接看3-0。&quot;,
+      &quot;team_reading&quot;: [
+        &quot;阿根廷 vs 佛得角 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。&quot;,
+        &quot;昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。&quot;,
+        &quot;临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。&quot;
+      ],
+      &quot;model_reasoning&quot;: [
+        &quot;绝对强队不机械保守；早球后3-0/4-0升权，半场0-0才回落2-0。&quot;,
+        &quot;瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。&quot;,
+        &quot;三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。&quot;
+      ],
+      &quot;mystic_summary&quot;: [
+        &quot;仅作娱乐表达，不进入模型权重。&quot;,
+        &quot;今日分化明显：阿根廷强势，哥伦比亚稳胜，澳大利亚-埃及低比分缠斗。&quot;,
+        &quot;玄学赛果：3-0，防1-1。&quot;
+      ],
+      &quot;score_matrix_top&quot;: [
+        {
+          &quot;score&quot;: &quot;3-0&quot;,
+          &quot;probability&quot;: 0.176,
+          &quot;ev_signal&quot;: &quot;+0.06&quot;,
+          &quot;label&quot;: &quot;主比分&quot;
+        },
+        {
+          &quot;score&quot;: &quot;2-0&quot;,
+          &quot;probability&quot;: 0.162,
+          &quot;ev_signal&quot;: &quot;+0.05&quot;,
+          &quot;label&quot;: &quot;稳胜零封&quot;
+        },
+        {
+          &quot;score&quot;: &quot;3-1&quot;,
+          &quot;probability&quot;: 0.108,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;label&quot;: &quot;大球备选&quot;
+        },
+        {
+          &quot;score&quot;: &quot;4-0&quot;,
+          &quot;probability&quot;: 0.084,
+          &quot;ev_signal&quot;: &quot;+0.01&quot;,
+          &quot;label&quot;: &quot;早球放大&quot;
+        },
+        {
+          &quot;score&quot;: &quot;2-1&quot;,
+          &quot;probability&quot;: 0.072,
+          &quot;ev_signal&quot;: &quot;保护&quot;,
+          &quot;label&quot;: &quot;下风方进球&quot;
+        },
+        {
+          &quot;score&quot;: &quot;1-1&quot;,
+          &quot;probability&quot;: 0.044,
+          &quot;ev_signal&quot;: &quot;冷门&quot;,
+          &quot;label&quot;: &quot;爆冷拖住&quot;
+        }
+      ],
+      &quot;ev_table&quot;: [
+        {
+          &quot;market&quot;: &quot;阿根廷90分钟胜，走大胜主线&quot;,
+          &quot;model_probability&quot;: 0.62,
+          &quot;fair_odds&quot;: 1.61,
+          &quot;ev_signal&quot;: &quot;+0.03&quot;,
+          &quot;note&quot;: &quot;与主线方向一致。&quot;
+        },
+        {
+          &quot;market&quot;: &quot;总进球3&quot;,
+          &quot;model_probability&quot;: 0.32,
+          &quot;fair_odds&quot;: 3.13,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;note&quot;: &quot;跟随主比分和网站总进球赔率。&quot;
+        },
+        {
+          &quot;market&quot;: &quot;半场方向&quot;,
+          &quot;model_probability&quot;: 0.49,
+          &quot;fair_odds&quot;: 2.04,
+          &quot;ev_signal&quot;: &quot;保护&quot;,
+          &quot;note&quot;: &quot;半场主胜&quot;
+        },
+        {
+          &quot;market&quot;: &quot;冷门保护&quot;,
+          &quot;model_probability&quot;: 0.22,
+          &quot;fair_odds&quot;: 4.55,
+          &quot;ev_signal&quot;: &quot;冷门&quot;,
+          &quot;note&quot;: &quot;1-1&quot;
+        }
+      ],
+      &quot;triggers&quot;: [
+        &quot;领先方0-30分钟进球且持续压制：3球以上比分升权。&quot;,
+        &quot;半场0-0：低比分和平局保护升权。&quot;,
+        &quot;下风方先手进球：主比分回收，冷门比分升权。&quot;
+      ],
+      &quot;odds_snapshot&quot;: {
+        &quot;id&quot;: &quot;087&quot;,
+        &quot;matchNumStr&quot;: &quot;周五087&quot;,
+        &quot;matchId&quot;: &quot;2040348&quot;,
+        &quot;businessDate&quot;: &quot;2026-07-03&quot;,
+        &quot;league&quot;: &quot;世界杯&quot;,
+        &quot;leagueCode&quot;: &quot;WCC&quot;,
+        &quot;leagueId&quot;: 72,
+        &quot;groupName&quot;: &quot;&quot;,
+        &quot;kickoff&quot;: &quot;2026-07-04 06:00:00&quot;,
+        &quot;matchDate&quot;: &quot;2026-07-04&quot;,
+        &quot;matchTime&quot;: &quot;06:00:00&quot;,
+        &quot;matchStatus&quot;: &quot;Selling&quot;,
+        &quot;sellStatus&quot;: 1,
+        &quot;taxDateNo&quot;: &quot;2607031&quot;,
+        &quot;isHot&quot;: true,
+        &quot;home&quot;: &quot;阿根廷&quot;,
+        &quot;homeCode&quot;: &quot;ARG&quot;,
+        &quot;homeAbbr&quot;: &quot;阿根廷&quot;,
+        &quot;homeRank&quot;: &quot;[世界杯1]&quot;,
+        &quot;away&quot;: &quot;佛得角&quot;,
+        &quot;awayCode&quot;: &quot;CVI&quot;,
+        &quot;awayAbbr&quot;: &quot;佛得角&quot;,
+        &quot;awayRank&quot;: &quot;[世界杯2]&quot;,
+        &quot;venue&quot;: &quot;比赛将在美国-佛罗里达州迈阿密加登斯举行&quot;,
+        &quot;prediction&quot;: {
+          &quot;totalGoals&quot;: &quot;3&quot;,
+          &quot;scores&quot;: [
+            &quot;2:1&quot;,
+            &quot;2:0&quot;
+          ],
+          &quot;upset&quot;: &quot;1:2&quot;,
+          &quot;confidence&quot;: &quot;high&quot;,
+          &quot;candidates&quot;: [
+            &quot;3&quot;,
+            &quot;2&quot;,
+            &quot;4&quot;
+          ]
+        },
+        &quot;result&quot;: null,
+        &quot;review&quot;: &quot;Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.&quot;,
+        &quot;postReview&quot;: null,
+        &quot;odds&quot;: {
+          &quot;had&quot;: {
+            &quot;home&quot;: null,
+            &quot;draw&quot;: null,
+            &quot;away&quot;: null,
+            &quot;updatedAt&quot;: &quot; &quot;
+          },
+          &quot;ttg&quot;: {
+            &quot;s0&quot;: &quot;18.00&quot;,
+            &quot;s1&quot;: &quot;6.30&quot;,
+            &quot;s2&quot;: &quot;4.00&quot;,
+            &quot;s3&quot;: &quot;3.30&quot;,
+            &quot;s4&quot;: &quot;4.40&quot;,
+            &quot;s5&quot;: &quot;7.50&quot;,
+            &quot;s6&quot;: &quot;14.00&quot;,
+            &quot;s7&quot;: &quot;18.00&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:45:01&quot;
+          },
+          &quot;hhad&quot;: {
+            &quot;home&quot;: &quot;2.13&quot;,
+            &quot;draw&quot;: &quot;3.62&quot;,
+            &quot;away&quot;: &quot;2.62&quot;,
+            &quot;handicap&quot;: null,
+            &quot;updatedAt&quot;: &quot;2026-07-03 12:33:10&quot;
+          },
+          &quot;crs&quot;: {
+            &quot;0-0&quot;: &quot;18.00&quot;,
+            &quot;0-1&quot;: &quot;36.00&quot;,
+            &quot;0-2&quot;: &quot;150.0&quot;,
+            &quot;0-3&quot;: &quot;500.0&quot;,
+            &quot;0-4&quot;: &quot;1000&quot;,
+            &quot;0-5&quot;: &quot;1000&quot;,
+            &quot;1-0&quot;: &quot;6.70&quot;,
+            &quot;1-1&quot;: &quot;13.00&quot;,
+            &quot;1-2&quot;: &quot;60.00&quot;,
+            &quot;1-3&quot;: &quot;300.0&quot;,
+            &quot;1-4&quot;: &quot;800.0&quot;,
+            &quot;1-5&quot;: &quot;1000&quot;,
+            &quot;2-0&quot;: &quot;4.50&quot;,
+            &quot;2-1&quot;: &quot;10.00&quot;,
+            &quot;2-2&quot;: &quot;40.00&quot;,
+            &quot;2-3&quot;: &quot;200.0&quot;,
+            &quot;2-4&quot;: &quot;800.0&quot;,
+            &quot;2-5&quot;: &quot;1000&quot;,
+            &quot;3-0&quot;: &quot;4.80&quot;,
+            &quot;3-1&quot;: &quot;11.00&quot;,
+            &quot;3-2&quot;: &quot;60.00&quot;,
+            &quot;3-3&quot;: &quot;150.0&quot;,
+            &quot;4-0&quot;: &quot;8.00&quot;,
+            &quot;4-1&quot;: &quot;19.00&quot;,
+            &quot;4-2&quot;: &quot;75.00&quot;,
+            &quot;5-0&quot;: &quot;14.00&quot;,
+            &quot;5-1&quot;: &quot;32.00&quot;,
+            &quot;5-2&quot;: &quot;150.0&quot;,
+            &quot;homeOther&quot;: &quot;11.50&quot;,
+            &quot;drawOther&quot;: &quot;600.0&quot;,
+            &quot;awayOther&quot;: &quot;800.0&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:35:33&quot;
+          },
+          &quot;hafu&quot;: {
+            &quot;aa&quot;: &quot;45.00&quot;,
+            &quot;ad&quot;: &quot;30.00&quot;,
+            &quot;ah&quot;: &quot;30.00&quot;,
+            &quot;da&quot;: &quot;48.00&quot;,
+            &quot;dd&quot;: &quot;12.00&quot;,
+            &quot;dh&quot;: &quot;3.84&quot;,
+            &quot;ha&quot;: &quot;100.0&quot;,
+            &quot;hd&quot;: &quot;30.00&quot;,
+            &quot;hh&quot;: &quot;1.32&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:07:01&quot;
+          }
+        }
+      }
+    },
+    {
+      &quot;game_id&quot;: &quot;53452507&quot;,
+      &quot;match_no&quot;: &quot;88&quot;,
+      &quot;round&quot;: &quot;32强赛&quot;,
+      &quot;home_team&quot;: &quot;哥伦比亚&quot;,
+      &quot;away_team&quot;: &quot;加纳&quot;,
+      &quot;kickoff_bjt&quot;: &quot;2026-07-04 09:30:00 +08:00&quot;,
+      &quot;model_version&quot;: &quot;v6-knockout-favorite-tier-clean-sheet&quot;,
+      &quot;direction_text&quot;: &quot;哥伦比亚90分钟胜，防2-1&quot;,
+      &quot;half_time&quot;: &quot;哥伦比亚 1-0 加纳&quot;,
+      &quot;half_time_pick&quot;: &quot;home&quot;,
+      &quot;main_score&quot;: &quot;2-0&quot;,
+      &quot;backup_scores&quot;: [
+        &quot;2-1&quot;,
+        &quot;3-0&quot;
+      ],
+      &quot;upset_score&quot;: &quot;1-1&quot;,
+      &quot;goals_range&quot;: &quot;2-3球&quot;,
+      &quot;advance_pick&quot;: &quot;哥伦比亚&quot;,
+      &quot;advance_probability_text&quot;: &quot;哥伦比亚 70% / 加纳 30%&quot;,
+      &quot;next_opponent_note&quot;: &quot;胜者下轮对阵 瑞士 / 阿尔及利亚 胜者&quot;,
+      &quot;core_view&quot;: &quot;哥伦比亚是强队但未到阿根廷级别，主胜1.29且总进球2球最低。瑞士2-0复盘后，这种强队低风险零封必须进核心池，主比分给2-0。&quot;,
+      &quot;team_reading&quot;: [
+        &quot;哥伦比亚 vs 加纳 的核心不是只看名气，而是把胜平负赔率、总进球最低档和比分市场一起读。&quot;,
+        &quot;昨日西班牙3-0和瑞士2-0要求强队分层：绝对强队看大胜，中等强队补2-0零封线。&quot;,
+        &quot;临场若早球出现，先看领先方是否继续压制，再决定上修大球还是回收控节奏。&quot;
+      ],
+      &quot;model_reasoning&quot;: [
+        &quot;强队低风险零封路径上调；若早球出现，3-0和3-1再升权。&quot;,
+        &quot;瑞士2-0复盘后，2球最低的强队局必须检查1-0/2-0是否同时入池。&quot;,
+        &quot;三串一只使用世界杯三场；第89场仍是待定来源队伍，不纳入今日三串一。&quot;
+      ],
+      &quot;mystic_summary&quot;: [
+        &quot;仅作娱乐表达，不进入模型权重。&quot;,
+        &quot;今日分化明显：阿根廷强势，哥伦比亚稳胜，澳大利亚-埃及低比分缠斗。&quot;,
+        &quot;玄学赛果：2-0，防1-1。&quot;
+      ],
+      &quot;score_matrix_top&quot;: [
+        {
+          &quot;score&quot;: &quot;2-0&quot;,
+          &quot;probability&quot;: 0.168,
+          &quot;ev_signal&quot;: &quot;+0.05&quot;,
+          &quot;label&quot;: &quot;主比分&quot;
+        },
+        {
+          &quot;score&quot;: &quot;2-1&quot;,
+          &quot;probability&quot;: 0.142,
+          &quot;ev_signal&quot;: &quot;+0.04&quot;,
+          &quot;label&quot;: &quot;防加纳进球&quot;
+        },
+        {
+          &quot;score&quot;: &quot;1-0&quot;,
+          &quot;probability&quot;: 0.118,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;label&quot;: &quot;慢热小胜&quot;
+        },
+        {
+          &quot;score&quot;: &quot;3-0&quot;,
+          &quot;probability&quot;: 0.106,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;label&quot;: &quot;早球上修&quot;
+        },
+        {
+          &quot;score&quot;: &quot;1-1&quot;,
+          &quot;probability&quot;: 0.082,
+          &quot;ev_signal&quot;: &quot;保护&quot;,
+          &quot;label&quot;: &quot;加纳拖住&quot;
+        },
+        {
+          &quot;score&quot;: &quot;3-1&quot;,
+          &quot;probability&quot;: 0.068,
+          &quot;ev_signal&quot;: &quot;-0.01&quot;,
+          &quot;label&quot;: &quot;开放尾部&quot;
+        }
+      ],
+      &quot;ev_table&quot;: [
+        {
+          &quot;market&quot;: &quot;哥伦比亚90分钟胜，防2-1&quot;,
+          &quot;model_probability&quot;: 0.62,
+          &quot;fair_odds&quot;: 1.61,
+          &quot;ev_signal&quot;: &quot;+0.03&quot;,
+          &quot;note&quot;: &quot;与主线方向一致。&quot;
+        },
+        {
+          &quot;market&quot;: &quot;总进球2&quot;,
+          &quot;model_probability&quot;: 0.32,
+          &quot;fair_odds&quot;: 3.13,
+          &quot;ev_signal&quot;: &quot;+0.02&quot;,
+          &quot;note&quot;: &quot;跟随主比分和网站总进球赔率。&quot;
+        },
+        {
+          &quot;market&quot;: &quot;半场方向&quot;,
+          &quot;model_probability&quot;: 0.49,
+          &quot;fair_odds&quot;: 2.04,
+          &quot;ev_signal&quot;: &quot;保护&quot;,
+          &quot;note&quot;: &quot;半场主胜&quot;
+        },
+        {
+          &quot;market&quot;: &quot;冷门保护&quot;,
+          &quot;model_probability&quot;: 0.22,
+          &quot;fair_odds&quot;: 4.55,
+          &quot;ev_signal&quot;: &quot;冷门&quot;,
+          &quot;note&quot;: &quot;1-1&quot;
+        }
+      ],
+      &quot;triggers&quot;: [
+        &quot;领先方0-30分钟进球且持续压制：3球以上比分升权。&quot;,
+        &quot;半场0-0：低比分和平局保护升权。&quot;,
+        &quot;下风方先手进球：主比分回收，冷门比分升权。&quot;
+      ],
+      &quot;odds_snapshot&quot;: {
+        &quot;id&quot;: &quot;088&quot;,
+        &quot;matchNumStr&quot;: &quot;周五088&quot;,
+        &quot;matchId&quot;: &quot;2040357&quot;,
+        &quot;businessDate&quot;: &quot;2026-07-03&quot;,
+        &quot;league&quot;: &quot;世界杯&quot;,
+        &quot;leagueCode&quot;: &quot;WCC&quot;,
+        &quot;leagueId&quot;: 72,
+        &quot;groupName&quot;: &quot;&quot;,
+        &quot;kickoff&quot;: &quot;2026-07-04 09:30:00&quot;,
+        &quot;matchDate&quot;: &quot;2026-07-04&quot;,
+        &quot;matchTime&quot;: &quot;09:30:00&quot;,
+        &quot;matchStatus&quot;: &quot;Selling&quot;,
+        &quot;sellStatus&quot;: 1,
+        &quot;taxDateNo&quot;: &quot;2607031&quot;,
+        &quot;isHot&quot;: true,
+        &quot;home&quot;: &quot;哥伦比亚&quot;,
+        &quot;homeCode&quot;: &quot;COM&quot;,
+        &quot;homeAbbr&quot;: &quot;哥伦比亚&quot;,
+        &quot;homeRank&quot;: &quot;[世界杯1]&quot;,
+        &quot;away&quot;: &quot;加纳&quot;,
+        &quot;awayCode&quot;: &quot;GHA&quot;,
+        &quot;awayAbbr&quot;: &quot;加纳&quot;,
+        &quot;awayRank&quot;: &quot;[世界杯3]&quot;,
+        &quot;venue&quot;: &quot;比赛将在美国-密苏里州堪萨斯城举行&quot;,
+        &quot;prediction&quot;: {
+          &quot;totalGoals&quot;: &quot;2&quot;,
+          &quot;scores&quot;: [
+            &quot;2:0&quot;,
+            &quot;2:1&quot;
+          ],
+          &quot;upset&quot;: &quot;1:1&quot;,
+          &quot;confidence&quot;: &quot;medium&quot;,
+          &quot;candidates&quot;: [
+            &quot;2&quot;,
+            &quot;3&quot;,
+            &quot;1&quot;
+          ]
+        },
+        &quot;result&quot;: null,
+        &quot;review&quot;: &quot;Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.&quot;,
+        &quot;postReview&quot;: null,
+        &quot;odds&quot;: {
+          &quot;had&quot;: {
+            &quot;home&quot;: &quot;1.29&quot;,
+            &quot;draw&quot;: &quot;4.20&quot;,
+            &quot;away&quot;: &quot;8.60&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:48:34&quot;
+          },
+          &quot;ttg&quot;: {
+            &quot;s0&quot;: &quot;9.50&quot;,
+            &quot;s1&quot;: &quot;4.05&quot;,
+            &quot;s2&quot;: &quot;3.15&quot;,
+            &quot;s3&quot;: &quot;3.60&quot;,
+            &quot;s4&quot;: &quot;6.20&quot;,
+            &quot;s5&quot;: &quot;13.00&quot;,
+            &quot;s6&quot;: &quot;23.00&quot;,
+            &quot;s7&quot;: &quot;40.00&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-01 09:20:09&quot;
+          },
+          &quot;hhad&quot;: {
+            &quot;home&quot;: &quot;2.20&quot;,
+            &quot;draw&quot;: &quot;2.95&quot;,
+            &quot;away&quot;: &quot;2.98&quot;,
+            &quot;handicap&quot;: null,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:48:39&quot;
+          },
+          &quot;crs&quot;: {
+            &quot;0-0&quot;: &quot;9.50&quot;,
+            &quot;0-1&quot;: &quot;17.50&quot;,
+            &quot;0-2&quot;: &quot;60.00&quot;,
+            &quot;0-3&quot;: &quot;225.0&quot;,
+            &quot;0-4&quot;: &quot;700.0&quot;,
+            &quot;0-5&quot;: &quot;1000&quot;,
+            &quot;1-0&quot;: &quot;5.25&quot;,
+            &quot;1-1&quot;: &quot;7.55&quot;,
+            &quot;1-2&quot;: &quot;25.00&quot;,
+            &quot;1-3&quot;: &quot;125.0&quot;,
+            &quot;1-4&quot;: &quot;500.0&quot;,
+            &quot;1-5&quot;: &quot;900.0&quot;,
+            &quot;2-0&quot;: &quot;5.00&quot;,
+            &quot;2-1&quot;: &quot;5.25&quot;,
+            &quot;2-2&quot;: &quot;24.00&quot;,
+            &quot;2-3&quot;: &quot;120.0&quot;,
+            &quot;2-4&quot;: &quot;600.0&quot;,
+            &quot;2-5&quot;: &quot;900.0&quot;,
+            &quot;3-0&quot;: &quot;7.50&quot;,
+            &quot;3-1&quot;: &quot;12.50&quot;,
+            &quot;3-2&quot;: &quot;40.00&quot;,
+            &quot;3-3&quot;: &quot;150.0&quot;,
+            &quot;4-0&quot;: &quot;17.00&quot;,
+            &quot;4-1&quot;: &quot;30.00&quot;,
+            &quot;4-2&quot;: &quot;80.00&quot;,
+            &quot;5-0&quot;: &quot;50.00&quot;,
+            &quot;5-1&quot;: &quot;75.00&quot;,
+            &quot;5-2&quot;: &quot;200.0&quot;,
+            &quot;homeOther&quot;: &quot;65.00&quot;,
+            &quot;drawOther&quot;: &quot;600.0&quot;,
+            &quot;awayOther&quot;: &quot;700.0&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 12:18:28&quot;
+          },
+          &quot;hafu&quot;: {
+            &quot;aa&quot;: &quot;16.00&quot;,
+            &quot;ad&quot;: &quot;20.00&quot;,
+            &quot;ah&quot;: &quot;28.00&quot;,
+            &quot;da&quot;: &quot;18.00&quot;,
+            &quot;dd&quot;: &quot;5.80&quot;,
+            &quot;dh&quot;: &quot;3.50&quot;,
+            &quot;ha&quot;: &quot;60.00&quot;,
+            &quot;hd&quot;: &quot;20.00&quot;,
+            &quot;hh&quot;: &quot;1.90&quot;,
+            &quot;updatedAt&quot;: &quot;2026-07-03 11:49:24&quot;
+          }
+        }
+      }
+    }
+  ]
+}</script></main></body></html>

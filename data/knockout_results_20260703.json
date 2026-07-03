@@ -1,0 +1,53 @@
+{
+  "date": "20260703",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452551",
+      "match_no": "83",
+      "home_team": "西班牙",
+      "away_team": "奥地利",
+      "score": "3-0",
+      "home_goals": 3,
+      "away_goals": 0,
+      "prediction_main_score": "2-1",
+      "prediction_backup_scores": [
+        "2-0",
+        "3-1",
+        "3-0"
+      ],
+      "review": "方向命中但主比分保守。绝对强队主胜低至1.19-1.25区间时，若总进球3球赔率最低且比分市场3-0/3-1低位，赛前就不能把大胜只放进尾部；早球触发后必须立刻上修3-0/4-0。"
+    },
+    {
+      "game_id": "53452549",
+      "match_no": "84",
+      "home_team": "葡萄牙",
+      "away_team": "克罗地亚",
+      "score": "2-1",
+      "home_goals": 2,
+      "away_goals": 1,
+      "prediction_main_score": "2-1",
+      "prediction_backup_scores": [
+        "1-1",
+        "2-2"
+      ],
+      "review": "命中主比分。中等强队面对老练对手时，2-1窄胜优先于穿盘大胜，半场平与90分钟防平仍应保留。"
+    },
+    {
+      "game_id": "53452505",
+      "match_no": "85",
+      "home_team": "瑞士",
+      "away_team": "阿尔及利亚",
+      "score": "2-0",
+      "home_goals": 2,
+      "away_goals": 0,
+      "prediction_main_score": "1-1",
+      "prediction_backup_scores": [
+        "1-0",
+        "2-1"
+      ],
+      "review": "方向偏保守且2-0漏出比分池。原因是模型过度读取1-1最低比分赔率和90分钟平局保护，忽略瑞士让球盘抗衡、对手终结弱、低总进球下2-0与1-0同属强队低风险零封路径；后续中等优势队必须把2-0纳入核心池。"
+    }
+  ]
+}
