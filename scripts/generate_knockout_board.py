@@ -1881,8 +1881,8 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
             }
         )
 
-    score_html = render_parlay_table("比分三串一", score_rows, "按每场正EV最高的两个比分选择，赔率来自体彩比分市场；缺少赔率快照时显示 -。")
-    goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场两个正EV比分折算总进球数，赔率来自体彩总进球市场；缺少赔率快照时显示 -。")
+    score_html = render_parlay_table("比分三串一", score_rows, "按每场保守EV正信号的两个比分选择，赔率来自体彩比分市场；缺少赔率快照时显示 -。")
+    goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场两个保守EV正信号比分折算总进球数，赔率来自体彩总进球市场；缺少赔率快照时显示 -。")
     half_html = render_parlay_table("半全场胜平负三串一", half_rows, "按每场半全场组合选择，赔率来自体彩半全场 hafu 赔率池。")
     return f"""
   <section class="section" id="parlay">
