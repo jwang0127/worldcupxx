@@ -27,7 +27,7 @@ FIRST_GAME_ID = "53452545"
 PREDICTION_GAME_IDS = ["53452545", "53452557", "53452541", "53452547", "53452561", "53452543", "53452563"]
 GLOBAL_SCHEDULE: list[dict[str, Any]] = []
 PARLAY_POLICY = {
-    "enabled_match_count": 3,
+    "min_enabled_match_count": 2,
     "single_match_mode": "regular_prediction_only",
     "required_markets": ["crs", "ttg", "hafu"],
     "odds_source": "Sporttery getMatchCalculatorV1 website API via scripts/fetch_sporttery.ps1",
@@ -1045,6 +1045,96 @@ def render_upcoming_rows(matches: list[dict[str, Any]]) -> str:
     )
 
 
+def knockout_winner_lookup() -> dict[str, str]:
+    winners: dict[str, str] = {}
+    for path in sorted(DATA_DIR.glob("knockout_results_*.json")):
+        try:
+            payload = read_json(path)
+        except Exception:
+            continue
+        for item in payload.get("matches", []):
+            game_id = str(item.get("game_id", "")).strip()
+            if not game_id:
+                continue
+            winner = str(item.get("advance_team") or item.get("winner_team") or item.get("penalty_winner") or "").strip()
+            home_goals = item.get("home_goals")
+            away_goals = item.get("away_goals")
+            if not winner and home_goals is not None and away_goals is not None:
+                if int(home_goals) > int(away_goals):
+                    winner = str(item.get("home_team", "")).strip()
+                elif int(home_goals) < int(away_goals):
+                    winner = str(item.get("away_team", "")).strip()
+            if winner:
+                winners[game_id] = winner
+    return winners
+
+
+def resolved_team_name(team_name: str, winners: dict[str, str]) -> str:
+    text = str(team_name)
+    matched = re.search(r"(\d{8})", text)
+    if matched:
+        return winners.get(matched.group(1), text)
+    return text
+
+
+def future_round16_matches(schedule: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    winners = knockout_winner_lookup()
+    rows: list[dict[str, Any]] = []
+    for item in schedule:
+        try:
+            match_no = int(str(item.get("match_no", "0")))
+        except ValueError:
+            continue
+        if 89 <= match_no <= 96:
+            copied = dict(item)
+            copied["home_team_resolved"] = resolved_team_name(str(item.get("home_team", "")), winners)
+            copied["away_team_resolved"] = resolved_team_name(str(item.get("away_team", "")), winners)
+            rows.append(copied)
+    return sorted(rows, key=lambda item: int(str(item["match_no"])))
+
+
+def render_round16_schedule_rows(matches: list[dict[str, Any]]) -> str:
+    if not matches:
+        return '<tr><td colspan="5">暂无未来16强赛程。</td></tr>'
+    return "".join(
+        "<tr>"
+        f"<td>{esc(item['beijing_date'][5:])} {esc(item['beijing_time'])}</td>"
+        f"<td>{esc(item['match_no'])}</td>"
+        f"<td>{esc(item['home_team_resolved'])} vs {esc(item['away_team_resolved'])}</td>"
+        f"<td>{esc(next_opponent_source(GLOBAL_SCHEDULE, item['winner_advances_to'], item['game_id']))}</td>"
+        f"<td>{esc(item.get('note', ''))}</td>"
+        "</tr>"
+        for item in matches
+    )
+
+
+def round16_market_forecasts() -> list[dict[str, Any]]:
+    path = DATA_DIR / "round16_hhad_predictions_20260704.json"
+    if not path.exists():
+        return []
+    try:
+        return read_json(path).get("matches", [])
+    except Exception:
+        return []
+
+
+def render_round16_market_rows(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return '<tr><td colspan="7">暂无16强胜平负/让球胜平负预测。</td></tr>'
+    return "".join(
+        "<tr>"
+        f"<td>{esc(item.get('match_no', ''))}</td>"
+        f"<td>{esc(item.get('kickoff_bjt', '').replace('2026-', '').replace(':00 +08:00', ''))}</td>"
+        f"<td>{esc(item.get('home_team', ''))} vs {esc(item.get('away_team', ''))}</td>"
+        f"<td>{esc(item.get('had_pick', ''))}</td>"
+        f"<td>{esc(item.get('hhad_line', ''))}</td>"
+        f"<td>{esc(item.get('hhad_pick', ''))}</td>"
+        f"<td>{esc(item.get('reason', ''))}</td>"
+        "</tr>"
+        for item in rows
+    )
+
+
 def knockout_results() -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for path in sorted(DATA_DIR.glob("knockout_results_*.json")):
@@ -1223,7 +1313,7 @@ def knockout_hit_stats() -> dict[str, Any]:
     parlay_score_hit = parlay_total_hit = parlay_half_hit = 0
     parlay_score_total = parlay_total_total = parlay_half_total = 0
     for date_label, items in sorted(parlay_groups.items()):
-        if len(items) != PARLAY_POLICY["enabled_match_count"]:
+        if len(items) != 3:
             continue
         score_ok = all(item["score_hit"] for item in items)
         total_ok = all(item["total_hit"] for item in items)
@@ -1483,6 +1573,8 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 
 def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
     matches = rolling_future_matches(schedule, 3)
+    round16_matches = future_round16_matches(schedule)
+    round16_forecasts = round16_market_forecasts()
     results = knockout_results()
     hit_stats = knockout_hit_stats()
     return f"""<!DOCTYPE html>
@@ -1491,18 +1583,20 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <body>
 <header>
   <div class="topbar"><div><h1>2026世界杯预测入口</h1>
-  </div><div class="topActions"><a class="buttonLink" href="knockout/teams.html">完整32强战绩</a></div></div>
-  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
+  </div></div>
+  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="#round16Forecast">16强预测</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
 </header>
 <main>
   <section class="section" id="entry">
     <h2>赛事阶段</h2>
     <div class="entryGrid">
-      <a class="entryCard" href="group/"><span>历史归档</span><strong>小组赛</strong><em>按日期查看 20260617-20260628 的全部小组赛预测、复盘和积分榜。</em></a>
+      <a class="entryCard" href="group/"><span>历史归档</span><strong>小组赛</strong><em>按日期查看 20260617-20260628 的历史预测和复盘。</em></a>
       <a class="entryCard" href="knockout/"><span>当前阶段</span><strong>淘汰赛</strong><em>按日期查看淘汰赛预测。</em></a>
     </div>
   </section>
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
+  <section class="section" id="round16"><h2>未来16强赛日程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>晋级路径</th><th>备注</th></tr></thead><tbody>{render_round16_schedule_rows(round16_matches)}</tbody></table></div></section>
+  <section class="section" id="round16Forecast"><h2>未来16强胜平负 / 让球胜平负预测</h2><div class="card tableWrap"><table><thead><tr><th>场次</th><th>北京时间</th><th>对阵</th><th>胜平负</th><th>让球口径</th><th>让球胜平负</th><th>模型依据</th></tr></thead><tbody>{render_round16_market_rows(round16_forecasts)}</tbody></table></div></section>
   {render_knockout_hit_stats(hit_stats)}
   <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
 </main>
@@ -1583,7 +1677,7 @@ def render_knockout_archive_page() -> str:
 <body>
 <header>
   <h1>淘汰赛预测归档</h1>
-  <nav><a href="../index.html">首页</a><a href="../group/">小组赛</a></nav>
+  <nav><a href="../index.html">首页</a></nav>
 </header>
 <main>
   <section class="section"><h2>按日期查看</h2><div class="miniGrid">{cards}</div></section>
@@ -1601,6 +1695,11 @@ def render_prediction_card(item: dict[str, Any]) -> str:
     ev_rows = render_ev_rows(item.get("ev_table", []))
     insight_cards = render_insight_cards(item.get("model_insights", []))
     backup = " / ".join(item.get("backup_scores", item.get("safe_scores", [])))
+    score_tags = [item.get("main_score")]
+    score_tags.extend(item.get("backup_scores", item.get("safe_scores", [])))
+    score_tag_html = "".join(f'<span class="scoreTag">{esc(score)}</span>' for score in score_tags if score)
+    if item.get("upset_score"):
+        score_tag_html += f'<span class="scoreTag danger">{esc(item["upset_score"])}</span>'
     kickoff = str(item.get("kickoff_bjt", "")).replace(" +08:00", "")
     half_time = item.get("half_time")
     if not half_time:
@@ -1632,10 +1731,7 @@ def render_prediction_card(item: dict[str, Any]) -> str:
     </div>
     <div class="card">
       <h3>比分池</h3>
-      <span class="scoreTag">{esc(item['main_score'])}</span>
-      <span class="scoreTag">{esc(item['backup_scores'][0])}</span>
-      <span class="scoreTag">{esc(item['backup_scores'][1])}</span>
-      <span class="scoreTag danger">{esc(item['upset_score'])}</span>
+      {score_tag_html}
       <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody>{matrix_rows}</tbody></table></div>
     </div>
     <div class="card">
@@ -1659,7 +1755,7 @@ def render_prediction_card(item: dict[str, Any]) -> str:
 def render_parlay_table(title: str, rows: list[dict[str, Any]], note: str) -> str:
     body = "".join(
         "<tr>"
-        f"<td>{esc(row['match'])}</td><td>{esc(row['pick'])}</td><td>{fmt_odds(row.get('odds'))}</td>"
+        f"<td>{esc(row['match'])}</td><td>{esc(row['pick'])}</td><td>{esc(row.get('odds_text', fmt_odds(row.get('odds'))))}</td>"
         f"<td>{esc(row.get('updated_at', '-'))}</td></tr>"
         for row in rows
     )
@@ -1674,44 +1770,54 @@ def render_parlay_table(title: str, rows: list[dict[str, Any]], note: str) -> st
 
 
 def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) -> str:
-    if len(predictions) != PARLAY_POLICY["enabled_match_count"]:
+    if len(predictions) < PARLAY_POLICY["min_enabled_match_count"]:
         return ""
     odds_lookup = load_live_odds(date_label)
-    if not odds_lookup:
-        return ""
 
     score_rows: list[dict[str, Any]] = []
     goals_rows: list[dict[str, Any]] = []
     half_rows: list[dict[str, Any]] = []
 
     for item in predictions:
-        odds_match = odds_match_for_prediction(item, odds_lookup)
-        if not odds_match:
-            return ""
-        odds = odds_match.get("odds", {})
-        if not odds.get("crs") or not odds.get("ttg") or not odds.get("hafu"):
-            return ""
+        odds_match = odds_match_for_prediction(item, odds_lookup) if odds_lookup else None
+        odds = odds_match.get("odds", {}) if odds_match else {}
         match_label = f"{item['home_team']} vs {item['away_team']}"
 
-        score_pick = str(item["main_score"])
+        positive_scores = [
+            str(row.get("score"))
+            for row in item.get("score_matrix_top", [])
+            if str(row.get("ev_signal", "")).startswith("+")
+        ][:2]
+        if not positive_scores:
+            positive_scores = [str(item["main_score"])]
         crs = odds.get("crs") or {}
+        score_odds = [fmt_odds(odds_float(crs.get(score))) for score in positive_scores]
         score_rows.append(
             {
                 "match": match_label,
-                "pick": score_pick,
-                "odds": odds_float(crs.get(score_pick)),
+                "pick": " / ".join(positive_scores),
+                "odds": None,
+                "odds_text": " / ".join(score_odds) if score_odds else "-",
                 "updated_at": crs.get("updatedAt", "-"),
             }
         )
 
-        total_pick = score_total(score_pick)
         ttg = odds.get("ttg") or {}
-        ttg_key = "s7" if total_pick is not None and total_pick >= 7 else f"s{total_pick}"
+        total_picks = []
+        for score in positive_scores:
+            total = score_total(score)
+            if total is not None and total not in total_picks:
+                total_picks.append(total)
+        total_odds = []
+        for total in total_picks:
+            ttg_key = "s7" if total >= 7 else f"s{total}"
+            total_odds.append(fmt_odds(odds_float(ttg.get(ttg_key))))
         goals_rows.append(
             {
                 "match": match_label,
-                "pick": f"总进球 {total_pick}" if total_pick is not None else "总进球 -",
-                "odds": odds_float(ttg.get(ttg_key)),
+                "pick": " / ".join(f"总进球 {total}" for total in total_picks) if total_picks else "总进球 -",
+                "odds": None,
+                "odds_text": " / ".join(total_odds) if total_odds else "-",
                 "updated_at": ttg.get("updatedAt", "-"),
             }
         )
@@ -1731,8 +1837,8 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
             }
         )
 
-    score_html = render_parlay_table("比分三串一", score_rows, "按每场主比分选择，赔率来自体彩比分市场。")
-    goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场主比分折算出的总进球数选择，赔率来自体彩总进球市场。")
+    score_html = render_parlay_table("比分三串一", score_rows, "按每场正EV最高的两个比分选择，赔率来自体彩比分市场；缺少赔率快照时显示 -。")
+    goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场两个正EV比分折算总进球数，赔率来自体彩总进球市场；缺少赔率快照时显示 -。")
     half_html = render_parlay_table("半场胜平负三串一", half_rows, "按每场半场方向选择；赔率由网站半全场赔率池折算为半场主胜/平/客胜隐含赔率。")
     return f"""
   <section class="section" id="parlay">
@@ -1890,7 +1996,7 @@ def render_model_doc(model: dict[str, Any], prediction: dict[str, Any]) -> str:
 
 ## 三串一生成规则
 
-- 当日预测场次正好为 {PARLAY_POLICY["enabled_match_count"]} 场时，生成 `{parlay_types}` 三个三串一模块。
+- 当日预测场次不少于 {PARLAY_POLICY["min_enabled_match_count"]} 场时，生成 `{parlay_types}` 三个串关模块；单场只做常规预测。
 - 三串一赔率只从网站实时赔率数据读取：`{PARLAY_POLICY["odds_source"]}`。
 - 必须同时匹配 `{required_markets}` 三类赔率；比分用 crs，总进球用 ttg，半场胜平负由 hafu 半全场赔率池折算；缺任一市场或无法匹配场次时，不输出三串一模块。
 - 当日只有 1 场比赛时，只输出常规预测，不生成三串一。
@@ -1975,15 +2081,12 @@ def main() -> int:
         (ROOT / date_label).mkdir(exist_ok=True)
 
     home_html = render_home_page(schedule, stats, prediction)
-    teams_html = render_teams_page(stats, schedule)
     group_html = render_group_archive_page()
     knockout_archive_html = render_knockout_archive_page()
     (ROOT / "index.html").write_text(home_html, encoding="utf-8")
     (group_dir / "index.html").write_text(group_html, encoding="utf-8")
     (knockout_dir / "index.html").write_text(knockout_archive_html, encoding="utf-8")
-    (knockout_dir / "teams.html").write_text(teams_html, encoding="utf-8")
     written_prediction_pages = render_all_prediction_payload_pages(prediction)
-    (ROOT / PREDICTION_DATE / "teams.html").write_text(teams_html, encoding="utf-8")
     (knockout_dir / "knockout_prediction_model_v3.md").write_text(render_model_doc(model, prediction), encoding="utf-8")
 
     if MODEL_MD.exists():
@@ -1997,7 +2100,6 @@ def main() -> int:
     print(ROOT / "index.html")
     for path in written_prediction_pages:
         print(path)
-    print(knockout_dir / "teams.html")
     print(knockout_dir / "knockout_prediction_model_v3.md")
     return 0
 

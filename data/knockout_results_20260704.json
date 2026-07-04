@@ -1,0 +1,51 @@
+{
+  "date": "20260704",
+  "stage": "knockout",
+  "status": "90min_finished_extra_time_penalty_finished",
+  "matches": [
+    {
+      "game_id": "53452503",
+      "match_no": "86",
+      "home_team": "澳大利亚",
+      "away_team": "埃及",
+      "score": "1-1",
+      "home_goals": 1,
+      "away_goals": 1,
+      "half_time_score": "",
+      "prediction_main_score": "0-1",
+      "advance_team": "埃及",
+      "penalty_winner": "埃及",
+      "result_note": "90分钟1-1，点球埃及晋级",
+      "review": "方向主线偏埃及晋级有效，但90分钟小胜没有兑现；1-1在保护池内，说明均衡偏客局的平局保护仍需高于客胜主比分。"
+    },
+    {
+      "game_id": "53452569",
+      "match_no": "87",
+      "home_team": "阿根廷",
+      "away_team": "佛得角",
+      "score": "2-2",
+      "home_goals": 2,
+      "away_goals": 2,
+      "half_time_score": "",
+      "prediction_main_score": "2-0",
+      "advance_team": "阿根廷",
+      "extra_time_score": "3-2",
+      "result_note": "90分钟2-2，加时阿根廷3-2晋级",
+      "review": "2-2没有进比分池是昨日最大问题：模型只把佛得角三平解读为压低阿根廷3-0的理由，却没有同步把抗压型弱队逼出大球平局的路径放入正EV池。后续绝对强队面对三平/低败样本队，必须保留2-2或1-1防冷平。"
+    },
+    {
+      "game_id": "53452507",
+      "match_no": "88",
+      "home_team": "哥伦比亚",
+      "away_team": "加纳",
+      "score": "1-0",
+      "home_goals": 1,
+      "away_goals": 0,
+      "half_time_score": "",
+      "prediction_main_score": "2-0",
+      "advance_team": "哥伦比亚",
+      "result_note": "哥伦比亚90分钟1-0晋级",
+      "review": "方向命中但比分从2-0回落到1-0，淘汰赛强队领先后降速的权重仍需提高；低风险正路局比分池应把1-0和2-0并列，而不是只给2-0。"
+    }
+  ]
+}

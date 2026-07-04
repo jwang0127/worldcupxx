@@ -1,0 +1,214 @@
+{
+  "date": "20260705",
+  "stage": "knockout",
+  "matches": [
+    {
+      "game_id": "53452511",
+      "match_no": "89",
+      "round": "16强赛",
+      "home_team": "加拿大",
+      "away_team": "摩洛哥",
+      "kickoff_bjt": "2026-07-05 01:00:00 +08:00",
+      "model_version": "v7-knockout-resilient-draw-correction",
+      "direction_text": "90分钟平局优先，摩洛哥晋级微优",
+      "half_time": "加拿大 0-0 摩洛哥",
+      "half_time_pick": "draw",
+      "main_score": "1-1",
+      "backup_scores": ["0-1"],
+      "upset_score": "1-0",
+      "goals_range": "1-2球",
+      "advance_pick": "摩洛哥",
+      "advance_probability_text": "加拿大 48% / 摩洛哥 52%",
+      "next_opponent_note": "胜者下轮对阵 巴拉圭 / 法国 胜者",
+      "core_view": "两队都不是开放型对攻。加拿大淘汰赛首轮靠低比分晋级，摩洛哥淘汰赛经验和防守韧性更强，90分钟先看1-1，若摩洛哥定位球或转换先手，0-1升权。",
+      "review_adjustment": "阿根廷2-2复盘后，抗压型球队不再只当作压低强队大胜的变量，而要明确给平局路径；本场因此把1-1放在主线。",
+      "team_reading": [
+        "加拿大胜在节奏和身体对抗，但阵地战破密防效率不稳定。",
+        "摩洛哥首轮已经验证低位防守和点球/加时脚本，90分钟不败权重高。",
+        "本场不追3球以上，重点看半场0-0和下半场单球变化。"
+      ],
+      "model_reasoning": [
+        "正EV比分只保留1-1和0-1：前者对应90分钟韧性平局，后者对应摩洛哥小胜晋级脚本。",
+        "防冷比分给1-0：加拿大若先抢到转换或定位球，摩洛哥会被迫提速。",
+        "如果30分钟前出现进球，总进球上限只上修到2-3球，不直接进入大球对攻。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "本场节奏更像拉锯，不适合用强弱名气直接推胜负。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.164,
+          "ev_signal": "+0.06",
+          "label": "正EV主比分"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.132,
+          "ev_signal": "+0.03",
+          "label": "正EV客胜"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.118,
+          "ev_signal": "防冷",
+          "label": "防冷比分"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "胜平负：平",
+          "model_probability": 0.35,
+          "fair_odds": 2.86,
+          "ev_signal": "+0.04",
+          "note": "两队低比分韧性叠加，90分钟平局优先。"
+        },
+        {
+          "market": "让球胜平负：加拿大(+1)胜",
+          "model_probability": 0.68,
+          "fair_odds": 1.47,
+          "ev_signal": "+0.05",
+          "note": "即便摩洛哥晋级，90分钟大概率不拉开。"
+        },
+        {
+          "market": "总进球：2球",
+          "model_probability": 0.34,
+          "fair_odds": 2.94,
+          "ev_signal": "+0.03",
+          "note": "1-1是最高权重路径。"
+        },
+        {
+          "market": "半场：平",
+          "model_probability": 0.53,
+          "fair_odds": 1.89,
+          "ev_signal": "+0.04",
+          "note": "双方开局试探权重高。"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "主线",
+          "content": "90分钟平局，不把晋级微优直接翻译成常规时间胜。"
+        },
+        {
+          "title": "比分池",
+          "content": "只保留1-1、0-1两个正EV比分，另给1-0防冷。"
+        },
+        {
+          "title": "临场触发",
+          "content": "若半场0-0，1-1/0-1继续升权；若加拿大先进球，1-0防冷转主线。"
+        }
+      ],
+      "triggers": [
+        "半场0-0：1-1和0-1继续升权。",
+        "摩洛哥先进球：0-1升为主线，1-1保留。",
+        "加拿大先进球：1-0防冷转主线，摩洛哥压上后1-1仍保留。"
+      ]
+    },
+    {
+      "game_id": "53452509",
+      "match_no": "90",
+      "round": "16强赛",
+      "home_team": "巴拉圭",
+      "away_team": "法国",
+      "kickoff_bjt": "2026-07-05 05:00:00 +08:00",
+      "model_version": "v7-knockout-resilient-draw-correction",
+      "direction_text": "法国90分钟胜，主线一球小胜",
+      "half_time": "巴拉圭 0-0 法国",
+      "half_time_pick": "draw",
+      "main_score": "0-1",
+      "backup_scores": ["0-2"],
+      "upset_score": "1-1",
+      "goals_range": "1-2球",
+      "advance_pick": "法国",
+      "advance_probability_text": "巴拉圭 30% / 法国 70%",
+      "next_opponent_note": "胜者下轮对阵 加拿大 / 摩洛哥 胜者",
+      "core_view": "法国是今日更明确的正路强队，但巴拉圭的低位防守会压缩大胜空间。昨日哥伦比亚1-0和阿根廷2-2都提示强队不能机械追3球，法国主线回到0-1，早球后才上修0-2。",
+      "review_adjustment": "哥伦比亚1-0说明强队领先后降速权重要提高；阿根廷2-2说明绝对强队也要保留平局防冷。本场因此只给0-1/0-2两个正EV比分和1-1防冷。",
+      "team_reading": [
+        "巴拉圭淘汰赛脚本偏低位和消耗，能降低法国连续冲击的效率。",
+        "法国整体强度、前场终结和替补深度更好，晋级方向清楚。",
+        "若法国早球，0-2升权；若半场仍0-0，0-1和1-1权重上升。"
+      ],
+      "model_reasoning": [
+        "正EV比分只保留0-1和0-2：法国胜面清楚，但大胜要依赖早球触发。",
+        "防冷比分给1-1：巴拉圭若拖到60分钟后，法国压上会给反击和定位球窗口。",
+        "让球胜平负按巴拉圭(+1)看让平，避免把法国正路直接推成穿盘。"
+      ],
+      "mystic_summary": [
+        "仅作娱乐表达，不进入模型权重。",
+        "法国强在整体稳定，巴拉圭强在把比赛拖窄。"
+      ],
+      "score_matrix_top": [
+        {
+          "score": "0-1",
+          "probability": 0.176,
+          "ev_signal": "+0.07",
+          "label": "正EV主比分"
+        },
+        {
+          "score": "0-2",
+          "probability": 0.142,
+          "ev_signal": "+0.04",
+          "label": "正EV上修"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.112,
+          "ev_signal": "防冷",
+          "label": "防冷比分"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "胜平负：法国胜",
+          "model_probability": 0.59,
+          "fair_odds": 1.69,
+          "ev_signal": "+0.05",
+          "note": "方向清楚，但比分主线不追大胜。"
+        },
+        {
+          "market": "让球胜平负：巴拉圭(+1)平",
+          "model_probability": 0.32,
+          "fair_odds": 3.13,
+          "ev_signal": "+0.03",
+          "note": "法国一球小胜对应让平。"
+        },
+        {
+          "market": "总进球：1-2球",
+          "model_probability": 0.57,
+          "fair_odds": 1.75,
+          "ev_signal": "+0.04",
+          "note": "0-1和0-2覆盖主路径。"
+        },
+        {
+          "market": "半场：平",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "ev_signal": "+0.02",
+          "note": "法国不急于开局冒险，巴拉圭先守。"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "主线",
+          "content": "法国胜，但正路比分从3球回收为一球小胜。"
+        },
+        {
+          "title": "比分池",
+          "content": "只保留0-1、0-2两个正EV比分，另给1-1防冷。"
+        },
+        {
+          "title": "临场触发",
+          "content": "法国30分钟前领先才上修0-2/1-2；半场0-0时1-1防冷升权。"
+        }
+      ],
+      "triggers": [
+        "法国0-30分钟领先：0-2升为主线，1-2纳入临场候选。",
+        "半场0-0：0-1维持，1-1防冷升权。",
+        "巴拉圭先进球：法国胜方向降权，1-1和1-2进入实时池。"
+      ]
+    }
+  ]
+}

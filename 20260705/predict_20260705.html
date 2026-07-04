@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>20260705 淘汰赛预测</title><style>
+:root{--bg:#06120f;--panel:#102528;--soft:#0b201d;--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#05110f;color:var(--text)}a{color:inherit;text-decoration:none}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f 0%,#092225 48%,#061324 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -20%,rgba(51,226,138,.13),transparent 42%);z-index:-1;pointer-events:none}
+header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
+h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.topbar{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.topActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}@media(max-width:850px){.topbar{display:block}.topActions{justify-content:flex-start;margin-top:12px}}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0;display:inline-flex;align-items:center;gap:6px}
+.section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px;margin:0 0 12px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);box-shadow:0 16px 36px rgba(0,0,0,.22);padding:18px;margin:14px 0}
+.entryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.entryCard{min-height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#0f2a2b,#091b1d);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.entryCard:hover{border-color:var(--green)}.entryCard span{color:var(--muted)}.entryCard strong{font-size:30px;color:var(--green);display:block;margin:8px 0}.entryCard em{font-style:normal;color:var(--text);line-height:1.6}
+.heroGrid,.coreGrid,.summaryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.coreGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.summaryGrid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.entryGrid,.heroGrid,.coreGrid,.summaryGrid{grid-template-columns:1fr}}
+.metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:23px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px;line-height:1.5}
+.bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
+ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
+.miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
+.mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
+.mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
+.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 90px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary::-webkit-details-marker{display:none}.matchDetails summary:before{content:"展开";color:#8fffd0;border:1px solid var(--line);border-radius:8px;padding:5px 8px;justify-self:start;grid-column:1/-1;display:none}.matchDetails:not([open]) summary:before{display:inline-block}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted);line-height:1.5}.matchDetails:not([open]) summary{border-bottom:0}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;box-shadow:none}@media(max-width:850px){.matchDetails summary{grid-template-columns:1fr}.matchDetails summary strong{font-size:28px}}
+footer{color:#8ea8a1;font-size:13px;margin-top:36px}
+</style></head>
+<body>
+<header>
+  <h1>20260705 淘汰赛预测</h1>
+  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a><a href="#parlay">三串一</a></nav>
+</header>
+<main>
+  <section class="section">
+    <h2>昨日复盘与模型修正</h2>
+    <div class="card">
+      <p><strong>07-04复盘：阿根廷2-2漏池暴露强队防冷平路径不足</strong></p>
+      <p>澳大利亚1-1埃及验证均衡偏客局要提高90分钟平局保护；阿根廷2-2说明佛得角三平样本不能只用于压低阿根廷3-0，还要上调抗压型弱队制造大球平局的权重；哥伦比亚1-0说明强队正路局领先后降速时，1-0与2-0必须并列入池。</p>
+      <ul><li>阿根廷2-2漏出原因：模型把佛得角三战三平转化为“阿根廷不宜3-0”，但没有继续推导到“佛得角有能力把比赛拖成2-2/1-1的防冷平”。</li><li>绝对强队新规则：主胜极低但对手具备连续平局、低败、抗压样本时，比分池必须保留一个大球平局或低比分平局防冷项。</li><li>均衡偏客局新规则：客队晋级方向可以保留，但90分钟胜负平要优先检查1-1，点球/加时晋级不能等同于90分钟客胜。</li><li>强队正路回收规则：若对手进攻效率低但防守韧性强，1-0和2-0同时进入正EV池，3-0只在早球后上修。</li><li>今日两场正常输出串关；比分池每场只保留两个正EV最高比分和一个防冷比分，比分串关与总进球串关允许每场两个选择。</li></ul>
+    </div>
+  </section>
+  
+  
+  <section class="section" id="parlay">
+    <h2>今日三串一</h2>
+    
+    <div class="card">
+      <h3>比分三串一</h3>
+      <p class="muted">按每场正EV最高的两个比分选择，赔率来自体彩比分市场；缺少赔率快照时显示 -。</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>加拿大 vs 摩洛哥</td><td>1-1 / 0-1</td><td>- / -</td><td>-</td></tr><tr><td>巴拉圭 vs 法国</td><td>0-1 / 0-2</td><td>- / -</td><td>-</td></tr></tbody></table></div>
+      <p><strong>三串一理论乘积赔率：-</strong></p>
+    </div>
+    
+    <div class="card">
+      <h3>总进球数三串一</h3>
+      <p class="muted">按每场两个正EV比分折算总进球数，赔率来自体彩总进球市场；缺少赔率快照时显示 -。</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>加拿大 vs 摩洛哥</td><td>总进球 2 / 总进球 1</td><td>- / -</td><td>-</td></tr><tr><td>巴拉圭 vs 法国</td><td>总进球 1 / 总进球 2</td><td>- / -</td><td>-</td></tr></tbody></table></div>
+      <p><strong>三串一理论乘积赔率：-</strong></p>
+    </div>
+    
+    <div class="card">
+      <h3>半场胜平负三串一</h3>
+      <p class="muted">按每场半场方向选择；赔率由网站半全场赔率池折算为半场主胜/平/客胜隐含赔率。</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>加拿大 vs 摩洛哥</td><td>半场平</td><td>-</td><td>-</td></tr><tr><td>巴拉圭 vs 法国</td><td>半场平</td><td>-</td><td>-</td></tr></tbody></table></div>
+      <p><strong>三串一理论乘积赔率：-</strong></p>
+    </div>
+  </section>
+  
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>加拿大 vs 摩洛哥</span>
+    <strong>1-1</strong>
+    <em>90分钟平局优先，摩洛哥晋级微优 / 晋级 摩洛哥</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-05 01:00:00</strong></div>
+      <div class="metric">半场<strong>加拿大 0-0 摩洛哥</strong></div>
+      <div class="metric">90分钟<strong>90分钟平局优先，摩洛哥晋级微优</strong></div>
+      <div class="metric">晋级<strong class="adv">摩洛哥</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">1-1</div><p>备选：0-1</p><p>冷门：1-0</p></div>
+      <div class="panel"><h3>判断口径</h3><p>两队都不是开放型对攻。加拿大淘汰赛首轮靠低比分晋级，摩洛哥淘汰赛经验和防守韧性更强，90分钟先看1-1，若摩洛哥定位球或转换先手，0-1升权。</p><p>加拿大 48% / 摩洛哥 52%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 巴拉圭 / 法国 胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>阿根廷2-2复盘后，抗压型球队不再只当作压低强队大胜的变量，而要明确给平局路径；本场因此把1-1放在主线。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">1-1</span><span class="scoreTag">0-1</span><span class="scoreTag danger">1-0</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>1-1</td><td>16.4%</td><td>+0.06</td><td>正EV主比分</td></tr><tr><td>0-1</td><td>13.2%</td><td>+0.03</td><td>正EV客胜</td></tr><tr><td>1-0</td><td>11.8%</td><td>防冷</td><td>防冷比分</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>胜平负：平</td><td>35.0%</td><td>2.86</td><td>+0.04</td><td>两队低比分韧性叠加，90分钟平局优先。</td></tr><tr><td>让球胜平负：加拿大(+1)胜</td><td>68.0%</td><td>1.47</td><td>+0.05</td><td>即便摩洛哥晋级，90分钟大概率不拉开。</td></tr><tr><td>总进球：2球</td><td>34.0%</td><td>2.94</td><td>+0.03</td><td>1-1是最高权重路径。</td></tr><tr><td>半场：平</td><td>53.0%</td><td>1.89</td><td>+0.04</td><td>双方开局试探权重高。</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主线</h3><p>90分钟平局，不把晋级微优直接翻译成常规时间胜。</p></div><div class="panel"><h3>比分池</h3><p>只保留1-1、0-1两个正EV比分，另给1-0防冷。</p></div><div class="panel"><h3>临场触发</h3><p>若半场0-0，1-1/0-1继续升权；若加拿大先进球，1-0防冷转主线。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>半场0-0：1-1和0-1继续升权。</li><li>摩洛哥先进球：0-1升为主线，1-1保留。</li><li>加拿大先进球：1-0防冷转主线，摩洛哥压上后1-1仍保留。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>加拿大胜在节奏和身体对抗，但阵地战破密防效率不稳定。</li><li>摩洛哥首轮已经验证低位防守和点球/加时脚本，90分钟不败权重高。</li><li>本场不追3球以上，重点看半场0-0和下半场单球变化。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>正EV比分只保留1-1和0-1：前者对应90分钟韧性平局，后者对应摩洛哥小胜晋级脚本。</li><li>防冷比分给1-0：加拿大若先抢到转换或定位球，摩洛哥会被迫提速。</li><li>如果30分钟前出现进球，总进球上限只上修到2-3球，不直接进入大球对攻。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>仅作娱乐表达，不进入模型权重。</li><li>本场节奏更像拉锯，不适合用强弱名气直接推胜负。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>巴拉圭 vs 法国</span>
+    <strong>0-1</strong>
+    <em>法国90分钟胜，主线一球小胜 / 晋级 法国</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-05 05:00:00</strong></div>
+      <div class="metric">半场<strong>巴拉圭 0-0 法国</strong></div>
+      <div class="metric">90分钟<strong>法国90分钟胜，主线一球小胜</strong></div>
+      <div class="metric">晋级<strong class="adv">法国</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">0-1</div><p>备选：0-2</p><p>冷门：1-1</p></div>
+      <div class="panel"><h3>判断口径</h3><p>法国是今日更明确的正路强队，但巴拉圭的低位防守会压缩大胜空间。昨日哥伦比亚1-0和阿根廷2-2都提示强队不能机械追3球，法国主线回到0-1，早球后才上修0-2。</p><p>巴拉圭 30% / 法国 70%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵 加拿大 / 摩洛哥 胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>哥伦比亚1-0说明强队领先后降速权重要提高；阿根廷2-2说明绝对强队也要保留平局防冷。本场因此只给0-1/0-2两个正EV比分和1-1防冷。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">0-1</span><span class="scoreTag">0-2</span><span class="scoreTag danger">1-1</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>0-1</td><td>17.6%</td><td>+0.07</td><td>正EV主比分</td></tr><tr><td>0-2</td><td>14.2%</td><td>+0.04</td><td>正EV上修</td></tr><tr><td>1-1</td><td>11.2%</td><td>防冷</td><td>防冷比分</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>胜平负：法国胜</td><td>59.0%</td><td>1.69</td><td>+0.05</td><td>方向清楚，但比分主线不追大胜。</td></tr><tr><td>让球胜平负：巴拉圭(+1)平</td><td>32.0%</td><td>3.13</td><td>+0.03</td><td>法国一球小胜对应让平。</td></tr><tr><td>总进球：1-2球</td><td>57.0%</td><td>1.75</td><td>+0.04</td><td>0-1和0-2覆盖主路径。</td></tr><tr><td>半场：平</td><td>49.0%</td><td>2.04</td><td>+0.02</td><td>法国不急于开局冒险，巴拉圭先守。</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主线</h3><p>法国胜，但正路比分从3球回收为一球小胜。</p></div><div class="panel"><h3>比分池</h3><p>只保留0-1、0-2两个正EV比分，另给1-1防冷。</p></div><div class="panel"><h3>临场触发</h3><p>法国30分钟前领先才上修0-2/1-2；半场0-0时1-1防冷升权。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>法国0-30分钟领先：0-2升为主线，1-2纳入临场候选。</li><li>半场0-0：0-1维持，1-1防冷升权。</li><li>巴拉圭先进球：法国胜方向降权，1-1和1-2进入实时池。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>巴拉圭淘汰赛脚本偏低位和消耗，能降低法国连续冲击的效率。</li><li>法国整体强度、前场终结和替补深度更好，晋级方向清楚。</li><li>若法国早球，0-2升权；若半场仍0-0，0-1和1-1权重上升。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>正EV比分只保留0-1和0-2：法国胜面清楚，但大胜要依赖早球触发。</li><li>防冷比分给1-1：巴拉圭若拖到60分钟后，法国压上会给反击和定位球窗口。</li><li>让球胜平负按巴拉圭(+1)看让平，避免把法国正路直接推成穿盘。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>仅作娱乐表达，不进入模型权重。</li><li>法国强在整体稳定，巴拉圭强在把比赛拖窄。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+</main>
+</body>
+</html>

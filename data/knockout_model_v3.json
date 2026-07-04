@@ -35,7 +35,7 @@
     "football-data.org、api-football、TheSportsDB、SerpApi 只作为球队资料、伤停、历史和新闻补充；缺数据时降权，不编造首发。"
   ],
   "parlay_policy": {
-    "enabled_match_count": 3,
+    "min_enabled_match_count": 2,
     "single_match_mode": "regular_prediction_only",
     "required_markets": [
       "crs",
