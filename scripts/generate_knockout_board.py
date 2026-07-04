@@ -137,6 +137,27 @@ def hafu_label(half_direction: str, full_direction: str) -> str:
     return outcome_short_label(half_direction) + outcome_short_label(full_direction)
 
 
+def hafu_label_from_key(key: str) -> str:
+    if len(str(key)) != 2:
+        return str(key)
+    reverse = {"h": "home", "d": "draw", "a": "away"}
+    return hafu_label(reverse.get(key[0], key[0]), reverse.get(key[1], key[1]))
+
+
+def hafu_key_from_label_or_key(value: str) -> str:
+    text = str(value).strip().lower()
+    if re.match(r"^[hda]{2}$", text):
+        return text
+    mapping = {"胜": "h", "平": "d", "负": "a", "主胜": "h", "客胜": "a"}
+    compact = str(value).strip().replace("/", "").replace("-", "").replace(" ", "")
+    if len(compact) >= 2:
+        left = mapping.get(compact[0])
+        right = mapping.get(compact[1])
+        if left and right:
+            return left + right
+    return text
+
+
 def hafu_exact_odds(hafu: dict[str, Any] | None, half_direction: str, full_direction: str) -> float | None:
     if not hafu:
         return None
@@ -416,6 +437,28 @@ def next_opponent_source(schedule: list[dict[str, Any]], next_id: str, current_g
             if source_match:
                 sources.append(f"{source_match['home_team']} / {source_match['away_team']} 胜者")
     return "；".join(sources) if sources else "下一轮对手待定"
+
+
+def resolved_next_opponent_source(schedule: list[dict[str, Any]], next_id: str, current_game_id: str) -> str:
+    next_match = next((item for item in schedule if item["game_id"] == next_id), None)
+    if not next_match:
+        return "后续对手待定"
+    winners = knockout_winner_lookup()
+    sources = []
+    for side in ("home_team", "away_team"):
+        text = str(next_match[side])
+        matched = re.search(r"(\d{8})", text)
+        if matched and matched.group(1) != current_game_id:
+            game_id = matched.group(1)
+            source_match = next((item for item in schedule if item["game_id"] == game_id), None)
+            if source_match:
+                if game_id in winners:
+                    sources.append(winners[game_id])
+                else:
+                    home = resolved_team_name(str(source_match["home_team"]), winners)
+                    away = resolved_team_name(str(source_match["away_team"]), winners)
+                    sources.append(f"{home} / {away} 胜者")
+    return " / ".join(sources) if sources else "下一轮对手待定"
 
 
 def prediction_model_v3() -> dict[str, Any]:
@@ -1095,14 +1138,13 @@ def future_round16_matches(schedule: list[dict[str, Any]]) -> list[dict[str, Any
 
 def render_round16_schedule_rows(matches: list[dict[str, Any]]) -> str:
     if not matches:
-        return '<tr><td colspan="5">暂无未来16强赛程。</td></tr>'
+        return '<tr><td colspan="4">暂无未来16强赛程。</td></tr>'
     return "".join(
         "<tr>"
         f"<td>{esc(item['beijing_date'][5:])} {esc(item['beijing_time'])}</td>"
         f"<td>{esc(item['match_no'])}</td>"
         f"<td>{esc(item['home_team_resolved'])} vs {esc(item['away_team_resolved'])}</td>"
-        f"<td>{esc(next_opponent_source(GLOBAL_SCHEDULE, item['winner_advances_to'], item['game_id']))}</td>"
-        f"<td>{esc(item.get('note', ''))}</td>"
+        f"<td>{esc(resolved_next_opponent_source(GLOBAL_SCHEDULE, item['winner_advances_to'], item['game_id']))}</td>"
         "</tr>"
         for item in matches
     )
@@ -1595,7 +1637,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
     </div>
   </section>
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
-  <section class="section" id="round16"><h2>未来16强赛日程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>晋级路径</th><th>备注</th></tr></thead><tbody>{render_round16_schedule_rows(round16_matches)}</tbody></table></div></section>
+  <section class="section" id="round16"><h2>未来16强赛日程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>晋级路径</th></tr></thead><tbody>{render_round16_schedule_rows(round16_matches)}</tbody></table></div></section>
   <section class="section" id="round16Forecast"><h2>未来16强胜平负 / 让球胜平负预测</h2><div class="card tableWrap"><table><thead><tr><th>场次</th><th>北京时间</th><th>对阵</th><th>胜平负</th><th>让球口径</th><th>让球胜平负</th><th>模型依据</th></tr></thead><tbody>{render_round16_market_rows(round16_forecasts)}</tbody></table></div></section>
   {render_knockout_hit_stats(hit_stats)}
   <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
@@ -1827,19 +1869,21 @@ def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) ->
             half_direction = half_direction_from_text(str(half_value))
         else:
             half_direction = str(item.get("half_time_pick", "draw"))
+        full_direction = str(item.get("direction_90min") or score_direction(str(item.get("main_score", ""))))
+        hafu_pick_key = hafu_key_from_label_or_key(str(item.get("hafu_pick", ""))) if item.get("hafu_pick") else hafu_key(half_direction, full_direction)
         hafu = odds.get("hafu") or {}
         half_rows.append(
             {
                 "match": match_label,
-                "pick": half_result_label(half_direction),
-                "odds": half_result_implied_odds(hafu, half_direction),
+                "pick": hafu_label_from_key(hafu_pick_key),
+                "odds": odds_float(hafu.get(hafu_pick_key)),
                 "updated_at": hafu.get("updatedAt", "-"),
             }
         )
 
     score_html = render_parlay_table("比分三串一", score_rows, "按每场正EV最高的两个比分选择，赔率来自体彩比分市场；缺少赔率快照时显示 -。")
     goals_html = render_parlay_table("总进球数三串一", goals_rows, "按每场两个正EV比分折算总进球数，赔率来自体彩总进球市场；缺少赔率快照时显示 -。")
-    half_html = render_parlay_table("半场胜平负三串一", half_rows, "按每场半场方向选择；赔率由网站半全场赔率池折算为半场主胜/平/客胜隐含赔率。")
+    half_html = render_parlay_table("半全场胜平负三串一", half_rows, "按每场半全场组合选择，赔率来自体彩半全场 hafu 赔率池。")
     return f"""
   <section class="section" id="parlay">
     <h2>今日三串一</h2>
