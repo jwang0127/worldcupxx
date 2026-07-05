@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>20260706 淘汰赛预测</title><style>
+:root{--bg:#06120f;--panel:#102528;--soft:#0b201d;--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#05110f;color:var(--text)}a{color:inherit;text-decoration:none}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f 0%,#092225 48%,#061324 100%);z-index:-2}
+body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -20%,rgba(51,226,138,.13),transparent 42%);z-index:-1;pointer-events:none}
+header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
+h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.topbar{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.topActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}@media(max-width:850px){.topbar{display:block}.topActions{justify-content:flex-start;margin-top:12px}}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0;display:inline-flex;align-items:center;gap:6px}
+.section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px;margin:0 0 12px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);box-shadow:0 16px 36px rgba(0,0,0,.22);padding:18px;margin:14px 0}
+.entryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.entryCard{min-height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#0f2a2b,#091b1d);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.entryCard:hover{border-color:var(--green)}.entryCard span{color:var(--muted)}.entryCard strong{font-size:30px;color:var(--green);display:block;margin:8px 0}.entryCard em{font-style:normal;color:var(--text);line-height:1.6}
+.heroGrid,.coreGrid,.summaryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.coreGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.summaryGrid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.entryGrid,.heroGrid,.coreGrid,.summaryGrid{grid-template-columns:1fr}}
+.metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:23px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px;line-height:1.5}
+.bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
+ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
+.resultTable td{padding:14px 12px;line-height:1.65}.resultTable td:last-child{min-width:360px}.resultTable strong{font-size:18px;color:#a8ffd6}
+.miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
+.mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
+.mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
+.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 90px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary::-webkit-details-marker{display:none}.matchDetails summary:before{content:"展开";color:#8fffd0;border:1px solid var(--line);border-radius:8px;padding:5px 8px;justify-self:start;grid-column:1/-1;display:none}.matchDetails:not([open]) summary:before{display:inline-block}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted);line-height:1.5}.matchDetails:not([open]) summary{border-bottom:0}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;box-shadow:none}@media(max-width:850px){.matchDetails summary{grid-template-columns:1fr}.matchDetails summary strong{font-size:28px}}
+footer{color:#8ea8a1;font-size:13px;margin-top:36px}
+</style></head>
+<body>
+<header>
+  <h1>20260706 淘汰赛预测</h1>
+  <nav><a href="../index.html">首页</a><a href="../knockout/">淘汰赛日期</a><a href="#parlay">三串一</a></nav>
+</header>
+<main>
+  <section class="section">
+    <h2>昨日复盘与模型修正</h2>
+    <div class="card">
+      <p><strong>07-05复盘：方向命中，摩洛哥0-3暴露低赔客胜碾压路径漏池</strong></p>
+      <p>加拿大0-3摩洛哥和巴拉圭0-1法国两场半全场均为平负。模型对两场方向和半全场节奏判断有效，但加拿大场比分池过度保护主队受让，没有把摩洛哥低赔客胜、三球比分低位和加拿大被压制后的反扑质量不足合并成0-3路径；法国场则验证保守EV下0-1/0-2并列更稳。</p>
+      <ul><li>加拿大0-3漏池原因：模型把加拿大小组进8球和上一轮1-0晋级视为稳定进球能力，却没有区分强度样本；面对摩洛哥这种低赔客胜和淘汰赛抗压队，加拿大进攻上限要下调。</li><li>低赔客胜碾压规则：客胜≤1.65且比分市场0-3/1-3处于低位，同时受让方向只来自弱队历史进球样本时，比分池必须保留0-3，不能只保留0-1/0-2。</li><li>受让保护降权：如果强队方向、总进球3球备选、半全场平负同时成立，受让不被打穿只作为防守观点，不再直接压低强队穿一档或两档比分。</li><li>法国0-1验证：绝对强队在淘汰赛领先后可能降速，保守EV信号继续按+0.03/+0.04上限显示，不把低赔方向包装成高EV。</li><li>比分池新格式：每场只保留三个稳胆比分和一个爆冷比分；稳胆内部按保守EV排序，观察比分不再进入主展示池。</li></ul>
+    </div>
+  </section>
+  
+  
+  <section class="section" id="parlay">
+    <h2>今日三串一</h2>
+    
+    <div class="card">
+      <h3>比分三串一</h3>
+      <p class="muted">按每场保守EV正信号的两个比分选择，赔率来自体彩比分市场；缺少赔率快照时显示 -。</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>巴西 vs 挪威</td><td>2-1 / 2-0</td><td>- / -</td><td>-</td></tr><tr><td>墨西哥 vs 英格兰</td><td>0-1 / 1-1</td><td>- / -</td><td>-</td></tr></tbody></table></div>
+      <p><strong>三串一理论乘积赔率：-</strong></p>
+    </div>
+    
+    <div class="card">
+      <h3>总进球数三串一</h3>
+      <p class="muted">按每场两个保守EV正信号比分折算总进球数，赔率来自体彩总进球市场；缺少赔率快照时显示 -。</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>巴西 vs 挪威</td><td>总进球 3 / 总进球 2</td><td>- / -</td><td>-</td></tr><tr><td>墨西哥 vs 英格兰</td><td>总进球 1 / 总进球 2</td><td>- / -</td><td>-</td></tr></tbody></table></div>
+      <p><strong>三串一理论乘积赔率：-</strong></p>
+    </div>
+    
+    <div class="card">
+      <h3>半全场胜平负三串一</h3>
+      <p class="muted">按每场半全场组合选择，赔率来自体彩半全场 hafu 赔率池。</p>
+      <div class="tableWrap"><table><thead><tr><th>比赛</th><th>选择</th><th>赔率</th><th>赔率更新时间</th></tr></thead><tbody><tr><td>巴西 vs 挪威</td><td>平胜</td><td>-</td><td>-</td></tr><tr><td>墨西哥 vs 英格兰</td><td>平负</td><td>-</td><td>-</td></tr></tbody></table></div>
+      <p><strong>三串一理论乘积赔率：-</strong></p>
+    </div>
+  </section>
+  
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>巴西 vs 挪威</span>
+    <strong>2-1</strong>
+    <em>巴西90分钟胜，主线2-1，防2-0 / 晋级 巴西</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-06 04:00:00</strong></div>
+      <div class="metric">半场<strong>巴西 0-0 挪威</strong></div>
+      <div class="metric">90分钟<strong>巴西90分钟胜，主线2-1，防2-0</strong></div>
+      <div class="metric">晋级<strong class="adv">巴西</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">2-1</div><p>备选：2-0 / 1-1</p><p>冷门：1-2</p></div>
+      <div class="panel"><h3>判断口径</h3><p>巴西纸面和控场能力更高，但挪威反击终结点明确，不适合把比赛直接推成大胜。加拿大0-3复盘后，强侧优势仍要看赔率和比分低位是否支持碾压；本场更像巴西掌控局面、挪威保留一球威胁的2-1/2-0分叉。</p><p>90分钟：巴西胜 58% / 平 25% / 挪威胜 17%；最终晋级：巴西 68% / 挪威 32%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵墨西哥 / 英格兰胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>EV继续按保守信号：巴西方向可以做主串第一腿，但比分不扩大到3-0；若巴西早球且压制持续，再临场上修3-1。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">2-1</span><span class="scoreTag">2-0</span><span class="scoreTag">1-1</span><span class="scoreTag danger">1-2</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>2-1</td><td>17.0%</td><td>+0.04</td><td>保守主线</td></tr><tr><td>2-0</td><td>15.0%</td><td>+0.03</td><td>稳胆零封</td></tr><tr><td>1-1</td><td>12.0%</td><td>+0.02</td><td>防平保护</td></tr><tr><td>1-2</td><td>7.0%</td><td>防冷</td><td>爆冷比分</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>主串腿：巴西方向</td><td>58.0%</td><td>1.72</td><td>+0.04</td><td>方向可用，但不放大成穿盘高EV。</td></tr><tr><td>比分：2-1 / 2-0</td><td>32.0%</td><td>3.13</td><td>+0.04 / +0.03</td><td>三个稳胆内优先两条巴西胜路径。</td></tr><tr><td>总进球：3球 / 2球</td><td>54.0%</td><td>1.85</td><td>+0.03</td><td>挪威进球路径让3球优先，2球保护。</td></tr><tr><td>半全场：平胜</td><td>34.0%</td><td>2.94</td><td>+0.03</td><td>上半场僵持、下半场巴西解决比赛。</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主线</h3><p>巴西胜方向最稳，但比分收在2-1/2-0。</p></div><div class="panel"><h3>比分池</h3><p>三个稳胆：2-1、2-0、1-1；爆冷：1-2。</p></div><div class="panel"><h3>串关</h3><p>91/92两场串里，本场作为主串第一腿。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>巴西30分钟前进球且压制持续：3-1升权。</li><li>半场0-0：2-0和1-0升权，2-1降一档。</li><li>挪威先进球：1-1/2-1仍保留，1-2爆冷升温。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>巴西优势在控球、边路推进和禁区连续制造机会，正路方向清楚。</li><li>挪威淘汰赛前后反击效率高，不能把客队进球完全抹掉。</li><li>主串用巴西不败/主胜方向，比分稳胆压在2-1和2-0。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>2-1是主线：巴西主动权更强，挪威有一球反击路径。</li><li>2-0是稳胆保护：若巴西领先后控节奏，零封小胜更优于3-0。</li><li>1-1防平，1-2只做爆冷比分。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>仅作娱乐表达，不进入模型权重。</li><li>巴西旺在主动，挪威旺在反击，宜防单球差。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+<section class="section">
+  <details class="matchDetails">
+  <summary>
+    <span>墨西哥 vs 英格兰</span>
+    <strong>0-1</strong>
+    <em>英格兰90分钟小胜优先，防1-1 / 晋级 英格兰</em>
+  </summary>
+  <div class="card matchBody">
+    <div class="heroGrid">
+      <div class="metric">北京时间<strong>2026-07-06 08:00:00</strong></div>
+      <div class="metric">半场<strong>墨西哥 0-0 英格兰</strong></div>
+      <div class="metric">90分钟<strong>英格兰90分钟小胜优先，防1-1</strong></div>
+      <div class="metric">晋级<strong class="adv">英格兰</strong></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主比分</h3><div class="bigScore">0-1</div><p>备选：1-1 / 1-2</p><p>冷门：1-0</p></div>
+      <div class="panel"><h3>判断口径</h3><p>英格兰纸面优势更高，但墨西哥具备压低节奏和受让保护能力。刚果金早球和加拿大0-3复盘一起提醒：强队方向要保留，但必须看对手是否有反扑质量；本场不走英格兰大胜，主线0-1，1-1作为主防冷。</p><p>90分钟：墨西哥胜 18% / 平 30% / 英格兰胜 52%；最终晋级：墨西哥 35% / 英格兰 65%</p></div>
+      <div class="panel"><h3>下场对手</h3><p>胜者下轮对阵巴西 / 挪威胜者</p></div>
+    </div>
+    <div class="card">
+      <h3>昨日复盘校正</h3>
+      <p>作为91/92主串第二腿，优先用英格兰不败/小胜和总进球2球，不把低赔方向包装成高EV。</p>
+    </div>
+    <div class="card">
+      <h3>比分池</h3>
+      <span class="scoreTag">0-1</span><span class="scoreTag">1-1</span><span class="scoreTag">1-2</span><span class="scoreTag danger">1-0</span>
+      <div class="tableWrap"><table><thead><tr><th>比分</th><th>概率</th><th>EV信号</th><th>标签</th></tr></thead><tbody><tr><td>0-1</td><td>16.0%</td><td>+0.04</td><td>保守主线</td></tr><tr><td>1-1</td><td>15.0%</td><td>+0.03</td><td>防平核心</td></tr><tr><td>1-2</td><td>12.0%</td><td>+0.02</td><td>客胜延展</td></tr><tr><td>1-0</td><td>7.0%</td><td>防冷</td><td>爆冷比分</td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <h3>市场 EV / 半场 / 胜负</h3>
+      <div class="tableWrap"><table><thead><tr><th>市场</th><th>模型概率</th><th>公平赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>主串腿：英格兰方向</td><td>52.0%</td><td>1.92</td><td>方向确认</td><td>可做方向确认，但不是高EV。</td></tr><tr><td>比分：0-1 / 1-1</td><td>31.0%</td><td>3.23</td><td>+0.04 / +0.03</td><td>主线和防平并列。</td></tr><tr><td>总进球：2球</td><td>43.0%</td><td>2.33</td><td>+0.03</td><td>小比分结构优先。</td></tr><tr><td>半全场：平负</td><td>31.0%</td><td>3.23</td><td>+0.03</td><td>半场僵持，下半场英格兰解决。</td></tr></tbody></table></div>
+    </div>
+    <div class="coreGrid">
+      <div class="panel"><h3>主线</h3><p>英格兰小胜优先，防墨西哥90分钟拖平。</p></div><div class="panel"><h3>比分池</h3><p>三个稳胆：0-1、1-1、1-2；爆冷：1-0。</p></div><div class="panel"><h3>串关</h3><p>91/92主串第二腿，比分和总进球都走保守小比分。</p></div>
+    </div>
+    <div class="card"><h3>触发条件</h3><ul><li>半场0-0：0-1和1-1继续升权。</li><li>英格兰早球：1-2升权，0-2进入观察。</li><li>墨西哥先进球：1-1优先，1-0爆冷升温。</li></ul></div>
+    <div class="coreGrid">
+      <div class="panel"><h3>球队画像</h3><ul><li>墨西哥强在节奏管理和低位韧性，能把比赛拖进小比分。</li><li>英格兰优势在阵容深度和后程解决能力，但早段未必打开。</li><li>主串更适合0-1/1-1和总进球2球，不适合追大胜。</li></ul></div>
+      <div class="panel"><h3>模型解释</h3><ul><li>0-1是主线：英格兰后程解决，墨西哥压低节奏。</li><li>1-1是核心保护：墨西哥受让逻辑主要体现为防平。</li><li>1-2作为英格兰早球后的延展，1-0只做爆冷。</li></ul></div>
+      <div class="panel mysticCard"><h3>玄学综参</h3><ul><li>仅作娱乐表达，不进入模型权重。</li><li>英格兰旺在后程，墨西哥旺在防守，宜小比分。</li></ul></div>
+    </div>
+  </div>
+  </details>
+</section>
+</main>
+</body>
+</html>

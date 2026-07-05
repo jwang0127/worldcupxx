@@ -1,0 +1,118 @@
+{
+  "date": "20260706",
+  "stage": "knockout",
+  "matches": [
+    {
+      "game_id": "53452517",
+      "match_no": "91",
+      "round": "16强赛",
+      "home_team": "巴西",
+      "away_team": "挪威",
+      "kickoff_bjt": "2026-07-06 04:00:00 +08:00",
+      "model_version": "v8.2-conservative-ev-signal",
+      "direction_90min": "home",
+      "direction_text": "巴西90分钟胜，主线2-1，防2-0",
+      "half_time": "巴西 0-0 挪威",
+      "half_time_pick": "draw",
+      "hafu_pick": "dh",
+      "main_score": "2-1",
+      "backup_scores": ["2-0", "1-1"],
+      "upset_score": "1-2",
+      "goals_range": "2-3球，核心3球",
+      "advance_pick": "巴西",
+      "advance_probability_text": "90分钟：巴西胜 58% / 平 25% / 挪威胜 17%；最终晋级：巴西 68% / 挪威 32%",
+      "next_opponent_note": "胜者下轮对阵墨西哥 / 英格兰胜者",
+      "core_view": "巴西纸面和控场能力更高，但挪威反击终结点明确，不适合把比赛直接推成大胜。加拿大0-3复盘后，强侧优势仍要看赔率和比分低位是否支持碾压；本场更像巴西掌控局面、挪威保留一球威胁的2-1/2-0分叉。",
+      "review_adjustment": "EV继续按保守信号：巴西方向可以做主串第一腿，但比分不扩大到3-0；若巴西早球且压制持续，再临场上修3-1。",
+      "team_reading": [
+        "巴西优势在控球、边路推进和禁区连续制造机会，正路方向清楚。",
+        "挪威淘汰赛前后反击效率高，不能把客队进球完全抹掉。",
+        "主串用巴西不败/主胜方向，比分稳胆压在2-1和2-0。"
+      ],
+      "model_reasoning": [
+        "2-1是主线：巴西主动权更强，挪威有一球反击路径。",
+        "2-0是稳胆保护：若巴西领先后控节奏，零封小胜更优于3-0。",
+        "1-1防平，1-2只做爆冷比分。"
+      ],
+      "mystic_summary": ["仅作娱乐表达，不进入模型权重。", "巴西旺在主动，挪威旺在反击，宜防单球差。"],
+      "score_matrix_top": [
+        {"score": "2-1", "probability": 0.17, "ev_signal": "+0.04", "label": "保守主线"},
+        {"score": "2-0", "probability": 0.15, "ev_signal": "+0.03", "label": "稳胆零封"},
+        {"score": "1-1", "probability": 0.12, "ev_signal": "+0.02", "label": "防平保护"},
+        {"score": "1-2", "probability": 0.07, "ev_signal": "防冷", "label": "爆冷比分"}
+      ],
+      "ev_table": [
+        {"market": "主串腿：巴西方向", "model_probability": 0.58, "fair_odds": 1.72, "ev_signal": "+0.04", "note": "方向可用，但不放大成穿盘高EV。"},
+        {"market": "比分：2-1 / 2-0", "model_probability": 0.32, "fair_odds": 3.13, "ev_signal": "+0.04 / +0.03", "note": "三个稳胆内优先两条巴西胜路径。"},
+        {"market": "总进球：3球 / 2球", "model_probability": 0.54, "fair_odds": 1.85, "ev_signal": "+0.03", "note": "挪威进球路径让3球优先，2球保护。"},
+        {"market": "半全场：平胜", "model_probability": 0.34, "fair_odds": 2.94, "ev_signal": "+0.03", "note": "上半场僵持、下半场巴西解决比赛。"}
+      ],
+      "model_insights": [
+        {"title": "主线", "content": "巴西胜方向最稳，但比分收在2-1/2-0。"},
+        {"title": "比分池", "content": "三个稳胆：2-1、2-0、1-1；爆冷：1-2。"},
+        {"title": "串关", "content": "91/92两场串里，本场作为主串第一腿。"}
+      ],
+      "triggers": [
+        "巴西30分钟前进球且压制持续：3-1升权。",
+        "半场0-0：2-0和1-0升权，2-1降一档。",
+        "挪威先进球：1-1/2-1仍保留，1-2爆冷升温。"
+      ]
+    },
+    {
+      "game_id": "53452519",
+      "match_no": "92",
+      "round": "16强赛",
+      "home_team": "墨西哥",
+      "away_team": "英格兰",
+      "kickoff_bjt": "2026-07-06 08:00:00 +08:00",
+      "model_version": "v8.2-conservative-ev-signal",
+      "direction_90min": "away",
+      "direction_text": "英格兰90分钟小胜优先，防1-1",
+      "half_time": "墨西哥 0-0 英格兰",
+      "half_time_pick": "draw",
+      "hafu_pick": "da",
+      "main_score": "0-1",
+      "backup_scores": ["1-1", "1-2"],
+      "upset_score": "1-0",
+      "goals_range": "1-3球，核心2球",
+      "advance_pick": "英格兰",
+      "advance_probability_text": "90分钟：墨西哥胜 18% / 平 30% / 英格兰胜 52%；最终晋级：墨西哥 35% / 英格兰 65%",
+      "next_opponent_note": "胜者下轮对阵巴西 / 挪威胜者",
+      "core_view": "英格兰纸面优势更高，但墨西哥具备压低节奏和受让保护能力。刚果金早球和加拿大0-3复盘一起提醒：强队方向要保留，但必须看对手是否有反扑质量；本场不走英格兰大胜，主线0-1，1-1作为主防冷。",
+      "review_adjustment": "作为91/92主串第二腿，优先用英格兰不败/小胜和总进球2球，不把低赔方向包装成高EV。",
+      "team_reading": [
+        "墨西哥强在节奏管理和低位韧性，能把比赛拖进小比分。",
+        "英格兰优势在阵容深度和后程解决能力，但早段未必打开。",
+        "主串更适合0-1/1-1和总进球2球，不适合追大胜。"
+      ],
+      "model_reasoning": [
+        "0-1是主线：英格兰后程解决，墨西哥压低节奏。",
+        "1-1是核心保护：墨西哥受让逻辑主要体现为防平。",
+        "1-2作为英格兰早球后的延展，1-0只做爆冷。"
+      ],
+      "mystic_summary": ["仅作娱乐表达，不进入模型权重。", "英格兰旺在后程，墨西哥旺在防守，宜小比分。"],
+      "score_matrix_top": [
+        {"score": "0-1", "probability": 0.16, "ev_signal": "+0.04", "label": "保守主线"},
+        {"score": "1-1", "probability": 0.15, "ev_signal": "+0.03", "label": "防平核心"},
+        {"score": "1-2", "probability": 0.12, "ev_signal": "+0.02", "label": "客胜延展"},
+        {"score": "1-0", "probability": 0.07, "ev_signal": "防冷", "label": "爆冷比分"}
+      ],
+      "ev_table": [
+        {"market": "主串腿：英格兰方向", "model_probability": 0.52, "fair_odds": 1.92, "ev_signal": "方向确认", "note": "可做方向确认，但不是高EV。"},
+        {"market": "比分：0-1 / 1-1", "model_probability": 0.31, "fair_odds": 3.23, "ev_signal": "+0.04 / +0.03", "note": "主线和防平并列。"},
+        {"market": "总进球：2球", "model_probability": 0.43, "fair_odds": 2.33, "ev_signal": "+0.03", "note": "小比分结构优先。"},
+        {"market": "半全场：平负", "model_probability": 0.31, "fair_odds": 3.23, "ev_signal": "+0.03", "note": "半场僵持，下半场英格兰解决。"}
+      ],
+      "model_insights": [
+        {"title": "主线", "content": "英格兰小胜优先，防墨西哥90分钟拖平。"},
+        {"title": "比分池", "content": "三个稳胆：0-1、1-1、1-2；爆冷：1-0。"},
+        {"title": "串关", "content": "91/92主串第二腿，比分和总进球都走保守小比分。"}
+      ],
+      "triggers": [
+        "半场0-0：0-1和1-1继续升权。",
+        "英格兰早球：1-2升权，0-2进入观察。",
+        "墨西哥先进球：1-1优先，1-0爆冷升温。"
+      ]
+    }
+  ]
+}

@@ -1190,16 +1190,16 @@ def round16_market_forecasts() -> list[dict[str, Any]]:
 
 def render_round16_market_rows(rows: list[dict[str, Any]]) -> str:
     if not rows:
-        return '<tr><td colspan="7">暂无16强胜平负/让球胜平负预测。</td></tr>'
+        return '<tr><td colspan="7">方向类市场已停止输出。</td></tr>'
     return "".join(
         "<tr>"
         f"<td>{esc(item.get('match_no', ''))}</td>"
         f"<td>{esc(item.get('kickoff_bjt', '').replace('2026-', '').replace(':00 +08:00', ''))}</td>"
         f"<td>{esc(item.get('home_team', ''))} vs {esc(item.get('away_team', ''))}</td>"
-        f"<td>{esc(item.get('had_pick', ''))}</td>"
-        f"<td>{esc(item.get('hhad_line', ''))}</td>"
-        f"<td>{esc(item.get('hhad_pick', ''))}</td>"
-        f"<td>{esc(item.get('reason', ''))}</td>"
+        f"<td>{esc(item.get('total_goals_pick', ''))}</td>"
+        f"<td>{esc(item.get('total_goals_range', ''))}</td>"
+        f"<td>{esc(item.get('total_goals_backup', ''))}</td>"
+        f"<td>{esc(item.get('total_goals_reason', ''))}</td>"
         "</tr>"
         for item in rows
     )
@@ -1340,6 +1340,25 @@ def render_future_parlay_section(payload: dict[str, Any]) -> str:
     </div>
     {body}
   </section>"""
+
+
+def render_future_parlay_page(payload: dict[str, Any]) -> str:
+    body = render_future_parlay_section(payload)
+    if not body:
+        body = '<section class="section"><h2>未来串关</h2><div class="card"><p>暂无可用串关。</p></div></section>'
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>未来串关</title><style>{css()}</style></head>
+<body>
+<header>
+  <h1>未来串关</h1>
+  <nav><a href="../index.html">首页</a><a href="../20260706/">07-06预测</a><a href="../knockout/">淘汰赛日期</a></nav>
+</header>
+<main>
+  {body}
+</main>
+</body>
+</html>"""
 
 
 def knockout_results() -> list[dict[str, Any]]:
@@ -1770,6 +1789,7 @@ nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{paddi
 .metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:23px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px;line-height:1.5}
 .bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
 ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
+.resultTable td{padding:14px 12px;line-height:1.65}.resultTable td:last-child{min-width:360px}.resultTable strong{font-size:18px;color:#a8ffd6}
 .miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
 .mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
 .mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
@@ -1783,7 +1803,6 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
     round16_matches = future_round16_matches(schedule)
     round16_forecasts = round16_market_forecasts()
     quarterfinals = quarterfinal_matches(schedule)
-    future_parlay = future_parlay_payload()
     results = knockout_results()
     hit_stats = knockout_hit_stats()
     return f"""<!DOCTYPE html>
@@ -1793,9 +1812,10 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <header>
   <div class="topbar"><div><h1>2026世界杯预测入口</h1>
   </div></div>
-  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="#round16Goals">16强总进球</a><a href="#futureParlay">三串一</a><a href="#quarterfinals">8强入围</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
+  <nav><a href="#quarterfinals">8强入围</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="#round16Goals">16强总进球</a><a href="parlay/">未来串关</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
 </header>
 <main>
+  <section class="section" id="quarterfinals"><h2>8强比赛入围表</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>上半区入围队</th><th>状态</th><th>下半区入围队</th><th>状态</th></tr></thead><tbody>{render_quarterfinal_entry_rows(quarterfinals)}</tbody></table></div></section>
   <section class="section" id="entry">
     <h2>赛事阶段</h2>
     <div class="entryGrid">
@@ -1806,10 +1826,8 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
   <section class="section" id="round16"><h2>未来16强赛日程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>晋级路径</th></tr></thead><tbody>{render_round16_schedule_rows(round16_matches)}</tbody></table></div></section>
   <section class="section" id="round16Goals"><h2>未来16强总进球预测</h2><div class="card tableWrap"><table><thead><tr><th>场次</th><th>北京时间</th><th>对阵</th><th>主推总进球</th><th>核心区间</th><th>备选</th><th>模型依据</th></tr></thead><tbody>{render_round16_total_goals_rows(round16_forecasts)}</tbody></table></div></section>
-  {render_future_parlay_section(future_parlay)}
-  <section class="section" id="quarterfinals"><h2>8强比赛入围表</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>上半区入围队</th><th>状态</th><th>下半区入围队</th><th>状态</th></tr></thead><tbody>{render_quarterfinal_entry_rows(quarterfinals)}</tbody></table></div></section>
   {render_knockout_hit_stats(hit_stats)}
-  <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
+  <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table class="resultTable"><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
 </main>
 </body>
 </html>"""
@@ -2298,8 +2316,10 @@ def main() -> int:
     payloads = read_prediction_payloads()
     knockout_dir = ROOT / "knockout"
     group_dir = ROOT / "group"
+    parlay_dir = ROOT / "parlay"
     knockout_dir.mkdir(exist_ok=True)
     group_dir.mkdir(exist_ok=True)
+    parlay_dir.mkdir(exist_ok=True)
     for date_label in payloads:
         (ROOT / date_label).mkdir(exist_ok=True)
 
@@ -2309,6 +2329,7 @@ def main() -> int:
     (ROOT / "index.html").write_text(home_html, encoding="utf-8")
     (group_dir / "index.html").write_text(group_html, encoding="utf-8")
     (knockout_dir / "index.html").write_text(knockout_archive_html, encoding="utf-8")
+    (parlay_dir / "index.html").write_text(render_future_parlay_page(future_parlay_payload()), encoding="utf-8")
     written_prediction_pages = render_all_prediction_payload_pages(prediction)
     (knockout_dir / "knockout_prediction_model_v3.md").write_text(render_model_doc(model, prediction), encoding="utf-8")
 
@@ -2321,6 +2342,7 @@ def main() -> int:
 
     print("Generated:")
     print(ROOT / "index.html")
+    print(parlay_dir / "index.html")
     for path in written_prediction_pages:
         print(path)
     print(knockout_dir / "knockout_prediction_model_v3.md")
