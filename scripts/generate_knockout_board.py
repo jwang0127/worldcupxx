@@ -1099,12 +1099,13 @@ def render_stats_rows(stats: list[dict[str, Any]]) -> str:
 
 
 def render_upcoming_rows(matches: list[dict[str, Any]]) -> str:
+    winners = knockout_winner_lookup()
     return "".join(
         "<tr>"
         f"<td>{esc(item['beijing_date'][5:])} {esc(item['beijing_time'])}</td>"
         f"<td>{esc(item['match_no'])}</td><td>{esc(item['round'])}</td>"
-        f"<td>{esc(item['home_team'])} vs {esc(item['away_team'])}</td>"
-        f"<td>{esc(next_opponent_source(GLOBAL_SCHEDULE, item['winner_advances_to'], item['game_id']))}</td></tr>"
+        f"<td>{esc(resolved_team_name(str(item['home_team']), winners))} vs {esc(resolved_team_name(str(item['away_team']), winners))}</td>"
+        f"<td>{esc(resolved_next_opponent_source(GLOBAL_SCHEDULE, item['winner_advances_to'], item['game_id']))}</td></tr>"
         for item in matches
     )
 
@@ -1137,7 +1138,16 @@ def resolved_team_name(team_name: str, winners: dict[str, str]) -> str:
     text = str(team_name)
     matched = re.search(r"(\d{8})", text)
     if matched:
-        return winners.get(matched.group(1), text)
+        game_id = matched.group(1)
+        if game_id in winners:
+            return winners[game_id]
+        source_match = next((item for item in GLOBAL_SCHEDULE if item.get("game_id") == game_id), None)
+        if source_match:
+            home = resolved_team_name(str(source_match.get("home_team", "")), winners)
+            away = resolved_team_name(str(source_match.get("away_team", "")), winners)
+            suffix = "负者" if "负者" in text else "胜者"
+            return f"{home} / {away} {suffix}"
+        return text
     return text
 
 
@@ -1222,7 +1232,8 @@ def quarterfinal_matches(schedule: list[dict[str, Any]]) -> list[dict[str, Any]]
 
 
 def entry_status(team_name: str) -> str:
-    return "已入围" if not str(team_name).startswith("待定") else "待产生"
+    text = str(team_name)
+    return "待产生" if text.startswith("待定") or "胜者" in text or "负者" in text else "已入围"
 
 
 def render_quarterfinal_entry_rows(matches: list[dict[str, Any]]) -> str:
