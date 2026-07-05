@@ -15,7 +15,11 @@
           "goals_pick": "3球，防2球",
           "half_full_pick": "平胜 / 胜胜",
           "ev_signal": "+0.04",
-          "note": "巴西方向正路，但挪威反击保留一球。"
+          "note": "巴西方向正路，但挪威反击保留一球。",
+          "score_odds": "4.85 / 9.00",
+          "goals_odds": "3.35 / 3.75",
+          "half_full_odds": "4.50 / 2.55",
+          "odds_updated_at": "2026-07-05 09:24:19"
         },
         {
           "match_no": "92",
@@ -24,7 +28,11 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "平负",
           "ev_signal": "+0.03",
-          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。"
+          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。",
+          "score_odds": "6.30 / 5.00",
+          "goals_odds": "2.90 / 3.70",
+          "half_full_odds": "5.30",
+          "odds_updated_at": "2026-07-05 11:58:47"
         }
       ]
     },
@@ -39,7 +47,11 @@
           "goals_pick": "3球，防2球",
           "half_full_pick": "平胜 / 胜胜",
           "ev_signal": "+0.04",
-          "note": "巴西方向正路，但挪威反击保留一球。"
+          "note": "巴西方向正路，但挪威反击保留一球。",
+          "score_odds": "4.85 / 9.00",
+          "goals_odds": "3.35 / 3.75",
+          "half_full_odds": "4.50 / 2.55",
+          "odds_updated_at": "2026-07-05 09:24:19"
         },
         {
           "match_no": "92",
@@ -48,7 +60,11 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "平负",
           "ev_signal": "+0.03",
-          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。"
+          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。",
+          "score_odds": "6.30 / 5.00",
+          "goals_odds": "2.90 / 3.70",
+          "half_full_odds": "5.30",
+          "odds_updated_at": "2026-07-05 11:58:47"
         },
         {
           "match_no": "93",
@@ -57,7 +73,10 @@
           "goals_pick": "3球，防2球",
           "half_full_pick": "平负 / 平胜",
           "ev_signal": "+0.03",
-          "note": "西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。"
+          "note": "西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         }
       ]
     },
@@ -72,7 +91,10 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "平平 / 平负",
           "ev_signal": "+0.03",
-          "note": "比利时90分钟不稳，美国防线保护上调。"
+          "note": "比利时90分钟不稳，美国防线保护上调。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         },
         {
           "match_no": "95",
@@ -81,7 +103,10 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "胜胜 / 平胜",
           "ev_signal": "+0.04",
-          "note": "阿根廷正路，但埃及低位抗压不追3-0。"
+          "note": "阿根廷正路，但埃及低位抗压不追3-0。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         },
         {
           "match_no": "96",
@@ -90,7 +115,10 @@
           "goals_pick": "2球，防1球",
           "half_full_pick": "平平 / 平胜",
           "ev_signal": "+0.03",
-          "note": "瑞士与哥伦比亚都偏低风险，90分钟防平。"
+          "note": "瑞士与哥伦比亚都偏低风险，90分钟防平。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         }
       ]
     },
@@ -105,7 +133,11 @@
           "goals_pick": "3球，防2球",
           "half_full_pick": "平胜 / 胜胜",
           "ev_signal": "+0.04",
-          "note": "巴西方向正路，但挪威反击保留一球。"
+          "note": "巴西方向正路，但挪威反击保留一球。",
+          "score_odds": "4.85 / 9.00",
+          "goals_odds": "3.35 / 3.75",
+          "half_full_odds": "4.50 / 2.55",
+          "odds_updated_at": "2026-07-05 09:24:19"
         },
         {
           "match_no": "92",
@@ -114,7 +146,11 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "平负",
           "ev_signal": "+0.03",
-          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。"
+          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。",
+          "score_odds": "6.30 / 5.00",
+          "goals_odds": "2.90 / 3.70",
+          "half_full_odds": "5.30",
+          "odds_updated_at": "2026-07-05 11:58:47"
         },
         {
           "match_no": "93",
@@ -123,7 +159,10 @@
           "goals_pick": "3球，防2球",
           "half_full_pick": "平负 / 平胜",
           "ev_signal": "+0.03",
-          "note": "西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。"
+          "note": "西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         },
         {
           "match_no": "94",
@@ -132,7 +171,10 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "平平 / 平负",
           "ev_signal": "+0.03",
-          "note": "比利时90分钟不稳，美国防线保护上调。"
+          "note": "比利时90分钟不稳，美国防线保护上调。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         },
         {
           "match_no": "95",
@@ -141,7 +183,10 @@
           "goals_pick": "2球，防3球",
           "half_full_pick": "胜胜 / 平胜",
           "ev_signal": "+0.04",
-          "note": "阿根廷正路，但埃及低位抗压不追3-0。"
+          "note": "阿根廷正路，但埃及低位抗压不追3-0。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         },
         {
           "match_no": "96",
@@ -150,9 +195,13 @@
           "goals_pick": "2球，防1球",
           "half_full_pick": "平平 / 平胜",
           "ev_signal": "+0.03",
-          "note": "瑞士与哥伦比亚都偏低风险，90分钟防平。"
+          "note": "瑞士与哥伦比亚都偏低风险，90分钟防平。",
+          "score_odds": "-",
+          "goals_odds": "-",
+          "half_full_odds": "-"
         }
       ]
     }
-  ]
+  ],
+  "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260706.json for match 91/92"
 }

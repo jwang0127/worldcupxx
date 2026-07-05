@@ -1322,8 +1322,11 @@ def render_future_parlay_group(group: dict[str, Any]) -> str:
         f"<td>{esc(item.get('match_no', ''))}</td>"
         f"<td>{esc(item.get('match', ''))}</td>"
         f"<td>{esc(item.get('score_pick', ''))}</td>"
+        f"<td>{esc(item.get('score_odds', '-'))}</td>"
         f"<td>{esc(item.get('goals_pick', ''))}</td>"
+        f"<td>{esc(item.get('goals_odds', '-'))}</td>"
         f"<td>{esc(item.get('half_full_pick', ''))}</td>"
+        f"<td>{esc(item.get('half_full_odds', '-'))}</td>"
         f"<td>{esc(item.get('ev_signal', ''))}</td>"
         f"<td>{esc(item.get('note', ''))}</td>"
         "</tr>"
@@ -1333,7 +1336,7 @@ def render_future_parlay_group(group: dict[str, Any]) -> str:
     <div class="card">
       <h3>{esc(group.get('title', '三串一'))}</h3>
       <p class="muted">{esc(group.get('summary', ''))}</p>
-      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>总进球</th><th>半全场</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{rows}</tbody></table></div>
+      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>比分赔率</th><th>总进球</th><th>总进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{rows}</tbody></table></div>
     </div>"""
 
 
@@ -1342,12 +1345,15 @@ def render_future_parlay_section(payload: dict[str, Any]) -> str:
     if not groups:
         return ""
     body = "".join(render_future_parlay_group(group) for group in groups)
+    source = payload.get("odds_source", "")
+    source_html = f"<p class=\"muted\">赔率来源：{esc(source)}</p>" if source else ""
     return f"""
   <section class="section" id="futureParlay">
     <h2>未来串关</h2>
     <div class="card">
       <p><strong>{esc(payload.get('headline', '未赛场次三串一更新'))}</strong></p>
       <p>{esc(payload.get('summary', ''))}</p>
+      {source_html}
     </div>
     {body}
   </section>"""
@@ -1812,7 +1818,6 @@ footer{color:#8ea8a1;font-size:13px;margin-top:36px}
 def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]], prediction: dict[str, Any]) -> str:
     matches = rolling_future_matches(schedule, 3)
     round16_matches = future_round16_matches(schedule)
-    round16_forecasts = round16_market_forecasts()
     quarterfinals = quarterfinal_matches(schedule)
     results = knockout_results()
     hit_stats = knockout_hit_stats()
@@ -1823,7 +1828,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <header>
   <div class="topbar"><div><h1>2026世界杯预测入口</h1>
   </div></div>
-  <nav><a href="#quarterfinals">8强入围</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="#round16Goals">16强总进球</a><a href="parlay/">未来串关</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
+  <nav><a href="#quarterfinals">8强入围</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="parlay/">未来串关</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
 </header>
 <main>
   <section class="section" id="quarterfinals"><h2>8强比赛入围表</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>上半区入围队</th><th>状态</th><th>下半区入围队</th><th>状态</th></tr></thead><tbody>{render_quarterfinal_entry_rows(quarterfinals)}</tbody></table></div></section>
@@ -1836,7 +1841,6 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
   </section>
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
   <section class="section" id="round16"><h2>未来16强赛日程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>晋级路径</th></tr></thead><tbody>{render_round16_schedule_rows(round16_matches)}</tbody></table></div></section>
-  <section class="section" id="round16Goals"><h2>未来16强总进球预测</h2><div class="card tableWrap"><table><thead><tr><th>场次</th><th>北京时间</th><th>对阵</th><th>主推总进球</th><th>核心区间</th><th>备选</th><th>模型依据</th></tr></thead><tbody>{render_round16_total_goals_rows(round16_forecasts)}</tbody></table></div></section>
   {render_knockout_hit_stats(hit_stats)}
   <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table class="resultTable"><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
 </main>
