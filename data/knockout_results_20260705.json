@@ -1,0 +1,49 @@
+{
+  "date": "20260705",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452511",
+      "match_no": "89",
+      "home_team": "加拿大",
+      "away_team": "摩洛哥",
+      "score": "0-3",
+      "home_goals": 0,
+      "away_goals": 3,
+      "half_time_score": "0-0",
+      "hafu_result": "平负",
+      "winner_team": "摩洛哥",
+      "advance_team": "摩洛哥",
+      "prediction_main_score": "0-1",
+      "prediction_backup_scores": [
+        "1-1",
+        "1-2",
+        "0-2"
+      ],
+      "prediction_upset_score": "1-0",
+      "review": "方向和半全场命中，但0-3碾压漏出比分池。原因是模型把加拿大小组进8球、上一轮1-0晋级和受让保护权重放得过高，把摩洛哥客胜1.59、0-3/1-3比分低位、加拿大被压制后反扑质量不足的组合降成观察项；后续低赔客胜叠加三球比分低位时，0-3必须进入稳胆池或至少与0-2并列。"
+    },
+    {
+      "game_id": "53452509",
+      "match_no": "90",
+      "home_team": "巴拉圭",
+      "away_team": "法国",
+      "score": "0-1",
+      "home_goals": 0,
+      "away_goals": 1,
+      "half_time_score": "0-0",
+      "hafu_result": "平负",
+      "winner_team": "法国",
+      "advance_team": "法国",
+      "prediction_main_score": "0-2",
+      "prediction_backup_scores": [
+        "0-1",
+        "1-2",
+        "0-3"
+      ],
+      "prediction_upset_score": "1-1",
+      "review": "半全场平负和法国方向命中，比分命中稳胆0-1。法国强势但淘汰赛领先后降速，验证保守EV口径下0-1/0-2应并列，不宜把0-3过度前置。"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "date": "20260705",
+  "stage": "round16_future_parlay",
+  "headline": "07-05更新：已结算89/90，串关改用未赛16强场次",
+  "summary": "两场串、三场串和多场串都可用；输出仍按保守EV信号，不把低赔方向包装成高EV。",
+  "groups": [
+    {
+      "title": "主串：91-92两场串",
+      "summary": "最保守组合：巴西正路 + 英格兰低比分方向。",
+      "legs": [
+        {
+          "match_no": "91",
+          "match": "巴西 vs 挪威",
+          "score_pick": "2-1 / 2-0",
+          "goals_pick": "3球，防2球",
+          "half_full_pick": "平胜 / 胜胜",
+          "ev_signal": "+0.04",
+          "note": "巴西方向正路，但挪威反击保留一球。"
+        },
+        {
+          "match_no": "92",
+          "match": "墨西哥 vs 英格兰",
+          "score_pick": "0-1 / 1-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "平负",
+          "ev_signal": "+0.03",
+          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。"
+        }
+      ]
+    },
+    {
+      "title": "主票：91-93三场串",
+      "summary": "在两场串基础上加入葡萄牙-西班牙，适合接受波动的主票。",
+      "legs": [
+        {
+          "match_no": "91",
+          "match": "巴西 vs 挪威",
+          "score_pick": "2-1 / 2-0",
+          "goals_pick": "3球，防2球",
+          "half_full_pick": "平胜 / 胜胜",
+          "ev_signal": "+0.04",
+          "note": "巴西方向正路，但挪威反击保留一球。"
+        },
+        {
+          "match_no": "92",
+          "match": "墨西哥 vs 英格兰",
+          "score_pick": "0-1 / 1-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "平负",
+          "ev_signal": "+0.03",
+          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。"
+        },
+        {
+          "match_no": "93",
+          "match": "葡萄牙 vs 西班牙",
+          "score_pick": "1-2 / 2-1",
+          "goals_pick": "3球，防2球",
+          "half_full_pick": "平负 / 平胜",
+          "ev_signal": "+0.03",
+          "note": "西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。"
+        }
+      ]
+    },
+    {
+      "title": "次票：94-96三场串",
+      "summary": "保守备选，等临场赔率确认后再决定。",
+      "legs": [
+        {
+          "match_no": "94",
+          "match": "美国 vs 比利时",
+          "score_pick": "1-1 / 0-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "平平 / 平负",
+          "ev_signal": "+0.03",
+          "note": "比利时90分钟不稳，美国防线保护上调。"
+        },
+        {
+          "match_no": "95",
+          "match": "阿根廷 vs 埃及",
+          "score_pick": "2-0 / 2-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "胜胜 / 平胜",
+          "ev_signal": "+0.04",
+          "note": "阿根廷正路，但埃及低位抗压不追3-0。"
+        },
+        {
+          "match_no": "96",
+          "match": "瑞士 vs 哥伦比亚",
+          "score_pick": "1-1 / 1-0",
+          "goals_pick": "2球，防1球",
+          "half_full_pick": "平平 / 平胜",
+          "ev_signal": "+0.03",
+          "note": "瑞士与哥伦比亚都偏低风险，90分钟防平。"
+        }
+      ]
+    },
+    {
+      "title": "多场观察：91-96六场串",
+      "summary": "高波动观察票；建议以总进球和半全场为主，比分只作小注参考。",
+      "legs": [
+        {
+          "match_no": "91",
+          "match": "巴西 vs 挪威",
+          "score_pick": "2-1 / 2-0",
+          "goals_pick": "3球，防2球",
+          "half_full_pick": "平胜 / 胜胜",
+          "ev_signal": "+0.04",
+          "note": "巴西方向正路，但挪威反击保留一球。"
+        },
+        {
+          "match_no": "92",
+          "match": "墨西哥 vs 英格兰",
+          "score_pick": "0-1 / 1-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "平负",
+          "ev_signal": "+0.03",
+          "note": "英格兰优势在，但墨西哥受让和低节奏要保留。"
+        },
+        {
+          "match_no": "93",
+          "match": "葡萄牙 vs 西班牙",
+          "score_pick": "1-2 / 2-1",
+          "goals_pick": "3球，防2球",
+          "half_full_pick": "平负 / 平胜",
+          "ev_signal": "+0.03",
+          "note": "西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。"
+        },
+        {
+          "match_no": "94",
+          "match": "美国 vs 比利时",
+          "score_pick": "1-1 / 0-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "平平 / 平负",
+          "ev_signal": "+0.03",
+          "note": "比利时90分钟不稳，美国防线保护上调。"
+        },
+        {
+          "match_no": "95",
+          "match": "阿根廷 vs 埃及",
+          "score_pick": "2-0 / 2-1",
+          "goals_pick": "2球，防3球",
+          "half_full_pick": "胜胜 / 平胜",
+          "ev_signal": "+0.04",
+          "note": "阿根廷正路，但埃及低位抗压不追3-0。"
+        },
+        {
+          "match_no": "96",
+          "match": "瑞士 vs 哥伦比亚",
+          "score_pick": "1-1 / 1-0",
+          "goals_pick": "2球，防1球",
+          "half_full_pick": "平平 / 平胜",
+          "ev_signal": "+0.03",
+          "note": "瑞士与哥伦比亚都偏低风险，90分钟防平。"
+        }
+      ]
+    }
+  ]
+}

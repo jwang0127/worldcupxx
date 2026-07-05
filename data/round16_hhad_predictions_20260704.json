@@ -1,7 +1,7 @@
 {
   "date": "20260704",
   "stage": "round16",
-  "note": "让球胜平负按名义主队口径显示；受让写+1，让球写-1。",
+  "note": "本文件仅保留16强总进球表格所需字段，方向类市场已不再输出。",
   "matches": [
     {
       "match_no": "89",
@@ -9,10 +9,10 @@
       "kickoff_bjt": "2026-07-05 01:00:00 +08:00",
       "home_team": "加拿大",
       "away_team": "摩洛哥",
-      "had_pick": "负",
-      "hhad_line": "加拿大 +1",
-      "hhad_pick": "让胜",
-      "reason": "体彩客胜1.59，摩洛哥90分钟胜优先；但加拿大小组进8球且首轮1-0晋级，受让仍有保护。"
+      "total_goals_pick": "2球",
+      "total_goals_range": "1-2球",
+      "total_goals_backup": "3球",
+      "total_goals_reason": "摩洛哥方向更稳但不追穿，加拿大有一球反扑能力；0-1、1-1、1-2共同把核心压在1-2球，早球后才上修3球。"
     },
     {
       "match_no": "90",
@@ -20,10 +20,10 @@
       "kickoff_bjt": "2026-07-05 05:00:00 +08:00",
       "home_team": "巴拉圭",
       "away_team": "法国",
-      "had_pick": "负",
-      "hhad_line": "巴拉圭 +1",
-      "hhad_pick": "让负",
-      "reason": "比分盘0-2最低、0-3次低，总进球3球最低，法国从一球小胜上修到穿一档。"
+      "total_goals_pick": "2球",
+      "total_goals_range": "2-3球",
+      "total_goals_backup": "3球",
+      "total_goals_reason": "法国正路优先但保守EV回收，不把强队盘直接放大成4球；0-2是主线，0-1/1-2保护低一档，早球才切到3球。"
     },
     {
       "match_no": "91",
@@ -31,10 +31,10 @@
       "kickoff_bjt": "2026-07-06 04:00:00 +08:00",
       "home_team": "巴西",
       "away_team": "挪威",
-      "had_pick": "胜",
-      "hhad_line": "巴西 -1",
-      "hhad_pick": "让平",
-      "reason": "巴西正路更强，挪威反击有效但难持续压制，主线巴西一球到两球胜。"
+      "total_goals_pick": "3球",
+      "total_goals_range": "2-3球",
+      "total_goals_backup": "2球",
+      "total_goals_reason": "巴西优势和挪威终结点都支持双方至少制造2球，主线2-1；若巴西控节奏则回落2-0，若挪威先手则仍容易落到3球。"
     },
     {
       "match_no": "92",
@@ -42,10 +42,10 @@
       "kickoff_bjt": "2026-07-06 08:00:00 +08:00",
       "home_team": "墨西哥",
       "away_team": "英格兰",
-      "had_pick": "负",
-      "hhad_line": "墨西哥 +1",
-      "hhad_pick": "让胜",
-      "reason": "英格兰纸面优势更高，但刚果金早球复盘要求保留墨西哥受让保护。"
+      "total_goals_pick": "2球",
+      "total_goals_range": "1-2球",
+      "total_goals_backup": "3球",
+      "total_goals_reason": "英格兰强但刚果金早球复盘要求保留对手先手和受让；墨西哥会压低节奏，主线0-1/1-1，英格兰早球后才扩到1-2。"
     },
     {
       "match_no": "93",
@@ -53,10 +53,10 @@
       "kickoff_bjt": "2026-07-07 03:00:00 +08:00",
       "home_team": "葡萄牙",
       "away_team": "西班牙",
-      "had_pick": "负",
-      "hhad_line": "葡萄牙 +1",
-      "hhad_pick": "让胜",
-      "reason": "西班牙强势更稳定，但葡萄牙2-1克罗地亚说明硬仗韧性足，受让方向优先。"
+      "total_goals_pick": "3球",
+      "total_goals_range": "2-3球",
+      "total_goals_backup": "2球",
+      "total_goals_reason": "西班牙强势和葡萄牙硬仗韧性同时成立，2-1/1-2是核心；双方都有进球能力，但淘汰赛不预设4球以上。"
     },
     {
       "match_no": "94",
@@ -64,10 +64,10 @@
       "kickoff_bjt": "2026-07-07 08:00:00 +08:00",
       "home_team": "美国",
       "away_team": "比利时",
-      "had_pick": "平",
-      "hhad_line": "美国 +1",
-      "hhad_pick": "让胜",
-      "reason": "比利时加时晋级暴露90分钟不稳，美国2-0后防状态更稳，先看平局和美国受让。"
+      "total_goals_pick": "2球",
+      "total_goals_range": "1-2球",
+      "total_goals_backup": "3球",
+      "total_goals_reason": "比利时90分钟不稳、美国防线状态提升，先看1-1/1-0/0-1低比分；若比利时早段打开空间再上修到2-1。"
     },
     {
       "match_no": "95",
@@ -75,10 +75,10 @@
       "kickoff_bjt": "2026-07-08 00:00:00 +08:00",
       "home_team": "阿根廷",
       "away_team": "埃及",
-      "had_pick": "胜",
-      "hhad_line": "阿根廷 -1",
-      "hhad_pick": "让平",
-      "reason": "阿根廷经加时晋级，埃及点球晋级；阿根廷主线仍更强，但2-2复盘后不追大胜。"
+      "total_goals_pick": "2球",
+      "total_goals_range": "2-3球",
+      "total_goals_backup": "3球",
+      "total_goals_reason": "阿根廷2-2复盘后不能机械给3-0，埃及点球晋级说明低位抗压足；主线2-0/2-1，早球和埃及反扑才推到3球。"
     },
     {
       "match_no": "96",
@@ -86,10 +86,10 @@
       "kickoff_bjt": "2026-07-08 04:00:00 +08:00",
       "home_team": "瑞士",
       "away_team": "哥伦比亚",
-      "had_pick": "平",
-      "hhad_line": "瑞士 +1",
-      "hhad_pick": "让胜",
-      "reason": "瑞士2-0和哥伦比亚1-0都偏低风险，90分钟平局优先，瑞士受让保护。"
+      "total_goals_pick": "2球",
+      "total_goals_range": "1-2球",
+      "total_goals_backup": "1球",
+      "total_goals_reason": "瑞士2-0和哥伦比亚1-0都指向低风险零封/小胜结构，90分钟平局优先；1-1、1-0、0-1权重高于开放对攻。"
     }
   ]
 }

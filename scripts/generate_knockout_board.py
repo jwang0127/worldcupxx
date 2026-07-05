@@ -1025,12 +1025,33 @@ def write_json(path: Path, data: Any) -> None:
 
 
 def render_score_matrix(rows: list[dict[str, Any]]) -> str:
+    rows = compact_score_rows(rows)
     return "".join(
         "<tr>"
         f"<td>{esc(item['score'])}</td><td>{float(item['probability']) * 100:.1f}%</td>"
         f"<td>{esc(item.get('ev_signal', ''))}</td><td>{esc(item['label'])}</td></tr>"
         for item in rows
     )
+
+
+def compact_score_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    safe_rows = [row for row in rows if str(row.get("ev_signal", "")).startswith("+")]
+    upset_rows = [row for row in rows if "冷" in str(row.get("ev_signal", "")) or "冷" in str(row.get("label", ""))]
+    selected: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in safe_rows[:3]:
+        score = str(row.get("score", ""))
+        if score and score not in seen:
+            selected.append(row)
+            seen.add(score)
+    for row in upset_rows[:1]:
+        score = str(row.get("score", ""))
+        if score and score not in seen:
+            selected.append(row)
+            seen.add(score)
+    if not selected:
+        return rows[:4]
+    return selected
 
 
 def render_ev_rows(rows: list[dict[str, Any]]) -> str:
@@ -1122,13 +1143,14 @@ def resolved_team_name(team_name: str, winners: dict[str, str]) -> str:
 
 def future_round16_matches(schedule: list[dict[str, Any]]) -> list[dict[str, Any]]:
     winners = knockout_winner_lookup()
+    settled = settled_match_keys()
     rows: list[dict[str, Any]] = []
     for item in schedule:
         try:
             match_no = int(str(item.get("match_no", "0")))
         except ValueError:
             continue
-        if 89 <= match_no <= 96:
+        if 89 <= match_no <= 96 and not is_settled_match(item, settled):
             copied = dict(item)
             copied["home_team_resolved"] = resolved_team_name(str(item.get("home_team", "")), winners)
             copied["away_team_resolved"] = resolved_team_name(str(item.get("away_team", "")), winners)
@@ -1155,7 +1177,13 @@ def round16_market_forecasts() -> list[dict[str, Any]]:
     if not path.exists():
         return []
     try:
-        return read_json(path).get("matches", [])
+        settled = settled_match_keys()
+        return [
+            item
+            for item in read_json(path).get("matches", [])
+            if f"game:{item.get('game_id', '')}" not in settled
+            and f"no:{str(item.get('match_no', '')).lstrip('0')}" not in settled
+        ]
     except Exception:
         return []
 
@@ -1175,6 +1203,143 @@ def render_round16_market_rows(rows: list[dict[str, Any]]) -> str:
         "</tr>"
         for item in rows
     )
+
+
+def quarterfinal_matches(schedule: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    winners = knockout_winner_lookup()
+    rows: list[dict[str, Any]] = []
+    for item in schedule:
+        try:
+            match_no = int(str(item.get("match_no", "0")))
+        except ValueError:
+            continue
+        if 97 <= match_no <= 100:
+            copied = dict(item)
+            copied["home_team_resolved"] = resolved_team_name(str(item.get("home_team", "")), winners)
+            copied["away_team_resolved"] = resolved_team_name(str(item.get("away_team", "")), winners)
+            rows.append(copied)
+    return sorted(rows, key=lambda item: int(str(item["match_no"])))
+
+
+def entry_status(team_name: str) -> str:
+    return "已入围" if not str(team_name).startswith("待定") else "待产生"
+
+
+def render_quarterfinal_entry_rows(matches: list[dict[str, Any]]) -> str:
+    if not matches:
+        return '<tr><td colspan="6">暂无8强入围信息。</td></tr>'
+    rendered = []
+    for item in matches:
+        home = item.get("home_team_resolved", "")
+        away = item.get("away_team_resolved", "")
+        rendered.append(
+            "<tr>"
+            f"<td>{esc(item['beijing_date'][5:])} {esc(item['beijing_time'])}</td>"
+            f"<td>{esc(item['match_no'])}</td>"
+            f"<td>{esc(home)}</td>"
+            f"<td>{esc(entry_status(home))}</td>"
+            f"<td>{esc(away)}</td>"
+            f"<td>{esc(entry_status(away))}</td>"
+            "</tr>"
+        )
+    return "".join(rendered)
+
+
+def total_goals_from_scores(item: dict[str, Any]) -> tuple[str, str, str]:
+    scores: list[str] = []
+    for key in ("main_score", "upset_score"):
+        value = item.get(key)
+        if value:
+            scores.append(str(value))
+    for key in ("backup_scores", "safe_scores", "draw_protection_scores"):
+        values = item.get(key) or []
+        if isinstance(values, list):
+            scores.extend(str(value) for value in values if value)
+
+    totals = [total for total in (score_total(score) for score in scores) if total is not None]
+    if not totals:
+        return "待定", "待定", "等待赔率/比分池刷新"
+
+    counts: dict[int, int] = {}
+    for total in totals:
+        counts[total] = counts.get(total, 0) + 1
+    ordered = sorted(counts.items(), key=lambda pair: (-pair[1], pair[0]))
+    primary = ordered[0][0]
+    backups = [str(total) for total, _ in ordered[1:3]]
+    low = max(0, min(totals))
+    high = max(totals)
+    return f"{primary}球", f"{low}-{high}球", " / ".join(f"{value}球" for value in backups) if backups else "无"
+
+
+def render_round16_total_goals_rows(rows: list[dict[str, Any]]) -> str:
+    if not rows:
+        return '<tr><td colspan="7">暂无16强总进球预测。</td></tr>'
+    rendered = []
+    for item in rows:
+        inferred_pick, inferred_range, inferred_backup = total_goals_from_scores(item)
+        pick = item.get("total_goals_pick") or inferred_pick
+        goals_range = item.get("total_goals_range") or inferred_range
+        backup = item.get("total_goals_backup") or inferred_backup
+        reason = item.get("total_goals_reason") or item.get("reason", "")
+        rendered.append(
+            "<tr>"
+            f"<td>{esc(item.get('match_no', ''))}</td>"
+            f"<td>{esc(item.get('kickoff_bjt', '').replace('2026-', '').replace(':00 +08:00', ''))}</td>"
+            f"<td>{esc(item.get('home_team', ''))} vs {esc(item.get('away_team', ''))}</td>"
+            f"<td>{esc(pick)}</td>"
+            f"<td>{esc(goals_range)}</td>"
+            f"<td>{esc(backup)}</td>"
+            f"<td>{esc(reason)}</td>"
+            "</tr>"
+        )
+    return "".join(rendered)
+
+
+def future_parlay_payload() -> dict[str, Any]:
+    path = DATA_DIR / "round16_parlay_20260705.json"
+    if not path.exists():
+        return {}
+    try:
+        return read_json(path)
+    except Exception:
+        return {}
+
+
+def render_future_parlay_group(group: dict[str, Any]) -> str:
+    rows = "".join(
+        "<tr>"
+        f"<td>{esc(item.get('match_no', ''))}</td>"
+        f"<td>{esc(item.get('match', ''))}</td>"
+        f"<td>{esc(item.get('score_pick', ''))}</td>"
+        f"<td>{esc(item.get('goals_pick', ''))}</td>"
+        f"<td>{esc(item.get('half_full_pick', ''))}</td>"
+        f"<td>{esc(item.get('ev_signal', ''))}</td>"
+        f"<td>{esc(item.get('note', ''))}</td>"
+        "</tr>"
+        for item in group.get("legs", [])
+    )
+    return f"""
+    <div class="card">
+      <h3>{esc(group.get('title', '三串一'))}</h3>
+      <p class="muted">{esc(group.get('summary', ''))}</p>
+      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>总进球</th><th>半全场</th><th>EV信号</th><th>说明</th></tr></thead><tbody>{rows}</tbody></table></div>
+    </div>"""
+
+
+def render_future_parlay_section(payload: dict[str, Any]) -> str:
+    groups = payload.get("groups", [])
+    if not groups:
+        return ""
+    body = "".join(render_future_parlay_group(group) for group in groups)
+    return f"""
+  <section class="section" id="futureParlay">
+    <h2>未来串关</h2>
+    <div class="card">
+      <p><strong>{esc(payload.get('headline', '未赛场次三串一更新'))}</strong></p>
+      <p>{esc(payload.get('summary', ''))}</p>
+    </div>
+    {body}
+  </section>"""
 
 
 def knockout_results() -> list[dict[str, Any]]:
@@ -1617,6 +1782,8 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
     matches = rolling_future_matches(schedule, 3)
     round16_matches = future_round16_matches(schedule)
     round16_forecasts = round16_market_forecasts()
+    quarterfinals = quarterfinal_matches(schedule)
+    future_parlay = future_parlay_payload()
     results = knockout_results()
     hit_stats = knockout_hit_stats()
     return f"""<!DOCTYPE html>
@@ -1626,7 +1793,7 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
 <header>
   <div class="topbar"><div><h1>2026世界杯预测入口</h1>
   </div></div>
-  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="#round16Forecast">16强预测</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
+  <nav><a href="#entry">赛事阶段</a><a href="#future">未来三天</a><a href="#round16">16强赛程</a><a href="#round16Goals">16强总进球</a><a href="#futureParlay">三串一</a><a href="#quarterfinals">8强入围</a><a href="#hitStats">命中统计</a><a href="#teams">淘汰赛赛果</a></nav>
 </header>
 <main>
   <section class="section" id="entry">
@@ -1638,7 +1805,9 @@ def render_home_page(schedule: list[dict[str, Any]], stats: list[dict[str, Any]]
   </section>
   <section class="section" id="future"><h2>未来三天比赛</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>下场对手</th></tr></thead><tbody>{render_upcoming_rows(matches)}</tbody></table></div></section>
   <section class="section" id="round16"><h2>未来16强赛日程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>晋级路径</th></tr></thead><tbody>{render_round16_schedule_rows(round16_matches)}</tbody></table></div></section>
-  <section class="section" id="round16Forecast"><h2>未来16强胜平负 / 让球胜平负预测</h2><div class="card tableWrap"><table><thead><tr><th>场次</th><th>北京时间</th><th>对阵</th><th>胜平负</th><th>让球口径</th><th>让球胜平负</th><th>模型依据</th></tr></thead><tbody>{render_round16_market_rows(round16_forecasts)}</tbody></table></div></section>
+  <section class="section" id="round16Goals"><h2>未来16强总进球预测</h2><div class="card tableWrap"><table><thead><tr><th>场次</th><th>北京时间</th><th>对阵</th><th>主推总进球</th><th>核心区间</th><th>备选</th><th>模型依据</th></tr></thead><tbody>{render_round16_total_goals_rows(round16_forecasts)}</tbody></table></div></section>
+  {render_future_parlay_section(future_parlay)}
+  <section class="section" id="quarterfinals"><h2>8强比赛入围表</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>上半区入围队</th><th>状态</th><th>下半区入围队</th><th>状态</th></tr></thead><tbody>{render_quarterfinal_entry_rows(quarterfinals)}</tbody></table></div></section>
   {render_knockout_hit_stats(hit_stats)}
   <section class="section" id="teams"><h2>淘汰赛以来赛果</h2><div class="card tableWrap"><table><thead><tr><th>日期</th><th>场次</th><th>对阵</th><th>比分</th><th>赛果</th><th>赛前主比分</th><th>复盘</th></tr></thead><tbody>{render_knockout_result_rows(results)}</tbody></table></div></section>
 </main>
@@ -1736,9 +1905,12 @@ def render_prediction_card(item: dict[str, Any]) -> str:
     matrix_rows = render_score_matrix(item.get("score_matrix_top", []))
     ev_rows = render_ev_rows(item.get("ev_table", []))
     insight_cards = render_insight_cards(item.get("model_insights", []))
-    backup = " / ".join(item.get("backup_scores", item.get("safe_scores", [])))
-    score_tags = [item.get("main_score")]
-    score_tags.extend(item.get("backup_scores", item.get("safe_scores", [])))
+    compact_rows = compact_score_rows(item.get("score_matrix_top", []))
+    safe_scores = [str(row.get("score")) for row in compact_rows if "冷" not in str(row.get("ev_signal", "")) and "冷" not in str(row.get("label", ""))]
+    backup = " / ".join(safe_scores[1:3] or item.get("backup_scores", item.get("safe_scores", []))[:2])
+    score_tags = safe_scores[:3]
+    if not score_tags:
+        score_tags = [item.get("main_score")]
     score_tag_html = "".join(f'<span class="scoreTag">{esc(score)}</span>' for score in score_tags if score)
     if item.get("upset_score"):
         score_tag_html += f'<span class="scoreTag danger">{esc(item["upset_score"])}</span>'
@@ -1812,6 +1984,13 @@ def render_parlay_table(title: str, rows: list[dict[str, Any]], note: str) -> st
 
 
 def render_parlay_section(date_label: str, predictions: list[dict[str, Any]]) -> str:
+    settled = settled_match_keys()
+    predictions = [
+        item
+        for item in predictions
+        if f"game:{item.get('game_id', '')}" not in settled
+        and f"no:{str(item.get('match_no', '')).lstrip('0')}" not in settled
+    ]
     if len(predictions) < PARLAY_POLICY["min_enabled_match_count"]:
         return ""
     odds_lookup = load_live_odds(date_label)
