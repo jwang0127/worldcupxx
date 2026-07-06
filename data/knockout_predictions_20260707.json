@@ -1,0 +1,451 @@
+{
+  "date": "20260707",
+  "stage": "knockout",
+  "review_source": "data/model_review_lessons_20260706.json",
+  "matches": [
+    {
+      "game_id": "53452513",
+      "match_no": "93",
+      "round": "16强赛",
+      "home_team": "葡萄牙",
+      "away_team": "西班牙",
+      "kickoff_bjt": "2026-07-07 03:00:00 +08:00",
+      "venue": "比赛将在美国-得克萨斯州阿灵顿举行",
+      "model_version": "v8.3-open-score-btts-correction",
+      "direction_90min": "away",
+      "direction_text": "西班牙90分钟胜优先，主线1-2，防1-1/0-2",
+      "half_time": "葡萄牙 0-1 西班牙",
+      "half_time_pick": "away",
+      "hafu_pick": "aa",
+      "main_score": "1-2",
+      "backup_scores": [
+        "0-2",
+        "1-1"
+      ],
+      "upset_score": "2-1",
+      "goals_range": "2-4球，核心3球",
+      "advance_pick": "西班牙",
+      "advance_probability_text": "90分钟：葡萄牙胜 22% / 平 27% / 西班牙胜 51%；最终晋级：葡萄牙 35% / 西班牙 65%",
+      "core_view": "西班牙连续强势且客胜赔率低位，方向仍偏西班牙；但07-06复盘后不再把强队优势压成单一小比分。葡萄牙硬仗韧性和定位球足以贡献进球，主线从0-2修正为1-2，0-2作为西班牙控场零封保护，1-1用于半场或60分钟前打不开时防平。",
+      "review_adjustment": "昨日两场都打穿保守比分，本场提高双方进球和3球区间权重。若西班牙早球，1-2/1-3升权；若半场0-0，1-1升权，西班牙方向降一档。",
+      "score_matrix_top": [
+        {
+          "score": "1-2",
+          "probability": 0.17,
+          "ev_signal": "+0.05",
+          "label": "开放客胜主线"
+        },
+        {
+          "score": "0-2",
+          "probability": 0.13,
+          "ev_signal": "+0.03",
+          "label": "西班牙控场"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.13,
+          "ev_signal": "+0.03",
+          "label": "防平保护"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.08,
+          "ev_signal": "防冷",
+          "label": "葡萄牙硬仗反杀"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "西班牙90分钟方向",
+          "model_probability": 0.51,
+          "fair_odds": 1.96,
+          "ev_signal": "方向确认",
+          "note": "赔率支持客胜，但不包装成高EV。"
+        },
+        {
+          "market": "比分：1-2 / 0-2 / 1-1",
+          "model_probability": 0.43,
+          "fair_odds": 2.33,
+          "ev_signal": "+0.05",
+          "note": "1-2与1-1同为赔率低位，优先保留双方进球。"
+        },
+        {
+          "market": "总进球：3球，防2球/4球",
+          "model_probability": 0.58,
+          "fair_odds": 1.72,
+          "ev_signal": "+0.04",
+          "note": "昨日复盘后3球优先，4球进观察池。"
+        },
+        {
+          "market": "半全场：负负 / 平负",
+          "model_probability": 0.45,
+          "fair_odds": 2.22,
+          "ev_signal": "+0.03",
+          "note": "西班牙可早段建立优势，也可下半场解决。"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "主线",
+          "content": "西班牙胜方向优先，但比分从保守0-1上修到1-2。"
+        },
+        {
+          "title": "比分池",
+          "content": "稳胆：1-2、0-2、1-1；防冷：2-1。"
+        },
+        {
+          "title": "串关",
+          "content": "更适合做三串一第一腿的方向或总进球3球腿。"
+        }
+      ],
+      "team_reading": [
+        "西班牙强在中前场压迫和连续制造高质量机会，客胜赔率低位与基本面一致。",
+        "葡萄牙面对强队不会完全失去进球路径，定位球和转换能支撑1球。",
+        "07-06复盘后，本场不再用纯小比分表达西班牙优势。"
+      ],
+      "triggers": [
+        "西班牙30分钟前进球：1-2和1-3升权，0-2保留。",
+        "半场0-0：1-1升权，西班牙胜方向降到小胜/加时脚本。",
+        "葡萄牙先进球：1-1与2-1升权，总进球3/4继续保留。"
+      ],
+      "odds_snapshot": {
+        "id": "093",
+        "matchNumStr": "周一093",
+        "matchId": "2040416",
+        "businessDate": "2026-07-06",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-07 03:00:00",
+        "matchDate": "2026-07-07",
+        "matchTime": "03:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607061",
+        "isHot": false,
+        "home": "葡萄牙",
+        "homeCode": "POG",
+        "homeAbbr": "葡萄牙",
+        "homeRank": "[世界杯2]",
+        "away": "西班牙",
+        "awayCode": "SPA",
+        "awayAbbr": "西班牙",
+        "awayRank": "[世界杯1]",
+        "venue": "比赛将在美国-得克萨斯州阿灵顿举行",
+        "prediction": {
+          "totalGoals": "3",
+          "scores": [
+            "0:2",
+            "1:2"
+          ],
+          "upset": "1:1",
+          "confidence": "medium",
+          "candidates": [
+            "3",
+            "2",
+            "4"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 3, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "4.00",
+            "draw": "3.35",
+            "away": "1.72",
+            "updatedAt": "2026-07-06 09:49:13"
+          },
+          "ttg": {
+            "s0": "13.50",
+            "s1": "5.45",
+            "s2": "3.55",
+            "s3": "3.35",
+            "s4": "4.80",
+            "s5": "9.65",
+            "s6": "16.00",
+            "s7": "24.00",
+            "updatedAt": "2026-07-06 09:51:07"
+          },
+          "hhad": {
+            "home": "1.85",
+            "draw": "3.40",
+            "away": "3.40",
+            "handicap": null,
+            "updatedAt": "2026-07-06 09:49:23"
+          },
+          "crs": {
+            "0-0": "13.50",
+            "0-1": "7.50",
+            "0-2": "9.00",
+            "0-3": "16.00",
+            "0-4": "40.00",
+            "0-5": "100.0",
+            "1-0": "13.00",
+            "1-1": "5.85",
+            "1-2": "5.85",
+            "1-3": "13.50",
+            "1-4": "35.00",
+            "1-5": "100.0",
+            "2-0": "23.00",
+            "2-1": "11.00",
+            "2-2": "10.50",
+            "2-3": "21.00",
+            "2-4": "60.00",
+            "2-5": "200.0",
+            "3-0": "55.00",
+            "3-1": "30.00",
+            "3-2": "34.00",
+            "3-3": "40.00",
+            "4-0": "150.0",
+            "4-1": "125.0",
+            "4-2": "125.0",
+            "5-0": "500.0",
+            "5-1": "350.0",
+            "5-2": "500.0",
+            "homeOther": "150.0",
+            "drawOther": "250.0",
+            "awayOther": "60.00",
+            "updatedAt": "2026-07-06 09:51:34"
+          },
+          "hafu": {
+            "aa": "2.80",
+            "ad": "13.00",
+            "ah": "25.00",
+            "da": "4.60",
+            "dd": "6.25",
+            "dh": "8.75",
+            "ha": "18.00",
+            "hd": "13.00",
+            "hh": "6.40",
+            "updatedAt": "2026-07-06 09:49:33"
+          }
+        }
+      },
+      "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260707.json"
+    },
+    {
+      "game_id": "53452515",
+      "match_no": "94",
+      "round": "16强赛",
+      "home_team": "美国",
+      "away_team": "比利时",
+      "kickoff_bjt": "2026-07-07 08:00:00 +08:00",
+      "venue": "比赛将在美国-华盛顿州西雅图举行",
+      "model_version": "v8.3-open-score-btts-correction",
+      "direction_90min": "draw",
+      "direction_text": "90分钟平局优先，主线1-1，防2-1/1-2",
+      "half_time": "美国 1-1 比利时",
+      "half_time_pick": "draw",
+      "hafu_pick": "dd",
+      "main_score": "1-1",
+      "backup_scores": [
+        "2-1",
+        "1-2"
+      ],
+      "upset_score": "0-1",
+      "goals_range": "2-4球，核心2/3球",
+      "advance_pick": "美国",
+      "advance_probability_text": "90分钟：美国胜 35% / 平 31% / 比利时胜 34%；最终晋级：美国 52% / 比利时 48%",
+      "core_view": "赔率把美国略置于低位，但双方差距很小。美国主场与体能有保护，比利时进攻质量仍能制造进球；07-06复盘后，受让/均势保护不再简单压小，1-1是主线，2-1和1-2并列保护，若早球出现可扩到2-2。",
+      "review_adjustment": "昨日墨西哥2-3英格兰提醒：主队有进球路径时，客强或均势局会被拉开到3/5球。本场保持90分钟平局主线，但总进球从纯2球扩到2/3球并防2-2。",
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.16,
+          "ev_signal": "+0.04",
+          "label": "均势主线"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.13,
+          "ev_signal": "+0.03",
+          "label": "美国主场小胜"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.13,
+          "ev_signal": "+0.03",
+          "label": "比利时反击小胜"
+        },
+        {
+          "score": "2-2",
+          "probability": 0.08,
+          "ev_signal": "防大",
+          "label": "早球开放"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "90分钟平局/美国不败",
+          "model_probability": 0.66,
+          "fair_odds": 1.52,
+          "ev_signal": "+0.03",
+          "note": "美国主场保护存在，但胜负差距很窄。"
+        },
+        {
+          "market": "比分：1-1 / 2-1 / 1-2",
+          "model_probability": 0.42,
+          "fair_odds": 2.38,
+          "ev_signal": "+0.04",
+          "note": "三条均势路径并列，比分串不宜重仓单点。"
+        },
+        {
+          "market": "总进球：2球 / 3球",
+          "model_probability": 0.55,
+          "fair_odds": 1.82,
+          "ev_signal": "+0.03",
+          "note": "2球最低，3球与昨日开放修正共同保留。"
+        },
+        {
+          "market": "半全场：平平",
+          "model_probability": 0.29,
+          "fair_odds": 3.45,
+          "ev_signal": "+0.02",
+          "note": "半场即可能互有进球，平平不等于0-0慢局。"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "主线",
+          "content": "90分钟平局优先，美国最终晋级略高。"
+        },
+        {
+          "title": "比分池",
+          "content": "稳胆：1-1、2-1、1-2；开放保护：2-2。"
+        },
+        {
+          "title": "串关",
+          "content": "二串一可搭美国不败/总进球2-3，三串一里做波动腿。"
+        }
+      ],
+      "team_reading": [
+        "美国主场和身体对抗带来下限，领先后有守住小胜的路径。",
+        "比利时进攻质量足够高，不适合被模型压成无进球客队。",
+        "均势局优先看1-1，再根据早球选择2-1、1-2或2-2。"
+      ],
+      "triggers": [
+        "半场1-1：1-1和2-2升权，胜负比分降权。",
+        "美国先进球：2-1升权，比利时追平能力仍保留1-1。",
+        "比利时先进球：1-2和1-1升权，美国主场后段反扑会推高总进球。"
+      ],
+      "odds_snapshot": {
+        "id": "094",
+        "matchNumStr": "周一094",
+        "matchId": "2040395",
+        "businessDate": "2026-07-06",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-07 08:00:00",
+        "matchDate": "2026-07-07",
+        "matchTime": "08:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 1,
+        "taxDateNo": "2607061",
+        "isHot": false,
+        "home": "美国",
+        "homeCode": "USA",
+        "homeAbbr": "美国",
+        "homeRank": "[世界杯1]",
+        "away": "比利时",
+        "awayCode": "BEG",
+        "awayAbbr": "比利时",
+        "awayRank": "[世界杯1]",
+        "venue": "比赛将在美国-华盛顿州西雅图举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "1:1",
+            "2:1"
+          ],
+          "upset": "0:1",
+          "confidence": "medium",
+          "candidates": [
+            "3",
+            "2",
+            "4"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "2.35",
+            "draw": "3.30",
+            "away": "2.50",
+            "updatedAt": "2026-07-06 11:07:09"
+          },
+          "ttg": {
+            "s0": "14.00",
+            "s1": "5.75",
+            "s2": "3.55",
+            "s3": "3.35",
+            "s4": "4.95",
+            "s5": "8.60",
+            "s6": "15.00",
+            "s7": "23.00",
+            "updatedAt": "2026-07-04 22:08:20"
+          },
+          "hhad": {
+            "home": "1.39",
+            "draw": "4.50",
+            "away": "5.35",
+            "handicap": null,
+            "updatedAt": "2026-07-06 11:07:18"
+          },
+          "crs": {
+            "0-0": "14.00",
+            "0-1": "12.00",
+            "0-2": "15.50",
+            "0-3": "30.00",
+            "0-4": "80.00",
+            "0-5": "300.0",
+            "1-0": "11.00",
+            "1-1": "5.80",
+            "1-2": "7.30",
+            "1-3": "19.00",
+            "1-4": "50.00",
+            "1-5": "175.0",
+            "2-0": "14.00",
+            "2-1": "7.00",
+            "2-2": "9.50",
+            "2-3": "24.00",
+            "2-4": "75.00",
+            "2-5": "200.0",
+            "3-0": "25.00",
+            "3-1": "16.00",
+            "3-2": "21.00",
+            "3-3": "40.00",
+            "4-0": "65.00",
+            "4-1": "45.00",
+            "4-2": "60.00",
+            "5-0": "200.0",
+            "5-1": "150.0",
+            "5-2": "150.0",
+            "homeOther": "60.00",
+            "drawOther": "200.0",
+            "awayOther": "75.00",
+            "updatedAt": "2026-07-06 09:45:27"
+          },
+          "hafu": {
+            "aa": "4.20",
+            "ad": "12.00",
+            "ah": "21.00",
+            "da": "6.00",
+            "dd": "6.00",
+            "dh": "5.60",
+            "ha": "22.00",
+            "hd": "12.00",
+            "hh": "4.10",
+            "updatedAt": "2026-07-06 09:44:58"
+          }
+        }
+      },
+      "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260707.json"
+    }
+  ]
+}

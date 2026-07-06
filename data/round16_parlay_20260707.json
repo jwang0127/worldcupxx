@@ -1,0 +1,117 @@
+{
+  "date": "20260707",
+  "stage": "round16_future_parlay",
+  "headline": "07-07更新：复盘91/92后，串关从保守小比分切到方向+总进球双保护",
+  "summary": "今日只有93/94两场世界杯，输出二串一为主；三串一采用93/94加下一比赛日95的预案，95待赔率更新后再确认。",
+  "groups": [
+    {
+      "title": "主票：93-94二串一",
+      "summary": "更稳的两场组合：西班牙方向/总进球3 + 美国不败/1-1保护。",
+      "legs": [
+        {
+          "match_no": "93",
+          "match": "葡萄牙 vs 西班牙",
+          "score_pick": "1-2 / 0-2",
+          "score_odds": "5.85 / 9.00",
+          "goals_pick": "3球 / 2球",
+          "goals_odds": "3.35 / 3.55",
+          "half_full_pick": "负负 / 平负",
+          "half_full_odds": "2.80 / 4.60",
+          "ev_signal": "+0.03",
+          "note": "西班牙方向优先，昨日复盘后主防1-2。",
+          "odds_updated_at": "2026-07-06 09:51:34"
+        },
+        {
+          "match_no": "94",
+          "match": "美国 vs 比利时",
+          "score_pick": "1-1 / 2-1",
+          "score_odds": "5.80 / 7.00",
+          "goals_pick": "2球 / 3球",
+          "goals_odds": "3.55 / 3.35",
+          "half_full_pick": "平平 / 平胜",
+          "half_full_odds": "6.00 / 5.60",
+          "ev_signal": "+0.03",
+          "note": "美国不败和平局保护，防早球开放。",
+          "odds_updated_at": "2026-07-06 09:45:27"
+        }
+      ]
+    },
+    {
+      "title": "比分二串一",
+      "summary": "波动较高，只适合小注参考。",
+      "legs": [
+        {
+          "match_no": "93",
+          "match": "葡萄牙 vs 西班牙",
+          "score_pick": "1-2",
+          "score_odds": "5.85",
+          "goals_pick": "3球 / 2球",
+          "goals_odds": "3.35 / 3.55",
+          "half_full_pick": "负负 / 平负",
+          "half_full_odds": "2.80 / 4.60",
+          "ev_signal": "+0.03",
+          "note": "西班牙方向优先，昨日复盘后主防1-2。",
+          "odds_updated_at": "2026-07-06 09:51:34"
+        },
+        {
+          "match_no": "94",
+          "match": "美国 vs 比利时",
+          "score_pick": "1-1",
+          "score_odds": "5.80",
+          "goals_pick": "2球 / 3球",
+          "goals_odds": "3.55 / 3.35",
+          "half_full_pick": "平平 / 平胜",
+          "half_full_odds": "6.00 / 5.60",
+          "ev_signal": "+0.03",
+          "note": "美国不败和平局保护，防早球开放。",
+          "odds_updated_at": "2026-07-06 09:45:27"
+        }
+      ]
+    },
+    {
+      "title": "预案：93-95三串一",
+      "summary": "第三腿先用阿根廷 vs 埃及的模型预案，待07-08赔率快照后更新。",
+      "legs": [
+        {
+          "match_no": "93",
+          "match": "葡萄牙 vs 西班牙",
+          "score_pick": "1-2 / 0-2",
+          "score_odds": "5.85 / 9.00",
+          "goals_pick": "3球 / 2球",
+          "goals_odds": "3.35 / 3.55",
+          "half_full_pick": "负负 / 平负",
+          "half_full_odds": "2.80 / 4.60",
+          "ev_signal": "+0.03",
+          "note": "西班牙方向优先，昨日复盘后主防1-2。",
+          "odds_updated_at": "2026-07-06 09:51:34"
+        },
+        {
+          "match_no": "94",
+          "match": "美国 vs 比利时",
+          "score_pick": "1-1 / 2-1",
+          "score_odds": "5.80 / 7.00",
+          "goals_pick": "2球 / 3球",
+          "goals_odds": "3.55 / 3.35",
+          "half_full_pick": "平平 / 平胜",
+          "half_full_odds": "6.00 / 5.60",
+          "ev_signal": "+0.03",
+          "note": "美国不败和平局保护，防早球开放。",
+          "odds_updated_at": "2026-07-06 09:45:27"
+        },
+        {
+          "match_no": "95",
+          "match": "阿根廷 vs 埃及",
+          "score_pick": "2-1 / 2-0",
+          "score_odds": "-",
+          "goals_pick": "3球 / 2球",
+          "goals_odds": "-",
+          "half_full_pick": "胜胜 / 平胜",
+          "half_full_odds": "-",
+          "ev_signal": "待赔率",
+          "note": "阿根廷正路，但昨日复盘后保留埃及进球和3球路径。"
+        }
+      ]
+    }
+  ],
+  "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260707.json for match 93/94"
+}

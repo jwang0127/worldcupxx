@@ -1,62 +1,15 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>未来串关</title><style>
-:root{--bg:#06120f;--panel:#102528;--soft:#0b201d;--line:#1f4a43;--text:#e9fff8;--muted:#9bb8b0;--green:#33e28a;--blue:#7dd3fc;--orange:#ffad4d;--red:#ff5a63}
-*{box-sizing:border-box}body{margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#05110f;color:var(--text)}a{color:inherit;text-decoration:none}
-body:before{content:"";position:fixed;inset:0;background:linear-gradient(135deg,#04120f 0%,#092225 48%,#061324 100%);z-index:-2}
-body:after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% -20%,rgba(51,226,138,.13),transparent 42%);z-index:-1;pointer-events:none}
-header,main{max-width:1180px;margin:auto;padding:24px 18px}header{position:sticky;top:0;background:rgba(3,12,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5}
-h1{margin:0 0 10px;font-size:clamp(28px,5vw,42px);letter-spacing:0}.topbar{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}.topActions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}@media(max-width:850px){.topbar{display:block}.topActions{justify-content:flex-start;margin-top:12px}}
-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}nav a,.buttonLink{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#0b201d;color:#8fffd0;display:inline-flex;align-items:center;gap:6px}
-.section{margin:24px 0 36px}.section h2{color:var(--blue);font-size:25px;margin:0 0 12px}.card,.panel{border:1px solid var(--line);border-radius:8px;background:rgba(12,32,33,.96);box-shadow:0 16px 36px rgba(0,0,0,.22);padding:18px;margin:14px 0}
-.entryGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.entryCard{min-height:170px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(180deg,#0f2a2b,#091b1d);padding:22px;display:flex;flex-direction:column;justify-content:space-between}.entryCard:hover{border-color:var(--green)}.entryCard span{color:var(--muted)}.entryCard strong{font-size:30px;color:var(--green);display:block;margin:8px 0}.entryCard em{font-style:normal;color:var(--text);line-height:1.6}
-.heroGrid,.coreGrid,.summaryGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.coreGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.summaryGrid{grid-template-columns:repeat(3,minmax(0,1fr))}@media(max-width:850px){.entryGrid,.heroGrid,.coreGrid,.summaryGrid{grid-template-columns:1fr}}
-.metric{background:#071817;border:1px solid #1f4a43;border-radius:8px;padding:14px}.metric strong{display:block;color:var(--green);font-size:23px;margin-top:4px}.metric small{display:block;color:var(--muted);margin-top:5px;line-height:1.5}
-.bigScore{font-size:48px;color:var(--green);font-weight:900}.adv{color:var(--orange);font-weight:900}.muted{color:var(--muted)}.tableWrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:820px}th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:#8fffd0;background:#09211e}
-ul{line-height:1.8}.scoreTag{display:inline-block;margin:4px 8px 4px 0;padding:8px 12px;border-radius:8px;border:1px solid #2ecf7a;background:#0d3028;color:#a8ffd6;font-weight:800}.danger{border-color:var(--red);color:#ffd2b0;background:#331415}
-.resultTable td{padding:14px 12px;line-height:1.65}.resultTable td:last-child{min-width:360px}.resultTable strong{font-size:18px;color:#a8ffd6}
-.miniGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.miniCard{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--line);border-radius:8px;background:#071817}.miniCard:hover{border-color:var(--green)}.miniCard span{color:var(--muted)}
-.mysticGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:850px){.mysticGrid{grid-template-columns:1fr}}.mysticItem{border:1px solid var(--line);border-radius:8px;background:#071817;padding:14px}.mysticItem strong{color:#8fffd0;display:block;margin-bottom:6px}
-.mysticCard{border-color:#7c3aed;background:linear-gradient(180deg,rgba(43,25,74,.96),rgba(20,13,38,.96))}.mysticCard .mysticItem{border-color:#6d46b4;background:rgba(26,16,48,.9)}.mysticCard .mysticItem strong{color:#d8b4fe}.mysticSummary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:850px){.mysticSummary{grid-template-columns:1fr}}.mysticSummary div{border:1px solid #6d46b4;border-radius:8px;background:rgba(26,16,48,.9);padding:12px}.mysticSummary strong{display:block;color:#f0abfc;margin-bottom:5px}
-.matchDetails{border:1px solid var(--line);border-radius:8px;background:rgba(7,24,23,.96);overflow:hidden}.matchDetails summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:minmax(180px,1fr) 90px minmax(240px,1fr);gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}.matchDetails summary::-webkit-details-marker{display:none}.matchDetails summary:before{content:"展开";color:#8fffd0;border:1px solid var(--line);border-radius:8px;padding:5px 8px;justify-self:start;grid-column:1/-1;display:none}.matchDetails:not([open]) summary:before{display:inline-block}.matchDetails summary span{font-size:22px;font-weight:800;color:var(--blue)}.matchDetails summary strong{font-size:30px;color:var(--green)}.matchDetails summary em{font-style:normal;color:var(--muted);line-height:1.5}.matchDetails:not([open]) summary{border-bottom:0}.matchBody{border:0;border-top:1px solid var(--line);border-radius:0;margin:0;box-shadow:none}@media(max-width:850px){.matchDetails summary{grid-template-columns:1fr}.matchDetails summary strong{font-size:28px}}
-footer{color:#8ea8a1;font-size:13px;margin-top:36px}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>未来串关</title><style>
+:root{--bg:#081412;--card:#10211e;--panel:#132b27;--line:#23443e;--text:#e8f6f1;--muted:#9dbab2;--green:#58d68d;--blue:#6bbcff;--gold:#f4c95d;--red:#ff7f7f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;line-height:1.65}
+header{padding:24px 18px 12px;max-width:1180px;margin:auto}h1{margin:0 0 14px;font-size:32px}nav{display:flex;gap:10px;flex-wrap:wrap}nav a{color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#0c1b18}
+main{max-width:1180px;margin:auto;padding:0 18px 42px}.section{margin-top:22px}.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-top:12px}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px}.metric strong{display:block;color:var(--green);font-size:24px}.metric small,.muted{color:var(--muted)}
+.tableWrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}th{color:var(--blue);font-weight:700}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 8px;margin:2px;background:#0c1b18}.good{color:var(--green)}.warn{color:var(--gold)}.bad{color:var(--red)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-top:14px;overflow:hidden}summary{cursor:pointer;padding:15px 16px;display:grid;grid-template-columns:1fr auto 1.4fr;gap:12px;align-items:center}summary strong{color:var(--green);font-size:24px}.body{border-top:1px solid var(--line);padding:16px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:850px){.grid,.cols,summary{grid-template-columns:1fr}h1{font-size:26px}table{min-width:680px}}
 </style></head>
-<body>
-<header>
-  <h1>未来串关</h1>
-  <nav><a href="../index.html">首页</a><a href="../20260706/">07-06预测</a><a href="../knockout/">淘汰赛日期</a></nav>
-</header>
-<main>
-  
-  <section class="section" id="futureParlay">
-    <h2>未来串关</h2>
-    <div class="card">
-      <p><strong>07-05更新：已结算89/90，串关改用未赛16强场次</strong></p>
-      <p>两场串、三场串和多场串都可用；输出仍按保守EV信号，不把低赔方向包装成高EV。</p>
-      <p class="muted">赔率来源：Sporttery calculator getMatchCalculatorV1, data/20260706.json for match 91/92</p>
-    </div>
-    
-    <div class="card">
-      <h3>主串：91-92两场串</h3>
-      <p class="muted">最保守组合：巴西正路 + 英格兰低比分方向。</p>
-      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>比分赔率</th><th>总进球</th><th>总进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>91</td><td>巴西 vs 挪威</td><td>2-1 / 2-0</td><td>4.85 / 9.00</td><td>3球，防2球</td><td>3.35 / 3.75</td><td>平胜 / 胜胜</td><td>4.50 / 2.55</td><td>+0.04</td><td>巴西方向正路，但挪威反击保留一球。</td></tr><tr><td>92</td><td>墨西哥 vs 英格兰</td><td>0-1 / 1-1</td><td>6.30 / 5.00</td><td>2球，防3球</td><td>2.90 / 3.70</td><td>平负</td><td>5.30</td><td>+0.03</td><td>英格兰优势在，但墨西哥受让和低节奏要保留。</td></tr></tbody></table></div>
-    </div>
-    <div class="card">
-      <h3>主票：91-93三场串</h3>
-      <p class="muted">在两场串基础上加入葡萄牙-西班牙，适合接受波动的主票。</p>
-      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>比分赔率</th><th>总进球</th><th>总进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>91</td><td>巴西 vs 挪威</td><td>2-1 / 2-0</td><td>4.85 / 9.00</td><td>3球，防2球</td><td>3.35 / 3.75</td><td>平胜 / 胜胜</td><td>4.50 / 2.55</td><td>+0.04</td><td>巴西方向正路，但挪威反击保留一球。</td></tr><tr><td>92</td><td>墨西哥 vs 英格兰</td><td>0-1 / 1-1</td><td>6.30 / 5.00</td><td>2球，防3球</td><td>2.90 / 3.70</td><td>平负</td><td>5.30</td><td>+0.03</td><td>英格兰优势在，但墨西哥受让和低节奏要保留。</td></tr><tr><td>93</td><td>葡萄牙 vs 西班牙</td><td>1-2 / 2-1</td><td>-</td><td>3球，防2球</td><td>-</td><td>平负 / 平胜</td><td>-</td><td>+0.03</td><td>西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。</td></tr></tbody></table></div>
-    </div>
-    <div class="card">
-      <h3>次票：94-96三场串</h3>
-      <p class="muted">保守备选，等临场赔率确认后再决定。</p>
-      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>比分赔率</th><th>总进球</th><th>总进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>94</td><td>美国 vs 比利时</td><td>1-1 / 0-1</td><td>-</td><td>2球，防3球</td><td>-</td><td>平平 / 平负</td><td>-</td><td>+0.03</td><td>比利时90分钟不稳，美国防线保护上调。</td></tr><tr><td>95</td><td>阿根廷 vs 埃及</td><td>2-0 / 2-1</td><td>-</td><td>2球，防3球</td><td>-</td><td>胜胜 / 平胜</td><td>-</td><td>+0.04</td><td>阿根廷正路，但埃及低位抗压不追3-0。</td></tr><tr><td>96</td><td>瑞士 vs 哥伦比亚</td><td>1-1 / 1-0</td><td>-</td><td>2球，防1球</td><td>-</td><td>平平 / 平胜</td><td>-</td><td>+0.03</td><td>瑞士与哥伦比亚都偏低风险，90分钟防平。</td></tr></tbody></table></div>
-    </div>
-    <div class="card">
-      <h3>多场观察：91-96六场串</h3>
-      <p class="muted">高波动观察票；建议以总进球和半全场为主，比分只作小注参考。</p>
-      <div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分稳胆</th><th>比分赔率</th><th>总进球</th><th>总进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV信号</th><th>说明</th></tr></thead><tbody><tr><td>91</td><td>巴西 vs 挪威</td><td>2-1 / 2-0</td><td>4.85 / 9.00</td><td>3球，防2球</td><td>3.35 / 3.75</td><td>平胜 / 胜胜</td><td>4.50 / 2.55</td><td>+0.04</td><td>巴西方向正路，但挪威反击保留一球。</td></tr><tr><td>92</td><td>墨西哥 vs 英格兰</td><td>0-1 / 1-1</td><td>6.30 / 5.00</td><td>2球，防3球</td><td>2.90 / 3.70</td><td>平负</td><td>5.30</td><td>+0.03</td><td>英格兰优势在，但墨西哥受让和低节奏要保留。</td></tr><tr><td>93</td><td>葡萄牙 vs 西班牙</td><td>1-2 / 2-1</td><td>-</td><td>3球，防2球</td><td>-</td><td>平负 / 平胜</td><td>-</td><td>+0.03</td><td>西班牙强势但葡萄牙硬仗韧性足，不预设4球以上。</td></tr><tr><td>94</td><td>美国 vs 比利时</td><td>1-1 / 0-1</td><td>-</td><td>2球，防3球</td><td>-</td><td>平平 / 平负</td><td>-</td><td>+0.03</td><td>比利时90分钟不稳，美国防线保护上调。</td></tr><tr><td>95</td><td>阿根廷 vs 埃及</td><td>2-0 / 2-1</td><td>-</td><td>2球，防3球</td><td>-</td><td>胜胜 / 平胜</td><td>-</td><td>+0.04</td><td>阿根廷正路，但埃及低位抗压不追3-0。</td></tr><tr><td>96</td><td>瑞士 vs 哥伦比亚</td><td>1-1 / 1-0</td><td>-</td><td>2球，防1球</td><td>-</td><td>平平 / 平胜</td><td>-</td><td>+0.03</td><td>瑞士与哥伦比亚都偏低风险，90分钟防平。</td></tr></tbody></table></div>
-    </div>
-  </section>
-</main>
-</body>
-</html>
+<body><header><h1>未来串关</h1><nav><a href="../index.html">首页</a><a href="../20260707/">07-07预测</a><a href="../knockout/">淘汰赛日期</a></nav></header><main>
+<section class="section"><h2>未来串关</h2><div class="card"><p><strong>07-07更新：复盘91/92后，串关从保守小比分切到方向+总进球双保护</strong></p><p>今日只有93/94两场世界杯，输出二串一为主；三串一采用93/94加下一比赛日95的预案，95待赔率更新后再确认。</p><p class="muted">赔率来源：Sporttery calculator getMatchCalculatorV1, data/20260707.json for match 93/94</p></div><div class="card"><h3>主票：93-94二串一</h3><p class="muted">更稳的两场组合：西班牙方向/总进球3 + 美国不败/1-1保护。</p>
+<div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分</th><th>比分赔率</th><th>总进球</th><th>进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV</th><th>说明</th></tr></thead><tbody><tr><td>93</td><td>葡萄牙 vs 西班牙</td><td>1-2 / 0-2</td><td>5.85 / 9.00</td><td>3球 / 2球</td><td>3.35 / 3.55</td><td>负负 / 平负</td><td>2.80 / 4.60</td><td>+0.03</td><td>西班牙方向优先，昨日复盘后主防1-2。</td></tr><tr><td>94</td><td>美国 vs 比利时</td><td>1-1 / 2-1</td><td>5.80 / 7.00</td><td>2球 / 3球</td><td>3.55 / 3.35</td><td>平平 / 平胜</td><td>6.00 / 5.60</td><td>+0.03</td><td>美国不败和平局保护，防早球开放。</td></tr></tbody></table></div></div><div class="card"><h3>比分二串一</h3><p class="muted">波动较高，只适合小注参考。</p>
+<div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分</th><th>比分赔率</th><th>总进球</th><th>进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV</th><th>说明</th></tr></thead><tbody><tr><td>93</td><td>葡萄牙 vs 西班牙</td><td>1-2</td><td>5.85</td><td>3球 / 2球</td><td>3.35 / 3.55</td><td>负负 / 平负</td><td>2.80 / 4.60</td><td>+0.03</td><td>西班牙方向优先，昨日复盘后主防1-2。</td></tr><tr><td>94</td><td>美国 vs 比利时</td><td>1-1</td><td>5.80</td><td>2球 / 3球</td><td>3.55 / 3.35</td><td>平平 / 平胜</td><td>6.00 / 5.60</td><td>+0.03</td><td>美国不败和平局保护，防早球开放。</td></tr></tbody></table></div></div><div class="card"><h3>预案：93-95三串一</h3><p class="muted">第三腿先用阿根廷 vs 埃及的模型预案，待07-08赔率快照后更新。</p>
+<div class="tableWrap"><table><thead><tr><th>场次</th><th>比赛</th><th>比分</th><th>比分赔率</th><th>总进球</th><th>进球赔率</th><th>半全场</th><th>半全场赔率</th><th>EV</th><th>说明</th></tr></thead><tbody><tr><td>93</td><td>葡萄牙 vs 西班牙</td><td>1-2 / 0-2</td><td>5.85 / 9.00</td><td>3球 / 2球</td><td>3.35 / 3.55</td><td>负负 / 平负</td><td>2.80 / 4.60</td><td>+0.03</td><td>西班牙方向优先，昨日复盘后主防1-2。</td></tr><tr><td>94</td><td>美国 vs 比利时</td><td>1-1 / 2-1</td><td>5.80 / 7.00</td><td>2球 / 3球</td><td>3.55 / 3.35</td><td>平平 / 平胜</td><td>6.00 / 5.60</td><td>+0.03</td><td>美国不败和平局保护，防早球开放。</td></tr><tr><td>95</td><td>阿根廷 vs 埃及</td><td>2-1 / 2-0</td><td>-</td><td>3球 / 2球</td><td>-</td><td>胜胜 / 平胜</td><td>-</td><td>待赔率</td><td>阿根廷正路，但昨日复盘后保留埃及进球和3球路径。</td></tr></tbody></table></div></div></section>
+</main></body></html>
