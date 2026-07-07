@@ -1,0 +1,227 @@
+﻿[
+    {
+        "id":  "095",
+        "match":  "阿根廷 vs 埃及",
+        "lambdaHome":  2.51,
+        "lambdaAway":  0.97,
+        "totalLambda":  3.48,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0942,
+                         "ev":  -0.21,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "3:0",
+                         "odds":  8.4,
+                         "probability":  0.0807,
+                         "ev":  -0.32,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.0752,
+                         "ev":  -0.43,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "2:1",
+                     "odds":  8.4,
+                     "probability":  0.0942,
+                     "ev":  -0.21,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "201",
+        "match":  "萨巴赫 vs 新圣徒",
+        "lambdaHome":  2.44,
+        "lambdaAway":  0.95,
+        "totalLambda":  3.38,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0954,
+                         "ev":  -0.2,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "3:0",
+                         "odds":  8.4,
+                         "probability":  0.0818,
+                         "ev":  -0.31,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.0784,
+                         "ev":  -0.4,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "2:1",
+                     "odds":  8.4,
+                     "probability":  0.0954,
+                     "ev":  -0.2,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "202",
+        "match":  "克拉克斯维克 vs 比森阿泰尔",
+        "lambdaHome":  2.44,
+        "lambdaAway":  0.95,
+        "totalLambda":  3.38,
+        "halfFull":  {
+                         "primary":  "胜/胜",
+                         "secondary":  "胜/胜",
+                         "totalBand":  "2-3球",
+                         "firstHalfLean":  "胜",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场节奏偏快，早球概率较高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "2:1",
+                         "odds":  8.4,
+                         "probability":  0.0954,
+                         "ev":  -0.2,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "3:0",
+                         "odds":  8.4,
+                         "probability":  0.0818,
+                         "ev":  -0.31,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.0784,
+                         "ev":  -0.4,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "2:1",
+                     "odds":  8.4,
+                     "probability":  0.0954,
+                     "ev":  -0.2,
+                     "mark":  "⚪ 负EV观望"
+                 }
+    },
+    {
+        "id":  "203",
+        "match":  "雷克雅未克维京人 vs 杰尔",
+        "lambdaHome":  0.91,
+        "lambdaAway":  0.79,
+        "totalLambda":  1.69,
+        "halfFull":  {
+                         "primary":  "平/胜",
+                         "secondary":  "平/胜",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "平",
+                         "fullTimeLean":  "胜",
+                         "note":  "上半场更像试探局，后程决胜概率更高。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1311,
+                         "ev":  0,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "0:0",
+                         "odds":  6,
+                         "probability":  0.1842,
+                         "ev":  0.1,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  6.8,
+                         "probability":  0.167,
+                         "ev":  0.14,
+                         "mark":  "✅ 正EV推荐"
+                     }
+                 ],
+        "best":  {
+                     "score":  "1:0",
+                     "odds":  6.8,
+                     "probability":  0.167,
+                     "ev":  0.14,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    },
+    {
+        "id":  "096",
+        "match":  "瑞士 vs 哥伦比亚",
+        "lambdaHome":  0.87,
+        "lambdaAway":  1.3,
+        "totalLambda":  2.17,
+        "halfFull":  {
+                         "primary":  "平/负",
+                         "secondary":  "平/负",
+                         "totalBand":  "1-2球",
+                         "firstHalfLean":  "平",
+                         "fullTimeLean":  "负",
+                         "note":  "比赛大概率分段展开，上半场试探、下半场提速。"
+                     },
+        "rows":  [
+                     {
+                         "score":  "0:1",
+                         "odds":  6.8,
+                         "probability":  0.1479,
+                         "ev":  0.01,
+                         "mark":  "✅ 正EV推荐"
+                     },
+                     {
+                         "score":  "1:1",
+                         "odds":  7.6,
+                         "probability":  0.1293,
+                         "ev":  -0.02,
+                         "mark":  "⚪ 负EV观望"
+                     },
+                     {
+                         "score":  "1:0",
+                         "odds":  6.8,
+                         "probability":  0.0996,
+                         "ev":  -0.32,
+                         "mark":  "🔮 冷门低EV"
+                     }
+                 ],
+        "best":  {
+                     "score":  "0:1",
+                     "odds":  6.8,
+                     "probability":  0.1479,
+                     "ev":  0.01,
+                     "mark":  "✅ 正EV推荐"
+                 }
+    }
+]

@@ -220,7 +220,12 @@
         "淘汰赛首战保守程度可能高于小组赛，比分仓位不宜重。",
         "若加拿大边路早早打穿，0-1 会升级为 1-2。",
         "若南非定位球先手，1-0 冷门路径成立。"
-      ]
+      ],
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     },
     {
       "model_version": "v3-knockout-elo-ev-halftime",
@@ -355,7 +360,12 @@
       "away_team": "日本",
       "kickoff_bjt": "2026-06-30 01:00:00 +08:00",
       "kickoff_local": "2026-06-29 13:00:00 -04:00",
-      "beijing_date": "2026-06-30"
+      "beijing_date": "2026-06-30",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     },
     {
       "model_version": "v3-knockout-elo-ev-halftime",
@@ -490,7 +500,12 @@
       "away_team": "巴拉圭",
       "kickoff_bjt": "2026-06-30 04:30:00 +08:00",
       "kickoff_local": "2026-06-29 16:30:00 -04:00",
-      "beijing_date": "2026-06-30"
+      "beijing_date": "2026-06-30",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     },
     {
       "model_version": "v3-knockout-elo-ev-halftime",
@@ -625,7 +640,12 @@
       "away_team": "摩洛哥",
       "kickoff_bjt": "2026-06-30 09:00:00 +08:00",
       "kickoff_local": "2026-06-29 21:00:00 -04:00",
-      "beijing_date": "2026-06-30"
+      "beijing_date": "2026-06-30",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     },
     {
       "model_version": "v3-knockout-elo-ev-halftime",
@@ -760,7 +780,12 @@
       "away_team": "挪威",
       "kickoff_bjt": "2026-07-01 01:00:00 +08:00",
       "kickoff_local": "2026-06-30 13:00:00 -04:00",
-      "beijing_date": "2026-07-01"
+      "beijing_date": "2026-07-01",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     },
     {
       "model_version": "v3-knockout-elo-ev-halftime",
@@ -895,7 +920,12 @@
       "away_team": "瑞典",
       "kickoff_bjt": "2026-07-01 05:00:00 +08:00",
       "kickoff_local": "2026-06-30 17:00:00 -04:00",
-      "beijing_date": "2026-07-01"
+      "beijing_date": "2026-07-01",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     },
     {
       "model_version": "v3-knockout-elo-ev-halftime",
@@ -1030,7 +1060,12 @@
       "away_team": "厄瓜多尔",
       "kickoff_bjt": "2026-07-01 09:00:00 +08:00",
       "kickoff_local": "2026-06-30 21:00:00 -04:00",
-      "beijing_date": "2026-07-01"
+      "beijing_date": "2026-07-01",
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:23",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+      }
     }
   ]
 }

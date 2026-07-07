@@ -2,7 +2,7 @@
   "date": "20260708",
   "stage": "round16_parlay",
   "headline": "07-08更新：比分串降权，方向+总进球为主，防0-1与1-4两类漏池",
-  "summary": "今日只有95/96两场世界杯，主推二串一；三串一使用“两个方向/总进球腿 + 一个比分小注腿”的组合表达，不把昨日大比分或小比分机械外推到今天。",
+  "summary": "今日95/96主推二串一；三串一第三腿接入下一场97法国 vs 摩洛哥，不再重复96。组合仍以方向+总进球为主，不把昨日大比分或小比分机械外推到今天。",
   "groups": [
     {
       "title": "主票：95-96二串一",
@@ -13,11 +13,11 @@
           "match": "阿根廷 vs 埃及",
           "direction": "阿根廷90分钟胜优先，主线2-0，防1-0/2-1",
           "score_pick": "2-0 / 1-0",
-          "score_odds": "4.50 / 5.70",
+          "score_odds": "4.50 / 5.90",
           "goals_pick": "2球 / 3球",
-          "goals_odds": "3.25 / 3.55",
+          "goals_odds": "3.25 / 3.40",
           "half_full_pick": "胜胜 / 平胜",
-          "half_full_odds": "1.73 / 3.55",
+          "half_full_odds": "1.75 / 3.55",
           "ev_signal": "+0.03",
           "note": "阿根廷方向稳定，比分池补入1-0吸收昨日低比分漏池。"
         },
@@ -26,9 +26,9 @@
           "match": "瑞士 vs 哥伦比亚",
           "direction": "哥伦比亚90分钟不败，主线1-1，防0-1/1-2",
           "score_pick": "1-1 / 0-1",
-          "score_odds": "4.50 / 7.00",
+          "score_odds": "4.70 / 7.00",
           "goals_pick": "2球 / 1球",
-          "goals_odds": "3.05 / 4.00",
+          "goals_odds": "3.05 / 4.20",
           "half_full_pick": "平平 / 平负",
           "half_full_odds": "4.75 / 4.90",
           "ev_signal": "+0.03",
@@ -49,7 +49,7 @@
           "goals_pick": "2球",
           "goals_odds": "3.25",
           "half_full_pick": "胜胜",
-          "half_full_odds": "1.73",
+          "half_full_odds": "1.75",
           "ev_signal": "+0.02",
           "note": "阿根廷正路零封，但1-0需同步防。"
         },
@@ -58,7 +58,7 @@
           "match": "瑞士 vs 哥伦比亚",
           "direction": "哥伦比亚90分钟不败，主线1-1，防0-1/1-2",
           "score_pick": "1-1",
-          "score_odds": "4.50",
+          "score_odds": "4.70",
           "goals_pick": "2球",
           "goals_odds": "3.05",
           "half_full_pick": "平平",
@@ -70,18 +70,18 @@
     },
     {
       "title": "三串一：方向/总进球混合",
-      "summary": "两场比赛拆三腿，避免把精确比分当主仓。",
+      "summary": "95、96、97三场各取一腿，避免把精确比分当主仓。",
       "legs": [
         {
           "match_no": "95",
           "match": "阿根廷 vs 埃及",
           "direction": "阿根廷90分钟胜优先，主线2-0，防1-0/2-1",
           "score_pick": "2-0 / 1-0",
-          "score_odds": "4.50 / 5.70",
+          "score_odds": "4.50 / 5.90",
           "goals_pick": "2球",
           "goals_odds": "3.25",
           "half_full_pick": "胜胜",
-          "half_full_odds": "1.73",
+          "half_full_odds": "1.75",
           "ev_signal": "+0.03",
           "note": "阿根廷胜方向腿。"
         },
@@ -90,7 +90,7 @@
           "match": "瑞士 vs 哥伦比亚",
           "direction": "哥伦比亚90分钟不败，主线1-1，防0-1/1-2",
           "score_pick": "1-1 / 0-1",
-          "score_odds": "4.50 / 7.00",
+          "score_odds": "4.70 / 7.00",
           "goals_pick": "2球",
           "goals_odds": "3.05",
           "half_full_pick": "平平 / 平负",
@@ -99,20 +99,20 @@
           "note": "96总进球2球腿。"
         },
         {
-          "match_no": "96",
-          "match": "瑞士 vs 哥伦比亚",
-          "direction": "哥伦比亚90分钟不败，主线1-1，防0-1/1-2",
-          "score_pick": "0-1 / 1-2",
-          "score_odds": "7.00 / 6.50",
+          "match_no": "97",
+          "match": "法国 vs 摩洛哥",
+          "direction": "法国90分钟胜优先，主线2-0，防2-1/1-1",
+          "score_pick": "2-0 / 2-1",
+          "score_odds": "5.80 / 6.75",
           "goals_pick": "2球 / 3球",
-          "goals_odds": "3.05 / 3.75",
-          "half_full_pick": "平负",
-          "half_full_odds": "4.90",
+          "goals_odds": "3.25 / 3.60",
+          "half_full_pick": "胜胜 / 平胜",
+          "half_full_odds": "2.05 / 3.90",
           "ev_signal": "+0.02",
-          "note": "哥伦比亚不败尾部腿，防0-2顺风。"
+          "note": "97法国方向腿，防摩洛哥把比赛拖窄。"
         }
       ]
     }
   ],
-  "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260708.json"
+  "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260708.json for 95/96; data/20260710.json for 97"
 }

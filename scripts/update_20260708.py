@@ -52,6 +52,14 @@ def load_world_cup_odds() -> dict[str, dict[str, Any]]:
     }
 
 
+def load_world_cup_match(date: str, match_no: str) -> dict[str, Any]:
+    payload = read_json(DATA_DIR / f"{date}.json")
+    for item in payload.get("matches", []):
+        if item.get("league") == "世界杯" and str(item.get("id", "")).lstrip("0") == str(match_no):
+            return item
+    raise KeyError(f"World Cup match {match_no} not found in data/{date}.json")
+
+
 def css() -> str:
     return """
 :root{--bg:#071310;--card:#10221f;--panel:#132b26;--line:#24483f;--text:#eefbf6;--muted:#9ab7ae;--green:#58d68d;--blue:#73c7ff;--gold:#f2c15a;--red:#ff817b}
@@ -276,13 +284,22 @@ def make_leg(match: dict[str, Any], score_pick: str, goals_pick: str, hafu_pick:
 
 def build_parlay(predictions: dict[str, Any]) -> dict[str, Any]:
     matches = {item["match_no"]: item for item in predictions["matches"]}
+    match97_odds = load_world_cup_match("20260710", "97")
+    match97 = {
+        "match_no": "97",
+        "home_team": "法国",
+        "away_team": "摩洛哥",
+        "direction_text": "法国90分钟胜优先，主线2-0，防2-1/1-1",
+        "odds_snapshot": match97_odds,
+    }
     leg95 = make_leg(matches["95"], "2-0 / 1-0", "2球 / 3球", "胜胜 / 平胜", "阿根廷方向稳定，比分池补入1-0吸收昨日低比分漏池。")
     leg96 = make_leg(matches["96"], "1-1 / 0-1", "2球 / 1球", "平平 / 平负", "哥伦比亚略优但平局保护重，适合总进球和不败路径。")
+    leg97 = make_leg(match97, "2-0 / 2-1", "2球 / 3球", "胜胜 / 平胜", "法国方向稳定但不追穿，摩洛哥抗压强，比分池保留2-1与1-1防线。")
     return {
         "date": DATE,
         "stage": "round16_parlay",
         "headline": "07-08更新：比分串降权，方向+总进球为主，防0-1与1-4两类漏池",
-        "summary": "今日只有95/96两场世界杯，主推二串一；三串一使用“两个方向/总进球腿 + 一个比分小注腿”的组合表达，不把昨日大比分或小比分机械外推到今天。",
+        "summary": "今日95/96主推二串一；三串一第三腿接入下一场97法国 vs 摩洛哥，不再重复96。组合仍以方向+总进球为主，不把昨日大比分或小比分机械外推到今天。",
         "groups": [
             {
                 "title": "主票：95-96二串一",
@@ -299,15 +316,15 @@ def build_parlay(predictions: dict[str, Any]) -> dict[str, Any]:
             },
             {
                 "title": "三串一：方向/总进球混合",
-                "summary": "两场比赛拆三腿，避免把精确比分当主仓。",
+                "summary": "95、96、97三场各取一腿，避免把精确比分当主仓。",
                 "legs": [
                     make_leg(matches["95"], "2-0 / 1-0", "2球", "胜胜", "阿根廷胜方向腿。"),
                     make_leg(matches["96"], "1-1 / 0-1", "2球", "平平 / 平负", "96总进球2球腿。"),
-                    make_leg(matches["96"], "0-1 / 1-2", "2球 / 3球", "平负", "哥伦比亚不败尾部腿，防0-2顺风。", "+0.02"),
+                    make_leg(match97, "2-0 / 2-1", "2球 / 3球", "胜胜 / 平胜", "97法国方向腿，防摩洛哥把比赛拖窄。", "+0.02"),
                 ],
             },
         ],
-        "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260708.json",
+        "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260708.json for 95/96; data/20260710.json for 97",
     }
 
 

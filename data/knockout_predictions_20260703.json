@@ -229,6 +229,11 @@
             "updatedAt": "2026-07-01 10:13:22"
           }
         }
+      },
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:24",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
       }
     },
     {
@@ -455,6 +460,11 @@
             "updatedAt": "2026-06-30 10:02:08"
           }
         }
+      },
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:24",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
       }
     },
     {
@@ -681,6 +691,11 @@
             "updatedAt": "2026-06-30 10:02:08"
           }
         }
+      },
+      "scheduleCheck": {
+        "status": "unmatched",
+        "checkedAt": "2026-07-07 13:36:24",
+        "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
       }
     }
   ]

@@ -85,7 +85,7 @@
           "market": "总进球：2球，防1/3球",
           "model_probability": 0.61,
           "fair_odds": 1.64,
-          "market_odds": "3.25 / 4.60 / 3.55",
+          "market_odds": "3.25 / 4.90 / 3.40",
           "ev_signal": "+0.03",
           "note": "2球最低且结构吻合，不机械追大。"
         },
@@ -93,7 +93,7 @@
           "market": "半全场：胜胜",
           "model_probability": 0.56,
           "fair_odds": 1.79,
-          "market_odds": "1.73",
+          "market_odds": "1.75",
           "ev_signal": "低赔稳定",
           "note": "阿根廷早段建立优势路径最清晰。"
         }
@@ -135,7 +135,7 @@
         "matchDate": "2026-07-08",
         "matchTime": "00:00:00",
         "matchStatus": "Selling",
-        "sellStatus": 2,
+        "sellStatus": 1,
         "taxDateNo": "2607071",
         "isHot": false,
         "home": "阿根廷",
@@ -148,13 +148,13 @@
         "awayRank": "[世界杯2]",
         "venue": "比赛将在美国-佐治亚州亚特兰大举行",
         "prediction": {
-          "totalGoals": "2",
+          "totalGoals": "3",
           "scores": [
-            "2:0",
-            "2:1"
+            "2:1",
+            "3:0"
           ],
           "upset": "1:1",
-          "confidence": "medium",
+          "confidence": "low",
           "candidates": [
             "2",
             "3",
@@ -162,7 +162,7 @@
           ]
         },
         "result": null,
-        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
         "postReview": null,
         "odds": {
           "had": {
@@ -172,68 +172,151 @@
             "updatedAt": "2026-07-06 20:49:44"
           },
           "ttg": {
-            "s0": "11.00",
-            "s1": "4.60",
+            "s0": "12.00",
+            "s1": "4.90",
             "s2": "3.25",
-            "s3": "3.55",
-            "s4": "5.50",
+            "s3": "3.40",
+            "s4": "5.30",
             "s5": "11.00",
             "s6": "20.00",
             "s7": "29.00",
-            "updatedAt": "2026-07-05 09:23:07"
+            "updatedAt": "2026-07-07 13:14:49"
           },
           "hhad": {
-            "home": "1.86",
-            "draw": "3.45",
-            "away": "3.32",
+            "home": "1.83",
+            "draw": "3.50",
+            "away": "3.36",
             "handicap": null,
-            "updatedAt": "2026-07-06 16:38:18"
+            "updatedAt": "2026-07-07 11:16:09"
           },
           "crs": {
-            "0-0": "11.00",
+            "0-0": "12.00",
             "0-1": "23.00",
             "0-2": "80.00",
             "0-3": "300.0",
             "0-4": "900.0",
             "0-5": "1000",
-            "1-0": "5.70",
-            "1-1": "9.00",
-            "1-2": "33.00",
+            "1-0": "5.90",
+            "1-1": "9.20",
+            "1-2": "28.00",
             "1-3": "150.0",
             "1-4": "700.0",
             "1-5": "800.0",
             "2-0": "4.50",
             "2-1": "6.80",
-            "2-2": "26.00",
-            "2-3": "175.0",
+            "2-2": "25.00",
+            "2-3": "150.0",
             "2-4": "600.0",
             "2-5": "800.0",
             "3-0": "6.90",
-            "3-1": "9.50",
-            "3-2": "36.00",
-            "3-3": "125.0",
-            "4-0": "14.00",
-            "4-1": "22.00",
-            "4-2": "60.00",
-            "5-0": "32.00",
+            "3-1": "9.20",
+            "3-2": "30.00",
+            "3-3": "100.0",
+            "4-0": "15.00",
+            "4-1": "21.00",
+            "4-2": "55.00",
+            "5-0": "35.00",
             "5-1": "50.00",
-            "5-2": "125.0",
-            "homeOther": "31.00",
-            "drawOther": "600.0",
+            "5-2": "100.0",
+            "homeOther": "33.00",
+            "drawOther": "500.0",
             "awayOther": "700.0",
-            "updatedAt": "2026-07-06 21:27:28"
+            "updatedAt": "2026-07-07 13:15:12"
           },
           "hafu": {
             "aa": "19.00",
-            "ad": "22.00",
-            "ah": "26.00",
+            "ad": "21.00",
+            "ah": "25.00",
             "da": "21.00",
             "dd": "6.70",
             "dh": "3.55",
-            "ha": "65.00",
-            "hd": "22.00",
-            "hh": "1.73",
-            "updatedAt": "2026-07-06 19:35:46"
+            "ha": "60.00",
+            "hd": "21.00",
+            "hh": "1.75",
+            "updatedAt": "2026-07-07 11:23:42"
+          }
+        },
+        "scheduleCheck": {
+          "status": "unmatched",
+          "checkedAt": "2026-07-07 13:36:38",
+          "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+        },
+        "homeEn": "Argentina",
+        "homeAlias": {
+          "code": "ARG",
+          "zh": "阿根廷",
+          "en": "Argentina",
+          "aliases": [
+            "Argentina",
+            "阿根廷"
+          ]
+        },
+        "awayEn": "Egypt",
+        "awayAlias": {
+          "code": "EGY",
+          "zh": "埃及",
+          "en": "Egypt",
+          "aliases": [
+            "Egypt",
+            "埃及"
+          ]
+        },
+        "external": {
+          "updatedAt": "2026-07-07 13:36:51",
+          "sources": [],
+          "teamMeta": {
+            "home": {
+              "status": "ok",
+              "source": "thesportsdb",
+              "name": "Argentina",
+              "country": "Argentina",
+              "formedYear": "1893",
+              "league": "FIFA World Cup",
+              "stadium": "Estadio Mâs Monumental",
+              "description": "The Argentina national football team (Spanish: Selección de fútbol de Argentina) represents Argentina in men's international football and is administered by the Argentine Football Association, the governing body for football in Argentina. A"
+            },
+            "away": {
+              "status": "ok",
+              "source": "thesportsdb",
+              "name": "Egypt",
+              "country": "Egypt",
+              "formedYear": "1920",
+              "league": "FIFA World Cup",
+              "stadium": "Misr Stadium",
+              "description": "The Egypt national football team (Egyptian Arabic: مُنتخب مَــصـر‎, Montakhab Masr), known as The Pharaohs, represents Egypt in men's International association football and is governed by the Egyptian Football Association (EFA) founded in 1"
+            }
+          },
+          "fifaRanking": {
+            "status": "ok",
+            "source": "serpapi",
+            "home": {
+              "status": "ok",
+              "source": "serpapi",
+              "rank": 1,
+              "points": 1913.71,
+              "query": "Argentina"
+            },
+            "away": {
+              "status": "ok",
+              "source": "serpapi",
+              "rank": 9,
+              "points": null,
+              "query": "Egypt"
+            }
+          },
+          "oddsMovement": {
+            "status": "pending-live-odds-source"
+          },
+          "injuries": {
+            "status": "ok",
+            "source": "api-sports",
+            "home": [],
+            "away": []
+          },
+          "h2h": {
+            "status": "pending-team-id",
+            "source": "api-sports",
+            "matches": []
           }
         }
       },
@@ -321,7 +404,7 @@
           "market": "总进球：2球，防1/3球",
           "model_probability": 0.6,
           "fair_odds": 1.67,
-          "market_odds": "3.05 / 4.00 / 3.75",
+          "market_odds": "3.05 / 4.20 / 3.60",
           "ev_signal": "+0.04",
           "note": "2球最低且符合淘汰赛胶着。"
         },
@@ -371,7 +454,7 @@
         "matchDate": "2026-07-08",
         "matchTime": "04:00:00",
         "matchStatus": "Selling",
-        "sellStatus": 2,
+        "sellStatus": 1,
         "taxDateNo": "2607071",
         "isHot": false,
         "home": "瑞士",
@@ -390,7 +473,7 @@
             "1:1"
           ],
           "upset": "1:0",
-          "confidence": "high",
+          "confidence": "medium",
           "candidates": [
             "2",
             "3",
@@ -409,14 +492,14 @@
           },
           "ttg": {
             "s0": "8.00",
-            "s1": "4.00",
+            "s1": "4.20",
             "s2": "3.05",
-            "s3": "3.75",
+            "s3": "3.60",
             "s4": "6.80",
             "s5": "14.00",
             "s6": "25.00",
             "s7": "38.00",
-            "updatedAt": "2026-07-06 17:26:17"
+            "updatedAt": "2026-07-07 12:27:22"
           },
           "hhad": {
             "home": "1.55",
@@ -429,35 +512,35 @@
             "0-0": "8.00",
             "0-1": "7.00",
             "0-2": "11.00",
-            "0-3": "22.00",
+            "0-3": "24.00",
             "0-4": "65.00",
             "0-5": "200.0",
             "1-0": "9.25",
-            "1-1": "4.50",
+            "1-1": "4.70",
             "1-2": "6.50",
-            "1-3": "20.00",
+            "1-3": "19.00",
             "1-4": "65.00",
             "1-5": "200.0",
-            "2-0": "19.00",
+            "2-0": "19.50",
             "2-1": "8.50",
-            "2-2": "12.00",
-            "2-3": "33.00",
-            "2-4": "90.00",
-            "2-5": "300.0",
-            "3-0": "50.00",
+            "2-2": "11.50",
+            "2-3": "30.00",
+            "2-4": "85.00",
+            "2-5": "250.0",
+            "3-0": "55.00",
             "3-1": "30.00",
             "3-2": "45.00",
-            "3-3": "80.00",
-            "4-0": "120.0",
+            "3-3": "60.00",
+            "4-0": "150.0",
             "4-1": "120.0",
             "4-2": "150.0",
             "5-0": "500.0",
             "5-1": "350.0",
             "5-2": "500.0",
             "homeOther": "200.0",
-            "drawOther": "500.0",
-            "awayOther": "150.0",
-            "updatedAt": "2026-07-07 10:25:23"
+            "drawOther": "300.0",
+            "awayOther": "120.0",
+            "updatedAt": "2026-07-07 12:23:13"
           },
           "hafu": {
             "aa": "3.80",
@@ -470,6 +553,89 @@
             "hd": "13.00",
             "hh": "5.50",
             "updatedAt": "2026-07-07 10:24:31"
+          }
+        },
+        "scheduleCheck": {
+          "status": "unmatched",
+          "checkedAt": "2026-07-07 13:36:38",
+          "scheduleFile": "2026世界杯淘汰赛赛程表_中文版_Codex.xlsx"
+        },
+        "homeEn": "Switzerland",
+        "homeAlias": {
+          "code": "SUI",
+          "zh": "瑞士",
+          "en": "Switzerland",
+          "aliases": [
+            "Switzerland",
+            "瑞士"
+          ]
+        },
+        "awayEn": "Colombia",
+        "awayAlias": {
+          "code": "COL",
+          "zh": "哥伦比亚",
+          "en": "Colombia",
+          "aliases": [
+            "Colombia",
+            "哥伦比亚"
+          ]
+        },
+        "external": {
+          "updatedAt": "2026-07-07 13:36:51",
+          "sources": [],
+          "teamMeta": {
+            "home": {
+              "status": "ok",
+              "source": "thesportsdb",
+              "name": "Switzerland",
+              "country": "Switzerland",
+              "formedYear": "1924",
+              "league": "FIFA World Cup",
+              "stadium": "Stade de Genève",
+              "description": "The Switzerland national football team (German: Schweizer Fußballnationalmannschaft, French: Équipe de Suisse de football, Italian: Nazionale di calcio della Svizzera, Romansh: Squadra naziunala da ballape da la Svizra) represents Switzerla"
+            },
+            "away": {
+              "status": "ok",
+              "source": "thesportsdb",
+              "name": "Colombia",
+              "country": "Colombia",
+              "formedYear": "1938",
+              "league": "FIFA World Cup",
+              "stadium": "Estadio Metropolitano Roberto Meléndez",
+              "description": "The Colombia national football team (Spanish: Selección de fútbol de Colombia) represents Colombia in men's international football and is managed by the Colombian Football Federation, the governing body for football in Colombia. They are an"
+            }
+          },
+          "fifaRanking": {
+            "status": "ok",
+            "source": "serpapi",
+            "home": {
+              "status": "ok",
+              "source": "serpapi",
+              "rank": 3,
+              "points": 1650.06,
+              "query": "Switzerland"
+            },
+            "away": {
+              "status": "ok",
+              "source": "serpapi",
+              "rank": 13,
+              "points": 1698.35,
+              "query": "Colombia"
+            }
+          },
+          "oddsMovement": {
+            "status": "pending-live-odds-source"
+          },
+          "injuries": {
+            "status": "ok",
+            "source": "api-sports",
+            "home": [],
+            "away": []
+          },
+          "h2h": {
+            "status": "pending-team-id",
+            "source": "api-sports",
+            "matches": []
           }
         }
       },
