@@ -1,0 +1,46 @@
+{
+  "date": "20260707",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452513",
+      "match_no": "93",
+      "home_team": "葡萄牙",
+      "away_team": "西班牙",
+      "score": "0-1",
+      "home_goals": 0,
+      "away_goals": 1,
+      "decisive_moment": "90+1分钟西班牙进球",
+      "winner_team": "西班牙",
+      "advance_team": "西班牙",
+      "prediction_main_score": "1-2",
+      "prediction_backup_scores": [
+        "0-2",
+        "1-1"
+      ],
+      "prediction_upset_score": "2-1",
+      "in_score_pool": false,
+      "review": "方向命中但0-1没有进入比分池。根因不是昨天大比分后今天必小，而是西班牙优势被模型翻译成双方进球/2-3球，低估了淘汰赛末段才破门、葡萄牙低位拖慢节奏以及领先后立即收住的1球路径。后续强队低赔且总进球2/3接近时，必须把1-0或0-1放入比分池。"
+    },
+    {
+      "game_id": "53452515",
+      "match_no": "94",
+      "home_team": "美国",
+      "away_team": "比利时",
+      "score": "1-4",
+      "home_goals": 1,
+      "away_goals": 4,
+      "winner_team": "比利时",
+      "advance_team": "比利时",
+      "prediction_main_score": "1-1",
+      "prediction_backup_scores": [
+        "2-1",
+        "1-2"
+      ],
+      "prediction_upset_score": "0-1",
+      "in_score_pool": false,
+      "review": "方向和比分池均失手，1-4没有进入池。根因是模型把美国主场和均势赔率保护得过重，把比利时高质量进攻、领先后美国压上产生的连续反击空间降成了1-2/2-2观察项。后续主队有进球路但防线被客队速度/转换克制时，比分池不能只保守到1-2，必须给1-3/1-4一个尾部候选。"
+    }
+  ]
+}

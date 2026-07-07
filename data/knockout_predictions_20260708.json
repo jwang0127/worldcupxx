@@ -1,0 +1,479 @@
+{
+  "date": "20260708",
+  "stage": "knockout",
+  "review_source": "data/model_review_lessons_20260707.json",
+  "matches": [
+    {
+      "game_id": "53452521",
+      "match_no": "95",
+      "round": "16强赛",
+      "home_team": "阿根廷",
+      "away_team": "埃及",
+      "kickoff_bjt": "2026-07-08 00:00:00 +08:00",
+      "venue": "比赛将在美国-佐治亚州亚特兰大举行",
+      "model_version": "v8.4-score-pool-tail-coverage",
+      "direction_90min": "home",
+      "direction_text": "阿根廷90分钟胜优先，主线2-0，防1-0/2-1",
+      "half_time": "阿根廷 1-0 埃及",
+      "half_time_pick": "home",
+      "hafu_pick": "hh",
+      "main_score": "2-0",
+      "backup_scores": [
+        "1-0",
+        "2-1"
+      ],
+      "tail_scores": [
+        "3-0",
+        "1-1"
+      ],
+      "upset_score": "1-1",
+      "goals_range": "1-3球，核心2球",
+      "advance_pick": "阿根廷",
+      "advance_probability_text": "90分钟：阿根廷胜 70% / 平 20% / 埃及胜 10%；最终晋级：阿根廷 82% / 埃及 18%",
+      "core_view": "阿根廷实力、控场和淘汰赛经验明显在上，HAD主胜1.22给出方向确认，但不能直接从低赔推出大胜。埃及小组不败、上一轮点球晋级，说明抗压和拖节奏能力有效；因此主线是阿根廷2-0，比分池补入1-0来吸收昨日0-1漏池教训，同时保留2-1防埃及定位球/反击破门。",
+      "review_adjustment": "昨日0-1提示强队末段兑现的低比分必须入池，昨日1-4提示尾部大比分不能消失。本场不追昨日大小球惯性：2球为主，3-0只作早球/压制触发，1-1作冷平保护。",
+      "score_matrix_top": [
+        {
+          "score": "2-0",
+          "probability": 0.2,
+          "ev_signal": "+0.04",
+          "label": "强队正路零封"
+        },
+        {
+          "score": "1-0",
+          "probability": 0.16,
+          "ev_signal": "+0.03",
+          "label": "末段兑现/降速"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.13,
+          "ev_signal": "+0.02",
+          "label": "埃及破门保护"
+        },
+        {
+          "score": "3-0",
+          "probability": 0.11,
+          "ev_signal": "防穿",
+          "label": "早球后拉开"
+        },
+        {
+          "score": "1-1",
+          "probability": 0.08,
+          "ev_signal": "防冷",
+          "label": "埃及拖入加时"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "阿根廷90分钟方向",
+          "model_probability": 0.7,
+          "fair_odds": 1.43,
+          "market_odds": "1.22",
+          "ev_signal": "方向确认",
+          "note": "赔率支持强方向，但不直接等同高EV。"
+        },
+        {
+          "market": "比分：2-0 / 1-0 / 2-1",
+          "model_probability": 0.49,
+          "fair_odds": 2.04,
+          "market_odds": "4.50 / 5.70 / 6.80",
+          "ev_signal": "+0.04",
+          "note": "把1-0纳入稳胆池，修正昨日低比分漏池。"
+        },
+        {
+          "market": "总进球：2球，防1/3球",
+          "model_probability": 0.61,
+          "fair_odds": 1.64,
+          "market_odds": "3.25 / 4.60 / 3.55",
+          "ev_signal": "+0.03",
+          "note": "2球最低且结构吻合，不机械追大。"
+        },
+        {
+          "market": "半全场：胜胜",
+          "model_probability": 0.56,
+          "fair_odds": 1.79,
+          "market_odds": "1.73",
+          "ev_signal": "低赔稳定",
+          "note": "阿根廷早段建立优势路径最清晰。"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "比分池",
+          "content": "稳胆2-0、1-0、2-1；防穿3-0，防冷1-1。"
+        },
+        {
+          "title": "伤停/体能",
+          "content": "未纳入新增硬伤停，埃及连续高压淘汰赛后体能劣势更明显。"
+        },
+        {
+          "title": "串关",
+          "content": "适合做二串一第一腿方向或总进球2/3，不建议单压大胜比分。"
+        }
+      ],
+      "team_reading": [
+        "阿根廷强在控场、禁区前连续创造和领先后的节奏管理。",
+        "埃及强在低位抗压和反击第一脚，弱点是长期被压后出球质量下降。",
+        "赔率、实力和赛程结构都支持阿根廷，但比分池必须保留1-0低比分正路。"
+      ],
+      "triggers": [
+        "阿根廷30分钟前进球：2-0/3-0升权，1-0降一档。",
+        "半场0-0：1-0和1-1升权，胜胜半全场降权。",
+        "埃及先破门：2-1与1-1升权，总进球3球进入主池。"
+      ],
+      "odds_snapshot": {
+        "id": "095",
+        "matchNumStr": "周二095",
+        "matchId": "2040427",
+        "businessDate": "2026-07-07",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-08 00:00:00",
+        "matchDate": "2026-07-08",
+        "matchTime": "00:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 2,
+        "taxDateNo": "2607071",
+        "isHot": false,
+        "home": "阿根廷",
+        "homeCode": "ARG",
+        "homeAbbr": "阿根廷",
+        "homeRank": "[世界杯1]",
+        "away": "埃及",
+        "awayCode": "EGY",
+        "awayAbbr": "埃及",
+        "awayRank": "[世界杯2]",
+        "venue": "比赛将在美国-佐治亚州亚特兰大举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "2:0",
+            "2:1"
+          ],
+          "upset": "1:1",
+          "confidence": "medium",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "1.22",
+            "draw": "4.72",
+            "away": "10.25",
+            "updatedAt": "2026-07-06 20:49:44"
+          },
+          "ttg": {
+            "s0": "11.00",
+            "s1": "4.60",
+            "s2": "3.25",
+            "s3": "3.55",
+            "s4": "5.50",
+            "s5": "11.00",
+            "s6": "20.00",
+            "s7": "29.00",
+            "updatedAt": "2026-07-05 09:23:07"
+          },
+          "hhad": {
+            "home": "1.86",
+            "draw": "3.45",
+            "away": "3.32",
+            "handicap": null,
+            "updatedAt": "2026-07-06 16:38:18"
+          },
+          "crs": {
+            "0-0": "11.00",
+            "0-1": "23.00",
+            "0-2": "80.00",
+            "0-3": "300.0",
+            "0-4": "900.0",
+            "0-5": "1000",
+            "1-0": "5.70",
+            "1-1": "9.00",
+            "1-2": "33.00",
+            "1-3": "150.0",
+            "1-4": "700.0",
+            "1-5": "800.0",
+            "2-0": "4.50",
+            "2-1": "6.80",
+            "2-2": "26.00",
+            "2-3": "175.0",
+            "2-4": "600.0",
+            "2-5": "800.0",
+            "3-0": "6.90",
+            "3-1": "9.50",
+            "3-2": "36.00",
+            "3-3": "125.0",
+            "4-0": "14.00",
+            "4-1": "22.00",
+            "4-2": "60.00",
+            "5-0": "32.00",
+            "5-1": "50.00",
+            "5-2": "125.0",
+            "homeOther": "31.00",
+            "drawOther": "600.0",
+            "awayOther": "700.0",
+            "updatedAt": "2026-07-06 21:27:28"
+          },
+          "hafu": {
+            "aa": "19.00",
+            "ad": "22.00",
+            "ah": "26.00",
+            "da": "21.00",
+            "dd": "6.70",
+            "dh": "3.55",
+            "ha": "65.00",
+            "hd": "22.00",
+            "hh": "1.73",
+            "updatedAt": "2026-07-06 19:35:46"
+          }
+        }
+      },
+      "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260708.json"
+    },
+    {
+      "game_id": "53452523",
+      "match_no": "96",
+      "round": "16强赛",
+      "home_team": "瑞士",
+      "away_team": "哥伦比亚",
+      "kickoff_bjt": "2026-07-08 04:00:00 +08:00",
+      "venue": "比赛将在加拿大-温哥华举行",
+      "model_version": "v8.4-score-pool-tail-coverage",
+      "direction_90min": "away",
+      "direction_text": "哥伦比亚90分钟不败，主线1-1，防0-1/1-2",
+      "half_time": "瑞士 0-0 哥伦比亚",
+      "half_time_pick": "draw",
+      "hafu_pick": "dd",
+      "main_score": "1-1",
+      "backup_scores": [
+        "0-1",
+        "1-2"
+      ],
+      "tail_scores": [
+        "0-2",
+        "2-1"
+      ],
+      "upset_score": "2-1",
+      "goals_range": "1-3球，核心2球",
+      "advance_pick": "哥伦比亚",
+      "advance_probability_text": "90分钟：瑞士胜 26% / 平 31% / 哥伦比亚胜 43%；最终晋级：瑞士 42% / 哥伦比亚 58%",
+      "core_view": "哥伦比亚方向更优，客胜2.12与比分低位0-1/1-2给出支持；但瑞士淘汰赛2-0和小组稳定性说明其低风险防守不能被忽略。总进球2球最低、0-0赔率不高，说明比赛可能长时间胶着。主线选1-1，实际晋级略偏哥伦比亚，0-1与1-2作为客胜路径。",
+      "review_adjustment": "昨日1-4提醒尾部比分要有覆盖，但本场两队结构不是开放对攻，不能因昨日大比分就追3/4球。比分池加入0-2作为哥伦比亚顺风尾部，也保留2-1防瑞士利用定位球和领先后降速。",
+      "score_matrix_top": [
+        {
+          "score": "1-1",
+          "probability": 0.18,
+          "ev_signal": "+0.04",
+          "label": "均势主线"
+        },
+        {
+          "score": "0-1",
+          "probability": 0.16,
+          "ev_signal": "+0.03",
+          "label": "哥伦比亚小胜"
+        },
+        {
+          "score": "1-2",
+          "probability": 0.14,
+          "ev_signal": "+0.03",
+          "label": "客胜开放延展"
+        },
+        {
+          "score": "0-2",
+          "probability": 0.09,
+          "ev_signal": "防穿",
+          "label": "顺风零封"
+        },
+        {
+          "score": "2-1",
+          "probability": 0.08,
+          "ev_signal": "防冷",
+          "label": "瑞士定位球反打"
+        }
+      ],
+      "ev_table": [
+        {
+          "market": "哥伦比亚不败/90分钟方向",
+          "model_probability": 0.74,
+          "fair_odds": 1.35,
+          "market_odds": "2.95 / 2.12",
+          "ev_signal": "+0.03",
+          "note": "方向偏客，但平局保护很重。"
+        },
+        {
+          "market": "比分：1-1 / 0-1 / 1-2",
+          "model_probability": 0.48,
+          "fair_odds": 2.08,
+          "market_odds": "4.50 / 7.00 / 6.50",
+          "ev_signal": "+0.04",
+          "note": "比分池覆盖平局与客胜两条主路径。"
+        },
+        {
+          "market": "总进球：2球，防1/3球",
+          "model_probability": 0.6,
+          "fair_odds": 1.67,
+          "market_odds": "3.05 / 4.00 / 3.75",
+          "ev_signal": "+0.04",
+          "note": "2球最低且符合淘汰赛胶着。"
+        },
+        {
+          "market": "半全场：平平 / 平负",
+          "model_probability": 0.45,
+          "fair_odds": 2.22,
+          "market_odds": "4.75 / 4.90",
+          "ev_signal": "+0.03",
+          "note": "半场僵持概率高，下半场哥伦比亚解决比赛是次路径。"
+        }
+      ],
+      "model_insights": [
+        {
+          "title": "比分池",
+          "content": "稳胆1-1、0-1、1-2；防穿0-2，防冷2-1。"
+        },
+        {
+          "title": "伤停/体能",
+          "content": "未纳入新增硬伤停，瑞士稳定性高，哥伦比亚前场冲击更强。"
+        },
+        {
+          "title": "串关",
+          "content": "更适合做总进球2或哥伦比亚不败，不建议重仓单一客胜比分。"
+        }
+      ],
+      "team_reading": [
+        "瑞士强在防守站位、定位球和领先后的降速能力。",
+        "哥伦比亚强在前场个人能力和转换速度，能制造更高质量的最后一击。",
+        "赔率不能直接决定结果，但与实力画像一致：哥伦比亚略优，平局权重必须保留。"
+      ],
+      "triggers": [
+        "半场0-0：1-1和0-1继续升权，2球总进球最稳。",
+        "哥伦比亚先进球：0-1/0-2升权，瑞士压上后1-2保留。",
+        "瑞士先进球：2-1和1-1升权，哥伦比亚晋级概率下调。"
+      ],
+      "odds_snapshot": {
+        "id": "096",
+        "matchNumStr": "周二096",
+        "matchId": "2040428",
+        "businessDate": "2026-07-07",
+        "league": "世界杯",
+        "leagueCode": "WCC",
+        "leagueId": 72,
+        "groupName": "",
+        "kickoff": "2026-07-08 04:00:00",
+        "matchDate": "2026-07-08",
+        "matchTime": "04:00:00",
+        "matchStatus": "Selling",
+        "sellStatus": 2,
+        "taxDateNo": "2607071",
+        "isHot": false,
+        "home": "瑞士",
+        "homeCode": "SWI",
+        "homeAbbr": "瑞士",
+        "homeRank": "[世界杯1]",
+        "away": "哥伦比亚",
+        "awayCode": "COM",
+        "awayAbbr": "哥伦比亚",
+        "awayRank": "[世界杯1]",
+        "venue": "比赛将在加拿大-温哥华举行",
+        "prediction": {
+          "totalGoals": "2",
+          "scores": [
+            "0:1",
+            "1:1"
+          ],
+          "upset": "1:0",
+          "confidence": "high",
+          "candidates": [
+            "2",
+            "3",
+            "1"
+          ]
+        },
+        "result": null,
+        "review": "Auto-generated from Sporttery live odds: total-goals 2, lean away, adjusted by hhad/crs/hafu and draw pressure.",
+        "postReview": null,
+        "odds": {
+          "had": {
+            "home": "3.15",
+            "draw": "2.95",
+            "away": "2.12",
+            "updatedAt": "2026-07-07 10:23:21"
+          },
+          "ttg": {
+            "s0": "8.00",
+            "s1": "4.00",
+            "s2": "3.05",
+            "s3": "3.75",
+            "s4": "6.80",
+            "s5": "14.00",
+            "s6": "25.00",
+            "s7": "38.00",
+            "updatedAt": "2026-07-06 17:26:17"
+          },
+          "hhad": {
+            "home": "1.55",
+            "draw": "3.50",
+            "away": "5.05",
+            "handicap": null,
+            "updatedAt": "2026-07-07 10:23:46"
+          },
+          "crs": {
+            "0-0": "8.00",
+            "0-1": "7.00",
+            "0-2": "11.00",
+            "0-3": "22.00",
+            "0-4": "65.00",
+            "0-5": "200.0",
+            "1-0": "9.25",
+            "1-1": "4.50",
+            "1-2": "6.50",
+            "1-3": "20.00",
+            "1-4": "65.00",
+            "1-5": "200.0",
+            "2-0": "19.00",
+            "2-1": "8.50",
+            "2-2": "12.00",
+            "2-3": "33.00",
+            "2-4": "90.00",
+            "2-5": "300.0",
+            "3-0": "50.00",
+            "3-1": "30.00",
+            "3-2": "45.00",
+            "3-3": "80.00",
+            "4-0": "120.0",
+            "4-1": "120.0",
+            "4-2": "150.0",
+            "5-0": "500.0",
+            "5-1": "350.0",
+            "5-2": "500.0",
+            "homeOther": "200.0",
+            "drawOther": "500.0",
+            "awayOther": "150.0",
+            "updatedAt": "2026-07-07 10:25:23"
+          },
+          "hafu": {
+            "aa": "3.80",
+            "ad": "13.00",
+            "ah": "23.00",
+            "da": "4.90",
+            "dd": "4.75",
+            "dh": "6.90",
+            "ha": "19.00",
+            "hd": "13.00",
+            "hh": "5.50",
+            "updatedAt": "2026-07-07 10:24:31"
+          }
+        }
+      },
+      "odds_source": "Sporttery calculator getMatchCalculatorV1, data/20260708.json"
+    }
+  ]
+}

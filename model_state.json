@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-06T12:01:07",
+  "updatedAt": "2026-07-07T10:42:51",
   "weights": {
-    "odds": 0.23,
+    "odds": 0.21,
     "elo": 0.18,
     "form": 0.15,
-    "tactics": 0.16,
+    "tactics": 0.17,
     "motivation": 0.16,
-    "external": 0.08,
+    "external": 0.09,
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260706",
-    "lesson": "巴西1-2挪威、墨西哥2-3英格兰：淘汰赛16强后段出现开放比分，弱侧进球、先手进球后的比赛结构转换、落后追分导致的3/4球区间需要上调。",
-    "todayAdjustment": "07-07预测修正：西班牙方向仍优先但改用1-2主线；美国-比利时走均势1-1并保留2-1/1-2/2-2。串关以方向+总进球为主，比分串降仓。"
+    "latestReview": "20260707",
+    "lesson": "葡萄牙0-1西班牙、美国1-4比利时：0-1和1-4都没有进入比分池，说明比分池既缺低比分末段兑现路径，也缺强客领先后反击放大的尾部路径。",
+    "todayAdjustment": "07-08预测不做昨日大小球惯性外推；阿根廷场把2-0/1-0/2-1并列入池，瑞士vs哥伦比亚保留1-1/0-1/1-2，同时把0-2与2-1列为尾部防线。串关降比分权重，主用方向+总进球。"
   },
   "history": [
     {
@@ -87,6 +87,17 @@
       "directionHitRate": "50%",
       "mainScoreHits": 0,
       "upsetScoreHits": 1,
+      "totalGoalHits": 1,
+      "totalGoalHitRate": "50%"
+    },
+    {
+      "date": "20260707",
+      "settled": 2,
+      "directionHits": 1,
+      "directionHitRate": "50%",
+      "mainScoreHits": 0,
+      "scorePoolHits": 0,
+      "scorePoolHitRate": "0%",
       "totalGoalHits": 1,
       "totalGoalHitRate": "50%"
     }
