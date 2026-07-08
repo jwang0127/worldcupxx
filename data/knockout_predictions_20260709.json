@@ -1,0 +1,193 @@
+{
+  "date": "20260709",
+  "stage": "quarterfinals",
+  "review_source": "data/model_review_lessons_20260708.json",
+  "matches": [
+    {
+      "round": "四分之一决赛",
+      "kickoff_bjt": "2026-07-10 04:00",
+      "home_team": "法国",
+      "away_team": "摩洛哥",
+      "direction_90min": "法国胜优先，防平",
+      "advance_pick": "法国",
+      "main_score": "2-0",
+      "score_pool": [
+        "2:0",
+        "2:1",
+        "1:0",
+        "1:1",
+        "3:1"
+      ],
+      "tail_scores": [
+        "3:1",
+        "0:0"
+      ],
+      "goals_pick": [
+        "2",
+        "3"
+      ],
+      "goals_range": "2-3球，防1球",
+      "hafu_pick": [
+        "hh",
+        "dh"
+      ],
+      "confidence": "中高",
+      "rationale": "法国实力、阵容深度和转换效率仍高于摩洛哥，1.42主胜只是方向校准，不能直接推出穿盘。摩洛哥连续淘汰赛韧性强，能把节奏拖窄，所以比分池保留1-0/1-1/0-0；若法国先入球，摩洛哥压上后3-1进入尾部。",
+      "injury_note": "本地伤停源未给出新增硬伤停；按阵容完整但淘汰赛体能消耗加权。",
+      "match_no": "97",
+      "odds_source": "Sporttery data/20260710.json",
+      "score_odds": "5.80 / 6.75 / 5.85 / 6.50 / 11.00",
+      "goals_odds": "3.25 / 3.60",
+      "hafu_odds": "2.05 / 3.90",
+      "had_snapshot": {
+        "home": "1.42",
+        "draw": "3.75",
+        "away": "6.30",
+        "updatedAt": "2026-07-07 16:30:22"
+      },
+      "ttg_snapshot": {
+        "s0": "10.50",
+        "s1": "4.60",
+        "s2": "3.25",
+        "s3": "3.60",
+        "s4": "5.70",
+        "s5": "11.00",
+        "s6": "18.00",
+        "s7": "29.00",
+        "updatedAt": "2026-07-07 09:24:59"
+      }
+    },
+    {
+      "round": "四分之一决赛",
+      "kickoff_bjt": "2026-07-11 03:00",
+      "home_team": "西班牙",
+      "away_team": "比利时",
+      "direction_90min": "西班牙不败，主胜略优",
+      "advance_pick": "西班牙",
+      "main_score": "2-1",
+      "score_pool": [
+        "2:1",
+        "1:1",
+        "3:1",
+        "2:2",
+        "3:2"
+      ],
+      "tail_scores": [
+        "3:2",
+        "1:3"
+      ],
+      "goals_pick": [
+        "3",
+        "4"
+      ],
+      "goals_range": "3球主线，防4球",
+      "hafu_pick": [
+        "dh",
+        "hh"
+      ],
+      "confidence": "中",
+      "rationale": "西班牙控球与压迫稳定性更好，但比利时上一轮1-4说明其领先后反击尾部不能被忽略。本场不是机械追大，而是两队攻击质量和落后方压上结构共同支持3球主线；比分池补3-2，避免再次漏掉强队险胜高比分。",
+      "injury_note": "本地伤停源未给出新增硬伤停；比利时进攻尾部按状态上修，防守稳定性不盲目上修。",
+      "match_no": "98",
+      "odds_source": "Sporttery data/20260711.json",
+      "score_odds": "6.40 / 7.00 / 10.50 / 12.00 / 20.00",
+      "goals_odds": "3.40 / 4.90",
+      "hafu_odds": "4.35 / 2.35",
+      "had_snapshot": {
+        "home": "1.54",
+        "draw": "3.72",
+        "away": "4.75",
+        "updatedAt": "2026-07-08 09:22:20"
+      },
+      "ttg_snapshot": {
+        "s0": "14.00",
+        "s1": "5.30",
+        "s2": "3.65",
+        "s3": "3.40",
+        "s4": "4.90",
+        "s5": "8.50",
+        "s6": "16.00",
+        "s7": "24.00",
+        "updatedAt": "2026-07-08 09:22:22"
+      }
+    },
+    {
+      "round": "四分之一决赛",
+      "kickoff_bjt": "2026-07-12 05:00",
+      "home_team": "挪威",
+      "away_team": "英格兰",
+      "direction_90min": "英格兰不败，防90分钟平",
+      "advance_pick": "英格兰",
+      "main_score": "1-2",
+      "score_pool": [
+        "1:2",
+        "1:1",
+        "0:1",
+        "2:2",
+        "2:3"
+      ],
+      "tail_scores": [
+        "2:3",
+        "0:0"
+      ],
+      "goals_pick": [
+        "2",
+        "3"
+      ],
+      "goals_range": "2-3球，防0-0",
+      "hafu_pick": [
+        "da",
+        "dd"
+      ],
+      "confidence": "中",
+      "rationale": "挪威已经证明能通过高点、反击和早段冲击打穿强队控制，不能把英格兰实力优势简单转成零封。英格兰整体深度和淘汰赛管理更优，最终晋级略优；比分池同时保留1-1/2-2和2-3，吸收昨日3-2尾部课题。",
+      "injury_note": "7月12日官方竞彩赔率未开放，伤停按本地外部源无新增硬伤停处理，临场需复核。",
+      "match_no": "99",
+      "odds_source": "Sporttery odds not open yet; schedule/model placeholder",
+      "score_odds": "- / - / - / - / -",
+      "goals_odds": "- / -",
+      "hafu_odds": "- / -",
+      "had_snapshot": null,
+      "ttg_snapshot": null
+    },
+    {
+      "round": "四分之一决赛",
+      "kickoff_bjt": "2026-07-12 09:00",
+      "home_team": "阿根廷",
+      "away_team": "瑞士",
+      "direction_90min": "阿根廷胜优先，强防平",
+      "advance_pick": "阿根廷",
+      "main_score": "1-0",
+      "score_pool": [
+        "1:0",
+        "2:0",
+        "1:1",
+        "0:0",
+        "2:1"
+      ],
+      "tail_scores": [
+        "0:0",
+        "3:2"
+      ],
+      "goals_pick": [
+        "1",
+        "2"
+      ],
+      "goals_range": "1-2球，防3球尾部",
+      "hafu_pick": [
+        "dh",
+        "dd"
+      ],
+      "confidence": "中",
+      "rationale": "阿根廷连续出现2-2、3-2，说明其强势并不等于稳零封；瑞士0-0晋级说明低位防守、拖入加时点球的路径真实存在。本场不能追昨日阿根廷大球，主线反而回到阿根廷小胜和瑞士锁局：1-0/2-0为正路，1-1/0-0为核心保护，3-2只作阿根廷被迫二次提速尾部。",
+      "injury_note": "7月12日官方竞彩赔率未开放；阿根廷补时大战和瑞士点球大战均计入体能折损。",
+      "match_no": "100",
+      "odds_source": "Sporttery odds not open yet; schedule/model placeholder",
+      "score_odds": "- / - / - / - / -",
+      "goals_odds": "- / -",
+      "hafu_odds": "- / -",
+      "had_snapshot": null,
+      "ttg_snapshot": null
+    }
+  ]
+}

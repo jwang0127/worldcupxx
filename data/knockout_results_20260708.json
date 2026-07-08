@@ -1,0 +1,47 @@
+{
+  "date": "20260708",
+  "stage": "knockout",
+  "status": "90min_finished",
+  "matches": [
+    {
+      "game_id": "53452521",
+      "match_no": "95",
+      "home_team": "阿根廷",
+      "away_team": "埃及",
+      "score": "3-2",
+      "home_goals": 3,
+      "away_goals": 2,
+      "decisive_moment": "伤停补时阿根廷进球",
+      "winner_team": "阿根廷",
+      "advance_team": "阿根廷",
+      "prediction_main_score": "2-0",
+      "prediction_backup_scores": [
+        "1-0",
+        "2-1"
+      ],
+      "prediction_upset_score": "1-1",
+      "in_score_pool": false,
+      "review": "方向命中但比分池漏掉3-2。根因不是强队低赔一定大胜，而是埃及抗压和反击破门路径被低估；阿根廷领先后没有完全收住，埃及进球迫使比赛进入补时再提速。后续强弱差明显但弱队具备进球路径时，必须把2-1旁边的3-2/3-1作为尾部，而不是只放3-0。"
+    },
+    {
+      "game_id": "53452523",
+      "match_no": "96",
+      "home_team": "瑞士",
+      "away_team": "哥伦比亚",
+      "score": "0-0",
+      "penalty_score": "瑞士点球4-1",
+      "home_goals": 0,
+      "away_goals": 0,
+      "winner_team": "瑞士",
+      "advance_team": "瑞士",
+      "prediction_main_score": "1-1",
+      "prediction_backup_scores": [
+        "0-1",
+        "1-2"
+      ],
+      "prediction_upset_score": "2-1",
+      "in_score_pool": false,
+      "review": "晋级方向和90分钟比分均偏差，0-0未入池。根因是模型把哥伦比亚方向和2球低位转成了至少一球，而没有给淘汰赛高强度对抗、两队互相忌惮、点球可接受路径足够权重。后续均衡局必须把0-0作为低节奏保护，且90分钟不败与最终晋级要拆开。"
+    }
+  ]
+}

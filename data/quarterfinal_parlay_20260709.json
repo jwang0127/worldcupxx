@@ -1,0 +1,123 @@
+{
+  "date": "20260709",
+  "stage": "quarterfinal_parlay",
+  "headline": "四分之一决赛串关：方向/总进球优先，精确比分降权",
+  "summary": "97-100四场覆盖二串一、三串一和四场观察。97/98有竞彩实时赔率；99/100官方赔率未开放，先按模型占位，临场赔率出来后必须复核。",
+  "groups": [
+    {
+      "title": "二串一主线",
+      "summary": "用赔率已开放的97/98做主线，降低比分依赖。",
+      "legs": [
+        {
+          "match_no": "97",
+          "match": "法国 vs 摩洛哥",
+          "direction": "法国胜优先，防平",
+          "score_pick": "2-0 / 2-1",
+          "score_odds": "5.80 / 6.75 / 5.85 / 6.50 / 11.00",
+          "goals_pick": "2 / 3球",
+          "goals_odds": "3.25 / 3.60",
+          "half_full_pick": "胜胜 / 平胜",
+          "half_full_odds": "2.05 / 3.90",
+          "note": "法国方向清晰但防摩洛哥拖窄。"
+        },
+        {
+          "match_no": "98",
+          "match": "西班牙 vs 比利时",
+          "direction": "西班牙不败，主胜略优",
+          "score_pick": "2-1 / 1-1",
+          "score_odds": "6.40 / 7.00 / 10.50 / 12.00 / 20.00",
+          "goals_pick": "3 / 4球",
+          "goals_odds": "3.40 / 4.90",
+          "half_full_pick": "平胜 / 胜胜",
+          "half_full_odds": "4.35 / 2.35",
+          "note": "西班牙不败，防比利时反击扩大总进球。"
+        }
+      ]
+    },
+    {
+      "title": "三串一稳健",
+      "summary": "方向加总进球混合，第三腿选英格兰不败，不做单一比分重仓。",
+      "legs": [
+        {
+          "match_no": "97",
+          "match": "法国 vs 摩洛哥",
+          "direction": "法国胜优先，防平",
+          "score_pick": "2-0 / 1-0",
+          "score_odds": "5.80 / 6.75 / 5.85 / 6.50 / 11.00",
+          "goals_pick": "2球",
+          "goals_odds": "3.25 / 3.60",
+          "half_full_pick": "胜胜 / 平胜",
+          "half_full_odds": "2.05 / 3.90",
+          "note": "法国小胜或零封。"
+        },
+        {
+          "match_no": "98",
+          "match": "西班牙 vs 比利时",
+          "direction": "西班牙不败，主胜略优",
+          "score_pick": "2-1 / 3-1",
+          "score_odds": "6.40 / 7.00 / 10.50 / 12.00 / 20.00",
+          "goals_pick": "3球",
+          "goals_odds": "3.40 / 4.90",
+          "half_full_pick": "平胜 / 胜胜",
+          "half_full_odds": "4.35 / 2.35",
+          "note": "西班牙强侧，防尾部。"
+        },
+        {
+          "match_no": "99",
+          "match": "挪威 vs 英格兰",
+          "direction": "英格兰不败，防90分钟平",
+          "score_pick": "1-2 / 1-1",
+          "score_odds": "- / - / - / - / -",
+          "goals_pick": "2 / 3球",
+          "goals_odds": "- / -",
+          "half_full_pick": "平负 / 平平",
+          "half_full_odds": "- / -",
+          "note": "英格兰晋级优先，但挪威有进球路径。"
+        }
+      ]
+    },
+    {
+      "title": "三串一防冷",
+      "summary": "吸收0-0和3-2漏池教训，专门覆盖低节奏与尾段二次提速。",
+      "legs": [
+        {
+          "match_no": "98",
+          "match": "西班牙 vs 比利时",
+          "direction": "西班牙不败，主胜略优",
+          "score_pick": "2-2 / 3-2",
+          "score_odds": "6.40 / 7.00 / 10.50 / 12.00 / 20.00",
+          "goals_pick": "4 / 5球",
+          "goals_odds": "3.40 / 4.90",
+          "half_full_pick": "平胜",
+          "half_full_odds": "4.35 / 2.35",
+          "note": "比利时尾部不能删。"
+        },
+        {
+          "match_no": "99",
+          "match": "挪威 vs 英格兰",
+          "direction": "英格兰不败，防90分钟平",
+          "score_pick": "2-2 / 2-3",
+          "score_odds": "- / - / - / - / -",
+          "goals_pick": "4 / 5球",
+          "goals_odds": "- / -",
+          "half_full_pick": "平负",
+          "half_full_odds": "- / -",
+          "note": "挪威先进球或英格兰后程反超。"
+        },
+        {
+          "match_no": "100",
+          "match": "阿根廷 vs 瑞士",
+          "direction": "阿根廷胜优先，强防平",
+          "score_pick": "1-1 / 0-0",
+          "score_odds": "- / - / - / - / -",
+          "goals_pick": "0 / 1 / 2球",
+          "goals_odds": "- / -",
+          "half_full_pick": "平平",
+          "half_full_odds": "- / -",
+          "note": "瑞士锁局与点球路径必须覆盖。"
+        }
+      ]
+    }
+  ],
+  "odds_source": "Sporttery live files for 97/98; 99/100 odds pending"
+}

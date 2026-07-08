@@ -554,7 +554,7 @@
       "beijing_date": "2026-07-08",
       "beijing_time": "00:00",
       "beijing_timezone": "Asia/Shanghai",
-      "status": "未开赛",
+      "status": "已完赛：阿根廷3-2晋级",
       "winner_advances_to": "53452531",
       "note": "世界杯淘汰赛为中立场比赛，此处主/客队仅表示赛程源中的名义排列顺序；赛程源未包含具体球场城市时区，因此当地时间统一按 America/New_York / EDT 表示。"
     },
@@ -578,7 +578,7 @@
       "beijing_date": "2026-07-08",
       "beijing_time": "04:00",
       "beijing_timezone": "Asia/Shanghai",
-      "status": "未开赛",
+      "status": "已完赛：瑞士0-0，点球4-1晋级",
       "winner_advances_to": "53452531",
       "note": "世界杯淘汰赛为中立场比赛，此处主/客队仅表示赛程源中的名义排列顺序；赛程源未包含具体球场城市时区，因此当地时间统一按 America/New_York / EDT 表示。"
     },
@@ -660,12 +660,12 @@
       "stage_order": 3,
       "round": "四分之一决赛",
       "stage": "knockout",
-      "home_team": "待定：53452521胜者",
-      "home_team_en": "TBD: Winner of 53452521",
-      "home_code": "",
-      "away_team": "待定：53452523胜者",
-      "away_team_en": "TBD: Winner of 53452523",
-      "away_code": "",
+      "home_team": "阿根廷",
+      "home_team_en": "Argentina",
+      "home_code": "ARG",
+      "away_team": "瑞士",
+      "away_team_en": "Switzerland",
+      "away_code": "SUI",
       "kickoff_local": "2026-07-11 21:00:00 -04:00",
       "local_date": "2026-07-11",
       "local_time": "21:00",
@@ -775,6 +775,6 @@
       "note": "世界杯淘汰赛为中立场比赛，此处主/客队仅表示赛程源中的名义排列顺序；赛程源未包含具体球场城市时区，因此当地时间统一按 America/New_York / EDT 表示。"
     }
   ],
-  "last_updated": "2026-07-07",
-  "update_note": "回填89-94赛果、95-99已确定对阵；100保留95/96胜者待定。"
+  "last_updated": "2026-07-09",
+  "update_note": "回填95-96赛果；100更新为阿根廷 vs 瑞士；生成97-100四分之一决赛预测。"
 }

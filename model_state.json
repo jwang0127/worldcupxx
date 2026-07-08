@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-07T19:18:01",
+  "updatedAt": "2026-07-08T11:40:58",
   "weights": {
     "odds": 0.21,
     "elo": 0.18,
@@ -11,9 +11,9 @@
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260707",
-    "lesson": "葡萄牙0-1西班牙、美国1-4比利时：0-1和1-4都没有进入比分池，说明比分池既缺低比分末段兑现路径，也缺强客领先后反击放大的尾部路径。",
-    "todayAdjustment": "07-08预测不做昨日大小球惯性外推；阿根廷场把2-0/1-0/2-1并列入池，瑞士vs哥伦比亚保留1-1/0-1/1-2，同时把0-2与2-1列为尾部防线。串关降比分权重，主用方向+总进球。"
+    "latestReview": "20260708",
+    "lesson": "阿根廷3-2与瑞士0-0均未入比分池：强弱差局要补强队被迫二次提速的3-2/3-1尾部，均衡淘汰赛要补0-0锁局和点球路径。",
+    "todayAdjustment": "97-100四场不按昨日大小球惯性外推；法国场主2-0防1-1，西班牙场主2-1防3-2，挪威-英格兰防平与2-3，阿根廷-瑞士主小胜并强防0-0/1-1。"
   },
   "history": [
     {
@@ -100,6 +100,17 @@
       "scorePoolHitRate": "0%",
       "totalGoalHits": 1,
       "totalGoalHitRate": "50%"
+    },
+    {
+      "date": "20260708",
+      "settled": 2,
+      "directionHits": 1,
+      "directionHitRate": "50%",
+      "mainScoreHits": 0,
+      "scorePoolHits": 0,
+      "scorePoolHitRate": "0%",
+      "totalGoalHits": 0,
+      "totalGoalHitRate": "0%"
     }
   ]
 }

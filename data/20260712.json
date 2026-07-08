@@ -1,0 +1,67 @@
+{
+  "date": "20260712",
+  "dateText": "2026-07-12",
+  "source": "schedule-model-placeholder",
+  "fetchedAt": "2026-07-08T11:40:58",
+  "apiPoolCode": "ttg,had,hhad,crs,hafu",
+  "matches": [
+    {
+      "id": "099",
+      "matchNumStr": "待定99",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "kickoff": "2026-07-12 05:00:00",
+      "matchDate": "2026-07-12",
+      "matchStatus": "OddsPending",
+      "home": "挪威",
+      "away": "英格兰",
+      "prediction": {
+        "totalGoals": "2/3",
+        "scores": [
+          "1:2",
+          "1:1"
+        ],
+        "upset": "0:1",
+        "confidence": "中"
+      },
+      "result": null,
+      "review": "Sporttery odds not open yet; placeholder generated from knockout schedule, strength model, review lessons, and injury/fitness assumptions.",
+      "odds": {
+        "had": null,
+        "ttg": null,
+        "hhad": null,
+        "crs": null,
+        "hafu": null
+      }
+    },
+    {
+      "id": "100",
+      "matchNumStr": "待定100",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "kickoff": "2026-07-12 09:00:00",
+      "matchDate": "2026-07-12",
+      "matchStatus": "OddsPending",
+      "home": "阿根廷",
+      "away": "瑞士",
+      "prediction": {
+        "totalGoals": "1/2",
+        "scores": [
+          "1:0",
+          "2:0"
+        ],
+        "upset": "1:1",
+        "confidence": "中"
+      },
+      "result": null,
+      "review": "Sporttery odds not open yet; placeholder generated from knockout schedule, strength model, review lessons, and injury/fitness assumptions.",
+      "odds": {
+        "had": null,
+        "ttg": null,
+        "hhad": null,
+        "crs": null,
+        "hafu": null
+      }
+    }
+  ]
+}
