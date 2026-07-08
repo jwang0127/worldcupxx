@@ -469,21 +469,27 @@ def patch_home() -> None:
     if not path.exists():
         return
     text = path.read_text(encoding="utf-8", errors="ignore")
-    marker = '<section class="section" id="future">'
-    replacement = """<section class="section" id="future"><h2>未来四强席位赛程</h2><div class="card tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>轮次</th><th>对阵</th><th>预测</th></tr></thead><tbody>
-<tr><td>07-10 04:00</td><td>97</td><td>四分之一决赛</td><td>法国 vs 摩洛哥</td><td>法国晋级，2-0 / 2-1，防1-1</td></tr>
-<tr><td>07-11 03:00</td><td>98</td><td>四分之一决赛</td><td>西班牙 vs 比利时</td><td>西班牙晋级，2-1 / 3-1，防3-2</td></tr>
-<tr><td>07-12 05:00</td><td>99</td><td>四分之一决赛</td><td>挪威 vs 英格兰</td><td>英格兰晋级，1-2 / 1-1，防2-3</td></tr>
-<tr><td>07-12 09:00</td><td>100</td><td>四分之一决赛</td><td>阿根廷 vs 瑞士</td><td>阿根廷晋级，1-0 / 2-0，防0-0/1-1</td></tr>
-</tbody></table></div></section>"""
-    start = text.find(marker)
-    if start >= 0:
+    text = text.replace(
+        '<div class="heroMeta"><span>最新更新时间：2026-07-07 13:18:58</span><span>当前主推页面：2026年7月8日</span></div>',
+        '<div class="heroMeta"><span>最新更新时间：2026-07-09 复盘后更新</span><span>当前主推页面：2026年7月9日</span></div>',
+    )
+    old_fixture_start = text.find('<div class="fixtureCard"><h3>明日北京时间赛程</h3>')
+    if old_fixture_start >= 0:
+        old_fixture_end = text.find("</div></div>", old_fixture_start)
+        if old_fixture_end >= 0:
+            new_fixture = '<div class="fixtureCard"><h3>未来四强席位赛程</h3><p>已回填阿根廷3-2埃及、瑞士0-0点球晋级，首页改为展示97-100四场四分之一决赛。</p><div class="tableWrap"><table><thead><tr><th>北京时间</th><th>场次</th><th>对阵</th><th>预测</th></tr></thead><tbody><tr><td>07-10 04:00</td><td>097</td><td>法国 vs 摩洛哥</td><td>法国晋级，2-0 / 2-1，防1-1</td></tr><tr><td>07-11 03:00</td><td>098</td><td>西班牙 vs 比利时</td><td>西班牙晋级，2-1 / 3-1，防3-2</td></tr><tr><td>07-12 05:00</td><td>099</td><td>挪威 vs 英格兰</td><td>英格兰晋级，1-2 / 1-1，防2-3</td></tr><tr><td>07-12 09:00</td><td>100</td><td>阿根廷 vs 瑞士</td><td>阿根廷晋级，1-0 / 2-0，防0-0/1-1</td></tr></tbody></table></div></div>'
+            text = text[:old_fixture_start] + new_fixture + text[old_fixture_end + len("</div></div>") :]
+    if '<a class="card" href="./20260709/">' not in text:
+        text = text.replace(
+            '<section class="list">',
+            '<section class="list">\n<a class="card" href="./20260709/"><div><div class="date">20260709</div><div class="meta">四分之一决赛预测与昨日复盘</div></div><div class="go">进入 →</div></a>',
+            1,
+        )
+    if '<section class="section" id="future">' in text:
+        start = text.find('<section class="section" id="future">')
         end = text.find("</section>", start)
         if end >= 0:
-            text = text[:start] + replacement + text[end + len("</section>") :]
-    else:
-        text = text.replace("</main>", replacement + "\n</main>")
-    text = text.replace("07-08预测", "07-09预测")
+            text = text[:start] + text[end + len("</section>") :]
     path.write_text(text, encoding="utf-8")
 
 
