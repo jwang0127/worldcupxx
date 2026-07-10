@@ -141,7 +141,7 @@ def build_matches() -> list[dict[str, Any]]:
             "away": "比利时",
             "kickoff": "07-11 03:00",
             "venue": m98.get("venue", "美国-加利福尼亚州英格尔伍德") if m98 else "美国-加利福尼亚州英格尔伍德",
-            "main_score": "2-1",
+            "main_score": "2-0",
             "direction": "西班牙不败，主胜略优",
             "advance": "西班牙",
             "goals": "3球主线，防4球",
@@ -189,7 +189,7 @@ def build_matches() -> list[dict[str, Any]]:
             "away": "英格兰",
             "kickoff": "07-12 05:00",
             "venue": "待官方竞彩开盘后复核",
-            "main_score": "0-1",
+            "main_score": "1-2",
             "direction": "英格兰不败，防90分钟平",
             "advance": "英格兰",
             "goals": "2-3球，防0-0和4球尾部",
@@ -389,6 +389,14 @@ def render_page(matches: list[dict[str, Any]], review: dict[str, Any], parlay: l
 </tbody></table></div></div></section>
 """
     match_html += future_update
+    web_refresh = """
+<section class="section" id="webRefresh"><div class="card"><h3>公开资料复核后的二次调整</h3>
+<p>098：公开预览资料显示西班牙连续零封，且比利时中场存在伤情信息；比利时上一场4-1的强势表现同时含有对手防守失误因素，因此主线收窄到2-0，保留1-0/2-1和3-1尾部。</p>
+<p>099：英格兰存在中后场人员与停赛风险，挪威本届比赛开放度较高；因此不把法国2-0复盘机械套成低比分，主线回到1-2，2-2/2-3作为追分尾部。</p>
+<p>100：阿根廷方向仍明显，但瑞士低位锁局能力和点球路径保留；主线为1-0/2-0，0-0/1-1为保护。</p>
+<p class="muted">资料来源：<a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/match-schedule-fixtures-results-teams-stadiums">FIFA赛程</a>；<a href="https://apnews.com/article/0325e8102be7a88e852079deffd70ca0">AP比利时4-1美国赛后报道</a>；<a href="https://www.sportsmole.co.uk/football/spain/world-cup-2026/preview/spain-vs-belgium-prediction-team-news-lineups_600878.html">西班牙-比利时赛前资料</a>；<a href="https://www.sportsmole.co.uk/football/england/world-cup-2026/preview/norway-vs-england-prediction-team-news-lineups_600924.html">挪威-英格兰赛前资料</a>；<a href="https://sports.betmgm.com/en/blog/world-cup/argentina-vs-switzerland-prediction-odds-preview-world-cup-july-11-bm16/">阿根廷-瑞士赔率预览</a>。</p></div></section>
+"""
+    match_html += web_refresh
     return f"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>20260709 四强席位预测</title><style>{css()}</style></head>
 <body><header><h1>20260709 四分之一决赛预测</h1><nav><a href="../index.html">首页</a><a href="../parlay/">串关</a><a href="../knockout/">淘汰赛日历</a></nav></header><main>
 <section class="section"><h2>昨日复盘与模型修正</h2><div class="card"><p><strong>{esc(review['headline'])}</strong></p><p>{esc(review['summary'])}</p><ul>{lesson_items}</ul></div></section>
