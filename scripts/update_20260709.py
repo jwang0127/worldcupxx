@@ -340,6 +340,9 @@ def build_parlay(matches: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
 
 def render_parlay_group(group: dict[str, Any]) -> str:
+    group = {**group, "legs": [x for x in group["legs"] if str(x.get("match_no")) != "97"]}
+    if not group["legs"]:
+        return ""
     rows = "".join(
         f"<tr><td>{esc(x['match_no'])}</td><td>{esc(x['match'])}</td><td>{esc(x['direction'])}</td><td>{esc(x['score'])}</td><td>{esc(x['goals'])}</td><td>{esc(x['hafu'])}</td><td>{esc(x['ev'])}</td><td>{esc(x['note'])}</td></tr>"
         for x in group["legs"]
@@ -375,7 +378,7 @@ def render_match(item: dict[str, Any]) -> str:
 def render_page(matches: list[dict[str, Any]], review: dict[str, Any], parlay: list[dict[str, Any]]) -> str:
     lesson_items = "".join(f"<li>{esc(x)}</li>" for x in review["lessons"])
     parlay_html = "".join(render_parlay_group(group) for group in parlay)
-    match_html = "".join(render_match(item) for item in matches)
+    match_html = "".join(render_match(item) for item in matches if str(item.get("match_no")) != "97")
     future_update = """
 <section class="section" id="postReviewUpdate"><h2>07-10 法国2-0复盘后的未来场次调整</h2>
 <div class="card"><p><strong>复盘已回写后续比分池：</strong>强队方向明确、对手进攻受限、总进球低位时，零封小胜不能被平局保护稀释；对手有真实反击或追分能力时，仍保留开放比分尾部。</p>
