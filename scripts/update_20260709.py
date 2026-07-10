@@ -484,6 +484,21 @@ def main() -> int:
         ]
     }
     parlay = build_parlay(matches)
+    by_no = {str(item.get("match_no")): item for item in matches}
+    for group in parlay:
+        leg_numbers = {str(item.get("match_no")) for item in group.get("legs", [])}
+        if "98" in leg_numbers and "99" in leg_numbers and "100" not in leg_numbers:
+            item = by_no["100"]
+            group["legs"].append({
+                "match_no": "100",
+                "match": f"{item['home']} vs {item['away']}",
+                "direction": item["direction"],
+                "score": "1-0 / 2-0",
+                "goals": "1 / 2球",
+                "hafu": item["hafu"],
+                "ev": "外部赔率支持",
+                "note": "阿根廷方向优先，瑞士锁局与点球路径保留。"
+            })
     day_dir = ROOT / DATE
     day_dir.mkdir(exist_ok=True)
     page = render_page(matches, review, parlay)
