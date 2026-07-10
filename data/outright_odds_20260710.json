@@ -1,0 +1,15 @@
+{
+  "date": "20260710",
+  "source": "bet365 World Cup 2026 outright market",
+  "updatedAt": "2026-07-10",
+  "odds": [
+    {"team": "法国", "decimal": 2.875, "fractional": "15/8"},
+    {"team": "西班牙", "decimal": 5.0, "fractional": "4/1"},
+    {"team": "阿根廷", "decimal": 5.0, "fractional": "4/1"},
+    {"team": "英格兰", "decimal": 5.5, "fractional": "9/2"},
+    {"team": "挪威", "decimal": 17.0, "fractional": "16/1"},
+    {"team": "比利时", "decimal": 34.0, "fractional": "33/1"},
+    {"team": "瑞士", "decimal": 34.0, "fractional": "33/1"}
+  ],
+  "note": "赔率为公开市场快照，仅作模型校准，不构成购买建议。"
+}

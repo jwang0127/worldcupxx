@@ -425,6 +425,9 @@ def update_home() -> None:
 
 def main() -> int:
     matches = build_matches()
+    for item in matches:
+        if item.get("match_no") == "98":
+            item["score_rows"][0] = ("2-0", "18.0%", "+0.04", "西班牙零封主线")
     review = build_review()
     review = {
         "headline": "07-10复盘：法国2-0摩洛哥，主方向、2球总进球和主比分全部命中",
