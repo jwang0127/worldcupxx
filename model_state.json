@@ -1,17 +1,17 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-08T11:40:58",
+  "updatedAt": "2026-07-10T12:00:00",
   "weights": {
     "odds": 0.21,
     "elo": 0.18,
     "form": 0.15,
-    "tactics": 0.17,
-    "motivation": 0.16,
+    "tactics": 0.18,
+    "motivation": 0.15,
     "external": 0.09,
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260708",
+    "latestReview": "20260710",
     "lesson": "阿根廷3-2与瑞士0-0均未入比分池：强弱差局要补强队被迫二次提速的3-2/3-1尾部，均衡淘汰赛要补0-0锁局和点球路径。",
     "todayAdjustment": "97-100四场不按昨日大小球惯性外推；法国场主2-0防1-1，西班牙场主2-1防3-2，挪威-英格兰防平与2-3，阿根廷-瑞士主小胜并强防0-0/1-1。"
   },

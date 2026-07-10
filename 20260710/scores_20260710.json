@@ -1,0 +1,49 @@
+﻿{
+    "id":  "097",
+    "match":  "法国 vs 摩洛哥",
+    "lean":  "home",
+    "stars":  "★★★★☆",
+    "composite":  7.42,
+    "dimensions":  {
+                       "basic":  7.58,
+                       "lineup":  6.93,
+                       "elo":  8.91,
+                       "odds":  8.34,
+                       "trend":  7.1,
+                       "h2h":  5,
+                       "motivation":  4.5,
+                       "pressure":  6.42,
+                       "weather":  5.9,
+                       "historyStyle":  6.9,
+                       "injuryRisk":  5,
+                       "rotationRisk":  2.2,
+                       "dataCompleteness":  7.4
+                   },
+    "probabilities":  {
+                          "home":  0.62341671944268517,
+                          "draw":  0.2360671310956301,
+                          "away":  0.14051614946168459
+                      },
+    "recent":  {
+                   "home":  {
+                                "played":  4,
+                                "wins":  4,
+                                "draws":  0,
+                                "losses":  0,
+                                "gf":  12,
+                                "ga":  2,
+                                "ppg":  3,
+                                "score":  9.5
+                            },
+                   "away":  {
+                                "played":  3,
+                                "wins":  2,
+                                "draws":  0,
+                                "losses":  1,
+                                "gf":  5,
+                                "ga":  4,
+                                "ppg":  2,
+                                "score":  6.9799999999999995
+                            }
+               }
+}
