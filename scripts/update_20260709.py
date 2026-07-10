@@ -189,7 +189,7 @@ def build_matches() -> list[dict[str, Any]]:
             "away": "英格兰",
             "kickoff": "07-12 05:00",
             "venue": "待官方竞彩开盘后复核",
-            "main_score": "1-2",
+            "main_score": "0-1",
             "direction": "英格兰不败，防90分钟平",
             "advance": "英格兰",
             "goals": "2-3球，防0-0和4球尾部",
@@ -376,6 +376,16 @@ def render_page(matches: list[dict[str, Any]], review: dict[str, Any], parlay: l
     lesson_items = "".join(f"<li>{esc(x)}</li>" for x in review["lessons"])
     parlay_html = "".join(render_parlay_group(group) for group in parlay)
     match_html = "".join(render_match(item) for item in matches)
+    future_update = """
+<section class="section" id="postReviewUpdate"><h2>07-10 法国2-0复盘后的未来场次调整</h2>
+<div class="card"><p><strong>复盘已回写后续比分池：</strong>强队方向明确、对手进攻受限、总进球低位时，零封小胜不能被平局保护稀释；对手有真实反击或追分能力时，仍保留开放比分尾部。</p>
+<div class="tableWrap"><table><thead><tr><th>场次</th><th>原主线</th><th>复盘后更新</th><th>触发条件</th></tr></thead><tbody>
+<tr><td>098 西班牙-比利时</td><td>2-1 / 1-1 / 3-1</td><td>保留2-1 / 1-1 / 3-1，并保留3-2与1-3尾部</td><td>比利时有转换和追分能力，不套用法国零封；比利时先入球上调2-2/3-2。</td></tr>
+<tr><td>099 挪威-英格兰</td><td>1-2 / 1-1</td><td>新增0-1低比分兑现路径，核心为0-1 / 1-2 / 1-1</td><td>英格兰先入球走0-1/1-2；挪威先入球走1-1/2-2/2-3。</td></tr>
+<tr><td>100 阿根廷-瑞士</td><td>1-0，防1-1/0-0</td><td>强化1-0 / 2-0零封小胜，继续保留1-1/0-0锁局</td><td>阿根廷早球上调2-0；半场0-0保留0-0/1-0/1-1，不机械追大。</td></tr>
+</tbody></table></div></div></section>
+"""
+    match_html += future_update
     return f"""<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>20260709 四强席位预测</title><style>{css()}</style></head>
 <body><header><h1>20260709 四分之一决赛预测</h1><nav><a href="../index.html">首页</a><a href="../parlay/">串关</a><a href="../knockout/">淘汰赛日历</a></nav></header><main>
 <section class="section"><h2>昨日复盘与模型修正</h2><div class="card"><p><strong>{esc(review['headline'])}</strong></p><p>{esc(review['summary'])}</p><ul>{lesson_items}</ul></div></section>
