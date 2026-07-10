@@ -19,7 +19,7 @@
         {
           "match_no": "98",
           "match": "西班牙 vs 比利时",
-          "direction": "西班牙不败，主胜略优",
+          "direction": "西班牙90分钟胜优先，防平",
           "score": "2-1 / 1-1 / 3-1",
           "goals": "3 / 4球",
           "hafu": "平胜 / 胜胜",
@@ -45,7 +45,7 @@
         {
           "match_no": "98",
           "match": "西班牙 vs 比利时",
-          "direction": "西班牙不败，主胜略优",
+          "direction": "西班牙90分钟胜优先，防平",
           "score": "2-1 / 1-1",
           "goals": "3球",
           "hafu": "平胜 / 胜胜",
@@ -71,7 +71,7 @@
         {
           "match_no": "98",
           "match": "西班牙 vs 比利时",
-          "direction": "西班牙不败，主胜略优",
+          "direction": "西班牙90分钟胜优先，防平",
           "score": "2-2 / 3-2",
           "goals": "4 / 5球",
           "hafu": "平胜",
