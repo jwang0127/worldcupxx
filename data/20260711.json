@@ -1,125 +1,130 @@
-﻿{
-    "date":  "20260711",
-    "dateText":  "2026-07-11",
-    "source":  "sporttery-live-api",
-    "fetchedAt":  "2026-07-08T11:23:50",
-    "lastUpdateTime":  "2026-07-08 11:13:45",
-    "apiPoolCode":  "ttg,had,hhad,crs,hafu",
-    "matches":  [
-                    {
-                        "id":  "098",
-                        "matchNumStr":  "周五098",
-                        "matchId":  "2040466",
-                        "businessDate":  "2026-07-10",
-                        "league":  "世界杯",
-                        "leagueCode":  "WCC",
-                        "leagueId":  72,
-                        "groupName":  "",
-                        "kickoff":  "2026-07-11 03:00:00",
-                        "matchDate":  "2026-07-11",
-                        "matchTime":  "03:00:00",
-                        "matchStatus":  "Selling",
-                        "sellStatus":  1,
-                        "taxDateNo":  "2607101",
-                        "isHot":  false,
-                        "home":  "西班牙",
-                        "homeCode":  "SPA",
-                        "homeAbbr":  "西班牙",
-                        "homeRank":  "[世界杯1]",
-                        "away":  "比利时",
-                        "awayCode":  "BEG",
-                        "awayAbbr":  "比利时",
-                        "awayRank":  "[世界杯1]",
-                        "venue":  "比赛将在美国-加利福尼亚州英格尔伍德举行",
-                        "prediction":  {
-                                           "totalGoals":  "3",
-                                           "scores":  [
-                                                          "2:1",
-                                                          "3:0"
-                                                      ],
-                                           "upset":  "1:1",
-                                           "confidence":  "high",
-                                           "candidates":  [
-                                                              "3",
-                                                              "2",
-                                                              "4"
-                                                          ]
-                                       },
-                        "result":  null,
-                        "review":  "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
-                        "postReview":  null,
-                        "odds":  {
-                                     "had":  {
-                                                 "home":  "1.54",
-                                                 "draw":  "3.72",
-                                                 "away":  "4.75",
-                                                 "updatedAt":  "2026-07-08 09:22:20"
-                                             },
-                                     "ttg":  {
-                                                 "s0":  "14.00",
-                                                 "s1":  "5.30",
-                                                 "s2":  "3.65",
-                                                 "s3":  "3.40",
-                                                 "s4":  "4.90",
-                                                 "s5":  "8.50",
-                                                 "s6":  "16.00",
-                                                 "s7":  "24.00",
-                                                 "updatedAt":  "2026-07-08 09:22:22"
-                                             },
-                                     "hhad":  {
-                                                  "home":  "2.66",
-                                                  "draw":  "3.45",
-                                                  "away":  "2.16",
-                                                  "handicap":  null,
-                                                  "updatedAt":  "2026-07-08 09:22:20"
-                                              },
-                                     "crs":  {
-                                                 "0-0":  "14.00",
-                                                 "0-1":  "14.50",
-                                                 "0-2":  "28.00",
-                                                 "0-3":  "80.00",
-                                                 "0-4":  "300.0",
-                                                 "0-5":  "700.0",
-                                                 "1-0":  "7.50",
-                                                 "1-1":  "7.00",
-                                                 "1-2":  "12.50",
-                                                 "1-3":  "42.00",
-                                                 "1-4":  "150.0",
-                                                 "1-5":  "500.0",
-                                                 "2-0":  "7.50",
-                                                 "2-1":  "6.40",
-                                                 "2-2":  "12.00",
-                                                 "2-3":  "40.00",
-                                                 "2-4":  "150.0",
-                                                 "2-5":  "400.0",
-                                                 "3-0":  "13.00",
-                                                 "3-1":  "10.50",
-                                                 "3-2":  "20.00",
-                                                 "3-3":  "50.00",
-                                                 "4-0":  "27.00",
-                                                 "4-1":  "24.00",
-                                                 "4-2":  "45.00",
-                                                 "5-0":  "70.00",
-                                                 "5-1":  "60.00",
-                                                 "5-2":  "100.0",
-                                                 "homeOther":  "38.00",
-                                                 "drawOther":  "300.0",
-                                                 "awayOther":  "150.0",
-                                                 "updatedAt":  "2026-07-08 09:22:21"
-                                             },
-                                     "hafu":  {
-                                                  "aa":  "8.00",
-                                                  "ad":  "14.50",
-                                                  "ah":  "19.00",
-                                                  "da":  "10.50",
-                                                  "dd":  "6.25",
-                                                  "dh":  "4.35",
-                                                  "ha":  "35.00",
-                                                  "hd":  "14.50",
-                                                  "hh":  "2.35",
-                                                  "updatedAt":  "2026-07-08 09:22:20"
-                                              }
-                                 }
-                    }
-                ]
+{
+  "date": "20260711",
+  "dateText": "2026-07-11",
+  "source": "sporttery-live-api",
+  "fetchedAt": "2026-07-08T11:23:50",
+  "lastUpdateTime": "2026-07-08 11:13:45",
+  "apiPoolCode": "ttg,had,hhad,crs,hafu",
+  "matches": [
+    {
+      "id": "098",
+      "matchNumStr": "周五098",
+      "matchId": "2040466",
+      "businessDate": "2026-07-10",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "leagueId": 72,
+      "groupName": "",
+      "kickoff": "2026-07-11 03:00:00",
+      "matchDate": "2026-07-11",
+      "matchTime": "03:00:00",
+      "matchStatus": "Finished",
+      "sellStatus": 1,
+      "taxDateNo": "2607101",
+      "isHot": false,
+      "home": "西班牙",
+      "homeCode": "SPA",
+      "homeAbbr": "西班牙",
+      "homeRank": "[世界杯1]",
+      "away": "比利时",
+      "awayCode": "BEG",
+      "awayAbbr": "比利时",
+      "awayRank": "[世界杯1]",
+      "venue": "比赛将在美国-加利福尼亚州英格尔伍德举行",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "2:1",
+          "3:0"
+        ],
+        "upset": "1:1",
+        "confidence": "high",
+        "candidates": [
+          "3",
+          "2",
+          "4"
+        ]
+      },
+      "result": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "user-confirmed"
+      },
+      "review": "Auto-generated from Sporttery live odds: total-goals 3, lean home, adjusted by hhad/crs/hafu and draw pressure.",
+      "postReview": "西班牙2-1比利时：方向、3球和2-1主比分全中。均衡强强对话仍可由更稳定一方在末段兑现，2-1应保留为核心小胜路径。",
+      "odds": {
+        "had": {
+          "home": "1.54",
+          "draw": "3.72",
+          "away": "4.75",
+          "updatedAt": "2026-07-08 09:22:20"
+        },
+        "ttg": {
+          "s0": "14.00",
+          "s1": "5.30",
+          "s2": "3.65",
+          "s3": "3.40",
+          "s4": "4.90",
+          "s5": "8.50",
+          "s6": "16.00",
+          "s7": "24.00",
+          "updatedAt": "2026-07-08 09:22:22"
+        },
+        "hhad": {
+          "home": "2.66",
+          "draw": "3.45",
+          "away": "2.16",
+          "handicap": null,
+          "updatedAt": "2026-07-08 09:22:20"
+        },
+        "crs": {
+          "0-0": "14.00",
+          "0-1": "14.50",
+          "0-2": "28.00",
+          "0-3": "80.00",
+          "0-4": "300.0",
+          "0-5": "700.0",
+          "1-0": "7.50",
+          "1-1": "7.00",
+          "1-2": "12.50",
+          "1-3": "42.00",
+          "1-4": "150.0",
+          "1-5": "500.0",
+          "2-0": "7.50",
+          "2-1": "6.40",
+          "2-2": "12.00",
+          "2-3": "40.00",
+          "2-4": "150.0",
+          "2-5": "400.0",
+          "3-0": "13.00",
+          "3-1": "10.50",
+          "3-2": "20.00",
+          "3-3": "50.00",
+          "4-0": "27.00",
+          "4-1": "24.00",
+          "4-2": "45.00",
+          "5-0": "70.00",
+          "5-1": "60.00",
+          "5-2": "100.0",
+          "homeOther": "38.00",
+          "drawOther": "300.0",
+          "awayOther": "150.0",
+          "updatedAt": "2026-07-08 09:22:21"
+        },
+        "hafu": {
+          "aa": "8.00",
+          "ad": "14.50",
+          "ah": "19.00",
+          "da": "10.50",
+          "dd": "6.25",
+          "dh": "4.35",
+          "ha": "35.00",
+          "hd": "14.50",
+          "hh": "2.35",
+          "updatedAt": "2026-07-08 09:22:20"
+        }
+      }
+    }
+  ]
 }

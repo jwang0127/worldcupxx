@@ -1,0 +1,78 @@
+{
+  "date": "20260715",
+  "stage": "semifinal",
+  "matches": [
+    {
+      "no": "101",
+      "home": "法国",
+      "away": "西班牙",
+      "kickoff": "07-15 03:00",
+      "local": "07-14 15:00（阿灵顿）",
+      "direction": "法国胜，防平",
+      "probability": "法国胜45% / 平30% / 西班牙胜25%",
+      "main_score": "2-1",
+      "goals": "2/3球",
+      "advance": "法国",
+      "advance_prob": "法国60% / 西班牙40%",
+      "upset": "西班牙1-0或1-2",
+      "hafu": "平胜 / 胜胜，防平负",
+      "fitness": "法国多休一天；西班牙末段消耗较大，临场首发待复核。",
+      "analysis": "竞彩2.26/3.10/2.75与公开盘均把法国放在轻微优势位。法国本届攻击上限更高，西班牙则以控球和低失球压缩波动。四分之一决赛验证两队都能在90分钟兑现，因此不机械追平，主线放在法国2-1，保留1-1和西班牙偷球路径。",
+      "script": "半场僵持时1-1与平胜升权；法国先球则2-0/2-1升权；西班牙先球则1-1/1-2进入核心。",
+      "odds": "竞彩HAD 2.26/3.10/2.75；总进球2球 3.50、3球 3.50；比分1-1 6.00、2-1 7.00、1-2 7.50；更新时间 2026-07-12 09:17:31。公开盘：法国+135、平+225、西班牙+215，法国晋级-145。",
+      "score_pool": [
+        {
+          "score": "2-1",
+          "prob": 17,
+          "role": "主推",
+          "reason": "法国进攻上限与末段深度"
+        },
+        {
+          "score": "1-1",
+          "prob": 16,
+          "role": "稳健保护",
+          "reason": "强强对话互相压缩"
+        },
+        {
+          "score": "1-0",
+          "prob": 12,
+          "role": "小球保护",
+          "reason": "法国控场零封"
+        },
+        {
+          "score": "1-2",
+          "prob": 11,
+          "role": "爆冷",
+          "reason": "西班牙控球后程兑现"
+        },
+        {
+          "score": "2-0",
+          "prob": 9,
+          "role": "尾部",
+          "reason": "法国早球后控制"
+        },
+        {
+          "score": "0-1",
+          "prob": 8,
+          "role": "冷门尾部",
+          "reason": "西班牙低比分偷球"
+        }
+      ],
+      "sources": [
+        {
+          "label": "中国竞彩官方接口快照",
+          "url": "https://webapi.sporttery.cn/gateway/uniform/football/getMatchCalculatorV1.qry?channel=c&poolCode=ttg,had,hhad,crs,hafu"
+        },
+        {
+          "label": "DraftKings Network开盘信息",
+          "url": "https://dknetwork.draftkings.com/2026/07/11/world-cup-2026-france-vs-spain-opening-odds/"
+        },
+        {
+          "label": "BetUS半决赛赔率页",
+          "url": "https://www.betus.com.pa/sportsbook/fifa/world-cup/france-vs-spain/"
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-07-12 12:00 +08:00"
+}

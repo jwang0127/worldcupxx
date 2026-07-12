@@ -1,0 +1,42 @@
+{
+  "date": "20260716",
+  "dateText": "2026-07-16",
+  "source": "schedule-model-odds-pending",
+  "fetchedAt": "2026-07-12T11:58:00+08:00",
+  "apiPoolCode": "ttg,had,hhad,crs,hafu",
+  "matches": [
+    {
+      "id": "102",
+      "matchNumStr": "待定102",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "kickoff": "2026-07-16 03:00:00",
+      "matchDate": "2026-07-16",
+      "matchStatus": "OddsPending",
+      "home": "英格兰",
+      "away": "阿根廷",
+      "prediction": {
+        "totalGoals": "2/3",
+        "scores": [
+          "1:1",
+          "1:2",
+          "2:1",
+          "0:1",
+          "2:2",
+          "0:0"
+        ],
+        "upset": "2:1",
+        "confidence": "中低"
+      },
+      "result": null,
+      "review": "Sporttery 20260716未开盘；按已确认赛程、八强赛果、体能与模型经验生成，占位赔率不得视为实时盘。",
+      "odds": {
+        "had": null,
+        "ttg": null,
+        "hhad": null,
+        "crs": null,
+        "hafu": null
+      }
+    }
+  ]
+}

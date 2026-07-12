@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-10T12:00:00",
+  "updatedAt": "2026-07-12T12:00:00+08:00",
   "weights": {
-    "odds": 0.21,
+    "odds": 0.22,
     "elo": 0.18,
-    "form": 0.15,
+    "form": 0.14,
     "tactics": 0.18,
-    "motivation": 0.15,
-    "external": 0.09,
+    "motivation": 0.13,
+    "external": 0.11,
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260710",
-    "lesson": "阿根廷3-2与瑞士0-0均未入比分池：强弱差局要补强队被迫二次提速的3-2/3-1尾部，均衡淘汰赛要补0-0锁局和点球路径。",
-    "todayAdjustment": "97-100四场不按昨日大小球惯性外推；法国场主2-0防1-1，西班牙场主2-1防3-2，挪威-英格兰防平与2-3，阿根廷-瑞士主小胜并强防0-0/1-1。"
+    "latestReview": "20260712",
+    "lesson": "八强方向4/4、主比分2/4、比分池4/4、总进球3/4；继续拆分90分钟与晋级，强强对话不机械追平，连续加时恢复差单列。",
+    "todayAdjustment": "101法国轻优主2-1防1-1/1-2；102双方加时且阿根廷少休一天，90分钟主1-1，晋级阿根廷小幅领先。"
   },
   "history": [
     {
@@ -111,6 +111,18 @@
       "scorePoolHitRate": "0%",
       "totalGoalHits": 0,
       "totalGoalHitRate": "0%"
+    },
+    {
+      "date": "20260712",
+      "settled": 4,
+      "directionHits": 4,
+      "directionHitRate": "100%",
+      "mainScoreHits": 2,
+      "mainScoreHitRate": "50%",
+      "scorePoolHits": 4,
+      "scorePoolHitRate": "100%",
+      "totalGoalHits": 3,
+      "totalGoalHitRate": "75%"
     }
   ]
 }

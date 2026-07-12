@@ -12,7 +12,7 @@
       "leagueCode": "WCC",
       "kickoff": "2026-07-12 05:00:00",
       "matchDate": "2026-07-12",
-      "matchStatus": "OddsPending",
+      "matchStatus": "Finished",
       "home": "挪威",
       "away": "英格兰",
       "prediction": {
@@ -24,7 +24,14 @@
         "upset": "0:1",
         "confidence": "中"
       },
-      "result": null,
+      "result": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "user-confirmed",
+        "extraTimeScore": "1-2",
+        "advanced": "英格兰"
+      },
       "review": "Sporttery odds not open yet; placeholder generated from knockout schedule, strength model, review lessons, and injury/fitness assumptions.",
       "odds": {
         "had": null,
@@ -32,7 +39,8 @@
         "hhad": null,
         "crs": null,
         "hafu": null
-      }
+      },
+      "postReview": "挪威1-1英格兰，英格兰加时2-1晋级：90分钟平局保护与最终晋级命中，主比分1-2未中。淘汰赛必须持续分离90分钟与晋级市场。"
     },
     {
       "id": "100",
@@ -41,7 +49,7 @@
       "leagueCode": "WCC",
       "kickoff": "2026-07-12 09:00:00",
       "matchDate": "2026-07-12",
-      "matchStatus": "OddsPending",
+      "matchStatus": "Finished",
       "home": "阿根廷",
       "away": "瑞士",
       "prediction": {
@@ -53,7 +61,15 @@
         "upset": "1:1",
         "confidence": "中"
       },
-      "result": null,
+      "result": {
+        "homeGoals": 1,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "user-confirmed",
+        "extraTimeScore": "3-1",
+        "advanced": "阿根廷",
+        "inferenceNote": "用户未明示90分钟比分；依据进入加时及公开赛况按1-1归档"
+      },
       "review": "Sporttery odds not open yet; placeholder generated from knockout schedule, strength model, review lessons, and injury/fitness assumptions.",
       "odds": {
         "had": null,
@@ -61,7 +77,8 @@
         "hhad": null,
         "crs": null,
         "hafu": null
-      }
+      },
+      "postReview": "阿根廷1-1瑞士，阿根廷加时后3-1晋级：1-1防冷与晋级方向命中，主线小胜未中。锁局型对手拖入加时后，强队的体能和替补深度仍可能拉开最终比分。"
     }
   ]
 }

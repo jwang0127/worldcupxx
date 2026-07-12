@@ -1,0 +1,29 @@
+{
+  "date": "20260712",
+  "source": "semifinal bracket model calibrated by Sporttery 101 and public market hierarchy",
+  "updatedAt": "2026-07-12 12:00 +08:00",
+  "odds": [
+    {
+      "team": "法国",
+      "decimal": 2.45,
+      "model_probability": 0.39
+    },
+    {
+      "team": "阿根廷",
+      "decimal": 4.0,
+      "model_probability": 0.24
+    },
+    {
+      "team": "西班牙",
+      "decimal": 4.5,
+      "model_probability": 0.21
+    },
+    {
+      "team": "英格兰",
+      "decimal": 5.5,
+      "model_probability": 0.16
+    }
+  ],
+  "method": "法国-西班牙使用竞彩与公开盘；英格兰-阿根廷竞彩未开盘，按模型晋级率与公开四强市场排序归一化。赔率为模型公平价展示，不是庄家实时报价。",
+  "note": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。"
+}

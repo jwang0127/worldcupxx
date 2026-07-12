@@ -1,0 +1,78 @@
+{
+  "date": "20260716",
+  "stage": "semifinal",
+  "matches": [
+    {
+      "no": "102",
+      "home": "英格兰",
+      "away": "阿根廷",
+      "kickoff": "07-16 03:00",
+      "local": "07-15 15:00（亚特兰大）",
+      "direction": "平局优先，阿根廷不败",
+      "probability": "英格兰胜30% / 平34% / 阿根廷胜36%",
+      "main_score": "1-1",
+      "goals": "2/3球",
+      "advance": "阿根廷",
+      "advance_prob": "英格兰45% / 阿根廷55%",
+      "upset": "英格兰2-1",
+      "hafu": "平平 / 平负，防胜胜",
+      "fitness": "两队均打加时；阿根廷下半区最后出赛，恢复时间更短。",
+      "analysis": "102竞彩细项尚未开盘，模型不填造赔率。英格兰连续两轮暴露防线但有替补深度，阿根廷两轮都靠后程和加时提升强度。双方加时消耗叠加，90分钟平局权重上调；阿根廷关键球能力略优，最终晋级小幅倾向阿根廷。",
+      "script": "0-0半场时1-1/0-1升权；英格兰先球则2-1和2-2升权；阿根廷先球则0-1/1-2升权。",
+      "odds": "中国竞彩接口截至2026-07-12 11:58未返回20260716场次；仅使用赛程、已确认赛果、公开球队表现与四强市场排序，待开盘后复核。",
+      "score_pool": [
+        {
+          "score": "1-1",
+          "prob": 18,
+          "role": "主推",
+          "reason": "双方加时消耗与淘汰赛控制"
+        },
+        {
+          "score": "1-2",
+          "prob": 14,
+          "role": "客胜主线",
+          "reason": "阿根廷后程关键球"
+        },
+        {
+          "score": "2-1",
+          "prob": 13,
+          "role": "爆冷",
+          "reason": "英格兰替补深度和定位球"
+        },
+        {
+          "score": "0-1",
+          "prob": 10,
+          "role": "小球保护",
+          "reason": "阿根廷低比分管理"
+        },
+        {
+          "score": "2-2",
+          "prob": 9,
+          "role": "尾部",
+          "reason": "双方防线均有失球路径"
+        },
+        {
+          "score": "0-0",
+          "prob": 7,
+          "role": "锁局保护",
+          "reason": "体能导致前段保守"
+        }
+      ],
+      "sources": [
+        {
+          "label": "AP：阿根廷与瑞士90分钟1-1及半决赛路径",
+          "url": "https://apnews.com/article/d47ccb4ac5b3af67eca1f82228155174"
+        },
+        {
+          "label": "Oddschecker半决赛赛程市场页",
+          "url": "https://www.oddschecker.com/football/world-cup/france-v-spain/winner"
+        },
+        {
+          "label": "项目竞彩接口（102暂未开盘）",
+          "url": "https://webapi.sporttery.cn/gateway/uniform/football/getMatchCalculatorV1.qry?channel=c&poolCode=ttg,had,hhad,crs,hafu"
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-07-12 12:00 +08:00"
+}
