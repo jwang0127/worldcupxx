@@ -1,7 +1,7 @@
 {
-  "date": "20260714",
-  "stage": "semifinal_two_leg",
-  "title": "半决赛两场串（102赔率刷新）",
+  "date": "20260715",
+  "stage": "semifinal_single_match",
+  "title": "明日半决赛102预测组合",
   "legs": [
     {
       "match_no": "101",
@@ -18,7 +18,7 @@
       "win_draw_loss": "英格兰胜，重点防平",
       "total_goals": "2球，防1/3球",
       "scores": "1-1 / 2-1 / 1-0",
-      "upset": "阿根廷0-1 / 1-2",
+      "upset": "阿根廷0-1 / 0-2 / 1-2",
       "confidence": "中高；竞彩全池已校准"
     }
   ],

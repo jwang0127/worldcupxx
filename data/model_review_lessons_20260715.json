@@ -1,0 +1,32 @@
+{
+  "date": "20260715",
+  "headline": "法国0-2西班牙复盘：轻微低赔不能覆盖顶级客队零封路径",
+  "summary": "2球总进球命中，但方向、主比分、晋级和比分池均未覆盖0-2。竞彩0-2赛前赔率15.00并非不可解释尾部，模型却只保留了0-1与1-2，错误地把西班牙的反向结果绑定为必须双方进球。",
+  "metrics": {
+    "settled": 1,
+    "direction_hits": 0,
+    "main_score_hits": 0,
+    "score_pool_hits": 0,
+    "total_goal_hits": 1
+  },
+  "lessons": [
+    "名义客队若具备顶级控球脱压、连续不败和零封能力，0-1与0-2必须同时进入反向核心池。",
+    "HAD轻微主队低赔只表示边际优势，不能压掉赔率合理的客队零封比分；0-2赔率15.00应被视为可审计保护而非极端尾部。",
+    "强队进攻名气不能替代实际破局能力评估；面对能稳定绕过压迫的对手，要提高战术与防守结构权重。",
+    "这条修正用于102阿根廷路径：保留1-2之外，将0-1/0-2单列为核心反向保护，但不机械照搬昨日赛果。"
+  ],
+  "weight_adjustments": {
+    "odds": -0.02,
+    "tactics": 0.02,
+    "elite_away_clean_sheet_trigger": 0.08,
+    "both_teams_score_assumption": -0.05
+  },
+  "validation": {
+    "match_no": "101",
+    "actual_score": "0-2",
+    "direction_hit": false,
+    "main_score_hit": false,
+    "score_pool_hit": false,
+    "total_goals_hit": true
+  }
+}

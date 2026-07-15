@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-14T14:40:00+08:00",
+  "updatedAt": "2026-07-15T11:00:00+08:00",
   "weights": {
-    "odds": 0.24,
+    "odds": 0.22,
     "elo": 0.18,
-    "form": 0.14,
-    "tactics": 0.18,
-    "motivation": 0.13,
+    "form": 0.15,
+    "tactics": 0.2,
+    "motivation": 0.12,
     "external": 0.09,
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260712",
-    "lesson": "八强方向4/4、主比分2/4、比分池4/4、总进球3/4；继续拆分90分钟与晋级，强强对话不机械追平，连续加时恢复差单列。",
-    "todayAdjustment": "102竞彩2.35/2.75/2.94与2球/1-1低位：90分钟英格兰轻优、重点防平；主1-1，胜负分支2-1/1-0优先，晋级英格兰53%。"
+    "latestReview": "20260715",
+    "lesson": "法国0-2暴露顶级名义客队零封胜漏池：0-1/0-2不能被轻微主队低赔和双方进球假设压掉。",
+    "todayAdjustment": "102最新竞彩2.38/2.70/2.95：主1-1；英格兰2-1/1-0；阿根廷0-1/0-2/1-2；晋级英格兰52%。"
   },
   "history": [
     {
@@ -123,6 +123,18 @@
       "scorePoolHitRate": "100%",
       "totalGoalHits": 3,
       "totalGoalHitRate": "75%"
+    },
+    {
+      "date": "20260715",
+      "settled": 1,
+      "directionHits": 0,
+      "directionHitRate": "0%",
+      "mainScoreHits": 0,
+      "mainScoreHitRate": "0%",
+      "scorePoolHits": 0,
+      "scorePoolHitRate": "0%",
+      "totalGoalHits": 1,
+      "totalGoalHitRate": "100%"
     }
   ]
 }
