@@ -1,0 +1,77 @@
+{
+  "date": "20260719",
+  "stage": "季军赛",
+  "matches": [
+    {
+      "no": "103",
+      "date": "20260719",
+      "round": "季军赛",
+      "home": "法国",
+      "away": "英格兰",
+      "kickoff": "07-19 05:00",
+      "local": "07-18 17:00（迈阿密花园，EDT）",
+      "direction": "法国胜，防平",
+      "probability": "法国胜49% / 平26% / 英格兰胜25%",
+      "main_score": "2-1",
+      "goals": "3球主线，防2/4球",
+      "final_pick": "法国获得季军",
+      "analysis": "公开盘约为法国2.00、平3.60-3.90、英格兰3.60-3.70，法国优势清楚但不是碾压。季军赛轮换和动机波动通常高于决赛，两队半决赛均失利后更可能释放进攻；法国本届进攻产量与公开盘共同支持2-1主线，1-1负责吸收轮换与疲劳，2-0保留法国重新建立防守控制的路径。",
+      "script": "法国先球时2-1/2-0升权；英格兰先球时1-1/2-1/2-2升权；若双方大幅轮换且前30分钟已有进球，4球路径上调。",
+      "odds": "公开90分钟：法国约2.00，平3.60-3.90，英格兰3.60-3.70；法国晋级/获季军约1.53。公开比分低位：2-1约9.50、1-1约8.00、2-0约14.00。",
+      "score_pool": [
+        {
+          "score": "2-1",
+          "prob": 18,
+          "role": "主比分",
+          "reason": "法国进攻上限与市场一球优势"
+        },
+        {
+          "score": "1-1",
+          "prob": 15,
+          "role": "前三保护",
+          "reason": "轮换、疲劳与英格兰反击"
+        },
+        {
+          "score": "2-0",
+          "prob": 12,
+          "role": "前三保护",
+          "reason": "法国恢复控场后的零封路线"
+        },
+        {
+          "score": "3-1",
+          "prob": 10,
+          "role": "开放尾部",
+          "reason": "季军赛早球与追分状态"
+        },
+        {
+          "score": "1-0",
+          "prob": 9,
+          "role": "小球保护",
+          "reason": "双方体能下降后效率走低"
+        },
+        {
+          "score": "1-2",
+          "prob": 8,
+          "role": "反向保护",
+          "reason": "英格兰先手后的法国追分风险"
+        }
+      ],
+      "sources": [
+        {
+          "label": "FOX/FanDuel季军赛公开赔率",
+          "url": "https://www.foxsports.com/stories/soccer/2026-world-cup-third-place-odds-france-england"
+        },
+        {
+          "label": "Oddschecker法国—英格兰聚合赔率",
+          "url": "https://www.oddschecker.com/football/world-cup/france-v-england/winner"
+        },
+        {
+          "label": "AP半决赛赛果与决赛对阵",
+          "url": "https://apnews.com/article/argentina-messi-spain-yamal-world-cup-final-55077ce5c4728c4207a39cc4aa8a41a1"
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-07-16 10:30 +08:00",
+  "source": "public odds composite; Sporttery not available"
+}

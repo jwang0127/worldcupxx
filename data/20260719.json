@@ -1,0 +1,66 @@
+{
+  "date": "20260719",
+  "dateText": "2026-07-19",
+  "source": "public-odds-composite",
+  "fetchedAt": "2026-07-16T10:20:00+08:00",
+  "lastUpdateTime": "2026-07-16 10:30 +08:00",
+  "apiPoolCode": "public-had,total,correct-score",
+  "matches": [
+    {
+      "id": "103",
+      "matchNumStr": "待定103",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "groupName": "季军赛",
+      "kickoff": "2026-07-19 05:00:00",
+      "matchDate": "2026-07-19",
+      "matchStatus": "NotStarted",
+      "home": "法国",
+      "away": "英格兰",
+      "prediction": {
+        "totalGoals": "3",
+        "scores": [
+          "2:1",
+          "1:1",
+          "2:0",
+          "3:1",
+          "1:0",
+          "1:2"
+        ],
+        "upset": "1:2",
+        "confidence": "中高",
+        "candidates": [
+          "3",
+          "2",
+          "4"
+        ]
+      },
+      "result": null,
+      "review": "公开盘约为法国2.00、平3.60-3.90、英格兰3.60-3.70，法国优势清楚但不是碾压。季军赛轮换和动机波动通常高于决赛，两队半决赛均失利后更可能释放进攻；法国本届进攻产量与公开盘共同支持2-1主线，1-1负责吸收轮换与疲劳，2-0保留法国重新建立防守控制的路径。",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": "2.00",
+          "draw": "3.75",
+          "away": "3.70",
+          "updatedAt": "2026-07-16 10:30 +08:00"
+        },
+        "ttg": {
+          "line": "3.5",
+          "under": "1.67",
+          "over": "2.27",
+          "updatedAt": "2026-07-16 10:30 +08:00"
+        },
+        "crs": {
+          "2-1": "5.56",
+          "1-1": "6.67",
+          "2-0": "8.33",
+          "3-1": "10.0",
+          "1-0": "11.11",
+          "1-2": "12.5"
+        },
+        "sourceNote": "体彩赔率未出，采用FOX/FanDuel、DraftKings、bet365与Oddschecker公开盘综合快照。"
+      }
+    }
+  ]
+}

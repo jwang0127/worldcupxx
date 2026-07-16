@@ -1,0 +1,68 @@
+{
+  "date": "20260720",
+  "dateText": "2026-07-20",
+  "source": "public-odds-composite",
+  "fetchedAt": "2026-07-16T10:20:00+08:00",
+  "lastUpdateTime": "2026-07-16 10:30 +08:00",
+  "apiPoolCode": "public-had,total,correct-score",
+  "matches": [
+    {
+      "id": "104",
+      "matchNumStr": "待定104",
+      "league": "世界杯",
+      "leagueCode": "WCC",
+      "groupName": "决赛",
+      "kickoff": "2026-07-20 03:00:00",
+      "matchDate": "2026-07-20",
+      "matchStatus": "NotStarted",
+      "home": "西班牙",
+      "away": "阿根廷",
+      "prediction": {
+        "totalGoals": "1/2",
+        "scores": [
+          "1:0",
+          "1:1",
+          "2:0",
+          "2:1",
+          "0:0",
+          "0:1",
+          "1:2"
+        ],
+        "upset": "0:1",
+        "confidence": "中高",
+        "candidates": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "result": null,
+      "review": "DraftKings开盘西班牙+115、平+200、阿根廷+285，2.5球小球-135；bet365与Oddschecker也一致把西班牙放在90分钟优势位。西班牙连续淘汰葡萄牙、比利时和法国，半决赛再次验证控球脱压与零封能力；阿根廷对英格兰的两个后程进球说明其反击与定位球不能被降为极端尾部。主线为西班牙1-0，1-1承担决赛谨慎与阿根廷后程韧性，2-0是西班牙领先后继续控制的第三路径。",
+      "postReview": null,
+      "odds": {
+        "had": {
+          "home": "2.25",
+          "draw": "3.05",
+          "away": "3.70",
+          "updatedAt": "2026-07-16 10:30 +08:00"
+        },
+        "ttg": {
+          "line": "2.5",
+          "under": "1.68",
+          "over": "2.45",
+          "updatedAt": "2026-07-16 10:30 +08:00"
+        },
+        "crs": {
+          "1-0": "5.56",
+          "1-1": "5.88",
+          "2-0": "7.69",
+          "2-1": "8.33",
+          "0-0": "9.09",
+          "0-1": "11.11",
+          "1-2": "12.5"
+        },
+        "sourceNote": "体彩赔率未出，采用FOX/FanDuel、DraftKings、bet365与Oddschecker公开盘综合快照。"
+      }
+    }
+  ]
+}

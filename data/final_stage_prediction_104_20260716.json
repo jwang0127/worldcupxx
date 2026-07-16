@@ -1,0 +1,83 @@
+{
+  "date": "20260720",
+  "stage": "决赛",
+  "matches": [
+    {
+      "no": "104",
+      "date": "20260720",
+      "round": "决赛",
+      "home": "西班牙",
+      "away": "阿根廷",
+      "kickoff": "07-20 03:00",
+      "local": "07-19 15:00（纽约/新泽西，EDT）",
+      "direction": "西班牙胜，重点防平",
+      "probability": "西班牙胜45% / 平31% / 阿根廷胜24%",
+      "main_score": "1-0",
+      "goals": "1/2球主线，防3球",
+      "final_pick": "西班牙夺冠（59%）",
+      "analysis": "DraftKings开盘西班牙+115、平+200、阿根廷+285，2.5球小球-135；bet365与Oddschecker也一致把西班牙放在90分钟优势位。西班牙连续淘汰葡萄牙、比利时和法国，半决赛再次验证控球脱压与零封能力；阿根廷对英格兰的两个后程进球说明其反击与定位球不能被降为极端尾部。主线为西班牙1-0，1-1承担决赛谨慎与阿根廷后程韧性，2-0是西班牙领先后继续控制的第三路径。",
+      "script": "半场0-0时1-0/1-1/0-0升权；西班牙先球时1-0/2-0升权；阿根廷先球时1-1/1-2进入核心；前30分钟早球才把2-1与3球抬进主层。",
+      "odds": "公开90分钟约：西班牙2.15-2.35，平3.00-3.15，阿根廷3.50-3.85；2.5球以下约1.61-1.74；捧杯西班牙约1.62、阿根廷约2.30。",
+      "score_pool": [
+        {
+          "score": "1-0",
+          "prob": 18,
+          "role": "主比分",
+          "reason": "西班牙市场优势与零封控制"
+        },
+        {
+          "score": "1-1",
+          "prob": 17,
+          "role": "前三保护",
+          "reason": "决赛谨慎与阿根廷后程韧性"
+        },
+        {
+          "score": "2-0",
+          "prob": 13,
+          "role": "前三保护",
+          "reason": "西班牙领先后持续压制"
+        },
+        {
+          "score": "2-1",
+          "prob": 12,
+          "role": "双方进球",
+          "reason": "阿根廷反击得分但西班牙兑现优势"
+        },
+        {
+          "score": "0-0",
+          "prob": 11,
+          "role": "锁局保护",
+          "reason": "前60分钟互相压缩"
+        },
+        {
+          "score": "0-1",
+          "prob": 9,
+          "role": "反向零封",
+          "reason": "阿根廷定位球或反击先手"
+        },
+        {
+          "score": "1-2",
+          "prob": 8,
+          "role": "反向尾部",
+          "reason": "西班牙追分后暴露转换空间"
+        }
+      ],
+      "sources": [
+        {
+          "label": "DraftKings决赛开盘",
+          "url": "https://dknetwork.draftkings.com/2026/07/15/world-cup-2026-spain-vs-argentina-opening-odds/"
+        },
+        {
+          "label": "bet365决赛公开赔率",
+          "url": "https://news.bet365.com/en-gb/article/spain-v-argentina-odds-la-roja-favourites-to-win-world-cup-final/2026071521303757251"
+        },
+        {
+          "label": "Oddschecker西班牙—阿根廷聚合赔率",
+          "url": "https://www.oddschecker.com/football/world-cup/spain-v-argentina/winner"
+        }
+      ]
+    }
+  ],
+  "generatedAt": "2026-07-16 10:30 +08:00",
+  "source": "public odds composite; Sporttery not available"
+}

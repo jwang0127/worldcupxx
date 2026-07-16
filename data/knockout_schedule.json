@@ -722,7 +722,7 @@
       "beijing_date": "2026-07-16",
       "beijing_time": "03:00",
       "beijing_timezone": "Asia/Shanghai",
-      "status": "未开赛",
+      "status": "已完赛：阿根廷2-1晋级",
       "winner_advances_to": "53452537",
       "note": "世界杯淘汰赛为中立场比赛，此处主/客队仅表示赛程源中的名义排列顺序；赛程源未包含具体球场城市时区，因此当地时间统一按 America/New_York / EDT 表示。 半决赛负者进入季军赛。"
     },
@@ -735,9 +735,9 @@
       "home_team": "法国",
       "home_team_en": "France",
       "home_code": "FRA",
-      "away_team": "英格兰/阿根廷负者",
-      "away_team_en": "Loser of England/Argentina",
-      "away_code": "",
+      "away_team": "英格兰",
+      "away_team_en": "England",
+      "away_code": "ENG",
       "kickoff_local": "2026-07-18 17:00:00 -04:00",
       "local_date": "2026-07-18",
       "local_time": "17:00",
@@ -759,9 +759,9 @@
       "home_team": "西班牙",
       "home_team_en": "Spain",
       "home_code": "ESP",
-      "away_team": "英格兰/阿根廷胜者",
-      "away_team_en": "Winner of England/Argentina",
-      "away_code": "",
+      "away_team": "阿根廷",
+      "away_team_en": "Argentina",
+      "away_code": "ARG",
       "kickoff_local": "2026-07-19 15:00:00 -04:00",
       "local_date": "2026-07-19",
       "local_time": "15:00",
@@ -775,6 +775,6 @@
       "note": "世界杯淘汰赛为中立场比赛，此处主/客队仅表示赛程源中的名义排列顺序；赛程源未包含具体球场城市时区，因此当地时间统一按 America/New_York / EDT 表示。"
     }
   ],
-  "last_updated": "2026-07-15",
-  "update_note": "半决赛101回填法国0-2西班牙；西班牙进入决赛、法国进入季军赛；102预测按最新竞彩与101复盘重新生成。"
+  "last_updated": "2026-07-16",
+  "update_note": "半决赛102回填英格兰1-2阿根廷；季军赛法国vs英格兰，决赛西班牙vs阿根廷。"
 }

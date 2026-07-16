@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-15T11:00:00+08:00",
+  "updatedAt": "2026-07-16T10:30:00+08:00",
   "weights": {
-    "odds": 0.22,
+    "odds": 0.2,
     "elo": 0.18,
     "form": 0.15,
-    "tactics": 0.2,
+    "tactics": 0.22,
     "motivation": 0.12,
     "external": 0.09,
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260715",
-    "lesson": "法国0-2暴露顶级名义客队零封胜漏池：0-1/0-2不能被轻微主队低赔和双方进球假设压掉。",
-    "todayAdjustment": "102最新竞彩2.38/2.70/2.95：主1-1；英格兰2-1/1-0；阿根廷0-1/0-2/1-2；晋级英格兰52%。"
+    "latestReview": "20260716",
+    "lesson": "102完整池覆盖1-2但前三池遗漏，需把强强对话名义客队小胜从尾部保护提升到前三排序。",
+    "todayAdjustment": "103法国2-1，防1-1/2-0；104西班牙1-0，防1-1/2-0。连续客胜只校正排序，不机械追客。"
   },
   "history": [
     {
@@ -135,6 +135,19 @@
       "scorePoolHitRate": "0%",
       "totalGoalHits": 1,
       "totalGoalHitRate": "100%"
+    },
+    {
+      "date": "20260716",
+      "settled": 1,
+      "directionHits": 0,
+      "directionHitRate": "0%",
+      "mainScoreHits": 0,
+      "mainScoreHitRate": "0%",
+      "scorePoolHits": 0,
+      "scorePoolHitRate": "0%",
+      "fullScorePoolHits": 1,
+      "totalGoalHits": 0,
+      "totalGoalHitRate": "0%"
     }
   ]
 }

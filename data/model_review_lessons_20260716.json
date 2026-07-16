@@ -1,0 +1,34 @@
+{
+  "date": "20260716",
+  "headline": "英格兰1-2阿根廷复盘：识别反向路线不等于完成正确排序",
+  "summary": "完整比分池覆盖1-2，但主比分及前三池未中，方向、总进球与晋级也未中。模型把英格兰轻微赔率与体能优势放大，令阿根廷后程得分路径只停留在低权重保护层。",
+  "metrics": {
+    "settled": 1,
+    "direction_hits": 0,
+    "main_score_hits": 0,
+    "top3_score_pool_hits": 0,
+    "full_score_pool_hits": 1,
+    "total_goal_hits": 0
+  },
+  "lessons": [
+    "比分池是否包含正确答案与前三排序是否有效必须分开计分，避免用大池命中掩盖主排序失真。",
+    "当强强淘汰赛HAD差距很小，且名义客队拥有顶级转换、定位球与末段终结能力时，0-1/1-2至少一个必须进入前三池。",
+    "连续两场半决赛均由名义客队取胜只说明赔率轻优不可被机械放大，不应直接外推为决赛继续追客胜。",
+    "季军赛提高轮换、动机和开放度权重；决赛则继续分离90分钟方向与最终捧杯概率。"
+  ],
+  "weight_adjustments": {
+    "odds": -0.02,
+    "tactics": 0.02,
+    "top3_away_small_win_trigger": 0.08,
+    "full_pool_credit": -0.05
+  },
+  "validation": {
+    "match_no": "102",
+    "actual_score": "1-2",
+    "direction_hit": false,
+    "main_score_hit": false,
+    "top3_score_pool_hit": false,
+    "full_score_pool_hit": true,
+    "total_goals_hit": false
+  }
+}

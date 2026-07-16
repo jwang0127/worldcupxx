@@ -18,8 +18,8 @@
       "kickoff": "2026-07-16 03:00:00",
       "matchDate": "2026-07-16",
       "matchTime": "03:00:00",
-      "matchStatus": "Selling",
-      "sellStatus": 2,
+      "matchStatus": "Finished",
+      "sellStatus": 1,
       "taxDateNo": "2607151",
       "isHot": false,
       "home": "英格兰",
@@ -51,9 +51,15 @@
           "3"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 1,
+        "awayGoals": 2,
+        "status": "Finished",
+        "source": "user-confirmed + AP/public match reports",
+        "advanced": "阿根廷"
+      },
       "review": "法国0-2复盘校准后：90分钟英格兰轻优、重点防平；2球主线，1-1主比分，阿根廷0-1/0-2进入核心保护，最终晋级英格兰52%。",
-      "postReview": null,
+      "postReview": "英格兰1-2阿根廷：原完整比分池包含1-2，但主比分1-1及按概率排序的前三（1-1/2-1/1-0）未覆盖正确比分；90分钟方向、总进球主线和晋级方向均未中。根因是把英格兰轻微低赔与体能优势放大为主排序，阿根廷的反击、定位球和后程终结能力虽被识别，却排位过低。永久修正：强强淘汰赛赔率差小于约0.60时，具备顶级转换与末段得分能力的名义客队小胜比分必须进入前三，而不是只留在完整尾池。",
       "odds": {
         "had": {
           "home": "2.38",
