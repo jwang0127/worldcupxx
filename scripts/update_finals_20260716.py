@@ -237,6 +237,8 @@ def build_accuracy() -> tuple[dict, str]:
             result = match.get("result")
             if not result or result.get("homeGoals") is None or result.get("awayGoals") is None:
                 continue
+            if match.get("excludeFromModel") or result.get("excludeFromModel"):
+                continue
             key = (path.stem, str(match.get("id")), match.get("home"), match.get("away"))
             if key in seen:
                 continue
@@ -271,7 +273,7 @@ def build_accuracy() -> tuple[dict, str]:
     }
     for key in ("main_score", "top3_score_pool", "main_direction", "total_goal"):
         metrics[f"{key}_rate"] = f"{metrics[f'{key}_hits'] / total * 100:.1f}%" if total else "—"
-    summary = {"updatedAt": UPDATED_AT, "method": "主比分取赛前主推；比分池取赛前概率排序前三。若早期记录仅有两项scores，则用upset补足第三项。赛果按90分钟比分比较。", "metrics": metrics, "matches": rows}
+    summary = {"updatedAt": UPDATED_AT, "method": "主比分取赛前主推；比分池取赛前概率排序前三。若早期记录仅有两项scores，则用upset补足第三项。赛果按90分钟比分比较；明确标记excludeFromModel的特殊比赛不进入模型准确率与校准。", "metrics": metrics, "matches": rows}
     save(DATA / "accuracy_summary_20260716.json", summary)
 
     table_rows = "".join(

@@ -3,7 +3,7 @@
   "dateText": "2026-07-19",
   "source": "public-odds-composite",
   "fetchedAt": "2026-07-16T10:20:00+08:00",
-  "lastUpdateTime": "2026-07-16 10:30 +08:00",
+  "lastUpdateTime": "2026-07-19 11:20 +08:00",
   "apiPoolCode": "public-had,total,correct-score",
   "matches": [
     {
@@ -14,7 +14,7 @@
       "groupName": "季军赛",
       "kickoff": "2026-07-19 05:00:00",
       "matchDate": "2026-07-19",
-      "matchStatus": "NotStarted",
+      "matchStatus": "Finished",
       "home": "法国",
       "away": "英格兰",
       "prediction": {
@@ -35,9 +35,16 @@
           "4"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 4,
+        "awayGoals": 6,
+        "status": "Finished",
+        "source": "user-confirmed; public match reports",
+        "excludeFromModel": true,
+        "exclusionReason": "季军赛双方大幅轮换并开放进攻，比赛目标和战术约束与常规模型样本不同。"
+      },
       "review": "公开盘约为法国2.00、平3.60-3.90、英格兰3.60-3.70，法国优势清楚但不是碾压。季军赛轮换和动机波动通常高于决赛，两队半决赛均失利后更可能释放进攻；法国本届进攻产量与公开盘共同支持2-1主线，1-1负责吸收轮换与疲劳，2-0保留法国重新建立防守控制的路径。",
-      "postReview": null,
+      "postReview": "法国4-6英格兰（90分钟）。赛果写入赛程、赛果页与归档，但不进入模型准确率、权重校准或训练样本。原因是季军赛两队大幅轮换、主动放开进攻，10球脚本属于特殊赛制与动机环境；只保留一条展示层经验：季军赛要单独标注高轮换与高开放度，不把极端大比分外推到决赛或普通淘汰赛。",
       "odds": {
         "had": {
           "home": "2.00",
@@ -60,7 +67,9 @@
           "1-2": "12.5"
         },
         "sourceNote": "体彩赔率未出，采用FOX/FanDuel、DraftKings、bet365与Oddschecker公开盘综合快照。"
-      }
+      },
+      "excludeFromModel": true
     }
-  ]
+  ],
+  "updateNote": "103赛果已回填；明确excludeFromModel，不参与准确率、校准或训练。"
 }

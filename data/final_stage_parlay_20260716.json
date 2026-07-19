@@ -1,28 +1,9 @@
 {
-  "date": "20260716",
-  "stage": "final_stage_two_leg",
-  "title": "季军赛+决赛二串一",
-  "source": "public odds composite; Sporttery not yet available",
-  "combinations": {
-    "win_draw_loss": [
-      "103 法国胜",
-      "104 西班牙胜"
-    ],
-    "total_goals": [
-      "103 总进球3球",
-      "104 总进球1/2球"
-    ],
-    "correct_score_two_options": [
-      [
-        "103 法国2-1英格兰",
-        "104 西班牙1-0阿根廷"
-      ],
-      [
-        "103 法国1-1英格兰",
-        "104 西班牙1-1阿根廷"
-      ]
-    ]
-  },
-  "risk": "精确比分二串一波动极高；季军赛轮换和决赛早球都会显著改变比赛脚本。",
+  "date": "20260719",
+  "stage": "final_stage_archive",
+  "status": "closed",
+  "reason": "103季军赛已经结束，旧的103+104二串一不再有效；104为单场决赛，不生成伪二串一。",
+  "settledMatch": "103 法国4-6英格兰",
+  "finalMatch": "104 西班牙vs阿根廷",
   "disclaimer": "以上仅为公开信息整理后的娱乐分析，不构成任何购彩建议，请理性参考。"
 }
