@@ -171,6 +171,7 @@ def final_prediction_record(match: dict) -> dict:
             {"label": "中国体育彩票周日104官方赔率", "url": "https://www.sporttery.cn/"},
             {"label": "西班牙阵容与亚马尔、波罗伤情", "url": "https://www.standard.co.uk/sport/football/spain-xi-vs-argentina-confirmed-team-news-predicted-lineup-injury-latest-world-cup-final-2026-b1290417.html"},
             {"label": "阿根廷阵容与轮换选择", "url": "https://www.standard.co.uk/sport/football/argentina-xi-vs-spain-confirmed-team-news-predicted-lineup-injury-latest-world-cup-final-2026-b1290419.html"},
+            {"label": "埃米利亚诺-马丁内斯手指伤情采访", "url": "https://www.thesun.co.uk/sport/39803198/argentina-emi-martinez-broken-finger-world-cup/"},
             {"label": "德拉富恩特：不会专人盯防梅西", "url": "https://www.theguardian.com/football/2026/jul/18/luis-de-la-fuente-reveals-spain-will-not-man-mark-messi-in-world-cup-final"},
             {"label": "雷暴影响两队最后训练", "url": "https://www.reuters.com/sports/soccer/spains-final-world-cup-training-session-cancelled-due-thunderstorms-2026-07-18/"},
             {"label": "7月18日多公司盘与战术预览", "url": "https://www.rotowire.com/soccer/article/spain-vs-argentina-preview-predicted-lineups-team-news-tactical-analysis-2026-world-cup-final-123191"},
