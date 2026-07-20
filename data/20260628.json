@@ -45,7 +45,12 @@
           "1"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 3,
+        "awayGoals": 3,
+        "status": "Finished",
+        "source": "FIFA official schedule/results"
+      },
       "review": "同分卡位战，奥地利纸面略顺，但阿尔及利亚必须抢分，主线压在2球和平局保护。",
       "odds": {
         "had": {
@@ -142,7 +147,12 @@
           "1"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 1,
+        "awayGoals": 3,
+        "status": "Finished",
+        "source": "FIFA official schedule/results"
+      },
       "review": "阿根廷争头名和净胜球价值仍在，约旦出线压力会迫使后段打开，保留3-4球尾部。",
       "odds": {
         "had": {
@@ -239,7 +249,12 @@
           "1"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 0,
+        "awayGoals": 0,
+        "status": "Finished",
+        "source": "FIFA official schedule/results"
+      },
       "review": "小组头名战，哥伦比亚可保护，葡萄牙仍要确保前二，主线是2球区间和客队不败。",
       "odds": {
         "had": {
@@ -336,7 +351,12 @@
           "1"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 3,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "FIFA official schedule/results"
+      },
       "review": "刚果民主共和国必须拿三分，乌兹别克斯坦已处劣势，先看小胜和低比分拉扯。",
       "odds": {
         "had": {
@@ -433,7 +453,12 @@
           "1"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 0,
+        "awayGoals": 2,
+        "status": "Finished",
+        "source": "FIFA official schedule/results"
+      },
       "review": "英格兰仍要争小组排序，巴拿马需要冒险，强弱差和末轮空间支撑3球主线。",
       "odds": {
         "had": {
@@ -530,7 +555,12 @@
           "1"
         ]
       },
-      "result": null,
+      "result": {
+        "homeGoals": 2,
+        "awayGoals": 1,
+        "status": "Finished",
+        "source": "FIFA official schedule/results"
+      },
       "review": "克罗地亚必须赢更主动，加纳可接受低风险局，主线是2球并防1:1。",
       "odds": {
         "had": {

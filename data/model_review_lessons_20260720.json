@@ -1,0 +1,32 @@
+{
+  "date": "20260720",
+  "headline": "整届终盘：胜平负相对稳定，精确比分与总进球仍需降级表达",
+  "finalResult": {
+    "matchNo": "104",
+    "ninetyMinutes": "西班牙0-0阿根廷",
+    "afterExtraTime": "西班牙1-0阿根廷",
+    "champion": "西班牙"
+  },
+  "coverage": {
+    "tournamentMatches": 104,
+    "settledPredictionArchives": 88,
+    "calibrationSamples": 87,
+    "excludedSpecialSamples": 1,
+    "missingPreMatchArchives": 16
+  },
+  "metrics": {
+    "totalGoals": "26/87 · 29.9%",
+    "mainScore": "15/87 · 17.2%",
+    "top3ScorePool": "32/87 · 36.8%",
+    "winDrawLoss": "56/87 · 64.4%"
+  },
+  "lessons": [
+    "胜平负作为第一层输出，主比分只作为低置信度情景，不再使用稳胆表述。",
+    "总进球固定输出核心单值与保护区间，并分别统计，避免历史单值和区间混算造成误读。",
+    "比分池只按赛前排序前三计算主命中率，完整池仅用于解释尾部风险。",
+    "淘汰赛固定拆分90分钟、加时/点球和晋级；决赛104按90分钟0-0结算。",
+    "排除规则必须预先声明；特殊样本仍保留在全量逐场表，不能从复盘中删除。",
+    "高比分低估是主要结构性短板，应按弱队先球、追分扩大与强队尾部等条件触发，而非追逐上一场大小球。"
+  ],
+  "artifact": "data/tournament_review_20260720.json"
+}

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-19T11:20:00+08:00",
+  "updatedAt": "2026-07-20T09:45:00+08:00",
   "weights": {
     "odds": 0.2,
     "elo": 0.18,
@@ -11,9 +11,9 @@
     "mystic": 0.04
   },
   "calibration": {
-    "latestReview": "20260716",
-    "lesson": "102完整池覆盖1-2但前三池遗漏，需把强强对话名义客队小胜从尾部保护提升到前三排序。",
-    "todayAdjustment": "103法国4-6英格兰仅展示并排除出模型；104按体彩2.02/2.87/3.50与赛前阵容重排为1-1主比分，2-1/1-0前三保护，最终仍略倾向西班牙。"
+    "latestReview": "20260720",
+    "lesson": "整届可结算赛前存档88场，校准样本87场：胜平负64.4%最稳定，比分池前三36.8%，总进球29.9%，主比分17.2%。以后固定单选胜平负、核心总进球与保护区间分开统计，完整比分池不得替代前三池命中。",
+    "todayAdjustment": "决赛按90分钟0-0结算，西班牙加时1-0夺冠另列；主比分1-1与前三池未中，完整池0-0覆盖，胜平负按主比分映射为平并命中。"
   },
   "history": [
     {
@@ -141,6 +141,19 @@
       "settled": 1,
       "directionHits": 0,
       "directionHitRate": "0%",
+      "mainScoreHits": 0,
+      "mainScoreHitRate": "0%",
+      "scorePoolHits": 0,
+      "scorePoolHitRate": "0%",
+      "fullScorePoolHits": 1,
+      "totalGoalHits": 0,
+      "totalGoalHitRate": "0%"
+    },
+    {
+      "date": "20260720",
+      "settled": 1,
+      "directionHits": 1,
+      "directionHitRate": "100%",
       "mainScoreHits": 0,
       "mainScoreHitRate": "0%",
       "scorePoolHits": 0,
